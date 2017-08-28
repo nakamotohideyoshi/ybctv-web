@@ -1,0 +1,193 @@
+#setting_404_page_content .format-setting .format-setting-inner{
+    width: 100% !important;
+}
+#setting_copyright .format-setting .format-setting-inner{
+    width: 100% !important;
+}
+.format-setting .format-setting-inner{
+    width: 50% !important;
+}
+#copyright_toolbar3{
+    display: none;
+}
+#404_page_content_toolbar3{
+    display: none;
+}
+/*end custom textarea*/
+
+#setting_TzFontDefault{
+    display: none;
+}
+#setting_TzFontSquirrel{
+    display: none;
+}
+#setting_TzFontFami{
+    display: none;
+}
+#setting_TzFontFaminy{
+    display: none;
+}
+
+/*header font*/
+#setting_TzFontHeadDefault{
+    display: none;
+}
+#setting_TzFontHeadSquirrel{
+    display: none;
+}
+#setting_TzFontHeadGoodurl{
+    display: none;
+}
+#setting_TzFontFaminyHead{
+    display: none;
+}
+
+
+#setting_TzFontMenuDefault{
+    display: none;
+}
+#setting_TzFontMenuSquirrel{
+    display: none;
+}
+#setting_TzFontMenuGoodurl{
+    display: none;
+}
+#setting_TzFontFaminyMenu{
+    display: none;
+}
+
+
+/*custom font*/
+#setting_TzFontCustomDefault{
+    display: none;
+}
+#setting_TzFontCustomSquirrel{
+    display: none;
+}
+#setting_TzFontCustomGoodurl{
+    display: none;
+}
+#setting_TzFontFaminyCustom{
+    display: none;
+}
+#setting_TZBackgroundColor{
+    display: none;
+}
+
+/* css background option*/
+.background_pattern {
+    width: 40px;
+    height: 40px;
+    border-radius: 0;
+    padding: 2px;
+}
+#setting_background_pattern .format-setting .format-setting-inner{
+    width: 100% !important;
+}
+
+/*==========================
+CSS HOME PAGE SETTINGS
+===========================*/
+#section_TZModulePage .format-setting-inner{
+    width: 100% !important;
+}
+#section_TZModuleQuote .format-setting-inner{
+    width: 100% !important;
+}
+
+/*style option*/
+#tab_TzFontMenu,
+#tab_TzFontCustom,
+#tab_TZBackground,
+#tab_TZBody,
+#tab_TzFontHeader{
+    background: #ffffff;
+    border: 0;
+    display: none;
+
+}
+
+
+/*style option*/
+body #page-ot_theme_options{
+    width: 80%;
+}
+body .wrap.settings-wrap .ui-tabs-nav{
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 180px;
+}
+#option-tree-settings-api .ui-tabs{
+    background: url("../images/ot-menu-bg.png") repeat-y scroll 0 0 #ffffff !important;
+}
+.wrap.settings-wrap .ui-tabs-nav li.ui-state-active{
+
+    border: none;
+    background:  #6D6D6D !important;
+    margin-right: -0px;
+    border-radius: 0;
+}
+.wrap.settings-wrap .ui-tabs-nav li.ui-state-active a{
+    color: white;
+
+}
+.wrap.settings-wrap .ui-tabs-nav li{
+    border-bottom: 1px solid #D8D8D8;
+    border-top: 1px solid #FFFFFF;
+    color: #797979;
+    display: block;
+    font: bold 12px/18px sans-serif;
+    padding: 7px 10px;
+    text-decoration: none;
+
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_logo{
+    background:url("../images/icon-logo.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_404{
+    background:url("../images/icon-warning.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_copyright{
+    background:url("../images/icon-copyright.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_google_analytics{
+    background:url("../images/icon-google.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_social_network{
+    background:url("../images/icon-network-connection.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_TzSyle{
+    background:url("../images/icon-settings.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_GlobalOption{
+    background:url("../images/icon-admin.png") no-repeat scroll 2px 4px ;
+}
+.wrap.settings-wrap .ui-tabs-nav li#tab_HomeOption{
+    background:url("../images/icon-home.png") no-repeat scroll 2px 4px ;
+}
+
+.wrap.settings-wrap .ui-tabs-nav li a{
+    padding: 1px 5px 1px 18px;
+}
+#option-tree-header{
+    border-radius: 2px 2px 0 0;
+}
+.format-setting-label {
+
+    border-bottom: 0;
+    margin: 0 0 3px;
+    padding: 5px 0 1px;
+    width: 100%;
+}
+.format-setting-wrap{
+    border-bottom: 1px solid #E7E7E7;
+    padding-bottom: 22px;
+}
+input.option-tree-ui-upload-input, input.option-tree-ui-input{
+    padding: 6px;
+}
+.format-settings{
+    padding: 0 0 20px;
+}
+
