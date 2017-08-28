@@ -50,7 +50,8 @@
                                         <div class="col-md-8 col-sm-12 col-xs-12">
                                             <div class="content-des">
                                                 <p class="name-cat">Portfolio Adviser Magazine</p>
-                                                <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="<?php the_permalink();?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
                                                 <p class="date">Published <?php the_time('d M Y');?></p>
                                             </div>
@@ -81,7 +82,8 @@
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="content-des">
                                                 <p class="name-cat">Portfolio Adviser Magazine</p>
-                                                <a href="<?php the_permalink();?>"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="<?php the_permalink();?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
                                                 <p class="date">Published <?php the_time('d M Y');?></p>
                                             </div>

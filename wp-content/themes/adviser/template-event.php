@@ -51,7 +51,8 @@
                                         </div>
                                         <div class="col-md-4 col-sm-12 col-xs-12">
                                             <div class="content-des">
-                                                <a href="#"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="#"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p class="date"><?php echo $date_event;?></p>
                                             </div>
                                         </div>
@@ -82,7 +83,8 @@
                                         </div>
                                         <div class="col-md-8 col-sm-8 col-xs-12">
                                             <div class="content-des">
-                                                <a href="#"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="#"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p class="date"><?php echo $date_event;?></p>
                                             </div>
                                         </div>

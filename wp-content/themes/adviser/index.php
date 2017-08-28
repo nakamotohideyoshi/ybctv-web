@@ -7,7 +7,7 @@ get_header(); ?>
 
 <section id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-    
+
         <section class="all-new-analysis">
             <div class="container">
                 <div class="row">
@@ -25,18 +25,18 @@ get_header(); ?>
                                                 <div class="content-image">
                                                     <?php
                                                     if ( has_post_thumbnail() ) {
-                                                        the_post_thumbnail();
+                                                        the_post_thumbnail('homepage-latest-article');
                                                     }
                                                     else { ?>
-                                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                     <?php }
                                                     ?>
                                                     <span class="overlay"></span>
                                                 </div>
                                                 <div class="content-des">
                                                     <h2 class="title">LATEST NEWS ...</h2>
-                                                    <a href="<?php the_permalink(); ?>"><h3><?php the_title(); ?></h3></a>
-                                                    <p><?php echo get_excerpt(100); ?></p>
+                                                    <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                                                    <p><?php the_excerpt(); ?></p>
                                                 </div>
                                             </div>
                                         <?php endforeach;
@@ -45,7 +45,7 @@ get_header(); ?>
                                             <div class="row">
 
                                                 <?php
-                                                    $count =0; 
+                                                    $count =0;
                                                     $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6, 'category' => 17 );
                                                     $myposts = get_posts( $args );
                                                     foreach ( $myposts as $post ) : setup_postdata( $post ); $count++ ?>
@@ -63,10 +63,10 @@ get_header(); ?>
                                                                 <div class="content-image">
                                                                     <?php
                                                                     if ( has_post_thumbnail() ) {
-                                                                        the_post_thumbnail();
+                                                                        the_post_thumbnail('thumbnail-article');
                                                                     }
                                                                     else { ?>
-                                                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                                     <?php }
                                                                     ?>
                                                                     <span class="overlay"></span>
@@ -76,12 +76,13 @@ get_header(); ?>
                                                                     <?php $category = get_the_category(); ?>
                                                                     <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                                     </p>
-                                                                    <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                                    <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                                    <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     <?php }?>
-                                                <?php endforeach; 
+                                                <?php endforeach;
                                                 wp_reset_postdata();?>
 
                                             </div>
@@ -102,10 +103,10 @@ get_header(); ?>
                                                     <div class="content-image">
                                                         <?php
                                                         if ( has_post_thumbnail() ) {
-                                                            the_post_thumbnail();
+                                                            the_post_thumbnail('featured-article');
                                                         }
                                                         else { ?>
-                                                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                         <?php }
                                                         ?>
                                                         <span class="overlay"></span>
@@ -115,8 +116,8 @@ get_header(); ?>
                                                         <?php $category = get_the_category(); ?>
                                                         <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                         </p>
-                                                        <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
-                                                        <p><?php echo get_excerpt(30); ?></p>
+                                                        <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 42, '...' ); ?></h3></a> -->
+                                                        <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                     </div>
                                                 </div>
                                             <?php endforeach;
@@ -150,10 +151,10 @@ get_header(); ?>
                                                         <div class="content-image">
                                                             <?php
                                                             if ( has_post_thumbnail() ) {
-                                                                the_post_thumbnail();
+                                                                the_post_thumbnail('featured-article');
                                                             }
                                                             else { ?>
-                                                                <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                                <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                             <?php }
                                                             ?>
                                                             <span class="overlay"></span>
@@ -163,12 +164,13 @@ get_header(); ?>
                                                             <?php $category = get_the_category(); ?>
                                                             <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                             </p>
-                                                            <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
-                                                            <p><?php echo get_excerpt(30); ?></p>
+                                                            <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                                                            <!-- <p><?php echo get_excerpt(30); ?></p> -->
                                                         </div>
-                                                    </div>       
-                                                </div>       
-                                            <?php endforeach; 
+                                                    </div>
+                                                </div>
+                                            <?php endforeach;
                                             wp_reset_postdata();?>
 
                                         </div>
@@ -212,25 +214,16 @@ get_header(); ?>
                                     ?>
                                         <li>
                                             <div class="content-image">
-                                                <div class="video-img">
-                                                    <?php
-                                                    if ( has_post_thumbnail() ) {
-                                                        the_post_thumbnail();
-                                                    }
-                                                    else { ?>
-                                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
-                                                    <?php }
-                                                    ?>
-                                                    <img class="button-video" src="<?php echo THEME_PATH.'/images/assets/Video-play-button.png' ?>" alt="" />
-                                                </div>
-                                                <span class="overlay"></span>
+                                              <?php brightcove_video($lw_brightcove_video_id, false); ?>
+                                              <span class="overlay"></span>
                                             </div>
                                             <div class="content-des">
                                                 <p class="name-cat">
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                 </p>
-                                                <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
                                             </div>
                                         </li>
@@ -256,7 +249,7 @@ get_header(); ?>
                                             the_post_thumbnail();
                                         }
                                         else { ?>
-                                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                         <?php }
                                         ?>
                                         <span class="overlay"></span>
@@ -266,7 +259,8 @@ get_header(); ?>
                                         <?php $category = get_the_category(); ?>
                                         <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                         </p>
-                                        <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                        <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                        <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                     </div>
                                 </li>
                             <?php endforeach;
@@ -285,7 +279,7 @@ get_header(); ?>
                     <?php
                     $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 15 );
                     $myposts = get_posts( $args );
-                    foreach ( $myposts as $post ) : setup_postdata( $post ); 
+                    foreach ( $myposts as $post ) : setup_postdata( $post );
                     $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
                     ?>
                     <div class="item">
@@ -294,10 +288,10 @@ get_header(); ?>
                                 <div class="content-image">
                                     <?php
                                     if ( has_post_thumbnail() ) {
-                                        the_post_thumbnail();
+                                        the_post_thumbnail('featured-article');
                                     }
                                     else { ?>
-                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                     <?php }
                                     ?>
                                     <p class="readmore button-feature">Featured  <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></p>
@@ -306,7 +300,8 @@ get_header(); ?>
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="content-des">
                                     <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
-                                    <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                    <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                    <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                     <p><?php echo get_excerpt(100); ?></p>
                                     <a href="<?php the_permalink(); ?>" class="view-more">View more</a>
                                 </div>
@@ -342,14 +337,15 @@ get_header(); ?>
                                                     the_post_thumbnail();
                                                 }
                                                 else { ?>
-                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                 <?php }
                                                 ?>
                                             </div>
                                             <div class="content-des">
                                                 <p class="name-cat">Magazine</p>
                                                 <h3>PORTFOLIO ADVISER <span>-</span></h3>
-                                                <a href="<?php the_permalink();?>"><span class="date"><?php the_title();?></span></a>
+                                                <!-- <a href="<?php the_permalink();?>"><span class="date"><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></span></a> -->
+                                                <a href="<?php the_permalink();?>"><span class="date"><?php echo get_the_title(); ?></span></a>
                                                 <p><?php echo get_excerpt(70); ?></p>
                                             </div>
                                         </li>
@@ -370,17 +366,18 @@ get_header(); ?>
                                                     the_post_thumbnail();
                                                 }
                                                 else { ?>
-                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                 <?php }
                                                 ?>
                                             </div>
                                             <div class="content-des">
-                                                <a href=""><h3>Portfolio Advisor</h3></a>
-                                                <a href="<?php the_permalink();?>"><span class="date"><?php the_title();?></span></a>
+                                                <a href=""><h3>Portfolio Adviser</h3></a>
+                                                <!-- <a href="<?php the_permalink();?>"><span class="date"><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></span></a> -->
+                                                <a href="<?php the_permalink();?>"><span class="date"><?php echo get_the_title(); ?></span></a>
                                             </div>
                                         </li>
                                     <?php endforeach;
-                                    wp_reset_postdata();?>    
+                                    wp_reset_postdata();?>
                                     </ul>
                                 </div>
                             </div>
@@ -402,11 +399,12 @@ get_header(); ?>
                                                         <img src="<?php echo $background_image;?>" alt="">
                                                     </a>
                                                 <?php }else {?>
-                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                 <?php }?>
                                             </div>
                                             <div class="content-des">
-                                                <a href="#"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="#"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p class="date"><?php echo $date_event;?></p>
                                             </div>
                                         </div>
@@ -427,12 +425,13 @@ get_header(); ?>
                                                                     the_post_thumbnail();
                                                                 }
                                                                 else { ?>
-                                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                                 <?php }
                                                                 ?>
                                                             </div>
                                                             <div class="content-des">
-                                                                <a href="#"><h3><?php the_title();?></h3></a>
+                                                                <!-- <a href="#"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                                <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
                                                                 <p class="date"><?php echo $date_event;?></p>
                                                             </div>
                                                         </div>

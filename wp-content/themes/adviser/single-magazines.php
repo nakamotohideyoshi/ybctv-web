@@ -23,7 +23,7 @@ get_header(); ?>
                                         <div class="content-image">
                                             <?php
                                             if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail();
+                                                the_post_thumbnail('popular-article');
                                             }
                                             else { ?>
                                                 <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
@@ -90,7 +90,7 @@ get_header(); ?>
                             <?php
                             $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 15 );
                             $myposts = get_posts( $args );
-                            foreach ( $myposts as $post ) : setup_postdata( $post ); 
+                            foreach ( $myposts as $post ) : setup_postdata( $post );
                             $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
                             ?>
                                 <div class="content-image">

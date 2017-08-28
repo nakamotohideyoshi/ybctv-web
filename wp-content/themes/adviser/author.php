@@ -67,7 +67,7 @@ get_header(); ?>
                                                     the_post_thumbnail();
                                                 }
                                                 else { ?>
-                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                 <?php }
                                                 ?>
                                             </div>
@@ -76,7 +76,8 @@ get_header(); ?>
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                 <span><?php the_time('d M y');?></span></p>
-                                                <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(35); ?></p>
                                             </div>
                                         </div>
@@ -99,7 +100,7 @@ get_header(); ?>
                                                     the_post_thumbnail();
                                                 }
                                                 else { ?>
-                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                                                 <?php }
                                                 ?>
                                             </div>
@@ -110,7 +111,8 @@ get_header(); ?>
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                 <span><?php the_time('d M y');?></span></p>
-                                                <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
                                             </div>
                                         </div>

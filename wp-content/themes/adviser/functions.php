@@ -96,12 +96,8 @@ if (function_exists('add_theme_support')) {
 }
 
 add_action( 'after_setup_theme', 'setup' );
-function setup() {
-     
-    add_theme_support( 'post-thumbnails' ); // This feature enables post-thumbnail support for a theme
-    add_image_size( 'header', 640, 360, true ); // header image
-     
-}
+
+
 
 add_action('admin_head', 'portfolio_scripts');
 
@@ -275,17 +271,6 @@ function get_excerpt($count){
     $excerpt      = $excerpt.'<a href="'.$permalink.'">...</a>';
     return $excerpt;
 }
-
-/*max_title_length*/
-function max_title_length( $title ) {
-    $max = 55;
-    if( strlen( $title ) > $max ) {
-        return substr( $title, 0, $max ). " &hellip;";
-    } else {
-        return $title;
-    }
-}
-add_filter( 'the_title', 'max_title_length');
 
 /*wpb_set_post_views*/
 function wpb_set_post_views($postID) {

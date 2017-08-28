@@ -44,7 +44,7 @@
                                 $category_page    =   get_post_meta($post->ID,'category_page', TRUE);
                                 $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => $category_page );
                                 $myposts = get_posts( $args );
-                                foreach ( $myposts as $post ) : setup_postdata( $post ); 
+                                foreach ( $myposts as $post ) : setup_postdata( $post );
                                 $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
                                 ?>
 									<div class="col-md-6 col-sm-6 col-xs-12">
@@ -64,7 +64,8 @@
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                 <span><?php the_time('d M y');?></span></p>
-		                                        <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+		                                        <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+		                                        <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
 		                                        <p><?php echo get_excerpt(35); ?></p>
                                                 <span class="spon">Sponsored by</span><?php echo $lw_sponsored;?>
 		                                    </div>
@@ -74,13 +75,13 @@
                             wp_reset_postdata();?>
                         	</div>
                         </div>
-                        
+
                         <div class="list-category-ajax">
                             <?php
                             $category_page    =   get_post_meta($post->ID,'category_page', TRUE);
                             $args = array( 'offset'=>2, 'category' => $category_page );
                             $myposts = get_posts( $args );
-                            foreach ( $myposts as $post ) : setup_postdata( $post ); 
+                            foreach ( $myposts as $post ) : setup_postdata( $post );
                             $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
                             ?>
                                 <div class="loop-list loop-list-load">
@@ -103,7 +104,8 @@
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                 <span><?php the_time('d M y');?></span></p>
-                                                <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
+                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
                                                 <span class="spon">Sponsored by</span><?php echo $lw_sponsored;?>
                                             </div>

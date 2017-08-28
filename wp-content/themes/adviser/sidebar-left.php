@@ -8,7 +8,7 @@
                 <div class="content-image">
                     <?php
                     if ( has_post_thumbnail() ) {
-                        the_post_thumbnail();
+                        the_post_thumbnail('popular-article');
                     }
                     else { ?>
                         <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>

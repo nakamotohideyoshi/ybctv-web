@@ -4,8 +4,6 @@
 	padding: 0;
 	list-style: none;
 }
-.sf-menu li {
-}
 .sf-menu ul {
 	position: absolute;
 	display: none;
@@ -20,7 +18,6 @@
 .sf-menu li.sfHover > ul {
 	display: block;
 }
-
 .sf-menu a {
 	display: block;
 	position: relative;
@@ -29,7 +26,9 @@
 	top: 0;
 	left: 100%;
 }
-
+.sf-menu ul.sub-menu li:last-child a{
+	padding-right: 0;
+}
 
 /*** DEMO SKIN ***/
 .site-header.fixed{
@@ -75,23 +74,20 @@
 	text-decoration: none;
 	zoom: 1; /* IE7 */
 }
+.sf-navbar>li>ul>li a {
+	font-size: 16px;
+	padding: 7px 15px;
+}
 .sf-menu li {
 	white-space: nowrap; /* no need for Supersubs plugin */
 	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
 	-webkit-transition: background .2s;
 	transition: background .2s;
 }
-.sf-menu ul li {
-}
-.sf-menu ul ul li {
-}
 .sf-menu li:hover,
 .sf-menu li.sfHover {
 	-webkit-transition: none;
 	transition: none;
-}
-
-.sf-navbar {
 }
 .sf-navbar:before {
     content: '';
@@ -106,13 +102,6 @@
     box-shadow: none;
 	background: #f2f2f2;
 }
-.sf-navbar li {
-}
-.sf-navbar li.current,
-.sf-navbar li.sfHover,
-.sf-navbar li:hover{
-
-}
 .sf-navbar ul li,
 .sf-navbar ul li.current {
     background: #f2f2f2;
@@ -126,11 +115,9 @@
 	width: 100%;
 	padding-left: 80px;
 }
-.sf-navbar ul li {
-}
 .sf-navbar ul li a{
 	color: #000;
-	padding: 7px 20px;
+	padding: 7px 18px;
 }
 .sf-navbar ul li a:hover{
 	color: #69b42e;

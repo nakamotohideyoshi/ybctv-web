@@ -29,7 +29,7 @@ function last_word_gallery() {
   $current_image = $gallery[$current_position];
   ?>
   <div class="lw-gallery-wrap">
-    <img class="gallery-image" src="<?php echo $protocol . $current_image['url']; ?>" alt="<?php echo $current_image['caption']; ?>" />
+    <img class="gallery-image" src="http://<?php echo $current_image['url']; ?>" alt="<?php echo $current_image['caption']; ?>" />
     <img class="gallery-icon" src="<?php echo plugin_dir_url(__FILE__); ?>/images/gallery-icon.png" alt="Gallery" />
     <?php
       // Image links

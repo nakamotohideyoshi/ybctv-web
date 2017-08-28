@@ -23,7 +23,7 @@ get_header(); ?>
                                         <div class="content-image">
                                             <?php
                                             if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail();
+                                                the_post_thumbnail('popular-article');
                                             }
                                             else { ?>
                                                 <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
@@ -100,29 +100,19 @@ get_header(); ?>
                                         ?>
                                         <div class="text-content"><?php the_content();?></div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>
-                                        <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") : ?>
-                                        <div class="video-wrap">
-                                            <!-- Start of Brightcove Player -->
-                                            <div style="display: block; position: relative; max-width: 100%;">
-                                                <div style="padding-top: 56.25%;">
-                                                <video data-video-id="<?php echo $lw_brightcove_video_id;?>"
-                                                       data-account="1452496661001"
-                                                       data-player="BJO4aldH"
-                                                       data-embed="default"
-                                                       class="video-js"
-                                                       controls
-                                                       style="width: 100%; height: 100%; position: absolute; top: 0px; bottom: 0px; right: 0px; left: 0px;"></video>
-                                                <script src="//players.brightcove.net/1452496661001/BJO4aldH_default/index.min.js"></script>
-                                                </div>
-                                            </div>
-                                            <script type="text/javascript">brightcove.createExperiences();</script>
-                                            <!-- End of Brightcove Player -->
-                                        </div>
-                                            <div class="text-content"><?php the_content();?></div>
+                                        <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :
+                                          brightcove_video($lw_brightcove_video_id)
+                                        ?>
+                                        <div class="text-content"><?php the_content();?></div>
                                         <?php else: ?>
                                             <div class="text-content"><?php the_content();?></div>
                                         <?php endif; ?>
-                                    <?php } ?>
+                                    <?php
+                                      }
+                                      else if ($lw_primary_medium == 'gallery') {
+                                        last_word_gallery();
+                                      }
+                                    ?>
                                 </div>
                             </div>
                             <div class="comment-post">
@@ -140,13 +130,13 @@ get_header(); ?>
                             <?php
                             $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 15 );
                             $myposts = get_posts( $args );
-                            foreach ( $myposts as $post ) : setup_postdata( $post ); 
+                            foreach ( $myposts as $post ) : setup_postdata( $post );
                             $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
                             ?>
                                 <div class="content-image">
                                     <?php
                                     if ( has_post_thumbnail() ) {
-                                        the_post_thumbnail();
+                                        the_post_thumbnail('featured-article');
                                     }
                                     else { ?>
                                         <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
@@ -235,7 +225,7 @@ get_header(); ?>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                <?php } ?>                                            
+                                                <?php } ?>
                                             </div>
                                         </li>
 

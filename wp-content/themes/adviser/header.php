@@ -34,7 +34,8 @@
             echo ' | ' . sprintf( __( 'Page %s', TEXT_DOMAIN ), max( $paged, $page ) );
         ?>
     </title>
-    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/769108/css/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
     <?php wp_head(); ?>
 </head>
@@ -112,7 +113,7 @@
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        <h3 class="modal-title">SINGIN</h3>
+                                                        <h3 class="modal-title">SIGN IN</h3>
                                                     </div>
                                                     <div class="modal-body">
                                                         <?php echo do_shortcode('[login-with-ajax]');?>
@@ -124,7 +125,7 @@
                                             </div>
                                         </div>
                                     <?php }
-                                    ?>                                    
+                                    ?>
                                 </ul>
                             </div>
                             <div class="social">
