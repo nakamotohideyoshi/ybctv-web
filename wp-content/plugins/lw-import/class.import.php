@@ -403,6 +403,21 @@ class lw_import {
       update_post_meta($post_id, 'lw_cross_post_google_plus', $article->publish_google == 'true' ? 'yes' : '');
       update_post_meta($post_id, 'lw_brightcove_video_id', (string)$article->video_stream_id);
 
+      // Gallery
+      if ($article->content_type == 'Gallery') {
+        $gallery_images = array();
+        foreach ($article->gallery->image as $image) {
+          $gallery_images[(string)$image->gallery_image_position] = array(
+            'caption' => (string)$image->gallery_image_caption,
+            'description' => (string)$image->gallery_image_description,
+            'order' => (string)$image->gallery_image_position,
+            'url' => str_replace('350x250', '640x410', (string)$image->gallery_image_path)
+          );
+        }
+
+        update_post_meta($post_id, 'lw_gallery', $gallery_images);
+      }
+
       if ($article->image != '') {
         $image_path = (!empty($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'];
         $image_path .= '/image-archive/';

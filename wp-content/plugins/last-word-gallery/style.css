@@ -1,0 +1,39 @@
+.lw-gallery-wrap .gallery-image {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  height: auto;
+}
+
+.lw-gallery-wrap .image-selected {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.lw-gallery-wrap .gallery-icon {
+  width: 25px;
+  height: 21px;
+  margin-right: 10px;
+}
+
+.lw-gallery-wrap a.image-nav {
+  margin-right: 5px;
+}
+
+.lw-gallery-wrap a.image-prev, .lw-gallery-wrap a.image-next {
+  display: inline-block;
+  float: right;
+  width: 24px;
+  height: 25px;
+  background-color: #69b42e;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.lw-gallery-wrap a.image-prev img, .lw-gallery-wrap a.image-next img {
+  display: block;
+  width: 8px;
+  height: 11px;
+  margin-left: 8px;
+  margin-top: 7px;
+}
