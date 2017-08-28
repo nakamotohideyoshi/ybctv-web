@@ -24,6 +24,7 @@ function add_menu_item() {
 function register_settings() {
   register_setting('brightcove_settings', 'brightcove_account_id');
   register_setting('brightcove_settings', 'brightcove_player_id');
+  register_setting('brightcove_settings', 'brightcove_player_non_autoplay_id');
 }
 
 function add_brightcove_settings_page() {
@@ -43,9 +44,15 @@ function add_brightcove_settings_page() {
           </td>
         </tr>
         <tr>
-          <th scope="row">Player ID</th>
+          <th scope="row">Player ID (Autoplay)</th>
           <td>
             <input type="text" name="brightcove_player_id" value="<?php echo esc_attr(get_option('brightcove_player_id')); ?>" size="50" />
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Player ID (Non Autoplay)</th>
+          <td>
+            <input type="text" name="brightcove_player_non_autoplay_id" value="<?php echo esc_attr(get_option('brightcove_player_non_autoplay_id')); ?>" size="50" />
           </td>
         </tr>
         <tr>
@@ -58,9 +65,16 @@ function add_brightcove_settings_page() {
   <?
 }
 
-function brightcove_video($video_id) {
+function brightcove_video($video_id, $autoplay = true) {
   $account_id = esc_attr(get_option('brightcove_account_id'));
-  $player_id = esc_attr(get_option('brightcove_player_id'));
+
+  if ($autoplay) {
+    $player_id = esc_attr(get_option('brightcove_player_id'));
+  }
+  else {
+    $player_id = esc_attr(get_option('brightcove_player_non_autoplay_id'));
+  }
+
   ?>
   <div class="brightcove-video-wrap">
     <div style="position: relative; display: block; max-width: 100%;">
