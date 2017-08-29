@@ -330,6 +330,15 @@ if (function_exists('register_nav_menu')) {
 
  add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
 
+ /*
+  * Brightcove video: code to stop 2 videos playing at once
+  */
+  function enqueue_brightcove_video() {
+    wp_register_script('brightcove-video', THEME_PATH . '/js/brightcove-video.js', array(), '1.0.0', true);
+    wp_enqueue_script('brightcove-video');
+  }
+
+  add_action('wp_enqueue_scripts', 'enqueue_brightcove_video');
 
 
 ?>
