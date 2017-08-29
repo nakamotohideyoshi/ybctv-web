@@ -321,4 +321,15 @@ if (function_exists('register_nav_menu')) {
     ));
 };
 
+/*
+ * Kommissar font
+ */
+ function enqueue_kommissar_font() {
+   wp_enqueue_style('kommissar-font', THEME_PATH . '/fonts/style.css', array(), '1.0.0');
+ }
+
+ add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
+
+
+
 ?>

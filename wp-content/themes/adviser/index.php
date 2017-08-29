@@ -190,7 +190,7 @@ get_header(); ?>
         <section class="multimedia">
             <div class="container">
                 <div class="content-multimedia">
-                    <div class="row">
+                    <div class="row row-eq-height">
                         <div class="col-lg-3">
                             <div class="multimedia-title">
                                 <h2>Multimedia</h2>
@@ -224,7 +224,7 @@ get_header(); ?>
                                                 </p>
                                                 <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
                                                 <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                                                <p><?php echo get_excerpt(100); ?></p>
+                                                <p><?php echo the_excerpt(); ?></p>
                                             </div>
                                         </li>
                                     <?php endforeach;
@@ -384,7 +384,7 @@ get_header(); ?>
                         </div>
                         <div class="clearfix">
                             <div class="event">
-                                <h2>Event</h2>
+                                <h2>Events</h2>
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                         <?php query_posts(array('showposts' => 1,'post_type' =>'event')); ?>

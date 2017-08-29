@@ -39,8 +39,7 @@ get_header(); ?>
                                             <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
                                         </div>
                                     </div>
-                                <?php endwhile;wp_reset_postdata();
-                                ?>
+                                <?php endwhile;wp_reset_postdata(); ?>
 
                             </div>
                         </div>
@@ -187,52 +186,39 @@ get_header(); ?>
                                         $args['category__in'] = $cats_ids;
                                     }
                                     $wpex_query = new wp_query( $args );
-                                    foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); $count++;?>
-
-                                        <li>
-                                            <div class="row">
-                                                <?php if ($count = 1) { ?>
-                                                    <div class="col-md-6 col-sm-6 col-xs-6">
-                                                        <div class="loop-list">
-                                                            <div class="content-image">
-                                                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/327x184"></a>
-                                                                <span class="overlay"></span>
-                                                            </div>
-                                                            <div class="content-des">
-                                                                <p class="name-cat">
-                                                                    <?php $category = get_the_category(); ?>
-                                                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                                                                </p>
-                                                                <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
-                                                                <p><?php echo get_excerpt(30); ?></p>
-                                                            </div>
-                                                        </div>
+                                    ?>
+                                    <li>
+                                        <div class="row">
+                                    <?php
+                                    foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); $count++; ?>
+                                            <div class="col-md-6 col-sm-6 col-xs-6">
+                                                <div class="loop-list">
+                                                    <div class="content-image">
+                                                      <?php
+                                                      if ( has_post_thumbnail() ) {
+                                                          the_post_thumbnail('section-article');
+                                                      }
+                                                      else { ?>
+                                                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                      <?php }
+                                                      ?>
+                                                        <span class="overlay"></span>
                                                     </div>
-                                                <?php } if ($count = 2) { ?>
-                                                    <div class="col-md-6 col-sm-6 col-xs-6">
-                                                        <div class="loop-list">
-                                                            <div class="content-image">
-                                                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/327x184"></a>
-                                                                <span class="overlay"></span>
-                                                            </div>
-                                                            <div class="content-des">
-                                                                <p class="name-cat">
-                                                                    <?php $category = get_the_category(); ?>
-                                                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                                                                </p>
-                                                                <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
-                                                                <p><?php echo get_excerpt(30); ?></p>
-                                                            </div>
-                                                        </div>
+                                                    <div class="content-des">
+                                                        <p class="name-cat">
+                                                            <?php $category = get_the_category(); ?>
+                                                            <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                                        </p>
+                                                        <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
                                                     </div>
-                                                <?php } ?>
+                                                </div>
                                             </div>
-                                        </li>
-
+                                            <?php if ($count % 2 == 0 && $count != 6) echo '</div></li><li><div class="row banana">'; ?>
                                         <?php
                                     endforeach;
                                     wp_reset_postdata(); ?>
-
+                                      </div>
+                                  </li>
                                 </ul>
                             </div>
                         </div>
