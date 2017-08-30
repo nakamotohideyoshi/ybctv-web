@@ -60,6 +60,10 @@ class last_word_post_meta {
       Twitter Headline:<br />
       <input type="text" name="lw_twitter_headline" value="<?php echo get_post_meta($post->ID, 'lw_twitter_headline', true); ?>" />
     </p>
+    <p>
+      Read Count:<br />
+      <input type="text" name="lw_read_count" value="<?php echo get_post_meta($post->ID, 'lw_read_count', true); ?>" />
+    </p>
 
     <?php
   }
@@ -135,6 +139,7 @@ class last_word_post_meta {
       update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
       update_post_meta($post_id, 'lw_twitter_headline', strip_tags($_POST['lw_twitter_headline']));
       update_post_meta($post_id, 'lw_brightcove_video_id', strip_tags($_POST['lw_brightcove_video_id']));
+      update_post_meta($post_id, 'lw_read_count', strip_tags($_POST['lw_read_count']));
 
       if (isset($_POST['lw_premium'])) {
         update_post_meta($post_id, 'lw_premium', 'yes');

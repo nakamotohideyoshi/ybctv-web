@@ -402,6 +402,7 @@ class lw_import {
       update_post_meta($post_id, 'lw_cross_post_linkedin', $article->publish_linkedin == 'true' ? 'yes' : '');
       update_post_meta($post_id, 'lw_cross_post_google_plus', $article->publish_google == 'true' ? 'yes' : '');
       update_post_meta($post_id, 'lw_brightcove_video_id', (string)$article->video_stream_id);
+      update_post_meta($post_id, 'lw_read_count', (string)$article->read_count);
 
       // Gallery
       if ($article->content_type == 'Gallery') {

@@ -8,10 +8,10 @@ Version: 1.0
 Author URI: http://www.ybc.tv
 */
 
-add_action('admin_menu', 'add_menu_item');
-add_action('admin_init', 'register_settings');
+add_action('admin_menu', 'add_brightcove_menu_item');
+add_action('admin_init', 'register_brightcove_settings');
 
-function add_menu_item() {
+function add_brightcove_menu_item() {
   add_options_page(
     'Brightcove',
     'Brightcove',
@@ -21,7 +21,7 @@ function add_menu_item() {
   );
 }
 
-function register_settings() {
+function register_brightcove_settings() {
   register_setting('brightcove_settings', 'brightcove_account_id');
   register_setting('brightcove_settings', 'brightcove_player_id');
   register_setting('brightcove_settings', 'brightcove_player_non_autoplay_id');

@@ -18,7 +18,9 @@ get_header(); ?>
                             <div class="list-most-popular">
                                 <?php
                                 $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
-                                while ( $popularpost->have_posts() ) : $popularpost->the_post(); ?>
+                                while ( $popularpost->have_posts() ) : $popularpost->the_post();
+                                  setReadCount(get_the_ID());
+                                ?>
                                     <div class="loop-list">
                                         <div class="content-image">
                                             <?php
