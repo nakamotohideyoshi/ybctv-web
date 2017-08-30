@@ -15,3 +15,4 @@
 /wp-content/themes/*
 !/wp-content/themes/adviser
 /wp-content/uploads
+.DS_Store

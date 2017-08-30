@@ -324,21 +324,21 @@ if (function_exists('register_nav_menu')) {
 /*
  * Kommissar font
  */
- function enqueue_kommissar_font() {
-   wp_enqueue_style('kommissar-font', THEME_PATH . '/fonts/style.css', array(), '1.0.0');
- }
+function enqueue_kommissar_font() {
+ wp_enqueue_style('kommissar-font', THEME_PATH . '/fonts/style.css', array(), '1.0.0');
+}
 
- add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
+add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
 
- /*
-  * Brightcove video: code to stop 2 videos playing at once
-  */
-  function enqueue_brightcove_video() {
-    wp_register_script('brightcove-video', THEME_PATH . '/js/brightcove-video.js', array(), '1.0.0', true);
-    wp_enqueue_script('brightcove-video');
-  }
+/*
+* Pagefair JS.
+*/
+function enqueue_pagefair() {
+  wp_register_script('pagefair', THEME_PATH . '/js/pagefair.js', array('jquery'), '1.0.0', false);
+  wp_enqueue_script('pagefair');
+}
 
-  add_action('wp_enqueue_scripts', 'enqueue_brightcove_video');
+add_action('wp_enqueue_scripts', 'enqueue_pagefair');
 
 
 ?>
