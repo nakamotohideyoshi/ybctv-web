@@ -6,10 +6,17 @@
 
 </div><!-- #main -->
 
-<div class="ads-home-bot-billboard">
-    <a href="https://placeholder.com"><img src="http://via.placeholder.com/970x250"></a>
-</div>
-
+<?php
+  if (is_home()) {
+    lastWordAdUnit('home-bottom-billboard');
+  } else {
+?>
+  <div class="ads-home-bottom-billboard">
+      <a href="https://placeholder.com"><img src="http://via.placeholder.com/970x250"></a>
+  </div>
+<?php
+  }
+?>
 <section class="other-stories">
     <div class="container">
         <h2>OTHER STORIES FROM LAST WORD...</h2>

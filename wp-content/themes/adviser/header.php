@@ -38,12 +38,25 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 
     <?php wp_head(); ?>
+    <?php
+    if (is_home()) {
+      lastWordAdUnitInitialize('homepage');
+    }
+    ?>
 </head>
 <body id="bd" <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-    <div class="ads-home-top-billboard">
+    <?php
+      if (is_home()) {
+        lastWordAdUnit('home-top-billboard');
+      } else {
+    ?>
+      <div class="ads-home-top-billboard TOP_Ad_sticky_billboard">
         <a href="https://placeholder.com"><img src="http://via.placeholder.com/970x250"></a>
-    </div>
+      </div>
+    <?php
+      }
+    ?>
     <header id="masthead" class="site-header" role="banner">
         <div class="container">
             <div class="row">
@@ -78,9 +91,17 @@
                             <div class="btn-sp">
                                 <button><span></span></button>
                             </div>
-                            <div class="ads-home-top-search">
-                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/320x50"></a>
-                            </div>
+                            <?php
+                              if (is_home()) {
+                                lastWordAdUnit('home-top-search');
+                              } else {
+                            ?>
+                              <div class="ads-home-top-search Search_Ad">
+                                  <a href="https://placeholder.com"><img src="http://via.placeholder.com/320x50"></a>
+                              </div>
+                            <?php
+                              }
+                            ?>
                             <div class="user-login">
                                 <ul>
                                     <li>

@@ -1,8 +1,6 @@
 <div class="content-right">
-    <div class="ads-home-rhs-hput">
-        <h2 class="title" style="visibility: hidden">Ads</h2>
-        <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x1050"></a>
-    </div>
+    <h2 class="title" style="visibility: hidden">Ads</h2>
+    <?php lastWordAdUnit('home-rhs-hpu-1'); ?>
     <div class="box-sponsored">
         <div class="flexslider-spon">
             <ul class="slides">

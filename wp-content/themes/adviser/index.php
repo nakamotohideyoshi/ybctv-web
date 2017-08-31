@@ -51,11 +51,9 @@ get_header(); ?>
                                                     foreach ( $myposts as $post ) : setup_postdata( $post ); $count++ ?>
                                                     <?php if($count==2) { ?>
                                                         <div class="col-md-6 col-sm-12 col-xs-12">
-                                                            <div class="loop-list clearfix">
-                                                                <div class="ads-home-top-newsad">
-                                                                    <a href="https://placeholder.com"><img src="http://via.placeholder.com/320x50"></a>
-                                                                </div>
-                                                            </div>
+                                                          <div class="loop-list clearfix">
+                                                            <?php lastWordAdUnit('home-top-news-ad'); ?>
+                                                          </div>
                                                         </div>
                                                     <?php }else { ?>
                                                         <div class="col-md-6 col-sm-12 col-xs-12">
@@ -133,8 +131,8 @@ get_header(); ?>
                             <div class="row">
                                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                                     <h2>Analysis</h2>
-                                    <div class="ads-lhs-mpu">
-                                        <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
+                                    <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
+                                      <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
                                     </div>
                                     <a href="<?php echo get_category_link( "40" ); ?>" class="view-more">View more</a>
                                 </div>
@@ -447,13 +445,11 @@ get_header(); ?>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="content-right">
-                            <div class="ads-home-rhs-hput">
-                                <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x1050"></a>
-                            </div>
+                          <?php lastWordAdUnit('home-rhs-hpu-2'); ?>
                         </div>
+                      </div>
                     </div>
-                </div>
-            </div>
+                  </div>
         </section>
 
     </main><!-- #content -->

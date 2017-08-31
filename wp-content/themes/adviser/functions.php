@@ -339,6 +339,4 @@ function enqueue_pagefair() {
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_pagefair');
-
-
 ?>

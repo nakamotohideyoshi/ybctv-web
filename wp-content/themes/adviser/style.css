@@ -810,23 +810,19 @@ h2.title{
 .content-right{
     padding-left: 26px;
 }
-.ads-home-top-billboard, .ads-home-bot-billboard{
+.ads-home-top-billboard, .ads-home-bottom-billboard{
     text-align: center;
     padding: 15px 0;
+    min-height: 250px;
 }
-.ads-home-rhs-hput{
+.ads-home-rhs-hpu-1, .ads-home-rhs-hpu-2 {
     margin-bottom: 18px;
 }
-.ads-home-rhs-hput h2{
-    display: none;
-}
-.home .ads-home-rhs-hput h2{
-    display: block;
-}
+
 .ads-lhs-mpu{
     margin-top: 280px;
 }
-.ads-home-top-newsad{
+.ads-home-top-news-ad{
     padding-top: 25px;
 }
 
@@ -849,6 +845,11 @@ h2.title{
 }
 .header-top .ads-home-top-search,.header-top .social,.header-top .user-login{
     float: right;
+}
+
+.header-top .ads-home-top-search {
+  max-height: 55px;
+  overflow: hidden;
 }
 .header-top ul li{
     float: left;
@@ -1908,8 +1909,8 @@ form[name="register"] input[type="submit"]{
     .site{
         background: #fff;
     }
-    .ads-home-top-billboard,.ads-home-top-search,.ads-home-top-newsad,
-    .ads-lhs-mpu,.ads-home-rhs-hput,.carousel-multimedia,.carousel-portfolio,.ads-home-bot-billboard,.other-stories,
+    .ads-home-top-billboard,.ads-home-top-search,.ads-home-top-news-ad,
+    .ads-lhs-mpu,.ads-home-rhs-hpu-1,.ads-home-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-home-bottom-billboard,.other-stories,
     .user-login{
         display: none;
     }
