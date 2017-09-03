@@ -36,27 +36,15 @@
     </title>
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-    <!--stickadd scripts-->
-    <?php wp_head(); ?>
+
     <?php
-    if (is_home()) {
-      lastWordAdUnitInitialize('homepage');
-    }
+      wp_head();
+      lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
     ?>
 </head>
 <body id="bd" <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-    <?php
-      if (is_home()) {
-        lastWordAdUnit('home-top-billboard');
-      } else {
-    ?>
-      <div class="ads-home-top-billboard TOP_Ad_sticky_billboard">
-        <a href="https://placeholder.com"><img src="http://via.placeholder.com/970x250"></a>
-      </div>
-    <?php
-      }
-    ?>
+    <?php lastWordAdUnit('top-billboard'); ?>
     <header id="masthead" class="site-header" role="banner">
         <div class="container">
             <div class="row">
@@ -91,17 +79,7 @@
                             <div class="btn-sp">
                                 <button><span></span></button>
                             </div>
-                            <?php
-                              if (is_home()) {
-                                lastWordAdUnit('home-top-search');
-                              } else {
-                            ?>
-                              <div class="ads-home-top-search Search_Ad">
-                                  <a href="https://placeholder.com"><img src="http://via.placeholder.com/320x50"></a>
-                              </div>
-                            <?php
-                              }
-                            ?>
+                            <?php lastWordAdUnit('top-search'); ?>
                             <div class="user-login">
                                 <ul>
                                     <li>

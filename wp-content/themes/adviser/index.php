@@ -52,7 +52,7 @@ get_header(); ?>
                                                     <?php if($count==2) { ?>
                                                         <div class="col-md-6 col-sm-12 col-xs-12">
                                                           <div class="loop-list clearfix">
-                                                            <?php lastWordAdUnit('home-top-news-ad'); ?>
+                                                            <?php lastWordAdUnit('top-news-ad'); ?>
                                                           </div>
                                                         </div>
                                                     <?php }else { ?>
@@ -445,7 +445,7 @@ get_header(); ?>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                         <div class="content-right">
-                          <?php lastWordAdUnit('home-rhs-hpu-2'); ?>
+                          <?php lastWordAdUnit('rhs-hpu-2'); ?>
                         </div>
                       </div>
                     </div>

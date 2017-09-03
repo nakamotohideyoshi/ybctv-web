@@ -1,5 +1,5 @@
 /*
-    Theme Name: Theme
+    Theme Name: Portfolio Adviser
     Theme URI: http://
     Author: MD
     Author URI: http://
@@ -810,19 +810,19 @@ h2.title{
 .content-right{
     padding-left: 26px;
 }
-.ads-home-top-billboard, .ads-home-bottom-billboard{
+.ads-top-billboard, .ads-bottom-billboard{
     text-align: center;
     padding: 15px 0;
     min-height: 250px;
 }
-.ads-home-rhs-hpu-1, .ads-home-rhs-hpu-2 {
+.ads-rhs-hpu-1, .ads-rhs-hpu-2 {
     margin-bottom: 18px;
 }
 
 .ads-lhs-mpu{
     margin-top: 280px;
 }
-.ads-home-top-news-ad{
+.ads-top-news-ad{
     padding-top: 25px;
 }
 
@@ -843,11 +843,11 @@ h2.title{
 .header-top{
     padding: 10px 0;
 }
-.header-top .ads-home-top-search,.header-top .social,.header-top .user-login{
+.header-top .ads-top-search,.header-top .social,.header-top .user-login{
     float: right;
 }
 
-.header-top .ads-home-top-search {
+.header-top .ads-top-search {
   max-height: 55px;
   overflow: hidden;
 }
@@ -1909,8 +1909,8 @@ form[name="register"] input[type="submit"]{
     .site{
         background: #fff;
     }
-    .ads-home-top-billboard,.ads-home-top-search,.ads-home-top-news-ad,
-    .ads-lhs-mpu,.ads-home-rhs-hpu-1,.ads-home-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-home-bottom-billboard,.other-stories,
+    .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
+    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories,
     .user-login{
         display: none;
     }
