@@ -36,7 +36,7 @@
     </title>
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-
+    <!--stickadd scripts-->
     <?php wp_head(); ?>
     <?php
     if (is_home()) {
