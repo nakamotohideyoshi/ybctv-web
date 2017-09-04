@@ -67,21 +67,15 @@ get_header(); ?>
                             <?php }?>
                             <h1 class="title-single"><?php the_title();?></h1>
                             <?php
-                            $tag_list = get_the_tags();
-                            if(isset($tag_list) && !empty($tag_list)): ?>
-                            <p class="tag-post"><span>Tag:
-                                <?php
-                                foreach($tag_list as $tag):
-                                    ?>
-                                    <a href="<?php echo get_tag_link($tag->term_id); ?>">
-                                        <?php echo $tag->name. '&nbsp|&nbsp';?>
-                                    </a>
-                                <?php endforeach;?>
-                            <?php endif;?>
+                              $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                              if ($tag_list) {
+                                echo $tag_list;
+                              }
+                            ?>
                             </span></p>
-                            <p>By: <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>, <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
                             <div class="like_button clearfix">
-                                <?php echo do_shortcode('[ngfb buttons="facebook, gplus, linkedin, pinterest, twitter"]');?>
+                                <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
 
                             <div class="content-post>">

@@ -136,9 +136,6 @@ mark, ins {
 
 p {
   line-height: 20px;
-}
-
-.thump-single p {
   padding: 10px 0;
 }
 
@@ -719,6 +716,16 @@ h2.title{
 
 .logo img {
   max-width: 190px;
+}
+
+.logo-footer {
+  height: 100%;
+  position: relative;
+}
+
+.logo-footer img {
+  position: absolute;
+  bottom: 0;
 }
 
 /* Header */
@@ -1422,6 +1429,12 @@ h2.title{
 .site-footer .social {
   margin-bottom: 20px;
 }
+
+.site-footer .social a {
+  border-radius: 14px;
+  margin-right: 20px;
+}
+
 .social-list li {
   display: inline-block;
   background: #fff;
@@ -1659,6 +1672,18 @@ h2.title{
   font-size: 18px;
 }
 
+.page-content ul li {
+  margin: 10px 35px;
+}
+
+.page-content a {
+  color: #64a70b;
+}
+
+.page-content a:hover {
+  color: #4C7D0A;
+}
+
 /* Magazines */
 .list-magazines .loop-list {
   margin-bottom: 40px;
@@ -1749,6 +1774,10 @@ form[name="register"] input[type="submit"] {
   color: #69b42e;
 }
 
+.content-single .tag-post a:hover {
+  color: #4C7D0A;
+}
+
 .content-single .like_button {
   margin: 10px 0;
 }
@@ -1761,6 +1790,10 @@ form[name="register"] input[type="submit"] {
 
 .content-post {
   padding-bottom: 30px;
+}
+
+.content-single .title-single {
+  font-weight: 700;
 }
 
 /* Related Posts */
@@ -1865,6 +1898,7 @@ form[name="register"] input[type="submit"] {
   margin-bottom: 5px;
   font-weight: bold;
   color: #69b42e;
+  padding: 0;
 }
 
 .content-des .name-cat a {
@@ -1876,6 +1910,9 @@ form[name="register"] input[type="submit"] {
 .content-des .name-cat span {
   font-weight: normal;
   text-transform: none;
+  font-size: 14px;
+  margin-left: 5px;
+  letter-spacing: normal;
 }
 
 .content-des .spon {
@@ -1915,6 +1952,20 @@ form[name="register"] input[type="submit"] {
 
 #back-to-top.show{
   display: block;
+}
+
+/* NGFB icons */
+
+.ngfb-buttons div.linkedin-button, .ngfb-preset-small_share_count .ngfb-buttons div.linkedin-button {
+  width: 80px !important;
+}
+
+.ngfb-buttons div.email-button, .ngfb-preset-small_share_count .ngfb-buttons div.email-button {
+  width: 81px !important;
+}
+
+.ngfb-buttons div.email-button a, .ngfb-preset-small_share_count .ngfb-buttons div.email-button a {
+  border: none !important;
 }
 
 @media (min-width: 1200px) {
@@ -2027,10 +2078,10 @@ form[name="register"] input[type="submit"] {
         width: 18px;
     }
 
-
     .site-navigation{
         display: none;
     }
+
     .logo {
         padding: 5px 20px 0 0;
         background: #fff;
