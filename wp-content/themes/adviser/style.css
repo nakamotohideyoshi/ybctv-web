@@ -2150,7 +2150,6 @@ form[name="register"] input[type="submit"] {
       max-width: 130px;
     }
 }
-}
 
 @media screen and (max-width: 480px) {
     .site{
