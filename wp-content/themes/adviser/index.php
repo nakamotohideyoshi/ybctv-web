@@ -15,7 +15,7 @@ get_header(); ?>
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="last-new">
-                    <h2 class="title" style="visibility: hidden">Last New</h2>
+                    <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
                       $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 17 );
                       $myposts = get_posts( $args );
@@ -201,18 +201,12 @@ get_header(); ?>
       <div class="container">
         <div class="content-multimedia">
           <div class="row row-eq-height">
-            <div class="col-lg-3">
+            <div class="col-lg-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Multimedia</h2>
-                <div id="bx-pager">
-                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                </div>
-                <a href="/media" class="view-more">View more</a>
               </div>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
               <div id="slider-multimedia" class="flexslider slider-multimedia">
                 <ul class="slides bxslider">
                   <?php
@@ -240,7 +234,14 @@ get_header(); ?>
                     wp_reset_postdata();
                   ?>
                 </ul>
+                
               </div>
+              <div id="bx-pager">
+                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                </div>
+                <a href="/media" class="view-more">View more</a>
             </div>
           </div>
           <div id="carousel-multimedia" class="flexslider carousel-multimedia">
@@ -399,7 +400,8 @@ get_header(); ?>
                 </div>
               </div>
             </div>
-            <div class="clearfix">
+            <?php if(!wp_is_mobile()) : { ?>
+                            <div class="clearfix">
               <div class="event">
                 <h2>Events</h2>
                 <div class="row">
@@ -473,7 +475,84 @@ get_header(); ?>
                 <a href="<?php echo home_url();?>/event/" class="view-more">View more</a>
               </div>
             </div>
+            <?php  } endif; ?>
           </div>
+                      <?php if(wp_is_mobile()) : { ?>
+                            <div class="clearfix">
+              <div class="event">
+                <h2>Events</h2>
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <?php
+                      query_posts(array('showposts' => 1,'post_type' =>'event'));
+                      if (have_posts()) : while (have_posts()) : the_post();
+                        $background_image = get_post_meta($post->ID,'background_image', TRUE);
+                        $date_event =  get_post_meta($post->ID,'date_event', TRUE);
+                    ?>
+                    <div class="first-event">
+                      <div class="content-image">
+                        <?php
+                          if(isset($background_image) && $background_image) {
+                        ?>
+                        <a href="<?php the_permalink();?>">
+                          <img src="<?php echo $background_image;?>" alt="">
+                        </a>
+                        <?php
+                          } else {
+                        ?>
+                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                        <?php
+                          }
+                        ?>
+                      </div>
+                      <div class="content-des">
+                        <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
+                        <p class="date"><?php echo $date_event;?></p>
+                      </div>
+                    </div>
+                    <?php
+                      endwhile;endif;
+                    ?>
+                  </div>
+                  <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                    <div class="last-event">
+                      <div class="row">
+                        <?php
+                          query_posts(array('showposts' => 6,'offset'=>1,'post_type' =>'event'));
+                          if(have_posts()): while(have_posts()): the_post();
+                            $date_event    =   get_post_meta($post->ID,'date_event', TRUE);
+                        ?>
+                        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                          <div class="loop-list">
+                            <div class="content-image">
+                              <?php
+                                if ( has_post_thumbnail() ) {
+                                  the_post_thumbnail();
+                                }
+                                else {
+                              ?>
+                              <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                              <?php
+                                }
+                              ?>
+                            </div>
+                            <div class="content-des">
+                              <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
+                              <p class="date"><?php echo $date_event;?></p>
+                            </div>
+                          </div>
+                        </div>
+                        <?php
+                          endwhile;endif;
+                        ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <a href="<?php echo home_url();?>/event/" class="view-more">View more</a>
+              </div>
+            </div>
+            <?php  } endif; ?>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="content-right">
               <?php lastWordAdUnit('rhs-hpu-2'); ?>

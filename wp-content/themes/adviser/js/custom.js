@@ -112,6 +112,10 @@
         }, 700);
     });
 
+    $("#togglemenu").click(function() {
+        $('.mobnavigation').slideToggle();
+    });
+
 
     $('.button-video').on('click', function (e) {
         $('.video-img').addClass('hide');

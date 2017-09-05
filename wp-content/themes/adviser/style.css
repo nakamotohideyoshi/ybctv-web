@@ -1984,24 +1984,192 @@ form[name="register"] input[type="submit"] {
   border: none !important;
 }
 
-@media (min-width: 1200px) {
+.mobnavigation {
+  display: none;
+}
+
+@media (min-width: 1440px) {
     .container{
-        width: 1400px;
+        width: 1368px;
         padding-right: 28px;
         padding-left: 28px;
         background: #fff;
     }
+
+    .mobnavigation {
+      display: none;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1439px) {
+    body {
+      overflow-x: hidden;
+    }
+    .container{
+        max-width: 1320px;
+        padding-right: 20px;
+        padding-left: 20px;
+        background: #fff;
+        width: calc(100% - 40px);
+    }
+
+    .slider-multimedia ul li .content-des {
+      width: 35%;
+      color: #fff;
+      padding: 20px 20px 0 20px;
+    }   
+
+    .slider-multimedia ul li .content-img {
+      width: 60%;
+      color: #fff;
+      padding: 20px 20px 0 20px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .btn-sp {
+    display: block;
+  }
+
+  .mobnavigation  {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  #bx-pager {
+    display: none;
+  }
+
+  .ads-home-rhs-hpu-2 {
+    display: none;
+  }
+
+  .mobnavigation, .site-navigation, .user-login {
+    display: none;
+  }
+
+  .list-most-popular .loop-list .content-image {
+    width: 35%;
+    display: inline-block;
+  }
+
+  .list-most-popular .loop-list .content-des {
+    width: 60%;
+    display: inline-block;
+    float: right;
+  }
+  
+  .flexslider-spon .loop-list .content-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-sp button{
+        display: block;
+    }
+    .header-top{
+        padding: 0;
+        margin-top: 10px;
+    }
+    .header-content{
+        margin-right: 0;
+    }
+
+    .sf-menu li {
+      width: 50%;
+      text-align: center;
+    }
+
+    .slider-multimedia ul li .content-image{
+        width: 100%;
+    }
+    .slider-multimedia ul li .content-des{
+        width: 100%;
+        padding: 10px 0;
+    }
+    .multimedia-title{
+        margin-bottom: 20px;
+    }
+
+    .multimedia-title .view-more{
+        display: none;
+    }
+
+    .multimedia .row-eq-height {
+      display: block;
+    }
+
+    .list-last-new .loop-list .content-image {
+      width: 20%;
+    }
+
+    .list-last-new .loop-list .content-des {
+      width: 80%;
+    }
+
+    #multimediaright a.view-more {
+      padding: 10px;
+      background-color: #e0e0e0;
+    }
+
+    #multimediaright {
+      padding-bottom: 25px;
+    }
+
+    .flex-control-paging li a{
+      width: 18px;
+      height: 18px;
+    }
+
+    .site-header {
+      padding-top: 10px;
+      background-color: #f2f2f2;
+      width: 100%!important;
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+    }
+
+    .site-header .container {
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      z-index: 99999;
+      max-width: unset;
+    }
+
+    .logo {
+        padding: 10px 10px!important;
+        margin-top: 5px;
+        background: #fff;
+    }
+
+    .logo img {
+      max-width: 130px;
+    }
+}
 }
 
 @media screen and (max-width: 480px) {
     .site{
-        background: #fff;
+      background: #fff;
     }
     .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
     .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories,
     .user-login{
         display: none;
     }
+
+    .mobnavigation  {
+      width: 100%;
+    }
+
+    .mobnavigation, .site-navigation {
+      display: none;
+    }
+
 
     .container {
       padding-right: 10px;
@@ -2012,16 +2180,25 @@ form[name="register"] input[type="submit"] {
       padding-top: 10px;
       background-color: #f2f2f2;
       width: 100%!important;
-    }
-
-    .logo {
-        padding: 10px 10px;
-        background: #fff;
+      position: relative;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
     }
 
     .site-header .container {
       width: 100%;
+      padding: 0;
+      overflow: hidden;
+      z-index: 99999;
       max-width: unset;
+    }
+
+    .logo {
+        padding: 10px 10px;
+        margin-top: 5px;
+        background: #fff;
     }
 
     .btn-sp button{
@@ -2032,6 +2209,11 @@ form[name="register"] input[type="submit"] {
     }
     .header-content{
         margin-right: 0;
+    }
+
+    .sf-menu li {
+      width: 100%;
+      text-align: center;
     }
 
     .last-new h2.toptitle {
@@ -2164,6 +2346,7 @@ form[name="register"] input[type="submit"] {
 
     .event{
         margin: 0;
+        width: 100%;
         padding: 30px 10px;
         margin-bottom: 20px;
     }
@@ -2222,7 +2405,17 @@ form[name="register"] input[type="submit"] {
     }
 
     /* Back to top link */
-    #back-to-top.show {
-      display: none;
+    #back-to-top {
+      bottom: 0;
+      right: 0;
+    }
+
+    #multimediaright a.view-more {
+      padding: 10px;
+      background-color: #e0e0e0;
+    }
+
+    #multimediaright {
+      padding-bottom: 25px;
     }
 }

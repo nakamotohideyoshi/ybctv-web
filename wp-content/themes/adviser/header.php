@@ -49,7 +49,7 @@
     <header id="masthead" class="site-header" role="banner">
       <div class="container">
         <div class="row">
-          <div class="col-lg-2 col-md-2 col-sm-4 col-xs-4">
+          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
             <div class="logo">
               <?php
                 $logotype = ot_get_option('logotype',1);
@@ -81,7 +81,7 @@
             <div class="header-content">
               <div class="header-top clearfix">
                 <div class="btn-sp">
-                  <button><span></span></button>
+                  <button id="togglemenu"><span></span></button>
                 </div>
                 <?php lastWordAdUnit('top-search'); ?>
                 <div class="user-login">
@@ -148,8 +148,19 @@
                   <?php get_search_form(); ?>
                 </div>
               </nav>
-            </div>
+            </div>          
           </div>
+          <?php if(wp_is_mobile()) : ?>
+               <nav id="primary-navigation" class="site-navigation mobnavigation col-xs-12 col-sm-12" role="navigation">
+                <a class="home-url" href="<?php echo get_home_url(); ?>"></a>
+                <div class="primary-navigation">
+                  <?php wp_nav_menu( array( 'theme_location' => 'main_nav', 'menu_class' => 'sf-menu sf-navbar' ) ); ?>
+                </div>
+                <div class="search-box">
+                  <?php get_search_form(); ?>
+                </div>
+                </nav>
+            <?php endif; ?>
         </div>
       </div>
     </header><!-- #masthead -->
