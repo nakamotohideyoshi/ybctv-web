@@ -34,7 +34,7 @@ function register_theme_scripts()
 function register_front_end_styles()
 {
     wp_enqueue_style('bootstrap', THEME_PATH . '/css/bootstrap.css', false );
-    
+
     wp_enqueue_style('font-awesome', THEME_PATH . '/css/font-awesome.css', false );
 
     wp_enqueue_style('owl.carousel', THEME_PATH . '/css/owl.carousel.css', false );
@@ -59,15 +59,18 @@ function register_front_end_scripts()
     wp_enqueue_script('hoverIntent', THEME_PATH . '/js/hoverIntent.js', false, false, $in_footer=true);
 
     wp_enqueue_script('superfish.min', THEME_PATH . '/js/superfish.min.js', false, false, $in_footer=true);
-    
+
     wp_enqueue_script('jquery.flexslider', THEME_PATH . '/js/jquery.flexslider.js', false, false, $in_footer=true);
 
     wp_enqueue_script('owl.carousel.min', THEME_PATH . '/js/owl.carousel.min.js', false, false, $in_footer=true);
 
     wp_enqueue_script('jquery.bxslider.min', THEME_PATH . '/js/jquery.bxslider.min.js', false, false, $in_footer=true);
 
+    wp_enqueue_script('jquery.jscroll', THEME_PATH . '/js/jquery.jscroll.js', false, false, $in_footer=true);
+
     wp_enqueue_script('custom', THEME_PATH . '/js/custom.js', false, false, $in_footer=true);
 
+    wp_localize_script('custom', 'ajaxviewmore', array('ajaxurl' => admin_url('admin-ajax.php')));
 
 }
 

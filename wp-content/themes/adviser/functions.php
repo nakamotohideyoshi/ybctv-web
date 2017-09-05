@@ -339,4 +339,45 @@ function enqueue_pagefair() {
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_pagefair');
+
+/*
+* Search filter applied to only return posts (articles)
+*/
+function search_filter($query) {
+  if ($query->is_search) {
+    $query->set('post_type', 'post');
+  }
+  return $query;
+}
+
+add_filter('pre_get_posts', 'search_filter');
+
+function ajax_view_more() {
+  $page = (int)$_POST['page'];
+  $posts_per_page = 5;
+  $offset = (int)$_POST['offset'];
+  $category = (int)$_POST['category'];
+
+  $args = array(
+    'posts_per_page' => 5,
+    'offset' => ($page * $posts_per_page) + $offset,
+    'cat' => $category,
+    'orderby' => 'date',
+    'order' => 'DESC'
+  );
+
+  $posts = new WP_Query($args);
+
+  if ($posts->have_posts()) {
+    while($posts->have_posts()) {
+      $posts->the_post();
+      get_template_part('template-parts/archive', 'post');
+    }
+  }
+  wp_reset_postdata();
+  die();
+}
+
+add_action('wp_ajax_nopriv_ajax_view_more', 'ajax_view_more');
+add_action('wp_ajax_ajax_view_more', 'ajax_view_more');
 ?>

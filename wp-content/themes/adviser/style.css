@@ -8,7 +8,6 @@
     Tags: one-column, two-columns, three-columns, four-columns, right-sidebar, flexible-width, custom-menu, featured-images, full-width-template, theme-options
 */
 
-
 /* Font */
 html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr,
 acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp,
@@ -73,6 +72,7 @@ a {
 
 a:focus {
   outline: 0;
+  color: #64a70b;
   text-decoration: none;
 }
 
@@ -447,6 +447,11 @@ select {
   font-weight: 700;
   padding: 8px 10px 8px;
   vertical-align: bottom;
+}
+
+.view-more.view-more-ajax {
+  background-color: #f2f2f2;
+  padding: 10px 20px;
 }
 
 /* Placeholder text color */
@@ -852,6 +857,10 @@ h2.title{
 
 .first-last-new .content-des a {
   color: #fff;
+}
+
+.first-last-new .content-des p {
+  padding: 0;
 }
 
 .first-last-new .content-des h2 {
@@ -1605,20 +1614,27 @@ h2.title{
 }
 
 .author-info .author-title {
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
   font-size: 36px;
   text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: -1px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.author-info .author-avatar p {
+  font-weight: 700;
+  padding: 5px 0;
 }
 
 .author-info .like_button {
-  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .author-info .like_button > div {
   float: left;
-  margin-right: 10px;
-  font-size: 16px;
+  margin-right: 15px;
+  font-size: 18px;
 }
 
 /* Static Pages */
@@ -1977,7 +1993,7 @@ form[name="register"] input[type="submit"] {
     }
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .site{
         background: #fff;
     }
@@ -1986,6 +2002,28 @@ form[name="register"] input[type="submit"] {
     .user-login{
         display: none;
     }
+
+    .container {
+      padding-right: 10px;
+      padding-left: 10px;
+    }
+
+    .site-header {
+      padding-top: 10px;
+      background-color: #f2f2f2;
+      width: 100%!important;
+    }
+
+    .logo {
+        padding: 10px 10px;
+        background: #fff;
+    }
+
+    .site-header .container {
+      width: 100%;
+      max-width: unset;
+    }
+
     .btn-sp button{
         display: block;
     }
@@ -1996,25 +2034,70 @@ form[name="register"] input[type="submit"] {
         margin-right: 0;
     }
 
+    .last-new h2.toptitle {
+      display: none;
+    }
+
+    .first-last-new {
+      margin-top: 10px;
+    }
+
     .first-last-new > div{
-        width: 100%;
+        width: 100%!important;
         height: auto;
     }
     .first-last-new .content-des{
-        padding: 20px;
+        padding: 20px!important;
     }
+    .first-last-new .content-image {
+      max-height: 250px;
+    }
+
+    .first-last-new .content-des h3 {
+      font-weight: 700;
+    }
+    .first-last-new .content-des p {
+      font-weight: 300;
+      color: #f2f2f2;
+    }
+
     .list-last-new .row > div{
         margin-bottom: 5px;
     }
     .list-last-new .row > div:nth-child(2){
         display: none;
     }
+    .list-last-new .loop-list {
+      background: #f2f2f2;
+    }
     .list-last-new .loop-list .content-image{
-        background: #f2f2f2;
+      background: #f2f2f2;
+    }
+    .list-last-new .loop-list .content-des h3{
+      margin-top: 5px;
+    }
+
+    .box-new {
+      padding-bottom: 10px;
+    }
+    .box-new:after {
+      border: none;
+    }
+
+    .box-analysis {
+      padding: 10px 0;
     }
     .box-analysis h2{
         float: left;
         margin-right: 10px;
+    }
+
+    .analysis-list .loop-list {
+      min-height: unset;
+      margin: 0;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 5px solid #f2f2f2;
     }
     .list-new-analysis .loop-list .content-des{
         background: #f2f2f2;
@@ -2024,12 +2107,26 @@ form[name="register"] input[type="submit"] {
         padding-left: 0px;
     }
 
+    .slider-multimedia ul li {
+      width: 100%;
+    }
+
+    #bx-pager {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    #bx-pager a {
+      color: #ddd;
+    }
+
     .slider-multimedia ul li .content-image{
         width: 100%;
     }
     .slider-multimedia ul li .content-des{
         width: 100%;
-        padding: 20px;
+        padding: 10px 0;
     }
     .multimedia-title{
         margin-bottom: 20px;
@@ -2040,6 +2137,10 @@ form[name="register"] input[type="submit"] {
     .feature-sponsored .container{
         padding-bottom: 0;
     }
+    .feature-sponsored .content-des {
+      padding: 10px 0;
+    }
+
     .slider-portfolio .content-image{
         width: 50%;
         padding: 0;
@@ -2051,15 +2152,33 @@ form[name="register"] input[type="submit"] {
     .slider-portfolio .content-des p{
         display: none;
     }
+
+    .multimedia .row-eq-height {
+      display: block;
+    }
+
+    .flex-control-paging li a{
+      width: 18px;
+      height: 18px;
+    }
+
     .event{
         margin: 0;
         padding: 30px 10px;
+        margin-bottom: 20px;
     }
     .event:before{
         display: none;
     }
+
+    .last-event .content-image img {
+      width: unset;
+    }
+    .last-event .content-image {
+      padding-bottom: 50px;
+    }
     .box-sponsored{
-        margin: 0 -6px;
+        margin: 0;
     }
     .most-popular{
         display: none;
@@ -2067,7 +2186,20 @@ form[name="register"] input[type="submit"] {
     .home .most-popular{
         display: block;
     }
+    .popular-porfolio .container {
+      margin-top: 0px;
+      padding-top: 10px;
+    }
+    .home .most-popular {
+      padding-right: 0;
+    }
+    .home .most-popular h2 {
+      font-size: 26px;
+    }
 
+    .list-most-popular .loop-list {
+      margin: 10px 0 0 0;
+    }
     .content-image{
         overflow: hidden;
     }
@@ -2078,13 +2210,19 @@ form[name="register"] input[type="submit"] {
         width: 18px;
     }
 
+    .portfolio-advider {
+      margin: 25px 0;
+    }
+    .slider-portfolio ul li {
+      border-bottom: none;
+    }
+
     .site-navigation{
         display: none;
     }
 
-    .logo {
-        padding: 5px 20px 0 0;
-        background: #fff;
+    /* Back to top link */
+    #back-to-top.show {
+      display: none;
     }
-
 }

@@ -73,7 +73,7 @@
         }
     })
 
-    $(window).scroll(function() {    
+    $(window).scroll(function() {
         var scroll = $(window).scrollTop();
 
         if(scroll >= 300) {
@@ -111,38 +111,7 @@
             scrollTop: $("#box-analysis").offset().top - 93
         }, 700);
     });
-    
-    /* Ajax functions */
-    $(document).on('click','.sunset-load-more', function(){
-        
-        var that = $(this);
-        var page = $(this).data('page');
-        var newPage = page+1;
-        var ajaxurl = that.data('url');
-        
-        $.ajax({
-            
-            url : ajaxurl,
-            type : 'post',
-            data : {
-                
-                page : page,
-                action: 'sunset_load_more'
-                
-            },
-            error : function( response ){
-                console.log(response);
-            },
-            success : function( response ){
-                
-                that.data('page', newPage);
-                $('.sunset-posts-container').append( response );
-                
-            }
-            
-        });
-        
-    });
+
 
     $('.button-video').on('click', function (e) {
         $('.video-img').addClass('hide');
@@ -152,6 +121,37 @@
     $('.carousel-multimedia li').on('click', function (e) {
         $('.video-img').removeClass('hide');
         $('.video-wrap').removeClass('show');
+    });
+
+    $('.infinite-selector').jscroll({
+        autoTrigger: false,
+        loadingHtml: '<img src="loading.gif" alt="Loading" />',
+        padding: 20,
+        nextSelector: '#nav-below a:first',
+        contentSelector: '.infinite-selector'
+    });
+
+    $(document).on('click', '.view-more.view-more-ajax', function(e) {
+      e.preventDefault();
+      var button = $(this);
+      var currentPage = button.attr('page');
+      var offset = button.attr('offset');
+      var category = button.attr('category');
+
+      $.ajax({
+        url: ajaxviewmore.ajaxurl,
+        type: 'post',
+        data: {
+          action: 'ajax_view_more',
+          page: currentPage,
+          offset: offset,
+          category: category
+        },
+        success: function(result) {
+          $('.list-category-ajax').append(result);
+          button.attr('page', parseInt(currentPage) + 1);
+        }
+      });
     });
 
     }); // End document ready
