@@ -16,10 +16,21 @@ class last_word_post_meta {
   }
 
   function add_lw_meta_boxes() {
+    add_meta_box('lw_pull_quote', 'Pull Quote', array($this, 'add_lw_pull_quote'), 'post');
     add_meta_box('lw_meta', 'Last Word Meta', array($this, 'add_lw_meta'), 'post');
     add_meta_box('lw_premium_meta', 'Premium', array($this, 'add_lw_premium'), 'post', 'side');
     add_meta_box('lw_cross_post', 'Cross Post', array($this, 'add_lw_cross_post'), 'post', 'side');
     add_meta_box('lw_brightcove_video', 'Brightcove Video', array($this, 'add_lw_brightcove_video'), 'post', 'side');
+  }
+
+  function add_lw_pull_quote() {
+    global $post;
+    ?>
+
+    <label class="screen-reader-text" for="lw_pull_quote">Pull Quote</label>
+    <textarea class="widefat" rows="2" name="lw_pull_quote" id="lw_pull_quote"><?php echo $post->lw_pull_quote ?></textarea>
+
+    <?php
   }
 
   function add_lw_meta() {
@@ -140,6 +151,7 @@ class last_word_post_meta {
       update_post_meta($post_id, 'lw_twitter_headline', strip_tags($_POST['lw_twitter_headline']));
       update_post_meta($post_id, 'lw_brightcove_video_id', strip_tags($_POST['lw_brightcove_video_id']));
       update_post_meta($post_id, 'lw_read_count', strip_tags($_POST['lw_read_count']));
+      update_post_meta($post_id, 'lw_pull_quote', strip_tags($_POST['lw_pull_quote']));
 
       if (isset($_POST['lw_premium'])) {
         update_post_meta($post_id, 'lw_premium', 'yes');

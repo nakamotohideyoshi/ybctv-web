@@ -19,7 +19,7 @@ class last_word_featured_image {
     global $post;
 
     $featured_image_url = get_post_meta($post_id, 'lw_featured_image_url', true);
-    $nonce = wp_create_nonce('lw_featured_image_url_' . $post->ID . get_current_blog_id());
+    $nonce = wp_create_nonce('lw_featured_image_url_' . $post_id);
 
     ob_start();
 

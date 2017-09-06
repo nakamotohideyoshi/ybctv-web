@@ -166,24 +166,21 @@ class lw_import {
   */
   function import_tag($xml) {
     global $wpdb;
-    $blog_id = get_current_blog_id();
+    $multisite_table_name_slug = is_multisite() ? get_current_blog_id() . '_' : '';
 
     // Loop through all xml tags and insert/update
     foreach ($xml->tag as $tag) {
       // Check if exists
-      $existing_tag = $wpdb->get_row("SELECT term_id FROM wp_terms WHERE name = '" . addslashes($tag->name) . "'");
+      $existing_tag = $wpdb->get_row("SELECT term_id FROM wp_" . $multisite_table_name_slug . "terms WHERE name = '" . addslashes($tag->name) . "'");
 
       if (is_null($existing_tag)) {
         // New tag
-        $wpdb->query("INSERT INTO wp_" . $blog_id . "_terms (name, slug, term_group) VALUES ('" . addslashes($tag->name) . "', '" . addslashes((string)$tag->alias_name) . "', 0)");
-        $wpdb->query("INSERT INTO wp_" . $blog_id . "_term_taxonomy (term_id, taxonomy, count) VALUES (" . $wpdb->insert_id . ", 'post_tag', 0)");
+        $wpdb->query("INSERT INTO wp_" . $multisite_table_name_slug . "terms (name, slug, term_group) VALUES ('" . addslashes($tag->name) . "', '" . addslashes((string)$tag->alias_name) . "', 0)");
+        $wpdb->query("INSERT INTO wp_" . $multisite_table_name_slug . "term_taxonomy (term_id, taxonomy, count) VALUES (" . $wpdb->insert_id . ", 'post_tag', 0)");
       }
       else {
         // Update tag
-        $wpdb->query("UPDATE wp_" . $blog_id . "_terms SET slug = '" . (string)$tag->alias_name . "' WHERE term_id = " . $existing_tag['term_id']);
-        if ($tag->name == 'Shaun Port') {
-          print_r("UPDATE wp_" . $blog_id . "_terms SET slug = '" . (string)$tag->alias_name . "' WHERE term_id = " . $existing_tag['term_id']);
-        }
+        $wpdb->query("UPDATE wp_" . $multisite_table_name_slug . "terms SET slug = '" . (string)$tag->alias_name . "' WHERE term_id = " . $existing_tag->term_id);
       }
     }
   }
@@ -301,19 +298,30 @@ class lw_import {
       if ($article->publish_date != '' && $article->active != 'false') {
         $post_status = 'publish';
       }
-      else if ($article->waiting_form_approval != '') {
+
+      if (($article->waiting_for_approval != '' || $article->waiting_for_approval != 'false') && $article->active != 'false') {
         $post_status = 'pending';
       }
 
+      if ($article->active == 'false') {
+        $post_status = 'archive';
+      }
+
+      $content = $article->content;
+      // Remove previous CMS tags
+      $content = $this->replace_content_tag($content, '<!--cms:title>', '</cms:title-->');
+
+      // Replace previous CMS pagebreak and replace with Wordpress pagebreak
+      $content = $this->replace_content_tag($content, '<p><!-- pagebreak -->', '</p>', '<!--nextpage-->');
 
       // Main Details
       $args = array(
-        'post_date' => $article->publish_date != '' && $article->active != 'false' ? $article->publish_date : $article->created_at,
+        'post_date' => $post_status == 'publish' ? $article->publish_date : $article->created_at,
         'post_modified' => $article->created_at,
         'post_title' => $article->title,
         'post_name' => $article->url_part,
         'post_status' => $post_status,
-        'post_content' => $article->content,
+        'post_content' => $content,
         'post_excerpt' => $article->description
       );
 
@@ -403,6 +411,7 @@ class lw_import {
       update_post_meta($post_id, 'lw_cross_post_google_plus', $article->publish_google == 'true' ? 'yes' : '');
       update_post_meta($post_id, 'lw_brightcove_video_id', (string)$article->video_stream_id);
       update_post_meta($post_id, 'lw_read_count', (string)$article->read_count);
+      update_post_meta($post_id, 'lw_pull_quote', (string)$article->pullquote);
 
       // Gallery
       if ($article->content_type == 'Gallery') {
@@ -427,7 +436,11 @@ class lw_import {
         $image_path .= str_replace('350x250', '640x410', basename((string)$article->image));
 
         update_post_meta($post_id, 'lw_featured_image_url', $image_path);
-        update_post_meta($post_id, '_thumbnail_id', 'by_url');
+
+        $existing_thumbnail = get_post_meta($post_id, '_thumbnail_id');
+        if (!$existing_thumbnail) {
+          update_post_meta($post_id, '_thumbnail_id', 'by_url');
+        }
       }
       else {
         delete_post_meta($post_id, 'lw_featured_image_url');
@@ -467,6 +480,31 @@ class lw_import {
           }
         }
       }
+  }
+
+  function replace_content_tag($content, $start_tag, $end_tag, $replace_with = '') {
+    $start = 0;
+
+    do {
+      $start = strpos($content, $start_tag);
+      if ($start !== false) {
+        $end = strpos($content, $end_tag, $start);
+        $end += strlen($end_tag);
+        $length = $end - $start;
+
+        $full_tag = substr($content, $start, $length);
+
+        if (($start + $length) == strlen($content)) {
+          $content = substr_replace($content, '', $start, strlen($full_tag)); // Replaces last tag in content entirely
+        }
+        else {
+          $content = substr_replace($content, $replace_with, $start, strlen($full_tag));
+        }
+
+      }
+    } while ($start !== false);
+
+    return $content;
   }
 
 
