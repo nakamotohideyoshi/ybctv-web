@@ -2149,6 +2149,31 @@ form[name="register"] input[type="submit"] {
     .logo img {
       max-width: 130px;
     }
+
+    .list-new-analysis .loop-list .content-image img, .analysis-list .loop-list .content-image img {
+      height: auto;
+      max-height: unset;
+      width: 100%;
+    }
+    
+    .ads-top-billboard, .ads-bottom-billboard {
+      min-height: 120px;
+    }
+
+    .ads-top-billboard, .ads-lhs-mpu, .ads-rhs-hpu-1, .ads-rhs-hpu-2,
+    .carousel-multimedia, .carousel-portfolio, .other-stories,
+    .user-login {
+        display: none;
+    }
+
+    .event {
+      margin: 0 -30px;
+      padding: 40px;
+    }
+
+    .flex-direction-nav {
+      display: none;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -2348,6 +2373,8 @@ form[name="register"] input[type="submit"] {
         width: 100%;
         padding: 30px 10px;
         margin-bottom: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
     }
     .event:before{
         display: none;
