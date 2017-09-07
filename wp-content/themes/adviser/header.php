@@ -119,13 +119,14 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h2 class="modal-logo">PORTFOLIO ADVISER</h2>
                             <h3 class="modal-title">SIGN IN</h3>
                           </div>
                           <div class="modal-body">
+                            <p>Access full content on the Portfolio Adviser site, access your saved articles, control email preferences and amend your account details</p>
                             <?php echo do_shortcode('[login-with-ajax]');?>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <hr>
+                            <a class="modal-link" href="/register">Not Registered?</a>
                           </div>
                         </div>
                       </div>

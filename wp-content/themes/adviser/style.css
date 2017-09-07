@@ -2032,6 +2032,83 @@ form[name="register"] input[type="submit"] {
   display: none;
 }
 
+/* Sign-in modal styling */
+
+#myModal .modal-content {
+  border-radius: 0;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+}
+
+#myModal .modal-header {
+  background-color: #3f701b;
+  padding: 15px 20px;
+}
+
+#myModal h2.modal-logo{
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
+  color: #69b42e;
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 10px;
+  line-height: 1;
+  margin-bottom: 0;
+}
+
+#myModal h3.modal-title{
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 2px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+#myModal .close {
+  font-size: 40px;
+  opacity: 1;
+  color: #fff;
+  text-shadow: none;
+  border: none;
+  box-shadow: none;
+  line-height: 1;
+}
+
+#myModal .close:hover {
+  color: #69b42e;
+  background: transparent;
+  border: none;
+}
+
+#myModal #lwa_wp-submit {
+  background-image: url(images/assets/Arrow-More-news.svg);
+  background-position: right center;
+  background-color: #3f701b;
+  background-position: right center;
+  background-repeat: no-repeat;
+  background-size: 15%;
+  border-right: 10px solid #3f701b;
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 50px 10px 20px;
+}
+
+#myModal .lwa-forgot {
+  padding-top: 15px;
+}
+
+#myModal .modal-link {
+  color: #69b42e;
+  font-weight: bold;
+}
+
+#myModal .modal-link:hover {
+  color: #3f701b;
+}
+
+
 @media (min-width: 1440px) {
     .container{
         width: 1368px;
