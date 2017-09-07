@@ -439,14 +439,13 @@ input[type="submit"]:active {
 }
 
 select {
-  background-color: #f2f2f2;
+  background-color: #ffffff;
   border: 0;
   border-radius: 0;
   color: #000;
-  font-size: 12px;
-  font-weight: 700;
   padding: 8px 10px 8px;
   vertical-align: bottom;
+  height: 40px;
 }
 
 .view-more.view-more-ajax {
@@ -875,6 +874,7 @@ h2.title{
   color: #fff;
   font-size: 21px;
   margin-bottom: 5px;
+  font-weight: 700;
 }
 
 .list-last-new .loop-list {
@@ -1744,6 +1744,10 @@ h2.title{
   margin-top: 5px;
 }
 
+.list-magazines .loop-list .content-des a:hover h3 {
+  color: #69b42e;
+}
+
 /* Register */
 form[name="register"] {
   margin-top: 30px;
@@ -1752,9 +1756,21 @@ form[name="register"] {
 
 form[name="register"] select,form[name="register"] input {
   margin-bottom: 10px;
-  padding: 10px;
   width: 100%;
   border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+form[name="register"] input {
+  padding: 10px;
+}
+
+form[name="register"] input::placeholder {
+  opacity: 1;
+  color: #000000;
+}
+
+form[name="register"] input:focus::placeholder {
+  opacity: 0.3;
 }
 
 form[name="register"] input[type="checkbox"],form[name="register"] input[type="submit"] {
@@ -1812,6 +1828,35 @@ form[name="register"] input[type="submit"] {
   font-weight: 700;
 }
 
+.content-single .pull-quote {
+  color: #69b42e;
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-post a {
+  color: #69b42e;
+}
+
+.content-post a:hover {
+  color: #4C7D0A;
+}
+
+.content-post .page-links {
+  border-top: solid 1px #e2e2e2;
+  border-bottom: solid 1px #e2e2e2;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.content-post .page-links span {
+  font-weight: normal;
+  margin-left: 10px;
+}
+
 /* Related Posts */
 
 .related-post {
@@ -1828,7 +1873,6 @@ form[name="register"] input[type="submit"] {
   margin-top: 5px;
   margin-bottom: 5px;
   font-weight: bold;
-  letter-spacing: -1px;
   line-height: 0.8;
 }
 
@@ -2017,7 +2061,7 @@ form[name="register"] input[type="submit"] {
       width: 35%;
       color: #fff;
       padding: 20px 20px 0 20px;
-    }   
+    }
 
     .slider-multimedia ul li .content-img {
       width: 60%;
@@ -2058,7 +2102,7 @@ form[name="register"] input[type="submit"] {
     display: inline-block;
     float: right;
   }
-  
+
   .flexslider-spon .loop-list .content-image img {
     width: 100%;
     height: auto;
@@ -2155,7 +2199,7 @@ form[name="register"] input[type="submit"] {
       max-height: unset;
       width: 100%;
     }
-    
+
     .ads-top-billboard, .ads-bottom-billboard {
       min-height: 120px;
     }

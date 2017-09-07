@@ -295,11 +295,11 @@ class lw_import {
       // Post Status
       $post_status = 'draft';
 
-      if ($article->publish_date != '' && $article->active != 'false') {
+      if ((string)$article->publish_date != '' && (string)$article->active != 'false') {
         $post_status = 'publish';
       }
 
-      if (($article->waiting_for_approval != '' || $article->waiting_for_approval != 'false') && $article->active != 'false') {
+      if (((string)$article->waiting_for_approval == 'true') && (string)$article->active != 'false') {
         $post_status = 'pending';
       }
 
@@ -351,6 +351,27 @@ class lw_import {
         $args['ID'] = $existing_article->posts[0]->ID;
       }
 
+      // Meta
+      $meta_input = array();
+      $meta_input['lw_old_article_id'] = (string)$article->id;
+      $meta_input['lw_primary_medium'] = (string)$article->primary_medium;
+      $meta_input['lw_content_type'] = (string)$article->content_type;
+      $meta_input['lw_subtitle'] = (string)$article->sub_title;
+      $meta_input['lw_description'] = (string)$article->description;
+      $meta_input['lw_expiry_date'] = (string)$article->expiry_date;
+      $meta_input['lw_sponsored'] = (string)$article->sponsored;
+      $meta_input['lw_twitter_headline'] = (string)$article->twitter_headline;
+      $meta_input['lw_premium'] = $article->premium != '' && $article->premium != 'Free' ? 'yes' : '';
+      $meta_input['lw_cross_post_facebook'] = $article->publish_facebook == 'true' ? 'yes' : '';
+      $meta_input['lw_cross_post_twitter'] = $article->publish_twitter == 'true' ? 'yes' : '';
+      $meta_input['lw_cross_post_linkedin'] = $article->publish_linkedin == 'true' ? 'yes' : '';
+      $meta_input['lw_cross_post_google_plus'] = $article->publish_google == 'true' ? 'yes' : '';
+      $meta_input['lw_brightcove_video_id'] = (string)$article->video_stream_id;
+      $meta_input['lw_read_count'] = (string)$article->read_count;
+      $meta_input['lw_pull_quote'] = (string)$article->pullquote;
+
+      $args['meta_input'] = $meta_input;
+
       $post_id = wp_insert_post($args);
 
       // Tags
@@ -394,24 +415,6 @@ class lw_import {
       if (count($authors) != 0) {
         $coauthors_plus->add_coauthors($post_id, $authors);
       }
-
-      // Meta
-      update_post_meta($post_id, 'lw_old_article_id', (string)$article->id);
-      update_post_meta($post_id, 'lw_primary_medium', (string)$article->primary_medium);
-      update_post_meta($post_id, 'lw_content_type', (string)$article->content_type);
-      update_post_meta($post_id, 'lw_subtitle', (string)$article->sub_title);
-      update_post_meta($post_id, 'lw_description', (string)$article->description);
-      update_post_meta($post_id, 'lw_expiry_date', (string)$article->expiry_date);
-      update_post_meta($post_id, 'lw_sponsored', (string)$article->sponsored);
-      update_post_meta($post_id, 'lw_twitter_headline', (string)$article->twitter_headline);
-      update_post_meta($post_id, 'lw_premium', $article->premium != '' && $article->premium != 'Free' ? 'yes' : '');
-      update_post_meta($post_id, 'lw_cross_post_facebook', $article->publish_facebook == 'true' ? 'yes' : '');
-      update_post_meta($post_id, 'lw_cross_post_twitter', $article->publish_twitter == 'true' ? 'yes' : '');
-      update_post_meta($post_id, 'lw_cross_post_linkedin', $article->publish_linkedin == 'true' ? 'yes' : '');
-      update_post_meta($post_id, 'lw_cross_post_google_plus', $article->publish_google == 'true' ? 'yes' : '');
-      update_post_meta($post_id, 'lw_brightcove_video_id', (string)$article->video_stream_id);
-      update_post_meta($post_id, 'lw_read_count', (string)$article->read_count);
-      update_post_meta($post_id, 'lw_pull_quote', (string)$article->pullquote);
 
       // Gallery
       if ($article->content_type == 'Gallery') {

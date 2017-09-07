@@ -204,6 +204,12 @@ get_header(); ?>
             <div class="col-lg-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Multimedia</h2>
+                <div id="bx-pager">
+                    <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                    <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                    <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  </div>
+                  <a href="/media" class="view-more">View more</a>
               </div>
             </div>
             <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
@@ -234,14 +240,8 @@ get_header(); ?>
                     wp_reset_postdata();
                   ?>
                 </ul>
-                
+
               </div>
-              <div id="bx-pager">
-                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                </div>
-                <a href="/media" class="view-more">View more</a>
             </div>
           </div>
           <div id="carousel-multimedia" class="flexslider carousel-multimedia">
@@ -344,6 +344,7 @@ get_header(); ?>
                     <li>
                       <div class="content-image">
                         <?php
+                          echo '<a href="' . get_the_permalink() . '">';
                           if ( has_post_thumbnail() ) {
                             the_post_thumbnail();
                           }
@@ -352,11 +353,12 @@ get_header(); ?>
                         <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                         <?php
                           }
+                          echo '</a>';
                         ?>
                       </div>
                       <div class="content-des">
-                        <p class="name-cat">Magazine</p>
-                        <h3>PORTFOLIO ADVISER <span>-</span></h3>
+                        <p class="name-cat"><a href="<?php the_permalink();?>">Magazine</a></p>
+                        <h3><a href="<?php the_permalink();?>">PORTFOLIO ADVISER</a> <span>-</span></h3>
                         <a href="<?php the_permalink();?>"><span class="date"><?php echo get_the_title(); ?></span></a>
                         <p><?php echo the_excerpt(); ?></p>
                       </div>
@@ -429,7 +431,7 @@ get_header(); ?>
                         ?>
                       </div>
                       <div class="content-des">
-                        <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
+                        <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
                         <p class="date"><?php echo $date_event;?></p>
                       </div>
                     </div>
@@ -449,6 +451,7 @@ get_header(); ?>
                           <div class="loop-list">
                             <div class="content-image">
                               <?php
+                                echo '<a href="' . get_the_permalink() . '">';
                                 if ( has_post_thumbnail() ) {
                                   the_post_thumbnail();
                                 }
@@ -457,10 +460,11 @@ get_header(); ?>
                               <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                               <?php
                                 }
+                                echo '</a>';
                               ?>
                             </div>
                             <div class="content-des">
-                              <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
+                              <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
                               <p class="date"><?php echo $date_event;?></p>
                             </div>
                           </div>

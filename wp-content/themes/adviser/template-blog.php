@@ -51,7 +51,9 @@
                       <div class="content-image">
                         <?php
                           if ( has_post_thumbnail() ) {
+                            echo '<a href="' . get_the_permalink() . '">';
                             the_post_thumbnail('section-article');
+                            echo '</a>';
                           }
                           else {
                         ?>
@@ -90,7 +92,9 @@
                 );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
-                  get_template_part('template-parts/archive', 'post');
+                  $category = get_the_category();
+                  $category_id = $category[0]->cat_ID;
+                  include(locate_template('template-parts/archive-post.php'));
                 endforeach;
                 wp_reset_postdata();
               ?>

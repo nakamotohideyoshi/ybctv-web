@@ -336,6 +336,9 @@ add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
 function enqueue_pagefair() {
   wp_register_script('pagefair', THEME_PATH . '/js/pagefair.js', array('jquery'), '1.0.0', false);
   wp_enqueue_script('pagefair');
+
+  // wp_register_script('jquery-steps', THEME_PATH . '/js/jquery.steps.js', array(), '1.0.0', false);
+  // wp_enqueue_script('jquery-steps');
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_pagefair');
@@ -356,12 +359,12 @@ function ajax_view_more() {
   $page = (int)$_POST['page'];
   $posts_per_page = 5;
   $offset = (int)$_POST['offset'];
-  $category = (int)$_POST['category'];
+  $category_id = (int)$_POST['category'];
 
   $args = array(
     'posts_per_page' => 5,
     'offset' => ($page * $posts_per_page) + $offset,
-    'cat' => $category,
+    'cat' => $category_id,
     'orderby' => 'date',
     'order' => 'DESC'
   );
@@ -371,7 +374,7 @@ function ajax_view_more() {
   if ($posts->have_posts()) {
     while($posts->have_posts()) {
       $posts->the_post();
-      get_template_part('template-parts/archive', 'post');
+      include(locate_template('template-parts/archive-post.php'));
     }
   }
   wp_reset_postdata();

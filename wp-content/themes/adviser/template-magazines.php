@@ -39,12 +39,15 @@
                                             <div class="content-image">
                                                 <?php
                                                 if ( has_post_thumbnail() ) {
-                                                    the_post_thumbnail();
+                                                  echo '<a href="' . get_the_permalink() . '">';
+                                                  the_post_thumbnail();
+                                                  echo '</a>';
                                                 }
                                                 else { ?>
                                                     <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
-                                                <?php }
-                                                ?>
+                                              <?php
+                                                }
+                                              ?>
                                             </div>
                                         </div>
                                         <div class="col-md-8 col-sm-12 col-xs-12">
@@ -71,7 +74,9 @@
                                             <div class="content-image">
                                                 <?php
                                                 if ( has_post_thumbnail() ) {
-                                                    the_post_thumbnail();
+                                                  echo '<a href="' . get_the_permalink() . '">';
+                                                  the_post_thumbnail();
+                                                  echo '</a>';
                                                 }
                                                 else { ?>
                                                     <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>

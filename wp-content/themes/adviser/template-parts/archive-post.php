@@ -4,7 +4,9 @@
       <div class="content-image">
         <?php
           if ( has_post_thumbnail() ) {
+            echo '<a href="' . get_the_permalink() . '">';
             the_post_thumbnail('listing-article');
+            echo '</a>';
           }
           else {
         ?>
@@ -13,12 +15,15 @@
           }
         ?>
       </div>
+      <span class="overlay"></span>
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12">
       <div class="content-des">
         <p class="name-cat">
-          <?php $category = get_the_category(); ?>
-          <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+          <?php
+            $category = get_term_by('id', $category_id, 'category');
+          ?>
+          <a href="<?php echo get_category_link($category->term_id);?>"><?php echo $category->name;?></a>
           <span><?php the_time('d, M y');?></span>
         </p>
         <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>

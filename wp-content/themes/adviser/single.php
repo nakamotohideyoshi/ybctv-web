@@ -78,7 +78,7 @@ get_header(); ?>
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
 
-                            <div class="content-post>">
+                            <div class="content-post">
                                 <div class="description-single">
                                     <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
                                     <?php echo $lw_description;?>
@@ -93,7 +93,51 @@ get_header(); ?>
                                                 <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
                                             <?php }
                                         ?>
-                                        <div class="text-content"><?php the_content();?></div>
+                                        <div class="text-content">
+                                          <?php
+                                            global $page;
+                                            if ($post->lw_pull_quote != '' && $page == 1) {
+
+                                              $pullquote_after_paragraph = 5;
+
+                                              $content = apply_filters('the_content', get_the_content());
+
+                                              if (substr_count($content, '<p>') > $pullquote_after_paragraph) {
+                                                $paragraphs = explode('</p>', $content);
+                                                $paragraph_count = 1;
+
+                                                foreach ($paragraphs as $paragraph) {
+                                                  echo $paragraph;
+
+                                                  echo '</p>';
+
+                                                  if ($paragraph_count == $pullquote_after_paragraph) {
+                                                    echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
+                                                  }
+
+
+                                                  $paragraph_count ++;
+                                                }
+                                              }
+                                              else {
+                                                echo $content;
+                                                echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
+                                              }
+                                            }
+                                            else {
+                                              the_content();
+                                            }
+
+                                            wp_link_pages(array(
+                                      				'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
+                                      				'after'       => '</div>',
+                                      				'link_before' => '<span>',
+                                      				'link_after'  => '</span>',
+                                      				'pagelink'    => '<span class="screen-reader-text">Page </span>%',
+                                      				'separator'   => '<span class="screen-reader-text">, </span>',
+                                      			));
+                                           ?>
+                                        </div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>
                                         <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :
                                           brightcove_video($lw_brightcove_video_id)
