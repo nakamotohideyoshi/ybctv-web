@@ -39,8 +39,8 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <!--stickadd scripts-->
   <?php
-    wp_head();
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
+    wp_head();
   ?>
 </head>
 <body id="bd" <?php body_class(); ?>>
@@ -149,7 +149,7 @@
                   <?php get_search_form(); ?>
                 </div>
               </nav>
-            </div>          
+            </div>
           </div>
           <?php if(wp_is_mobile()) : ?>
                <nav id="primary-navigation" class="site-navigation mobnavigation col-xs-12 col-sm-12" role="navigation">

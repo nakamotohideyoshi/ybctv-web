@@ -336,9 +336,6 @@ add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
 function enqueue_pagefair() {
   wp_register_script('pagefair', THEME_PATH . '/js/pagefair.js', array('jquery'), '1.0.0', false);
   wp_enqueue_script('pagefair');
-
-  // wp_register_script('jquery-steps', THEME_PATH . '/js/jquery.steps.js', array(), '1.0.0', false);
-  // wp_enqueue_script('jquery-steps');
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_pagefair');
@@ -383,4 +380,15 @@ function ajax_view_more() {
 
 add_action('wp_ajax_nopriv_ajax_view_more', 'ajax_view_more');
 add_action('wp_ajax_ajax_view_more', 'ajax_view_more');
+
+/*
+* Sticky JS.
+*/
+function enqueue_sticky() {
+  wp_register_script('sticky', THEME_PATH . '/js/sticky.js', array('jquery'), '1.0.0', false);
+  wp_enqueue_script('sticky');
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_sticky');
+
 ?>
