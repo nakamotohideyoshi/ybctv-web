@@ -1,0 +1,300 @@
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sf-menu ul {
+	position: absolute;
+	display: none;
+	top: 100%;
+	left: 0;
+	z-index: 99;
+}
+.sf-menu > li {
+	float: left;
+}
+.sf-menu li:hover > ul,
+.sf-menu li.sfHover > ul {
+	display: block;
+}
+.sf-menu a {
+	display: block;
+	position: relative;
+}
+.sf-menu ul ul {
+	top: 0;
+	left: 100%;
+}
+.sf-menu ul.sub-menu li:last-child a{
+	padding-right: 0;
+}
+
+/*** DEMO SKIN ***/
+.site-header.fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+}
+.site-header.fixed .sf-navbar:before{
+	display: none;
+}
+.site-header.fixed .logo{
+	padding-top: 5px;
+}
+.site-header.fixed .header-top{
+	padding: 0;
+}
+.site-navigation{
+	background: #000;
+	position: relative;
+}
+.home-url{
+	float: left;
+	width: 30px;
+	height: 20px;
+	background: url("../images/svg/Home-icon-blue.svg") no-repeat;
+	margin: 10px 20px 10px 100px;
+	display: block;
+}
+.sf-menu {
+	float: left;
+}
+.sf-menu ul {
+	min-width: 12em; /* allow long menu items to determine submenu width */
+	*width: 12em; /* no auto sub width for IE7, see white-space comment below */
+}
+.sf-menu a {
+	color: #fff;
+	padding: 7px 30px;
+	font-size: 18px;
+	text-decoration: none;
+	zoom: 1; /* IE7 */
+}
+.sf-navbar>li>ul>li a {
+	font-size: 16px;
+	padding: 7px 15px;
+}
+.sf-menu li {
+	white-space: nowrap; /* no need for Supersubs plugin */
+	*white-space: normal; /* ...unless you support IE7 (let it wrap) */
+	-webkit-transition: background .2s;
+	transition: background .2s;
+}
+.sf-menu li:hover,
+.sf-menu li.sfHover {
+	-webkit-transition: none;
+	transition: none;
+}
+.sf-navbar:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    background-color: #BDD2FF;
+    height: 200%;
+    width: 100%
+}
+.sf-navbar ul {
+    box-shadow: none;
+	background: #f2f2f2;
+}
+.sf-navbar ul li,
+.sf-navbar ul li.current {
+    background: #f2f2f2;
+}
+.sf-navbar>li>a,
+.sf-navbar>li>ul>li>a {
+    border: none
+}
+.sf-navbar>li>ul {
+    min-width: 36em;
+	width: 100%;
+	padding-left: 80px;
+}
+.sf-navbar ul li a{
+	color: #000;
+	padding: 7px 18px;
+}
+.sf-navbar ul li a:hover{
+	color: #69b42e;
+}
+.sf-navbar ul ul {
+    left: 0;
+    top: 100%
+}
+.sf-navbar ul ul li {
+    width: 100%
+}
+.sf-navbar>li>ul>li {
+    float: left
+}
+.sf-navbar ul li.sfHover,
+.sf-navbar ul li:hover,
+.sf-navbar ul ul li {
+}
+.sf-navbar ul ul li.current,
+.sf-navbar ul ul li.sfHover,
+.sf-navbar ul ul li:hover {
+    background: #E6EEFF
+}
+.sf-navbar ul li.current>a {
+    font-weight: 700
+}
+.sf-arrows.sf-navbar ul .sf-with-ul:after {
+    margin-top: -3px;
+    margin-right: 0;
+    border-color: #dFeEFF transparent transparent;
+    border-top-color: rgba(255, 255, 255, .5)
+}
+.sf-arrows.sf-navbar ul>.sfHover>.sf-with-ul:after,
+.sf-arrows.sf-navbar ul>li:hover>.sf-with-ul:after,
+.sf-arrows.sf-navbar ul>li>.sf-with-ul:focus:after {
+    border-color: #fff transparent transparent
+}
+
+@media (max-width: 768px) {
+	.btn-sp {
+		position: relative;
+		border: none;
+		cursor: pointer;
+		transition: all 200ms linear;
+		outline: none;
+		float: right;
+		margin-top: 10px;
+		padding: 15px 15px;
+		background: #000;
+	}
+	.btn-sp button,.btn-sp button:hover{
+		background: transparent;
+	}
+	.btn-sp span {
+		width: 28px;
+		height: 4px;
+		background: #fff;
+		position: absolute;
+		margin: auto;
+		top: 0px;
+		left: 10px;
+		bottom: 0;
+		transition: all 200ms linear;
+	}
+
+	.btn-sp:before {
+		content: '';
+		width: 28px;
+		height: 4px;
+		background: #fff;
+		position: absolute;
+		left: 10px;
+		transition: all 200ms linear;
+		top: 10px;
+	}
+
+	.btn-sp:after {
+		content: '';
+		width: 28px;
+		height: 4px;
+		background: #fff;
+		position: absolute;
+		left: 10px;
+		bottom: 10px;
+		transition: all 200ms linear;
+	}
+
+	.btn-sp.active:before {
+		-webkit-transform: translateY(9px) rotate(-45deg);
+		-ms-transform: translateY(9px) rotate(-45deg);
+		transform: translateY(9px) rotate(-45deg);
+		top: -2px;
+		background: #fff;
+		width: 20px;
+	}
+
+	.btn-sp.active:after {
+		-webkit-transform: translateY(-9px) rotate(45deg);
+		-ms-transform: translateY(-9px) rotate(45deg);
+		transform: translateY(-9px) rotate(45deg);
+		bottom: -1px;
+		background: #fff;
+		width: 20px;
+	}
+
+	.btn-sp.active span {
+		display: none;
+	}
+}
+
+
+@media (max-width: 480px) {
+	.btn-sp {
+		position: relative;
+		border: none;
+		cursor: pointer;
+		transition: all 200ms linear;
+		outline: none;
+		float: right;
+		padding: 14px 13px;
+		background: #000;
+	}
+	.btn-sp button,.btn-sp button:hover{
+		background: transparent;
+	}
+	.btn-sp span {
+		width: 25px;
+		height: 4px;
+		background: #fff;
+		position: absolute;
+		margin: auto;
+		top: 0px;
+		left: 10px;
+		bottom: 0;
+		transition: all 200ms linear;
+	}
+
+	.btn-sp:before {
+		content: '';
+		width: 25px;
+		height: 4px;
+		background: #fff;
+		position: absolute;
+		left: 10px;
+		transition: all 200ms linear;
+		top: 10px;
+	}
+
+	.btn-sp:after {
+		content: '';
+		width: 25px;
+		height: 4px;
+		background: #fff;
+		position: absolute;
+		left: 10px;
+		bottom: 10px;
+		transition: all 200ms linear;
+	}
+
+	.btn-sp.active:before {
+		-webkit-transform: translateY(9px) rotate(-45deg);
+		-ms-transform: translateY(9px) rotate(-45deg);
+		transform: translateY(9px) rotate(-45deg);
+		top: -2px;
+		background: #fff;
+		width: 20px;
+	}
+
+	.btn-sp.active:after {
+		-webkit-transform: translateY(-9px) rotate(45deg);
+		-ms-transform: translateY(-9px) rotate(45deg);
+		transform: translateY(-9px) rotate(45deg);
+		bottom: -1px;
+		background: #fff;
+		width: 20px;
+	}
+
+	.btn-sp.active span {
+		display: none;
+	}
+}
