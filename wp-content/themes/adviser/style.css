@@ -2108,6 +2108,14 @@ form[name="register"] input[type="submit"] {
   color: #3f701b;
 }
 
+/* Panel Template*/
+
+.panel-template h3{
+    font-family: Kommissar;
+}
+.panel-template .tmm .tmm_job{
+	color:#000000;
+}
 
 @media (min-width: 1440px) {
     .container{
