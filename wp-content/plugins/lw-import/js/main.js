@@ -23,7 +23,7 @@
           var selection = media_browser.state().get('selection');
           selection.each(function(attachment) {
             $('#' + type + '-import-file-id').val(attachment['id']);
-            $('#' + type + '-import-file-url').html(attachment['attributes']['filename']);
+            $('#' + type + '-import-file-url').html(attachment['attributes']['filename']).css('color', 'black');
             $('#' + type).val('Change');
             $('#' + type + '-process').removeClass('hide');
           });
@@ -56,7 +56,7 @@
           ajaxLoader.addClass('hide');
 
           $('#' + type + '-import-file-id').val('');
-          $('#' + type + '-import-file-url').html('No file selected');
+          $('#' + type + '-import-file-url').css('color', 'green');
           $('#' + type).val('Select');
           $('#' + type + '-process').addClass('hide');
           $('#' + type + '-complete').fadeIn();

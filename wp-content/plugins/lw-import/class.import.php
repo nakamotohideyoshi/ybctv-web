@@ -512,52 +512,74 @@ class lw_import {
 
 
   function generate_image_size() {
+    $blog_id = get_current_blog_id();
+    $sub_dir = '';
+
+    switch ($blog_id) {
+      case 2 :
+        $sub_dir = 'pa'; // Portfolio Adviser
+        break;
+      case 3 :
+        $sub_dir = 'ia'; // International Adviser
+        break;
+      case 4 :
+        $sub_dir = 'fsa'; // Fund Selector Asia
+        break;
+      case 5 :
+        $sub_dir = 'ei'; // Expert Investor Europe
+        break;
+      default :
+        break;
+    }
+
     global $_wp_additional_image_sizes;
 
-    $wp_default_sizes = array('thumbnail', 'medium', 'medium_large', 'large', 'post_thumbnail');
-    $image_size_names = get_intermediate_image_sizes();
-    $image_sizes = array();
-    $initial_width = 640;
-    $initial_height = 410;
+    if ($sub_dir != '') {
+      $wp_default_sizes = array('thumbnail', 'medium', 'medium_large', 'large', 'post_thumbnail');
+      $image_size_names = get_intermediate_image_sizes();
+      $image_sizes = array();
+      $initial_width = 640;
+      $initial_height = 410;
 
-    foreach($image_size_names as $image_size_name) {
-      if (in_array($image_size_name, $wp_default_sizes)) {
-        $image_sizes[] = array(
-          'name' => $image_size_name,
-          'width' => get_option($image_size_name . '_size_w'),
-          'height' => get_option($image_size_name . '_size_h'),
-          'crop' => get_option($image_size_name . '_crop')
-        );
+      foreach($image_size_names as $image_size_name) {
+        if (in_array($image_size_name, $wp_default_sizes)) {
+          $image_sizes[] = array(
+            'name' => $image_size_name,
+            'width' => get_option($image_size_name . '_size_w'),
+            'height' => get_option($image_size_name . '_size_h'),
+            'crop' => get_option($image_size_name . '_crop')
+          );
+        }
+        else if(strpos($image_size_name, 'guest') === false) {
+          $image_sizes[] = array(
+            'name' => $image_size_name,
+            'width' => $_wp_additional_image_sizes[$image_size_name]['width'],
+            'height' => $_wp_additional_image_sizes[$image_size_name]['height'],
+            'crop' => $_wp_additional_image_sizes[$image_size_name]['crop']
+          );
+        }
       }
-      else if(strpos($image_size_name, 'guest') === false) {
-        $image_sizes[] = array(
-          'name' => $image_size_name,
-          'width' => $_wp_additional_image_sizes[$image_size_name]['width'],
-          'height' => $_wp_additional_image_sizes[$image_size_name]['height'],
-          'crop' => $_wp_additional_image_sizes[$image_size_name]['crop']
-        );
-      }
-    }
-    $path = $_SERVER['DOCUMENT_ROOT'] . "/image-archive/pa/";
-    $path_iterator = new RecursiveDirectoryIterator($path);
+      $path = $_SERVER['DOCUMENT_ROOT'] . "/image-archive/" . $sub_dir . "/";
+      $path_iterator = new RecursiveDirectoryIterator($path);
 
-    foreach (new RecursiveIteratorIterator($path_iterator) as $fileinfo) {
+      foreach (new RecursiveIteratorIterator($path_iterator) as $fileinfo) {
 
-      if (!strpos($fileinfo->getFilename(), '.') == 0) {
-        foreach($image_sizes as $image_size) {
-          if ($image_size['width'] != 0 && $image_size['height'] != 0
-            && $image_size['width'] < $initial_width && $image_size['height'] < $initial_height
-            && $image_size['name'] != 'post-thumbnail') {
+        if (!strpos($fileinfo->getFilename(), '.') == 0) {
+          foreach($image_sizes as $image_size) {
+            if ($image_size['width'] != 0 && $image_size['height'] != 0
+              && $image_size['width'] < $initial_width && $image_size['height'] < $initial_height
+              && $image_size['name'] != 'post-thumbnail') {
 
-            $resize_filename = str_replace($initial_width . 'x' . $initial_height, $image_size['width'] . 'x' . $image_size['height'], $fileinfo->getPathname());
+              $resize_filename = str_replace($initial_width . 'x' . $initial_height, $image_size['width'] . 'x' . $image_size['height'], $fileinfo->getPathname());
 
-            if (!file_exists($resize_filename)) {
-              $image = wp_get_image_editor($fileinfo->getPathname());
+              if (!file_exists($resize_filename)) {
+                $image = wp_get_image_editor($fileinfo->getPathname());
 
-              if (!is_wp_error($image)) {
-                $image->set_quality(90);
-                $image->resize($image_size['width'], $image_size['height'], array('center', 'center'));
-                $image->save($resize_filename);
+                if (!is_wp_error($image)) {
+                  $image->set_quality(90);
+                  $image->resize($image_size['width'], $image_size['height'], array('center', 'center'));
+                  $image->save($resize_filename);
+                }
               }
             }
           }
