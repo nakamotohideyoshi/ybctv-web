@@ -12,6 +12,8 @@ class last_word_taxonomy {
 
   function __construct() {
     add_action('init', array($this, 'add_taxonomy'), 0);
+    add_action('admin_menu', array($this, 'remove_types_meta_box'));
+    add_action('add_meta_boxes', array($this, 'add_types_meta_box'));
   }
 
   function add_taxonomy() {
@@ -34,7 +36,7 @@ class last_word_taxonomy {
     );
 
     register_taxonomy('type', array('post'), array(
-      'hierarchical' => false,
+      'hierarchical' => true,
       'labels' => $labels,
       'show_ui' => true,
       'query_var' => true,
@@ -72,6 +74,45 @@ class last_word_taxonomy {
       'rest_base' => 'article-collections',
       'rest_controller_class' => 'WP_REST_Terms_Controller'
     ));
+  }
+
+  function remove_types_meta_box() {
+    remove_meta_box('typediv', 'post', 'side');
+  }
+
+  function add_types_meta_box() {
+    add_meta_box('type_meta', 'Type', array($this, 'populate_type_meta_box'), 'post', 'side', 'core');
+  }
+
+  function populate_type_meta_box($post) {
+    $taxonomy_name = 'type';
+    $taxonomy = get_taxonomy($taxonomy_name);
+    $field_name = 'tax_input[' . $taxonomy_name . ']';
+
+    $types = get_terms($taxonomy_name, array('hide_empty' => 0));
+
+    $post_types = get_the_terms($post->ID, $taxonomy_name);
+    $current = ($post_types ? array_pop($post_types) : false);
+    $current = ($current ? $current->term_id : 0);
+
+    ?>
+    <div id="<?php echo $taxonomy_name; ?>-all">
+      <ul id="<?php echo $taxonomy_name; ?>checklist" class="list:<?php echo $taxonomy_name; ?> categorychecklist form-no-clear">
+        <?php
+          foreach($types as $type) {
+            $id = $taxonomy_name . '-' . $type->term_id;
+
+            echo '<li id=' . $id . '>';
+            echo '<label class="selectit">';
+            echo '<input type="radio" id="in-' . $id . '" name="' . $field_name . '"' . checked($current, $type->term_id, false) . ' value="' . $type->term_id . '" />';
+            echo $type->name . '<br />';
+            echo '</label>';
+            echo '</li>';
+          }
+        ?>
+      </ul>
+    </div>
+    <?php
   }
 }
 

@@ -384,11 +384,81 @@ add_action('wp_ajax_ajax_view_more', 'ajax_view_more');
 /*
 * Sticky JS.
 */
-function enqueue_sticky() {
-  wp_register_script('sticky', THEME_PATH . '/js/sticky.js', array('jquery'), '1.0.0', false);
-  wp_enqueue_script('sticky');
+// function enqueue_sticky() {
+//   wp_register_script('sticky', THEME_PATH . '/js/sticky.js', array('jquery'), '1.0.0', false);
+//   wp_enqueue_script('sticky');
+// }
+//
+// add_action('wp_enqueue_scripts', 'enqueue_sticky');
+
+/*
+* Remove and reorganize Dashboard Widgets for everyone except admins
+*/
+function remove_dashboard_widgets() {
+  if (!current_user_can('manage_options')) {
+    global $wp_meta_boxes;
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+    unset($wp_meta_boxes['dashboard']['normal']['high']['ualp_dashboard_widget']);
+    unset($wp_meta_boxes['dashboard']['normal']['high']['wp_ualp_dashboard_widget']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['wpe_dify_news_feed']);
+
+    // Move Activity meta box to sidebars
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+    add_meta_box('dashboard_activity', 'Activity', 'wp_dashboard_site_activity', 'dashboard', 'side', 'core');
+  }
 }
 
-add_action('wp_enqueue_scripts', 'enqueue_sticky');
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets', 999);
+
+/*
+* Remove post edit Meta Boxes for authors
+*/
+function remove_post_edit_meta_boxes() {
+  if (!current_user_can('manage_options')) {
+    remove_meta_box('wpcrmShortcodeWizardContainer', 'post', 'normal');
+    remove_meta_box('wordpresscrm_databinding_meta', 'post', 'side');
+    remove_meta_box('formatdiv', 'post', 'side');
+    remove_meta_box('lw_cross_post', 'post', 'side');
+    remove_meta_box('tagsdiv-collection', 'post', 'side');
+  }
+}
+
+add_action('add_meta_boxes', 'remove_post_edit_meta_boxes', 999);
+
+
+/*
+* Remove Menu items from Author admins
+*/
+function remove_menu_pages() {
+  if (!current_user_can('manage_options')) {
+    remove_menu_page('edit.php?post_type=lw_ad_unit');
+    remove_menu_page('edit.php?post_type=tmm');
+  }
+}
+
+add_action('admin_init', 'remove_menu_pages');
+
+/*
+* Allow Authors to edit other Authors post
+*/
+
+function add_theme_capabilities() {
+  $role = get_role('author');
+  $role->add_cap('edit_others_posts');
+}
+
+add_action('admin_init', 'add_theme_capabilities');
+
+/*
+* Stop reordering of categories on post edit page
+*/
+
+function disable_category_reordering($args) {
+  $args['checked_ontop'] = false;
+  return $args;
+}
+
+add_filter('wp_terms_checklist_args', 'disable_category_reordering');
 
 ?>
