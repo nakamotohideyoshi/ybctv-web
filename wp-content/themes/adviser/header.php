@@ -95,7 +95,7 @@
                       if (is_user_logged_in()) {
                     ?>
                     <li>
-                      <a href="#">
+                      <a href="<?php echo site_url( '/your-profile/' ) ?>">
                         <img src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" /> My account
                       </a>
                     </li>

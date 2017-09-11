@@ -42,6 +42,7 @@ class last_word_taxonomy {
       'query_var' => true,
       'rewrite' => array('slug' => 'type'),
       'show_in_rest' => true,
+      'show_in_nav_menus' => true,
       'rest_base' => 'article-types',
       'rest_controller_class' => 'WP_REST_Terms_Controller'
     ));
