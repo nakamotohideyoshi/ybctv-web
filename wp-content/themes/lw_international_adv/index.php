@@ -17,7 +17,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 17 );
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1);
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -48,7 +48,7 @@ get_header(); ?>
                       <div class="row">
                       <?php
                         $count =0;
-                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6, 'category' => 17 );
+                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6);
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post ); $count++;
                           if ($count == 2) {
@@ -78,12 +78,12 @@ get_header(); ?>
                             ?>
                             <span class="overlay"></span>
                           </div>
-                          <?php $premium = get_post_meta($post->ID, 'lw_premium', true); 
+                          <?php $premium = get_post_meta($post->ID, 'lw_premium', true);
 
-                                        if($premium == 'yes') { 
+                                        if($premium == 'yes') {
 
                                           if( !is_user_logged_in() ){ ?>
-                                
+
                         <div class="content-des">
                                         <p class="name-cat">
                                           <?php $category = get_the_category(); ?>
@@ -93,7 +93,7 @@ get_header(); ?>
                                           <h3><?php echo get_the_title(); ?></h3>
                                         </a>
                                     </div>
-  
+
                                           <?php } else { ?>
 
                         <div class="content-des">
@@ -117,7 +117,7 @@ get_header(); ?>
                                           <h3><?php echo get_the_title(); ?></h3>
                                         </a>
                                       </div>
-                      
+
                                       <?php } ?>
                         </div>
                       </div>
@@ -136,7 +136,17 @@ get_header(); ?>
                   <h2 class="title">IA ANALYSIS</h2>
                     <div class="list-new-analysis">
                     <?php
-                      $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 40 );
+                      $args = array(
+                        'posts_per_page' => 2,
+                        'showposts' => 2,
+                        'tax_query' => array(
+                          array(
+                            'taxonomy' => 'type',
+                            'field' => 'term_id',
+                            'terms' => '8302'
+                          )
+                        )
+                      );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -154,12 +164,12 @@ get_header(); ?>
                         ?>
                           <span class="overlay"></span>
                         </div>
-                          <?php $premium = get_post_meta($post->ID, 'lw_premium', true); 
+                          <?php $premium = get_post_meta($post->ID, 'lw_premium', true);
 
-                                        if($premium == 'yes') { 
+                                        if($premium == 'yes') {
 
                                           if( !is_user_logged_in() ){ ?>
-                                
+
                         <div class="content-des">
                                       <p class="name-cat">
                                         <?php $category = get_the_category(); ?>
@@ -167,7 +177,7 @@ get_header(); ?>
                                       </p>
                                       <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                     </div>
-  
+
                                           <?php } else { ?>
 
                         <div class="content-des">
@@ -187,7 +197,7 @@ get_header(); ?>
                                       </p>
                                       <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                     </div>
-                      
+
                                       <?php } ?>
                       </div>
                       <?php
@@ -213,7 +223,18 @@ get_header(); ?>
                   <div class="row">
                     <div class="analysis-list">
                       <?php
-                        $args = array( 'posts_per_page' => 4,'offset'=>2 ,'showposts' => 4, 'category' => 40 );
+                        $args = array(
+                          'posts_per_page' => 4,
+                          'offset'=> 2,
+                          'showposts' => 4,
+                          'tax_query' => array(
+                            array(
+                              'taxonomy' => 'type',
+                              'field' => 'term_id',
+                              'terms' => '8302'
+                            )
+                          )
+                        );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -232,12 +253,12 @@ get_header(); ?>
                             ?>
                             <span class="overlay"></span>
                           </div>
-                          <?php $premium = get_post_meta($post->ID, 'lw_premium', true); 
+                          <?php $premium = get_post_meta($post->ID, 'lw_premium', true);
 
-                                        if($premium == 'yes') { 
+                                        if($premium == 'yes') {
 
                                           if( !is_user_logged_in() ){ ?>
-                                
+
                         <div class="content-des contlocked">
                                         <p class="name-cat">
                                           <?php $category = get_the_category(); ?>
@@ -245,7 +266,7 @@ get_header(); ?>
                                         </p>
                                         <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                                     </div>
-  
+
                                           <?php } else { ?>
 
                         <div class="content-des">
@@ -291,13 +312,30 @@ get_header(); ?>
             <div class="col-lg-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Multimedia</h2>
+                <div id="bx-pager">
+                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                </div>
+                <a href="/media" class="view-more">View more</a>
               </div>
             </div>
             <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
               <div id="slider-multimedia" class="flexslider slider-multimedia">
                 <ul class="slides bxslider">
                   <?php
-                    $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 49 );
+                    $args = array(
+                      'posts_per_page' => 3,
+                      'showposts' => 3,
+                      'tax_query' => array(
+                        array(
+                          'taxonomy' => 'type',
+                          'field' => 'term_id',
+                          'terms' => '8309'
+                        )
+                      )
+
+                    );
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
@@ -321,20 +359,24 @@ get_header(); ?>
                     wp_reset_postdata();
                   ?>
                 </ul>
-                
+
               </div>
-              <div id="bx-pager">
-                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                </div>
-                <a href="/media" class="view-more">View more</a>
             </div>
           </div>
           <div id="carousel-multimedia" class="flexslider carousel-multimedia">
             <ul class="slides">
               <?php
-                $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 49 );
+                $args = array(
+                  'posts_per_page' => 3,
+                  'showposts' => 3,
+                  'tax_query' => array(
+                    array(
+                      'taxonomy' => 'type',
+                      'field' => 'term_id',
+                      'terms' => '8309'
+                    )
+                  )
+                );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
               ?>
@@ -536,8 +578,13 @@ get_header(); ?>
                           <div class="loop-list">
                             <div class="content-image">
                               <?php
-                                if ( has_post_thumbnail() ) {
-                                  the_post_thumbnail();
+                                $background_image = get_post_meta($post->ID,'background_image', TRUE);
+                                if(isset($background_image) && $background_image) {
+                              ?>
+                              <a href="<?php the_permalink();?>">
+                                <img src="<?php echo $background_image;?>" alt="">
+                              </a>
+                              <?php
                                 }
                                 else {
                               ?>

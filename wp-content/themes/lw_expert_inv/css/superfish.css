@@ -56,7 +56,7 @@
 	width: 30px;
 	height: 20px;
 	background: url("../images/svg/Home-icon-yellow.svg") no-repeat;
-	margin: 10px 20px 10px 100px;
+	margin: 10px 20px 10px 70px;
 	display: block;
 }
 .sf-menu {
@@ -119,7 +119,7 @@
 	padding: 7px 18px;
 }
 .sf-navbar ul li a:hover{
-	color: #69b42e;
+	color: #f9ae00;
 }
 .sf-navbar ul ul {
     left: 0;

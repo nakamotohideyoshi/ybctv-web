@@ -56,7 +56,7 @@
 	width: 30px;
 	height: 20px;
 	background: url("../images/svg/Home-icon-blue.svg") no-repeat;
-	margin: 10px 20px 10px 100px;
+	margin: 10px 20px 10px 40px;
 	display: block;
 }
 .sf-menu {
@@ -68,7 +68,7 @@
 }
 .sf-menu a {
 	color: #fff;
-	padding: 7px 30px;
+	padding: 7px 13px;
 	font-size: 18px;
 	text-decoration: none;
 	zoom: 1; /* IE7 */

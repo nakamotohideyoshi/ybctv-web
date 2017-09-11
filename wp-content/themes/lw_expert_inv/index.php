@@ -17,7 +17,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 17 );
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1 );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -48,7 +48,7 @@ get_header(); ?>
                       <div class="row">
                       <?php
                         $count =0;
-                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6, 'category' => 17 );
+                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6);
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post ); $count++;
                           if ($count == 2) {
@@ -95,16 +95,26 @@ get_header(); ?>
                         wp_reset_postdata();
                       ?>
                     </div>
-                    <a class="readmore readmore-new" href="<?php echo get_category_link( "17" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new" href="#">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                   </div>
                 </div>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="new-analysis">
-                  <h2 class="title">PA ANALYSIS</h2>
+                  <h2 class="title">INTERVIEWS</h2>
                     <div class="list-new-analysis">
                     <?php
-                      $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 40 );
+                      $args = array(
+                        'posts_per_page' => 2,
+                        'showposts' => 2,
+                        'tax_query' => array(
+                          array(
+                            'taxonomy' => 'type',
+                            'field' => 'term_id',
+                            'terms' => '1944'
+                          )
+                        )
+                      );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -136,14 +146,14 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
-                  <button id="scroll-more" class="readmore">Scroll to more PA analysis <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="" /></button>
+                  <button id="scroll-more" class="readmore">Scroll to more Interviews <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="" /></button>
                 </div>
               </div>
             </div>
             <div id="box-analysis" class="box-analysis">
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                  <h2>Analysis</h2>
+                  <h2>Interviews</h2>
                   <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
                     <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
                   </div>
@@ -153,7 +163,18 @@ get_header(); ?>
                   <div class="row">
                     <div class="analysis-list">
                       <?php
-                        $args = array( 'posts_per_page' => 4,'offset'=>2 ,'showposts' => 4, 'category' => 40 );
+                        $args = array(
+                          'posts_per_page' => 4,
+                          'offset' => 2,
+                          'showposts' => 4,
+                          'tax_query' => array(
+                            array(
+                              'taxonomy' => 'type',
+                              'field' => 'term_id',
+                              'terms' => '1944'
+                            )
+                          )
+                        );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -204,6 +225,12 @@ get_header(); ?>
             <div class="col-lg-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Multimedia</h2>
+                <div id="bx-pager">
+                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
+                </div>
+                <a href="/media" class="view-more">View more</a>
               </div>
             </div>
             <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
@@ -234,14 +261,8 @@ get_header(); ?>
                     wp_reset_postdata();
                   ?>
                 </ul>
-                
+
               </div>
-              <div id="bx-pager">
-                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                </div>
-                <a href="/media" class="view-more">View more</a>
             </div>
           </div>
           <div id="carousel-multimedia" class="flexslider carousel-multimedia">
@@ -449,10 +470,14 @@ get_header(); ?>
                           <div class="loop-list">
                             <div class="content-image">
                               <?php
-                                if ( has_post_thumbnail() ) {
-                                  the_post_thumbnail();
-                                }
-                                else {
+                                $background_image = get_post_meta($post->ID,'background_image', TRUE);
+                                if(isset($background_image) && $background_image) {
+                              ?>
+                              <a href="<?php the_permalink();?>">
+                                <img src="<?php echo $background_image;?>" alt="">
+                              </a>
+                              <?php
+                                } else {
                               ?>
                               <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                               <?php
