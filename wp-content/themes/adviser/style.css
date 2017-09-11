@@ -2117,6 +2117,40 @@ form[name="register"] input[type="submit"] {
 	color:#000000;
 }
 
+/* Comments style */
+.commentlist{
+  list-style-type: none;
+}
+.commentlist li{
+    border-bottom: solid 1px #e2e2e2;
+}
+.CommentTitle, .comment-reply-title{
+  font-family: Kommissar;
+    font-weight: bold;
+    font-size: 24px;
+    color: #3f701b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.comment-reply-title a{
+  font-size:14px;
+  font-weight: normal;
+  letter-spacing: 0;
+    text-transform: none;
+}
+.comment{
+  font-size: 14px;
+  margin-top: 15px;
+    margin-bottom: 15px;
+}
+.comment-content .fn, .comment-edit-link, .comment-reply-link, #cancel-comment-reply-link{
+  color: #69b42e;
+}
+.comments-datetime{
+  color: #7d7d7d;
+}
+
+
 @media (min-width: 1440px) {
     .container{
         width: 1368px;
