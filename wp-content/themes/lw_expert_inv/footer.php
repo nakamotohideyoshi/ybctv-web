@@ -61,9 +61,9 @@
                         <?php if ( function_exists('cn_social_icon') ) echo cn_social_icon(); ?>
                     </div>
                     <div class="footer_connect">
-                    <h2>Portfolio Adviser</h2>
+                    <h2>Expert Investor</h2>
                     <p>Published by Last Word Media (UK) Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) <?php echo date('Y'); ?>. All rights reserved. Company Reg. No. 05573633. VAT. No. 872 411 728.&nbsp;ISSN 2397-284X</p>
-                    <p>Portfolio Adviser is a monthly news magazine and daily news web site aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Portfolio Adviser.</p>
+                    <p>Expert Investor is a monthly news magazine and daily news web site aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Expert Investor.</p>
                     <!---->
                 </div>
                 </div>
