@@ -1,0 +1,30 @@
+{
+  "name": "react-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "font-awesome": "^4.7.0",
+    "guid": "0.0.12",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "random-string": "^0.2.0",
+    "react": "^15.6.1",
+    "react-addons-update": "^15.6.0",
+    "react-dnd": "^2.4.0",
+    "react-dnd-html5-backend": "^2.4.1",
+    "react-dom": "^15.6.1",
+    "react-grid-gallery": "^0.4.2",
+    "react-tinymce": "^0.6.0",
+    "summernote": "^0.8.7"
+  },
+  "devDependencies": {
+    "react-scripts": "1.0.11"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

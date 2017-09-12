@@ -1,0 +1,510 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />
+		<title>Expert Investor</title>
+
+		<style type="text/css">
+			* {
+				padding: 0px;
+				line-height: normal;
+			}
+			a {
+				color: #f2a900;
+			}
+			.static_content a {
+    			color: #000000;
+			}
+			img {
+				border: none;
+			}
+			.ReadMsgBody {
+				width: 100%;
+				background-color: #ffffff;
+			}
+			.ExternalClass {
+				width: 100%;
+				background-color: #ffffff;
+			}
+
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+				line-height: 100%;
+			}
+			body[yahoo] .container p {
+    			margin: 0px;
+			}
+			body {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				-webkit-font-smoothing: antialiased;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			table {
+				border-collapse: collapse;
+				table-layout: fixed;
+			}
+			.menu td a {
+				color: #fff;
+				text-decoration: none;
+				font-size: 12px;
+			}
+
+			.subscribe a:hover {
+				color: #fff !important;
+			}
+			img {
+				max-width: 100%;
+			}
+			@media only screen and (max-width: 749px) {
+				body[yahoo] .deviceWidth {
+					width: 620px !important;
+				}
+				body[yahoo] .email_send td:first-child {
+					width: 40% !important;
+				}
+				body[yahoo] .email_send td:last-child {
+					width: 60% !important;
+				}
+				body[yahoo] .footer_content {
+					width: 99.9% !important;
+				}
+
+				body[yahoo] .device_innerblock, body[yahoo] .device_linked {
+					width: 100% !important;
+				}
+
+				body[yahoo] .container {
+   				 width: 100% !important;
+				}
+				body[yahoo] .container_sub.no_container {
+				  width: 100%!important;
+				}
+				body[yahoo] .footer_block {
+					width: 33.33% !important;
+				}
+				body[yahoo] .linked:first-child {
+					width: 82% !important;
+				}
+				body[yahoo] .linked:last-child {
+					width: 18% !important;
+				}
+				body[yahoo] .header-block {
+					width: 100% !important;
+				}
+				body[yahoo] .header-bg-block {
+					width: 100% !important;
+				}
+				body[yahoo] .more_news {
+					width: 150px !important;
+				}
+				body[yahoo] .more_news td {
+					text-align: center !important;
+				}
+				body[yahoo] .footer {
+					padding: 20px !important;
+				}
+
+			}
+			@media only screen and (max-width: 640px) {
+				body[yahoo] .deviceWidth {
+					width: 580px !important;
+				}
+				body[yahoo] .header-block {
+					width: 100% !important;
+				}
+				body[yahoo] .header-bg-block {
+					width: 100% !important;
+				}
+
+			}
+			@media only screen and (max-width: 600px) {
+				body[yahoo] .deviceWidth {
+					width: 540px !important;
+				}
+				body[yahoo] .header-block {
+					width: 100% !important;
+				}
+				body[yahoo] .header-bg-block {
+					width: 100% !important;
+				}
+			}
+			@media only screen and (max-width: 560px) {
+				body[yahoo] .deviceWidth {
+					width: 460px !important;
+				}
+				body[yahoo] .linked:first-child {
+					width: 71% !important;
+				}
+				body[yahoo] .linked:last-child {
+					width: 29% !important;
+				}
+				body[yahoo] .container {
+					width: 100% !important;
+				}
+				body[yahoo] .footer_block {
+					width: 50% !important;
+				}
+
+				body[yahoo] .footer_block tr:first-child td:first-child {
+					padding-left: 0px !important;
+					padding-right: 0px !important;
+				}
+				body[yahoo] .container:first-child {
+					width: 100% !important;
+				}
+				body[yahoo] .container:last-child {
+					width: 100% !important;
+				}
+				body[yahoo] .header-block {
+					width: 100% !important;
+				}
+				body[yahoo] .header-bg-block,body[yahoo] .footer_last   {
+					width: 100% !important;
+				}
+				body[yahoo] .footer_block tr:first-child table.more td {
+    				padding-left: 10px!important;
+				}
+			}
+			@media only screen and (max-width: 479px) {
+				body[yahoo] .deviceWidth {
+					width: 96% !important;
+					font-size: 14px !important;
+				}
+
+				body[yahoo] .email_send td:first-child, body[yahoo] .email_send td:last-child {
+					width: 50% !important;
+				}
+
+				body[yahoo] .linked:first-child {
+					width: 100% !important;
+				}
+				body[yahoo] .linked:last-child {
+					width: 100% !important;
+					text-align: center;
+					padding: 0px !important;
+				}
+				body[yahoo] .linked:last-child td {
+					text-align: center;
+				}
+
+				body[yahoo] .header-block {
+					width: 100% !important;
+				}
+				body[yahoo] .footer_block {
+					width: 100% !important;
+				}
+				body[yahoo] .container_sub {
+    				float: left;
+    				width: 100%;
+				}
+				body[yahoo] .container_sub:first-child {
+    				padding: 20px 0px 0px 0px!important;
+				}
+				body[yahoo] .footer_block tr:first-child .more td{padding:3px 10px 3px 10px!important;}
+			}
+			.static_content p, .static_content em, .static_content ul li, .static_content ol li {
+				line-height: 20px;
+			}
+			.static_content ul, .static_content ol {
+				list-style-position: outside;
+				margin-left: 15px;
+			}
+		</style>
+	</head>
+   <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="background:#E6E6E6">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" align="center" style="border-collapse: collapse;table-layout: fixed;mso-table-lspace:0pt; mso-table-rspace:0pt; border-spacing:0px;">
+         	<tr>
+				<td>
+					<table cellspacing="0" cellpadding="0" border="0" align="center" width="750" class="deviceWidth">
+						<tr>
+							<td>
+								<table align="center" class="email_send" width="100%"  cellspacing="0" cellpadding="0" >
+									<tr>
+										<td width="280" style="padding:8px 10px 8px 10px;font-family: Arial, Helvetica, sans-serif;font-size: 11px;" align="left"><a href="http://www.expertinvestoreurope.com/" style="color:#000000;text-decoration:none;">Expert Investor Newsletter</a></td>
+										<td width="398" style="padding:8px 10px 8px 10px;font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #2D2C28; " align="right">If you are unable to view this email, <a style="color:#000;text-decoration:none;" href="[*link.webversion_url*]">click here</a></td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+            	<td valign="top">
+	            	<table width="750" cellspacing="0" cellpadding="0" align="center" style="border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-top:1px solid #CCCCCC;" class="deviceWidth">
+	            		<tr>
+	            			<td bgcolor="#000000" align="bottom" style="padding:10px 9px 8px 9px;"><a href="http://www.expertinvestoreurope.com/"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_logo.png" style="max-width: 100%" alt="Expert Investor"></a></td>
+						</tr>
+							<tr>
+								<td bgcolor="#ffffff" align="center" style=" vertical-align: bottom;padding:10px 0px 0px 0px;">
+									
+								</td>
+							</tr>
+					</table>
+		                <table class="deviceWidth" width="750" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;">
+			            	<tr>
+			                	<td>
+			                        <table align="center" width="100%" cellspacing="0" cellpadding="0">
+				                    	<tr>
+				                        	<td>
+				                        		<table width="748" class="container" align="left">
+	<tr>
+		<td style="padding:0px 10px 0px 9px;vertical-align: top;margin:0px;">
+		<table width="100%">
+			<tr>
+				<td style="color:#f2a900;font-size: 22px;font-weight: normal;border-bottom: 1px solid #e5eaee;padding: 10px 0px 3px 0px;font-family:Georgia"><font face="Georgia">Breaking news</font></td>
+			</tr>
+					<tr>
+						<td >
+						<table width="100%" style="border-bottom: 1px solid #e5eaee;">
+							<tr>
+												<td class="container_sub" style="padding:20px 10px 14px 0px;vertical-align: top;" width="32%">
+													 <a href="http://www.expertinvestoreurope.com/news/1037526/analysis-clutter-funds"><img src="http://www.expertinvestoreurope.com/w-images/92b07558-503e-4b83-8f38-8d535243225e/2/bigsmallGettyImages1711067441-219x122.jpg" style="max-width:100%;" title="" /></a>
+											    </td>
+									<td class="container_sub" style="vertical-align: top;padding:13px 0px 14px;" width="68%">
+										<table width="100%">
+												<tr>
+													<td style="padding: 0px 0px 7px;"> <a href="http://www.expertinvestoreurope.com/news/1037526/analysis-clutter-funds" style="font-size: 14px;font-family: Arial, Helvetica, sans-serif;	text-decoration: none;" title="ANALYSIS: Time to clear out the clutter of small funds"><font face="Arial, Helvetica, sans-serif;">ANALYSIS: Time to clear out the clutter of small funds</font></a> </td>
+												</tr>
+												<tr>
+													<td style="color: #2c2c2c;font-size: 14px;font-family: Arial, Helvetica, sans-serif;line-height: 20px;"><font face="Arial, Helvetica, sans-serif;"> Small and expensive. Are funds that have failed to gather at least £10m (€11m) in... </font></td>
+												</tr>
+										</table>
+									</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+		</table>
+	</td>
+</tr>
+</table>
+				                        	</td>
+				                        </tr>
+											<tr>
+												<td style="padding:18px 9px 18px 9px;">
+													<table  width="728" align="center" style=" border:1px solid #A1A1A1;" class="device_linked">
+														<tr>
+															<td>
+																<table class="static_content linked" style="width: 728px;" align="left">
+																	<tr>
+																		<td style="padding:14px;">
+																				<table style="width: 100%;">
+<tbody>
+<tr>
+<td style="color: #2a2627; font-family: Arial, Helvetica, sans-serif; font-size: 11px; padding-bottom: 5px; font-weight: bold;">Expert Investor Europe on Linkedin</td>
+</tr>
+<tr>
+<td style="color: #3b3b3b; font-size: 12px; line-height: 26px; font-family: Arial, Helvetica, sans-serif;">Do you want to be part of our growing community for global Tm-sights;views-and-opinions1irom-across-the-ﬁnanciaimarkets qoin in the conversation by visiting Expert Investor Europe</td>
+</tr>
+</tbody>
+</table>
+																		</td>
+																	</tr>
+																</table>
+															</td>
+														</tr>
+													</table>
+												</td>
+											</tr>
+				                           <tr>
+	<td style="padding:0px 10px;">
+	<table width="728" align="center" class="device_innerblock">
+		<tr>
+			<td align="left" style="padding:0px 6px 6px 6px;  color: #000000;font-family:Arial, Helvetica, sans-serif;font-size: 18px;font-weight:bold "><font face="Arial, Helvetica, sans-serif;">Other stories from Last Word</font></td>
+		</tr>
+	</table></td>
+</tr>
+<tr>
+	<td style="padding:0px 10px 0px 10px;">
+	<table width="728" align="center" class="device_innerblock">
+		<tr>
+			<td>
+				<div class="section_content component_block" id="component_718ab570-2cbc-4ab9-b7a9-0e8c52ab225b">
+<div class ="inner_section_content">
+	 <table align="left" class="footer_block" width="235">
+	<tr>
+		<td style="padding:10px 10px 10px 10px;">
+		<table width="100%">
+			<tr>
+				<td align="left" style="padding: 0px 0px 10px 0px">
+					<a href="http://www.portfolio-adviser.com" target="_blank"><img alt="Portfolio Adviser" src="http://www.expertinvestoreurope.com/images/pa_newsletter.png" title="Portfolio Adviser" /></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.portfolio-adviser.com/news/1037547/murky-future-uk-companies-despite-bumper-profits" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Murky future for UK companies despite bumper profits"><font face="Arial, Helvetica, sans-serif;">Murky future for UK companies...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.portfolio-adviser.com/analysis/1037545/pa-analysis-disappointing-sanditon" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="PA ANALYSIS: What’s going on at &#39;disappointing&#39; Sanditon? "><font face="Arial, Helvetica, sans-serif;">PA ANALYSIS: What’s going...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" style="padding: 10px 0px 0px 0px;">
+				<table align="left" width="75" class="more">
+					<tr>
+						<td style="padding:3px 10px 3px 10px;" align="left" bgcolor="#d4d4d4" ><a class="more_from" href="http://www.portfolio-adviser.com" target="_blank" style="color:#000000;text-decoration: none;line-height: 14px;font-size: 12px;font-family:  Arial, Helvetica, sans-serif;font-weight:bold "><font face="Arial, Helvetica, sans-serif;">More Info</font></a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+</div>
+				<div class="section_content component_block" id="component_dda127db-bd7e-4399-8c75-1500c688370b">
+<div class ="inner_section_content">
+	 <table align="left" class="footer_block" width="235">
+	<tr>
+		<td style="padding:10px 0px 10px 0px;">
+		<table width="100%">
+			<tr>
+				<td align="left" style="padding: 0px 0px 10px 0px">
+					<a href="http://www.fundselectorasia.com" target="_blank"><img alt="Fund Selector Asia" src="http://www.expertinvestoreurope.com/images/fsa_newsletter.jpg" title="Fund Selector Asia" /></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">	
+					<a href="http://www.fundselectorasia.com/news/1037527/malaysia-joins-fintech-race" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Malaysia joins fintech race"><font face="Arial, Helvetica, sans-serif;">Malaysia joins fintech race...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">	
+					<a href="http://www.fundselectorasia.com/news/1037455/look-malaysias-islamic-funds" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="A look at Malaysia&#39;s Islamic funds"><font face="Arial, Helvetica, sans-serif;">A look at Malaysia&#39;s Islamic...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" style="padding: 10px 0px 0px 0px;">
+				<table align="left" width="75" class="more">
+					<tr>
+						<td style="padding:3px 10px 3px 10px;" align="left" bgcolor="#d4d4d4" ><a class="more_from" href="http://www.fundselectorasia.com" target="_blank" style="color:#000000;text-decoration: none;line-height: 14px;font-size: 12px;font-family:  Arial, Helvetica, sans-serif;font-weight:bold "><font face="Arial, Helvetica, sans-serif;">More Info</font></a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+</div>
+				<div class="section_content component_block" id="component_aaaf6c07-a96c-409e-a6f1-77b7bcf5ba4f">
+<div class ="inner_section_content">
+	 <table width="235" align="right" class="footer_block footer_last">
+	<tr>
+		<td style="padding:10px 0px 10px 0px;">
+		<table align="right" width="100%">
+			<tr>
+				<td align="left" style=" padding: 0px 0px 10px 0px">
+					<a href="http://www.international-adviser.com" target="_blank"><img alt="International Adviser" src="http://www.expertinvestoreurope.com/images/ia_newsletter.png" title="International Adviser" /></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.international-adviser.com/news/1037541/lloyds-bank-expand-pensions-wealth-management" style="color:#000000;	text-decoration: none;font-family:  Arial, Helvetica, sans-serif" target="_blank" title="Lloyds Bank may expand into pensions and wealth management"><font face="Arial, Helvetica, sans-serif;">Lloyds Bank may expand into...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.international-adviser.com/news/1037540/allfunds-nordics-office" style="color:#000000;	text-decoration: none;font-family:  Arial, Helvetica, sans-serif" target="_blank" title="Allfunds to open Nordics office"><font face="Arial, Helvetica, sans-serif;">Allfunds to open Nordics...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" style="padding: 10px 0px 0px 0px;">
+				<table align="left" width="75" class="more">
+					<tr>
+						<td style="padding:3px 10px 3px 10px;" align="left" bgcolor="#d4d4d4" ><a class="more_from" href="http://www.international-adviser.com/" target="_blank" style="color:#000000;text-decoration: none;line-height: 14px;font-size: 12px;font-family:  Arial, Helvetica, sans-serif;font-weight:bold"><font face="Arial, Helvetica, sans-serif;">More Info</font></a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+</div>
+			</td>
+		</tr>
+	</table></td>
+</tr>
+				                           <tr>
+												<td style="padding:0px 9px; 0px 9px">
+													<table align="center" width="728" class="device_innerblock">
+															<tr>
+																<td style="padding:10px 0px 10px 0px" align="center">
+																	
+																</td>
+															</tr>
+													</table>
+												</td>
+											</tr>
+				                           <tr>
+				                              <td style="padding: 15px 15px 15px 15px;" bgcolor="#000000" class="footer">
+												<table width="100%" align="left" class="footer_content">
+													<tr>
+														<td style="padding:0px 0px 10px 0px" align="left" valign="top">
+															<table align="left" style="margin: 0px" width="140" class="social_icon">
+																<tr>
+																	<td align="left"><a href="https://plus.google.com/+LastWordMediaLondon/" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter-g.jpg" alt="gp" style="display:block"/></a></td>
+																	<td align="left"><a href="http://www.expertinvestoreurope.com/feed/rss" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter-r.jpg" alt="rss" style="display:block " /></a></td>
+																	<td align="left"><a href="https://twitter.com/Expert_Investor" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter-t.jpg"  alt="tw" style="display:block" /></a></td>
+																	<td align="left"><a href="https://www.facebook.com/LastWordMedia" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter-f.jpg"  alt="fb" style="display:block"/></a></td>
+																	<td align="left"><a href="https://www.linkedin.com/company/expert-investor-europe" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter-i.jpg"  alt="in" style="display:block"/></a></td>
+																</tr>
+															</table>
+														</td>
+				                                    </tr>
+				                                    <tr>
+				                                   		<td style="color:#fff;font-family:Arial, Helvetica, sans-serif;font-size:11px;	text-decoration: none;font-weight: bold;padding:0px 0px 10px 0px;">View the latest digital edition by downloading our magazine app available at:</td>
+				                                   	</tr>
+				                                    <tr>
+				                                    	<td style="padding:0px 0px 5px 0px" align="left" valign="top">
+				                                    		<table align="left" style="margin: 0px" class="social_icon" width="265">
+				                                    			<tr>
+				                                    				<td align="left"><a href="https://itunes.apple.com/us/app/expert-investor-europe-for/id979169105?mt=8" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/appstore.png" alt="img" style="display:block;max-width:100%;"/></a></td>
+				                                    				<td align="right"><a href="https://play.google.com/store/apps/details?id=com.lastwordmedia.eie" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/googleplay.png" alt="img" style="display:block;max-width:100%;"/></a></td>
+				                                    			</tr>
+				                                    		</table>
+				                                    	</td>
+				                                   	<tr>
+				                                   		<td>
+				                                   			<table width="100%">
+				                                   				<tr>
+				                                   					<td class="footer_left" valign="bottom" align="left" width="80%" style="padding:0px 20px 0px 0px">
+				                                   						<table width="100%">
+				                                   							<tr>
+				                                   								<td style="color:#fff;font-family:Arial, Helvetica, sans-serif;font-size:11px;	text-decoration: none;font-weight: bold;padding:0px 0px 3px 0px;"> If you wish to unsubscribe from this email, <a href="[*link.prefill_url(1)*]" style="color:#FFFFFF;text-decoration: none;font-family: Arial, Helvetica, sans-serif">please click here</a></td>
+				                                   							</tr>
+				                                   							<tr>
+																				<td style="padding:0px 0px 10px 0px; color:#fff;font-family:Arial, Helvetica, sans-serif;font-size:11px;	text-decoration: none;font-weight: bold;">Do not reply to this email.</td>
+																			</tr>
+																			<tr>
+																				<td style="padding:0px 0px 10px 0px; color:#C2C2C2;font-family:Arial, Helvetica, sans-serif;font-size:11px;"><font face="Arial, Helvetica, sans-serif;"><a href="http://www.expertinvestoreurope.com/static/privacy-policy" style="color:#FFFFFF;text-decoration: none;font-family: Arial, Helvetica, sans-serif">Privacy policy </a> | <a href="http://www.expertinvestoreurope.com/static/terms-conditions" target="_blank" style="color:#FFFFFF;text-decoration: none;font-family: Arial, Helvetica, sans-serif"> Terms &#38; conditions.</a></font></td>
+																			</tr>
+																			<tr>
+																				<td style="color:#fff;font-family: Arial, Helvetica, sans-serif;font-size:10px;padding:0px 0px 3px 0px;"><font face="Arial, Helvetica, sans-serif;"> Published by Last Word Media Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) 2017.</font></td>
+																			</tr>
+																			<tr>
+																				<td style="color:#fff;font-family:Arial, Helvetica, sans-serif;font-size:10px;"><font face="Arial, Helvetica, sans-serif;">All rights reserved. Company Reg. No. 05573633. VAT. No. 672 411 728.</font></td>
+																			</tr>
+				                                						 </table>
+				                              						</td>
+				                              						<td class="footer_left" valign="bottom" align="right" width="20%"><a href="http://www.lastwordmedia.com" target="_blank"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_lastword1.png" alt="logo" style="max-width: 100%;display:block" /></a></td>
+				                          						 </tr>
+			                        						</table>
+			                     						</td>
+			                  						</tr>
+		               							</table>
+		               						</td>
+		       							</tr>
+               						</table>
+            					</td>
+         					</tr>
+     				</table>
+     			</td>
+     		</tr>
+		</table>     				
+   	</body>
+</html>

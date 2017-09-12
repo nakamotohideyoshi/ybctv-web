@@ -1,0 +1,712 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />
+		<title>Fund Selector Asia</title>
+
+		<style type="text/css">
+			* {
+				padding: 0px;
+				line-height: normal;
+			}
+			img {
+				border: none;
+			}
+			td {
+				color: #d50032!important; 
+			}
+   			p,ol li,ul li	{
+   				color:#3b3b3b!important;
+   			}
+			p {
+				margin: 0px;
+				padding: 0px;
+			}
+			a	{
+				color:#000000!important;
+			}
+			.static_content a {
+    			color: #000000!important;
+			}
+			.ReadMsgBody {
+				width: 100%;
+				background-color: #ffffff;
+			}
+			.ExternalClass {
+				width: 100%;
+				background-color: #ffffff;
+			}
+			body {
+				width: 100%;
+				margin: 0;
+				padding: 0;
+				-webkit-font-smoothing: antialiased;
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			table {
+				border-collapse: collapse;
+				table-layout: fixed;
+			}
+			.menu td a {
+				color: #fff;
+				text-decoration: none;
+				font-size: 12px;
+			}
+
+			img {
+				max-width: 100%;
+			}
+			body[yahoo] .chart_block td, body[yahoo] .chart_block th {
+				border: 1px solid #ccc;
+				padding: 5px;
+			}
+			body[yahoo] .chart_block th {
+				word-wrap: break-word;
+			}
+			body[yahoo] .fund_linked:first-child {
+				text-align: center;
+			}
+			@media only screen and (max-width: 749px) {
+				body[yahoo] .deviceWidth {
+					width: 620px !important;
+				}
+				body[yahoo] .email_send td:first-child {
+					width: 40% !important;
+				}
+				body[yahoo] .email_send td:last-child {
+					width: 60% !important;
+				}
+				body[yahoo] .footer_content {
+					width: 99.9% !important;
+				}
+
+				body[yahoo] .device_innerblock, body[yahoo] .device_linked,body[yahoo] .header-bg-block,body[yahoo] .header-block,body[yahoo] .sponser{
+					width: 100% !important;
+				}
+				body[yahoo] .social_icon {
+					width: 30% !important;
+				}
+				body[yahoo] .container:first-child {
+					width: 55% !important;
+				}
+				body[yahoo] .container:last-child {
+					width: 45% !important;
+				}
+
+				body[yahoo] .footer_block {
+					width: 33.33% !important;
+				}
+				body[yahoo] .linked:first-child {
+					width: 82% !important;
+				}
+				body[yahoo] .linked:last-child {
+					width: 18% !important;
+				}
+				
+				
+				body[yahoo] .more_news {
+					width: 150px !important;
+				}
+				body[yahoo] .more_news td {
+					text-align: center !important;
+				}
+				body[yahoo] .fund_linked:first-child {
+					width: 55% !important;
+				}
+				body[yahoo] .fund_linked:last-child {
+					width: 40% !important;
+				}
+				body[yahoo] .common_left:first-child {
+					width: 60% !important;
+				}
+				body[yahoo] .common_left:last-child {
+					width: 40% !important;
+				}
+			}
+			@media only screen and (max-width: 640px) {
+				body[yahoo] .deviceWidth {
+					width: 580px !important;
+				}
+				body[yahoo] .header-block,body[yahoo] .container,body[yahoo] .header-bg-block, body[yahoo] .chart_block,body[yahoo] .container:first-child,body[yahoo] .container:last-child{
+					width: 100% !important;
+				}
+				
+
+			}
+			@media only screen and (max-width: 600px) {
+				body[yahoo] .deviceWidth {
+					width: 540px !important;
+				}
+				body[yahoo] .header-block,body[yahoo] .header-bg-block {
+					width: 100% !important;
+				}
+				
+			}
+			@media only screen and (max-width: 560px) {
+				body[yahoo] .deviceWidth {
+					width: 460px !important;
+				}
+				body[yahoo] .linked:first-child {
+					width: 71% !important;
+				}
+				body[yahoo] .linked:last-child {
+					width: 29% !important;
+				}
+				
+				 
+				body[yahoo] .social_icon {
+					width: 35% !important;
+				}
+				body[yahoo] .footer_block tr:first-child td:first-child {
+					padding-left: 0px !important;
+					padding-right: 0px !important;
+				}
+				
+				body[yahoo] .header-bg-block, body[yahoo] .fund_linked:first-child, body[yahoo] .fund_linked:last-child,body[yahoo] .header-block,body[yahoo] .container,body[yahoo] .footer_block  {
+					width: 100% !important;
+				}
+				body[yahoo] .full_wrap {
+					width: 100%;
+					display: inline-block;
+				}
+				.container_sub {
+					float: left;
+					width: 100%;
+				}
+				.container_sub:first-child {
+					padding: 20px 0px 0px !important;
+				}
+
+			}
+			@media only screen and (max-width: 479px) {
+				body[yahoo] .deviceWidth {
+					width: 96% !important;
+					font-size: 14px !important;
+				}
+
+				body[yahoo] .email_send td:first-child, body[yahoo] .email_send td:last-child, body[yahoo] .social_icon {
+					width: 50% !important;
+				}
+
+				body[yahoo] .linked:last-child {
+					width: 100% !important;
+					text-align: center;
+					padding: 0px !important;
+				}
+				body[yahoo] .linked:last-child td {
+					text-align: center;
+				}
+
+				body[yahoo] .header-block, body[yahoo] .linked:first-child, body[yahoo] .common_left,body[yahoo] .common_left:last-child, body[yahoo] .common_left:first-child {
+					width: 100% !important;
+				}
+
+				body[yahoo] .fund_linked:last-child  tr:first-child td:first-child {
+					padding-top: 15px;
+				}
+				body[yahoo] .common_left:last-child td {
+					text-align: center !important;
+					padding: 10px 0px 0px 0px !important;
+				}
+			}
+			.static_content p,.static_content em ,.static_content ul li, .static_content ol li{mso-line-height-rule:exactly;line-height:20px;}
+			.static_content ul, .static_content ol {list-style-position: outside;margin-left: 15px;}
+			.device_linked p {line-height: 20px;}
+		</style>
+		<!--[if gte mso 9]>
+       		<style type="text/css">
+				.deviceWidth td{color:#d50032;}
+				td.anchor_color{color:#d50032;}
+                a{color:#000000;}
+                td.container_sub a{color:#d50032;}
+                table.subscribe a{color:#ffffff;}
+                .container a{color:#d50032;}
+ 				p,ol li,ul li{color:#3b3b3b;}
+				td.white{color:#ffffff;}
+				td.black{color:#000000;}
+				td.container_td{color:#2c2c2c;}
+				td.asset_td{color:#090909;}
+                td.footer_left a{color:#ffffff;}
+       		</style>
+		<![endif]-->
+	</head>
+	<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" yahoo="fix" style="background:#e0e5ff">
+		<table width="100%" border="0" cellpadding="0" cellspacing="0" align="center">
+			<tr>
+				<td>
+				<table cellspacing="0" cellpadding="0" border="0" align="center" width="750" class="deviceWidth" style="margin:0px auto">
+					<tr>
+						<td>
+						<table align="center" class="email_send" width="100%"  cellspacing="0" cellpadding="0" >
+							<tr>
+								<td width="280" style="padding:8px 10px;font-family: Arial, Verdana, sans-serif;font-size: 11px;" align="left"><a href="http://www.fundselectorasia.com/" style="color:#000000;">Fund Selector Asia Newsletter</a></td>
+								<td width="398" class="black" style="padding:8px 10px 8px 10px;font-family: Arial, Helvetica, sans-serif;font-size: 11px;color: #000000!important; " align="right">If you are unable to view this email, <a style="color:#000;text-decoration:none;" href="[*link.webversion_url*]">click here</a></td>
+
+							</tr>
+						</table></td>
+					</tr>
+				</table></td>
+			</tr>
+			<tr>
+				<td valign="top">
+				<table cellspacing="0" cellpadding="0" align="center" width="750" bgcolor="#ffffff" class="deviceWidth" style="border-left:1px solid #CCCCCC;border-right:1px solid #CCCCCC;border-top:1px solid #CCCCCC;margin:0px auto;">
+					<tr>
+						<td>
+						<table cellspacing="0" cellpadding="0" border="0" align="center" width="748" class="deviceWidth">
+							<tr>
+								<td bgcolor="#000000" align="bottom" style="padding:10px 9px 8px 9px;">
+									<a href="http://www.fundselectorasia.com/"><img src="http://www.fundselectorasia.com//images/newsletter_logo.png" style="max-width: 100%" alt="Fund Selector Asia"></a>
+								</td>
+								<td bgcolor="#000000" align="right" style="padding:10px 9px 8px 9px;">
+									<a href="http://www.fundselectorasia.com/"><img src="http://www.fundselectorasia.com//images/chinanewsletter_right_logo.png" style="max-width: 100%" alt="Fund Selector Asia"></a>
+								</td>
+							</tr>
+
+						</table>
+						<table width="748" cellspacing="0" cellpadding="0" border="0" align="center" class="deviceWidth">
+								<tr>
+									<td style=" vertical-align: bottom;padding:10px 0px 0px 0px;" align="center">
+									<a href="http://www.fundselectorasia.com/static/fsa-alternatives-forums-hong-kong-singapore-2017" style="vertical-align: bottom;max-width:100%" title="Newsletter_Chinainsights_Top_Leaderboard"><img alt="Newsletter_Chinainsights_Top_Leaderboard" src="http://www.fundselectorasia.com/w-images/f15e0071-3493-4cf2-84bf-04fc51d8a42c/2/FSAAlts17LeaderboardV2-728x90.jpg" /></a>
+									</td>
+								</tr>
+						</table>
+						<table width="748" cellspacing="0" cellpadding="0" align="center"  class="deviceWidth">
+							<tr>
+								<td>
+								<table align="center" width="100%" cellspacing="0" cellpadding="0">
+									<tr>
+										<td>
+			                                	<table width="405" class="container" align="left">
+			                                       				<tr>
+			<td style="padding:0px 10px 0px 9px;vertical-align: top;margin:0px;">
+				<table width="100%">
+					<tbody>
+						<tr>
+							<td class="black" style="color:#000000!important;font-size: 22px;font-weight: normal;border-bottom: 1px solid #e5eaee;padding: 10px 0px 3px 0px;font-family:Georgia"><font face="Georgia">
+								Latest China news
+								</font></td>
+						</tr>
+							<tr>
+								 <td >
+									<table width="100%" style="border-bottom: 1px solid #e5eaee;">
+										<tbody>
+											<tr>
+																<td class="container_sub" style="padding:20px 10px 14px 0px;vertical-align: top;"> 
+																	<a href="http://www.fundselectorasia.com/news/1037711/china-plans-channel-offshore-investment"><img alt="China plans another channel for offshore investment" src="http://www.fundselectorasia.com/w-images/a73d1f44-1953-47f3-83f4-738279a8d0c1/3/GettyImages596065956-219x122.jpg" style="max-width:100%;" title="" /></a>
+																</td>
+															<td class="container_sub" style="vertical-align: top;padding:13px 0px 14px;">
+																<table width="100%">
+																		<tr>
+																			<td style="padding: 0px 0px 7px;"> <a href="http://www.fundselectorasia.com/news/1037711/china-plans-channel-offshore-investment" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;	text-decoration: none;" title="China plans another channel for offshore investment"><font face="Arial, Helvetica, sans-serif">China plans another channel for offshore investment</font></a> </td>
+																		</tr>
+																		<tr>
+																			<td class="container_td" style="color: #2c2c2c!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;line-height: 20px;"><font face="Arial, Helvetica, sans-serif"> The planned QDII2 programme  will allow Chinese investors direct investment in offshore... </font></td>
+																		</tr>
+															  </table>
+														   </td>
+										</tr>
+									</tbody>
+								</table>
+								</td>
+							</tr>
+							<tr>
+								 <td >
+									<table width="100%" style="border-bottom: 1px solid #e5eaee;">
+										<tbody>
+											<tr>
+																<td class="container_sub" style="padding:20px 10px 14px 0px;vertical-align: top;"> 
+																	<a href="http://www.fundselectorasia.com/news/1037713/chinese-bitcoin-firms-putting-client-funds-wmps"><img alt="Are Chinese Bitcoin firms putting client funds in WMPs? " src="http://www.fundselectorasia.com/w-images/ff177d53-f40e-42b2-86ad-c1facbfc05ee/3/GettyImages487829187-219x122.jpg" style="max-width:100%;" title="" /></a>
+																</td>
+															<td class="container_sub" style="vertical-align: top;padding:13px 0px 14px;">
+																<table width="100%">
+																		<tr>
+																			<td style="padding: 0px 0px 7px;"> <a href="http://www.fundselectorasia.com/news/1037713/chinese-bitcoin-firms-putting-client-funds-wmps" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;	text-decoration: none;" title="Are Chinese Bitcoin firms putting client funds in WMPs?"><font face="Arial, Helvetica, sans-serif">Are Chinese Bitcoin firms putting client funds in WMPs? </font></a> </td>
+																		</tr>
+																		<tr>
+																			<td class="container_td" style="color: #2c2c2c!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;line-height: 20px;"><font face="Arial, Helvetica, sans-serif"> Two of China’s biggest Bitcoin exchanges are alleged to have put client money in... </font></td>
+																		</tr>
+															  </table>
+														   </td>
+										</tr>
+									</tbody>
+								</table>
+								</td>
+							</tr>
+							<tr>
+								 <td >
+									<table width="100%" style="border-bottom: 1px solid #e5eaee;">
+										<tbody>
+											<tr>
+																	<td class="container_sub" style="padding:20px 10px 14px 0px;vertical-align: top;"> 
+																		<a href="http://www.fundselectorasia.com/gallery/1036806/china-trumps-chinese-yield"><img alt="China Top Trumps - China equity" src="http://www.fundselectorasia.com/w-images/bbafee2c-1a7c-475b-8c38-f51c4850e4b0/3/fill/CNTopTrumpBOCIPvsZeal-219x122.jpeg" style="max-width:100%;" title="" /></a>
+																	</td>
+															<td class="container_sub" style="vertical-align: top;padding:13px 0px 14px;">
+																<table width="100%">
+																		<tr>
+																			<td style="padding: 0px 0px 7px;"> <a href="http://www.fundselectorasia.com/gallery/1036806/china-trumps-chinese-yield" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;	text-decoration: none;" title="China Top Trumps - China equity"><font face="Arial, Helvetica, sans-serif">China Top Trumps - China equity</font></a> </td>
+																		</tr>
+																		<tr>
+																			<td class="container_td" style="color: #2c2c2c!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;line-height: 20px;"><font face="Arial, Helvetica, sans-serif"> It&#39;s BOCI-Prudential vs Zeal in a quick comparison of two China equity funds. </font></td>
+																		</tr>
+															  </table>
+														   </td>
+										</tr>
+									</tbody>
+								</table>
+								</td>
+							</tr>
+							<tr>
+								 <td >
+									<table width="100%" style="border-bottom: 1px solid #e5eaee;">
+										<tbody>
+											<tr>
+																<td class="container_sub" style="padding:20px 10px 14px 0px;vertical-align: top;"> 
+																	<a href="http://www.fundselectorasia.com/news/1037712/chinas-tech-companies-shape-party"><img alt="Can China&#39;s tech companies shape the Party?" src="http://www.fundselectorasia.com/w-images/1bf6e797-4bf8-44b4-b7ad-e20885f296a2/2/GettyImages496203864-219x122.jpg" style="max-width:100%;" title="" /></a>
+																</td>
+															<td class="container_sub" style="vertical-align: top;padding:13px 0px 14px;">
+																<table width="100%">
+																		<tr>
+																			<td style="padding: 0px 0px 7px;"> <a href="http://www.fundselectorasia.com/news/1037712/chinas-tech-companies-shape-party" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;	text-decoration: none;" title="Can China&#39;s tech companies shape the Party?"><font face="Arial, Helvetica, sans-serif">Can China&#39;s tech companies shape the Party?</font></a> </td>
+																		</tr>
+																		<tr>
+																			<td class="container_td" style="color: #2c2c2c!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;line-height: 20px;"><font face="Arial, Helvetica, sans-serif"> The success of China&#39;s &quot;new economy&quot; presents a challenge to the Chinese Communist... </font></td>
+																		</tr>
+															  </table>
+														   </td>
+										</tr>
+									</tbody>
+								</table>
+								</td>
+							</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+
+			                                       		
+			                                    </table>
+			                                       <table width="320" class="container" align="right">
+		<tr>
+			<td style="padding:10px 9px 0px 10px; vertical-align: top; margin:0px;">
+				<table width="100%">
+					<tr>
+	<td align="center" style="padding:13px 0px 10px 0px;">
+		 <a href="http://www.fundselectorasia.com/static/fsa-alternatives-forums-hong-kong-singapore-2017" title="Newsletter_Chinainsights_Right_MPU"><img alt="Newsletter_Chinainsights_Right_MPU" src="http://www.fundselectorasia.com/w-images/c3ac1968-1e5e-444e-a85b-0a86493a802d/2/FSAAlts17MPU-300x250.jpg" /></a>
+	 </td>
+</tr>
+
+						<tr>
+		<td>
+			<table width="100%">
+					<tr>
+						<td class="black" style="color: #000000!important;font-size: 22px;font-weight: normal;border-bottom: 1px solid #e5eaee;padding: 10px 0px 3px 0px;font-family:Georgia"> 
+							<font face="Georgia">
+								Events
+							</font> 
+						</td>
+					</tr>
+						<tr>
+							<td style="padding: 13px 0px 9px;">
+								<a href="http://www.fundselectorasia.com/static/fsa-events-2016" style="color:#d50032!important;font-size: 14px;font-family:Arial, Helvetica, sans-serif;text-decoration: none;" target="_blank"><font face="Arial, Helvetica, sans-serif;">FSA Events 2017</font></a>
+							</td>
+						</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table width="100%">
+				<tbody>
+						<tr>
+							<td style="padding:7px 0px 7px;">
+								<a href="http://www.fundselectorasia.com/static/fsa-income-forums-singapore-hong-kong-2017" style="color:#d50032!important;font-size: 14px;font-family:Arial, Helvetica, sans-serif;text-decoration: none;" target="_blank"><font face="Arial, Helvetica, sans-serif;">FSA Income Forums -- Singapore &amp; Hong Kong 2017</font></a>
+							</td>
+						</tr>
+			          <tr>
+			             <td class="container_td" style="font-family:Arial, Helvetica, sans-serif;font-size: 14px;padding:0px 0px 2px 0px;color: #2c2c2c!important;">
+			             	<font face="Arial, Helvetica, sans-serif;">
+			             		<p>Singapore, Tuesday 21 February</p>
+<p>Hong Kong, Thursday 23 February</p>
+			             	</font>
+			             </td>
+			          </tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td style="padding:0px 0px 14px 0px;">
+			<table width="100%">
+				<tbody>
+			          <tr>
+			             <td style="padding:7px 0px 7px 0px">
+			             	<a href="http://www.fundselectorasia.com/static/fsa-investment-forum-bangkok-2017" style="color:#d50032!important;font-size: 14px;font-family:Arial, Helvetica, sans-serif;text-decoration: none;" target="_blank"><font face="Arial, Helvetica, sans-serif;">FSA Investment Forum Bangkok 2017</font></a>
+			             </td>
+			          </tr>
+				          <tr>
+				             <td class="container_td" style="font-family:Arial, Helvetica, sans-serif;font-size: 14px;padding:0px 0px 2px 0px;color: #2c2c2c!important;">
+				             	<font face="Arial, Helvetica, sans-serif;">
+				             		<p>Tuesday 21 March</p>
+				             	</font>
+				             </td>
+				          </tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+
+						<tr>
+		<td>
+			<table width="100%">
+				<tbody>
+					<tr>
+						<td class="black" style="color: #000000!important;font-size: 22px;font-weight: normal;border-bottom: 1px solid #e5eaee;padding: 10px 0px 3px 0px;font-family:Georgia"> 
+							<font face="Georgia">
+								More news
+							</font> 
+						</td>
+					</tr>
+					<tr>
+							<td style="padding:14px 0px 7px;">
+								<a href="http://www.fundselectorasia.com/news/1037692/strong-inflows-em-passive-funds-pressure-active-fees" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;text-decoration: none;" title="Strong EM passive fund inflows pressure active fees"><font face="Arial, Helvetica, sans-serif">Strong EM passive fund inflows pressure active fees</font></a>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:0px 0px 7px;">
+								<a href="http://www.fundselectorasia.com/news/1037691/thailands-robotics-fund-launches" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;text-decoration: none;" title="Thailand&#39;s first robotics fund launches"><font face="Arial, Helvetica, sans-serif">Thailand&#39;s first robotics fund launches</font></a>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:0px 0px 7px;">
+								<a href="http://www.fundselectorasia.com/news/1037690/investors-profit-hot-emerging-market-funds" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;text-decoration: none;" title="Investors take profit from hot emerging market funds"><font face="Arial, Helvetica, sans-serif">Investors take profit from hot emerging market funds</font></a>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:0px 0px 7px;">
+								<a href="http://www.fundselectorasia.com/gallery/1036935/mutual-fund-trumps-sector-vs-sector" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;text-decoration: none;" title="Mutual fund Top Trumps - UK equity"><font face="Arial, Helvetica, sans-serif">Mutual fund Top Trumps - UK equity</font></a>
+							</td>
+						</tr>
+						<tr>
+							<td style="padding:0px 0px 7px;">
+								<a href="http://www.fundselectorasia.com/news/1037689/morningstar-fund-reviews-ratings-august-2017" style="color:#d50032!important;font-size: 14px;font-family: Arial, Helvetica, sans-serif;text-decoration: none;" title="Morningstar fund reviews and re-ratings – August 2017"><font face="Arial, Helvetica, sans-serif">Morningstar fund reviews and re-ratings – August 2017</font></a>
+							</td>
+						</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+
+				</table>
+			</td>
+	    </tr>
+</table>
+				                              </td>
+
+									</tr>
+                                    
+									
+									<tr>
+	<td style="padding:18px 9px 0px 9px;">
+		<table width="728" align="center" class="device_linked">
+			<tbody>
+				<tr>
+					<td style="border-bottom: 1px solid #E5EAEE;padding:0px 0px 15px 0px;">
+							<table width="318" align="left" style=" border:1px solid #cccccc;" class="fund_linked">
+								<tbody>
+									<tr>
+										<td style="padding:7px 7px 7px 7px;">
+											<a href="http://www.fundselectorasia.com/static/fsa-alternatives-forums-hong-kong-singapore-2017" title="Newsletter_Chinainsights_MPU"><img alt="Newsletter_Chinainsights_MPU" src="http://www.fundselectorasia.com/w-images/8cb32e5e-897a-44ed-a706-d96132cf3541/2/FSAWeibohires2-300x250.jpg" /></a>	
+										</td>
+									</tr>
+								</tbody>
+							</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</td>
+</tr>
+
+									<tr>
+	<td style="padding:0px 10px;">
+	<table width="728" align="center" class="device_innerblock">
+		<tr>
+			<td class="container_td" align="left" style="padding:0px 6px 6px 6px;  color: #000000!important;font-family:Arial, Helvetica, sans-serif;font-size: 18px;font-weight:bold "><font face="Arial, Helvetica, sans-serif;">Other stories from Last Word</font></td>
+		</tr>
+	</table></td>
+</tr>
+<tr>
+	<td style="padding:0px 10px 0px 10px;">
+	<table width="728" align="center" class="device_innerblock">
+		<tr>
+			<td>
+				<div class="section_content component_block" id="component_20f2cdd9-e5ce-4c58-a2fb-7d6ed6258bab">
+<div class ="inner_section_content">
+	 <table width="235" align="right" class="footer_block footer_last">
+	<tr>
+		<td style="padding:10px 0px 10px 0px;">
+		<table align="right" width="100%">
+			<tr>
+				<td align="left" style=" padding: 0px 0px 10px 0px">
+					<a href="http://www.international-adviser.com" target="_blank"><img alt="International adviser" src="http://www.fundselectorasia.com/images/ia_newsletter.png" title="Portfolio adviser" /></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.international-adviser.com/news/1037727/canada-life-annuity-provider-retirement-advantage" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Canada Life buys annuity provider Retirement Advantage"><font face="Arial, Helvetica, sans-serif;">Canada Life buys annuity...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.international-adviser.com/news/1037719/jurisdictions-fall-beneficial-ownership-scrutiny" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Ten jurisdictions fall under beneficial ownership scrutiny "><font face="Arial, Helvetica, sans-serif;">Ten jurisdictions fall under...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" style="padding: 10px 0px 0px 0px;">
+				<table align="left" width="75" class="more">
+					<tr>
+						<td style="padding:3px 10px 3px 10px;" align="left" bgcolor="#d4d4d4" ><a class="more_from" href="http://www.international-adviser.com" target="_blank" style="color:#000000;text-decoration: none;line-height: 14px;font-size: 12px;font-family:  Arial, Helvetica, sans-serif;font-weight:bold"><font face="Arial, Helvetica, sans-serif;">More Info</font></a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+</div>
+				<div class="section_content component_block" id="component_dbb02c9e-4f9e-4238-9c8f-6becf9f87e47">
+<div class ="inner_section_content">
+	 <table align="left" class="footer_block" width="235">
+	<tr>
+		<td style="padding:10px 10px 10px 10px;">
+		<table width="100%">
+			<tr>
+				<td align="left" style="padding: 0px 0px 10px 0px">
+					<a href="http://www.portfolio-adviser.com" target="_blank"><img alt="Portfolio Adviser" src="http://www.fundselectorasia.com/images/pa_newsletter.png" title="Portfolio Adviser" /></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.portfolio-adviser.com/news/1037732/unigestion-manager-absorb-mifid-ii-research-costs" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Unigestion latest manager to absorb Mifid II research costs"><font face="Arial, Helvetica, sans-serif;">Unigestion latest manager...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">
+					<a href="http://www.portfolio-adviser.com/news/1037730/morningstar-gravy-train-fixed-fund-fees" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Morningstar: Time to end ‘gravy train’ of fixed fund fees"><font face="Arial, Helvetica, sans-serif;">Morningstar: Time to end...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" style="padding: 10px 0px 0px 0px;">
+				<table align="left" width="75" class="more">
+					<tr>
+						<td style="padding:3px 10px 3px 10px;" align="left" bgcolor="#d4d4d4" ><a class="more_from" href="http://www.portfolio-adviser.com" target="_blank" style="color:#000000;text-decoration: none;line-height: 14px;font-size: 12px;font-family:  Arial, Helvetica, sans-serif;font-weight:bold "><font face="Arial, Helvetica, sans-serif;">More Info</font></a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+</div>
+				<div class="section_content component_block" id="component_36566874-a2a2-4cdc-a805-980ecc6fa82b">
+<div class ="inner_section_content">
+	 <table align="left" class="footer_block" width="235">
+	<tr>
+		<td style="padding:10px 0px 10px 0px;">
+		<table width="100%">
+			<tr>
+				<td align="left" style="padding: 0px 0px 10px 0px">
+					<a href="http://www.expertinvestoreurope.com" target="_blank"><img alt="Expert Investor" src="http://www.fundselectorasia.com/images/eie_newsletter.jpg" title="Expert Investor" /></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">	
+					<a href="http://www.expertinvestoreurope.com/news/1037687/inflows-stall-emerging-market-funds-2017" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Inflows stall across emerging market funds in first for 2017"><font face="Arial, Helvetica, sans-serif;">Inflows stall across emerging...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td style="line-height: 14px;font-size: 14px;padding:0px 0px 5px 0px;">	
+					<a href="http://www.expertinvestoreurope.com/news/1037723/strong-em-passive-fund-inflows-pressure-active-fees" style="color:#000000;	text-decoration: none;font-family:Arial, Helvetica, sans-serif;" target="_blank" title="Strong EM passive fund inflows pressure active fees"><font face="Arial, Helvetica, sans-serif;">Strong EM passive fund inflows...</font></a>
+				</td>
+			</tr>
+			<tr>
+				<td align="left" style="padding: 10px 0px 0px 0px;">
+				<table align="left" width="75" class="more">
+					<tr>
+						<td style="padding:3px 10px 3px 10px;" align="left" bgcolor="#d4d4d4" ><a class="more_from" href="http://www.expertinvestoreurope.com" target="_blank" style="color:#000000;text-decoration: none;line-height: 14px;font-size: 12px;font-family:  Arial, Helvetica, sans-serif;font-weight:bold "><font face="Arial, Helvetica, sans-serif;">More Info</font></a></td>
+					</tr>
+				</table></td>
+			</tr>
+		</table></td>
+	</tr>
+</table>
+</div>
+</div>
+			</td>
+		</tr>
+	</table></td>
+</tr>
+									<tr>
+										<td style="padding:0px 10px;">
+										<table align="center" width="728" class="device_innerblock">
+										</table>
+										</td>
+									</tr>
+				                           <tr>
+				                              <td style="padding: 15px 15px 15px 15px;" bgcolor="#000000" class="footer">
+												<table width="100%" align="left" class="footer_content">
+													<tr>
+														<td style="padding:0px 0px 10px 0px" align="left" valign="top">
+															<table align="left" style="margin: 0px" width="140" class="social_icon">
+																<tr>
+																	<td align="left"><a href="https://plus.google.com/+LastWordMediaLondon/" target="_blank"><img src="http://www.fundselectorasia.com/images/newsletter-g.jpg" alt="gp" style="display:block"/></a></td>
+																	<td align="left"><a href="http://www.fundselectorasia.com/feed/rss" target="_blank"><img src="http://www.fundselectorasia.com/images/newsletter-r.jpg" alt="rss" style="display:block " /></a></td>
+																	<td align="left"><a href="https://twitter.com/fundasia" target="_blank"><img src="http://www.fundselectorasia.com/images/newsletter-t.jpg"  alt="tw" style="display:block" /></a></td>
+																	<td align="left"><a href="https://www.facebook.com/LastWordMedia" target="_blank"><img src="http://www.fundselectorasia.com/images/newsletter-f.jpg"  alt="fb" style="display:block"/></a></td>
+																	<td align="left"><a href="https://www.linkedin.com/company/fund-selector-asia" target="_blank"><img src="http://www.fundselectorasia.com/images/newsletter-i.jpg"  alt="in" style="display:block"/></a></td>
+																</tr>
+															</table>
+														</td>
+				                                    </tr>
+				                                   		<tr>
+				                                   		<td>
+				                                   			<table width="100%">
+				                                   				<tr>
+				                                   					<td class="footer_left" valign="bottom" align="left" width="80%" style="padding:0px 20px 0px 0px">
+				                                   						<table width="100%">
+				                                   							<tr>
+				                                   								<td class="white" style="color:#fff!important;font-family:Arial, Helvetica, sans-serif;font-size:11px;	text-decoration: none;font-weight: bold;padding:0px 0px 3px 0px;"> If you wish to unsubscribe from this email, <a href="[*link.prefill_url(1)*]" style="color:#FFFFFF!important;text-decoration: none;font-family: Arial, Helvetica, sans-serif">please click here</a></td>
+				                                   							</tr>
+				                                   							<tr>
+																				<td class="white" style="padding:0px 0px 10px 0px; color:#fff!important;font-family:Arial, Helvetica, sans-serif;font-size:11px;	text-decoration: none;font-weight: bold;">Do not reply to this email.</td>
+																			</tr>
+																			<tr>
+																				<td class="white" style="padding:0px 0px 10px 0px; color:#C2C2C2!important;font-family:Arial, Helvetica, sans-serif;font-size:11px;"><font face="Arial, Helvetica, sans-serif;"><a href="http://www.fundselectorasia.com/static/privacy-policy" style="color:#FFFFFF!important;text-decoration: none;font-family: Arial, Helvetica, sans-serif">Privacy policy </a> | <a href="http://www.fundselectorasia.com/static/terms-conditions" target="_blank" style="color:#FFFFFF!important;text-decoration: none;font-family: Arial, Helvetica, sans-serif"> Terms &#38; conditions.</a></font></td>
+																			</tr>
+																			<tr>
+																				<td class="white" style="color:#fff!important;font-family: Arial, Helvetica, sans-serif;font-size:10px;padding:0px 0px 3px 0px;"><font face="Arial, Helvetica, sans-serif;"> Published by Last Word Media (HK) Ltd, Level 27, World Wide House, 19 Des Voeux Road, Central Hong Kong, SAR. Copyright (c) 2017.</font></td>
+																			</tr>
+																			<tr>
+																				<td class="white"style="color:#fff!important;font-family:Arial, Helvetica, sans-serif;font-size:10px;"><font face="Arial, Helvetica, sans-serif;">All rights reserved. Company Reg. No. 05573633. VAT. No. 672 411 728.</font></td>
+																			</tr>
+				                                						 </table>
+				                              						</td>
+				                              						<td class="footer_left" valign="bottom" align="right" width="20%"><a href="http://www.lastwordmedia.com" target="_blank"><img src="http://www.fundselectorasia.com/images/newsletter_lastword1.png" alt="logo" style="max-width: 100%;display:block" /></a></td>
+				                          						 </tr>
+			                        						</table>
+			                     						</td>
+			                  						</tr>
+		               							</table>
+		               						</td>
+		       							</tr>
+								</table></td>
+							</tr>
+						</table></td>
+					</tr>
+				</table><!--whole table--></td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+.email-builder-content {
+
+	.tab-content {
+
+		margin-top: 10px;
+
+	}
+
+	.btn {
+
+		margin-bottom: 10px;
+
+	}
+
+  .action-buttons {
+
+    margin-right: 10px;
+
+  } 
+
+}
+
+#slider{
+  background: grey;
+  height:100px;
+  width:800px;
+  position:relative;
+  left:-820px;
+  position: absolute;
+  top:0;
+  height: 800px;
+    
+}
+
+.open {
+
+  left:0px !important;
+    
+}
+
+.transition{
+    
+  transition: left 0.3s ease-out;  /* Chrome 26, Firefox 16+, IE 10+, Opera 12.10+ */
+
+}

@@ -3,6 +3,7 @@
 /*.html
 /.*
 !/.gitignore
+!/Last-Word-Email-Wordpres-Plugin/
 /wp-admin
 /wp-includes
 /image-archive
