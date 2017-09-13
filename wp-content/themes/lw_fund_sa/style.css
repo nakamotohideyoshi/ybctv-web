@@ -793,7 +793,7 @@ h2.title{
   position: absolute;
   top: 0;
   right: 0;
-  max-height: 41px;
+  max-height: 40px;
   overflow: hidden;
 }
 
@@ -1092,6 +1092,8 @@ h2.title{
 .multimedia .container {
   background: #292928;
   margin-top: 18px;
+  padding: 20px;
+  color: #fff;
 }
 
 .multimedia-title {
@@ -2136,6 +2138,11 @@ form[name="register"] input[type="submit"] {
 
 /* FSA SPECIFIC */
 
+.sf-menu a {
+    padding: 7px 10px;
+    font-size: 16px;
+}
+
 .most-viewed h2.title {
   color: #292928;
 }
@@ -2163,6 +2170,11 @@ form[name="register"] input[type="submit"] {
   line-height: 20px;
 }
 
+.headtohead .content-des a h3 {
+  color: #fff;
+  font-weight: 700;
+}
+
 .headtohead h2{
   margin-bottom: 0;
   font-size: 36px;
@@ -2179,9 +2191,19 @@ form[name="register"] input[type="submit"] {
   line-height: 24px;
 }
 
+.portfolios {
+  margin-bottom: 20px;
+}
+
+.portfolios .content-des a h3 {
+  color: #fff;
+  font-weight: 700;
+}
+
 .portfolios-title h2.title {
   color: #fff;
   font-size: 36px;
+  margin-left: 10px;
 }
 
 .team-members h2 {
@@ -2213,6 +2235,26 @@ form[name="register"] input[type="submit"] {
   margin-top: 0;
   color: #292928;
   line-height: 32px;
+  text-transform: uppercase;
+}
+
+.list-most-viewed h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.list-most-viewed h4 span {
+  color: #e40233;
+}
+
+.list-most-viewed hr {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.team-members .tmm .tmm_member .tmm_textblock {
+    width: 70%;
 }
 
 @media (min-width: 1440px) {

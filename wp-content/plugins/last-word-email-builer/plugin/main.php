@@ -156,34 +156,20 @@ class EmailBuilder {
             'methods' => 'POST',
             'callback' => function ($params ){
 				
-				try{
+				try{	
+					
 					$account = 'lastwordmedia';
 					$username = 'jkirk';
 					$password = "!.~_DvWz:y`;6f~s";
-					$headers = array();
-					$headers[] = 'X-MicrosoftAjax: Delta=true';
-					$headers[] = 'Content-Type:text/xml';
-					$headers[] = 'Authorization:Basic bGFzdHdvcmRtZWRpYS5qa2lyazohLn5fRHZXejp5YDs2Zn5z';
-					
-					$input_xml = '<methodCall><methodName>campaign.setMessage</methodName><params><param><int>2</int></param><param><string>HTML</string></param><param><string>&lt;h1&gt;Hello World&lt;/h1&gt;</string></param></params></methodCall>';
-										
-					$ch = curl_init();
-					curl_setopt($ch, CURLOPT_URL,"https://app.adestra.com/api/xmlrpc");
-					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-					curl_setopt($ch, CURLOPT_POSTFIELDS,$input_xml);
-					curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-					$server_output = curl_exec ($ch);
-					curl_close ($ch);
-					return $server_output;
-					
-					
-				/*	$account = 'lastwordmedia';
-					$username = 'jkirk';
-					$password = "!.~_DvWz:y`;6f~s";
-					$campaign_id=2;
 					$type='HTML';
 					$content='<h1>Hello World</h1>';
+
+					$campaing_name='Test name for campaign 13092017';
+					$description = 'Description of test campaign';
+					$owner_user_id = 'james@ybc.tv';
+					$project_id = 2;
+					$colour = '#CAB2DD';
+
 
 					require_once('xmlrpc.inc');//First inlcude XMLRPC client library
 
@@ -196,7 +182,24 @@ class EmailBuilder {
 
 
 					$msg = new xmlrpcmsg(
-										"campaign.set",
+										"campaign.create",
+										array(
+											//Set user id
+											new xmlrpcval($campaign_name, "string"),
+											new xmlrpcval($description, "string"),
+											new xmlrpcval($owner_user_id, "string"),
+											new xmlrpcval($project_id, "int"),
+											new xmlrpcval($colour, "string")
+										)
+									);
+					$response = $xmlrpc->send($msg);
+
+					$decoded_response = xmlrpc_decode( trim($response) );
+
+					var_dump($decoded_response);
+
+					$msg2 = new xmlrpcmsg(
+										"campaign.setMessage",
 										array(
 											//Set user id
 											new xmlrpcval($campaign_id, "int"),
@@ -205,8 +208,8 @@ class EmailBuilder {
 										)
 
 									);
-					$response = $xmlrpc->send($msg);//Send request, and get the response
-					*/
+					$response2 = $xmlrpc->send($msg2);//Send request, and get the response
+					
 				}
 				catch(Exception $ex){
 				  return $ex;	

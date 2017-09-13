@@ -24,7 +24,7 @@
             $category = get_term_by('id', $category_id, 'category');
           ?>
           <a href="<?php echo get_category_link($category->term_id);?>"><?php echo $category->name;?></a>
-          <span><?php the_time('d, M y');?></span>
+          <span><?php the_time('j M y');?></span>
         </p>
         <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
         <p><?php echo the_excerpt(); ?></p>

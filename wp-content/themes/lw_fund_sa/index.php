@@ -167,13 +167,13 @@ get_header(); ?>
                   <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
                     <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
                   </div>
-                  <a href="<?php echo get_category_link( "40" ); ?>" class="view-more">View more</a>
+                  <a href="<?php echo get_category_link( "14" ); ?>" class="view-more">View more</a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
                     <div class="analysis-list">
                       <?php
-                        $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 40 );
+                        $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -226,18 +226,18 @@ get_header(); ?>
               <div class="multimedia-title">
                 <h2>Head to head</h2>
                 <h2 class="nocolor">A COMPARATIVE ANALISYS<br/>OF 2 FUNDS</h2>
-                  <a href="/media" class="view-more">View more</a>
+                  <a href="<?php echo get_category_link( "21" ); ?>" class="view-more">View more</a>
               </div>
             </div>
             <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
               <div class="slider-multimedia">
                   <?php
-                    $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 49 );
+                    $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 21 );
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                   ?>
-                    <div class="content-image">
+                    <div class="content-image col-md-5">
                       <?php
                               if ( has_post_thumbnail() ) {
                                 the_post_thumbnail('featured-article');
@@ -249,7 +249,7 @@ get_header(); ?>
                               }
                             ?>
                     </div>
-                    <div class="content-des">
+                    <div class="content-des col-md-7">
                       <p class="name-cat">
                         <?php $category = get_the_category(); ?>
                         <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
@@ -274,13 +274,13 @@ get_header(); ?>
         <div class="container">
               <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                  <h2 class="title">TITLE HERE</h2>
+                <?php $variable_category = get_option('variable_category'); ?>
+                  <h2 class="title"><?php echo get_cat_name($variable_category);?></h2>
                 </div>
 
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                   <div class="analysis-list">
                       <?php
-                        $variable_category = get_option('variable_category');
                         $args = array( 'posts_per_page' => 3 ,'showposts' => 3, 'category' => $variable_category );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
@@ -331,13 +331,13 @@ get_header(); ?>
 
             <div class="row">              
                   <?php
-                    $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 55 );
+                    $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 15 );
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
                   ?>
 
                   <div class="col-lg-6 col-sm-12 col-xs-12">
-                    <div class="content-image">
+                    <div class="content-image col-md-6 col-sm-6 col-xs-12">
                       <?php
                               if ( has_post_thumbnail() ) {
                                 the_post_thumbnail('featured-article');
@@ -349,7 +349,7 @@ get_header(); ?>
                               }
                             ?>
                     </div>
-                    <div class="content-des">
+                    <div class="content-des col-md-6 col-sm-6 col-xs-12">
                       <p class="name-cat">
                         <?php $category = get_the_category(); ?>
                         <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
@@ -366,8 +366,7 @@ get_header(); ?>
             </div>       
             </div>
           </div>
-        </div>
-      </div>
+
     </section>
     <?php  } ?>
     <section class="team-members">
@@ -376,7 +375,7 @@ get_header(); ?>
             <h2 class="title">EDITORIAL BOARD</h2>
             <h2 class="title color">FUND SELECTOR ASIA</h2>
 
-            <p>Lorem ipsum...</p>
+            <p>The Editorial Board is a premier group of fund selectors and fund influencers who have kindly agreed to give us feedback and advice on the editorial direction of Fund Selector Asia. We thank them for their ongoing contribution to FSA and for their interest in developing the financial industry in Asia.</p>
             
             <?php echo do_shortcode('[tmm name="editorial-board"]'); ?>
 
