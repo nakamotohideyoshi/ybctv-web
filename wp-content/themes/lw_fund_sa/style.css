@@ -85,7 +85,7 @@ a:active {
 a:active,
 a:hover {
   outline: 0;
-  color: #292928;
+  color: #e40233;
   text-decoration: none;
 }
 
@@ -1379,6 +1379,10 @@ h2.title{
   position: relative;
 }
 
+.event p {
+  padding: 0;
+}
+
 .event:before {
   content: "";
   position: absolute;
@@ -1672,6 +1676,10 @@ h2.title{
   margin-bottom: 5px;
 }
 
+.list-event .loop-list .content-des a:hover h3 {
+  color: #e40233;
+}
+
 .list-event .loop-list .content-des p {
   font-size: 18px;
 }
@@ -1694,6 +1702,7 @@ h2.title{
 
 .list-event-ajax .loop-list .content-des p {
   font-size: 18px;
+  padding: 0;
 }
 
 .page-content ul li {
@@ -1701,11 +1710,11 @@ h2.title{
 }
 
 .page-content a {
-  color: #292928;
+  color: #e40233;
 }
 
 .page-content a:hover {
-  color: #4C7D0A;
+  color: #bf022b;
 }
 
 /* Magazines */
@@ -2123,7 +2132,7 @@ form[name="register"] input[type="submit"] {
 .contlocked .description-single:before {
   content:'';
   width:100%;
-  height:100%;    
+  height:100%;
   position:absolute;
   left:0;
   top:0;
@@ -2149,6 +2158,14 @@ form[name="register"] input[type="submit"] {
 
 .events-fsa h2.title {
   color: #292928;
+}
+
+.events-fsa a h3 {
+  font-weight: 700;
+}
+
+.events-fsa p {
+  padding: 0;
 }
 
 .LHS_Home_MPU_Ad {
@@ -2291,7 +2308,7 @@ form[name="register"] input[type="submit"] {
       width: 35%;
       color: #fff;
       padding: 20px 20px 0 20px;
-    }   
+    }
 
     .slider-multimedia ul li .content-img {
       width: 60%;
@@ -2337,7 +2354,7 @@ form[name="register"] input[type="submit"] {
     display: inline-block;
     float: right;
   }
-  
+
   .flexslider-spon .loop-list .content-image img {
     width: 100%;
     height: auto;
@@ -2434,7 +2451,7 @@ form[name="register"] input[type="submit"] {
       max-height: unset;
       width: 100%;
     }
-    
+
     .ads-top-billboard, .ads-bottom-billboard {
       min-height: 120px;
     }

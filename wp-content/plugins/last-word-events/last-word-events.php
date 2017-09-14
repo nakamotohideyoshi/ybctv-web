@@ -138,6 +138,25 @@ class last_word_events {
           </p>
         </td>
       </tr>
+      <tr>
+        <th scope="row">Open booking link in new tab/window</th>
+        <td>
+          <p>
+            <label for="lw_event_target_blank">
+              <?php
+                global $pagenow;
+                $checked = '';
+                $target_blank = get_post_meta($post->ID, 'lw_event_target_blank', true);
+                $screen = get_current_screen();
+
+                if ($target_blank == 'yes' || $pagenow == 'post-new.php') {
+                  $checked = ' checked';
+                }
+              ?>
+              <input type="checkbox" name="lw_event_target_blank" id="lw_event_target_blank" value="yes"<?php echo $checked; ?> />
+            </label>
+          </p>
+      </tr>
     </table>
     <?php
   }
@@ -172,6 +191,14 @@ class last_word_events {
 
       update_post_meta($post_id, 'lw_event_location', strip_tags($_POST['lw_event_location']));
       update_post_meta($post_id, 'lw_event_link', strip_tags($_POST['lw_event_link']));
+
+      if (isset($_POST['lw_event_target_blank'])) {
+        update_post_meta($post_id, 'lw_event_target_blank', 'yes');
+      }
+      else {
+        update_post_meta($post_id, 'lw_event_target_blank', '');
+      }
+
     }
   }
 }

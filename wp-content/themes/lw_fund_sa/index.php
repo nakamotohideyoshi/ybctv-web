@@ -126,27 +126,57 @@ get_header(); ?>
                   <h2 class="title">EVENTS</h2>
                   <div class="list-events-fsa">
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'post_type' =>'event');
+                      $today = date('Ymd');
+                      $args = array(
+                        'showposts' => 1,
+                        'post_type' =>'event',
+                        'meta_key' => 'lw_event_start_date',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'ASC',
+                        'meta_query' => array(
+                          array(
+                            'key' => 'lw_event_start_date',
+                            'compare' => '>=',
+                            'value' => $today
+                          )
+                      ));
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
-                      $date_event =  get_post_meta($post->ID,'date_event', TRUE);
+                      if ($post->lw_event_start_date) {
+                        $event_start_date = new DateTime($post->lw_event_start_date);
+                      }
+
+                      if ($post->lw_event_end_date) {
+                        $event_end_date = new DateTime($post->lw_event_end_date);
+                      }
                     ?>
                       <div class="loop-list">
                         <div class="content-image">
                           <?php
                             if ( has_post_thumbnail() ) {
-                              the_post_thumbnail('featured-article');
+                              echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
+                              the_post_thumbnail();
+                              echo '</a>';
                             }
                             else {
                           ?>
-                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                          <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                           <?php
                             }
                           ?>
                         </div>
                         <div class="content-des">
-                          <a href="<?php the_permalink(); ?>"><h4><?php echo get_the_title(); ?></h4></a>
-                          <p class="date"><?php echo $date_event; ?></p>
+                          <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                          <p class="date">
+                            <?php
+                              echo date_format($event_start_date, 'l jS F');
+
+                              if ($event_end_date != '') {
+                                echo ' - ' . date_format($event_end_date, 'l jS F');
+                              }
+                            ?>
+                          </p>
+                          <p><?php echo $post->lw_event_location; ?></p>
                         </div>
                       </div>
                       <?php
@@ -155,7 +185,7 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
-                  <a class="readmore readmore-new" href="/event">View More Events<img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                  <a class="readmore readmore-new" href="/events">View More Events<img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                 </div>
               </div>
             </div>
@@ -329,7 +359,7 @@ get_header(); ?>
               </div>
             </div>
 
-            <div class="row">              
+            <div class="row">
                   <?php
                     $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 15 );
                     $myposts = get_posts( $args );
@@ -363,7 +393,7 @@ get_header(); ?>
                     wp_reset_postdata();
                   ?>
 
-            </div>       
+            </div>
             </div>
           </div>
 
@@ -376,7 +406,7 @@ get_header(); ?>
             <h2 class="title color">FUND SELECTOR ASIA</h2>
 
             <p>The Editorial Board is a premier group of fund selectors and fund influencers who have kindly agreed to give us feedback and advice on the editorial direction of Fund Selector Asia. We thank them for their ongoing contribution to FSA and for their interest in developing the financial industry in Asia.</p>
-            
+
             <?php echo do_shortcode('[tmm name="editorial-board"]'); ?>
 
           </div>
