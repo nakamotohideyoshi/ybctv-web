@@ -536,30 +536,57 @@ get_header(); ?>
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <?php
-                      query_posts(array('showposts' => 1,'post_type' =>'event'));
+                      $today = date('Ymd');
+                      query_posts(array(
+                        'showposts' => 1,
+                        'post_type' => 'event',
+                        'meta_key' => 'lw_event_start_date',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'ASC',
+                        'meta_query' => array(
+                          array(
+                            'key' => 'lw_event_start_date',
+                            'compare' => '>=',
+                            'value' => $today
+                          )
+                        )
+                      ));
                       if (have_posts()) : while (have_posts()) : the_post();
-                        $background_image = get_post_meta($post->ID,'background_image', TRUE);
-                        $date_event =  get_post_meta($post->ID,'date_event', TRUE);
+                      if ($post->lw_event_start_date) {
+                        $event_start_date = new DateTime($post->lw_event_start_date);
+                      }
+
+                      if ($post->lw_event_end_date) {
+                        $event_end_date = new DateTime($post->lw_event_end_date);
+                      }
                     ?>
                     <div class="first-event">
                       <div class="content-image">
                         <?php
-                          if(isset($background_image) && $background_image) {
+                          if ( has_post_thumbnail() ) {
+                            echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
+                            the_post_thumbnail();
+                            echo '</a>';
+                          }
+                          else {
                         ?>
-                        <a href="<?php the_permalink();?>">
-                          <img src="<?php echo $background_image;?>" alt="">
-                        </a>
-                        <?php
-                          } else {
-                        ?>
-                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                         <?php
                           }
                         ?>
                       </div>
                       <div class="content-des">
-                        <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
-                        <p class="date"><?php echo $date_event;?></p>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                        <p class="date">
+                          <?php
+                            echo date_format($event_start_date, 'l jS F');
+
+                            if ($event_end_date != '') {
+                              echo ' - ' . date_format($event_end_date, 'l jS F');
+                            }
+                          ?>
+                        </p>
+                        <p><?php echo $post->lw_event_location; ?></p>
                       </div>
                     </div>
                     <?php
@@ -570,32 +597,64 @@ get_header(); ?>
                     <div class="last-event">
                       <div class="row">
                         <?php
-                          query_posts(array('showposts' => 6,'offset'=>1,'post_type' =>'event'));
+                          query_posts(array(
+                            'showposts' => 3,
+                            'offset' => 1,
+                            'post_type' => 'event',
+                            'meta_key' => 'lw_event_start_date',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'ASC',
+                            'meta_query' => array(
+                              array(
+                                'key' => 'lw_event_start_date',
+                                'compare' => '>=',
+                                'value' => $today
+                              )
+                            )
+                          ));
                           if(have_posts()): while(have_posts()): the_post();
-                            $date_event    =   get_post_meta($post->ID,'date_event', TRUE);
+                            if ($post->lw_event_start_date) {
+                              $event_start_date = new DateTime($post->lw_event_start_date);
+                            }
+                            else {
+                              $event_start_date = '';
+                            }
+
+                            if ($post->lw_event_end_date) {
+                              $event_end_date = new DateTime($post->lw_event_end_date);
+                            }
+                            else {
+                              $event_end_date = '';
+                            }
                         ?>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                           <div class="loop-list">
                             <div class="content-image">
                               <?php
-                                $background_image = get_post_meta($post->ID,'background_image', TRUE);
-                                if(isset($background_image) && $background_image) {
-                              ?>
-                              <a href="<?php the_permalink();?>">
-                                <img src="<?php echo $background_image;?>" alt="">
-                              </a>
-                              <?php
+                                if ( has_post_thumbnail() ) {
+                                  echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
+                                  the_post_thumbnail();
+                                  echo '</a>';
                                 }
                                 else {
                               ?>
-                              <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                               <?php
                                 }
                               ?>
                             </div>
                             <div class="content-des">
-                              <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
-                              <p class="date"><?php echo $date_event;?></p>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                              <p class="date">
+                                <?php
+                                  echo date_format($event_start_date, 'l jS F');
+
+                                  if ($event_end_date != '') {
+                                    echo ' - ' . date_format($event_end_date, 'l jS F');
+                                  }
+                                ?>
+                              </p>
+                              <p><?php echo $post->lw_event_location; ?></p>
                             </div>
                           </div>
                         </div>
@@ -606,7 +665,7 @@ get_header(); ?>
                     </div>
                   </div>
                 </div>
-                <a href="<?php echo home_url();?>/event/" class="view-more">View more</a>
+                <a href="<?php echo home_url();?>/events" class="view-more">View more</a>
               </div>
             </div>
             <?php  } endif; ?>
@@ -618,30 +677,62 @@ get_header(); ?>
                 <div class="row">
                   <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <?php
-                      query_posts(array('showposts' => 1,'post_type' =>'event'));
+                      query_posts(array(
+                        'showposts' => 1,
+                        'post_type' => 'event',
+                        'meta_key' => 'lw_event_start_date',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'ASC',
+                        'meta_query' => array(
+                          array(
+                            'key' => 'lw_event_start_date',
+                            'compare' => '>=',
+                            'value' => $today
+                          )
+                        )
+                      ));
                       if (have_posts()) : while (have_posts()) : the_post();
-                        $background_image = get_post_meta($post->ID,'background_image', TRUE);
-                        $date_event =  get_post_meta($post->ID,'date_event', TRUE);
+                        if ($post->lw_event_start_date) {
+                          $event_start_date = new DateTime($post->lw_event_start_date);
+                        }
+                        else {
+                          $event_start_date = '';
+                        }
+
+                        if ($post->lw_event_end_date) {
+                          $event_end_date = new DateTime($post->lw_event_end_date);
+                        }
+                        else {
+                          $event_end_date = '';
+                        }
                     ?>
                     <div class="first-event">
                       <div class="content-image">
                         <?php
-                          if(isset($background_image) && $background_image) {
+                          if ( has_post_thumbnail() ) {
+                            echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
+                            the_post_thumbnail();
+                            echo '</a>';
+                          }
+                          else {
                         ?>
-                        <a href="<?php the_permalink();?>">
-                          <img src="<?php echo $background_image;?>" alt="">
-                        </a>
-                        <?php
-                          } else {
-                        ?>
-                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                         <?php
                           }
                         ?>
                       </div>
                       <div class="content-des">
-                        <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
-                        <p class="date"><?php echo $date_event;?></p>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                        <p class="date">
+                          <?php
+                            echo date_format($event_start_date, 'l jS F');
+
+                            if ($event_end_date != '') {
+                              echo ' - ' . date_format($event_end_date, 'l jS F');
+                            }
+                          ?>
+                        </p>
+                        <p><?php echo $post->lw_event_location; ?></p>
                       </div>
                     </div>
                     <?php
@@ -652,27 +743,64 @@ get_header(); ?>
                     <div class="last-event">
                       <div class="row">
                         <?php
-                          query_posts(array('showposts' => 6,'offset'=>1,'post_type' =>'event'));
+                          query_posts(array(
+                            'showposts' => 6,
+                            'offset' => 1,
+                            'post_type' => 'event',
+                            'meta_key' => 'lw_event_start_date',
+                            'orderby' => 'meta_value_num',
+                            'order' => 'ASC',
+                            'meta_query' => array(
+                              array(
+                                'key' => 'lw_event_start_date',
+                                'compare' => '>=',
+                                'value' => $today
+                              )
+                            )
+                          ));
                           if(have_posts()): while(have_posts()): the_post();
-                            $date_event    =   get_post_meta($post->ID,'date_event', TRUE);
+                            if ($post->lw_event_start_date) {
+                              $event_start_date = new DateTime($post->lw_event_start_date);
+                            }
+                            else {
+                              $event_start_date = '';
+                            }
+
+                            if ($post->lw_event_end_date) {
+                              $event_end_date = new DateTime($post->lw_event_end_date);
+                            }
+                            else {
+                              $event_end_date = '';
+                            }
                         ?>
                         <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                           <div class="loop-list">
                             <div class="content-image">
                               <?php
                                 if ( has_post_thumbnail() ) {
+                                  echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
                                   the_post_thumbnail();
+                                  echo '</a>';
                                 }
                                 else {
                               ?>
-                              <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                               <?php
                                 }
                               ?>
                             </div>
                             <div class="content-des">
-                              <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
-                              <p class="date"><?php echo $date_event;?></p>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                              <p class="date">
+                                <?php
+                                  echo date_format($event_start_date, 'l jS F');
+
+                                  if ($event_end_date != '') {
+                                    echo ' - ' . date_format($event_end_date, 'l jS F');
+                                  }
+                                ?>
+                              </p>
+                              <p><?php echo $post->lw_event_location; ?></p>
                             </div>
                           </div>
                         </div>
@@ -683,7 +811,7 @@ get_header(); ?>
                     </div>
                   </div>
                 </div>
-                <a href="<?php echo home_url();?>/event/" class="view-more">View more</a>
+                <a href="<?php echo home_url();?>/events" class="view-more">View more</a>
               </div>
             </div>
             <?php  } endif; ?>

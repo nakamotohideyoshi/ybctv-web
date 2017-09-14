@@ -1377,6 +1377,10 @@ h2.title{
   position: relative;
 }
 
+.event p {
+  padding: 0;
+}
+
 .event:before {
   content: "";
   position: absolute;
@@ -1685,8 +1689,13 @@ h2.title{
   margin-top: 10px;
 }
 
+.list-event .loop-list .content-des a:hover h3 {
+  color: #0095db;
+}
+
 .list-event-ajax .loop-list .content-des p {
   font-size: 18px;
+  padding: 0;
 }
 
 .page-content ul li {
