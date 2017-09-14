@@ -385,7 +385,7 @@ add_action('wp_ajax_ajax_view_more', 'ajax_view_more');
 * Sticky JS.
 */
 // function enqueue_sticky() {
-//   wp_register_script('sticky', THEME_PATH . '/js/sticky.js', array('jquery'), '1.0.0', false);
+//   wp_register_script('sticky', THEME_PATH . '/js/sticky.js', array('jquery'), '1.1.0', true);
 //   wp_enqueue_script('sticky');
 // }
 //
@@ -460,5 +460,38 @@ function disable_category_reordering($args) {
 }
 
 add_filter('wp_terms_checklist_args', 'disable_category_reordering');
+
+/*
+* Show Hidden Post Edit meta fields by default
+*/
+
+function show_hidden_meta_fields($hidden, $screen) {
+  if ($screen->base == 'post') {
+    foreach($hidden as $key => $value) {
+      if ($value == 'postexcerpt' || $value == 'commentsdiv' || $value == 'commentstatusdiv') {
+        unset($hidden[$key]);
+        break;
+      }
+    }
+  }
+  return $hidden;
+}
+
+add_filter('default_hidden_meta_boxes', 'show_hidden_meta_fields', 10, 2);
+
+/*
+* Add Page break button to TinyMCE
+*/
+function add_page_break_button($buttons, $id) {
+	if ('content' != $id) {
+		return $buttons;
+	}
+
+	array_splice($buttons, 13, 0, 'wp_page');
+
+	return $buttons;
+}
+
+add_filter('mce_buttons', 'add_page_break_button', 1, 2);
 
 ?>
