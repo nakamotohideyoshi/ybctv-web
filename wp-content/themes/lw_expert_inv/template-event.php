@@ -70,13 +70,13 @@
                     <div class="content-image">
                       <?php
                         if ( has_post_thumbnail() ) {
-                          echo '<a target="_blank" href="' . $post->lw_event_link . '">';
+                          echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
                           the_post_thumbnail();
                           echo '</a>';
                         }
                         else {
                       ?>
-                      <a target="_blank" href="<?php echo $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                      <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                       <?php
                         }
                       ?>
@@ -84,7 +84,7 @@
                   </div>
                   <div class="col-md-4 col-sm-12 col-xs-12">
                     <div class="content-des">
-                      <a href="#"><h3><?php echo get_the_title(); ?></h3></a>
+                      <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
                       <p class="date">
                         <?php
                           echo date_format($event_start_date, 'l jS F');
@@ -140,13 +140,13 @@
                     <div class="content-image">
                       <?php
                         if ( has_post_thumbnail() ) {
-                          echo '<a target="_blank" href="' . $post->lw_event_link . '">';
+                          echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
                           the_post_thumbnail();
                           echo '</a>';
                         }
                         else {
                       ?>
-                      <a target="_blank" href="<?php echo $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                      <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                       <?php
                         }
                       ?>
@@ -154,7 +154,7 @@
                   </div>
                   <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="content-des">
-                      <a target="_blank" href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                      <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
                       <p class="date">
                         <?php
                           echo date_format($event_start_date, 'l jS F');
