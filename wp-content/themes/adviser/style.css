@@ -1371,6 +1371,10 @@ h2.title{
   position: relative;
 }
 
+.event p {
+  padding: 0;
+}
+
 .event:before {
   content: "";
   position: absolute;

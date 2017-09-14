@@ -93,6 +93,7 @@
                           }
                         ?>
                       </p>
+                      <p><?php echo $post->lw_event_location; ?></p>
                     </div>
                   </div>
                 </div>
@@ -104,7 +105,6 @@
             <div class="list-event-ajax">
               <?php
                 query_posts(array(
-                  'showposts' => 6,
                   'offset' => 1,
                   'post_type' => 'event',
                   'meta_key' => 'lw_event_start_date',
@@ -164,6 +164,7 @@
                             }
                         ?>
                       </p>
+                      <p><?php echo $post->lw_event_location; ?></p>
                     </div>
                   </div>
                 </div>

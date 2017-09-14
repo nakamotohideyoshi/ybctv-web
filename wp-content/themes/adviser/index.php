@@ -459,6 +459,7 @@ get_header(); ?>
                             }
                           ?>
                         </p>
+                        <p><?php echo $post->lw_event_location; ?></p>
                       </div>
                     </div>
                     <?php
@@ -526,6 +527,7 @@ get_header(); ?>
                                   }
                                 ?>
                               </p>
+                              <p><?php echo $post->lw_event_location; ?></p>
                             </div>
                           </div>
                         </div>
@@ -603,6 +605,7 @@ get_header(); ?>
                             }
                           ?>
                         </p>
+                        <p><?php echo $post->lw_event_location; ?></p>
                       </div>
                     </div>
                     <?php
@@ -670,6 +673,7 @@ get_header(); ?>
                                   }
                                 ?>
                               </p>
+                              <p><?php echo $post->lw_event_location; ?></p>
                             </div>
                           </div>
                         </div>
