@@ -1,0 +1,15 @@
+.post-type-event .cmb2-element .ui-datepicker {
+  width: 300px;
+}
+
+.post-type-event .cmb2-element .ui-datepicker .ui-datepicker-header {
+  width: 100%;
+}
+
+.post-type-event .ui-datepicker-next:before {
+  content: none;
+}
+
+.post-type-event .ui-datepicker-prev:before {
+  content: none;
+}
