@@ -15,38 +15,38 @@ function _custom_meta_boxes(){
      * the OptionTree Meta Box API Class.
      */
 
-    $event_meta_box =   array(
-        'id'          =>  'event_meta_box',
-        'title'       =>  'Event Option',
-        'desc'        =>  '',
-        'pages'       => array( 'event'),
-        'context'     => 'normal',
-        'priority'    => 'high',
-        'fields'      => array(
-            array(
-                'label'     => 'Background Image',
-                'id'        => 'background_image',
-                'type'      => 'upload',
-                'desc'      => '',
-                'rows'      => '',
-                'post_type' => '',
-                'taxonomy'  => '',
-                'class'     => '',
-            ),
-
-            array(
-                'label'     => 'Date Event',
-                'id'        => 'date_event',
-                'type'      => 'text',
-                'desc'      => '',
-                'rows'      => '',
-                'post_type' => '',
-                'taxonomy'  => '',
-                'class'     => '',
-            ),
-
-        )
-    );
+    // $event_meta_box =   array(
+    //     'id'          =>  'event_meta_box',
+    //     'title'       =>  'Event Option',
+    //     'desc'        =>  '',
+    //     'pages'       => array( 'event'),
+    //     'context'     => 'normal',
+    //     'priority'    => 'high',
+    //     'fields'      => array(
+    //         array(
+    //             'label'     => 'Background Image',
+    //             'id'        => 'background_image',
+    //             'type'      => 'upload',
+    //             'desc'      => '',
+    //             'rows'      => '',
+    //             'post_type' => '',
+    //             'taxonomy'  => '',
+    //             'class'     => '',
+    //         ),
+    //
+    //         array(
+    //             'label'     => 'Date Event',
+    //             'id'        => 'date_event',
+    //             'type'      => 'text',
+    //             'desc'      => '',
+    //             'rows'      => '',
+    //             'post_type' => '',
+    //             'taxonomy'  => '',
+    //             'class'     => '',
+    //         ),
+    //
+    //     )
+    // );
 
     $post_meta_box =   array(
         'id'          =>  'post_meta_box',
