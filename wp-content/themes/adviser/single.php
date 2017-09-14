@@ -204,9 +204,7 @@ get_header(); ?>
                                     <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
                                     <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
                                 </div>
-                                <a href="#" class="view-more">View more</a>
-                                <p></p>
-                                <a href="#" class="view-more">Sign up to our newsletter</a>
+                                <a href="#" class="/register">Sign up to our newsletter</a>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
                                 <ul class="bxslider-related">

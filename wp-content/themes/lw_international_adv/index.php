@@ -84,7 +84,7 @@ get_header(); ?>
 
                                           if( !is_user_logged_in() ){ ?>
 
-                        <div class="content-des">
+                        <div class="content-des contlocked">
                                         <p class="name-cat">
                                           <?php $category = get_the_category(); ?>
                                           <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" /><?php echo $category[0]->cat_name;?></a>
@@ -170,7 +170,7 @@ get_header(); ?>
 
                                           if( !is_user_logged_in() ){ ?>
 
-                        <div class="content-des">
+                        <div class="content-des contlocked">
                                       <p class="name-cat">
                                         <?php $category = get_the_category(); ?>
                                         <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" /><?php echo $category[0]->cat_name;?></a>

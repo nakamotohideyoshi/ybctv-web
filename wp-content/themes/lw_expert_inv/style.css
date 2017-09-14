@@ -1057,15 +1057,17 @@ h2.title{
 .box-sponsored .loop-list .content-des {
   padding: 10px 10px 20px;
   background: #f07f00;
-  min-height: 120px;
+  min-height: 140px;
 }
 
 .box-sponsored .loop-list .content-des h3 {
   font-weight: 700;
   font-size: 21px;
+  margin-top: 5px;
   margin-bottom: 5px;
   color: #fff;
 }
+
 
 .flexslider-spon {
   position: relative;

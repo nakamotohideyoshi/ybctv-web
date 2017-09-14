@@ -17,6 +17,12 @@
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width" />
   <meta name="description" content="<?php bloginfo('description'); ?>" />
+
+  <link rel="shortcut icon" href="<?php echo THEME_PATH.'/images/favicon/favicon.ico' ?>" type="image/x-icon">
+  <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/IA_16x16.ico' ?>" sizes="16x16">
+  <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/IA_32x32.ico' ?>" sizes="32x32">
+  <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/IA_152x152.png' ?>" sizes="152x152">
+
   <title>
     <?php
       /*

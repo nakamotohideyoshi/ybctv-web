@@ -56,7 +56,7 @@
                                                 <!-- <a href="<?php the_permalink();?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
                                                 <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
-                                                <p class="date">Published <?php the_time('d M Y');?></p>
+                                                <p class="date">Published <?php the_time('j M y');?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -90,7 +90,7 @@
                                                 <!-- <a href="<?php the_permalink();?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
                                                 <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
-                                                <p class="date">Published <?php the_time('d M Y');?></p>
+                                                <p class="date">Published <?php the_time('j M y');?></p>
                                             </div>
                                         </div>
                                     </div>

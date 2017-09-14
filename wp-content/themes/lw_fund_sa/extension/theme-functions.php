@@ -275,3 +275,16 @@ function homepage_content_settings_page() {
 </form>
 </div>
 <?php } 
+
+    // Change comments logged in link
+
+  add_filter( 'comment_form_defaults', function( $fields ) {
+    $fields['must_log_in'] = sprintf( 
+        __( '<p class="must-log-in">
+                 You must be <a href="#" data-toggle="modal" data-target="#myModal">logged in</a> to post a comment..</p>' 
+        ),
+        wp_registration_url(),
+        wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )   
+    );
+    return $fields;
+  });

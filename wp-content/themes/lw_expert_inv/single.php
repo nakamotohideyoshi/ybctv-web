@@ -17,7 +17,7 @@ get_header(); ?>
                             <h2>Most Popular News</h2>
                             <p class="architas">architas</p>
                             <div class="list-most-popular">
-                                <?php /*
+                                <?php 
                                 
                                 $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
@@ -43,7 +43,7 @@ get_header(); ?>
                                             <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
                                         </div>
                                     </div>
-                                <?php endwhile;wp_reset_postdata(); */?>
+                                <?php endwhile;wp_reset_postdata(); ?>
 
                             </div>
                         </div>
@@ -84,7 +84,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -153,7 +153,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -222,7 +222,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -267,8 +267,7 @@ get_header(); ?>
                     </div>
 
                 <?php } ?>
-
-                </div>
+                </div></div>
                 <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
                     <?php get_sidebar('right');?>
                     <div class="content-right">
@@ -311,9 +310,7 @@ get_header(); ?>
                                     <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
                                     <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
                                 </div>
-                                <a href="#" class="view-more">View more</a>
-                                <p></p>
-                                <a href="#" class="view-more">Sign up to our newsletter</a>
+                                <a href="/register" class="view-more">Sign up to our newsletter</a>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
                                 <ul class="bxslider-related">

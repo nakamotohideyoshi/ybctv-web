@@ -53,6 +53,7 @@ if ( post_password_required() )
 	<?php
   $aria_req = ( $req ? " aria-required='true'" : '' );
     $args = array(
+      'title_reply' => 'Leave a Comment',
       'comment_notes_after' => '',
       'fields' => apply_filters( 'comment_form_default_fields',
         array(

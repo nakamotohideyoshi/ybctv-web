@@ -81,7 +81,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -147,7 +147,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -215,7 +215,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('d M y');?></p>
+                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -305,9 +305,7 @@ get_header(); ?>
                                     <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
                                     <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
                                 </div>
-                                <a href="#" class="view-more">View more</a>
-                                <p></p>
-                                <a href="#" class="view-more">Sign up to our newsletter</a>
+                                <a href="/register" class="view-more">Sign up to our newsletter</a>
                             </div>
                             <div class="col-md-8 col-sm-12 col-xs-12">
                                 <ul class="bxslider-related">

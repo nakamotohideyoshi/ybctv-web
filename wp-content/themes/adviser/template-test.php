@@ -54,7 +54,7 @@
                                                 <p class="name-cat">
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                                                <span><?php the_time('d M y');?></span></p>
+                                                <span><?php the_time('j M y');?></span></p>
                                                 <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
                                                 <p><?php echo get_excerpt(35); ?></p>
                                             </div>
@@ -90,7 +90,7 @@
                                                 <p class="name-cat">
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                                                <span><?php the_time('d M y');?></span></p>
+                                                <span><?php the_time('j M y');?></span></p>
                                                 <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
                                                 <p><?php echo get_excerpt(100); ?></p>
                                             </div>
