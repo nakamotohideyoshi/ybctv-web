@@ -25,20 +25,8 @@
 
     $('#carousel-portfolio').flexslider({
         animation: "slide",
-        controlNav: false,
         animationLoop: false,
         slideshow: false,
-        itemWidth: 194,
-        itemMargin: 10,
-        asNavFor: '#slider-portfolio'
-    });
-
-    $('#slider-portfolio').flexslider({
-        animation: "slide",
-        controlNav: true,
-        animationLoop: false,
-        slideshow: false,
-        sync: "#carousel-portfolio"
     });
 
     $('.flexslider-spon').flexslider({
