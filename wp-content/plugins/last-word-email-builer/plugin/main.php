@@ -19,7 +19,6 @@ class EmailBuilder {
 		$this->version       = '1.0';
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'rest_api_init', array( $this, 'wpshout_register_routes' ) );
-
 	}
 	
 	public function wpshout_register_routes() {
@@ -32,7 +31,7 @@ class EmailBuilder {
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
 				$no_rows = $wpdb->get_var("SELECT count(*) FROM ".$table_name."");
-				$emails = $wpdb->get_results("SELECT EmailId, EmailName, SendToAdestraOn FROM ".$table_name." ORDER BY EmailId DESC  LIMIT 5 OFFSET ".$params['offset']."");
+				$emails = $wpdb->get_results("SELECT EmailId, EmailName, SendToAdestraOn FROM ".$table_name." WHERE  Site = '".$params['prefix']."' ORDER BY EmailId DESC  LIMIT 5 OFFSET ".$params['offset']."");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
@@ -58,6 +57,7 @@ class EmailBuilder {
 				$has_footerleaderboard = $json_result['hasFooterLeaderboard'];
 				$has_newslettersubscribe = $json_result['hasNewsletterSubscribe'];
 				$has_sponseredcontent = $json_result['hasSponsoredContent'];
+				$site = $json_result['prefix'];
 				
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
@@ -84,7 +84,8 @@ class EmailBuilder {
 						'HasTopLeaderboard' => $has_topleaderboard,
 						'HasFooterLeaderboard' => $has_footerleaderboard,
 						'HasNewsletterSubscribe' => $has_newslettersubscribe,
-						'HasSponseredContent' => $has_sponseredcontent
+						'HasSponseredContent' => $has_sponseredcontent,
+						'Site' => $site
 					) 
 				);
 				
@@ -110,6 +111,7 @@ class EmailBuilder {
 				$has_footerleaderboard = $json_result['hasFooterLeaderboard'];
 				$has_newslettersubscribe = $json_result['hasNewsletterSubscribe'];
 				$has_sponseredcontent = $json_result['hasSponsoredContent'];
+				$site = $json_result['prefix'];
 				
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
@@ -135,7 +137,8 @@ class EmailBuilder {
 						'HasTopLeaderboard' => $has_topleaderboard,
 						'HasFooterLeaderboard' => $has_footerleaderboard,
 						'HasNewsletterSubscribe' => $has_newslettersubscribe,
-						'HasSponseredContent' => $has_sponseredcontent
+						'HasSponseredContent' => $has_sponseredcontent,
+						'Site' => $site
 					),
 					array(
 					 'EmailId' => $email_id
@@ -154,22 +157,38 @@ class EmailBuilder {
         '/adestra',
         array(
             'methods' => 'POST',
-            'callback' => function ($params ){
+            'callback' => function ($data ){
 				
-				try{	
+				try{
+					/*$account = 'lastwordmedia';
+					$username = 'jkirk';
+					$password = "??Badn3ws90!!";
+					$headers = array();
+					$headers[] = 'X-MicrosoftAjax: Delta=true';
+					$headers[] = 'Content-Type:text/xml';
+					$headers[] = 'Authorization:Basic bGFzdHdvcmRtZWRpYS5qa2lyazohLn5fRHZXejp5YDs2Zn5z';
 					
-					$account = 'lastwordmedia';
+					/*$input_xml = '<methodCall><methodName>campaign.setMessage</methodName><params><param><int>2</int></param><param><string>HTML</string></param><param><string>&lt;h1&gt;Hello World&lt;/h1&gt;</string></param></params></methodCall>';
+						
+                    $campaign_data = '<methodCall><methodName>campaign.create</methodName><params><param><string>Zee Campaign</string><string>This is Zee Campaign</string><int>17</int><int>1234</int></param></params></methodCall>';
+
+						
+					$ch = curl_init();
+					curl_setopt($ch, CURLOPT_URL,"https://app.adestra.com/api/xmlrpc");
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+					curl_setopt($ch, CURLOPT_POSTFIELDS,$campaign_data);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+					$server_output = curl_exec ($ch);
+					curl_close ($ch);
+					return $server_output;*/
+
+					/*$account = 'lastwordmedia';
 					$username = 'jkirk';
 					$password = "!.~_DvWz:y`;6f~s";
+					$campaign_id=2;
 					$type='HTML';
-					$content='<h1>Hello World</h1>';
-
-					$campaing_name='Test name for campaign 13092017';
-					$description = 'Description of test campaign';
-					$owner_user_id = 'james@ybc.tv';
-					$project_id = 2;
-					$colour = '#CAB2DD';
-
+					$content='&lt;h1&gt;Hello World&lt;/h1&gt;';
 
 					require_once('xmlrpc.inc');//First inlcude XMLRPC client library
 
@@ -182,23 +201,6 @@ class EmailBuilder {
 
 
 					$msg = new xmlrpcmsg(
-										"campaign.create",
-										array(
-											//Set user id
-											new xmlrpcval($campaign_name, "string"),
-											new xmlrpcval($description, "string"),
-											new xmlrpcval($owner_user_id, "string"),
-											new xmlrpcval($project_id, "int"),
-											new xmlrpcval($colour, "string")
-										)
-									);
-					$response = $xmlrpc->send($msg);
-
-					$decoded_response = xmlrpc_decode( trim($response) );
-
-					var_dump($decoded_response);
-
-					$msg2 = new xmlrpcmsg(
 										"campaign.setMessage",
 										array(
 											//Set user id
@@ -208,7 +210,46 @@ class EmailBuilder {
 										)
 
 									);
-					$response2 = $xmlrpc->send($msg2);//Send request, and get the response
+					$response = $xmlrpc->send($msg);//Send request, and get the response*/
+					$json_result = json_decode($data->get_body(), true);
+     				$name= 'Email Builder Campaign';
+				    $description= 'Email Builder Campaign';
+				    $project_id = $json_result["project_id"];
+					$content = $json_result["content"];
+				    $list_id= 1234;
+					$client = new XMLRPC_Client( "https://app.adestra.com/api/xmlrpc" );
+					$new_campaign = $client->call( 'campaign.create', ['name' => $name,
+						                                           'description' => $description,
+						                                           'project_id' => $project_id,
+						                                           'list_id' => $list_id]);
+
+				    $subject_line= "Today's email update";
+				    $domain= 'campaign.lastwordmedia.com';
+				    $from_prefix= 'mail';
+				    $from_name= 'Julia OBrien';
+				    $auto_tracking= 1;
+				    $unsub_list= 23;
+				    $suppress_lists= '4';
+					$client->call( 'campaign.setAllOptions', $new_campaign['id'] ,['subject_line' => $subject_line,
+						                                           'domain' => $domain,
+						                                           'from_prefix' => $from_prefix,
+						                                           'from_name' => $from_name,
+						                                           'auto_tracking' => $auto_tracking,
+						                                           'unsub_list' => $unsub_list,
+						                                           'suppress_lists' => $suppress_lists]);
+					
+
+					$html_content = $content;
+
+					$client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
+
+					$client->call( 'campaign.setMessage', $new_campaign['id'], 'text' , $html_content);
+
+					$client->call( 'campaign.publish', $new_campaign['id']);
+
+                    $launch_label = '2016-01-01 daily email';
+
+					$response = $client->call( 'campaign.launch', $new_campaign['id'], ['launch_label' => $launch_label]);
 					
 				}
 				catch(Exception $ex){
@@ -235,8 +276,8 @@ class EmailBuilder {
             'methods' => 'GET',
             'callback' => function ($params ){
 				global $wpdb;
-				$table_terms = $wpdb->prefix."terms" ;
-				$table_term_taxonomy = $wpdb->prefix."term_taxonomy" ;
+				$table_terms = $params['prefix']."terms" ;
+				$table_term_taxonomy = $params['prefix']."term_taxonomy" ;
 				$types = $wpdb->get_results("SELECT t.term_id AS id,t.name AS name FROM ".$table_terms." t  LEFT JOIN ".$table_term_taxonomy." tt ON t.term_id = tt.term_id WHERE  tt.taxonomy = 'type' ORDER  BY name");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
@@ -253,8 +294,8 @@ class EmailBuilder {
             'methods' => 'GET',
             'callback' => function ($params ){
 				global $wpdb;
-				$table_terms = $wpdb->prefix."terms" ;
-				$table_term_taxonomy = $wpdb->prefix."term_taxonomy" ;
+				$table_terms = $params['prefix']."terms" ;
+				$table_term_taxonomy = $params['prefix']."term_taxonomy" ;
 				$categories = $wpdb->get_results("SELECT t.term_id AS id,t.name AS name FROM ".$table_terms." t  LEFT JOIN ".$table_term_taxonomy." tt ON t.term_id = tt.term_id WHERE  tt.taxonomy = 'category' AND t.term_id > 1 ORDER  BY name");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
@@ -297,10 +338,10 @@ else{
 
 /*add_filter( 'posts_where', 'title_like_posts_where', 10, 2 );*/
 global $wpdb;
-$posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relationships tr ON wp_2_posts.ID = tr.object_id INNER JOIN wp_2_term_taxonomy tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN wp_2_terms t ON t.term_id = tt.term_id where t.term_id = ".$params['type']." and  wp_2_posts.post_title like '%".$params['search']."%';");
+$posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN ".$params['prefix']."term_relationships tr ON ".$params['prefix']."posts.ID = tr.object_id INNER JOIN ".$params['prefix']."term_taxonomy tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN ".$params['prefix']."terms t ON t.term_id = tt.term_id where t.term_id = ".$params['type']." and  ".$params['prefix']."posts.post_title like '%".$params['search']."%';");
 /*$my_query = new WP_Query($args);*/
 			    foreach($posts as $row){ 
-					$ftd_image = $wpdb->get_results("SELECT meta_value FROM wp_2_postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
+					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  if(has_post_thumbnail( $row->ID )){
 						$image = wp_get_attachment_image_src(get_post_thumbnail_id($row->ID ),"full");
@@ -316,25 +357,21 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 			  }
         )
      );
-    register_rest_route( 
+	 register_rest_route( 
         'email-builder/v1',
-        '/posts',
+        '/postsbysite',
         array(
             'methods' => 'GET',
             'callback' => function ($params ){
-				$args = array(
-					'posts_per_page' => 10,
-					'cat' => $params['categoryId'],
-					'paged'=>$params['page']
-				);
-
-			    $my_query = new WP_Query( $args ); 
 
 				global $wpdb;
 
+                $posts= $wpdb->get_results("SELECT * FROM ".$params['site']."posts where post_title like '%".$params['search']."%' LIMIT 10");
+
+                $count = $wpdb->get_results("SELECT count(*) as count FROM ".$params['site']."posts where post_title like '%".$params['search']."%'");
 				
-			    foreach($my_query->posts as $row){ 
-					$ftd_image = $wpdb->get_results("SELECT meta_value FROM wp_2_postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
+			    foreach($posts as $row){ 
+					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  if(has_post_thumbnail( $row->ID )){
 						$image = wp_get_attachment_image_src(get_post_thumbnail_id($row->ID ),"full");
@@ -345,7 +382,64 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 						$row->featured_image = $ftd_image[0]->meta_value; 
 					}					
 				}				
-			    return (object)array($my_query->posts, $my_query->found_posts);
+			    return (object)array($posts, $count[0]->count);
+			  }
+        )
+     );
+    register_rest_route( 
+        'email-builder/v1',
+        '/posts',
+        array(
+            'methods' => 'GET',
+            'callback' => function ($params ){
+
+				global $wpdb;
+
+				$offset = ($params['page'] - 1) * 10;
+
+                $posts= $wpdb->get_results("SELECT * FROM ".$params['prefix']."posts p JOIN ".$params['prefix']."term_relationships tr ON (p.ID = tr.object_id) JOIN ".$params['prefix']."term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) JOIN ".$params['prefix']."terms t ON (tt.term_id = t.term_id) WHERE p.post_type='post' AND p.post_status = 'publish' AND tt.taxonomy = 'category' AND t.term_id = ".$params['categoryId']." ORDER BY post_date DESC LIMIT 10 OFFSET ".$offset);
+
+                $count = $wpdb->get_results("SELECT count(*) as count FROM wp_5_posts p JOIN wp_5_term_relationships tr ON (p.ID = tr.object_id) JOIN wp_5_term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) JOIN wp_5_terms t ON (tt.term_id = t.term_id) WHERE p.post_type='post' AND p.post_status = 'publish' AND tt.taxonomy = 'category' AND t.term_id = ".$params['categoryId']);
+				
+			    foreach($posts as $row){ 
+					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
+					if($ftd_image == null){
+					  if(has_post_thumbnail( $row->ID )){
+						$image = wp_get_attachment_image_src(get_post_thumbnail_id($row->ID ),"full");
+						$row->featured_image = $image[0]; 
+					  }
+					}
+					else{
+						$row->featured_image = $ftd_image[0]->meta_value; 
+					}					
+				}				
+			    return (object)array($posts, $count[0]->count);
+			  }
+        )
+     );
+    register_rest_route( 
+        'email-builder/v1',
+        '/latestposts',
+        array(
+            'methods' => 'GET',
+            'callback' => function ($params ){
+				global $wpdb;
+
+				$posts= $wpdb->get_results("select * from ".$params['prefix']."posts order by ID desc limit 10");
+
+			    foreach($posts as $row){ 
+					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
+					if($ftd_image == null){
+					  if(has_post_thumbnail( $row->ID )){
+						$image = wp_get_attachment_image_src(get_post_thumbnail_id($row->ID ),"full");
+						$row->featured_image = $image[0]; 
+					  }
+					}
+					else{
+						$row->featured_image = $ftd_image[0]->meta_value; 
+					}					
+				}				
+			    return (object)array($posts, count($posts));
 			  }
         )
      );
@@ -366,7 +460,7 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 			    $my_query = new WP_Query( $args ); 
                 global $wpdb;				
 			    foreach($my_query->posts as $row){ 
-					$ftd_image = $wpdb->get_results("SELECT meta_value FROM wp_2_postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
+					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  if(has_post_thumbnail( $row->ID )){
 						$image = wp_get_attachment_image_src(get_post_thumbnail_id($row->ID ),"full");
@@ -388,7 +482,7 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
             'methods' => 'GET',
             'callback' => function ($params ){
 				global $wpdb;
-				$table_name = 'wp_2_posts';
+				$table_name = $params['prefix'].'posts';
 				
 				$images = $wpdb->get_results("SELECT guid FROM ".$table_name." WHERE post_type = 'Attachment' and post_mime_type in ('image/jpeg','image/gif','image/png')");
 				if ($wpdb->last_error) {
@@ -406,7 +500,7 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
             'methods' => 'GET',
             'callback' => function ($params ){
 				global $wpdb;
-				$table_name = 'wp_2_posts';
+				$table_name = $params['prefix'].'posts';
 				
 				$images = $wpdb->get_results("SELECT guid FROM ".$table_name." WHERE post_type = 'Attachment' and post_mime_type in ('image/jpeg','image/gif','image/png') and post_name like '%".$params[search]."%'");
 				if ($wpdb->last_error) {
@@ -425,7 +519,7 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
             'callback' => function ($params ){
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_static';
-				$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Type = '". $params['type'] ."' AND Template = '". $params['template'] ."'");
+				$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Type = '". $params['type'] ."' AND Template = '". $params['template'] ."' and Site = '".$params['prefix']."'");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
@@ -444,10 +538,10 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 				$wpdb->flush();
 				$table_name = 'wp_2_email_builder_static';
 				if($params['type'] == null){
-					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $params['template'] ."'");
+					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $params['template'] ."' and Site = '".$params['prefix']."'");
 				}
 				else{
-					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $params['template'] ."' AND Type = '".$params['type']."'");
+					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $params['template'] ."' AND Type = '".$params['type']."' and Site = '".$params['prefix']."'");
 				}
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
@@ -475,7 +569,7 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 					foreach($array as $value) //loop over values
 					{
 						$post = get_post( $value );
-						$ftd_image = $wpdb->get_results("SELECT meta_value FROM wp_2_postmeta WHERE post_id = ".$post->ID." and meta_key = 'lw_featured_image_url'");
+						$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$post->ID." and meta_key = 'lw_featured_image_url'");
 						if($ftd_image == null){
 						  if(has_post_thumbnail( $post->ID )){
 							$image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID ),"full");
@@ -527,10 +621,11 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 				$json_result = json_decode($data->get_body(), true);
 				$type = $json_result["type"];
 				$template = $json_result["template"];
+				$site = $json_result["prefix"];
 				
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_static';
-				$wpdb->delete( $table_name, array( 'Template' => $template, 'Type' =>  $type) );
+				$wpdb->delete( $table_name, array( 'Template' => $template, 'Type' =>  $type, 'Site' => $site) );
 				
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
@@ -552,10 +647,11 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 				$type = $json_result["type"];
 				$template = $json_result["template"];
 				$content = $json_result["content"];
+				$site = $json_result['prefix'];
 				
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_static';
-				$result = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Type = '".$type."' and Template = '".$template."'");
+				$result = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Type = '".$type."' and Template = '".$template."' and Site = '".$site."'");
 
 
 				if($wpdb->num_rows > 0) {
@@ -567,6 +663,7 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 						array(
 							'Type' => $type, 
 							'Template' => $template,
+							'Site' => $site
 						)
 					 );
 				 return $result[0]->ContentId;
@@ -577,7 +674,8 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 					array( 
 						'Type' => $type, 
 						'Template' => $template,
-						'Content' => $content
+						'Content' => $content,
+						'Site' => $site
 					) 
 				);
 				
@@ -593,7 +691,13 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 
    }
 
-	
+		/*function my_plugin_menu() {
+	add_menu_page(__('Email Builder', 'myplugin'),__('Email Builder', 'myplugin'), 'edit_posts','my-plugin-dashboard','my_plugin_dashboard','icon');
+	add_submenu_page('my-plugin-dashboard', __('Portfolio Adviser','myplugin'), __('Portfolio Adviser','myplugin'), 'edit_posts', 'my-plugin-dashboard', 'my_plugin_dashboard' );
+	add_submenu_page('my-plugin-dashboard', __('International Advisor','myplugin'), __('International Advisor','myplugin'), 'manage_options', 'my-plugin-settings', 'my_plugin_settings' );
+	add_submenu_page('my-plugin-dashboard', __('Fund Selector Asia','myplugin'), __('Fund Selector Asia','myplugin'), 'manage_options', 'my-plugin-settings', 'my_plugin_settings' );
+	add_submenu_page('my-plugin-dashboard', __('Expert Investor Europe','myplugin'), __('Expert Investor Europe','myplugin'), 'manage_options', 'my-plugin-settings', 'my_plugin_settings' );
+	}*/
 	public function admin_menu() {
 		$title = __( 'Email Builder', $this->plugin_domain );
 		$hook_suffix = add_management_page( $title, $title, 'edit_posts', $this->plugin_domain, array(
@@ -614,14 +718,14 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
 			
 	}
 	public function load_bundle() {
-		wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', null, null, true );
-        wp_enqueue_style('font-awesome');
+		//wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', null, null, true );
+        //wp_enqueue_style('font-awesome');
 		wp_register_script( 'jQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js', null, null, true );
         wp_enqueue_script('jQuery');
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
-		wp_enqueue_style( 'prefix-style', plugins_url('css/main.4714b6ec.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.ba8eb9d0.js', __FILE__),array(),  '0.0.1', true );
+		wp_enqueue_style( 'prefix-style', plugins_url('css/main.db23fe67.css', __FILE__) );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.1d4e3c98.js', __FILE__),array(),  '0.0.1', true );
 
 	}
 	
@@ -661,7 +765,77 @@ $posts= $wpdb->get_results("select * from wp_2_posts LEFT JOIN wp_2_term_relatio
     }
 
 }
+class XMLRPC_Client {
+ 
+  private $url;
+ 
+  function __construct( $url ) {
+    $this->url = $url;
+  }
+ 
+  /**
+   * Call the XML-RPC method named $method and return the results, or die trying!
+   *
+   * @param string $method XML-RPC method name
+   * @param mixed ... optional variable list of parameters to pass to XML-RPC call
+   *
+   * @return array result of XML-RPC call
+   */
+  public function call() {
+  
+  	ini_set("display_error", 1);
+  	error_reporting(E_ALL);
+ 
+    // get arguments
+    $params = func_get_args();
+    $method = array_shift( $params );
+ 
+    $post = xmlrpc_encode_request( $method, $params , ['encoding' => 'utf-8']);
+   
 
+    $post = str_replace("\n", "", $post);
+    //$post = str_replace(" ", "", $post);   
+    $post = str_replace("\/", "/", $post); 
+    $post = str_replace("<?xmlversion=\"1.0\"encoding=\"utf-8\"?>","", $post);
+    /*<methodCall><methodName>campaign.setMessage</methodName><params><param><int>2</int></param><param><string>HTML</string></param><param><string>&lt;h1&gt;Hello World&lt;/h1&gt;</string></param></params></methodCall>*/
+    //return $post; 
+
+/*    echo $post;
+*/
+	$headers = array();
+	$headers[] = 'X-MicrosoftAjax: Delta=true';
+	$headers[] = 'Content-Type:text/xml';
+	$headers[] = 'Authorization:Basic bGFzdHdvcmRtZWRpYS5qa2lyazo/P0JhZG4zd3M5MCEh';
+    $ch = curl_init();
+ 
+    // set URL and other appropriate options
+    curl_setopt( $ch, CURLOPT_URL,            $this->url );
+    curl_setopt( $ch, CURLOPT_POST,           true );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS,     $post );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+ 
+    // issue the request
+    $response = curl_exec( $ch );
+    $response_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );
+    $curl_errorno = curl_errno( $ch );
+    $curl_error   = curl_error( $ch );
+    curl_close( $ch );
+ 
+    // check for curl errors
+    if ( $curl_errorno != 0 ) {
+      die( "Curl ERROR: {$curl_errorno} - {$curl_error}n" );
+    }
+ 
+    // check for server errors
+    if ( $response_code != 200 ) {
+      die( "ERROR: non-200 response from server: {$response_code} - {$response}n" );
+    } 
+//    return $response;
+//    $response .= 'e>';
+    return xmlrpc_decode( $response );
+  }
+}
 register_activation_hook( __FILE__, array('EmailBuilder', 'jal_install') );
 new EmailBuilder();
 ?>

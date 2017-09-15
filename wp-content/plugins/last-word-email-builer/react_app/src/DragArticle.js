@@ -15,7 +15,8 @@ const boxSource = {
       id: props.id,
       isDisabled: props.isDisabled,
       name: props.name,
-      category: props.category
+      category: props.category,
+      type: props.type
       // color: props.color
     };
   },
@@ -30,7 +31,7 @@ const boxSource = {
       // window.alert( // eslint-disable-line no-alert
       //   `You dropped ${item.name} into ${dropResult.name}!`,
       // );
-      props.onArticleDropped(dropResult.name, item.id);
+      props.onArticleDropped(dropResult.name, item.id,item.type);
     }
     else{
      props.onCancelDrag();

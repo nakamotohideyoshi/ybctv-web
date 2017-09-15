@@ -26,9 +26,6 @@ static propTypes = {
    articles: PropTypes.any.isRequired,
  };
 
-onRemoveArticle = (event) => {
- this.props.onRemoveArticle(event.target.id);
-}
 render() {
   const { canDrop, isOver, connectDropTarget } = this.props;
   const isActive = canDrop && isOver;
@@ -37,7 +34,27 @@ render() {
   let borderStyle = 'none';
   let overflow = 'visible';
   let animation = 'none';
-    return connectDropTarget(
+  let color = '';
+  let DigiContainerClass = '';
+  switch(this.props.site){
+   case 'wp_2_':
+      color = '#64a70b';
+      DigiContainerClass = 'Digi_2';
+     break;
+   case 'wp_3_':
+      color = '#0085CA';
+      DigiContainerClass = 'Digi_3';
+     break;
+   case 'wp_4_':
+      color = '#d50032';
+      DigiContainerClass = 'Digi_4';
+     break;
+   case 'wp_5_':
+      color = '#f2a900';
+      DigiContainerClass = 'Digi_5';
+     break;
+  }
+      return connectDropTarget(
   <div style={{ ...style, border, borderStyle, overflow, animation }}>
       <table style={{width: '100%', border: '0px', margin: '0px', textAlign: 'center',borderCollapse: 'collapse',tableLayout: 'fixed',msoTableLspace:'0pt', msoTableRspace:'0pt', borderSpacing:'0px'}}>
                 <tr>
@@ -60,16 +77,21 @@ render() {
                 <td>
                         <table style={{width: '750px', textAlign: 'left', borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',borderTop:'1px solid #CCCCCC',margin:'0px auto'}} className="deviceWidth">
                                 <tr>
-                                        <td style={{padding:'10px 9px 8px 9px', background: '#000'}}><a href="http://www.expertinvestoreurope.com/"><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_logo1.jpg" style={{maxWidth: '100%'}} alt="Expert Investor"/></a></td>
+                                        <td style={{padding:'10px 9px 8px 9px', background: '#000'}}>
+                                        {this.props.site === 'wp_2_' ? <a href="http://www.expertinvestoreurope.com/"><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_logo1.jpg" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
+                                        {this.props.site === 'wp_3_' ? <a href="http://www.international-adviser.com/"><img src="http://www.international-adviser.com/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
+                                        {this.props.site === 'wp_4_' ? <a href="http://www.fundselectorasia.com/"><img src="http://www.fundselectorasia.com/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
+                                        {this.props.site === 'wp_5_' ? <a href="http://www.expertinvestoreurope.com/"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
+                                        </td>
                                                 </tr>
                                                         <tr>
                                                                 <td style={{verticalAlign: 'bottom',padding:'10px 0px 0px 0px', background: '#fff', textAlign: 'center'}}></td>
                                                         </tr>
                                                         {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                         {this.props.topLeaderboard.length > 0 && this.props.showTopLeaderboard === '1' ? <tr>
-                                                          <td className="ql-editor" style={{position: 'relative', padding: '0px', margin: '0px', background: '#fff'}}>
+                                                          <td style={{position: 'relative', background: '#fff'}}>
                                                           <div dangerouslySetInnerHTML={{__html:this.props.topLeaderboard}}></div>
-                                                          <i className="fa fa-times" onClick={this.props.onRemoveStatic} id='Top_Leaderboard' style={{cursor:'pointer', color: '#BABABA',position:'absolute', right:'10px', top: '10px'}}></i>
+                                                          <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Top_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                           </td>
                                                         </tr> : ''}
                                         </table>
@@ -84,12 +106,12 @@ render() {
                 <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
                 <table style={{width: '100%'}}>
                         <tr>
-                                <td style={{color:'#64a70b',fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia'}}><font style={{fontFamily:'Georgia'}}>Digital magazine</font></td>
+                                <td style={{color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia'}}><font style={{fontFamily:'Georgia'}}>Digital magazine</font></td>
                         </tr>
                         {this.props.articles.map((article,key) => {
-                                        return article !== null ?  <tr className="DigiMagContainer" key={key}>
-                                        <td style={{color: '#2c2c2c',fontSize: '14px',position:'relative',fontFamily: 'Arial, Helvetica, sans-serif',lineHeight: '20px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}} dangerouslySetInnerHTML={{__html:article.post_content}}></font>
-                                <i className="fa fa-times" onClick={this.onRemoveArticle} id={article.ID} style={{cursor:'pointer', color: '#BABABA',position:'absolute', right:'10px', top: '10px'}}></i>
+                                        return article !== null ?  <tr className={DigiContainerClass} key={key}>
+                                        <td style={{color,fontSize: '14px',position:'relative',fontFamily: 'Arial, Helvetica, sans-serif',lineHeight: '20px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}} dangerouslySetInnerHTML={{__html:article.post_content}}></font>
+                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveArticle}/>
                                 </td>
                         </tr> : ''
                         })}
@@ -101,9 +123,9 @@ render() {
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                        { this.props.sponsoredContent.length > 0 && this.props.showSponsoredContent === '1' ? <td style={{padding:'0px', margin: '0px', background: '#fff', position: 'relative'}} className="ql-editor">
+                                                        { this.props.sponsoredContent.length > 0 && this.props.showSponsoredContent === '1' ? <td style={{background: '#fff', position: 'relative'}}>
                                                                 <div dangerouslySetInnerHTML={{__html:this.props.sponsoredContent}}></div>
-                                                                <i className="fa fa-times" onClick={this.props.onRemoveStatic} id='Sponsored_Content' style={{cursor:'pointer', color: '#BABABA',position:'absolute', right:'10px', top: '10px'}}></i>
+                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
                                                                 </td> : ''}
                                                         </tr>
                                                            <tr>
@@ -116,111 +138,137 @@ render() {
 </tr>
 <tr>
         <td style={{padding:'0px 10px 0px 10px'}}>
-        <table style={{width: '728px', textAlign: 'center'}} className="device_innerblock">
+        <table className="device_innerblock" style={this.props.highlight === 'story' ? { animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '728px',textAlign: 'center'} : {width: '728px',textAlign: 'center'}}>
                 <tr>
                         <td>
-                                <div className="section_content component_block" style={{display: 'inline', float: 'left'}} id="component_718ab570-2cbc-4ab9-b7a9-0e8c52ab225b">
+{this.props.site === 'wp_2_' || this.props.site === 'wp_3_' || this.props.site === 'wp_4_' ?
+        <div className="section_content component_block" style={{display: 'inline', float: 'left'}} id="component_718ab570-2cbc-4ab9-b7a9-0e8c52ab225b">
 <div className ="inner_section_content">
-         <table style={{textAlign: 'left', width: '235px'}} className="footer_block">
-        <tr>
-                <td style={{padding:'10px 10px 10px 10px'}}>
-                <table style={{width: '100%'}}>
-                        <tr>
-                                <td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
-                                        <a href="http://www.expertinvestoreurope.com" target="_blank"><img alt="Expert Investor" src="http://assets.kreatio.net/portfolio_adviser/images/eie_newsletter.jpg" title="Expert Investor"/></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
-                                        <a href="http://www.portfolio-adviser.com/news/1037547/murky-future-uk-companies-despite-bumper-profits" style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Murky future for UK companies...</font></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
-                                        <a href="http://www.portfolio-adviser.com/analysis/1037545/pa-analysis-disappointing-sanditon" style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="PA ANALYSIS: What’s going on at &#39;disappointing&#39; Sanditon? "><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>PA ANALYSIS: What’s going...</font></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td  style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
-                                <table style={{textAlign: 'left', width: '75px'}} className="more">
-                                        <tr>
-                                                <td style={{padding:'3px 10px 3px 10px', textAlign: 'left', background: '#d4d4d4'}}><a className="more_from" href="http://www.portfolio-adviser.com" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:  'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
-                                        </tr>
-                                </table></td>
-                        </tr>
-                </table></td>
-        </tr>
+<table className="footer_block" style={{width: '235px', textAlign: 'left'}}>
+<tr>
+<td style={{padding:'10px 10px 10px 10px'}}>
+<table style={{width: '100%'}}>
+<tr>
+        <td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
+                <a href="http://www.expertinvestoreurope.com" target="_blank"><img alt="Expert Investor" src="http://assets.kreatio.net/portfolio_adviser/images/eie_newsletter.jpg" title="Expert Investor"/></a>
+        </td>
+</tr>
+<tr>
+        <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
+                {this.props.selectedStoryArticles.length > 0 && _.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_').length > 0 ?
+                 <a href={_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_')[0].guid} style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_')[0].post_title}</font></a>
+                : ''}
+        </td>
+</tr>
+<tr>
+        <td style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
+        <table className="more" style={{width:'75px', textAlign: 'left'}}>
+                <tr>
+                        <td style={{padding:'3px 10px 3px 10px',background:'#d4d4d4',textAlign:'left'}}><a className="more_from" href="http://www.portfolio-adviser.com" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:  'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
+                </tr>
+        </table></td>
+</tr>
+</table></td>
+</tr>
 </table>
 </div>
-</div>
-                                <div className="section_content component_block" style={{display: 'inline', float: 'left'}} id="component_dda127db-bd7e-4399-8c75-1500c688370b">
+</div> : ''}
+                         {this.props.site === 'wp_2_' || this.props.site === 'wp_3_' || this.props.site === 'wp_5_' ?
+        <div className="section_content component_block" style={{display: 'inline', float: 'left'}} id="component_dda127db-bd7e-4399-8c75-1500c688370b">
 <div className ="inner_section_content">
-         <table  className="footer_block" style={{textAlign: 'left', width: '235px'}}>
-        <tr>
-                <td style={{padding:'10px 0px 10px 0px'}}>
-                <table style={{width: '100%'}}>
-                        <tr>
-                                <td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
-                                        <a href="http://www.fundselectorasia.com" target="_blank"><img alt="Fund Selector Asia" src="http://www.expertinvestoreurope.com/images/fsa_newsletter.jpg" title="Fund Selector Asia" /></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>	
-                                        <a href="http://www.fundselectorasia.com/news/1037527/malaysia-joins-fintech-race" style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Malaysia joins fintech race"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Malaysia joins fintech race...</font></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>	
-                                        <a href="http://www.fundselectorasia.com/news/1037455/look-malaysias-islamic-funds" style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="A look at Malaysia&#39;s Islamic funds"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>A look at Malaysia&#39;s Islamic...</font></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
-                                <table style={{textAlign: 'left', width: '75px'}} className="more">
-                                        <tr>
-                                                <td style={{padding:'3px 10px 3px 10px', textAlign: 'left', background: '#d4d4d4'}}><a className="more_from" href="http://www.fundselectorasia.com" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:  'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
-                                        </tr>
-                                </table></td>
-                        </tr>
-                </table></td>
-        </tr>
+<table className="footer_block" style={{width: '235px', textAlign: 'left'}}>
+<tr>
+<td style={{padding:'10px 0px 10px 0px'}}>
+<table style={{width: '100%'}}>
+<tr>
+        <td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
+                <a href="http://www.fundselectorasia.com" target="_blank"><img alt="Fund Selector Asia" src="http://www.expertinvestoreurope.com/images/fsa_newsletter.jpg" title="Fund Selector Asia" /></a>
+        </td>
+</tr>
+<tr>
+        <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>	
+                {this.props.selectedStoryArticles.length > 0 && _.filter(this.props.selectedStoryArticles, art => art.site === 'wp_4_').length > 0 ?
+                 <a href={_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_4_')[0].guid} style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_4_')[0].post_title}</font></a>
+                : ''}
+        </td>
+</tr>
+<tr>
+        <td style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
+        <table className="more" style={{width:'75px', textAlign: 'left'}}>
+                <tr>
+                        <td style={{padding:'3px 10px 3px 10px', textAlign:'left', background: '#d4d4d4'}}><a className="more_from" href="http://www.fundselectorasia.com" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:  'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
+                </tr>
+        </table></td>
+</tr>
+</table></td>
+</tr>
 </table>
 </div>
-</div>
-                                <div className="section_content component_block" id="component_aaaf6c07-a96c-409e-a6f1-77b7bcf5ba4f">
+</div> : ''}
+                         {this.props.site === 'wp_2_' || this.props.site === 'wp_4_' || this.props.site === 'wp_5_' ? 
+        <div className="section_content component_block" style={{display: 'inline', float: 'left'}} id="component_aaaf6c07-a96c-409e-a6f1-77b7bcf5ba4f">
 <div className ="inner_section_content">
-         <table className="footer_block footer_last" style={{width: '235px', textAlign: 'right'}}>
-        <tr>
-                <td style={{padding:'10px 0px 10px 0px'}}>
-                <table style={{width: '100%', textAlign: 'left'}}>
-                        <tr>
-                                <td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
-                                        <a href="http://www.international-adviser.com" target="_blank"><img alt="International Adviser" src="http://www.expertinvestoreurope.com/images/ia_newsletter.png" title="International Adviser" /></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
-                                        <a href="http://www.international-adviser.com/news/1037541/lloyds-bank-expand-pensions-wealth-management" style={{color:'#000000',textDecoration: 'none',fontFamily:' Arial, Helvetica, sans-serif'}} target="_blank" title="Lloyds Bank may expand into pensions and wealth management"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Lloyds Bank may expand into...</font></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
-                                        <a href="http://www.international-adviser.com/news/1037540/allfunds-nordics-office" style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Allfunds to open Nordics office"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Allfunds to open Nordics...</font></a>
-                                </td>
-                        </tr>
-                        <tr>
-                                <td style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
-                                <table style={{textAlign: 'left', width: '75px'}} className="more">
-                                        <tr>
-                                                <td style={{padding:'3px 10px 3px 10px', textAlign: 'left', background: '#d4d4d4'}}><a className="more_from" href="http://www.international-adviser.com/" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
-                                        </tr>
-                                </table></td>
-                        </tr>
-                </table></td>
-        </tr>
+<table className="footer_block footer_last" style={{width: '235px', textAlign: 'right'}}>
+<tr>
+<td style={{padding:'10px 0px 10px 0px'}}>
+<table style={{width: '100%', textAlign: 'left'}}>
+<tr>
+        <td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
+                <a href="http://www.international-adviser.com" target="_blank"><img alt="International Adviser" src="http://www.expertinvestoreurope.com/images/ia_newsletter.png" title="International Adviser" /></a>
+        </td>
+</tr>
+<tr>
+        <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
+                {this.props.selectedStoryArticles.length > 0 && _.filter(this.props.selectedStoryArticles, art => art.site === 'wp_3_').length > 0 ?
+                 <a href={_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_3_')[0].guid} style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_3_')[0].post_title}</font></a>
+                : ''}
+        </td>
+</tr>
+<tr>
+        <td style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
+        <table className="more" style={{width:'75px', textAlign: 'left'}}>
+                <tr>
+                        <td style={{padding:'3px 10px 3px 10px', background: '#d4d4d4', textAlign: 'left'}}><a className="more_from" href="http://www.international-adviser.com/" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:  'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
+                </tr>
+        </table></td>
+</tr>
+</table></td>
+</tr>
 </table>
 </div>
+</div> : ''}
+                         {this.props.site === 'wp_3_' || this.props.site === 'wp_4_' || this.props.site === 'wp_5_' ?
+<div className="section_content component_block" id="component_aaaf6c07-a96c-409e-a6f1-77b7bcf5ba4f">
+<div className ="inner_section_content">
+<table className="footer_block footer_last" style={{width: '235px', textAlign: 'right'}}>
+<tr>
+<td style={{padding:'10px 0px 10px 0px'}}>
+<table style={{width: '100%', textAlign: 'left'}}>
+<tr>
+<td style={{padding: '0px 0px 10px 0px', textAlign: 'left'}}>
+<a href="http://www.international-adviser.com" target="_blank"><img alt="International Adviser" src="http://assets.kreatio.net/international_adviser/images/pa_newsletter.jpg" title="Portfolio Adviser" /></a>
+</td>
+</tr>
+<tr>
+<td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
+{this.props.selectedStoryArticles.length > 0 && _.filter(this.props.selectedStoryArticles, art => art.site === 'wp_2_').length > 0 ?
+ <a href={_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_2_')[0].guid} style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_2_')[0].post_title}</font></a>
+: ''}
+</td>
+</tr>
+<tr>
+<td style={{padding: '10px 0px 0px 0px', textAlign: 'left'}}>
+<table className="more" style={{width:'75px', textAlign: 'left'}}>
+<tr>
+<td style={{padding:'3px 10px 3px 10px', background: '#d4d4d4', textAlign: 'left'}}><a className="more_from" href="http://www.international-adviser.com/" target="_blank" style={{color:'#000000',textDecoration: 'none',lineHeight: '14px',fontSize: '12px',fontFamily:  'Arial, Helvetica, sans-serif',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>More Info</font></a></td>
+</tr>
+</table></td>
+</tr>
+</table></td>
+</tr>
+</table>
 </div>
+</div> : ''}
                         </td>
                 </tr>
         </table></td>
@@ -237,9 +285,9 @@ render() {
                                                                                         </tr>
                                                                                         {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                                                         { this.props.footerLeaderboard.length > 0 && this.props.showFooterLeaderboard === '1' ? <tr>
-                                                                                          <td className="ql-editor" style={{position: 'relative', padding: '0px', margin: '0px', background: '#fff'}}>
+                                                                                          <td style={{position: 'relative', background: '#fff'}}>
                                                                                           <div dangerouslySetInnerHTML={{__html:this.props.footerLeaderboard}}></div>
-                                                                                          <i className="fa fa-times" onClick={this.props.onRemoveStatic} id='Footer_Leaderboard' style={{cursor:'pointer', color: '#BABABA',position:'absolute', right:'10px', top: '10px'}}></i>
+                                                                                          <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                                                           </td>
                                                                                         </tr> : ''}
                                                            <tr>

@@ -6050,6 +6050,7 @@ button.close {
 
                         @-webkit-keyframes blink { 50% { border-color: #ff0000; }  }
 
-                        .DigiMagContainer a{
-                         color: green;
-                        }
+                        .Digi_2 a{ color: #64a70b; }
+                        .Digi_3 a{ color: #0085CA; }
+                        .Digi_4 a{ color: #d50032; }
+                        .Digi_5 a{ color: #f2a900; }

@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import update from 'react-addons-update';
-import VideoNewsLetter from './VideoNewsLetter';
-import InsightsNewsLetter from './InsightsNewsLetter';
-import DigitalMagazineNewsLetter from './DigitalMagazineNewsLetter';
-import BreakingNewsNewsLetter from './BreakingNewsNewsLetter';
-import PortfolioAdviserNewsLetter from './PortfolioAdviserNewsLetter';
-import Article from './Article';
 import _ from 'lodash';
 import $ from 'jquery';
 import Config from './Config';
@@ -25,7 +19,7 @@ class PreviewEmail extends Component {
 
 
   getEmail = () => {
-    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/email?emailId='+ this.props.emailId + '&cache='+ Guid.raw(), {
+    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/email?emailId='+ this.props.emailId + '&prefix='+ this.props.site +'&cache='+ Guid.raw(), {
       method: 'GET',
       headers: {
         'Accept': 'application/json',

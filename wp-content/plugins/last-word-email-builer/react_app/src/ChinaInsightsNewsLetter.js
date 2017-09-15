@@ -18,7 +18,7 @@ const boxTarget = {
   },
 };
 
-class PortfolioAdviserNewsLetter extends Component {
+class ChinaInsightsNewsLetter extends Component {
 static propTypes = {
    connectDropTarget: PropTypes.func.isRequired,
    isOver: PropTypes.bool.isRequired,
@@ -91,138 +91,138 @@ render() {
                                                 <td>
                                                 <table style={{textAlign: 'center',width:'100%', margin: '0px'}}>
 <tr>
-				                        	<td>
-			                                	<table style={{width: '490px', textAlign: 'left', float: 'left'}}>
-			                                       		<tbody><tr>
-	<td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
-	<table style={this.props.highlight === 'articles' ? { animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
-		<tbody><tr>
-			<td style={{fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia', color}}>
-				<font style={{fontFamily:'Georgia'}}> Latest news </font>
-			</td>
-		</tr>
+                                                                <td>
+                                                                <table style={{width: '490px', textAlign: 'left', float: 'left'}}>
+                                                                        <tbody><tr>
+        <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
+        <table style={this.props.highlight === 'articles' ? { animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
+                <tbody><tr>
+                        <td style={{fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia', color}}>
+                                <font style={{fontFamily:'Georgia'}}> Latest China News </font>
+                        </td>
+                </tr>
 
                 {this.props.articles.map((article,key) => {
-				return article !== null ?  <tr key={key}>
-			<td>
-			<table style={{borderBottom: '1px solid #e5eaee', width: '100%', position: 'relative'}}>
-				<tbody><tr>
-									<td className="container_sub" style={{padding:'20px 10px 14px 0px',verticalAlign: 'top'}}> 
+                                return article !== null ?  <tr key={key}>
+                        <td>
+                        <table style={{borderBottom: '1px solid #e5eaee', width: '100%', position: 'relative'}}>
+                                <tbody><tr>
+                                                                        <td className="container_sub" style={{padding:'20px 10px 14px 0px',verticalAlign: 'top'}}> 
                                                                                 <a href={article.guid}>
                                                                                  <img src={ article.featured_image !== null ? article.featured_image : "http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg"} style={{maxWidth:'100%'}} title="" />
                                                                                  </a>
-									</td>
-									<td className="container_sub" style={{verticalAlign: 'top',padding:'13px 0px 14px'}}>						
-										<table width="100%">
-												<tbody><tr>
-													<td style={{padding: '0px 0px 7px'}}> <a href={article.guid} style={{fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none', color}} title="ANALYSIS: Sailing the macro winds in Japanese equities"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{article.post_title}</font></a> </td>
-												</tr>
-												<tr>
-													<td style={{color: '#2c2c2c',fontSize: '14px',fontFamily: 'Arial, Helvetica, sans-serif',lineHeight: '20px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}} dangerouslySetInnerHTML={{__html:article.post_excerpt.substring(0,500)}}></font></td>
-												</tr>
-										</tbody></table>
-                                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveArticle}/>
-									</td>
-				</tr>
-			</tbody></table>
-			</td>
-		</tr> : ''
+                                                                        </td>
+                                                                        <td className="container_sub" style={{verticalAlign: 'top',padding:'13px 0px 14px'}}>						
+                                                                                <table width="100%">
+                                                                                                <tbody><tr>
+                                                                                                        <td style={{padding: '0px 0px 7px'}}> <a href={article.guid} style={{fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none', color}} title="ANALYSIS: Sailing the macro winds in Japanese equities"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{article.post_title}</font></a> </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                        <td style={{color: '#2c2c2c',fontSize: '14px',fontFamily: 'Arial, Helvetica, sans-serif',lineHeight: '20px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}} dangerouslySetInnerHTML={{__html:article.post_excerpt.substring(0,500)}}></font></td>
+                                                                                                </tr>
+                                                                                </tbody></table>
+                                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveArticle}/>
+                                                                        </td>
+                                </tr>
+                        </tbody></table>
+                        </td>
+                </tr> : ''
                 })}
-	</tbody></table>
-	</td>
+        </tbody></table>
+        </td>
 </tr>
-			                                    </tbody></table>
-			                                       <table className="container" style={{width: '235px', textAlign: 'right'}}>
-		<tbody><tr>
-			<td style={{padding:'0px 9px 0px 10px', verticalAlign: 'top',margin:'0px'}}>
-				<table style={{width: '100%'}}>
-							<tbody><tr>
-								<td style={{padding:'13px 0px 10px 0px'}}>
-									<table className="subscribe" style={{width: '100%'}}>
+                                                            </tbody></table>
+                                                               <table className="container" style={{width: '235px', textAlign: 'right'}}>
+                <tbody><tr>
+                        <td style={{padding:'0px 9px 0px 10px', verticalAlign: 'top',margin:'0px'}}>
+                                <table style={{width: '100%'}}>
+                                                        <tbody><tr>
+                                                                <td style={{padding:'13px 0px 10px 0px'}}>
+                                                                        <table className="subscribe" style={{width: '100%'}}>
 <tbody>
 {this.props.staticHighlight === 'newsletter' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.newsletterSubscribe.length > 0 && this.props.showNewsletterSubscribe === '1' ? <tr>
   <td style={{position: 'relative', background: '#fff'}}>
    <div dangerouslySetInnerHTML={{__html:this.props.newsletterSubscribe}}></div>
-  <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{cursor:'pointer',position: 'absolute',right:'10px',top:'10px',width:'10px'}} id="Newsletter_Subscribe" onClick={this.props.onRemoveStatic}/>
+  <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Newsletter_Subscribe" onClick={this.props.onRemoveStatic}/>
   </td>
 </tr> : ''}
 </tbody>
 </table>
-								</td>
-							</tr>
-							<tr>
-		<td>
-			<table style={this.props.highlight === 'events' ? {animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
-					<tbody><tr>
-						<td style={{color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia'}}> 
-							<font style={{fontFamily:'Georgia'}}>
-								Events
-							</font> 
-						</td>
-					</tr>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+                <td>
+                        <table style={this.props.highlight === 'events' ? {animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
+                                        <tbody><tr>
+                                                <td style={{color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia'}}> 
+                                                        <font style={{fontFamily:'Georgia'}}>
+                                                                Events
+                                                        </font> 
+                                                </td>
+                                        </tr>
                                           {this.props.eventArticles.map((article, key) => {
 return <tr key={key}>
-		<td>
-			<table style={{width: '100%'}}>
-				<tbody>
-						<tr>
-							<td style={{padding:'7px 0px 7px', position: 'relative'}}>
-								<a href="http://lastwordmedia.eventscase.com/EN/PAAlternatives17" style={{color,fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none'}}><font>{article.post_title}</font></a>
+                <td>
+                        <table style={{width: '100%'}}>
+                                <tbody>
+                                                <tr>
+                                                        <td style={{padding:'7px 0px 7px', position: 'relative'}}>
+                                                                <a href="http://lastwordmedia.eventscase.com/EN/PAAlternatives17" style={{color,fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none'}}><font>{article.post_title}</font></a>
                                                                 <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveEvent}/>
-							</td>
-						</tr>
-			          <tr>
-			             <td style={{fontFamily:'Arial, Helvetica, sans-serif',fontSize: '14px',padding:'0px 0px 2px 0px',color: '#2c2c2c'}}>
-			             	<font>
+                                                        </td>
+                                                </tr>
+                                  <tr>
+                                     <td style={{fontFamily:'Arial, Helvetica, sans-serif',fontSize: '14px',padding:'0px 0px 2px 0px',color: '#2c2c2c'}}>
+                                        <font>
                                         {(new Date(article.post_date)).toDateString()}
-			             	</font>
-			             </td>
-			          </tr>
-				</tbody>
-			</table>
-		</td>
-	</tr>
+                                        </font>
+                                     </td>
+                                  </tr>
+                                </tbody>
+                        </table>
+                </td>
+        </tr>
                                         })}
-			</tbody></table>
-		</td>
-	</tr>
+                        </tbody></table>
+                </td>
+        </tr>
 <tr>
-	<td>
-        {this.props.site !== 'wp_4_' ? <table style={this.props.highlight === 'editor' ? {animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
-				<tbody><tr>
-					<td style={{color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding:'20px 0px 3px 0px',fontFamily:'Georgia'}}>
-						 <font>Editor's pick</font>
-					</td>
-				</tr>
+        <td>
+                <table style={this.props.highlight === 'editor' ? {animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
+                                <tbody><tr>
+                                        <td style={{color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding:'20px 0px 3px 0px',fontFamily:'Georgia'}}>
+                                                 <font>Editor's pick</font>
+                                        </td>
+                                </tr>
                                                  {this.props.editorArticles.map((article, key) => {
-						return <tr key={key}>
-							<td>
-								<table style={{width: '100%', textAlign: 'left', position: 'relative'}}>
-											<tbody><tr>
-												<td style={{padding: '12px 0px 12px 0px',borderBottom: '1px solid #e5eaee'}}>
-													<a href="http://www.portfolio-adviser.com/news/1037528/standard-life-aberdeen-confirm-creation-gbp11bn-investment-giant" style={{color,fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none'}} title={article.post_title}><font>{article.post_title}</font></a> 
-                                                                                                        <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveEditor}/>
-												</td>
-											</tr>
-								</tbody></table>
-							</td>
-						</tr>
+                                                return <tr key={key}>
+                                                        <td>
+                                                                <table style={{width: '100%', textAlign: 'left', position: 'relative'}}>
+                                                                                        <tbody><tr>
+                                                                                                <td style={{padding: '12px 0px 12px 0px',borderBottom: '1px solid #e5eaee'}}>
+                                                                                                        <a href="http://www.portfolio-adviser.com/news/1037528/standard-life-aberdeen-confirm-creation-gbp11bn-investment-giant" style={{color,fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none'}} title={article.post_title}><font>{article.post_title}</font></a> 
+                                                                                                        <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveEditor}/>
+                                                                                                </td>
+                                                                                        </tr>
+                                                                </tbody></table>
+                                                        </td>
+                                                </tr>
                                                  })}
-		</tbody></table>: ''}
-	</td>
+                </tbody></table>
+        </td>
 </tr>
-						
-				</tbody></table> 
-			</td>
-	    </tr>
+                                                
+                                </tbody></table>
+                        </td>
+            </tr>
 </tbody></table>
-				                              </td>
-				                           </tr>
+                                                              </td>
+                                                           </tr>
                                                                                         <tr>
                                                  {this.props.sponsoredContent.length > 0 && this.props.showSponsoredContent === '1' ? <td style={{background: '#fff', position: 'relative'}}>
                                                                                                 <div dangerouslySetInnerHTML={{__html:this.props.sponsoredContent}}></div>
-                                                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
+                                                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
                                                                                                 </td>: ''}
                                                                                         </tr>
                                                            <tr>
@@ -235,7 +235,7 @@ return <tr key={key}>
 </tr>
 <tr>
         <td style={{padding:'0px 10px 0px 10px'}}>
-        <table className="device_innerblock" style={this.props.highlight === 'story' ? { animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '728px',textAlign: 'center'} : {width: '728px',textAlign: 'center'}}>
+        <table className="device_innerblock" style={{width: '728px', textAlign:'center'}}>
                 <tr>
                         <td>{this.props.site === 'wp_2_' || this.props.site === 'wp_3_' || this.props.site === 'wp_4_' ?
                                 <div className="section_content component_block" style={{display: 'inline', float: 'left'}} id="component_718ab570-2cbc-4ab9-b7a9-0e8c52ab225b">
@@ -251,9 +251,9 @@ return <tr key={key}>
                         </tr>
                         <tr>
                                 <td style={{lineHeight: '14px',fontSize: '14px',padding:'0px 0px 5px 0px'}}>
-                                       {this.props.selectedStoryArticles.length > 0 && _.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_').length > 0 ?
-                                        <a href={_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_')[0].guid} style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_')[0].post_title}</font></a>
-                                       : ''}
+                                        {this.props.selectedStoryArticles.length > 0 && _.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_').length > 0 ?
+                                         <a href={_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_')[0].guid} style={{color:'#000000',textDecoration: 'none',fontFamily:'Arial, Helvetica, sans-serif'}} target="_blank" title="Murky future for UK companies despite bumper profits"><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{_.filter(this.props.selectedStoryArticles, art => art.site === 'wp_5_')[0].post_title}</font></a>
+                                        : ''}
                                 </td>
                         </tr>
                         <tr>
@@ -383,7 +383,7 @@ return <tr key={key}>
                                                                                         {this.props.footerLeaderboard.length > 0 && this.props.showFooterLeaderboard === '1' ? <tr>
                                                                                           <td style={{position: 'relative', background: '#fff'}}>
                                                                                            <div dangerouslySetInnerHTML={{__html:this.props.footerLeaderboard}}></div>
-                                                                                           <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
+                                                                                          <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                                                           </td>
                                                                                         </tr> : ''}
                                                            <tr>
@@ -464,4 +464,4 @@ export default DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
 })
-)(PortfolioAdviserNewsLetter);
+)(ChinaInsightsNewsLetter);

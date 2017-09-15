@@ -80,6 +80,7 @@ onSaveHtml = () => {
   propTypes ={
       handleHideModal: React.PropTypes.func.isRequired,
       onSaveImages: React.PropTypes.func.isRequired,
+      site: React.PropTypes.string.isRequired
   }
   onSelectImage = (index, image) => {
         var images = this.state.images.slice();
@@ -105,7 +106,8 @@ onSaveHtml = () => {
     }
     componentDidMount = () => {
       $(ReactDOM.findDOMNode(this.refs.myModal)).trigger('click');
-      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/images?cache='+ Guid.raw(), {
+      console.dir(this);
+      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/images?prefix='+ this.props.site + '&cache='+ Guid.raw(), {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -121,6 +123,8 @@ onSaveHtml = () => {
           thumbnail: img.guid,
           thumbnailWidth: 200,
           }]}))});
+          $('.modal-backdrop').hide();
+          $('body').removeClass('modal-open');
         });
       });
     }
@@ -133,7 +137,7 @@ onSaveHtml = () => {
      let searchFor = event.target.value;
      if(this.timeout) clearTimeout(this.timeout);
       this.timeout = setTimeout(() => {
-          fetch(Config.BASE_URL + '/wp-json/email-builder/v1/searchimages?search='+ searchFor + '&cache='+ Guid.raw(), {
+          fetch(Config.BASE_URL + '/wp-json/email-builder/v1/searchimages?search='+ searchFor + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
             method: 'GET',
             headers: {
               'Accept': 'application/json',
@@ -227,7 +231,8 @@ class CreateStatic extends Component {
         body: JSON.stringify({
          template: this.props.template,
          type: this.props.type,
-         content: this.state.content
+         content: this.state.content,
+         prefix: this.props.site
         })
       }).then(result => {
         result.json().then(val => {
@@ -245,7 +250,8 @@ class CreateStatic extends Component {
         },
         body: JSON.stringify({
          template: this.props.template,
-         type: this.props.type
+         type: this.props.type,
+         prefix: this.props.site
         })
       }).then(result => {
         result.json().then(val => {
@@ -281,7 +287,7 @@ class CreateStatic extends Component {
     }
 
     componentDidMount = () => {
-     fetch(Config.BASE_URL  + '/wp-json/email-builder/v1/static?type='+ this.props.type + '&template='+ this.props.template + '&cache='+ Guid.raw(), {
+     fetch(Config.BASE_URL  + '/wp-json/email-builder/v1/static?type='+ this.props.type + '&template='+ this.props.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
        method: 'GET',
        headers: {
          'Accept': 'application/json',
@@ -299,7 +305,7 @@ class CreateStatic extends Component {
 
     componentWillReceiveProps = (nextProps) => {
      this.setState(prevState => ({content: ''}));
-    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/static?type='+ nextProps.type + '&template='+ nextProps.template + '&cache='+ Guid.raw(), {
+    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/static?type='+ nextProps.type + '&template='+ nextProps.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -346,7 +352,7 @@ class CreateStatic extends Component {
           <button type="button" className="btn btn-primary offscreen" onClick={this.onCloseStatic}>Close</button>
           </div>
          </div>
-          {this.state.showModal ? <Modal handleHideModal={this.handleHideModal} onSaveImages={this.onSaveImages}/> : null}
+          {this.state.showModal ? <Modal handleHideModal={this.handleHideModal} onSaveImages={this.onSaveImages} site={this.props.site}/> : null}
           {this.state.showHtmlModal ? <HTMLModal handleHideModal={this.handleHideHtmlModal} onSaveHtml={this.onSaveHtml}/> : null}
       </div>
     );
