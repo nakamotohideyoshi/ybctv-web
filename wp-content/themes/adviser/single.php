@@ -19,7 +19,6 @@ get_header(); ?>
                                 <?php
                                 $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
-                                  setReadCount(get_the_ID());
                                 ?>
                                     <div class="loop-list">
                                         <div class="content-image">
@@ -56,6 +55,7 @@ get_header(); ?>
                     </div>
                     <div class="content-category content-single">
                         <?php if(have_posts()): while(have_posts()): the_post();
+                            setReadCount(get_the_ID());
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>

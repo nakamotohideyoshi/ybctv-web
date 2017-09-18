@@ -11,17 +11,16 @@ get_header(); ?>
         <div class="content-page">
             <div class="container">
                 <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
-                
+
                     <div class="content-left">
                         <div class="most-popular most-popular-new">
                             <h2>Most Popular News</h2>
                             <p class="architas">architas</p>
                             <div class="list-most-popular">
-                                <?php 
-                                
+                                <?php
+
                                 $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
-                                  setReadCount(get_the_ID());
                                 ?>
                                     <div class="loop-list">
                                         <div class="content-image">
@@ -48,7 +47,7 @@ get_header(); ?>
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
 
                 <div class="col-lg-5 col-md-5 col-md-offset-1 col-sm-12 col-xs-12">
                     <div class="bread">
@@ -57,9 +56,9 @@ get_header(); ?>
                             bcn_display();
                         }?>
                     </div>
-                <?php   $post_categories = get_the_category(get_the_ID()); 
+                <?php   $post_categories = get_the_category(get_the_ID());
                         $term = get_option( "taxonomy_" . $post_categories[0]->term_id );
-                                         
+
                         $locked = $term['locked'];
 
                 if($locked == '1') {
@@ -67,6 +66,7 @@ get_header(); ?>
 
                     <div class="content-category content-single contlocked">
                         <?php if(have_posts()): while(have_posts()): the_post();
+                            setReadCount(get_the_ID());
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>
@@ -108,7 +108,7 @@ get_header(); ?>
                                         </div>
                                 </div>
                                 <p class="locked-notice">To access this content please sign in or register</p>
-                                
+
                                 <div class="locked-buttons">
                                 <a href="#" data-toggle="modal" data-target="#myModal" class="locked-button signin">Sign in</a>
                                 <a href="/register" class="locked-button">Register</a>
@@ -123,7 +123,7 @@ get_header(); ?>
                                 </ul>
 
                                 <hr>
-                                
+
                                 <p>For assistance please contact our customer service team or visit our <a href="#">FAQ page</a>.<br />
                                 Phone: +44 20 7382 4477<br />
                                 Email: subscriptions@lastwordmedia.com
@@ -131,11 +131,12 @@ get_header(); ?>
                             </div>
                         <?php endwhile;endif;?>
                     </div>
-                            
+
                     <?php } else { ?>
 
                     <div class="content-category content-single">
                         <?php if(have_posts()): while(have_posts()): the_post();
+                            setReadCount(get_the_ID());
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>
@@ -200,11 +201,12 @@ get_header(); ?>
                             </div>
                         <?php endwhile;endif;?>
                     </div>
-                            
+
                     <?php }} else { ?>
 
                     <div class="content-category content-single">
                         <?php if(have_posts()): while(have_posts()): the_post();
+                            setReadCount(get_the_ID());
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>
