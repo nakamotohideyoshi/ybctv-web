@@ -43,7 +43,10 @@ class last_word_events {
       'show_ui' => true,
       'supports' => array('title', 'thumbnail'),
       'rewrite' => array('slug' => 'event', 'with_front' => false),
-      'menu_position' => 5
+      'menu_position' => 5,
+      'show_in_rest' => true,
+      'rest_base' => 'events',
+      'rest_controller_class' => 'WP_REST_Posts_Controller'
     );
 
     register_post_type('event', $args);
