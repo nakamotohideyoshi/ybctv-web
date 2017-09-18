@@ -16,7 +16,18 @@ get_header(); ?>
                     <h2 class="title">MOST VIEWED</h2>
                     <div class="list-most-viewed">
                     <?php
-                      $args = array( 'posts_per_page' => 5,'showposts' => 5, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC' );
+                      $no_of_days = (int)get_option('most_read_days');
+                      $start_date = date('Y-m-d', strtotime('-' . $no_of_days . ' days'));
+                      $args = array(
+                        'posts_per_page' => 5,
+                        'showposts' => 5,
+                        'date_query' => array(
+                          'after' => $start_date
+                        ),
+                        'meta_key' => 'lw_read_count',
+                        'orderby' => 'meta_value_num',
+                        'order' => 'DESC'
+                      );
                       $myposts = get_posts( $args );
                       $popcounter = 1;
                       foreach ( $myposts as $post ) : setup_postdata( $post );
