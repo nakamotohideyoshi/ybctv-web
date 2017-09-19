@@ -336,7 +336,7 @@ add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
 function enqueue_pagefair() {
   wp_register_script('pagefair', THEME_PATH . '/js/pagefair.js', array('jquery'), '1.0.0', false);
   wp_enqueue_script('pagefair');
-  
+
   // wp_register_script('jquery-steps', THEME_PATH . '/js/jquery.steps.js', array(), '1.0.0', false);
   // wp_enqueue_script('jquery-steps');
 }
@@ -383,4 +383,14 @@ function ajax_view_more() {
 
 add_action('wp_ajax_nopriv_ajax_view_more', 'ajax_view_more');
 add_action('wp_ajax_ajax_view_more', 'ajax_view_more');
+
+/*
+* Teads JS.
+*/
+function enqueue_teads() {
+  wp_register_script('teads', '//a.teads.tv/page/63053/tag', array(), '1.0.0', false);
+  wp_enqueue_script('teads');
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_teads');
 ?>

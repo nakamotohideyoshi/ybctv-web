@@ -494,4 +494,15 @@ function add_page_break_button($buttons, $id) {
 
 add_filter('mce_buttons', 'add_page_break_button', 1, 2);
 
+/*
+* Teads JS.
+*/
+function enqueue_teads() {
+  wp_register_script('teads', '//a.teads.tv/page/52800/tag', array(), '1.0.0', false);
+  wp_enqueue_script('teads');
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_teads');
+
+
 ?>
