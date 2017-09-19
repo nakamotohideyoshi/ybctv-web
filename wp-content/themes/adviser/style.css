@@ -678,10 +678,6 @@ h2.title{
   color: #69b42e;
 }
 
-.st0:hover{
-  fill:#fff !important;
-}
-
 .site {
   background-color: #f2f2f2;
   position: relative;
@@ -741,6 +737,14 @@ h2.title{
   padding: 10px 0;
 }
 
+.header-top a {
+  transition: 0.5s;
+}
+
+.header-top a:hover {
+  color: #69b42e;
+}
+
 .header-top .ads-top-search, .header-top .social, .header-top .user-login {
   float: right;
 }
@@ -761,6 +765,7 @@ h2.title{
 
 .header-top .social {
   padding: 9px 0 7px;
+  margin-right: 15px;
 }
 
 .header-top .social li {
@@ -769,7 +774,38 @@ h2.title{
 }
 
 .header-top .social img {
-  width: 25px;
+  width: 30px;
+}
+
+.header-top .social a {
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.header-top a svg {
+  width: 30px;
+  height: 30px;
+  transition: 0.5s;
+  display: inline-block;
+  vertical-align: middle;
+  margin: -3px 3px 0 10px;
+}
+
+.header-top a svg .st0, .header-top a:hover svg .st1,  .header-top a:hover svg .st2 {
+  transition: 0.5s;
+}
+
+.header-top a:hover svg {
+  fill: #69b42e;
+  stroke: #69b42e;
+}
+
+.header-top a:hover svg .st0 {
+  stroke: #69b42e;
+}
+
+.header-top a:hover svg .st1, .header-top a:hover svg .st2 {
+  fill: #69b42e;
 }
 
 .header-top .user-login {
