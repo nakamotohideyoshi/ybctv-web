@@ -110,6 +110,13 @@ class last_word_user_meta {
           </td>
         </tr>
       </table>
+      <h2>Verification</h2>
+      <table class="form-table">
+        <tr>
+          <th>Email address</th>
+          <td><?php echo get_user_meta($user->ID, 'lw_email_verified') == 'yes' ? ' <span style="color:#00dd00;">Verified</span>' : '<span style="color:#dd0000;">Not verified</span>'; ?></td>
+        </tr>
+      </table>
     <?php
   }
 
