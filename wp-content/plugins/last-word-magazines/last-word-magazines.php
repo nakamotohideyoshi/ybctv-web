@@ -42,7 +42,10 @@ class last_word_magazines {
         'show_ui' => true,
         'supports' => array('title', 'editor', 'thumbnail'),
         'rewrite' => array('slug' => 'magazine', 'with_front' => false),
-        'menu_position' => 5
+        'menu_position' => 5,
+        'show_in_rest' => true,
+        'rest_base' => 'magazines',
+        'rest_controller_class' => 'WP_REST_Posts_Controller'
       );
 
       register_post_type('magazine', $args);
