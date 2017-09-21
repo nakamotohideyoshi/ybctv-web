@@ -116,6 +116,21 @@ class last_word_user_meta {
           <th>Email address</th>
           <td><?php echo get_user_meta($user->ID, 'lw_email_verified') == 'yes' ? ' <span style="color:#00dd00;">Verified</span>' : '<span style="color:#dd0000;">Not verified</span>'; ?></td>
         </tr>
+        <tr>
+          <th>Access to Product: EI Market Intelligence</th>
+          <td>
+            <?php
+              $product_eimi = get_user_meta($user->ID, 'lw_product_ei_market_intelligence', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ei_market_intelligence" id="lw_product_ei_market_intelligence" value="yes"<?php echo $product_eimi == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_eimi == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
       </table>
     <?php
   }
@@ -132,6 +147,13 @@ class last_word_user_meta {
       $this->process_lw_user_meta($user_id, 'lw_linkedin_url', $_POST['lw_linkedin_url']);
       $this->process_lw_user_meta($user_id, 'lw_twitter_username', $_POST['lw_twitter_username']);
       $this->process_lw_user_meta($user_id, 'lw_google_plus_url', $_POST['lw_google_plus_url']);
+
+      if (isset($_POST['lw_product_ei_market_intelligence'])) {
+        update_user_meta($user_id, 'lw_product_ei_market_intelligence', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ei_market_intelligence', '');
+      }
     }
   }
 
