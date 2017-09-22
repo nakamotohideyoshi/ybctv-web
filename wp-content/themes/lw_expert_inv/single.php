@@ -84,7 +84,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
+                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -154,7 +154,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
+                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>
@@ -224,7 +224,7 @@ get_header(); ?>
                               }
                             ?>
                             </span></p>
-                            <p><b>By <a href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' )); ?>"><?php the_author(); ?></a>,</b> <?php the_time('j M y');?></p>
+                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                             <div class="like_button clearfix">
                                 <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                             </div>

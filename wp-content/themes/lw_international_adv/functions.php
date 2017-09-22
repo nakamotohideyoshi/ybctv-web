@@ -385,6 +385,111 @@ add_action('wp_ajax_nopriv_ajax_view_more', 'ajax_view_more');
 add_action('wp_ajax_ajax_view_more', 'ajax_view_more');
 
 /*
+* Remove and reorganize Dashboard Widgets for everyone except admins
+*/
+function remove_dashboard_widgets() {
+  if (!current_user_can('manage_options')) {
+    global $wp_meta_boxes;
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+    unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+    unset($wp_meta_boxes['dashboard']['normal']['high']['ual_dashboard_widget']);
+    unset($wp_meta_boxes['dashboard']['normal']['high']['wp_user_log_dashboard_widget']);
+    unset($wp_meta_boxes['dashboard']['normal']['core']['wpe_dify_news_feed']);
+
+    // Move Activity meta box to sidebars
+    unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
+    add_meta_box('dashboard_activity', 'Activity', 'wp_dashboard_site_activity', 'dashboard', 'side', 'core');
+  }
+}
+
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets', 999);
+
+/*
+* Remove post edit Meta Boxes for authors
+*/
+function remove_post_edit_meta_boxes() {
+  if (!current_user_can('manage_options')) {
+    remove_meta_box('wpcrmShortcodeWizardContainer', 'post', 'normal');
+    remove_meta_box('wordpresscrm_databinding_meta', 'post', 'side');
+    remove_meta_box('formatdiv', 'post', 'side');
+    remove_meta_box('lw_cross_post', 'post', 'side');
+    remove_meta_box('tagsdiv-collection', 'post', 'side');
+  }
+}
+
+add_action('add_meta_boxes', 'remove_post_edit_meta_boxes', 999);
+
+/*
+* Remove Menu items from Author admins
+*/
+function remove_menu_pages() {
+  if (!current_user_can('manage_options')) {
+    remove_menu_page('edit.php?post_type=lw_ad_unit');
+    remove_menu_page('edit.php?post_type=tmm');
+  }
+}
+
+add_action('admin_init', 'remove_menu_pages');
+
+/*
+* Allow Authors to edit other Authors post
+*/
+
+function add_theme_capabilities() {
+  $role = get_role('author');
+  $role->add_cap('edit_others_posts');
+  $role->add_cap('edit_pages');
+  $role->add_cap('edit_others_pages');
+  $role->add_cap('edit_published_pages');
+}
+
+add_action('admin_init', 'add_theme_capabilities');
+
+/*
+* Stop reordering of categories on post edit page
+*/
+
+function disable_category_reordering($args) {
+  $args['checked_ontop'] = false;
+  return $args;
+}
+
+add_filter('wp_terms_checklist_args', 'disable_category_reordering');
+
+/*
+* Show Hidden Post Edit meta fields by default
+*/
+
+function show_hidden_meta_fields($hidden, $screen) {
+  if ($screen->base == 'post') {
+    foreach($hidden as $key => $value) {
+      if ($value == 'postexcerpt' || $value == 'commentsdiv' || $value == 'commentstatusdiv') {
+        unset($hidden[$key]);
+        break;
+      }
+    }
+  }
+  return $hidden;
+}
+
+add_filter('default_hidden_meta_boxes', 'show_hidden_meta_fields', 10, 2);
+
+/*
+* Add Page break button to TinyMCE
+*/
+function add_page_break_button($buttons, $id) {
+	if ('content' != $id) {
+		return $buttons;
+	}
+
+	array_splice($buttons, 13, 0, 'wp_page');
+
+	return $buttons;
+}
+
+add_filter('mce_buttons', 'add_page_break_button', 1, 2);
+
+/*
 * Teads JS.
 */
 function enqueue_teads() {
@@ -393,4 +498,21 @@ function enqueue_teads() {
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
+
+/*
+* Co Authors Plus config
+*/
+function coauthors_parent_page() {
+    return 'tools.php';
+}
+
+if (!current_user_can('manage_options')) {
+  add_filter('coauthors_guest_author_parent_page', 'coauthors_parent_page');
+}
+
+function coauthors_capability() {
+  return 'edit_posts';
+}
+
+add_filter('coauthors_guest_author_manage_cap', 'coauthors_capability');
 ?>
