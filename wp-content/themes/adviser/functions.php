@@ -446,6 +446,9 @@ add_action('admin_init', 'remove_menu_pages');
 function add_theme_capabilities() {
   $role = get_role('author');
   $role->add_cap('edit_others_posts');
+  $role->add_cap('edit_pages');
+  $role->add_cap('edit_others_pages');
+  $role->add_cap('edit_published_pages');
 }
 
 add_action('admin_init', 'add_theme_capabilities');
@@ -504,5 +507,21 @@ function enqueue_teads() {
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
 
+/*
+* Co Authors Plus config
+*/
+function coauthors_parent_page() {
+    return 'tools.php';
+}
 
+if (!current_user_can('manage_options')) {
+  add_filter('coauthors_guest_author_parent_page', 'coauthors_parent_page');
+
+function coauthors_capability() {
+  return 'edit_posts';
+}
+
+add_filter('coauthors_guest_author_manage_cap', 'coauthors_capability');
+
+}
 ?>
