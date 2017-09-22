@@ -1300,28 +1300,30 @@ h2.title{
   font-weight: bold;
 }
 
-/* Homepage - Portfolio Slider */
+/* Homepage - Magazines */
 
 .slider-portfolio ul li {
   border-bottom: 3px solid #f2f2f2;
 }
 
-.slider-portfolio ul li > div {
-  float: left;
+.home-magazine .latest-issue {
+  overflow: auto;
 }
 
-.slider-portfolio .content-image {
+.home-magazine .latest-issue .content-image {
+  float: left;
   width: 35%;
   padding: 40px 0 30px 80px;
 }
 
-.slider-portfolio .content-des {
+.home-magazine .latest-issue .content-des {
+  float: left;
   width: 65%;
   color: #fff;
   padding: 50px 70px 0 30px;
 }
 
-.slider-portfolio .content-des .name-cat {
+.home-magazine .latest-issue .content-des .name-cat {
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   color: #f9ae00;
@@ -1330,35 +1332,53 @@ h2.title{
   margin: 0;
 }
 
-.slider-portfolio .content-des {
+.home-magazine .latest-issue .content-des {
   color: #000;
 }
 
-.slider-portfolio .content-des h3 {
+.home-magazine .latest-issue .content-des h3 {
+  margin: 0;
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
-  color: #000;
+  color: #000000;
   text-transform: uppercase;
-  margin: 0;
 }
 
-.slider-portfolio .content-des span {
+.home-magazine .latest-issue .content-des a:hover h3 {
+  color: #f9ae00;
+}
+
+.home-magazine .latest-issue .content-des span {
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 21px;
   text-transform: uppercase;
   font-weight: bold;
+  line-height: normal;
 }
 
-.slider-portfolio .flex-control-nav {
-  bottom: -320px;
+.home-magazine .latest-issue img {
+  max-width: 190px;
+  height: auto;
 }
 
-/* Homepage - Portfolio Carousel */
+.home-magazine .view-more {
+  background: #f2f2f2;
+  padding: 5px 20px;
+  display: inline-block;
+  margin-top: 40px;
+}
+
+/* Homepage - Magazine Carousel */
 
 .carousel-portfolio .content-image {
   padding:30px 45px 10px;
+}
+
+.carousel-portfolio .content-image img {
+  width: 105px;
+  height: auto;
 }
 
 .carousel-portfolio .content-des {
@@ -1367,6 +1387,11 @@ h2.title{
 
 .carousel-portfolio .content-des h3 {
   font-size: 16px;
+}
+
+.carousel-portfolio .magazine {
+  float: left;
+  width: 25%;
 }
 
 /* Homepage - Events */
@@ -1718,14 +1743,24 @@ h2.title{
   border-bottom: 1px solid #f2f2f2;
 }
 
-.list-magazines .loop-list .content-des h3 {
+.list-magazines .loop-list .content-des p {
+  padding: 0;
+}
+
+.list-magazines .loop-list .content-des h2 {
   color: #000;
   font-weight: bold;
-  margin-bottom: 5px
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.list-magazines .loop-list .content-des a:hover h2 {
+  color: #f9ae00;
 }
 
 .list-magazines .loop-list .content-des .date {
-  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 14px;
 }
 
 .list-magazines-ajax .loop-list {
@@ -1742,14 +1777,67 @@ h2.title{
   padding: 20px 10px 10px 20px
 }
 
+.list-magazines-ajax .loop-list .content-des p {
+  padding: 0;
+}
+
 .list-magazines-ajax .loop-list .content-des h3 {
   color: #000;
   font-weight: bold;
-  margin-bottom: 5px
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.list-magazines-ajax .loop-list .content-des a:hover h3 {
+  color: #f9ae00;
 }
 
 .list-magazines-ajax .loop-list .content-des .date {
-  margin-top: 5px;
+  padding-top: 5px;
+  font-size: 14px;
+}
+
+.list-magazines .loop-list .content-des a:hover h3 {
+  color: #f9ae00;
+}
+
+/* Single Magazine */
+.content-magazine.content-single .name-cat {
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
+  color: #f9ae00;
+  font-size: 24px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.content-magazine.content-single h1 {
+  margin-top: 0;
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.content-magazine.content-single .magazine-optimum {
+  font-weight: 700;
+  font-size: 14px;
+  padding: 20px 0;
+  border-bottom: solid 1px #f2f2f2;
+
+}
+
+.content-magazine.content-single ul {
+  margin-left: 20px;
+}
+
+.content-magazine.content-single .readmore {
+  color: #ffffff;
+  margin-top: 20px;
+}
+
+.content-magazine.content-single .thump-single {
+  margin-top: 0;
 }
 
 /* Register */

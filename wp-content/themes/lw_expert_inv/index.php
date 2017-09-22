@@ -354,71 +354,83 @@ get_header(); ?>
               <?php get_sidebar('left');?>
             </div>
             <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
-              <div class="portfolio-advider">
-                <div id="slider-portfolio" class="flexslider slider-portfolio">
-                  <ul class="slides">
+              <div class="home-magazine">
+                <div class="latest-issue">
+                  <?php
+                  $args = array('showposts' => 1, 'post_type' => 'magazine');
+                  $myposts = get_posts($args);
+                  foreach ($myposts as $post) : setup_postdata($post);
+                  ?>
+                  <div class="content-image">
                     <?php
-                      $args = array( 'posts_per_page' => 4,'showposts' => 4, 'post_type' => 'magazines' );
-                      $myposts = get_posts( $args );
-                      foreach ( $myposts as $post ) : setup_postdata( $post );
+                      echo '<a href="' . get_the_permalink() . '">';
+                      if ( has_post_thumbnail() ) {
+                        the_post_thumbnail();
+                      }
+                      else {
                     ?>
-                    <li>
-                      <div class="content-image">
-                        <?php
-                          if ( has_post_thumbnail() ) {
-                            the_post_thumbnail();
-                          }
-                          else {
-                        ?>
-                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
-                        <?php
-                          }
-                        ?>
-                      </div>
-                      <div class="content-des">
-                        <p class="name-cat">Magazine</p>
-                        <h3>PORTFOLIO ADVISER <span>-</span></h3>
-                        <a href="<?php the_permalink();?>"><span class="date"><?php echo get_the_title(); ?></span></a>
-                        <p><?php echo the_excerpt(); ?></p>
-                      </div>
-                    </li>
+                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                     <?php
-                      endforeach;
-                      wp_reset_postdata();
+                      }
+                      echo '</a>';
                     ?>
-                  </ul>
+                  </div>
+                  <div class="content-des">
+                    <p class="name-cat"><a href="<?php the_permalink();?>">Magazine</a></p>
+                    <a href="<?php the_permalink(); ?>">
+                      <h3>Portfolio Adviser <span>-</span></h3>
+                      <span class="date"><?php echo get_the_title(); ?></span>
+                    </a>
+                    <?php echo the_excerpt(); ?>
+                  </div>
+                  <?php
+                    endforeach;
+                    wp_reset_postdata();
+                  ?>
                 </div>
                 <div id="carousel-portfolio" class="flexslider carousel-portfolio">
                   <ul class="slides">
-                    <?php
-                      $args = array( 'posts_per_page' => 4,'showposts' => 4, 'post_type' => 'magazines' );
-                      $myposts = get_posts( $args );
-                      foreach ( $myposts as $post ) : setup_postdata( $post );
-                    ?>
                     <li>
-                      <div class="content-image">
-                        <?php
-                          if ( has_post_thumbnail() ) {
-                            the_post_thumbnail();
-                          }
-                          else {
-                        ?>
-                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
-                        <?php
-                          }
-                        ?>
+                      <?php
+                        $i = 0;
+                        $args = array( 'posts_per_page' => 16, 'offset' => 1, 'showposts' => 16, 'post_type' => 'magazine' );
+                        $myposts = get_posts( $args );
+                        foreach ( $myposts as $post ) : setup_postdata( $post );
+                      ?>
+                      <div class="magazine">
+                        <div class="content-image">
+                          <?php
+                            if ( has_post_thumbnail() ) {
+                              echo '<a href="' . get_the_permalink() . '">';
+                              the_post_thumbnail();
+                              echo '</a>';
+                            }
+                            else {
+                          ?>
+                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                          <?php
+                            }
+                          ?>
+                        </div>
+                        <div class="content-des">
+                          <a href="<?php the_permalink();?>">
+                            Portfolio Adviser<br />
+                            <?php echo get_the_title(); ?>
+                          </a>
+                        </div>
                       </div>
-                      <div class="content-des">
-                        <a href=""><h3>Portfolio Adviser</h3></a>
-                        <a href="<?php the_permalink();?>"><span class="date"><?php echo get_the_title(); ?></span></a>
-                      </div>
+                      <?php
+                        $i++;
+                        if ($i % 4 == 0 && $i !== count($myposts)) {
+                          echo '</li><li>';
+                        }
+                        endforeach;
+                        wp_reset_postdata();
+                      ?>
                     </li>
-                    <?php
-                      endforeach;
-                      wp_reset_postdata();
-                    ?>
                   </ul>
                 </div>
+                <a href="/magazines" class="view-more">View more</a>
               </div>
             </div>
             <?php if(!wp_is_mobile()) : { ?>
