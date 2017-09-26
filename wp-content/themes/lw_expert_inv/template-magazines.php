@@ -65,6 +65,7 @@
               </div>
               <?php
                 endwhile;endif;
+                wp_reset_query();
               ?>
             </div>
             <div class="list-magazines-ajax">
@@ -103,6 +104,7 @@
               </div>
               <?php
                 endwhile;endif;
+                wp_reset_query();
               ?>
             </div>
           </div>

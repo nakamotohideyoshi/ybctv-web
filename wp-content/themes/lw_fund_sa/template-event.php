@@ -106,6 +106,7 @@
               </div>
               <?php
                 endwhile;endif;
+                wp_reset_query();
               ?>
             </div>
             <div class="list-event-ajax">
@@ -182,6 +183,7 @@
               </div>
               <?php
                 endwhile;endif;
+                wp_reset_query();
               ?>
             </div>
           </div>
