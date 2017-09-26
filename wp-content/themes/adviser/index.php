@@ -409,7 +409,6 @@ get_header(); ?>
                     </li>
                   </ul>
                 </div>
-                <div class="clearfix">
                 <a href="/magazines" class="view-more">View more</a>
               </div>
             </div>
