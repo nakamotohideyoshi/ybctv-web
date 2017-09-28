@@ -524,4 +524,86 @@ function coauthors_capability() {
 add_filter('coauthors_guest_author_manage_cap', 'coauthors_capability');
 
 }
+
+// Change Error texts
+
+remove_filter( 'authenticate', 'wp_authenticate_username_password' );
+add_filter( 'authenticate', 'wpse_115539_authenticate_username_password', 20, 3 );
+/**
+ * Remove Wordpress filer and write our own with changed error text.
+ */
+function wpse_115539_authenticate_username_password( $user, $username, $password ) {
+    if ( is_a($user, 'WP_User') )
+        return $user;
+
+    if ( empty( $username ) || empty( $password ) ) {
+        if ( is_wp_error( $user ) )
+            return $user;
+
+        $error = new WP_Error();
+
+        if ( empty( $username ) )
+            $error->add( 'empty_username', __('<strong>Incorrect username</strong>: The username field is empty.' ) );
+
+        if ( empty( $password ) )
+            $error->add( 'empty_password', __( '<strong>Incorrect password</strong>: The password field is empty.' ) );
+
+        return $error;
+    }
+
+    $user = get_user_by( 'login', $username );
+
+    if ( !$user )
+        return new WP_Error( 'invalid_username', sprintf( __( '<strong>Incorrect username</strong>: We do not have a user with those details, please register or contact our customer services team for any queries.' ), wp_lostpassword_url() ) );
+
+    $user = apply_filters( 'wp_authenticate_user', $user, $password );
+    if ( is_wp_error( $user ) )
+        return $user;
+
+    if ( ! wp_check_password( $password, $user->user_pass, $user->ID ) )
+        return new WP_Error( 'incorrect_password', sprintf( __( '<strong>Incorrect password</strong>: Your password is incorrect. Use the Forgot password function to reset your password.' ),
+        $username, wp_lostpassword_url() ) );
+
+    return $user;
+}
+
+/*
+* 404 page
+*/
+// Ensures this function is only called after the theme is setup
+// You could bind to the "init" event if "after_setup_theme" doesn't work well for you.
+add_action('after_setup_theme', 'create_404_page');
+
+// Insert a privately published page we can query for our 404 page
+function create_404_page() {
+
+  // Check if the 404 page exists
+  $page_exists = get_page_by_title( '404' );
+
+  if (!isset($page_exists->ID)) {
+
+    // Page array
+    $page = array(
+      'post_author' => 1,
+      'post_content' => '',
+      'post_name' =>  '404',
+      'post_status' => 'private',
+      'post_title' => '404',
+      'post_type' => 'page',
+      'post_parent' => 0,
+      'menu_order' => 0,
+      'to_ping' =>  '',
+      'pinged' => '',
+    );
+
+    $insert = wp_insert_post($page);
+
+    // The insert was successful
+    if ($insert) {
+      // Store the value of our 404 page
+      update_option( '404pageid', (int) $insert );
+    }
+  }
+
+}
 ?>
