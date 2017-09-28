@@ -360,13 +360,22 @@ function ajax_view_more() {
   $posts_per_page = 5;
   $offset = (int)$_POST['offset'];
   $category = (int)$_POST['category'];
+  $meta_key = $_POST['meta_key'];
+  $meta_val = $_POST['meta_val'];
 
   $args = array(
     'posts_per_page' => 5,
     'offset' => ($page * $posts_per_page) + $offset,
     'cat' => $category,
     'orderby' => 'date',
-    'order' => 'DESC'
+    'order' => 'DESC',
+    'meta_query' => array(
+      array(
+        'key' => $meta_key,
+        'value' => $meta_val,
+        'compare' => '=',
+      )
+    )
   );
 
   $posts = new WP_Query($args);

@@ -129,6 +129,8 @@
       var currentPage = button.attr('page');
       var offset = button.attr('offset');
       var category = button.attr('category');
+      var meta_key = button.attr('meta_key');
+      var meta_val = button.attr('meta_val');
 
       $.ajax({
         url: ajaxviewmore.ajaxurl,
@@ -137,7 +139,9 @@
           action: 'ajax_view_more',
           page: currentPage,
           offset: offset,
-          category: category
+          category: category,
+          meta_key: meta_key,
+          meta_val: meta_val
         },
         success: function(result) {
           $('.list-category-ajax').append(result);

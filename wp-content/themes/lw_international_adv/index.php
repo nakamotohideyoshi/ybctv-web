@@ -381,12 +381,22 @@ get_header(); ?>
                 foreach ( $myposts as $post ) : setup_postdata( $post );
               ?>
               <li>
-                <div class="content-image">
+                <?php
+                  $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
+                ?>
+                <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>"> 
                   <?php
+
                     if ( has_post_thumbnail() ) {
+                      if($isVideo == 'video'){
+                        echo '<a href="'. get_the_permalink() .'">';
+                      }
                       the_post_thumbnail();
-                    }
-                    else {
+                      echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
+                      if($isVideo == 'video'){
+                        echo '</a>';
+                      }
+                    }else {
                   ?>
                   <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                   <?php

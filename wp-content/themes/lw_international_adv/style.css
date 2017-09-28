@@ -1603,7 +1603,8 @@ h2.title{
 
 /* Archive Pages */
 .content-page {
-  padding: 41px 0 30px;
+  /*padding: 41px 0 30px;*/
+  padding: 24px 0 30px;
   background: #fff;
 }
 .bread a,.bread span {
@@ -1626,6 +1627,12 @@ h2.title{
 
 .page-header .page-description {
   font-size: 18px;
+}
+
+.page-header .page-description p{
+  padding-top: 0;
+  line-height: 23px;
+  padding-bottom: 1px;
 }
 
 /* Grid listing of articles in Category */
@@ -1669,7 +1676,12 @@ h2.title{
 .list-category .loop-list .content-des h3 {
   font-weight: 700;
   font-size: 21px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.list-category .loop-list .content-des p{
+  padding: 0;
 }
 
 .list-category .loop-list .name-cat {
@@ -1701,7 +1713,13 @@ h2.title{
 .list-category-ajax .loop-list .content-des h3 {
   font-weight: 700;
   font-size: 21px;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+
+.list-category-ajax .loop-list .content-des p {
+  padding: 0;
+  font-size: 14px;
 }
 
 .list-category-ajax .loop-list .name-cat {
@@ -1957,12 +1975,18 @@ form[name="register"] input[type="submit"] {
 }
 
 /* Single Article */
+
+.content-single .spost-head p{
+  padding: 0;
+}
+
 .content-single .name-cat {
   text-transform: uppercase;
   color: #0095db;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 6px;
+  margin-bottom: 0px;
   font-weight: bold;
+  padding: 0;
 }
 
 .content-single .name-cat a {
@@ -1975,6 +1999,7 @@ form[name="register"] input[type="submit"] {
   text-transform: uppercase;
   font-size: 12px;
   margin: 5px 0;
+  padding-top: 2px;
 }
 
 .content-single .tag-post a {
@@ -1986,7 +2011,7 @@ form[name="register"] input[type="submit"] {
 }
 
 .content-single .like_button {
-  margin: 10px 0;
+  margin: 9px 0 3px 0;
 }
 
 .content-single .like_button > div {
@@ -2001,6 +2026,8 @@ form[name="register"] input[type="submit"] {
 
 .content-single .title-single {
   font-weight: 700;
+  margin: 0 0 7px 0;
+  line-height: 35px;
 }
 
 /* Related Posts */
@@ -2102,7 +2129,8 @@ form[name="register"] input[type="submit"] {
   letter-spacing: 1px;
   font-size: 16px;
   text-transform: uppercase;
-  margin-bottom: 5px;
+  /*margin-bottom: 5px;*/
+  margin-bottom: 0px;
   font-weight: bold;
   color: #0095db;
   padding: 0;

@@ -59,23 +59,25 @@ get_header(); ?>
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>
-                            <?php if (is_singular('post')) { ?>
-                            <p class="name-cat">
-                                <?php $category = get_the_category(); ?>
-                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                            </p>
-                            <?php }?>
-                            <h1 class="title-single"><?php the_title();?></h1>
-                            <?php
-                              $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
-                              if ($tag_list) {
-                                echo $tag_list;
-                              }
-                            ?>
-                            </span></p>
-                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                            <div class="like_button clearfix">
-                                <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                            <div class="spost-head">
+                                <?php if (is_singular('post')) { ?>
+                                <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                </p>
+                                <?php }?>
+                                <h1 class="title-single"><?php the_title();?></h1>
+                                <?php
+                                  $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                  if ($tag_list) {
+                                    echo $tag_list;
+                                  }
+                                ?>
+                                </span></p>
+                                <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
+                                <div class="like_button clearfix">
+                                    <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                </div>
                             </div>
 
                             <div class="content-post">
@@ -129,13 +131,13 @@ get_header(); ?>
                                             }
 
                                             wp_link_pages(array(
-                                      				'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
-                                      				'after'       => '</div>',
-                                      				'link_before' => '<span>',
-                                      				'link_after'  => '</span>',
-                                      				'pagelink'    => '<span class="screen-reader-text">Page </span>%',
-                                      				'separator'   => '<span class="screen-reader-text">, </span>',
-                                      			));
+                                                    'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
+                                                    'after'       => '</div>',
+                                                    'link_before' => '<span>',
+                                                    'link_after'  => '</span>',
+                                                    'pagelink'    => '<span class="screen-reader-text">Page </span>%',
+                                                    'separator'   => '<span class="screen-reader-text">, </span>',
+                                                ));
                                            ?>
                                         </div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>

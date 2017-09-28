@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Blog
+ * Template Name: Premium Content
  */
 ?>
 <?php get_header();?>
@@ -35,15 +35,24 @@
               ?>
               <div class="row row-eq-height">
                 <?php
-                  $category_page = get_post_meta($post->ID,'category_page', TRUE);
+                  //$category_page = get_post_meta($post->ID,'category_page', TRUE);
                   $args = array(
                     'posts_per_page' => 4,
-                    'category' => $category_page,
                     'orderby' => 'date',
-                    'order' => 'DESC'
+                    'order' => 'DESC',
+                    'meta_query' => array(
+                         array(
+                             'key' => 'lw_premium',
+                             'value' => 'yes',
+                             'compare' => '=',
+                         )
+                     )
                   );
                   $myposts = get_posts( $args );
                   foreach ( $myposts as $post ) : setup_postdata( $post );
+                    //echo 'id'.$post->ID;
+                    //$isPremium = get_post_meta($post->ID,'lw_premium');
+                    //var_dump(get_post_meta($post->ID));
                 ?>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="loop-list">
@@ -68,14 +77,18 @@
                           }
                         ?>
                       </div>
-                      <div class="content-des">
+                      <div class="content-des <?php echo ((!is_user_logged_in())) ? 'contlocked':'';?>">
                         <p class="name-cat">
                           <?php 
                             $category = get_the_category(); 
                             $terms = wp_get_post_terms( get_the_ID(), 'type');
                             $type = $terms[0]->name;
                           ?>
-                            <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                            <a href="<?php echo get_category_link($category[0]->cat_ID);?>">
+                              <?php if(!is_user_logged_in() ): ?>
+                                  <img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" />
+                                <?php endif; ?>
+                            <?php echo $category[0]->cat_name;?></a>
                             <?php if($type): ?>
                               <a href="<?php echo get_term_link($terms[0]->term_id);?>">
                                 <?php if($category[0]->cat_name){
@@ -102,12 +115,19 @@
             </div>
             <div class="list-category-ajax">
               <?php
-                $category_page = get_post_meta($post->ID,'category_page', TRUE);
                 $args = array(
-                  'offset' => 4,
-                  'category' => $category_page,
-                  'posts_per_page' => 5
-                );
+                    'offset' => 4,
+                    'posts_per_page' => 5,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                    'meta_query' => array(
+                         array(
+                             'key' => 'lw_premium',
+                             'value' => 'yes',
+                             'compare' => '=',
+                         )
+                     )
+                  );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
                   get_template_part('template-parts/archive', 'post');
@@ -115,7 +135,7 @@
                 wp_reset_postdata();
               ?>
             </div>
-            <a href="#" class="view-more view-more-ajax" page="2" offset="4" category="<?php echo $category_page; ?>">View more</a>
+            <a href="#" class="view-more view-more-ajax" meta_key="lw_premium" meta_val="yes" page="2" offset="4" category="">View more</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">

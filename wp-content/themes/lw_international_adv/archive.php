@@ -59,7 +59,6 @@ get_header(); ?>
                                         <div class="col-md-8 col-sm-8 col-xs-12"> 
 
                                 <?php $premium = get_post_meta($post->ID, 'lw_premium', true); 
-
                                         if($premium == 'yes') {
                                                 
                                             if( !is_user_logged_in() ){ ?>
