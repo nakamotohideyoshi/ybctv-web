@@ -1167,6 +1167,31 @@ h2.title{
   width: 25%;
 }
 
+
+.carousel-multimedia ul li .has-video {
+  position: relative;
+}
+
+.content-image {
+  position: relative;
+}
+
+.has-video .voverlay {
+  background: url(images/play-btn.png) center no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.has-video .voverlay:hover {
+  background: url(images/play-btn-hover.png) center no-repeat;
+}
+
+
 .carousel-multimedia ul li .content-des {
   width: 68%;
   color: #ffffff;
@@ -1523,7 +1548,7 @@ h2.title{
   margin: 20px 0;
   border: none;
 }
-.page-header h1 {
+.page-header h1, .error404 h1{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
@@ -2224,6 +2249,45 @@ form[name="register"] input[type="submit"] {
   left: 0;
 }
 
+/* Video JS */
+.video-js .vjs-big-play-button {
+  background: url(images/play-btn.png) center no-repeat transparent;
+}
+
+.video-js .vjs-big-play-button:hover {
+  background: url(images/play-btn-hover.png) center no-repeat transparent;
+}
+
+.video-js:hover .vjs-big-play-button{
+  background-color: transparent;
+}
+
+.video-js .vjs-big-play-button:before {
+  display: none;
+}
+
+
+/* 404 style */
+.error404 .four-o-four-search-form{
+  margin: 5px 0 15px 0;
+}
+
+/* Video JS */
+.video-js .vjs-big-play-button {
+  background: url(images/play-btn.png) center no-repeat transparent;
+}
+
+.video-js .vjs-big-play-button:hover {
+  background: url(images/play-btn-hover.png) center no-repeat transparent;
+}
+
+.video-js:hover .vjs-big-play-button{
+  background-color: transparent;
+}
+
+.video-js .vjs-big-play-button:before {
+  display: none;
+}
 
 @media (min-width: 1440px) {
     .container{

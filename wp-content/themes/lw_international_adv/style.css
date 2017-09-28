@@ -774,6 +774,38 @@ h2.title{
   width: 25px;
 }
 
+
+.header-top .social a {
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.header-top a svg {
+  width: 30px;
+  height: 30px;
+  transition: 0.5s;
+  display: inline-block;
+  vertical-align: middle;
+  margin: -3px 3px 0 10px;
+}
+
+.header-top a svg .st0, .header-top a:hover svg .st1,  .header-top a:hover svg .st2 {
+  transition: 0.5s;
+}
+
+.header-top a:hover svg {
+  fill: #0095db;
+  stroke: #0095db;
+}
+
+.header-top a:hover svg .st0 {
+  stroke: #0095db;
+}
+
+.header-top a:hover svg .st1, .header-top a:hover svg .st2 {
+  fill: #0095db;
+}
+
 .header-top .user-login {
   padding: 13px 0 7px;
   margin-right: 10px;
@@ -1166,6 +1198,29 @@ h2.title{
   width: 25%;
 }
 
+.carousel-multimedia ul li .has-video {
+  position: relative;
+}
+
+.content-image {
+  position: relative;
+}
+
+.has-video .voverlay {
+  background: url(images/play-btn.png) center no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.has-video .voverlay:hover {
+  background: url(images/play-btn-hover.png) center no-repeat;
+}
+
 .carousel-multimedia ul li .content-des {
   width: 68%;
   color: #ffffff;
@@ -1446,6 +1501,44 @@ h2.title{
   padding: 30px 28px;
   color: #fff;
 }
+
+
+.site-footer .social {
+  margin-bottom: 20px;
+}
+
+.site-footer .social a {
+  border-radius: 14px;
+  margin-right: 20px;
+}
+
+.social-list li {
+  display: inline-block;
+  background: #fff;
+  width: 36px;
+  height: 36px;
+  text-align: center;
+  line-height: 36px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.social-list li a {
+  color: #fff;
+}
+
+.social-list li a i {
+  color: #000;
+}
+
+.site-footer .social .cnss-social-icon {
+  text-align: left !important;
+}
+
+.site-footer .social .cnss-social-icon li {
+  border-radius: 50%;
+}
+
 .menu-footer {
   margin-bottom: 20px;
 }
@@ -1522,7 +1615,7 @@ h2.title{
   margin: 20px 0;
   border: none;
 }
-.page-header h1 {
+.page-header h1, .error404 h1{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
@@ -1733,7 +1826,7 @@ h2.title{
 }
 
 .page-content a:hover {
-  color: #4C7D0A;
+  color: #0095db;
 }
 
 /* Magazines */
@@ -2217,6 +2310,28 @@ form[name="register"] input[type="submit"] {
   left:0;
   top:0;
   background:linear-gradient(transparent 20px, white);
+}
+
+/* 404 style */
+.error404 .four-o-four-search-form{
+  margin: 5px 0 15px 0;
+}
+
+/* Video JS */
+.video-js .vjs-big-play-button {
+  background: url(images/play-btn.png) center no-repeat transparent;
+}
+
+.video-js .vjs-big-play-button:hover {
+  background: url(images/play-btn-hover.png) center no-repeat transparent;
+}
+
+.video-js:hover .vjs-big-play-button{
+  background-color: transparent;
+}
+
+.video-js .vjs-big-play-button:before {
+  display: none;
 }
 
 @media (min-width: 1440px) {

@@ -1196,6 +1196,29 @@ h2.title{
   width: 25%;
 }
 
+.carousel-multimedia ul li .has-video {
+  position: relative;
+}
+
+.content-image {
+  position: relative;
+}
+
+.has-video .voverlay {
+  background: url(images/play-btn.png) center no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.has-video .voverlay:hover {
+  background: url(images/play-btn-hover.png) center no-repeat;
+}
+
 .carousel-multimedia ul li .content-des {
   width: 68%;
   color: #ffffff;
@@ -1556,7 +1579,7 @@ h2.title{
   margin: 20px 0;
   border: none;
 }
-.page-header h1 {
+.page-header h1, .error404 h1{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
@@ -2242,7 +2265,7 @@ form[name="register"] input[type="submit"] {
     font-family: Kommissar;
 }
 .panel-template .tmm .tmm_job{
-	color:#000000;
+  color:#000000;
 }
 
 /* Comments style */
@@ -2278,6 +2301,83 @@ form[name="register"] input[type="submit"] {
   color: #7d7d7d;
 }
 
+/* About page */
+.page-id-1062 h2{
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Kommissar', sans-serif;
+  margin-top: 52px;
+  margin-bottom: 29px;
+}
+.page-id-1062 h3{
+  color: #69b42e;
+  font-size: 24px;
+  text-transform: uppercase;
+  font-family: 'Kommissar', sans-serif;
+  font-weight: bold;
+}
+
+.page-id-1062 p{
+  color: #626262;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 13px 0;
+}
+.page-id-1062 .tmm .tmm_2_columns .tmm_member{
+  margin: 0 0 24px 0;
+}
+
+.page-id-1062 .tmm .tmm_2_columns .tmm_member .tmm_scblock{
+  padding: 0;
+}
+
+.page-id-1062 .tmm .tmm_2_columns .tmm_member .tmm_scblock .tmm_sociallink img{
+  margin: 0;
+  float: left;
+}
+
+.page-id-1062 .tmm .tmm_2_columns .tmm_member .tmm_photo{
+  height: 100px;
+  width: 100px;
+}
+
+.page-id-1062 .tmm .tmm_container:last-child{
+  border-bottom: 1px solid #e3e3e3;
+  padding-bottom: 6px;
+}
+
+.page-id-1062 .tmm .tmm_container .tmm_member:first-child {
+  margin-right: 72px;
+}
+
+.page-id-1062 .tmm .tmm_names{
+  margin-top: 12px;
+  margin-bottom: 2px;
+}
+
+/* 404 style */
+.error404 .four-o-four-search-form{
+  margin: 5px 0 15px 0;
+}
+
+/* Video JS */
+.video-js .vjs-big-play-button {
+  background: url(images/play-btn.png) center no-repeat transparent;
+}
+
+.video-js .vjs-big-play-button:hover {
+  background: url(images/play-btn-hover.png) center no-repeat transparent;
+}
+
+.video-js:hover .vjs-big-play-button{
+  background-color: transparent;
+}
+
+.video-js .vjs-big-play-button:before {
+  display: none;
+}
 
 @media (min-width: 1440px) {
     .container{
@@ -2374,6 +2474,7 @@ form[name="register"] input[type="submit"] {
     .slider-multimedia ul li .content-image{
         width: 100%;
     }
+
     .slider-multimedia ul li .content-des{
         width: 100%;
         padding: 10px 0;
