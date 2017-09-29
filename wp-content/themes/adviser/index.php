@@ -144,16 +144,57 @@ get_header(); ?>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <h2>Analysis</h2>
-                  <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
-                    <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                  <div class="row">
+                    <div class="analysis-list">
+                      <?php
+                        $args = array( 'posts_per_page' => 2,'offset' => 2 ,'showposts' => 2, 'category' => 40 );
+                        $myposts = get_posts( $args );
+                        foreach ( $myposts as $post ) : setup_postdata( $post );
+                      ?>
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="loop-list">
+                          <div class="content-image">
+                            <?php
+                              if ( has_post_thumbnail() ) {
+                                the_post_thumbnail('featured-article');
+                              }
+                              else {
+                            ?>
+                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                            <?php
+                              }
+                            ?>
+                            <span class="overlay"></span>
+                          </div>
+                          <div class="content-des">
+                            <p class="name-cat">
+                              <?php $category = get_the_category(); ?>
+                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                            </p>
+                            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                          </div>
+                        </div>
+                      </div>
+                      <?php
+                        endforeach;
+                        wp_reset_postdata();
+                      ?>
+                    </div>
                   </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                  <?php lastWordAdUnit('lhs-mpu'); ?>
                   <a href="<?php echo get_category_link( "40" ); ?>" class="view-more">View more</a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
                     <div class="analysis-list">
                       <?php
-                        $args = array( 'posts_per_page' => 4,'offset'=>2 ,'showposts' => 4, 'category' => 40 );
+                        $args = array( 'posts_per_page' => 2,'offset' => 4 ,'showposts' => 2, 'category' => 40 );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -252,12 +293,22 @@ get_header(); ?>
                 foreach ( $myposts as $post ) : setup_postdata( $post );
               ?>
               <li>
-                <div class="content-image">
+                <?php
+                 $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
+                ?>
+                <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
                   <?php
+
                     if ( has_post_thumbnail() ) {
+                      if($isVideo == 'video'){
+                        echo '<a href="'. get_the_permalink() .'">';
+                      }
                       the_post_thumbnail();
-                    }
-                    else {
+                      echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
+                      if($isVideo == 'video'){
+                        echo '</a>';
+                      }
+                    }else {
                   ?>
                   <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
                   <?php
