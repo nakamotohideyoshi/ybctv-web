@@ -51,6 +51,7 @@
   <script type="text/javascript" src="/wp-content/themes/adviser/js/sticky.js?ver=1.1.0"></script>
 </head>
 <body id="bd" <?php body_class(); ?>>
+  <?php lazyLoadStatus(); ?>
   <div id="page" class="hfeed site">
     <?php lastWordAdUnit('top-billboard'); ?>
     <header id="masthead" class="site-header" role="banner">
