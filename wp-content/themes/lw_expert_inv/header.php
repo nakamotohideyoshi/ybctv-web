@@ -51,6 +51,7 @@
   ?>
 </head>
 <body id="bd" <?php body_class(); ?>>
+  <?php lazyLoadStatus(); ?>
   <div id="page" class="hfeed site">
     <?php lastWordAdUnit('top-billboard'); ?>
     <header id="masthead" class="site-header" role="banner">
@@ -156,7 +157,7 @@
                   <?php get_search_form(); ?>
                 </div>
               </nav>
-            </div>          
+            </div>
           </div>
           <?php if(wp_is_mobile()) : ?>
                <nav id="primary-navigation" class="site-navigation mobnavigation col-xs-12 col-sm-12" role="navigation">
