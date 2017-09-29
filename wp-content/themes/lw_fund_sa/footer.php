@@ -41,7 +41,7 @@
                     <p><a href="http://www.portfolio-adviser.com/news/1037929/woodford-apologises-incredibly-painful-underperformance" target="_blank" title="Woodford apologises for 'incredibly painful' underperformance">Woodford apologises for 'incredibly painful' un...</a></p>
                     <p><a href="http://www.portfolio-adviser.com/analysis/1037926/pa-analysis-hey-fund-selectors-wheres-value-add" target="_blank" title="PA ANALYSIS: Hey, fund selectors - where's the value add?">PA ANALYSIS: Hey, fund selectors...</a></p>
                     <p><a href="http://www.portfolio-adviser.com/news/1037924/jupiter-expands-gem-range-short-duration-bond-fund" target="_blank" title="Jupiter expands GEM range with short-duration bond fund">Jupiter expands GEM range...</a></p>
-                    <p class="more_from"><a href="http://international-adviser.com/" target="_blank">More News From PA</a></p>
+                    <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More News From PA</a></p>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
 
 <footer id="colophon" class="site-footer" role="contentinfo">
     <div class="container">
-	    <div class="content-footer">
+        <div class="content-footer">
             <div class="row row-eq-height">
                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
                     <div class="menu-footer clearfix">
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-	    </div>
+        </div>
     </div>
 </footer><!-- #colophon -->
 
@@ -83,57 +83,57 @@
 <?php /*
 <script>
 
-	var form = jQuery("#example-advanced-form").show();
+    var form = jQuery("#example-advanced-form").show();
  
-	form.steps({
-		headerTag: "h3",
-		bodyTag: "fieldset",
-		transitionEffect: "slideLeft",
-		onStepChanging: function (event, currentIndex, newIndex)
-		{
-			// Allways allow previous action even if the current form is not valid!
-			if (currentIndex > newIndex)
-			{
-				return true;
-			}
-			// Forbid next action on "Warning" step if the user is to young
-			if (newIndex === 3 && Number(jQuery("#age-2").val()) < 18)
-			{
-				return false;
-			}
-			// Needed in some cases if the user went back (clean up)
-			if (currentIndex < newIndex)
-			{
-				// To remove error styles
-				form.find(".body:eq(" + newIndex + ") label.error").remove();
-				form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
-			}
-			form.validate().settings.ignore = ":disabled,:hidden";
-			return form.valid();
-		},
-		onStepChanged: function (event, currentIndex, priorIndex)
-		{
-			// Used to skip the "Warning" step if the user is old enough.
-			if (currentIndex === 2 && Number(jQuery("#age-2").val()) >= 18)
-			{
-				form.steps("next");
-			}
-			// Used to skip the "Warning" step if the user is old enough and wants to the previous step.
-			if (currentIndex === 2 && priorIndex === 3)
-			{
-				form.steps("previous");
-			}
-		},
-		onFinishing: function (event, currentIndex)
-		{
-			form.validate().settings.ignore = ":disabled";
-			return form.valid();
-		},
-		onFinished: function (event, currentIndex)
-		{
-			alert("Submitted!");
-		}
-	});
+    form.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number(jQuery("#age-2").val()) < 18)
+            {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                form.find(".body:eq(" + newIndex + ") label.error").remove();
+                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number(jQuery("#age-2").val()) >= 18)
+            {
+                form.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3)
+            {
+                form.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            alert("Submitted!");
+        }
+    });
 
 </script>
 */ ?>
