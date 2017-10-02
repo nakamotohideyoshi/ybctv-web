@@ -24,6 +24,7 @@ class last_word_post_meta {
     add_meta_box('lw_premium_meta', 'Premium', array($this, 'add_lw_premium'), 'post', 'side');
     add_meta_box('lw_pull_quote', 'Pull Quote', array($this, 'add_lw_pull_quote'), 'post', 'side');
     add_meta_box('lw_brightcove_video', 'Brightcove Video', array($this, 'add_lw_brightcove_video'), 'post', 'side');
+    add_meta_box('lw_sponsored', 'Sponsorship', array($this, 'add_lw_sponsored'), 'post', 'side');
     add_meta_box('lw_cross_post', 'Cross Post', array($this, 'add_lw_cross_post'), 'post', 'side');
     add_meta_box('categorydiv', 'Categories', 'post_categories_meta_box', 'post', 'side', 'low');
     add_meta_box('tagsdiv-post_tag', 'Tags', 'post_tags_meta_box', 'post', 'side', 'low');
@@ -70,10 +71,6 @@ class last_word_post_meta {
     <p>
       Expiry Date:<br />
       <input type="text" name="lw_expiry_date" value="<?php echo get_post_meta($post->ID, 'lw_expiry_date', true); ?>" />
-    </p>
-    <p>
-      Sponsored:<br />
-      <input type="text" name="lw_sponsored" value="<?php echo get_post_meta($post->ID, 'lw_sponsored', true); ?>" />
     </p>
     <p>
       Twitter Headline:<br />
@@ -180,7 +177,21 @@ class last_word_post_meta {
     ?>
 
     <label for="lw_brightcove_video_id">Brightcove Video ID</label>
-    <input type="text" name="lw_brightcove_video_id" id="lw_brightcove_video_id" value="<?php echo $brightcove_video_id ?>" />
+    <input type="text" name="lw_brightcove_video_id" id="lw_brightcove_video_id" value="<?php echo $brightcove_video_id; ?>" />
+    <?php
+  }
+
+
+  function add_lw_sponsored() {
+    global $post;
+
+    $sponsored = get_post_meta($post->ID, 'lw_sponsored', true);
+
+    wp_nonce_field( basename( __FILE__ ), 'lw_sponsored_nonce' );
+    ?>
+
+    <label for="lw_sponsored">Sponsored By<br /></label>
+    <input type="text" name="lw_sponsored" id="lw_sponsored" value="<?php echo $sponsored; ?>" />
     <?php
 
   }
