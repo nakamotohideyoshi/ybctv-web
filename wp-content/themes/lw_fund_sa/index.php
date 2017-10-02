@@ -315,10 +315,10 @@ get_header(); ?>
         <div class="container">
               <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-                <?php $variable_category = get_option('variable_category'); ?>
+                  <?php $variable_category = get_option('variable_category'); ?>
                   <h2 class="title"><?php echo get_cat_name($variable_category);?></h2>
+                  <a href="/category/fsa-analysis/" class="view-more">View more</a>
                 </div>
-
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                   <div class="analysis-list">
                       <?php

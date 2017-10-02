@@ -42,7 +42,7 @@
     ?>
   </title>
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <!--stickadd scripts-->
     <script type='text/javascript' src='https://pa.cms-lastwordmedia.com/wp-content/themes/adviser/js/sticky.js?ver=1.0.0'></script>
   <?php
@@ -144,9 +144,41 @@
                     ?>
                   </ul>
                 </div>
-                <div class="social">
+                <div class="social" style="display: none;">
                   <?php if ( function_exists('cn_social_icon') ) echo cn_social_icon(); ?>
                 </div>
+                <div class="social">
+                  <a target="_blank" href="https://www.facebook.com/LastWordMedia">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                      <style type="text/css">
+                       .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+                      </style>
+                      <path d="M13.4 15.2h-1.6v-2.2h1.6v-1.5c0-0.7 0-1.7 0.5-2.3C14.4 8.5 15.1 8 16.3 8c2 0 2.8 0.3 2.8 0.3l-0.4 2.3c0 0-0.6-0.2-1.2-0.2s-1.1 0.2-1.1 0.8v1.8h2.5v0l-0.2 2.2h-2.3v7.8h-2.9"/><path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
+                    </svg>
+                  </a>
+                  <a target="_blank" href="https://www.linkedin.com/company/fund-selector-asia">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                      <style type="text/css">
+                         .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+                      </style>
+                      <polygon points="11.3 21.4 8.4 21.4 8.4 12 11.3 12 11.3 21.4 "/>
+                      <path d="M9.8 10.8H9.7c-1.1 0-1.7-0.7-1.7-1.6 0-0.9 0.7-1.6 1.8-1.6 1.1 0 1.7 0.7 1.8 1.6C11.5 10.1 10.9 10.8 9.8 10.8z"/>
+                      <path d="M23 21.4h-3.3v-4.8c0-1.3-0.5-2.1-1.7-2.1 -0.9 0-1.4 0.6-1.6 1.1 -0.1 0.2-0.1 0.5-0.1 0.8v5.1h-3.3c0 0 0-8.6 0-9.4h3.3v1.5c0.2-0.6 1.2-1.6 2.9-1.6 2.1 0 3.7 1.3 3.7 4.2v5.2H23z"/>
+                      <path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
+                    </svg>
+                  </a>
+                  <a target="_blank" href="https://twitter.com/fundasia">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                      <style type="text/css">
+                       .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+                       .st1{fill:#1D1D1B;}
+                      </style>
+                      <path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
+                      <path class="st1" d="M21.5 13.2c0 0.1 0 0.3 0 0.4 0 4.1-3.1 8.8-8.8 8.8 -1.7 0-3.4-0.5-4.7-1.4 0.2 0 0.5 0 0.7 0 1.4 0 2.8-0.5 3.8-1.3 -1.3 0-2.5-0.9-2.9-2.1 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0 0.8-0.1 -1.4-0.3-2.5-1.5-2.5-3v0C9 14.7 9.5 14.8 10 14.8c-0.8-0.6-1.4-1.5-1.4-2.6 0-0.6 0.2-1.1 0.4-1.6 1.5 1.9 3.8 3.1 6.4 3.2 -0.1-0.2-0.1-0.5-0.1-0.7 0-1.7 1.4-3.1 3.1-3.1 0.9 0 1.7 0.4 2.3 1 0.7-0.1 1.4-0.4 2-0.7 -0.2 0.7-0.7 1.3-1.4 1.7 0.6-0.1 1.2-0.2 1.8-0.5C22.6 12.2 22.1 12.7 21.5 13.2z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
               </div>
               <nav id="primary-navigation" class="site-navigation" role="navigation">
                 <a class="home-url" href="<?php echo get_home_url(); ?>"></a>

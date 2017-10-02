@@ -62,8 +62,10 @@
                     </div>
                     <div class="footer_connect">
                     <h2>Fund Selector Asia</h2>
-                    <p>Published by Last Word Media (UK) Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) <?php echo date('Y'); ?>. All rights reserved. Company Reg. No. 05573633. VAT. No. 872 411 728.&nbsp;ISSN 2397-284X</p>
-                    <p>Fund Selector Asia is a monthly news magazine and daily news web site aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Fund Selector Asia.</p>
+                    <p>Published by Last Word Media (HK) Ltd, Suite 2003, 20/F Capitol Centre 1, 5-19 Jardine's Bazaar, Causeway Bay, Hong Kong, SAR. Copyright (c) 2016. All rights reserved. Company Reg. No. 2127095.</p>
+
+                    <p>Fund Selector Asia provides up-to-the minute news, tools and professional resources for fund selectors, fund analysts, fund influencers, wealth management heads, investment councillors, heads of sales and client-facing wealth advisers throughout English-speaking Asia. No news, articles or content may be reproduced in part or in full without express permission of Fund Selector Asia.</p>
+                    <p>Nothing in this publication amounts to a personal recommendation or endorsement. The material contained in this publication is intended for information only and does not constitute the provision of advice. Neither the writer nor the publisher accepts any responsibility for any loss or damage caused by any use of or reliance on the opinions or views expressed in the publication Fund Selector Asia</p>
                     <!---->
                 </div>
                 </div>
