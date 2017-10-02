@@ -35,6 +35,7 @@
             ?>
             <div class="list-event">
   						<?php
+                $today = date('Ymd');
                 query_posts(array(
                   'showposts' => 1,
                   'post_type' => 'event',
@@ -111,6 +112,7 @@
             </div>
             <div class="list-event-ajax">
               <?php
+                $today = date('Ymd');
                 query_posts(array(
                   'offset' => 1,
                   'post_type' => 'event',
