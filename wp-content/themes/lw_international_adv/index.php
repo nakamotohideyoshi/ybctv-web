@@ -37,7 +37,17 @@ get_header(); ?>
                         <div class="content-des">
                           <h2 class="title">LATEST NEWS ...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                          <p><?php the_excerpt(); ?></p>
+                          <p>
+                            <?php
+                              $excerpt = get_the_excerpt();
+                              if (strlen($excerpt) > 100) {
+                                echo substr($excerpt, 0, 100) . '...';
+                              }
+                              else {
+                                echo $excerpt;
+                              }
+                            ?>
+                          </p>
                         </div>
                       </div>
                     <?php
@@ -127,7 +137,7 @@ get_header(); ?>
                         wp_reset_postdata();
                       ?>
                     </div>
-                    <a class="readmore readmore-new" href="<?php echo get_category_link( "17" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new hidden" href="<?php echo get_category_link( "17" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                   </div>
                 </div>
               </div>
@@ -217,7 +227,7 @@ get_header(); ?>
                   <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
                     <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
                   </div>
-                  <a href="<?php echo get_category_link( "40" ); ?>" class="view-more">View more</a>
+                  <a href="<?php echo get_category_link( "40" ); ?>" class="hidden view-more">View more</a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
@@ -384,7 +394,7 @@ get_header(); ?>
                 <?php
                   $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
                 ?>
-                <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>"> 
+                <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
                   <?php
 
                     if ( has_post_thumbnail() ) {

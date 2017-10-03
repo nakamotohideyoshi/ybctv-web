@@ -37,7 +37,17 @@ get_header(); ?>
                         <div class="content-des">
                           <h2 class="title">LATEST NEWS ...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                          <p><?php the_excerpt(); ?></p>
+                          <p>
+                            <?php
+                              $excerpt = get_the_excerpt();
+                              if (strlen($excerpt) > 100) {
+                                echo substr($excerpt, 0, 100) . '...';
+                              }
+                              else {
+                                echo $excerpt;
+                              }
+                            ?>
+                          </p>
                         </div>
                       </div>
                     <?php

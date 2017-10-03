@@ -147,8 +147,7 @@ get_header(); ?>
 
                             <div class="content-post">
                                 <div class="description-single">
-                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
-                                    <?php echo $lw_description;?>
+                                  <?php the_excerpt(); ?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>
@@ -196,13 +195,13 @@ get_header(); ?>
                                             }
 
                                             wp_link_pages(array(
-                                              'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
-                                              'after'       => '</div>',
-                                              'link_before' => '<span>',
-                                              'link_after'  => '</span>',
-                                              'pagelink'    => '<span class="screen-reader-text">Page </span>%',
-                                              'separator'   => '<span class="screen-reader-text">, </span>',
-                                            ));
+                                      				'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
+                                      				'after'       => '</div>',
+                                      				'link_before' => '<span>',
+                                      				'link_after'  => '</span>',
+                                      				'pagelink'    => '<span class="screen-reader-text">Page </span>%',
+                                      				'separator'   => '<span class="screen-reader-text">, </span>',
+                                      			));
                                            ?>
                                         </div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>

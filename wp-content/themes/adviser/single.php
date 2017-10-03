@@ -82,8 +82,7 @@ get_header(); ?>
 
                             <div class="content-post">
                                 <div class="description-single">
-                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
-                                    <?php echo $lw_description;?>
+                                    <?php the_excerpt(); ?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>

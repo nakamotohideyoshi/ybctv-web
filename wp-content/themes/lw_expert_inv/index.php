@@ -4,7 +4,6 @@
  */
 
 get_header(); ?>
-
 <section id="primary" class="content-area">
   <main id="main" class="site-main" role="main">
     <section class="all-new-analysis">
@@ -37,7 +36,17 @@ get_header(); ?>
                         <div class="content-des">
                           <h2 class="title">LATEST NEWS ...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                          <p><?php the_excerpt(); ?></p>
+                          <p>
+                            <?php
+                              $excerpt = get_the_excerpt();
+                              if (strlen($excerpt) > 100) {
+                                echo substr($excerpt, 0, 100) . '...';
+                              }
+                              else {
+                                echo $excerpt;
+                              }
+                            ?>
+                          </p>
                         </div>
                       </div>
                     <?php
@@ -243,10 +252,29 @@ get_header(); ?>
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                   ?>
                   <li>
-                    <div class="content-image">
-                      <?php brightcove_video($lw_brightcove_video_id, false); ?>
-                      <span class="overlay"></span>
-                    </div>
+                    <?php
+                     $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
+                    ?>
+                    <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
+                  <?php
+
+                    if ( has_post_thumbnail() ) {
+                      if($isVideo == 'video'){
+                        echo '<a href="'. get_the_permalink() .'">';
+                      }
+                      the_post_thumbnail();
+                      echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
+                      if($isVideo == 'video'){
+                        echo '</a>';
+                      }
+                    }else {
+                  ?>
+                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                  <?php
+                    }
+                  ?>
+                  <span class="overlay"></span>
+                </div>
                     <div class="content-des">
                       <p class="name-cat">
                         <?php $category = get_the_category(); ?>
