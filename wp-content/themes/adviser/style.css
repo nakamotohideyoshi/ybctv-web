@@ -706,6 +706,33 @@ h2.title{
   padding-top: 25px;
 }
 
+.ads-side-panels .container {
+  padding: 0;
+  position: relative;
+}
+
+.ads-side-panels .side-panel-left-container {
+  position: absolute;
+  top: 0;
+  left: -140px;
+  z-index: 200;
+}
+
+.ads-side-panels .side-panel-left-container .side-panel-left {
+  position: fixed;
+}
+
+.ads-side-panels .side-panel-right-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.ads-side-panels .side-panel-right-container .side-panel-right {
+  position: fixed;
+}
+
 /* Logo */
 
 .logo {
@@ -2292,7 +2319,7 @@ form[name="register"] input[type="submit"] {
     font-family: Kommissar;
 }
 .panel-template .tmm .tmm_job{
-  color:#000000;
+	color:#000000;
 }
 
 /* Comments style */
@@ -2406,7 +2433,7 @@ form[name="register"] input[type="submit"] {
   font-size: 18px;
   line-height: 24px;
 }
- 
+
 .page-template-template-panel .tmm .tmm_2_columns .tmm_member {
   margin: 0 0 36px 0;
 }

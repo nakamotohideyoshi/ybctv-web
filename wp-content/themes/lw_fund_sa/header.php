@@ -42,7 +42,7 @@
     ?>
   </title>
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <!--stickadd scripts-->
     <script type='text/javascript' src='https://pa.cms-lastwordmedia.com/wp-content/themes/adviser/js/sticky.js?ver=1.0.0'></script>
   <?php
@@ -53,6 +53,20 @@
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
   <div id="page" class="hfeed site">
+    <section class="ads-side-panels">
+      <div class="container">
+        <div class="side-panel-left-container">
+          <div class="side-panel-left">
+            <?php lastWordAdUnit('oop-lskin'); ?>
+          </div>
+        </div>
+        <div class="side-panel-right-container">
+          <div class="side-panel-right">
+            <?php lastWordAdUnit('oop-rskin'); ?>
+          </div>
+        </div>
+      </div>
+    </section>
     <?php lastWordAdUnit('top-billboard'); ?>
     <header id="masthead" class="site-header" role="banner">
       <div class="container">

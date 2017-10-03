@@ -712,6 +712,33 @@ h2.title{
   padding-top: 25px;
 }
 
+.ads-side-panels .container {
+  padding: 0;
+  position: relative;
+}
+
+.ads-side-panels .side-panel-left-container {
+  position: absolute;
+  top: 0;
+  left: -140px;
+  z-index: 200;
+}
+
+.ads-side-panels .side-panel-left-container .side-panel-left {
+  position: fixed;
+}
+
+.ads-side-panels .side-panel-right-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.ads-side-panels .side-panel-right-container .side-panel-right {
+  position: fixed;
+}
+
 /* Logo */
 
 .logo {

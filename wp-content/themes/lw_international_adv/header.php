@@ -53,6 +53,20 @@
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
   <div id="page" class="hfeed site">
+    <section class="ads-side-panels">
+      <div class="container">
+        <div class="side-panel-left-container">
+          <div class="side-panel-left">
+            <?php lastWordAdUnit('oop-lskin'); ?>
+          </div>
+        </div>
+        <div class="side-panel-right-container">
+          <div class="side-panel-right">
+            <?php lastWordAdUnit('oop-rskin'); ?>
+          </div>
+        </div>
+      </div>
+    </section>
     <?php lastWordAdUnit('top-billboard'); ?>
     <header id="masthead" class="site-header" role="banner">
       <div class="container">
