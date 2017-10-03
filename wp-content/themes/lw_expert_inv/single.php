@@ -91,7 +91,8 @@ get_header(); ?>
 
                             <div class="content-post">
                                 <div class="description-single">
-                                  <?php the_excerpt(); ?>
+                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
+                                    <?php echo $lw_description;?>
                                 </div>
                                 <div class="thump-single">
                                         <?php
@@ -139,28 +140,30 @@ get_header(); ?>
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>
-                            <?php if (is_singular('post')) { ?>
-                            <p class="name-cat">
-                                <?php $category = get_the_category(); ?>
-                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                            </p>
-                            <?php }?>
-                            <h1 class="title-single"><?php the_title();?></h1>
-                            <?php
-                              $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
-                              if ($tag_list) {
-                                echo $tag_list;
-                              }
-                            ?>
-                            </span></p>
-                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                            <div class="like_button clearfix">
-                                <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                            <div class="spost-head">
+                                <?php if (is_singular('post')) { ?>
+                                <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                </p>
+                                <?php }?>
+                                <h1 class="title-single"><?php the_title();?></h1>
+                                <?php
+                                  $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                  if ($tag_list) {
+                                    echo $tag_list;
+                                  }
+                                ?>
+                                </span></p>
+                                <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
+                                <div class="like_button clearfix">
+                                    <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                </div>
                             </div>
-
                             <div class="content-post">
                                 <div class="description-single">
-                                  <?php the_excerpt(); ?>
+                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
+                                    <?php echo $lw_description;?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>
@@ -208,28 +211,30 @@ get_header(); ?>
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                         ?>
-                            <?php if (is_singular('post')) { ?>
-                            <p class="name-cat">
-                                <?php $category = get_the_category(); ?>
-                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                            </p>
-                            <?php }?>
-                            <h1 class="title-single"><?php the_title();?></h1>
-                            <?php
-                              $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
-                              if ($tag_list) {
-                                echo $tag_list;
-                              }
-                            ?>
-                            </span></p>
-                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                            <div class="like_button clearfix">
-                                <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                            <div class="spost-head">
+                                <?php if (is_singular('post')) { ?>
+                                <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                </p>
+                                <?php }?>
+                                <h1 class="title-single"><?php the_title();?></h1>
+                                <?php
+                                  $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                  if ($tag_list) {
+                                    echo $tag_list;
+                                  }
+                                ?>
+                                </span></p>
+                                <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
+                                <div class="like_button clearfix">
+                                    <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                </div>
                             </div>
-
                             <div class="content-post">
                                 <div class="description-single">
-                                  <?php the_excerpt(); ?>
+                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
+                                    <?php echo $lw_description;?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>

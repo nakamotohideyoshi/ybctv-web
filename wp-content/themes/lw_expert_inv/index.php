@@ -36,17 +36,7 @@ get_header(); ?>
                         <div class="content-des">
                           <h2 class="title">LATEST NEWS ...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                          <p>
-                            <?php
-                              $excerpt = get_the_excerpt();
-                              if (strlen($excerpt) > 100) {
-                                echo substr($excerpt, 0, 100) . '...';
-                              }
-                              else {
-                                echo $excerpt;
-                              }
-                            ?>
-                          </p>
+                          <p><?php the_excerpt(); ?></p>
                         </div>
                       </div>
                     <?php
@@ -93,7 +83,7 @@ get_header(); ?>
                               <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                             </p>
                             <a href="<?php the_permalink(); ?>">
-                              <h3><?php echo get_the_title(); ?></h3>
+                              <h3><?php echo mb_strimwidth( get_the_title(), 0, 45, '...' ); ?></h3>
                             </a>
                           </div>
                         </div>
@@ -104,7 +94,7 @@ get_header(); ?>
                         wp_reset_postdata();
                       ?>
                     </div>
-                    <a class="readmore readmore-new" href="#">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new" href="/type/news/">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                   </div>
                 </div>
               </div>
@@ -255,7 +245,7 @@ get_header(); ?>
                     <?php
                      $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
                     ?>
-                    <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
+                    <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>"> 
                   <?php
 
                     if ( has_post_thumbnail() ) {
@@ -406,7 +396,7 @@ get_header(); ?>
                   <div class="content-des">
                     <p class="name-cat"><a href="<?php the_permalink();?>">Magazine</a></p>
                     <a href="<?php the_permalink(); ?>">
-                      <h3>Portfolio Adviser <span>-</span></h3>
+                      <h3>Expert Investor <span>-</span></h3>
                       <span class="date"><?php echo get_the_title(); ?></span>
                     </a>
                     <?php echo the_excerpt(); ?>
@@ -442,7 +432,7 @@ get_header(); ?>
                         </div>
                         <div class="content-des">
                           <a href="<?php the_permalink();?>">
-                            Portfolio Adviser<br />
+                            Expert Investor<br />
                             <?php echo get_the_title(); ?>
                           </a>
                         </div>

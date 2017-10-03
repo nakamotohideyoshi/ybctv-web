@@ -14,23 +14,93 @@
           }
           else {
         ?>
-        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
+          <?php echo ($isVideo == 'video' ? '<div class="voverlay"></div>': ''); ?>
+        </a>
         <?php
           }
         ?>
       </div>
-      <span class="overlay"></span>
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-      <div class="content-des">
-        <p class="name-cat">
-          <?php $category = get_the_category(); ?>
-          <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-          <span><?php the_time('j M y');?></span>
-        </p>
-        <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-        <p><?php echo the_excerpt(); ?></p>
-      </div>
+      <?php 
+        $premium = get_post_meta($post->ID, 'lw_premium', true); 
+        if($premium == 'yes') {
+          //If premium
+          if(!is_user_logged_in() ){ //If user is logged in?>
+            <div class="content-des contlocked">
+              <p class="name-cat">
+                <?php
+                  $category = get_term_by('id', $category_id, 'category');
+                  $terms = wp_get_post_terms( get_the_ID(), 'type');
+                  $type = $terms[0]->name;
+                ?>
+                <a href="<?php echo get_category_link($category->term_id);?>">
+                  <img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" />
+                  <?php echo $category->name;?></a>
+                <?php if($type): ?>
+                  <a href="<?php echo get_term_link($terms[0]->term_id);?>">
+                  <?php if($category->name){
+                    echo ' | ';
+                  }?>  
+                  <?php echo $type; ?>
+                  </a>
+                <?php endif; ?>   
+                <span><?php the_time('j M y');?></span>
+              </p>
+              <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+              <p><?php echo the_excerpt(); ?></p>
+            </div>
+            
+          <?php } else { //If user is logged out?>
+            <div class="content-des">
+              <p class="name-cat">
+                <?php
+                  $category = get_term_by('id', $category_id, 'category');
+                  $terms = wp_get_post_terms( get_the_ID(), 'type');
+                  $type = $terms[0]->name;
+                ?>
+                <a href="<?php echo get_category_link($category->term_id);?>">
+                  <?php echo $category->name;?></a>
+                <?php if($type): ?>
+                  <a href="<?php echo get_term_link($terms[0]->term_id);?>">
+                  <?php if($category->name){
+                    echo ' | ';
+                  }?>  
+                  <?php echo $type; ?>
+                  </a>
+                <?php endif; ?>   
+                <span><?php the_time('j M y');?></span>
+              </p>
+              <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+              <p><?php echo the_excerpt(); ?></p>
+            </div>
+          <?php }
+          } else{
+          //Not premium ?>
+          <div class="content-des">
+            <p class="name-cat">
+              <?php
+                $category = get_term_by('id', $category_id, 'category');
+                $terms = wp_get_post_terms( get_the_ID(), 'type');
+                $type = $terms[0]->name;
+              ?>
+              <a href="<?php echo get_category_link($category->term_id);?>"><?php echo $category->name;?></a>
+              <?php if($type): ?>
+                <a href="<?php echo get_term_link($terms[0]->term_id);?>">
+                <?php if($category->name){
+                  echo ' | ';
+                }?>  
+                <?php echo $type; ?>
+                </a>
+              <?php endif; ?>   
+              <span><?php the_time('j M y');?></span>
+            </p>
+            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+            <p><?php echo the_excerpt(); ?></p>
+          </div>
+
+       <?php } ?>
     </div>
   </div>
 </div>
