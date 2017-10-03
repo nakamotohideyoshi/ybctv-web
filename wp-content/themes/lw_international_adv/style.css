@@ -697,7 +697,6 @@ h2.title{
 .ads-top-billboard, .ads-bottom-billboard{
   text-align: center;
   padding: 15px 0;
-  min-height: 250px;
 }
 
 .ads-rhs-hpu-1, .ads-rhs-hpu-2 {
@@ -2356,7 +2355,7 @@ form[name="register"] input[type="submit"] {
 }
 
 .page-id-15504 .page-content h3 {
-  color: #0095db; 
+  color: #0095db;
   font-size: 24px;
   text-transform: uppercase;
   font-family: 'Kommissar', sans-serif;
@@ -2421,7 +2420,7 @@ form[name="register"] input[type="submit"] {
   font-size: 18px;
   line-height: 24px;
 }
- 
+
 .page-template-template-panel .tmm .tmm_2_columns .tmm_member {
   margin: 0 0 36px 0;
 }
