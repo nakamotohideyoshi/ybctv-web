@@ -19,7 +19,7 @@
                     <p><a href="http://www.international-adviser.com/news/1037747/people-moves-jersey-finance-rowe-price-street" target="_blank" title="PEOPLE MOVES: Jersey Finance, T. Rowe Price, State Street">PEOPLE MOVES: Jersey Finance, T....</a></p>
                     <p><a href="http://www.international-adviser.com/news/1037743/hmrc-wins-bulk-tax-avoidance-challenges-loses-iht" target="_blank" title="HMRC wins bulk of tax avoidance challenges but loses IHT case">HMRC wins bulk of tax avoidance challenges...</a></p>
                     <p><a href="http://www.international-adviser.com/news/1037742/aviva-sells-stake-italian-insurance-business" target="_blank" title="Aviva sells 50% stake of Italian insurance business">Aviva sells 50% stake of Italian...</a></p>
-                    <p class="more_from"><a href="http://international-adviser.com/" target="_blank">More News From IA</a></p>
+                    <p class="more_from"><a href="http://international-adviser.com/" target="_blank">More news From IA</a></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -30,7 +30,7 @@
                     <p><a href="http://www.expertinvestoreurope.com/gallery/1037738/-term-economic-trends-ignore" target="_blank" title="Six long-term economic trends you should not ignore">Six long-term economic trends you...</a></p>
                     <p><a href="http://www.expertinvestoreurope.com/news/1037687/inflows-stall-emerging-market-funds-2017" target="_blank" title="Inflows stall across emerging market funds in first for 2017">Inflows stall across emerging market...</a></p>
                     <p><a href="http://www.expertinvestoreurope.com/news/1037723/strong-em-passive-fund-inflows-pressure-active-fees" target="_blank" title="Strong EM passive fund inflows pressure active fees">Strong EM passive fund inflows pressure...</a></p>
-                    <p class="more_from"><a href="http://www.expertinvestoreurope.com" target="_blank">More News From EI</a></p>
+                    <p class="more_from"><a href="http://www.expertinvestoreurope.com" target="_blank">More news From EI</a></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -41,7 +41,7 @@
                     <p><a href="http://www.portfolio-adviser.com/news/1037929/woodford-apologises-incredibly-painful-underperformance" target="_blank" title="Woodford apologises for 'incredibly painful' underperformance">Woodford apologises for 'incredibly painful' un...</a></p>
                     <p><a href="http://www.portfolio-adviser.com/analysis/1037926/pa-analysis-hey-fund-selectors-wheres-value-add" target="_blank" title="PA ANALYSIS: Hey, fund selectors - where's the value add?">PA ANALYSIS: Hey, fund selectors...</a></p>
                     <p><a href="http://www.portfolio-adviser.com/news/1037924/jupiter-expands-gem-range-short-duration-bond-fund" target="_blank" title="Jupiter expands GEM range with short-duration bond fund">Jupiter expands GEM range...</a></p>
-                    <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More News From PA</a></p>
+                    <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More news From PA</a></p>
                 </div>
             </div>
         </div>

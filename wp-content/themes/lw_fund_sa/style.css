@@ -1066,7 +1066,7 @@ h2.title{
 }
 
 .variable-news .col-lg-3 {
-  min-height: 400px;
+  min-height: 460px;
   position: relative;
 }
 
@@ -1106,6 +1106,7 @@ h2.title{
   font-weight: 700;
   font-size: 21px;
   margin-bottom: 5px;
+  min-height: 46px;
 }
 
 /* Homepage - Sponsored Slider */

@@ -31,106 +31,13 @@ get_header(); ?>
                         <?php endif; ?>
 
                         <div class="list-category-ajax">
-                            <?php if(have_posts()): while(have_posts()): the_post(); ?>
-                                <div class="loop-list loop-list-load">
-                                    <div class="row">
-                                        <div class="col-md-4 col-sm-4 col-xs-12">
-                                          <?php
-                                            $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
-                                          ?>
-                                          <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
-                                            <?php
-                                              if ( has_post_thumbnail() ) {
-                                                echo '<a href="' . get_the_permalink() . '">';
-                                                the_post_thumbnail('listing-article');
-                                                echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
-                                                echo '</a>';
-                                              }
-                                              else {
-                                            ?>
-                                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
-                                                <?php echo ($isVideo == 'video' ? '<div class="voverlay"></div>': ''); ?>
-                                            </a>
-                                            <?php
-                                              }
-                                            ?>
-                                          </div>
-                                        </div>
-                                        <div class="col-md-8 col-sm-8 col-xs-12"> 
-
-                                <?php $premium = get_post_meta($post->ID, 'lw_premium', true); 
-                                        if($premium == 'yes') {
-                                                
-                                            if( !is_user_logged_in() ){ ?>
-
-                                            <div class="content-des contlocked">
-                                                <p class="name-cat">
-                                                <?php 
-                                                    $category = get_the_category(); 
-                                                    $terms = wp_get_post_terms( get_the_ID(), 'type');
-                                                    $type = $terms[0]->name; 
-                                                ?>
-                                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" /><?php echo $category[0]->cat_name;?></a>
-                                                <?php if($type): ?>
-                                                    <a href="<?php echo get_term_link($terms[0]->term_id);?>">  
-                                                    <?php echo ' | '.$type; ?>
-                                                    </a>
-                                                <?php endif; ?> 
-                                                <span><?php the_time('j M y');?></span></p>
-                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
-                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                                                <p><?php echo the_excerpt(); ?></p>
-                                            </div>
-
-                                            <?php } else { ?>
-
-                                            <div class="content-des">
-                                                <p class="name-cat">
-                                                <?php 
-                                                    $category = get_the_category();
-                                                    $terms = wp_get_post_terms( get_the_ID(), 'type');
-                                                    $type = $terms[0]->name; 
-                                                ?>
-                                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                                                <?php if($type): ?>
-                                                    <a href="<?php echo get_term_link($terms[0]->term_id);?>">  
-                                                    <?php echo ' | '.$type; ?>
-                                                    </a>
-                                                <?php endif; ?> 
-                                                <span><?php the_time('j M y');?></span></p>
-                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
-                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                                                <p><?php echo the_excerpt(); ?></p>
-                                            </div>
-
-                                            <?php }} else { ?>
-
-                                            <div class="content-des">
-                                                <p class="name-cat">
-                                                <?php 
-                                                    $category = get_the_category(); 
-                                                    $terms = wp_get_post_terms( get_the_ID(), 'type');
-                                                    $type = $terms[0]->name;
-                                                ?>
-                                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                                                <?php if($type): ?>
-                                                    <a href="<?php echo get_term_link($terms[0]->term_id);?>">  
-                                                    <?php echo ' | '.$type; ?>
-                                                    </a>
-                                                <?php endif; ?> 
-                                                <span><?php the_time('j M y');?></span></p>
-                                                <!-- <a href="<?php the_permalink(); ?>"><h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3></a> -->
-                                                <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                                                <p><?php echo the_excerpt(); ?></p>
-                                            </div>
-
-                                            <?php } ?>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php endwhile;endif;?>
+                          <?php
+                            if(have_posts()): while(have_posts()): the_post();
+                              include(locate_template('template-parts/archive-post.php'));
+                            endwhile;endif;
+                            ?>
                         </div>
+                        <a href="#" class="view-more view-more-ajax" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
