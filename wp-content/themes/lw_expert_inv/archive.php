@@ -34,7 +34,7 @@ get_header(); ?>
                                     $parent_ID = $child->parent;
 
                                     //Show only on countries and strategies 
-                                    if($cat_id == 26 || $cat_id == 21 || $parent_ID == 26 || $parent_ID == 21): //?>
+                                    if($cat_id == 26 || $cat_id == 21 ): //?>
                                     <div class="cat-sponsor-logo">
                                         <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo.png' ?>" />
                                     </div>

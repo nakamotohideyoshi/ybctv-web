@@ -31,6 +31,9 @@
             <div class="content-des contlocked">
               <p class="name-cat">
                 <?php
+                  if(empty($category_id)){
+                    $category_id = get_the_category()[0]->term_id;
+                  }
                   $category = get_term_by('id', $category_id, 'category');
                   $terms = wp_get_post_terms( get_the_ID(), 'type');
                   $type = $terms[0]->name;
@@ -50,12 +53,22 @@
               </p>
               <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
               <p><?php echo the_excerpt(); ?></p>
+              <?php
+              //If is sponsored
+              $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+              if($lw_sponsored){ ?>
+                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                <p>Published: <?php the_time('j M y');?></p>
+              <?php } ?>
             </div>
             
           <?php } else { //If user is logged out?>
             <div class="content-des">
               <p class="name-cat">
                 <?php
+                  if(empty($category_id)){
+                    $category_id = get_the_category()[0]->term_id;
+                  }
                   $category = get_term_by('id', $category_id, 'category');
                   $terms = wp_get_post_terms( get_the_ID(), 'type');
                   $type = $terms[0]->name;
@@ -74,6 +87,13 @@
               </p>
               <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
               <p><?php echo the_excerpt(); ?></p>
+              <?php
+              //If is sponsored
+              $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+              if($lw_sponsored){ ?>
+                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                <p>Published: <?php the_time('j M y');?></p>
+            <?php } ?>
             </div>
           <?php }
           } else{
@@ -81,6 +101,9 @@
           <div class="content-des">
             <p class="name-cat">
               <?php
+                if(empty($category_id)){
+                  $category_id = get_the_category()[0]->term_id;
+                }
                 $category = get_term_by('id', $category_id, 'category');
                 $terms = wp_get_post_terms( get_the_ID(), 'type');
                 $type = $terms[0]->name;
@@ -98,6 +121,13 @@
             </p>
             <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
             <p><?php echo the_excerpt(); ?></p>
+            <?php
+              //If is sponsored
+              $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+              if($lw_sponsored){ ?>
+                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                <p>Published: <?php the_time('j M y');?></p>
+            <?php } ?>
           </div>
 
        <?php } ?>

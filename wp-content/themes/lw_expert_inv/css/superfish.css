@@ -114,6 +114,100 @@
 	width: 100%;
 	padding-left: 80px;
 }
+
+/* Third level - start */
+.sf-navbar .sub-menu .sub-menu {
+    min-width: 36em;
+	width: 100%;
+	padding-left: 80px;
+}
+.sf-navbar .sub-menu .sub-menu li {
+	float: left;
+	display: inline-block;
+	width: auto;
+}
+
+.sf-navbar .sub-menu .sub-menu li {
+	float: left;
+	display: inline-block;
+	width: auto;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3134 a {
+	background: url("../images/flags/belgium.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3167 a {
+	background: url("../images/flags/denmark.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3166 a {
+	background: url("../images/flags/finland.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3165 a {
+	background: url("../images/flags/france.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3164 a {
+	background: url("../images/flags/germany.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3163 a {
+	background: url("../images/flags/iceland.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3162 a {
+	background: url("../images/flags/italy.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3161 a {
+	background: url("../images/flags/luxembourg.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3160 a {
+	background: url("../images/flags/netherland.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3159 a {
+	background: url("../images/flags/norway.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3158 a {
+	background: url("../images/flags/portucal.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3157 a {
+	background: url("../images/flags/spain.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3156 a {
+	background: url("../images/flags/sweden.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li#menu-item-3155 a {
+	background: url("../images/flags/switzerland.jpg") center left no-repeat;
+	padding-left: 25px !important;
+}
+
+.sf-navbar .sub-menu .sub-menu li:hover {
+	background-color: transparent;
+}
+/* Third level - end */
+
 .sf-navbar ul li a{
 	color: #000;
 	padding: 7px 18px;
