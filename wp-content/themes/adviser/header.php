@@ -48,7 +48,7 @@
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
     wp_head();
   ?>
-  <script type="text/javascript" src="/wp-content/themes/adviser/js/sticky.js?ver=1.1.0"></script>
+  <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
