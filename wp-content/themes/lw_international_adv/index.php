@@ -306,7 +306,6 @@ get_header(); ?>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <?php lastWordAdUnit('lhs-mpu'); ?>
-                  <a href="<?php echo get_term_link(8302); ?>" class="view-more">View more</a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
@@ -384,6 +383,11 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <a href="<?php echo get_term_link(8302); ?>" class="view-more">View more</a>
                 </div>
               </div>
             </div>
