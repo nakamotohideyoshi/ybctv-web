@@ -1687,11 +1687,11 @@ h2.title{
 .list-category-ajax .loop-list {
   margin-bottom: 20px;
   border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 20px;
+  padding-bottom: 17px;
 }
 
 .list-category-ajax .loop-list .content-des {
-  padding: 5px 0 0;
+  padding: 11px 0 0;
 }
 
 .list-category-ajax .loop-list .content-des h3 {
@@ -1700,6 +1700,7 @@ h2.title{
   margin-bottom: 2px;
   margin-top: 0;
 }
+
 
 .list-category-ajax .loop-list .content-des p {
   padding: 0;
@@ -1711,6 +1712,11 @@ h2.title{
   text-transform: uppercase;
   font-weight: bold;
   color: #69b42e;
+  margin-bottom: 0;
+}
+
+.list-category-ajax .loop-list .name-cat a {
+  font-size: 16px;
 }
 
 .list-category-ajax .view-more {
@@ -1722,6 +1728,7 @@ h2.title{
 .loop-list .name-cat span {
   color: #000
 }
+
 
 
 /* Author */

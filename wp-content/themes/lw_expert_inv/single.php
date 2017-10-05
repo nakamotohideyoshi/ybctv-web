@@ -56,12 +56,8 @@ get_header(); ?>
                             bcn_display();
                         }?>
                     </div>
-                <?php   $post_categories = get_the_category(get_the_ID());
-                        $term = get_option( "taxonomy_" . $post_categories[0]->term_id );
-
-                        $locked = $term['locked'];
-
-                if($locked == '1') {
+                <?php $premium = get_post_meta($post->ID, 'lw_premium', true);
+                if($premium == 'yes') {
                     if( !is_user_logged_in() ){ ?>
 
                     <div class="content-category content-single contlocked">
@@ -73,10 +69,17 @@ get_header(); ?>
                             <?php if (is_singular('post')) { ?>
                             <p class="name-cat">
                                 <?php $category = get_the_category(); ?>
-                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" /><?php echo $category[0]->cat_name;?></a>
+                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" alt="Padlock"/><?php echo $category[0]->cat_name;?></a>
                             </p>
                             <?php }?>
                             <h1 class="title-single"><?php the_title();?></h1>
+                            <?php
+                            //If is sponsored
+                            $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                            if($lw_sponsored){ ?>
+                                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                                <p>Published: <?php the_time('j M y');?></p>
+                            <?php } ?>
                             <?php
                               $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
                               if ($tag_list) {
@@ -85,10 +88,7 @@ get_header(); ?>
                             ?>
                             </span></p>
                             <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                            <div class="like_button clearfix">
-                                <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
-                            </div>
-
+                            
                             <div class="content-post">
                                 <div class="description-single">
                                   <?php the_excerpt(); ?>
@@ -103,7 +103,7 @@ get_header(); ?>
                                             <?php }
                                         ?>
                                         <div class="feat-sponsor-logo">
-                                            <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" />
+                                            <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
                                         </div>
                                 </div>
                                 <p class="locked-notice">To access this content please sign in or register</p>
@@ -155,9 +155,6 @@ get_header(); ?>
                                 ?>
                                 </span></p>
                                 <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                                <div class="like_button clearfix">
-                                    <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
-                                </div>
                             </div>
                             <div class="content-post">
                                 <div class="description-single">
@@ -174,7 +171,7 @@ get_header(); ?>
                                             <?php }
                                         ?>
                                         <div class="feat-sponsor-logo">
-                                            <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" />
+                                            <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
                                         </div>
                                     </div>
                                         <div class="text-content"><?php the_content();?></div>
@@ -217,6 +214,13 @@ get_header(); ?>
                                 </p>
                                 <?php }?>
                                 <h1 class="title-single"><?php the_title();?></h1>
+                                <?php
+                                  //If is sponsored
+                                  $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                                  if($lw_sponsored){ ?>
+                                    <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                                    <p>Published: <?php the_time('j M y');?></p>
+                                  <?php } ?>
                                 <?php
                                   $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
                                   if ($tag_list) {

@@ -104,7 +104,7 @@ get_header(); ?>
                         wp_reset_postdata();
                       ?>
                     </div>
-                    <a class="readmore readmore-new" href="/type/news/">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new" href="/type/news/">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="more news" /></a>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
-                  <button id="scroll-more" class="readmore">Scroll to more Interviews <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="" /></button>
+                  <button id="scroll-more" class="readmore">Scroll to more Interviews <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="arrow" /></button>
                 </div>
               </div>
             </div>
@@ -410,7 +410,7 @@ get_header(); ?>
                   <?php
                     }
                   ?>
-                  <p class="readmore button-feature">Featured  <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></p>
+                  <p class="readmore button-feature">Featured  <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="more news" /></p>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

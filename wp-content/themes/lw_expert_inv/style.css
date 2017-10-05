@@ -1680,21 +1680,17 @@ h2.title{
   display: inline-block;
 }
 
+
 /* Straight listing of articles in Category */
 
 .list-category-ajax .loop-list {
   margin-bottom: 20px;
   border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 20px;
+  padding-bottom: 17px;
 }
 
 .list-category-ajax .loop-list .content-des {
-  padding: 5px 0 0;
-}
-
-.list-category-ajax .loop-list .content-des p {
-    padding: 0;
-    font-size: 14px;
+  padding: 11px 0 0;
 }
 
 .list-category-ajax .loop-list .content-des h3 {
@@ -1704,11 +1700,22 @@ h2.title{
   margin-top: 0;
 }
 
+
+.list-category-ajax .loop-list .content-des p {
+  padding: 0;
+  font-size: 14px;
+}
+
 .list-category-ajax .loop-list .name-cat {
   font-size: 16px;
   text-transform: uppercase;
   font-weight: bold;
-  color: #f9ae00;
+  color: #69b42e;
+  margin-bottom: 0;
+}
+
+.list-category-ajax .loop-list .name-cat a {
+  font-size: 16px;
 }
 
 .list-category-ajax .view-more {
@@ -1720,7 +1727,6 @@ h2.title{
 .loop-list .name-cat span {
   color: #000
 }
-
 
 /* Author */
 .author-info{
@@ -2476,6 +2482,97 @@ form[name="register"] input[type="submit"] {
 
 .video-js .vjs-big-play-button:before {
   display: none;
+}
+
+/* comments sectios */
+
+#comments header.comment-author {
+  display: none;
+}
+
+#comments .commenttitle {
+  text-transform: uppercase;
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
+  color: #f9ae00;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#comments ol{
+  list-style: none;
+}
+
+#comments .comment-content {
+  border-bottom: 1px solid #e2e2e2;
+  padding-top: 9px;
+}
+
+#comments .comment-content cite {
+  font-style: normal;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  color: #f9ae00;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#comments .comment-content .comments-datetime time,
+#comments .comment-content .comment-edit-link,
+#comments .comment-content .comment-reply-link {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+#comments .comment-content .comment-edit-link {
+  display: none;
+}
+
+#comments .comment-content .comment-reply-link {
+  color: #f9ae00;
+}
+
+#comments .comment-content p {
+  font-style: normal;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  color: #000;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 2px;
+}
+
+#comments #respond {
+  margin-top: 40px;
+}
+
+#comments #respond a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+#comments .comment-respond textarea {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+#comments .form-submit #submit:hover {
+  background-color: #f2f2f2;
+  color: #f9ae00;
+}
+
+#comments #reply-title,
+#comments #reply-title a {
+  font-size: 21px;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+}
+
+#comments #reply-title small,
+#comments #reply-title small a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+  color: #f9ae00;
 }
 
 @media (min-width: 1440px) {
