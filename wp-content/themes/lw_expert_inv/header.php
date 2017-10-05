@@ -42,13 +42,12 @@
     ?>
   </title>
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-  <!--stickadd scripts-->
-    <script type='text/javascript' src='https://pa.cms-lastwordmedia.com/wp-content/themes/adviser/js/sticky.js?ver=1.0.0'></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <?php
     wp_head();
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
   ?>
+  <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>

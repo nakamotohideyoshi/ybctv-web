@@ -36,7 +36,17 @@ get_header(); ?>
                         <div class="content-des">
                           <h2 class="title">LATEST NEWS ...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                          <p><?php the_excerpt(); ?></p>
+                          <p>
+                            <?php
+                              $excerpt = get_the_excerpt();
+                              if (strlen($excerpt) > 100) {
+                                echo substr($excerpt, 0, 100) . '...';
+                              }
+                              else {
+                                echo $excerpt;
+                              }
+                            ?>
+                          </p>
                         </div>
                       </div>
                     <?php
@@ -153,10 +163,6 @@ get_header(); ?>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <h2>Interviews</h2>
-                  <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
-                    <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
-                  </div>
-                  <a href="<?php echo get_category_link( "40" ); ?>" class="view-more">View more</a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
@@ -165,7 +171,7 @@ get_header(); ?>
                         $args = array(
                           'posts_per_page' => 4,
                           'offset' => 2,
-                          'showposts' => 4,
+                          'showposts' => 2,
                           'tax_query' => array(
                             array(
                               'taxonomy' => 'type',
@@ -209,6 +215,66 @@ get_header(); ?>
                   </div>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                  <?php lastWordAdUnit('lhs-mpu'); ?>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                  <div class="row">
+                    <div class="analysis-list">
+                      <?php
+                        $args = array(
+                          'posts_per_page' => 4,
+                          'offset' => 4,
+                          'showposts' => 2,
+                          'tax_query' => array(
+                            array(
+                              'taxonomy' => 'type',
+                              'field' => 'term_id',
+                              'terms' => '1944'
+                            )
+                          )
+                        );
+                        $myposts = get_posts( $args );
+                        foreach ( $myposts as $post ) : setup_postdata( $post );
+                      ?>
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="loop-list">
+                          <div class="content-image">
+                            <?php
+                              if ( has_post_thumbnail() ) {
+                                the_post_thumbnail('featured-article');
+                              }
+                              else {
+                            ?>
+                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                            <?php
+                              }
+                            ?>
+                            <span class="overlay"></span>
+                          </div>
+                          <div class="content-des">
+                            <p class="name-cat">
+                              <?php $category = get_the_category(); ?>
+                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                            </p>
+                            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                          </div>
+                        </div>
+                      </div>
+                      <?php
+                        endforeach;
+                        wp_reset_postdata();
+                      ?>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <a href="<?php echo get_term_link(1944); ?>" class="view-more">View more</a>
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
@@ -245,7 +311,7 @@ get_header(); ?>
                     <?php
                      $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
                     ?>
-                    <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>"> 
+                    <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
                   <?php
 
                     if ( has_post_thumbnail() ) {
