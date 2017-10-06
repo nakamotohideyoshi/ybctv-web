@@ -116,12 +116,13 @@
                 ?>
               </div>
             </div>
-            <div class="list-category-ajax hidden">
+            <div class="list-category-ajax">
               <?php
                 $category_page = get_post_meta($post->ID,'category_page', TRUE);
                   //var_dump($category_page);
                   $args = array(
-                    'posts_per_page' => 12,
+                    'posts_per_page' => 5,
+                    'offset' => 20,
                     'category' => $category_page,
                     'orderby' => 'title',
                     'order' => 'ASC',
@@ -140,7 +141,7 @@
                 wp_reset_postdata();
               ?>
             </div>
-            <a href="#" class="view-more hidden view-more-ajax" meta_key="lw_premium" meta_val="yes" page="2" offset="12" category="">View more</a>
+            <a href="#" class="view-more hidden view-more-ajax" meta_key="lw_premium" meta_val="yes" page="2" offset="20" category="<?php echo $category_page;?>">View more</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
