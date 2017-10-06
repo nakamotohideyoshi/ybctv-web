@@ -853,7 +853,7 @@ h2.title{
 
 .search-box input[type="text"] {
   padding: 12px 5px 12px 10px;
-  max-width: 150px;
+  max-width: 135px;
   border: none;
   border-radius: 0;
   margin-right: -5px;
@@ -1723,13 +1723,13 @@ h2.title{
 /* Straight listing of articles in Category */
 
 .list-category-ajax .loop-list {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   border-bottom: 2px solid #f2f2f2;
-  padding-bottom: 17px;
+  padding-bottom: 11px;
 }
 
 .list-category-ajax .loop-list .content-des {
-  padding: 11px 0 0;
+  padding: 15px 0 0;
 }
 
 .list-category-ajax .loop-list .content-des h3 {
@@ -1813,7 +1813,7 @@ h2.title{
 }
 
 .image-feature {
-  margin: 20px 0 30px;
+  margin: 20px 0 2px 0;
 }
 
 /* Events Page */
@@ -2327,11 +2327,12 @@ form[name="register"] input[type="submit"] {
 .contlocked .locked-notice {
   font-weight: bold;
   color: #0095db;
-  margin-bottom: 15px;
+  margin-bottom: 19px;
+  padding-top: 1px;
 }
 
 .contlocked .locked-buttons {
-    margin-bottom: 15px;
+    margin-bottom: 13px;
 }
 
 .contlocked .locked-list {
@@ -2344,22 +2345,47 @@ form[name="register"] input[type="submit"] {
   background-color: #232c4a;
   background-position: right center;
   background-repeat: no-repeat;
-  background-size: 15%;
+  background-size: 12px;
   border-right: 10px solid #232c4a;
   color: #fff;
   font-size: 14px;
-  padding: 10px 50px 10px 20px;
-  width: 200px;
+  font-weight: 400;
+  padding: 5px 50px 4px 10px;
+  width: 213px;
+  display: block;
+  float: left;
+}
+
+.contlocked p {
+  padding-bottom: 0;
+}
+
+.contlocked ul {
+  margin-left: 0;
+}
+
+.contlocked p, .contlocked ul li {
+  font-size: 15px;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  line-height: 24px;
 }
 
 .contlocked .locked-button.signin {
-  margin-right: 20px;
+  margin-right: 11px;
+}
+
+.contlocked hr {
+  margin: 23px 0 13px 0;
 }
 
 .contlocked .description-single {
   position: relative;
   max-height: 50px;
   overflow: hidden;
+}
+
+.contlocked a {
+  color: #0095db;
 }
 
 .contlocked .description-single:before {
@@ -2450,6 +2476,11 @@ form[name="register"] input[type="submit"] {
   line-height: 24px;
 }
 
+.page-template-template-panel .list-content-page p:first-child {
+  display: block;
+  margin-bottom: 40px;
+}
+
 .page-template-template-panel .tmm .tmm_2_columns .tmm_member {
   margin: 0 0 36px 0;
 }
@@ -2506,6 +2537,131 @@ form[name="register"] input[type="submit"] {
 
 .video-js .vjs-big-play-button:before {
   display: none;
+}
+
+/* comments sectios */
+
+#comments header.comment-author {
+  display: none;
+}
+
+#comments .commenttitle {
+  text-transform: uppercase;
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
+  color: #0095db;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#comments ol{
+  list-style: none;
+}
+
+#comments .comment-content {
+  border-bottom: 1px solid #e2e2e2;
+  padding-top: 9px;
+}
+
+#comments .comment-content cite {
+  font-style: normal;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  color: #0095db;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#comments .comment-content .comments-datetime time,
+#comments .comment-content .comment-edit-link,
+#comments .comment-content .comment-reply-link {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+#comments .comment-content .comment-edit-link {
+  display: none;
+}
+
+#comments .comment-content .comment-reply-link {
+  color: #0095db;
+}
+
+#comments .comment-content p {
+  font-style: normal;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  color: #000;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 2px;
+}
+
+#comments #respond {
+  margin-top: 40px;
+}
+
+#comments #respond a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+#comments .comment-respond textarea {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+#comments .form-submit #submit:hover {
+  background-color: #f2f2f2;
+  color: #0095db;
+}
+
+#comments #reply-title,
+#comments #reply-title a {
+  font-size: 21px;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+}
+
+#comments #reply-title small,
+#comments #reply-title small a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+  color: #0095db;
+}
+
+/* Cookie bar */
+
+#catapult-cookie-bar button#catapultCookie {
+  border-radius: 0;
+}
+
+#catapult-cookie-bar button#catapultCookie:hover {
+    color: #0095db;
+    background-color: #f2f2f2;
+}
+
+/* FAQ */
+
+.faq-wrapper .title {
+  color: #0095db;
+  cursor: pointer;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 0px;
+}
+
+.faq-wrapper .title:before {
+    content: ">>";
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+
+.faq-wrapper p,
+.faq-wrapper a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
 }
 
 @media (min-width: 1440px) {

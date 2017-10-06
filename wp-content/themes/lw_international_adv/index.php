@@ -137,7 +137,7 @@ get_header(); ?>
                         wp_reset_postdata();
                       ?>
                     </div>
-                    <a class="readmore readmore-new hidden" href="<?php echo get_category_link( "17" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new" href="/type/news/">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                   </div>
                 </div>
               </div>

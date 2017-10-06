@@ -26,7 +26,7 @@ if ( post_password_required() )
 	<?php // You can start editing here -- including this comment! ?>
 
   <?php if ( have_comments() ) : ?>
-  <span class="CommentTitle">Comments (<?php echo get_comments_number();?>)</span>
+  <span class="commenttitle">Visitor's Comments<?php //echo get_comments_number();?></span>
 
 		<ol class="commentlist">
 			<?php wp_list_comments( array( 'callback' => 'plazart_comment', 'style' => 'ol' ) ); ?>

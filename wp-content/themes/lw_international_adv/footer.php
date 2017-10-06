@@ -63,7 +63,7 @@
                     <div class="footer_connect">
                     <h2>International Adviser</h2>
                     <p>Published by Last Word Media (UK) Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) <?php echo date('Y'); ?>. All rights reserved. Company Reg. No. 05573633. VAT. No. 872 411 728.&nbsp;ISSN 2397-284X</p>
-                    <p>International Adviser is a monthly digital magazine and daily news website aimed at wealth managers, investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of International Adviser.</p>
+                    <p>International Adviser provides up to the minute news, tools and professional resources for Independent Financial Advisers and Wealth Managers in the UK, Europe, Middle East, South Africa and Asia Pacific regions. No news, articles or content may be reproduced in part or in full without express permission of International Adviser.</p>
                     <!---->
                 </div>
                 </div>

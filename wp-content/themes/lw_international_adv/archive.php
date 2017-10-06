@@ -37,6 +37,9 @@ get_header(); ?>
                             endwhile;endif;
                             ?>
                         </div>
+                        <?php if(empty($category_id)){
+                            $category_id = get_the_category()[0]->term_id;
+                        };?>
                         <a href="#" class="view-more view-more-ajax" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
                     </div>
                 </div>

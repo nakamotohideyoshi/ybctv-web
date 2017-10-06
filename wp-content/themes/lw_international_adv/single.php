@@ -90,7 +90,8 @@ get_header(); ?>
 
                             <div class="content-post">
                                 <div class="description-single">
-                                  <?php the_excerpt(); ?>
+                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
+                                    <?php echo $lw_description;?>
                                 </div>
                                 <div class="thump-single">
                                         <?php
@@ -107,9 +108,10 @@ get_header(); ?>
                                 <div class="locked-buttons">
                                 <a href="#" data-toggle="modal" data-target="#myModal" class="locked-button signin">Sign in</a>
                                 <a href="/register" class="locked-button">Register</a>
+                                <div class="clearfix"></div>
                                 </div>
 
-                                <p>Register now for full access to online content at International Adviser plus recieve:</p>
+                                <p><strong>Register now</strong> for full access to online content at International Adviser plus recieve:</p>
                                 <ul class="locked-list">
                                     <li>- Twice daily email news bulletins</li>
                                     <li>- Weekly news round-up</li>
@@ -119,9 +121,9 @@ get_header(); ?>
 
                                 <hr>
 
-                                <p>For assistance please contact our customer service team or visit our <a href="#">FAQ page</a>.<br />
+                                <p>For assistance please contact our customer service team or visit our <a href="/ia-faq/">FAQ page</a>.<br />
                                 Phone: +44 20 7382 4477<br />
-                                Email: subscriptions@lastwordmedia.com
+                                Email: <a href="mailto:subscriptions@lastwordmedia.com">subscriptions@lastwordmedia.com</a>
 
                             </div>
                         <?php endwhile;endif;?>
@@ -158,7 +160,8 @@ get_header(); ?>
 
                             <div class="content-post">
                                 <div class="description-single">
-                                  <?php the_excerpt(); ?>
+                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
+                                    <?php echo $lw_description;?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>
@@ -228,7 +231,8 @@ get_header(); ?>
 
                             <div class="content-post">
                                 <div class="description-single">
-                                  <?php the_excerpt(); ?>
+                                    <?php $lw_description    =   get_post_meta($post->ID,'lw_description', TRUE);?>
+                                    <?php echo $lw_description;?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>
@@ -270,6 +274,35 @@ get_header(); ?>
                 </div>
                 <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
                     <?php get_sidebar('right');?>
+                    <div class="content-right">
+                        <div class="feature-sponsored">
+                            <?php
+                            $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 15 );
+                            $myposts = get_posts( $args );
+                            foreach ( $myposts as $post ) : setup_postdata( $post );
+                            $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                            ?>
+                                <div class="content-image">
+                                    <?php
+                                    if ( has_post_thumbnail() ) {
+                                        the_post_thumbnail('featured-article');
+                                    }
+                                    else { ?>
+                                        <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                    <?php }
+                                    ?>
+                                    <p class="readmore button-feature">Featured  <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></p>
+                                </div>
+                                <div class="content-des">
+                                    <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                                    <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                    <p><?php echo get_excerpt(100); ?></p>
+                                    <a href="<?php the_permalink(); ?>" class="view-more">View more</a>
+                                </div>
+                            <?php endforeach;
+                            wp_reset_postdata();?>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="related-post clearfix">

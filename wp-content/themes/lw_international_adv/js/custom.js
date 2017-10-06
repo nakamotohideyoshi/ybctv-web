@@ -151,4 +151,14 @@
     });
 
     }); // End document ready
+
+    //Faq functionality
+    $('.faq-wrapper .title').on('click touch',function(){
+        var dataId = $(this).attr('data-id');
+        if($('#'+dataId).is(':visible')){
+            $('#'+dataId).css('display','none');
+        }else{
+            $('#'+dataId).css('display','block');
+        }
+    });
 })(this.jQuery);
