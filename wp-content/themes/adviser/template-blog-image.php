@@ -9,12 +9,12 @@
 
         <div class="content-page">
             <div class="container">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="content-left">
                         <?php get_sidebar('left');?>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -49,7 +49,7 @@
                                 ?>
 									<div class="col-md-6 col-sm-6 col-xs-12">
 										<div class="loop-list">
-											<div class="content-image">
+											<div class="content-image ddd">
                                                 <?php
                                                 if ( has_post_thumbnail() ) {
                                                     the_post_thumbnail();

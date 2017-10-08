@@ -8,12 +8,12 @@
   <div id="content" class="site-content" role="main">
     <div class="content-page">
       <div class="container">
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <div class="content-left">
             <?php get_sidebar('left');?>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
           <div class="bread">
             <?php
               if (function_exists('bcn_display')) {
@@ -64,7 +64,10 @@
                         <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
                           <?php echo ($isVideo == 'video' ? '<div class="voverlay"></div>': ''); ?>
                         </a>
-                        <?php } ?>
+                        <?php
+                          }
+                        ?>
+
                       </div>
                       <div class="content-des">
                         <p class="name-cat">

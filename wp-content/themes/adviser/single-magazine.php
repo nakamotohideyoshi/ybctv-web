@@ -9,10 +9,11 @@ get_header(); ?>
   <div id="content" class="site-content" role="main">
     <div class="content-page">
       <div class="container">
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <div class="content-left">
             <div class="most-popular most-popular-new">
               <h2>Most Popular News</h2>
+              <?php lastWordAdUnit('top-news-ad'); ?>
               <div class="list-most-popular">
                 <?php
                   $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
@@ -48,7 +49,7 @@ get_header(); ?>
             </div>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
           <div class="bread">
             <?php
               if (function_exists('bcn_display')) {
