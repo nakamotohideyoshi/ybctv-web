@@ -9,12 +9,12 @@
 
         <div class="content-page">
             <div class="container">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="content-left">
                         <?php get_sidebar('left');?>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -28,7 +28,7 @@
                         }?>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <div class="list-content-page">
                         <?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
                             <div class="page-header">

@@ -8,12 +8,12 @@
   <div id="content" class="site-content" role="main">
     <div class="content-page">
       <div class="container">
-        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <div class="content-left">
             <?php get_sidebar('left');?>
           </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
           <div class="bread">
             <?php
               if (function_exists('bcn_display')) {
@@ -33,7 +33,7 @@
               <?php endif; ?>
             </div><!-- .page-header -->
             <?php endwhile;endif;?>
-            
+
             <div class="list-category">
               <h2><?php the_title();?> Spotlight</h2>
               <?php
@@ -76,8 +76,8 @@
                       </div>
                       <div class="content-des">
                         <p class="name-cat">
-                          <?php 
-                            $category = get_the_category(); 
+                          <?php
+                            $category = get_the_category();
                             $terms = wp_get_post_terms( get_the_ID(), 'type');
                             $type = $terms[0]->name;
                           ?>
@@ -86,10 +86,10 @@
                               <a href="<?php echo get_term_link($terms[0]->term_id);?>">
                                 <?php if($category[0]->cat_name){
                                   echo ' | ';
-                                }?>    
+                                }?>
                                 <?php echo $type; ?>
                               </a>
-                            <?php endif; ?> 
+                            <?php endif; ?>
                             <span><?php the_time('j M y');?></span>
                         </p>
                         <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>

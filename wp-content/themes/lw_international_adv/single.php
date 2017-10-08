@@ -10,12 +10,12 @@ get_header(); ?>
 
         <div class="content-page">
             <div class="container">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 
                     <div class="content-left">
                         <div class="most-popular most-popular-new">
                             <h2>Most Popular News</h2>
-                            <p class="architas">architas</p>
+                            <?php lastWordAdUnit('top-news-ad'); ?>
                             <div class="list-most-popular">
                                 <?php
 
@@ -49,7 +49,7 @@ get_header(); ?>
                     </div>
                 </div>
 
-                <div class="col-lg-5 col-md-5 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {

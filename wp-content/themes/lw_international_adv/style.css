@@ -703,7 +703,7 @@ h2.title{
   margin-bottom: 18px;
 }
 
-.ads-top-news-ad{
+.home .ads-top-news-ad {
   padding-top: 25px;
 }
 
@@ -1359,6 +1359,10 @@ h2.title{
   margin-bottom: 15px;
 }
 
+.list-most-popular {
+  max-width: 234px;
+}
+
 .list-most-popular .loop-list {
   margin: 10px 0 25px 0;
 }
@@ -1825,7 +1829,7 @@ h2.title{
 
 .list-event .loop-list .content-des {
   color: #fff;
-  padding: 50px 20px 0 30px;
+  padding: 15px 20px 0 30px;
 }
 
 .list-event .loop-list .content-des h3 {
