@@ -206,7 +206,7 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
-                  <a class="readmore readmore-new" href="/events">View More Events<img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                  <a class="readmore readmore-new" href="/events">View more events<img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                 </div>
               </div>
             </div>
@@ -215,9 +215,6 @@ get_header(); ?>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <h2>ASSET CLASS</h2>
                   <h2 class="nocolor">IN FOCUS</h2>
-                  <div class="ads-lhs-mpu LHS_Home_MPU_Ad">
-                    <a href="https://placeholder.com"><img src="http://via.placeholder.com/300x250"></a>
-                  </div>
                   <a href="<?php echo get_category_link( "14" ); ?>" class="view-more">View more</a>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -434,6 +431,7 @@ get_header(); ?>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
             <div class="content-right">
               <?php lastWordAdUnit('rhs-hpu-2'); ?>
+              <?php lastWordAdUnit('rhs-hpu-3'); ?>
             </div>
           </div>
         </div>
