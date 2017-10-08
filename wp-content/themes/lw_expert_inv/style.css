@@ -703,7 +703,7 @@ h2.title{
   margin-bottom: 18px;
 }
 
-.ads-top-news-ad{
+.home .ads-top-news-ad{
   padding-top: 25px;
 }
 
@@ -1362,6 +1362,10 @@ h2.title{
   text-transform: uppercase;
   color: #292928;
   margin-bottom: 15px;
+}
+
+.list-most-popular {
+  max-width: 234px;
 }
 
 .list-most-popular .loop-list {
@@ -2444,6 +2448,11 @@ form[name="register"] input[type="submit"] {
   left: 0;
 }
 
+.thump-single .feat-sponsor-logo.marketintel {
+  position: static;
+  bottom: unset;
+  left: unset;
+}
 /* Video JS */
 .video-js .vjs-big-play-button {
   background: url(images/play-btn.png) center no-repeat transparent;

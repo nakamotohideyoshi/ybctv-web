@@ -10,12 +10,12 @@ get_header(); ?>
 
         <div class="content-page">
             <div class="container">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <div class="content-left">
                         <?php get_sidebar('left');?>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -27,19 +27,19 @@ get_header(); ?>
                             <div class="page-header">
                                 <h1 class="page-title"><?php printf( __( '%s', TEXT_DOMAIN ), single_cat_title('',false )); ?></h1>
                                 <?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
-                                <?php 
+                                <?php
                                     $cat_id = get_queried_object_id();
-                                    
+
                                     $child = get_category($cat_id);
                                     $parent_ID = $child->parent;
 
-                                    //Show only on countries and strategies 
+                                    //Show only on countries and strategies
                                     if($cat_id == 26 || $cat_id == 21 ): //?>
                                     <div class="cat-sponsor-logo">
                                         <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo.png' ?>" />
                                     </div>
                                 <?php endif; ?>
-                                
+
                             </div><!-- .page-header -->
                         <?php endif; ?>
                         <div class="list-category-ajax">

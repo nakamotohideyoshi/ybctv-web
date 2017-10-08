@@ -1,5 +1,6 @@
 <div class="most-popular">
     <h2>Most Popular</h2>
+    <?php lastWordAdUnit('top-news-ad'); ?>
     <div class="list-most-popular">
         <?php
         $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );

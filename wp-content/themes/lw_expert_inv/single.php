@@ -10,12 +10,12 @@ get_header(); ?>
 
         <div class="content-page">
             <div class="container">
-                <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
 
                     <div class="content-left">
                         <div class="most-popular most-popular-new">
                             <h2>Most Popular News</h2>
-                            <p class="architas">architas</p>
+                            <?php lastWordAdUnit('top-news-ad'); ?>
                             <div class="list-most-popular">
                                 <?php
 
@@ -49,16 +49,23 @@ get_header(); ?>
                     </div>
                 </div>
 
-                <div class="col-lg-5 col-md-5 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {
                             bcn_display();
                         }?>
                     </div>
-                <?php $premium = get_post_meta($post->ID, 'lw_premium', true);
+                <?php
+                $premium = get_post_meta($post->ID, 'lw_premium', true);
+                $categories = Array('marketint');
+                $chkcat = in_category( $categories, $post->ID);
+                $curuser = get_current_user_id();
+                $product = get_user_meta($curuser, 'lw_product_ei_market_intelligence', true);
+
                 if($premium == 'yes') {
-                    if( !is_user_logged_in() ){ ?>
+                    if( !is_user_logged_in() ){
+                        ?>
 
                     <div class="content-category content-single contlocked">
                         <?php if(have_posts()): while(have_posts()): the_post();
@@ -88,7 +95,7 @@ get_header(); ?>
                             ?>
                             </span></p>
                             <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                            
+
                             <div class="content-post">
                                 <div class="description-single">
                                   <?php the_excerpt(); ?>
@@ -198,7 +205,177 @@ get_header(); ?>
                         <?php endwhile;endif;?>
                     </div>
 
-                    <?php }} else { ?>
+                    <?php }} else {
+                        if ($chkcat == true) {
+                            if ($product != 'yes') {
+                                if( !is_user_logged_in() ){
+                                ?>
+
+                                <div class="content-category content-single contlocked">
+                                    <?php if(have_posts()): while(have_posts()): the_post();
+                                        setReadCount(get_the_ID());
+                                        $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
+                                        $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
+                                    ?>
+                                        <?php if (is_singular('post')) { ?>
+                                        <p class="name-cat">
+                                            <?php $category = get_the_category(); ?>
+                                            <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" alt="Padlock"/><?php echo $category[0]->cat_name;?></a>
+                                        </p>
+                                        <?php }?>
+                                        <h1 class="title-single"><?php the_title();?></h1>
+                                        <?php
+                                        //If is sponsored
+                                        $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                                        if($lw_sponsored){ ?>
+                                            <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                                            <p>Published: <?php the_time('j M y');?></p>
+                                        <?php } ?>
+                                        <?php
+                                          $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                          if ($tag_list) {
+                                            echo $tag_list;
+                                          }
+                                        ?>
+                                        </span></p>
+                                        <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
+
+                                        <div class="content-post">
+                                            <div class="description-single">
+                                              <?php the_excerpt(); ?>
+                                            </div>
+                                            <div class="thump-single">
+                                                    <div class="feat-sponsor-logo marketintel">
+                                                        <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
+                                                    </div>
+                                            </div>
+                                            <p class="locked-notice">To access this content please sign in:</p>
+
+                                            <div class="locked-buttons">
+                                            <a href="#" data-toggle="modal" data-target="#myModal" class="locked-button signin">Sign in</a>
+                                            </div>
+
+
+                                        </div>
+                                    <?php endwhile;endif;?>
+                                </div>
+
+                            <?php } else { ?>
+                                 <div class="content-category content-single contlocked">
+                                    <?php if(have_posts()): while(have_posts()): the_post();
+                                        setReadCount(get_the_ID());
+                                        $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
+                                        $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
+                                    ?>
+                                        <?php if (is_singular('post')) { ?>
+                                        <p class="name-cat">
+                                            <?php $category = get_the_category(); ?>
+                                            <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><img src="<?php echo THEME_PATH.'/images/assets/padlock-small.svg' ?>" alt="Padlock"/><?php echo $category[0]->cat_name;?></a>
+                                        </p>
+                                        <?php }?>
+                                        <h1 class="title-single"><?php the_title();?></h1>
+                                        <?php
+                                        //If is sponsored
+                                        $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                                        if($lw_sponsored){ ?>
+                                            <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                                            <p>Published: <?php the_time('j M y');?></p>
+                                        <?php } ?>
+                                        <?php
+                                          $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                          if ($tag_list) {
+                                            echo $tag_list;
+                                          }
+                                        ?>
+                                        </span></p>
+                                        <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
+
+                                        <div class="content-post">
+                                            <div class="description-single">
+                                              <?php the_excerpt(); ?>
+                                            </div>
+                                            <div class="thump-single">
+                                                    <div class="feat-sponsor-logo marketintel">
+                                                        <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
+                                                    </div>
+                                            </div>
+                                            <p class="locked-notice">To access the Market Intelligence section, please login with valid subscription details.</p>
+
+                                        </div>
+                                    <?php endwhile;endif;?>
+                                </div>
+                            <?php }} else { ?>
+                                <div class="content-category content-single">
+                                    <?php if(have_posts()): while(have_posts()): the_post();
+                                        setReadCount(get_the_ID());
+                                        $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
+                                        $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
+                                    ?>
+                                        <div class="spost-head">
+                                            <?php if (is_singular('post')) { ?>
+                                            <p class="name-cat">
+                                                <?php $category = get_the_category(); ?>
+                                                <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                            </p>
+                                            <?php }?>
+                                            <h1 class="title-single"><?php the_title();?></h1>
+                                            <?php
+                                              //If is sponsored
+                                              $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                                              if($lw_sponsored){ ?>
+                                                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                                                <p>Published: <?php the_time('j M y');?></p>
+                                              <?php } ?>
+                                            <?php
+                                              $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                              if ($tag_list) {
+                                                echo $tag_list;
+                                              }
+                                            ?>
+                                            </span></p>
+                                            <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
+                                            <div class="like_button clearfix">
+                                                <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                            </div>
+                                        </div>
+                                        <div class="content-post">
+                                            <div class="description-single">
+                                              <?php the_excerpt(); ?>
+                                            </div>
+                                            <div class="thump-single">
+                                                <?php if($lw_primary_medium == 'text'){ ?>
+                                                    <?php
+                                                        if ( has_post_thumbnail() ) {
+                                                            the_post_thumbnail();
+                                                        }
+                                                        else { ?>
+                                                            <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
+                                                        <?php }
+                                                    ?>
+                                                    <div class="text-content"><?php the_content();?></div>
+                                                <?php }elseif($lw_primary_medium == 'video'){?>
+                                                    <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :
+                                                      brightcove_video($lw_brightcove_video_id)
+                                                    ?>
+                                                    <div class="text-content"><?php the_content();?></div>
+                                                    <?php else: ?>
+                                                        <div class="text-content"><?php the_content();?></div>
+                                                    <?php endif; ?>
+                                                <?php
+                                                  }
+                                                  else if ($lw_primary_medium == 'gallery') {
+                                                    last_word_gallery();
+                                                  }
+                                                ?>
+                                        </div>
+                                        <div class="comment-post">
+                                            <?php if ( comments_open() || get_comments_number() ) :
+                                                comments_template();
+                                            endif;?>
+                                        </div>
+                                    <?php endwhile;endif;?>
+                                </div>
+                        <?php }} else { ?>
 
                     <div class="content-category content-single">
                         <?php if(have_posts()): while(have_posts()): the_post();
@@ -271,7 +448,7 @@ get_header(); ?>
                         <?php endwhile;endif;?>
                     </div>
 
-                <?php } ?>
+                <?php }} ?>
                 </div></div>
                 <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
                     <?php get_sidebar('right');?>
