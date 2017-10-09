@@ -28,7 +28,7 @@
                         }?>
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="list-content-page">
                         <?php if ( have_posts() ) : while (have_posts()) : the_post(); ?>
                             <div class="page-header">

@@ -49,7 +49,7 @@ get_header(); ?>
                     </div>
                 </div>
 
-                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -269,7 +269,7 @@ get_header(); ?>
                 <?php } ?>
 
                 </div>
-                <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <?php get_sidebar('right');?>
                 </div>
                 <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">

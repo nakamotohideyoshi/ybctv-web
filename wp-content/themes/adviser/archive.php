@@ -14,7 +14,7 @@ get_header(); ?>
             <?php get_sidebar('left');?>
           </div>
         </div>
-        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
           <div class="bread">
             <?php if(function_exists('bcn_display'))
               {
@@ -45,7 +45,7 @@ get_header(); ?>
             <a href="#" class="view-more view-more-ajax" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
           </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <?php get_sidebar('right');?>
         </div>
       </div>
