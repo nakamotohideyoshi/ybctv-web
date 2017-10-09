@@ -2116,12 +2116,28 @@ form[name="register"] input[type="submit"] {
 
 /* NGFB icons */
 
+.content-post .ngfb-content-buttons {
+  /*display: none;*/
+}
+
+.ngfb-buttons div.facebook-button, .ngfb-preset-small_share_count .ngfb-buttons div.facebook-button {
+  width: auto !important;
+  margin-left: 0 !important
+}
+
 .ngfb-buttons div.linkedin-button, .ngfb-preset-small_share_count .ngfb-buttons div.linkedin-button {
-  width: 80px !important;
+  width: auto !important;
+  margin-left: 0 !important
 }
 
 .ngfb-buttons div.email-button, .ngfb-preset-small_share_count .ngfb-buttons div.email-button {
-  width: 81px !important;
+  width: auto !important;
+  margin-left: 0 !important
+}
+
+.ngfb-buttons div.twitter-button, .ngfb-preset-small_share_count .ngfb-buttons div.twitter-button, .ngfb-preset-large_share_vertical .ngfb-buttons div.twitter-button {
+  width: auto !important;
+  margin-left: 0 !important
 }
 
 .ngfb-buttons div.email-button a, .ngfb-preset-small_share_count .ngfb-buttons div.email-button a {
@@ -2539,6 +2555,107 @@ form[name="register"] input[type="submit"] {
   display: none;
 }
 
+/* comments sectios */
+
+#comments header.comment-author {
+  display: none;
+}
+
+#comments .commenttitle {
+  text-transform: uppercase;
+  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  letter-spacing: 1px;
+  color: #e40233;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: block;
+}
+
+#comments ol{
+  list-style: none;
+}
+
+#comments .comment-content {
+  border-bottom: 1px solid #e2e2e2;
+  padding-top: 9px;
+}
+
+#comments .comment-content cite {
+  font-style: normal;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  color: #e40233;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+#comments .comment-content .comments-datetime time,
+#comments .comment-content .comment-edit-link,
+#comments .comment-content .comment-reply-link {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 13px;
+}
+
+#comments .comment-content .comment-edit-link {
+  display: none;
+}
+
+#comments .comment-content .comment-reply-link {
+  color: #e40233;
+}
+
+#comments .comment-content p {
+  font-style: normal;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  color: #000;
+  line-height: 24px;
+  font-size: 14px;
+  font-weight: 400;
+  padding-top: 2px;
+}
+
+#comments #respond {
+  margin-top: 40px;
+}
+
+#comments #respond a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+#comments .comment-respond textarea {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+}
+
+#comments .form-submit #submit:hover {
+  background-color: #f2f2f2;
+  color: #f9ae00;
+}
+
+#comments #reply-title,
+#comments #reply-title a {
+  font-size: 21px;
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+}
+
+#comments #reply-title small,
+#comments #reply-title small a {
+  font-family: 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-size: 14px;
+  color: #e40233;
+}
+
+/* Cookie bar */
+
+#catapult-cookie-bar button#catapultCookie {
+  border-radius: 0;
+}
+
+#catapult-cookie-bar button#catapultCookie:hover {
+    color: #e40233;
+    background-color: #f2f2f2;
+}
 
 @media (min-width: 1440px) {
     .container{

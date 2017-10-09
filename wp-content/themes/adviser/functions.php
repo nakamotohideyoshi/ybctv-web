@@ -604,6 +604,28 @@ function create_404_page() {
       update_option( '404pageid', (int) $insert );
     }
   }
+}
 
+//Custom feed function
+function customFeed($object){
+  $html = '';
+  $maxitems = 0;
+
+  if ( ! is_wp_error( $rssEi ) ) : 
+    $maxitems = $object->get_item_quantity( 3 ); 
+    $rss_items = $object->get_items( 0, $maxitems );
+  endif;
+  
+  if ( $maxitems == 0 ){
+      $html .= '<p>'. _e( 'No items', 'my-text-domain' ) .'</p>';                 
+  } else {
+    foreach ( $rss_items as $item ){
+      $html .= '<p>';
+      $html .= '<a href="'. esc_url( $item->get_permalink() ) .'" target="_blank" title="'. esc_html( $item->get_title() ).'">';
+      $html .= mb_strimwidth( esc_html( $item->get_title() ), 0, 35, '...' );
+      $html .= '</a></p>';                      
+    }
+  }
+  return $html;
 }
 ?>

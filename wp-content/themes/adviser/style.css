@@ -1598,6 +1598,23 @@ h2.title{
   padding: 24px 0 30px;
   background: #fff;
 }
+.bread{
+  height: 18px;
+  line-height: 8px;
+  vertical-align: top;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.bread span span{
+  max-width: 140px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  padding-top: 3px;
+}
+
 .bread a,.bread span {
   font-size: 12px;
   text-transform: uppercase;
@@ -1992,7 +2009,7 @@ form[name="register"] input[type="submit"] {
   text-transform: uppercase;
   color: #69b42e;
   margin-top: 6px;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   font-weight: bold;
   padding: 0;
 }
@@ -2225,13 +2242,24 @@ form[name="register"] input[type="submit"] {
 }
 
 /* NGFB icons */
+.ngfb-buttons div.facebook-button, .ngfb-preset-small_share_count .ngfb-buttons div.facebook-button {
+  width: auto !important;
+  margin-left: 0 !important
+}
 
 .ngfb-buttons div.linkedin-button, .ngfb-preset-small_share_count .ngfb-buttons div.linkedin-button {
-  width: 80px !important;
+  width: auto !important;
+  margin-left: 0 !important
 }
 
 .ngfb-buttons div.email-button, .ngfb-preset-small_share_count .ngfb-buttons div.email-button {
-  width: 81px !important;
+  width: auto !important;
+  margin-left: 0 !important
+}
+
+.ngfb-buttons div.twitter-button, .ngfb-preset-small_share_count .ngfb-buttons div.twitter-button, .ngfb-preset-large_share_vertical .ngfb-buttons div.twitter-button {
+  width: auto !important;
+  margin-left: 0 !important
 }
 
 .ngfb-buttons div.email-button a, .ngfb-preset-small_share_count .ngfb-buttons div.email-button a {
@@ -2324,7 +2352,7 @@ form[name="register"] input[type="submit"] {
     font-family: Kommissar;
 }
 .panel-template .tmm .tmm_job{
-	color:#000000;
+  color:#000000;
 }
 
 /* Comments style */
