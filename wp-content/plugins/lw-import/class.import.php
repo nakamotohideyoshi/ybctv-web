@@ -7,6 +7,7 @@ class lw_import {
     add_filter('upload_mimes', array($this, 'add_xml_mimetype'));
     add_action('wp_ajax_process', array($this, 'process'));
     add_action('wp_ajax_generate_image_size', array($this, 'generate_image_size'));
+    add_action('wp_ajax_copy_gallery_images', array($this, 'copy_gallery_images'));
   }
 
   function add_menu_item() {
@@ -70,15 +71,20 @@ class lw_import {
       <input type="button" id="article" class="button-primary open" value="Select" />
       <input type="button" id="article-process" class="button-primary process hide" value="Process" import="article" />
       <input type="hidden" id="article-import-file-id" />
+
+      <h3>Copy Gallery Images <span id="copy-gallery-images-complete">Processing complete!</span></h3>
+      <input type="button" id="copy-gallery-images" class="button-primary copy-gallery-images" value="Start" />
     </div>
     <?php
   }
 
-  function admin_enqueue() {
-    wp_enqueue_script( 'lw_import_main_js', plugin_dir_url(__FILE__) . 'js/main.js', array(), '1.0.0',  true);
+  function admin_enqueue($hook) {
+    if ('tools_page_lw_import' == $hook) {
+      wp_enqueue_script( 'lw_import_main_js', plugin_dir_url(__FILE__) . 'js/main.js', array(), '1.0.0',  true);
 
-    wp_register_style('lw_import_main_css', plugin_dir_url(__FILE__) . 'css/main.css', false, '1.0.0');
-    wp_enqueue_style('lw_import_main_css');
+      wp_register_style('lw_import_main_css', plugin_dir_url(__FILE__) . 'css/main.css', false, '1.0.0');
+      wp_enqueue_style('lw_import_main_css');
+    }
   }
 
   function add_xml_mimetype($existing_mimes) {
@@ -117,6 +123,9 @@ class lw_import {
         $this->generate_image_size();
       case 'article' :
         $this->import_article($xml);
+        break;
+      case 'copy-gallery-images' :
+        $this->copy_gallery_images();
         break;
       default :
         break;
@@ -485,6 +494,63 @@ class lw_import {
       }
   }
 
+  /*
+    * Copy Gallery images
+    * - Copy images from already imported articles with galleries
+    * - Update url in gallery meta
+  */
+  function copy_gallery_images() {
+    $posts = get_posts(array(
+      'posts_per_page' => -1,
+      'post_type' => 'post',
+      'meta_query' => array(
+        array(
+          'key' => 'lw_gallery',
+          'value' => '',
+          'compare' => '!='
+        )
+      )
+    ));
+
+    foreach($posts as $post) {
+      $gallery = get_post_meta($post->ID, 'lw_gallery', true);
+
+      if ($gallery) {
+        foreach ($gallery as $key => $gallery_image) {
+          $source = $gallery_image['url'];
+
+          if ($source != '') {
+            $source = 'http://' . $source;
+            $destination = $_SERVER['DOCUMENT_ROOT'] . "/image-archive/";
+            $destination .= $this->get_image_subdir($source);
+
+            $sub_dir = strtolower(substr(basename($source), 0, 2));
+            if (!file_exists($destination . $sub_dir)) {
+              mkdir($destination . $sub_dir, 0777, true);
+            }
+            $destination .= $sub_dir . '/' . basename($source);
+
+            if (!file_exists($destination)) {
+              $image = file_get_contents($source);
+              $fp = fopen($destination, 'w');
+
+              fwrite($fp, $image);
+              fclose($fp);
+            }
+            else {
+              print_r('exists' . PHP_EOL);
+            }
+
+            $gallery[$key]['url'] = '/image-archive/' . $this->get_image_subdir($source) . $sub_dir . '/' . basename($source);
+          }
+        }
+        $post->lw_gallery = $gallery;
+        update_post_meta($post->ID, 'lw_gallery', $gallery);
+      }
+    }
+    die();
+  }
+
   function replace_content_tag($content, $start_tag, $end_tag, $replace_with = '') {
     $start = 0;
 
@@ -529,6 +595,7 @@ class lw_import {
         $sub_dir = 'ei'; // Expert Investor Europe
         break;
       default :
+        $sub_dir = 'pa';
         break;
     }
 

@@ -94,7 +94,34 @@
 
         }
       });
-    })
+    });
+
+    // Ajax to copy gallery images
+    $(document).on('click', '.button-primary.copy-gallery-images', function(e) {
+      e.preventDefault();
+
+      var ajaxLoader = $('.ajax-loader');
+
+      ajaxLoader.removeClass('hide');
+
+      $.ajax({
+        type: 'POST',
+        url: ajaxurl,
+        data: {
+          action: 'copy_gallery_images'
+        },
+        success: function(data) {
+          ajaxLoader.addClass('hide');
+
+          $('#copy-gallery-images-complete').fadeIn();
+
+          setTimeout(function() {
+            $('#copy-gallery-images-complete').fadeOut();
+          }, 5000);
+
+        }
+      });
+    });
   });
 
 })(jQuery);
