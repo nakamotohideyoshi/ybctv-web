@@ -1,0 +1,90 @@
+.last-word-gallery-order {
+  padding-bottom: 20px;
+  border-bottom: solid 1px #eeeeee;
+}
+
+.last-word-gallery-order .gallery-image-container {
+  padding: 10px;
+  display: inline-block;
+}
+.last-word-gallery-order img {
+  max-width: 92px;
+  height: auto;
+  cursor: pointer;
+}
+
+.last-word-gallery img {
+  max-width: 185px;
+  height: auto;
+}
+
+.last-word-gallery .order {
+  width: 20px;
+  text-align: center;
+}
+
+.last-word-gallery td.order {
+  vertical-align: top;
+  padding-top: 50px;
+}
+
+.last-word-gallery .thumbnail {
+  width: 160px;
+  text-align: center;
+}
+
+.last-word-gallery td.thumbnail {
+  vertical-align: top;
+  padding-top: 50px;
+}
+
+.last-word-gallery .caption {
+  width: 100px;
+}
+
+.last-word-gallery td.caption {
+  vertical-align: top;
+  padding-top: 50px;
+}
+
+.last-word-gallery td.description {
+  vertical-align: top;
+}
+
+.last-word-gallery .remove {
+  width: 20px;
+}
+
+.last-word-gallery td.remove {
+  vertical-align: middle
+}
+
+.last-word-gallery div[class*="remove_"] {
+  color: #bb0000;
+  cursor: pointer;
+}
+
+.last-word-gallery div[class*="remove_"]:hover {
+  color: #ff0000;
+}
+
+
+
+.last-word-gallery tbody tr:nth-child(odd) {
+  background-color: #f5f5f5;
+}
+
+.last-word-gallery .mce-toolbar .mce-btn-group .mce-btn {
+  margin: 0;
+}
+
+.last-word-gallery .mce-btn button {
+  font-size: 12px;
+}
+
+.last-word-gallery .mce-toolbar .mce-ico {
+  font-size: 12px;
+  line-height: 14px;
+  width: 16px;
+  height: 16px;
+}

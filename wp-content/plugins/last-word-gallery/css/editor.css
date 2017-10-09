@@ -1,0 +1,4 @@
+body[class*="gallery-image-description"]{
+  font-size: 12px !important;
+  margin: 10px !important;
+}
