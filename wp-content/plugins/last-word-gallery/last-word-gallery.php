@@ -47,6 +47,7 @@ class last_word_gallery {
     $current_image = $gallery[$current_position];
     ?>
     <div class="lw-gallery-wrap">
+      <b><?php echo $current_image['caption']; ?></b>
       <?php
       if (isset($current_image['media_id']) && $current_image['media_id'] != '') {
       ?>
@@ -61,16 +62,6 @@ class last_word_gallery {
       ?>
       <img class="gallery-icon" src="<?php echo plugin_dir_url(__FILE__); ?>/images/gallery-icon.png" alt="Gallery" />
       <?php
-        // Image links
-        foreach ($gallery as $key => $gallery_image) {
-          if ($key == $current_position) {
-            echo '<span class="image-selected">' . $key . '</span>';
-          }
-          else {
-            echo '<a class="image-nav" href="' . home_url($wp->request) . '?gallery-image=' . $key . '">' . $key . '</a>';
-          }
-        }
-
         // Prev/Next links
         if ($current_position != count($gallery)) {
           echo '<a class="image-next" href="' . home_url($wp->request) . '?gallery-image=' . ($current_position + 1) . '"><img src="' . plugin_dir_url(__FILE__) . '/images/arrow-right.png" /></a>';
@@ -79,8 +70,20 @@ class last_word_gallery {
         if ($current_position > 1) {
           echo '<a class="image-prev" href="' . home_url($wp->request) . '?gallery-image=' . ($current_position - 1) . '"><img src="' . plugin_dir_url(__FILE__) .  '/images/arrow-left.png" /></a>';
         }
+
+        // Image links
+        echo '<p class="image-nav-container">';
+        foreach ($gallery as $key => $gallery_image) {
+          if ($key == $current_position) {
+            echo '<span class="image-selected">' . $key . '</span>';
+          }
+          else {
+            echo '<a class="image-nav" href="' . home_url($wp->request) . '?gallery-image=' . $key . '">' . $key . '</a>';
+          }
+        }
+        echo '</p>';
       ?>
-      <p><?php echo $current_image['description']; ?></p>
+      <p><?php echo apply_filters('the_content', $current_image['description']); ?></p>
     </div>
     <?php
   }

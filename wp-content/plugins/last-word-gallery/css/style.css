@@ -16,7 +16,12 @@
   margin-right: 10px;
 }
 
+.lw-gallery-wrap .image-nav-container {
+  text-align: right;
+}
+
 .lw-gallery-wrap a.image-nav {
+  display: inline-block;
   margin-right: 5px;
 }
 
