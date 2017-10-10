@@ -147,7 +147,7 @@
                             <p>Access full content on the Expert Investor site, access your saved articles, control email preferences and amend your account details</p>
                             <?php echo do_shortcode('[login-with-ajax]');?>
                             <hr>
-                            <a class="modal-link" href="/register">Not Registered?</a>
+                            <a class="modal-link" href="/register">Not registered?</a>
                           </div>
                         </div>
                       </div>
