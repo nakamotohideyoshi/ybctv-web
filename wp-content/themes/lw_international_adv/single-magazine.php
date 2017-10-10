@@ -89,7 +89,7 @@ get_header(); ?>
                 </div>
               </div>
             </div>
-            <a href="/magazines" class="view-more view-more-ajax">View all magazines</a>
+            <a href="/magazines" class="view-more-btn">View all magazines</a>
             <div class="comment-post">
               <?php
                 if ( comments_open() || get_comments_number() ) :

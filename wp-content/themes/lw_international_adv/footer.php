@@ -9,6 +9,12 @@
 <?php lastWordAdUnit('bottom-billboard'); ?>
 <section class="other-stories">
     <div class="container">
+        <?php // Get RSS Feed(s)
+            include_once( ABSPATH . WPINC . '/feed.php' );
+            $rssFsa = fetch_feed( 'https://fsa.cms-lastwordmedia.com/feed/' );
+            $rssEi = fetch_feed( 'https://ei.cms-lastwordmedia.com/feed/' );
+            $rssPa = fetch_feed( 'https://pa.cms-lastwordmedia.com/feed/' );
+        ?>
         <h2>OTHER STORIES FROM LAST WORD...</h2>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -16,9 +22,7 @@
                     <img src="<?php echo THEME_PATH.'/images/assets/expertinvestor.png' ?>" alt="" />
                 </div>
                 <div class="content-des">
-                    <p><a href="http://www.expertinvestoreurope.com/gallery/1037738/-term-economic-trends-ignore" target="_blank" title="Six long-term economic trends you should not ignore">Six long-term economic trends you...</a></p>
-                    <p><a href="http://www.expertinvestoreurope.com/news/1037687/inflows-stall-emerging-market-funds-2017" target="_blank" title="Inflows stall across emerging market funds in first for 2017">Inflows stall across emerging market...</a></p>
-                    <p><a href="http://www.expertinvestoreurope.com/news/1037723/strong-em-passive-fund-inflows-pressure-active-fees" target="_blank" title="Strong EM passive fund inflows pressure active fees">Strong EM passive fund inflows pressure...</a></p>
+                    <?php echo customFeed($rssEi); ?>
                     <p class="more_from"><a href="http://www.expertinvestoreurope.com" target="_blank">More news From EI</a></p>
                 </div>
             </div>
@@ -27,9 +31,7 @@
                     <img src="<?php echo THEME_PATH.'/images/assets/funselectorasia.png' ?>" alt="" />
                 </div>
                 <div class="content-des">
-                    <p><a href="http://www.fundselectorasia.com/gallery/1037736/head-head-vs-partners" target="_blank" title="HEAD-TO-HEAD: First State vs Partners Group">HEAD-TO-HEAD: First State vs Partners...</a></p>
-                    <p><a href="http://www.fundselectorasia.com/news/1037737/missed" target="_blank" title="In case you missed it...">In case you missed it...</a></p>
-                    <p><a href="http://www.fundselectorasia.com/news/1037735/report-hnwis-stand-em-investors" target="_blank" title="Report: HNWIs stand out as EM investors">Report: HNWIs stand out as EM investors...</a></p>
+                    <?php echo customFeed($rssFsa); ?>
                     <p class="more_from"><a href="http://www.fundselectorasia.com" target="_blank">More news From FSA</a></p>
                 </div>
             </div>
@@ -38,9 +40,7 @@
                     <img src="<?php echo THEME_PATH.'/images/assets/portfolio.png' ?>" alt="" />
                 </div>
                 <div class="content-des">
-                    <p><a href="http://www.portfolio-adviser.com/news/1037929/woodford-apologises-incredibly-painful-underperformance" target="_blank" title="Woodford apologises for 'incredibly painful' underperformance">Woodford apologises for 'incredibly painful' un...</a></p>
-                    <p><a href="http://www.portfolio-adviser.com/analysis/1037926/pa-analysis-hey-fund-selectors-wheres-value-add" target="_blank" title="PA ANALYSIS: Hey, fund selectors - where's the value add?">PA ANALYSIS: Hey, fund selectors...</a></p>
-                    <p><a href="http://www.portfolio-adviser.com/news/1037924/jupiter-expands-gem-range-short-duration-bond-fund" target="_blank" title="Jupiter expands GEM range with short-duration bond fund">Jupiter expands GEM range...</a></p>
+                    <?php echo customFeed($rssPa); ?>
                     <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More news From PA</a></p>
                 </div>
             </div>
@@ -69,7 +69,9 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="logo-footer">
-                        <img src="<?php echo THEME_PATH.'/images/assets/last-word.png' ?>" alt="" />
+                        <a href="https://lastwordmedia.com" target="_blank" title="Last Word">
+                            <img src="<?php echo THEME_PATH.'/images/assets/last-word.png' ?>" alt="" />
+                        </a>
                     </div>
                 </div>
             </div>

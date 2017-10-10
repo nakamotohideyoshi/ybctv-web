@@ -449,6 +449,7 @@ select {
   vertical-align: bottom;
 }
 
+.view-more-btn,
 .view-more.view-more-ajax {
   background-color: #f2f2f2;
   padding: 10px 20px;
