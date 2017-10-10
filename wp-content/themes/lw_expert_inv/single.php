@@ -19,7 +19,7 @@ get_header(); ?>
                             <div class="list-most-popular">
                                 <?php
 
-                                $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+                                $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC', 'category__not_in' => array( 26, 21 ) ) );
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
                                 ?>
                                     <div class="loop-list">

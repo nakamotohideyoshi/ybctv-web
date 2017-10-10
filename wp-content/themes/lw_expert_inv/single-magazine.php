@@ -16,7 +16,7 @@ get_header(); ?>
               <?php lastWordAdUnit('top-news-ad'); ?>
               <div class="list-most-popular">
                 <?php
-                  $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+                  $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC', 'category__not_in' => array( 26, 21 )) );
                   while ( $popularpost->have_posts() ) : $popularpost->the_post();
                 ?>
                 <div class="loop-list">
@@ -89,7 +89,7 @@ get_header(); ?>
                 </div>
               </div>
             </div>
-            <a href="/magazines" class="view-more view-more-ajax">View all magazines</a>
+            <a href="/magazines" class="view-more-btn">View all magazines</a>
             <div class="comment-post">
               <?php
                 if ( comments_open() || get_comments_number() ) :

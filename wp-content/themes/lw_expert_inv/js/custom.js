@@ -129,7 +129,8 @@
       var currentPage = button.attr('page');
       var offset = button.attr('offset');
       var category = button.attr('category');
-
+      var type = button.attr('type');
+      
       $.ajax({
         url: ajaxviewmore.ajaxurl,
         type: 'post',
@@ -137,10 +138,15 @@
           action: 'ajax_view_more',
           page: currentPage,
           offset: offset,
-          category: category
+          category: category,
+          type: type
         },
         success: function(result) {
-          $('.list-category-ajax').append(result);
+          if(type){
+            $('.list-magazines-ajax').append(result);
+          } else {
+            $('.list-category-ajax').append(result);
+          } 
           button.attr('page', parseInt(currentPage) + 1);
         }
       });

@@ -360,21 +360,39 @@ function ajax_view_more() {
   $posts_per_page = 5;
   $offset = (int)$_POST['offset'];
   $category = (int)$_POST['category'];
+  $type = $_POST['type'];
 
-  $args = array(
-    'posts_per_page' => 5,
-    'offset' => ($page * $posts_per_page) + $offset,
-    'cat' => $category,
-    'orderby' => 'date',
-    'order' => 'DESC'
-  );
+  //Archive template name
+  $template_name = 'post';
+
+  if(!empty($type)){
+    //Check if is post type (e.g. magazine)
+    $template_name = $type;
+
+    $args = array(
+      'posts_per_page' => 5,
+      'offset' => $page * $offset,
+      'post_type' => $type,
+      'orderby' => 'date',
+      'order' => 'DESC'
+    );
+  }else{
+    //Catagory
+    $args = array(
+      'posts_per_page' => 5,
+      'offset' => ($page * $posts_per_page) + $offset,
+      'cat' => $category,
+      'orderby' => 'date',
+      'order' => 'DESC'
+    );
+  }
 
   $posts = new WP_Query($args);
 
   if ($posts->have_posts()) {
     while($posts->have_posts()) {
       $posts->the_post();
-      get_template_part('template-parts/archive', 'post');
+      get_template_part('template-parts/archive', $template_name);
     }
   }
   wp_reset_postdata();
@@ -554,5 +572,28 @@ function create_404_page() {
     }
   }
 
+}
+
+//Custom feed function
+function customFeed($object){
+  $html = '';
+  $maxitems = 0;
+
+  if ( ! is_wp_error( $rssEi ) ) : 
+    $maxitems = $object->get_item_quantity( 3 ); 
+    $rss_items = $object->get_items( 0, $maxitems );
+  endif;
+  
+  if ( $maxitems == 0 ){
+      $html .= '<p>'. _e( 'No items', 'my-text-domain' ) .'</p>';                 
+  } else {
+    foreach ( $rss_items as $item ){
+      $html .= '<p>';
+      $html .= '<a href="'. esc_url( $item->get_permalink() ) .'" target="_blank" title="'. esc_html( $item->get_title() ).'">';
+      $html .= mb_strimwidth( esc_html( $item->get_title() ), 0, 35, '...' );
+      $html .= '</a></p>';                      
+    }
+  }
+  return $html;
 }
 ?>

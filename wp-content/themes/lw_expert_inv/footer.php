@@ -9,6 +9,12 @@
 <?php lastWordAdUnit('bottom-billboard'); ?>
 <section class="other-stories">
     <div class="container">
+        <?php // Get RSS Feed(s)
+            include_once( ABSPATH . WPINC . '/feed.php' );
+            $rssFsa = fetch_feed( 'https://fsa.cms-lastwordmedia.com/feed/' );
+            $rssPa = fetch_feed( 'https://pa.cms-lastwordmedia.com/feed/' );
+            $rssIa = fetch_feed( 'https://ia.cms-lastwordmedia.com/feed/' );
+        ?>
         <h2>OTHER STORIES FROM LAST WORD...</h2>
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -16,9 +22,7 @@
                     <img src="<?php echo THEME_PATH.'/images/assets/intrnational.png' ?>" alt="" />
                 </div>
                 <div class="content-des">
-                    <p><a href="http://www.international-adviser.com/news/1037747/people-moves-jersey-finance-rowe-price-street" target="_blank" title="PEOPLE MOVES: Jersey Finance, T. Rowe Price, State Street">PEOPLE MOVES: Jersey Finance, T....</a></p>
-                    <p><a href="http://www.international-adviser.com/news/1037743/hmrc-wins-bulk-tax-avoidance-challenges-loses-iht" target="_blank" title="HMRC wins bulk of tax avoidance challenges but loses IHT case">HMRC wins bulk of tax avoidance challenges...</a></p>
-                    <p><a href="http://www.international-adviser.com/news/1037742/aviva-sells-stake-italian-insurance-business" target="_blank" title="Aviva sells 50% stake of Italian insurance business">Aviva sells 50% stake of Italian...</a></p>
+                    <?php echo customFeed($rssIa); ?>
                     <p class="more_from"><a href="http://international-adviser.com/" target="_blank">More news From IA</a></p>
                 </div>
             </div>
@@ -27,9 +31,7 @@
                     <img src="<?php echo THEME_PATH.'/images/assets/funselectorasia.png' ?>" alt="" />
                 </div>
                 <div class="content-des">
-                    <p><a href="http://www.fundselectorasia.com/gallery/1037736/head-head-vs-partners" target="_blank" title="HEAD-TO-HEAD: First State vs Partners Group">HEAD-TO-HEAD: First State vs Partners...</a></p>
-                    <p><a href="http://www.fundselectorasia.com/news/1037737/missed" target="_blank" title="In case you missed it...">In case you missed it...</a></p>
-                    <p><a href="http://www.fundselectorasia.com/news/1037735/report-hnwis-stand-em-investors" target="_blank" title="Report: HNWIs stand out as EM investors">Report: HNWIs stand out as EM investors...</a></p>
+                    <?php echo customFeed($rssFsa); ?>
                     <p class="more_from"><a href="http://www.fundselectorasia.com" target="_blank">More news From FSA</a></p>
                 </div>
             </div>
@@ -38,9 +40,7 @@
                     <img src="<?php echo THEME_PATH.'/images/assets/portfolio.png' ?>" alt="" />
                 </div>
                 <div class="content-des">
-                    <p><a href="http://www.portfolio-adviser.com/news/1037929/woodford-apologises-incredibly-painful-underperformance" target="_blank" title="Woodford apologises for 'incredibly painful' underperformance">Woodford apologises for 'incredibly painful' un...</a></p>
-                    <p><a href="http://www.portfolio-adviser.com/analysis/1037926/pa-analysis-hey-fund-selectors-wheres-value-add" target="_blank" title="PA ANALYSIS: Hey, fund selectors - where's the value add?">PA ANALYSIS: Hey, fund selectors...</a></p>
-                    <p><a href="http://www.portfolio-adviser.com/news/1037924/jupiter-expands-gem-range-short-duration-bond-fund" target="_blank" title="Jupiter expands GEM range with short-duration bond fund">Jupiter expands GEM range...</a></p>
+                    <?php echo customFeed($rssPa); ?>
                     <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More news From PA</a></p>
                 </div>
             </div>
@@ -63,13 +63,15 @@
                     <div class="footer_connect">
                     <h2>Expert Investor</h2>
                     <p>Published by Last Word Media (UK) Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) <?php echo date('Y'); ?>. All rights reserved. Company Reg. No. 05573633. VAT. No. 872 411 728.&nbsp;ISSN 2397-284X</p>
-                    <p>Expert Investor Europe provides up-to-the minute news, tools and professional resources for key fund selectors and distributors across Europe in both the wholesale and institutional sectors. No news, articles or content may be reproduced in part or in full without express permission of Expert Investor Europe.</p>
+                    <p>Expert Investor provides up-to-the minute news, tools and professional resources for key fund selectors and distributors across Europe in both the wholesale and institutional sectors. No news, articles or content may be reproduced in part or in full without express permission of Expert Investor.</p>
                     <!---->
                 </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="logo-footer">
-                        <img src="<?php echo THEME_PATH.'/images/assets/last-word.png' ?>" alt="" />
+                        <a href="https://lastwordmedia.com" target="_blank" title="Last Word">
+                            <img src="<?php echo THEME_PATH.'/images/assets/last-word.png' ?>" alt="" />
+                        </a>
                     </div>
                 </div>
             </div>
