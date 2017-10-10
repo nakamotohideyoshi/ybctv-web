@@ -2899,9 +2899,10 @@ form[name="register"] input[type="submit"] {
       overflow: hidden;
     }
 
-    .user-login-profile a svg { margin:0; }
+    .header-top a svg { margin:0; }
 
     .header-top .social { padding-top: 18px;}
+    .header-top .social a { margin: 0;}
 
     .mobnavigation, .site-navigation {
       display: none;
