@@ -1601,18 +1601,19 @@ h2.title{
   background: #fff;
 }
 .bread{
-  height: 18px;
-  line-height: 8px;
+  height: auto;
+  /*line-height: 8px;*/
   vertical-align: top;
   overflow: hidden;
   margin-top: 6px;
 }
 
 .bread span span{
-  max-width: 140px;
+  /*max-width: 140px;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis;*/
+  word-break: break-word;
   display: inline-block;
   padding-top: 3px;
 }
@@ -2901,7 +2902,7 @@ form[name="register"] input[type="submit"] {
 
     .header-top a svg { margin:0; }
 
-    .header-top .social { padding-top: 18px;}
+    .header-top .social { padding-top: 18px; margin-right: 10px; }
     .header-top .social a { margin: 0;}
 
     .mobnavigation, .site-navigation {
