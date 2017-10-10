@@ -2825,14 +2825,33 @@ form[name="register"] input[type="submit"] {
       background: #fff;
     }
     .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
-    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories,
-    .user-login{
+    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
         display: none;
     }
 
     .mobnavigation  {
       width: 100%;
     }
+
+    .user-login {
+      margin-top: 5px;
+    }
+
+    .user-login-contact,
+    .user-login-register {
+      display: none;
+    }
+
+    .user-login-profile a {
+      display: block;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+    }
+
+    .user-login-profile a svg { margin:0; }
+
+    .header-top .social { padding-top: 11px;}
 
     .mobnavigation, .site-navigation {
       display: none;

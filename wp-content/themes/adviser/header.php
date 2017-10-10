@@ -108,7 +108,7 @@
                 <?php lastWordAdUnit('top-search'); ?>
                 <div class="user-login">
                   <ul>
-                    <li>
+                    <li class="user-login-contact">
                       <a href="<?php echo home_url();?>/contact">
                         Contact
                       </a>
@@ -116,7 +116,7 @@
                     <?php
                       if (is_user_logged_in()) {
                     ?>
-                    <li>
+                    <li class="user-login-profile">
                       <a href="<?php echo site_url( '/your-profile/' ) ?>">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
                           <style type="text/css">
@@ -137,7 +137,7 @@
                     <?php
                       } else {
                     ?>
-                    <li>
+                    <li class="user-login-register">
                       <a href="<?php echo home_url();?>/register">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
                           <style type="text/css">
@@ -154,7 +154,7 @@
                         Register
                       </a>
                     </li>
-                    <li>
+                    <li class="user-login-profile">
                       <a href="#" data-toggle="modal" data-target="#myModal">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
                           <style type="text/css">
