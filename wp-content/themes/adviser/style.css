@@ -2834,6 +2834,7 @@ form[name="register"] input[type="submit"] {
     }
 
     .user-login {
+      display: block;
       margin-top: 5px;
     }
 
