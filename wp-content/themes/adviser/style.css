@@ -2669,6 +2669,32 @@ form[name="register"] input[type="submit"] {
     }
 }
 
+@media screen and (min-width: 768px) and (max-width: 1024px) { 
+  
+
+  .slider-multimedia ul li .content-image,
+  .slider-multimedia ul li .content-des {
+    width: 100%;
+  }
+
+  .slider-multimedia ul li .content-image {max-height: 100%;}
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) { 
+  
+  .content-multimedia .row-eq-height {
+    display: block;
+  }
+
+  .multimedia-title .view-more {
+    bottom: 30px;
+    right: 0;
+  }
+
+  .multimedia-title #bx-pager { margin-bottom: 10px; }
+
+}
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .btn-sp {
     display: block;

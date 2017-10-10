@@ -256,7 +256,7 @@ get_header(); ?>
       <div class="container">
         <div class="content-multimedia">
           <div class="row row-eq-height">
-            <div class="col-lg-3 col-sm-12 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Multimedia</h2>
                 <div id="bx-pager">
@@ -267,7 +267,7 @@ get_header(); ?>
                   <a href="/media" class="view-more">View more</a>
               </div>
             </div>
-            <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="multimediaright">
               <div id="slider-multimedia" class="flexslider slider-multimedia">
                 <ul class="slides bxslider">
                   <?php
