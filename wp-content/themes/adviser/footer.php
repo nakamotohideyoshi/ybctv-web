@@ -70,7 +70,9 @@
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="logo-footer">
-                        <img src="<?php echo THEME_PATH.'/images/assets/last-word.png' ?>" alt="" />
+                        <a href="https://lastwordmedia.com" target="_blank" title="Last Word">
+                            <img src="<?php echo THEME_PATH.'/images/assets/last-word.png' ?>" alt="" />
+                        </a>
                     </div>
                 </div>
             </div>

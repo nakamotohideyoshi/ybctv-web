@@ -486,13 +486,13 @@ add_filter('default_hidden_meta_boxes', 'show_hidden_meta_fields', 10, 2);
 * Add Page break button to TinyMCE
 */
 function add_page_break_button($buttons, $id) {
-	if ('content' != $id) {
-		return $buttons;
-	}
+  if ('content' != $id) {
+    return $buttons;
+  }
 
-	array_splice($buttons, 13, 0, 'wp_page');
+  array_splice($buttons, 13, 0, 'wp_page');
 
-	return $buttons;
+  return $buttons;
 }
 
 add_filter('mce_buttons', 'add_page_break_button', 1, 2);
@@ -627,5 +627,15 @@ function customFeed($object){
     }
   }
   return $html;
+}
+
+//Hide admin bar for subscribers
+add_action('after_setup_theme', 'disable_admin_bar');
+
+function disable_admin_bar() {
+    if (current_user_can('subscriber')) {
+        show_admin_bar(false);
+        add_filter('show_admin_bar', '__return_false');
+    }
 }
 ?>

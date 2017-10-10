@@ -61,6 +61,11 @@ if ( post_password_required() )
           'email' => '<p class="comment-form-email"><input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30"' . $aria_req . ' placeholder="'.( $req ? 'Email (required)' : '' ).'" /></p>',
         )
       ),
+      'must_log_in' => '<p class="must-log-in">' .
+	    sprintf(
+	      __( 'You must be <a href="%s">logged in</a> to post a comment...' ),
+	      wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
+	    ) . '</p>',
       'comment_field' => '<p class="comment-form-comment"><textarea  cols="45" rows="10" id="comment" name="comment" aria-required="true" placeholder="Your Comment"></textarea></p>',
     );
     comment_form( $args ); ?>
