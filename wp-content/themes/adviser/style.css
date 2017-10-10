@@ -2805,10 +2805,33 @@ form[name="register"] input[type="submit"] {
     }
 
     .ads-top-billboard, .ads-lhs-mpu, .ads-rhs-hpu-1, .ads-rhs-hpu-2,
-    .carousel-multimedia, .carousel-portfolio, .other-stories,
-    .user-login {
+    .carousel-multimedia, .carousel-portfolio, .other-stories {
         display: none;
     }
+
+    .user-login {
+      display: block;
+      margin-top: 5px;
+    }
+
+    .user-login-contact {
+      display: none;
+    }
+
+    .user-login-profile a,
+    .user-login-register a {
+      display: block;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+    }
+
+    .user-login-register { margin-right: 17px; }
+
+    .user-login-profile a svg,
+    .user-login-register a svg { margin:0; }
+
+    .header-top .social { padding-top: 18px;}
 
     .event {
       margin: 0 -30px;
@@ -2852,7 +2875,7 @@ form[name="register"] input[type="submit"] {
 
     .user-login-profile a svg { margin:0; }
 
-    .header-top .social { padding-top: 11px;}
+    .header-top .social { padding-top: 18px;}
 
     .mobnavigation, .site-navigation {
       display: none;
