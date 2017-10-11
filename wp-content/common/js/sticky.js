@@ -76,6 +76,11 @@ function stickySide() {
     //  top advert  home page
     if ( jQuery("section.multimedia").length) {
         var topOfSideAdContainerTop = ".all-new-analysis .content-right";
+        var parentWidth = jQuery(topOfSideAdContainerTop).parent().width();
+        
+        if( parentWidth < width ) {
+            width = parentWidth;
+        }
         var stopPoint = "section.multimedia";
         if (stillTime) {
             if (billboardFired && topSlotFired) {

@@ -103,6 +103,8 @@ class frontend {
             self::generate_article_targeting();
             self::generate_tags_targeting();
           ?>
+           
+
           googletag.pubads().enableSingleRequest();
           googletag.pubads().addEventListener('slotRenderEnded', function(event) {
             if(jqueryReady) {
