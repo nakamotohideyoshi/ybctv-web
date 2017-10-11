@@ -76,7 +76,12 @@ get_header(); ?>
                                 </span></p>
                                 <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                                 <div class="like_button clearfix">
-                                    <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                    <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
+                                        ADDTOANY_SHARE_SAVE_KIT( array( 
+                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
+                                        ) );
+                                    } ?>
+                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                                 </div>
                             </div>
 

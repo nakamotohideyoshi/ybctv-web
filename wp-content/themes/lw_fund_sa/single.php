@@ -141,7 +141,12 @@ get_header(); ?>
                               </span></p>
                               <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                               <div class="like_button clearfix">
-                                  <?php echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
+                                        ADDTOANY_SHARE_SAVE_KIT( array( 
+                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
+                                        ) );
+                                    } ?>
+                                  <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                               </div>
                             </div>
 
@@ -195,13 +200,13 @@ get_header(); ?>
                                             }
 
                                             wp_link_pages(array(
-                                      				'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
-                                      				'after'       => '</div>',
-                                      				'link_before' => '<span>',
-                                      				'link_after'  => '</span>',
-                                      				'pagelink'    => '<span class="screen-reader-text">Page </span>%',
-                                      				'separator'   => '<span class="screen-reader-text">, </span>',
-                                      			));
+                                              'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
+                                              'after'       => '</div>',
+                                              'link_before' => '<span>',
+                                              'link_after'  => '</span>',
+                                              'pagelink'    => '<span class="screen-reader-text">Page </span>%',
+                                              'separator'   => '<span class="screen-reader-text">, </span>',
+                                            ));
                                            ?>
                                         </div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>

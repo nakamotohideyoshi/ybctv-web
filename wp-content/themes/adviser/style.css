@@ -686,7 +686,7 @@ h2.title{
 }
 
 .content-right{
-  padding-left: 26px;
+  padding-left: 20px;
 }
 
 /* Advertising */
@@ -2038,9 +2038,51 @@ form[name="register"] input[type="submit"] {
   color: #4C7D0A;
 }
 
-.content-single .like_button {
-  margin: 9px 0 3px 0;
+/* Share buttons */
+
+.ngfb-buttons {
+  display: none;
 }
+
+.content-single .like_button {
+  margin: 7px 0 3px 0;
+}
+
+.a2a_kit .a2a_button_email .a2a_s_email,
+.a2a_kit .a2a_button_email .a2a_s_email span,
+.content-single .like_button .a2a_button_email .a2a_s_email,
+.content-single .like_button .a2a_button_email .a2a_s_email span {
+  width: 28px !important;
+}
+
+.a2a_kit .a2a_button_facebook span {
+  width: 20px !important;
+  margin-left: 2px;
+  margin-top: 3px;
+}
+
+.a2a_kit .a2a_button_twitter span {
+  width: 23px !important;
+  margin: 3px 3px 0 4px;
+}
+
+
+.a2a_kit .a2a_button_email,
+.content-single .like_button .a2a_button_email {
+  padding-left: 0;
+  height: 23px !important;
+  width: 26px !important;
+  margin-left: -4px;
+}
+
+.a2a_kit a,
+.content-single .like_button .a2a_kit a {
+  display: block;
+  float: left;
+  height: 21px;
+  margin-right: 9px;
+}
+
 
 .content-single .like_button > div {
   float: left;
@@ -2677,7 +2719,6 @@ form[name="register"] input[type="submit"] {
   .slider-multimedia ul li .content-des {
     width: 100%;
   }
-
   .slider-multimedia ul li .content-image {max-height: 100%;}
 }
 
@@ -2883,6 +2924,10 @@ form[name="register"] input[type="submit"] {
       width: 100%;
     }
 
+    .mobnavigation, .site-navigation {
+      display: none;
+    }
+    
     .user-login {
       display: block;
       margin-top: 5px;
@@ -2902,13 +2947,8 @@ form[name="register"] input[type="submit"] {
 
     .header-top a svg { margin:0; }
 
-    .header-top .social { padding-top: 18px; margin-right: 10px; }
+    .header-top .social { padding-top: 18px; margin-right: 10px;}
     .header-top .social a { margin: 0;}
-
-    .mobnavigation, .site-navigation {
-      display: none;
-    }
-
 
     .container {
       padding-right: 10px;

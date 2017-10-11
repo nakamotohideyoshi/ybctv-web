@@ -23,7 +23,7 @@
                 </div>
                 <div class="content-des">
                     <?php echo customFeed($rssIa); ?>
-                    <p class="more_from"><a href="http://international-adviser.com/" target="_blank">More news From IA</a></p>
+                    <p class="more_from"><a href="http://international-adviser.com/" target="_blank">More news from IA</a></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="content-des">
                     <?php echo customFeed($rssEi); ?>
-                    <p class="more_from"><a href="http://www.expertinvestoreurope.com" target="_blank">More news From EI</a></p>
+                    <p class="more_from"><a href="http://www.expertinvestoreurope.com" target="_blank">More news from EI</a></p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="content-des">
                     <?php echo customFeed($rssPa); ?>
-                    <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More news From PA</a></p>
+                    <p class="more_from"><a href="http://portfolio-adviser.com/" target="_blank">More news from PA</a></p>
                 </div>
             </div>
         </div>
