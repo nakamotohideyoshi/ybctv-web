@@ -30,7 +30,8 @@
     });
 
     $('.flexslider-spon').flexslider({
-        animation: "slide"
+        animation: "slide",
+        smoothHeight: true
     });
 
     $('.bxslider-related').bxSlider({

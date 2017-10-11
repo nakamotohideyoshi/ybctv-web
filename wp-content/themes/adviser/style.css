@@ -1127,7 +1127,7 @@ h2.title{
 }
 
 .box-sponsored .flex-control-nav {
-  bottom: 20px;
+  bottom: 15px;
   text-align: left;
 }
 
@@ -2733,6 +2733,10 @@ article.comment {
     width: 100%;
   }
   .slider-multimedia ul li .content-image {max-height: 100%;}
+
+  .box-sponsored .flex-control-nav {
+    bottom: 0px; 
+  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) { 
