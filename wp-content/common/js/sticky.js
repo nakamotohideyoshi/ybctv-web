@@ -67,8 +67,14 @@ function checkSize() {
     }
 }
 function stickySide() {
+    var ww = window.innerWidth
+            || document.documentElement.clientWidth
+            || document.body.clientWidth;
+    if( ww < 992 ) {
+        return;
+    }
     //  top advert  home page
-    if (jQuery("section.multimedia").length) {
+    if ( jQuery("section.multimedia").length) {
         var topOfSideAdContainerTop = ".all-new-analysis .content-right";
         var stopPoint = "section.multimedia";
         if (stillTime) {
