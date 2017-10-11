@@ -2841,6 +2841,14 @@ article.comment {
       width: 80%;
     }
 
+    .list-last-new .loop-list { background: #f2f2f2;}
+    .list-last-new .loop-list .content-image { width: 96px; }
+    .list-last-new .loop-list .content-des {
+      width: -webkit-calc(100% - 96px);
+      width: -moz-calc(100% - 96px);
+      width: calc(100% - 96px );
+    }
+
     #multimediaright a.view-more {
       padding: 10px;
       background-color: #e0e0e0;
