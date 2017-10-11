@@ -115,7 +115,7 @@ function stickySide() {
 
     // bottom advert
     if (billboardFired && topSlotFired) {
-        if (jQuery(".content-page .content-right").length || jQuery(".popular-porfolio .content-right").length) {
+        if (jQuery(".content-page .content-right").length || jQuery(".popular-porfolio .content-right").length || jQuery(".team-members .content-right").length) {
             if (jQuery(".content-page .content-right").length) {
 
                     //bottom side advert not home page
@@ -137,9 +137,18 @@ function stickySide() {
             } else {
 
 //bottom side advert  home page
-                var topSlotRef = ".popular-porfolio .content-right .ads-rhs-hpu-2";
-                var topOfSideAdContainer = ".popular-porfolio .content-right";
-                var stopPoint = ".event";
+                var topSlotRef, topOfSideAdContainer;
+                if (jQuery(".team-members .content-right").length) {
+                  topSlotRef = ".team-members .content-right .ads-rhs-hpu-2";
+                  topOfSideAdContainer = ".team-members .content-right";
+                  stopPoint = ".team-members";
+                }
+                else {
+                  topSlotRef = ".popular-porfolio .content-right .ads-rhs-hpu-2";
+                  topOfSideAdContainer = ".popular-porfolio .content-right";
+                  stopPoint = ".event";
+                }
+
                 var offset = 0;
                 var absoluteTopOfAd = jQuery(stopPoint).offset().top + jQuery(stopPoint).outerHeight() - topSlot2Height - jQuery(topOfSideAdContainer).offset().top;
                 var stopPointHeight = jQuery(stopPoint).outerHeight()
