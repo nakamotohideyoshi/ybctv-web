@@ -2694,6 +2694,12 @@ article.comment {
     }
 }
 
+@media screen (min-width:992px) and (max-width: 1200px) {
+  .list-last-new .loop-list .content-des h3 {
+    font-size: 12px;
+  }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1439px) {
     body {
       overflow-x: hidden;
@@ -2741,7 +2747,14 @@ article.comment {
   }
 
   .multimedia-title #bx-pager { margin-bottom: 10px; }
-
+  
+  .list-last-new .loop-list { background: #f2f2f2;}
+  .list-last-new .loop-list .content-image { width: 96px; }
+  .list-last-new .loop-list .content-des {
+    width: -webkit-calc(100% - 96px);
+    width: -moz-calc(100% - 96px);
+    width: calc(100% - 96px );
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
