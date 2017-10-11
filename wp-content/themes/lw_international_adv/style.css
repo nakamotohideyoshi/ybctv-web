@@ -2602,7 +2602,45 @@ form[name="register"] input[type="submit"] {
   display: none;
 }
 
-/* comments sectios */
+/* Comments sectios */
+
+.commentlist {
+  list-style-type: none;
+}
+
+.commentlist li {
+    /*border-bottom: solid 1px #e2e2e2;*/
+}
+
+.CommentTitle, .comment-reply-title {
+  font-family: Kommissar;
+    font-weight: bold;
+    font-size: 24px;
+    color: #0095db;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comment-reply-title a {
+  font-size:14px;
+  font-weight: normal;
+  letter-spacing: 0;
+    text-transform: none;
+}
+
+article.comment {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.comment-content .fn, .comment-edit-link, .comment-reply-link, #cancel-comment-reply-link {
+  color: #69b42e;
+}
+
+.comments-datetime {
+  color: #7d7d7d;
+}
 
 #comments header.comment-author {
   display: none;
@@ -2615,7 +2653,7 @@ form[name="register"] input[type="submit"] {
   color: #0095db;
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: block;
 }
 
@@ -2625,7 +2663,8 @@ form[name="register"] input[type="submit"] {
 
 #comments .comment-content {
   border-bottom: 1px solid #e2e2e2;
-  padding-top: 9px;
+  padding-top: 6px;
+  padding-bottom: 7px;
 }
 
 #comments .comment-content cite {

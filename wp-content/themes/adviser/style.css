@@ -2400,39 +2400,6 @@ form[name="register"] input[type="submit"] {
   color:#000000;
 }
 
-/* Comments style */
-.commentlist{
-  list-style-type: none;
-}
-.commentlist li{
-    border-bottom: solid 1px #e2e2e2;
-}
-.CommentTitle, .comment-reply-title{
-  font-family: Kommissar;
-    font-weight: bold;
-    font-size: 24px;
-    color: #3f701b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-.comment-reply-title a{
-  font-size:14px;
-  font-weight: normal;
-  letter-spacing: 0;
-    text-transform: none;
-}
-.comment{
-  font-size: 14px;
-  margin-top: 15px;
-    margin-bottom: 15px;
-}
-.comment-content .fn, .comment-edit-link, .comment-reply-link, #cancel-comment-reply-link{
-  color: #69b42e;
-}
-.comments-datetime{
-  color: #7d7d7d;
-}
-
 /* About page */
 
 .page-id-1062 .page-content h2 {
@@ -2571,7 +2538,47 @@ form[name="register"] input[type="submit"] {
   display: none;
 }
 
-/* comments sectios */
+
+/* Comments style */
+
+.commentlist {
+  list-style-type: none;
+}
+
+.commentlist li {
+    /*border-bottom: solid 1px #e2e2e2;*/
+}
+
+.CommentTitle, .comment-reply-title {
+  font-family: Kommissar;
+    font-weight: bold;
+    font-size: 24px;
+    color: #3f701b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comment-reply-title a {
+  font-size:14px;
+  font-weight: normal;
+  letter-spacing: 0;
+    text-transform: none;
+}
+
+article.comment {
+  font-size: 14px;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.comment-content .fn, .comment-edit-link, .comment-reply-link, #cancel-comment-reply-link {
+  color: #69b42e;
+}
+
+.comments-datetime {
+  color: #7d7d7d;
+}
+
 
 #comments header.comment-author {
   display: none;
@@ -2581,10 +2588,10 @@ form[name="register"] input[type="submit"] {
   text-transform: uppercase;
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
-  color: #69b42e;
+  color: #3f701b;
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   display: block;
 }
 
@@ -2646,7 +2653,7 @@ form[name="register"] input[type="submit"] {
 
 #comments .form-submit #submit:hover {
   background-color: #f2f2f2;
-  color: #f9ae00;
+  color: #69b42e;
 }
 
 #comments #reply-title,
