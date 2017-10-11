@@ -169,17 +169,7 @@ get_header(); ?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>
-                                        <?php
-                                            if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail();
-                                            }
-                                            else { ?>
-                                                <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
-                                            <?php }
-                                        ?>
-                                        <div class="feat-sponsor-logo">
-                                            <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
-                                        </div>
+                                        
                                     </div>
                                         <div class="text-content"><?php the_content();?></div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>
@@ -344,14 +334,6 @@ get_header(); ?>
                                             </div>
                                             <div class="thump-single">
                                                 <?php if($lw_primary_medium == 'text'){ ?>
-                                                    <?php
-                                                        if ( has_post_thumbnail() ) {
-                                                            the_post_thumbnail();
-                                                        }
-                                                        else { ?>
-                                                            <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
-                                                        <?php }
-                                                    ?>
                                                     <div class="text-content"><?php the_content();?></div>
                                                 <?php }elseif($lw_primary_medium == 'video'){?>
                                                     <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :
@@ -416,14 +398,6 @@ get_header(); ?>
                                 </div>
                                 <div class="thump-single">
                                     <?php if($lw_primary_medium == 'text'){ ?>
-                                        <?php
-                                            if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail();
-                                            }
-                                            else { ?>
-                                                <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
-                                            <?php }
-                                        ?>
                                         <div class="text-content"><?php the_content();?></div>
                                     <?php }elseif($lw_primary_medium == 'video'){?>
                                         <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :

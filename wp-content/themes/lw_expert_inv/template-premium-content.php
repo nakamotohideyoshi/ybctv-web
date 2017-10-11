@@ -39,17 +39,25 @@
                   //var_dump($category_page);
                   $args = array(
                     'posts_per_page' => 20,
-                    'category__in' => array($category_page),
+                    'category__in' => array( $category_page ),
                     'category' => $category_page,
                     'orderby' => 'title',
                     'order' => 'ASC',
-                    'meta_query' => array(
+                    'tax_query' => array(
+                        array(
+                          'taxonomy' => 'category',
+                          'field' => 'id',
+                          'terms' => array( 2135 ),
+                          'operator' => 'AND'
+                        )
+                    ),
+                    /*'meta_query' => array(
                          array(
                              'key' => 'lw_premium',
                              'value' => 'yes',
                              'compare' => '=',
                          )
-                     )
+                     )*/
                   );
                   $myposts = get_posts( $args );
                   foreach ( $myposts as $post ) : setup_postdata( $post );
