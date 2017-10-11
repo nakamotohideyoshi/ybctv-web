@@ -2757,6 +2757,19 @@ article.comment {
   }
 
   .list-last-new .row > div:nth-child(2) { display: none; }
+
+  .list-most-popular { max-width: 100%; }
+
+  .list-most-popular .loop-list { float: left; width: 30%; margin: 0 5% 0 0; }
+  .list-most-popular .loop-list:last-child { margin: 0;}
+  .list-most-popular .loop-list img { width: 100%; }
+
+  .home .most-popular,
+  .content-left .most-popular { padding:0; }
+}
+
+@media screen and (max-width: 768px) {
+  .list-most-popular {max-width: 100%;}
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
