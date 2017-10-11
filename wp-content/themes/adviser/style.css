@@ -2755,6 +2755,8 @@ article.comment {
     width: -moz-calc(100% - 96px);
     width: calc(100% - 96px );
   }
+
+  .list-last-new .row > div:nth-child(2) { display: none; }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
