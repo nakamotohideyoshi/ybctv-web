@@ -1,6 +1,10 @@
 (function($){
     $(document).ready(function(){
 
+     var ww = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
     $('ul.sf-menu').superfish({
         pathClass:  'current'
     });
@@ -146,6 +150,7 @@
         }
       });
     });
+ 
 
      // Some devices don't support flexbox, let's make the height equal
     var $contentFooter = $('.content-footer .row-eq-height'),

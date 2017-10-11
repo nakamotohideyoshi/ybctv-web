@@ -2774,6 +2774,15 @@ article.comment {
 
 @media screen and (max-width: 768px) {
   .list-most-popular {max-width: 100%;}
+
+  .sf-menu li.menu-item-has-children.sfHover .sub-menu {
+    display: block;
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    padding: 0;
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
