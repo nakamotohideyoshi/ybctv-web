@@ -2782,15 +2782,20 @@ article.comment {
     min-width: 100%;
     padding: 0;
   }
+
+  
 }
 
-@media screen and (max-width: 768px) {
+@media screen  and (max-width: 768px) {
   .list-most-popular {max-width: 100%;}
 
    .sf-menu li.menu-item-has-children.sfHover .sub-menu {
      
     position: static; 
   }
+  
+   
+
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .btn-sp {
@@ -2845,6 +2850,12 @@ article.comment {
       width: 50%;
       text-align: center;
     }
+
+    .sf-menu li.menu-item-has-children.sfHover .sub-menu a {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
     .slider-multimedia ul li .content-image{
         width: 100%;
