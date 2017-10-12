@@ -108,12 +108,12 @@ get_header(); ?>
                                 <div class="clearfix"></div>
                                 </div>
 
-                                <p><strong>Register now</strong> for full access to online content at International Adviser plus recieve:</p>
+                                <p><strong>Register now</strong> for full access to online content at International Adviser plus receive:</p>
                                 <ul class="locked-list">
                                     <li>- Twice daily email news bulletins</li>
                                     <li>- Weekly news round-up</li>
                                     <li>- Monthly regional focus summary</li>
-                                    <li>- Digital monthly edition of International Adviser viewable across al devices</li>
+                                    <li>- Digital monthly edition of International Adviser viewable across all devices</li>
                                 </ul>
 
                                 <hr>

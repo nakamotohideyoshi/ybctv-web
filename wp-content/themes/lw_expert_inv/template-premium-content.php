@@ -75,7 +75,7 @@
                         <?php
                           if ( has_post_thumbnail() ) {
                             echo '<a href="' . get_the_permalink() . '">';
-                            the_post_thumbnail('section-article');
+                            the_post_thumbnail('premium-thumbs');
                             echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
                             echo '</a>';
                           }

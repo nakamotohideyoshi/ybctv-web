@@ -218,3 +218,5 @@ add_action( 'manage_category_custom_column' , 'xg_locked_category_columns_values
     );
     return $fields;
   });
+
+  add_image_size( 'premium-thumbs', 327, 184, array( 'right', 'bottom' ) );

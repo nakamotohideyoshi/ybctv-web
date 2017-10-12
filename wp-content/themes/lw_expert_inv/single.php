@@ -120,12 +120,12 @@ get_header(); ?>
                                 <a href="/register" class="locked-button">Register</a>
                                 </div>
 
-                                <p>Register now for full access to online content at International Adviser plus recieve:</p>
+                                <p>Register now for full access to online content at Expert Investor plus recieve:</p>
                                 <ul class="locked-list">
                                     <li>- Twice daily email news bulletins</li>
                                     <li>- Weekly news round-up</li>
                                     <li>- Monthly regional focus summary</li>
-                                    <li>- Digital monthly edition of International Adviser viewable across al devices</li>
+                                    <li>- Digital monthly edition of Expert Investor viewable across al devices</li>
                                 </ul>
 
                                 <hr>
@@ -289,7 +289,15 @@ get_header(); ?>
                                                         <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
                                                     </div>
                                             </div>
-                                            <p class="locked-notice">To access the Market Intelligence section, please login with valid subscription details.</p>
+                                            <p><strong>Expert Investor’s Market Intelligence section is for delegates to Expert Investor events only, sign in now and have access to: </strong></p>
+                                            <ul>
+                                                <li><strong>Countries:</strong> Discover what European fund buyers think of all the major asset classes</li>
+                                                <li><strong>Strategies:</strong> Explore forward-looking investment sentiments across Europe towards all the major asset classes</li>
+                                                <li><strong>Fund Manager Sentiment:</strong> Learn about the house views of 20 global asset management groups with regards to a series of equities, bonds and other indices</li>
+                                                <li><strong>European Fund Flows:</strong> Find out how monies have flown in and out of all active and passive European-domiciled funds</li>
+                                            </ul>
+                                            
+                                            <p>If you wish to gain access to this, please contact <strong><a href="subscriptions@lastwordmedia.com">subscriptions@lastwordmedia.com</a></strong></p>
 
                                         </div>
                                     <?php endwhile;endif;?>
