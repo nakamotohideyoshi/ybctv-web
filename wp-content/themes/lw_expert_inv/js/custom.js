@@ -130,6 +130,7 @@
       var offset = button.attr('offset');
       var category = button.attr('category');
       var type = button.attr('type');
+      var term_id =  button.attr('term_id');
       
       $.ajax({
         url: ajaxviewmore.ajaxurl,
@@ -139,7 +140,8 @@
           page: currentPage,
           offset: offset,
           category: category,
-          type: type
+          type: type,
+          portuterm_id: term_id,
         },
         success: function(result) {
           if(type){

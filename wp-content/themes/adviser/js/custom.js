@@ -1,9 +1,10 @@
 (function($){
     $(document).ready(function(){
 
-     var ww = window.innerWidth
+    var ww = window.innerWidth
         || document.documentElement.clientWidth
         || document.body.clientWidth;
+
 
     $('ul.sf-menu').superfish({
         pathClass:  'current'
@@ -134,6 +135,7 @@
       var currentPage = button.attr('page');
       var offset = button.attr('offset');
       var category = button.attr('category');
+      var term_id =  button.attr('term_id');
 
       $.ajax({
         url: ajaxviewmore.ajaxurl,
@@ -142,7 +144,8 @@
           action: 'ajax_view_more',
           page: currentPage,
           offset: offset,
-          category: category
+          category: category,
+          term_id: term_id
         },
         success: function(result) {
           $('.list-category-ajax').append(result);
@@ -150,9 +153,9 @@
         }
       });
     });
- 
 
-     // Some devices don't support flexbox, let's make the height equal
+
+    // Some devices don't support flexbox, let's make the height equal
     var $contentFooter = $('.content-footer .row-eq-height'),
         $firstCol = $contentFooter.find('.col-lg-10');
     setTimeout(function(){
@@ -164,6 +167,8 @@
       $contentFooter.find('.col-lg-2').height( $firstCol.height() );
        
     });
+    
+      
 
     }); // End document ready
 })(this.jQuery);

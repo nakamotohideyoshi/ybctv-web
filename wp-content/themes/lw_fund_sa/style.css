@@ -691,7 +691,7 @@ h2.title{
 }
 
 .content-right{
-  padding-left: 20px;
+  padding-left: 15px;
 }
 
 /* Advertising */
@@ -1154,6 +1154,7 @@ h2.title{
 
 .flexslider-spon {
   position: relative;
+  max-width: 300px;
 }
 
 .box-sponsored .flex-control-nav {

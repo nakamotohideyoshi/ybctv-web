@@ -361,14 +361,14 @@ function ajax_view_more() {
   $offset = (int)$_POST['offset'];
   $category = (int)$_POST['category'];
   $type = $_POST['type'];
+  $term_id = (int)$_POST['term_id'];
 
   //Archive template name
   $template_name = 'post';
 
   if(!empty($type)){
-    //Check if is post type (e.g. magazine)
+    //Query by post type (e.g. magazine)
     $template_name = $type;
-
     $args = array(
       'posts_per_page' => 5,
       'offset' => $page * $offset,
@@ -377,14 +377,31 @@ function ajax_view_more() {
       'order' => 'DESC'
     );
   }else{
-    //Catagory
-    $args = array(
-      'posts_per_page' => 5,
-      'offset' => ($page * $posts_per_page) + $offset,
-      'cat' => $category,
-      'orderby' => 'date',
-      'order' => 'DESC'
-    );
+    //Query by Term id (video)
+    if(!empty($term_id)){
+      $args = array(
+        'posts_per_page' => 5,
+        'offset' => ($page * $posts_per_page) + $offset,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'type',
+            'field' => 'term_id',
+            'terms' => $term_id
+            )
+        )
+      );
+    }else{
+      //Query by Catagory
+        $args = array(
+          'posts_per_page' => 5,
+          'offset' => ($page * $posts_per_page) + $offset,
+          'cat' => $category,
+          'orderby' => 'date',
+          'order' => 'DESC'
+        );
+    }
   }
 
   $posts = new WP_Query($args);

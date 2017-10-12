@@ -357,14 +357,33 @@ function ajax_view_more() {
   $posts_per_page = 5;
   $offset = (int)$_POST['offset'];
   $category_id = (int)$_POST['category'];
+  $term_id = (int)$_POST['term_id'];
 
-  $args = array(
-    'posts_per_page' => 5,
-    'offset' => ($page * $posts_per_page) + $offset,
-    'cat' => $category_id,
-    'orderby' => 'date',
-    'order' => 'DESC'
-  );
+  if(!empty($term_id)){
+    //Query by term id  (e.g. video)
+    $args = array(
+      'posts_per_page' => 5,
+      'offset' => ($page * $posts_per_page) + $offset,
+      'orderby' => 'date',
+      'order' => 'DESC',
+      'tax_query' => array(
+        array(
+          'taxonomy' => 'type',
+          'field' => 'term_id',
+          'terms' => $term_id
+          )
+      )
+    );
+  }else{
+    //Query by category id
+    $args = array(
+      'posts_per_page' => 5,
+      'offset' => ($page * $posts_per_page) + $offset,
+      'cat' => $category_id,
+      'orderby' => 'date',
+      'order' => 'DESC'
+    );
+  }
 
   $posts = new WP_Query($args);
 

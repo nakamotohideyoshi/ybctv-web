@@ -686,7 +686,7 @@ h2.title{
 }
 
 .content-right{
-  padding-left: 20px;
+  padding-left: 15px;
 }
 
 /* Advertising */
@@ -1124,6 +1124,7 @@ h2.title{
 
 .flexslider-spon {
   position: relative;
+  max-width: 300px;
 }
 
 .box-sponsored .flex-control-nav {
@@ -1600,6 +1601,7 @@ h2.title{
   padding: 24px 0 30px;
   background: #fff;
 }
+
 .bread{
   height: auto;
   /*line-height: 8px;*/
@@ -2726,7 +2728,6 @@ article.comment {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) { 
-  
 
   .slider-multimedia ul li .content-image,
   .slider-multimedia ul li .content-des {
@@ -2737,6 +2738,7 @@ article.comment {
   .box-sponsored .flex-control-nav {
     bottom: 0px; 
   }
+
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) { 
@@ -2767,14 +2769,12 @@ article.comment {
   .list-most-popular .loop-list { float: left; width: 30%; margin: 0 5% 0 0; }
   .list-most-popular .loop-list:last-child { margin: 0;}
   .list-most-popular .loop-list img { width: 100%; }
-
+  
   .home .most-popular,
   .content-left .most-popular { padding:0; }
 }
 
 @media screen and (max-width: 991px) {
-   
-
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
     display: block; 
     width: 100%;
@@ -2782,7 +2782,6 @@ article.comment {
     min-width: 100%;
     padding: 0;
   }
-
   
 }
 
@@ -2793,10 +2792,9 @@ article.comment {
      
     position: static; 
   }
-  
-   
 
 }
+
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .btn-sp {
     display: block;
@@ -2845,13 +2843,16 @@ article.comment {
     .header-content{
         margin-right: 0;
     }
+    .flexslider-spon{
+      max-width: 100%;
+    }
 
     .sf-menu li {
       width: 50%;
       text-align: center;
     }
 
-    .sf-menu li.menu-item-has-children.sfHover .sub-menu a {
+  .sf-menu li.menu-item-has-children.sfHover .sub-menu a {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -3217,6 +3218,10 @@ article.comment {
     }
     .box-sponsored{
         margin: 0;
+    }
+
+    .flexslider-spon{
+      max-width: 100%;
     }
     .most-popular{
         display: none;

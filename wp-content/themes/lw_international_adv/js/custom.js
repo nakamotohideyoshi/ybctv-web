@@ -129,6 +129,7 @@
       var currentPage = button.attr('page');
       var offset = button.attr('offset');
       var category = button.attr('category');
+      var term_id =  button.attr('term_id');
       var meta_key = button.attr('meta_key');
       var meta_val = button.attr('meta_val');
 
@@ -140,6 +141,7 @@
           page: currentPage,
           offset: offset,
           category: category,
+          term_id: term_id,
           meta_key: meta_key,
           meta_val: meta_val
         },
@@ -160,5 +162,17 @@
         }else{
             $('#'+dataId).css('display','block');
         }
+    });
+    // Some devices don't support flexbox, let's make the height equal
+    var $contentFooter = $('.content-footer .row-eq-height'),
+        $firstCol = $contentFooter.find('.col-lg-10');
+    setTimeout(function(){
+        $contentFooter.find('.col-lg-2').height( $firstCol.height() );
+    }, 200);
+
+    $( window ).resize(function() {
+        
+      $contentFooter.find('.col-lg-2').height( $firstCol.height() );
+       
     });
 })(this.jQuery);
