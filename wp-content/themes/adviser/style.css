@@ -2772,12 +2772,11 @@ article.comment {
   .content-left .most-popular { padding:0; }
 }
 
-@media screen and (max-width: 768px) {
-  .list-most-popular {max-width: 100%;}
+@media screen and (max-width: 991px) {
+   
 
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
-    display: block;
-    position: static;
+    display: block; 
     width: 100%;
     max-width: 100%;
     min-width: 100%;
@@ -2785,6 +2784,14 @@ article.comment {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .list-most-popular {max-width: 100%;}
+
+   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
+     
+    position: static; 
+  }
+}
 @media screen and (min-width: 481px) and (max-width: 768px) {
   .btn-sp {
     display: block;
