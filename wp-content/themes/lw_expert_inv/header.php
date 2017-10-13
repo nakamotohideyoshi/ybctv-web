@@ -42,7 +42,7 @@
     ?>
   </title>
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <?php
     wp_head();
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
@@ -107,7 +107,7 @@
                 <?php lastWordAdUnit('top-search'); ?>
                 <div class="user-login">
                   <ul>
-                    <li>
+                    <li class="user-login-contact">
                       <a href="<?php echo home_url();?>/contact">
                         <img style="visibility: hidden" src="<?php echo THEME_PATH.'/images/svg/Register-icon-grey.svg' ?>" alt="" /> Contact
                       </a>
@@ -115,22 +115,61 @@
                     <?php
                       if (is_user_logged_in()) {
                     ?>
-                    <li>
-                      <a href="#">
-                        <img src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" /> My account
+                    <li class="user-login-profile">
+                      <a href="/your-profile/">
+                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                          <style type="text/css">
+                            .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+                            .st1{fill:#3C3C3B;}
+                            .st2{fill:#878787;}
+                          </style>
+                          <circle class="st0" cx="15.5" cy="15.5" r="15"/>
+                          <path class="st1" d="M15.5 14c-0.1 0-0.1 0-0.2 0 -4.9 0.1-8.9 3.4-10 8 2.1 3.3 5.8 5.6 10 5.6 0.1 0 0.1 0 0.2 0 4.3 0 8.1-2.2 10.2-5.6C24.6 17.4 20.4 14 15.5 14z"/>
+                          <path class="st1" d="M5.3 22c2.1 3.3 5.8 5.6 10 5.6V14C10.5 14.1 6.4 17.4 5.3 22z"/>
+                          <path class="st1" d="M11.3 9.1c0 2.2 1.8 4.1 4 4.1V4.9C13.1 5 11.3 6.8 11.3 9.1z"/>
+                          <path class="st2" d="M25.7 22C24.6 17.4 20.4 14 15.5 14c-0.1 0-0.1 0-0.2 0v13.6c0.1 0 0.1 0 0.2 0C19.8 27.6 23.6 25.3 25.7 22z"/>
+                          <path class="st2" d="M19.7 9.1c0-2.3-1.9-4.2-4.2-4.2 -0.1 0-0.1 0-0.2 0V13.2c0.1 0 0.1 0 0.2 0C17.8 13.2 19.7 11.3 19.7 9.1z"/>
+                        </svg>
+                        My account
                       </a>
                     </li>
                     <?php
                       } else {
                     ?>
-                    <li>
+                    <li class="user-login-register">
                       <a href="<?php echo home_url();?>/register">
-                        <img src="<?php echo THEME_PATH.'/images/svg/Register-icon-grey.svg' ?>" alt="" /> Register
+                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Register-icon-grey.svg' ?>" alt="" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                          <style type="text/css">
+                            .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+                            .st1{fill:#3C3C3B;}
+                            .st2{fill:#878787;}
+                          </style>
+                          <circle class="st0" cx="15.5" cy="15.5" r="15"/>
+                          <path class="st1" d="M10 14.7c-0.8 0-1.5 0.7-1.5 1.5v8.4c0 0.8 0.7 1.5 1.5 1.5h5.5V14.7H10z"/>
+                          <path class="st1" d="M13.6 4.8c-1.8 0-3.2 1.5-3.2 3.2v5.9h1.5V8c0-0.9 0.8-1.7 1.7-1.7h1.9v-1.5H13.6z"/>
+                          <path class="st2" d="M22.5 24.7v-8.4c0-0.8-0.7-1.5-1.5-1.5h-5.5V26.2h5.5C21.8 26.2 22.5 25.6 22.5 24.7z"/>
+                          <path class="st2" d="M19.1 8v2.8h1.5V8c0-1.8-1.5-3.2-3.2-3.2h-1.9v1.5h1.9C18.3 6.3 19.1 7.1 19.1 8z"/>
+                        </svg>
+                        Register
                       </a>
                     </li>
-                    <li>
+                    <li class="user-login-profile">
                       <a href="#" data-toggle="modal" data-target="#myModal">
-                        <img src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" /> Sign in
+                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" /> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
+                          <style type="text/css">
+                            .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
+                            .st1{fill:#3C3C3B;}
+                            .st2{fill:#878787;}
+                          </style>
+                          <circle class="st0" cx="15.5" cy="15.5" r="15"/>
+                          <path class="st1" d="M15.5 14c-0.1 0-0.1 0-0.2 0 -4.9 0.1-8.9 3.4-10 8 2.1 3.3 5.8 5.6 10 5.6 0.1 0 0.1 0 0.2 0 4.3 0 8.1-2.2 10.2-5.6C24.6 17.4 20.4 14 15.5 14z"/>
+                          <path class="st1" d="M5.3 22c2.1 3.3 5.8 5.6 10 5.6V14C10.5 14.1 6.4 17.4 5.3 22z"/>
+                          <path class="st1" d="M11.3 9.1c0 2.2 1.8 4.1 4 4.1V4.9C13.1 5 11.3 6.8 11.3 9.1z"/>
+                          <path class="st2" d="M25.7 22C24.6 17.4 20.4 14 15.5 14c-0.1 0-0.1 0-0.2 0v13.6c0.1 0 0.1 0 0.2 0C19.8 27.6 23.6 25.3 25.7 22z"/>
+                          <path class="st2" d="M19.7 9.1c0-2.3-1.9-4.2-4.2-4.2 -0.1 0-0.1 0-0.2 0V13.2c0.1 0 0.1 0 0.2 0C17.8 13.2 19.7 11.3 19.7 9.1z"/>
+                        </svg>Sign in
                       </a>
                     </li>
                     <!-- Modal -->
