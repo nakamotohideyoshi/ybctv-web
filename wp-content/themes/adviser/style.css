@@ -2684,16 +2684,16 @@ article.comment {
 
 
 @media (min-width: 1440px) {
-    .container{
-        width: 1368px;
-        padding-right: 28px;
-        padding-left: 28px;
-        background: #fff;
-    }
+  .container{
+    width: 1368px;
+    padding-right: 28px;
+    padding-left: 28px;
+    background: #fff;
+  }
 
-    .mobnavigation {
-      display: none;
-    }
+  .mobnavigation {
+    display: none;
+  }
 }
 
 @media screen (min-width:992px) and (max-width: 1200px) {
@@ -2852,11 +2852,15 @@ article.comment {
       text-align: center;
     }
 
-  .sf-menu li.menu-item-has-children.sfHover .sub-menu a {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-  }
+    .sf-menu ul.sub-menu li:last-child a {
+      padding-right: 15px;
+    }
+
+    .sf-menu li.menu-item-has-children.sfHover .sub-menu a {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
 
     .slider-multimedia ul li .content-image{
         width: 100%;
@@ -2878,6 +2882,8 @@ article.comment {
       display: block;
     }
 
+    .list-last-new .row > div:nth-child(2) { display: none; }
+    
     .list-last-new .loop-list .content-image {
       width: 20%;
     }
@@ -3070,6 +3076,10 @@ article.comment {
       text-align: center;
     }
 
+    .sf-menu ul.sub-menu li:last-child a {
+      padding-right: 15px;
+    }
+
     .last-new h2.toptitle {
       display: none;
     }
@@ -3223,6 +3233,7 @@ article.comment {
     .flexslider-spon{
       max-width: 100%;
     }
+
     .most-popular{
         display: none;
     }

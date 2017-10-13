@@ -360,57 +360,73 @@ function ajax_view_more() {
   $posts_per_page = 5;
   $offset = (int)$_POST['offset'];
   $category = (int)$_POST['category'];
+  $type = $_POST['type'];
   $term_id = (int)$_POST['term_id'];
   $meta_key = $_POST['meta_key'];
   $meta_val = $_POST['meta_val'];
 
-  if(!empty($term_id)){
-    //Query by term id (e.g. video)
+  //Archive template name
+  $template_name = 'post';
+
+  if(!empty($type)){
+    //Query by post type (e.g. magazine)
+    $template_name = $type;
     $args = array(
       'posts_per_page' => 5,
-      'offset' => ($page * $posts_per_page) + $offset,
+      'offset' => $page * $offset,
+      'post_type' => $type,
       'orderby' => 'date',
-      'order' => 'DESC',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'type',
-          'field' => 'term_id',
-          'terms' => $term_id
-          )
-      ),
-      'meta_query' => array(
-        array(
-          'key' => $meta_key,
-          'value' => $meta_val,
-          'compare' => '=',
-        )
-      )
+      'order' => 'DESC'
     );
   }else{
-    //Query by category id
-    $args = array(
-      'posts_per_page' => 5,
-      'offset' => ($page * $posts_per_page) + $offset,
-      'cat' => $category,
-      'orderby' => 'date',
-      'order' => 'DESC',
-      'meta_query' => array(
-        array(
-          'key' => $meta_key,
-          'value' => $meta_val,
-          'compare' => '=',
+    if(!empty($term_id)){
+      //Query by term id (e.g. video)
+      $args = array(
+        'posts_per_page' => 5,
+        'offset' => ($page * $posts_per_page) + $offset,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'type',
+            'field' => 'term_id',
+            'terms' => $term_id
+            )
+        ),
+        'meta_query' => array(
+          array(
+            'key' => $meta_key,
+            'value' => $meta_val,
+            'compare' => '=',
+          )
         )
-      )
-    );
+      );
+    }else{
+      //Query by category id
+      $args = array(
+        'posts_per_page' => 5,
+        'offset' => ($page * $posts_per_page) + $offset,
+        'cat' => $category,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'meta_query' => array(
+          array(
+            'key' => $meta_key,
+            'value' => $meta_val,
+            'compare' => '=',
+          )
+        )
+      );
+    }
   }
-  
+
 
   $posts = new WP_Query($args);
 
   if ($posts->have_posts()) {
     while($posts->have_posts()) {
       $posts->the_post();
-      get_template_part('template-parts/archive', 'post');
+      get_template_part('template-parts/archive', $template_name);
     }
   }
   wp_reset_postdata();
@@ -597,21 +613,28 @@ function customFeed($object){
   $html = '';
   $maxitems = 0;
 
-  if ( ! is_wp_error( $rssEi ) ) : 
-    $maxitems = $object->get_item_quantity( 3 ); 
+  if ( ! is_wp_error( $rssEi ) ) :
+    $maxitems = $object->get_item_quantity( 3 );
     $rss_items = $object->get_items( 0, $maxitems );
   endif;
-  
+
   if ( $maxitems == 0 ){
-      $html .= '<p>'. _e( 'No items', 'my-text-domain' ) .'</p>';                 
+      $html .= '<p>'. _e( 'No items', 'my-text-domain' ) .'</p>';
   } else {
     foreach ( $rss_items as $item ){
       $html .= '<p>';
       $html .= '<a href="'. esc_url( $item->get_permalink() ) .'" target="_blank" title="'. esc_html( $item->get_title() ).'">';
       $html .= mb_strimwidth( esc_html( $item->get_title() ), 0, 35, '...' );
-      $html .= '</a></p>';                      
+      $html .= '</a></p>';
     }
   }
   return $html;
 }
+
+// Limit Excerpt length
+function custom_excerpt_length($excerpt) {
+  return wp_trim_words($excerpt, 30);
+}
+
+add_filter('get_the_excerpt', 'custom_excerpt_length');
 ?>

@@ -129,6 +129,7 @@
       var currentPage = button.attr('page');
       var offset = button.attr('offset');
       var category = button.attr('category');
+      var type = button.attr('type');
       var term_id =  button.attr('term_id');
       var meta_key = button.attr('meta_key');
       var meta_val = button.attr('meta_val');
@@ -141,12 +142,17 @@
           page: currentPage,
           offset: offset,
           category: category,
+          type: type,
           term_id: term_id,
           meta_key: meta_key,
           meta_val: meta_val
         },
         success: function(result) {
-          $('.list-category-ajax').append(result);
+          if(type == 'magazine'){
+            $('.list-magazines-ajax').append(result);
+          } else {
+            $('.list-category-ajax').append(result);
+          }
           button.attr('page', parseInt(currentPage) + 1);
         }
       });

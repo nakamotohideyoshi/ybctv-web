@@ -358,31 +358,47 @@ function ajax_view_more() {
   $offset = (int)$_POST['offset'];
   $category_id = (int)$_POST['category'];
   $term_id = (int)$_POST['term_id'];
-
-  if(!empty($term_id)){
-    //Query by term id  (e.g. video)
+  $type = $_POST['type'];
+  
+  //Archive template name
+  $template_name = 'post';
+  
+  if(!empty($type)){
+    //Query by post type (e.g. magazine)
+    $template_name = $type;
     $args = array(
       'posts_per_page' => 5,
-      'offset' => ($page * $posts_per_page) + $offset,
-      'orderby' => 'date',
-      'order' => 'DESC',
-      'tax_query' => array(
-        array(
-          'taxonomy' => 'type',
-          'field' => 'term_id',
-          'terms' => $term_id
-          )
-      )
-    );
-  }else{
-    //Query by category id
-    $args = array(
-      'posts_per_page' => 5,
-      'offset' => ($page * $posts_per_page) + $offset,
-      'cat' => $category_id,
+      'offset' => $page * $offset,
+      'post_type' => $type,
       'orderby' => 'date',
       'order' => 'DESC'
     );
+  }else{
+    if(!empty($term_id)){
+      //Query by term id  (e.g. video)
+      $args = array(
+        'posts_per_page' => 5,
+        'offset' => ($page * $posts_per_page) + $offset,
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'type',
+            'field' => 'term_id',
+            'terms' => $term_id
+            )
+        )
+      );
+    }else{
+      //Query by category id
+      $args = array(
+        'posts_per_page' => 5,
+        'offset' => ($page * $posts_per_page) + $offset,
+        'cat' => $category_id,
+        'orderby' => 'date',
+        'order' => 'DESC'
+      );
+    }
   }
 
   $posts = new WP_Query($args);
@@ -390,7 +406,7 @@ function ajax_view_more() {
   if ($posts->have_posts()) {
     while($posts->have_posts()) {
       $posts->the_post();
-      include(locate_template('template-parts/archive-post.php'));
+      get_template_part('template-parts/archive', $template_name);
     }
   }
   wp_reset_postdata();
