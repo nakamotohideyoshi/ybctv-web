@@ -2058,6 +2058,35 @@ form[name="register"] input[type="submit"] {
   font-weight: 700;
 }
 
+.content-single .pull-quote {
+  color: #f9ae00;
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-post a {
+  color: #f9ae00;
+}
+
+.content-post a:hover {
+  color: #ba8200;
+}
+
+.content-post .page-links {
+  border-top: solid 1px #e2e2e2;
+  border-bottom: solid 1px #e2e2e2;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.content-post .page-links span {
+  font-weight: normal;
+  margin-left: 10px;
+}
+
 /* Related Posts */
 
 .related-post {
@@ -2732,7 +2761,7 @@ article.comment {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) { 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 
   .slider-multimedia ul li .content-image,
   .slider-multimedia ul li .content-des {
@@ -2741,14 +2770,14 @@ article.comment {
   .slider-multimedia ul li .content-image {max-height: 100%;}
 
   .box-sponsored .flex-control-nav {
-    bottom: 0px; 
+    bottom: 0px;
   }
 
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 991px) { 
-  
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
   .content-multimedia .row-eq-height {
     display: block;
   }
@@ -2759,7 +2788,7 @@ article.comment {
   }
 
   .multimedia-title #bx-pager { margin-bottom: 10px; }
-  
+
   .list-last-new .loop-list { background: #f2f2f2;}
   .list-last-new .loop-list .content-image { width: 96px; }
   .list-last-new .loop-list .content-des {
@@ -2775,28 +2804,28 @@ article.comment {
   .list-most-popular .loop-list { float: left; width: 30%; margin: 0 5% 0 0; }
   .list-most-popular .loop-list:last-child { margin: 0;}
   .list-most-popular .loop-list img { width: 100%; }
-  
+
   .home .most-popular,
   .content-left .most-popular { padding:0; }
 }
 
 @media screen and (max-width: 991px) {
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
-    display: block; 
+    display: block;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
     padding: 0;
   }
-  
+
 }
 
 @media screen  and (max-width: 768px) {
   .list-most-popular {max-width: 100%;}
 
    .sf-menu li.menu-item-has-children.sfHover .sub-menu {
-     
-    position: static; 
+
+    position: static;
   }
 
 }
@@ -3017,7 +3046,7 @@ article.comment {
     .mobnavigation, .site-navigation {
       display: none;
     }
-    
+
     .user-login {
       display: block;
       margin-top: 5px;

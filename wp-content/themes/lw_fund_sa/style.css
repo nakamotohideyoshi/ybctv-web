@@ -1998,6 +1998,35 @@ form[name="register"] input[type="submit"] {
   font-weight: 700;
 }
 
+.content-single .pull-quote {
+  color: #e40233;
+  padding: 20px 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-post a {
+  color: #e40233;
+}
+
+.content-post a:hover {
+  color: #af0026;
+}
+
+.content-post .page-links {
+  border-top: solid 1px #e2e2e2;
+  border-bottom: solid 1px #e2e2e2;
+  text-align: center;
+  padding: 5px 0;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+.content-post .page-links span {
+  font-weight: normal;
+  margin-left: 10px;
+}
+
 /* Related Posts */
 
 .related-post {

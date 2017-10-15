@@ -83,7 +83,7 @@ get_header(); ?>
                                 ?>
                                 </span></p>
                                 <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-                                
+
                             </div>
 
                             <div class="content-post">
@@ -151,8 +151,8 @@ get_header(); ?>
                                 </span></p>
                                 <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                                 <div class="like_button clearfix">
-                                    <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
-                                        ADDTOANY_SHARE_SAVE_KIT( array( 
+                                    <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+                                        ADDTOANY_SHARE_SAVE_KIT( array(
                                             'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
@@ -165,30 +165,72 @@ get_header(); ?>
                                   <?php the_excerpt(); ?>
                                 </div>
                                 <div class="thump-single">
-                                    <?php if($lw_primary_medium == 'text'){ ?>
-                                        <?php
-                                            if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail();
+                                  <?php
+                                    if ($lw_primary_medium == 'gallery') {
+                                      // Only show gallery, no featured image or content
+                                      last_word_gallery();
+                                    }
+                                    else {
+                                      // All other primary mediums show content
+                                      if ($lw_primary_medium == 'video') {
+                                        // Don't show featured image
+                                        if (isset($lw_brightcove_video_id) && $lw_brightcove_video_id != '') {
+                                          brightcove_video($lw_brightcove_video_id);
+                                        }
+                                      }
+                                      else {
+                                        // All others show feature image
+                                        if ( has_post_thumbnail() ) {
+                                            the_post_thumbnail();
+                                        }
+                                      }
+
+                                      echo '<div class="text-content">';
+
+                                      global $page;
+                                      if ($post->lw_pull_quote != '' && $page == 1) {
+
+                                        $pullquote_after_paragraph = 5;
+
+                                        $content = apply_filters('the_content', get_the_content());
+
+                                        if (substr_count($content, '<p>') > $pullquote_after_paragraph) {
+                                          $paragraphs = explode('</p>', $content);
+                                          $paragraph_count = 1;
+
+                                          foreach ($paragraphs as $paragraph) {
+                                            echo $paragraph;
+
+                                            echo '</p>';
+
+                                            if ($paragraph_count == $pullquote_after_paragraph) {
+                                              echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
                                             }
-                                            else { ?>
-                                                <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
-                                            <?php }
-                                        ?>
-                                        <div class="text-content"><?php the_content();?></div>
-                                    <?php }elseif($lw_primary_medium == 'video'){?>
-                                        <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :
-                                          brightcove_video($lw_brightcove_video_id)
-                                        ?>
-                                        <div class="text-content"><?php the_content();?></div>
-                                        <?php else: ?>
-                                            <div class="text-content"><?php the_content();?></div>
-                                        <?php endif; ?>
-                                    <?php
+
+                                            $paragraph_count ++;
+                                          }
+                                        }
+                                        else {
+                                          echo $content;
+                                          echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
+                                        }
                                       }
-                                      else if ($lw_primary_medium == 'gallery') {
-                                        last_word_gallery();
+                                      else {
+                                        the_content();
                                       }
-                                    ?>
+
+                                      wp_link_pages(array(
+                                        'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
+                                        'after'       => '</div>',
+                                        'link_before' => '<span>',
+                                        'link_after'  => '</span>',
+                                        'pagelink'    => '<span class="screen-reader-text">Page </span>%',
+                                        'separator'   => '<span class="screen-reader-text">, </span>',
+                                      ));
+
+                                      echo '</div>';
+                                    }
+                                  ?>
                                 </div>
                             </div>
                             <div class="comment-post">
@@ -226,8 +268,8 @@ get_header(); ?>
                                 </span></p>
                                 <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
                                 <div class="like_button clearfix">
-                                    <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) { 
-                                        ADDTOANY_SHARE_SAVE_KIT( array( 
+                                    <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
+                                        ADDTOANY_SHARE_SAVE_KIT( array(
                                             'buttons' => array( 'email','facebook' ,'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
@@ -240,30 +282,72 @@ get_header(); ?>
                                   <?php the_excerpt(); ?>
                                 </div>
                                 <div class="thump-single">
-                                    <?php if($lw_primary_medium == 'text'){ ?>
-                                        <?php
-                                            if ( has_post_thumbnail() ) {
-                                                the_post_thumbnail();
+                                  <?php
+                                    if ($lw_primary_medium == 'gallery') {
+                                      // Only show gallery, no featured image or content
+                                      last_word_gallery();
+                                    }
+                                    else {
+                                      // All other primary mediums show content
+                                      if ($lw_primary_medium == 'video') {
+                                        // Don't show featured image
+                                        if (isset($lw_brightcove_video_id) && $lw_brightcove_video_id != '') {
+                                          brightcove_video($lw_brightcove_video_id);
+                                        }
+                                      }
+                                      else {
+                                        // All others show feature image
+                                        if ( has_post_thumbnail() ) {
+                                            the_post_thumbnail();
+                                        }
+                                      }
+
+                                      echo '<div class="text-content">';
+
+                                      global $page;
+                                      if ($post->lw_pull_quote != '' && $page == 1) {
+
+                                        $pullquote_after_paragraph = 5;
+
+                                        $content = apply_filters('the_content', get_the_content());
+
+                                        if (substr_count($content, '<p>') > $pullquote_after_paragraph) {
+                                          $paragraphs = explode('</p>', $content);
+                                          $paragraph_count = 1;
+
+                                          foreach ($paragraphs as $paragraph) {
+                                            echo $paragraph;
+
+                                            echo '</p>';
+
+                                            if ($paragraph_count == $pullquote_after_paragraph) {
+                                              echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
                                             }
-                                            else { ?>
-                                                <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
-                                            <?php }
-                                        ?>
-                                        <div class="text-content"><?php the_content();?></div>
-                                    <?php }elseif($lw_primary_medium == 'video'){?>
-                                        <?php if(isset($lw_brightcove_video_id) && $lw_brightcove_video_id!="") :
-                                          brightcove_video($lw_brightcove_video_id)
-                                        ?>
-                                        <div class="text-content"><?php the_content();?></div>
-                                        <?php else: ?>
-                                            <div class="text-content"><?php the_content();?></div>
-                                        <?php endif; ?>
-                                    <?php
+
+                                            $paragraph_count ++;
+                                          }
+                                        }
+                                        else {
+                                          echo $content;
+                                          echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
+                                        }
                                       }
-                                      else if ($lw_primary_medium == 'gallery') {
-                                        last_word_gallery();
+                                      else {
+                                        the_content();
                                       }
-                                    ?>
+
+                                      wp_link_pages(array(
+                                        'before'      => '<div class="page-links"><span class="page-links-title">Pages:</span>',
+                                        'after'       => '</div>',
+                                        'link_before' => '<span>',
+                                        'link_after'  => '</span>',
+                                        'pagelink'    => '<span class="screen-reader-text">Page </span>%',
+                                        'separator'   => '<span class="screen-reader-text">, </span>',
+                                      ));
+
+                                      echo '</div>';
+                                    }
+                                  ?>
                                 </div>
                             </div>
                             <div class="comment-post">
