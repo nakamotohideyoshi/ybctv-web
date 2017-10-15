@@ -62,13 +62,34 @@ class last_word_gallery {
       ?>
       <img class="gallery-icon" src="<?php echo plugin_dir_url(__FILE__); ?>/images/gallery-icon.png" alt="Gallery" />
       <?php
+        $current_blog = get_current_blog_id();
+        $nav_link_background = '';
+
+        switch ($current_blog) {
+          case 2 :
+            $nav_link_background = 'nav-pa';
+            break;
+          case 3 :
+            $nav_link_background = 'nav-ia';
+            break;
+          case 4 :
+            $nav_link_background = 'nav-fsa';
+            break;
+          case 5 :
+            $nav_link_background = 'nav-ei';
+            break;
+          default :
+            $nav_link_background = 'nav-pa';
+            break;
+        }
+
         // Prev/Next links
         if ($current_position != count($gallery)) {
-          echo '<a class="image-next" href="' . home_url($wp->request) . '?gallery-image=' . ($current_position + 1) . '"><img src="' . plugin_dir_url(__FILE__) . '/images/arrow-right.png" /></a>';
+          echo '<a class="image-next ' . $nav_link_background . '" href="' . home_url($wp->request) . '?gallery-image=' . ($current_position + 1) . '"><img src="' . plugin_dir_url(__FILE__) . '/images/arrow-right.png" /></a>';
         }
 
         if ($current_position > 1) {
-          echo '<a class="image-prev" href="' . home_url($wp->request) . '?gallery-image=' . ($current_position - 1) . '"><img src="' . plugin_dir_url(__FILE__) .  '/images/arrow-left.png" /></a>';
+          echo '<a class="image-prev ' . $nav_link_background . '" href="' . home_url($wp->request) . '?gallery-image=' . ($current_position - 1) . '"><img src="' . plugin_dir_url(__FILE__) .  '/images/arrow-left.png" /></a>';
         }
 
         // Image links
