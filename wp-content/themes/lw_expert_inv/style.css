@@ -2724,6 +2724,9 @@ article.comment {
     }
 }
 
+@media (min-width: 1200px) {
+  #menu-footer-menu #menu-item-3756 { display: none; }
+}
 
 @media screen (min-width:992px) and (max-width: 1200px) {
   .list-last-new .loop-list .content-des h3 {
@@ -2944,6 +2947,10 @@ article.comment {
 
     #multimediaright {
       padding-bottom: 25px;
+    }
+
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
     }
 
     .flex-control-paging li a{
@@ -3183,6 +3190,11 @@ article.comment {
       padding-bottom: 10px;
       border-bottom: 5px solid #f2f2f2;
     }
+
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
+    }
+
     .list-new-analysis .loop-list .content-des{
         background: #f2f2f2;
         margin-bottom: 10px;

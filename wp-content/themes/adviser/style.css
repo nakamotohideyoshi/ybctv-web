@@ -2696,7 +2696,11 @@ article.comment {
   }
 }
 
-@media screen (min-width:992px) and (max-width: 1200px) {
+@media (min-width: 1200px) {
+  #menu-menu-footer #menu-item-18311{ display: none; }
+}
+
+@media screen (min-width: 992px) and (max-width: 1200px) {
   .list-last-new .loop-list .content-des h3 {
     font-size: 12px;
   }
@@ -2843,6 +2847,7 @@ article.comment {
     .header-content{
         margin-right: 0;
     }
+
     .flexslider-spon{
       max-width: 100%;
     }
@@ -2904,9 +2909,13 @@ article.comment {
       padding: 10px;
       background-color: #e0e0e0;
     }
-
+    
     #multimediaright {
       padding-bottom: 25px;
+    }
+
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
     }
 
     .flex-control-paging li a{
@@ -3145,6 +3154,11 @@ article.comment {
       padding-bottom: 10px;
       border-bottom: 5px solid #f2f2f2;
     }
+
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
+    }
+
     .list-new-analysis .loop-list .content-des{
         background: #f2f2f2;
         margin-bottom: 10px;

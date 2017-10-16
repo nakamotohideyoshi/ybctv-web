@@ -2835,6 +2835,11 @@ article.comment {
     }
 }
 
+
+@media (min-width: 1200px) {
+  #menu-menu-footer #menu-item-16456 { display: none; }
+}
+
 @media screen and (min-width: 768px) and (max-width: 1439px) {
     body {
       overflow-x: hidden;
@@ -3047,6 +3052,10 @@ article.comment {
       padding-bottom: 25px;
     }
 
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
+    }
+
     .flex-control-paging li a{
       width: 18px;
       height: 18px;
@@ -3198,7 +3207,7 @@ article.comment {
     }
 
     .logo {
-        padding: 10px 10px;
+        padding: 11px 10px;
         margin-top: 6px;
         background: #fff;
     }
@@ -3287,6 +3296,11 @@ article.comment {
       padding-bottom: 10px;
       border-bottom: 5px solid #f2f2f2;
     }
+
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
+    }
+
     .list-new-analysis .loop-list .content-des{
         background: #f2f2f2;
         margin-bottom: 10px;
