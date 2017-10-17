@@ -2846,6 +2846,10 @@ article.comment {
     display: block;
   }
 
+  .header-content {
+    width: 100%;
+  }
+
   .multimedia-title .view-more {
     bottom: 30px;
     right: 0;
@@ -2871,6 +2875,11 @@ article.comment {
   
   .home .most-popular,
   .content-left .most-popular { padding:0; }
+
+  .list-new-analysis .loop-list .content-image img, 
+  .analysis-list .loop-list .content-image img {
+    max-height: 100%;
+  }
 }
 
 @media screen and (max-width: 991px) {
@@ -2890,6 +2899,10 @@ article.comment {
    .sf-menu li.menu-item-has-children.sfHover .sub-menu {
      
     position: static; 
+  }
+
+  .all-new-analysis .content-right {
+    padding-left: 0;
   }
 }
 
@@ -2931,6 +2944,11 @@ article.comment {
     height: auto;
   }
 
+  .list-new-analysis .loop-list .content-image img, 
+  .analysis-list .loop-list .content-image img {
+    max-height: 100%;
+  }
+
   .btn-sp button{
         display: block;
     }
@@ -2940,10 +2958,15 @@ article.comment {
     }
     .header-content{
         margin-right: 0;
+        width: 100%;
     }
 
     .flexslider-spon{
       max-width: 100%;
+    }
+
+    .last-new h2.toptitle {
+      display: none;
     }
 
     .sf-menu li {
@@ -3238,6 +3261,11 @@ article.comment {
     .box-analysis h2{
         float: left;
         margin-right: 10px;
+    }
+
+    .list-new-analysis .loop-list .content-image img, 
+    .analysis-list .loop-list .content-image img {
+      max-height: 100%;
     }
 
     .analysis-list .loop-list {

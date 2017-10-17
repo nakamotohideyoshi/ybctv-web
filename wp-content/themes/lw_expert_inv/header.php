@@ -98,7 +98,7 @@
               ?>
             </div>
           </div>
-          <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
+          <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
             <div class="header-content">
               <div class="header-top clearfix">
                 <div class="btn-sp">
