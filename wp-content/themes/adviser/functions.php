@@ -325,7 +325,7 @@ if (function_exists('register_nav_menu')) {
  * Kommissar font
  */
 function enqueue_kommissar_font() {
- wp_enqueue_style('kommissar-font', THEME_PATH . '/fonts/style.css', array(), '1.0.0');
+ wp_enqueue_style('kommissar-font', THEME_PATH . '/fonts/style.min.css', array(), '1.0.0');
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_kommissar_font');
@@ -673,4 +673,86 @@ function disable_admin_bar() {
         add_filter('show_admin_bar', '__return_false');
     }
 }
+
+//Set custom logo on login/l
+function custom_loginlogo() {
+echo '<style type="text/css">
+h1 a {width: 150px !important;background-size: contain !important;background-image: url('.get_bloginfo('template_directory').'/images/Portfolio-Advisor-logo.svg) !important; }
+</style>';
+}
+add_action('login_head', 'custom_loginlogo');
+
+// fixes "Lost Password?" URLs on login page
+add_filter("lostpassword_url", function ($url, $redirect) { 
+  
+  $args = array( 'action' => 'lostpassword' );
+  if ( !empty($redirect) )
+    $args['redirect_to'] = $redirect;
+  return add_query_arg( $args, site_url('wp-login.php') );
+}, 10, 2);
+
+// fixes other password reset related urls
+add_filter( 'network_site_url', function($url, $path, $scheme) {
+  
+    if (stripos($url, "action=lostpassword") !== false)
+    return site_url('wp-login.php?action=lostpassword', $scheme);
+  
+    if (stripos($url, "action=resetpass") !== false)
+    return site_url('wp-login.php?action=resetpass', $scheme);
+  
+  return $url;
+}, 10, 3 );
+
+// fixes URLs in email that goes out.
+add_filter("retrieve_password_message", function ($message, $key) {
+    return str_replace(get_site_url(1), get_site_url(), $message);
+}, 10, 2);
+
+// fixes email title
+add_filter("retrieve_password_title", function($title) {
+  return "[" . wp_specialchars_decode(get_option('blogname'), ENT_QUOTES) . "] Password Reset";
+});
+
+/**
+ * Redirect user after successful login.
+ *
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+ * @param object $user Logged user's data.
+ * @return string
+ */
+
+function my_login_redirect( $redirect_to, $request, $user ) {
+  //is there a user to check?
+  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    //check for admins, editor or authors
+    if ( in_array( 'administrator', $user->roles ) || in_array( 'author', $user->roles ) || in_array( 'editor', $user->roles )) {
+      // redirect them to the default place
+      return $redirect_to;
+    } else {
+      return home_url();
+    }
+  } else {
+    return $redirect_to;
+  }
+}
+
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
+
+/**
+ * Redirect subscribers to home page from admin page
+ *
+ * This function is attached to the 'admin_init' action hook.
+ */
+function redirect_non_admin_users() {
+  $user = wp_get_current_user();
+  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+    //check for subscriber
+    if ( in_array( 'subscriber', $user->roles ) ) {
+        wp_redirect( home_url() );
+        exit;
+    }
+  }
+}
+add_action( 'admin_init', 'redirect_non_admin_users' );
 ?>
