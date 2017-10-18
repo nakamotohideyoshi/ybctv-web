@@ -1,0 +1,40 @@
+.new-password {
+  margin-top: 20px;
+}
+.new-password table {
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.new-password table td {
+  padding-top: 7px;
+  vertical-align: top;
+  border: none;
+}
+
+.new-password input[type=text], .new-password input[type=password] {
+  margin: 0;
+  width: 96%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.new-password-label {
+  padding-right: 10px;
+  vertical-align: middle;
+}
+
+#submit-new-password {
+  padding: 10px 20px;
+}
+
+.new-password-status {
+  border: solid 1px #c00;
+  background-color: #FFEBE8;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
