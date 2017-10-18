@@ -116,21 +116,261 @@ class last_word_user_meta {
           <th>Email address</th>
           <td><?php echo get_user_meta($user->ID, 'lw_email_verified') == 'yes' ? ' <span style="color:#00dd00;">Verified</span>' : '<span style="color:#dd0000;">Not verified</span>'; ?></td>
         </tr>
+      </table>
+      <h2>Products</h2>
+      <table class="form-table">
         <tr>
-          <th>Access to Product: EI Market Intelligence</th>
+          <th colspan="2" style="padding: 0 10px 0 0;"><em>Portfolio Adviser</em></th>
+        </tr>
+        <tr>
+          <th>PA News</th>
           <td>
             <?php
-              $product_eimi = get_user_meta($user->ID, 'lw_product_ei_market_intelligence', true);
+              $product_pa_news = get_user_meta($user->ID, 'lw_product_pa_news', true);
               if (current_user_can('manage_options')) {
               ?>
-                <input type="checkbox" name="lw_product_ei_market_intelligence" id="lw_product_ei_market_intelligence" value="yes"<?php echo $product_eimi == 'yes' ? ' checked' : ''; ?> />
+                <input type="checkbox" name="lw_product_pa_news" id="lw_product_pa_news" value="yes"<?php echo $product_pa_news == 'yes' ? ' checked' : ''; ?> />
               <?php
               }
               else {
-                echo $product_eimi == 'yes' ? 'Yes' : 'No';
+                echo $product_pa_news == 'yes' ? 'Yes' : 'No';
               }
             ?>
           </td>
+        </tr>
+        <tr>
+          <th>PA Magazine <em style="font-size: 11px;">(Print and Digital)</em></th>
+          <td>
+            <?php
+              $product_pa_magazine_print_digital = get_user_meta($user->ID, 'lw_product_pa_magazine_print_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_pa_magazine_print_digital" id="lw_product_pa_magazine_print_digital" value="yes"<?php echo $product_pa_magazine_print_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_pa_magazine_print_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>PA Magazine <em style="font-size: 11px;">(Digital only)</em></th>
+          <td>
+            <?php
+              $product_pa_magazine_digital = get_user_meta($user->ID, 'lw_product_pa_magazine_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_pa_magazine_digital" id="lw_product_pa_magazine_digital" value="yes"<?php echo $product_pa_magazine_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_pa_magazine_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>PA Magazine Free <em style="font-size: 11px;">(Print and Digital)</em></th>
+          <td>
+            <?php
+              $product_pa_magazine_free_print_digital = get_user_meta($user->ID, 'lw_product_pa_magazine_free_print_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_pa_magazine_free_print_digital" id="lw_product_pa_magazine_free_print_digital" value="yes"<?php echo $product_pa_magazine_free_print_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_pa_magazine_free_print_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>PA Magazine Free <em style="font-size: 11px;">(Digital only)</em></th>
+          <td>
+            <?php
+              $product_pa_magazine_free_digital = get_user_meta($user->ID, 'lw_product_pa_magazine_free_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_pa_magazine_free_digital" id="lw_product_pa_magazine_free_digital" value="yes"<?php echo $product_pa_magazine_free_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_pa_magazine_free_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>PA Magazine IRE <em style="font-size: 11px;">(Print and Digital)</em></th>
+          <td>
+            <?php
+              $product_pa_magazine_ire_print_digital = get_user_meta($user->ID, 'lw_product_pa_magazine_ire_print_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_pa_magazine_ire_print_digital" id="lw_product_pa_magazine_ire_print_digital" value="yes"<?php echo $product_pa_magazine_ire_print_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_pa_magazine_ire_print_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>PA Magazine IRE <em style="font-size: 11px;">(Digital only)</em></th>
+          <td>
+            <?php
+              $product_pa_magazine_ire_digital = get_user_meta($user->ID, 'lw_product_pa_magazine_ire_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_pa_magazine_ire_digital" id="lw_product_pa_magazine_ire_digital" value="yes"<?php echo $product_pa_magazine_ire_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_pa_magazine_ire_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th colspan="2" style="padding: 15px 10px 0 0;"><em>International Adviser</em></th>
+        </tr>
+        <tr>
+          <th>IA News</th>
+          <td>
+            <?php
+              $product_ia_news = get_user_meta($user->ID, 'lw_product_ia_news', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ia_news" id="lw_product_ia_news" value="yes"<?php echo $product_ia_news == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ia_news == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>IA Magazine <em style="font-size: 11px;">(Print and Digital)</em></th>
+          <td>
+            <?php
+              $product_ia_magazine_print_digital = get_user_meta($user->ID, 'lw_product_ia_magazine_print_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ia_magazine_print_digital" id="lw_product_ia_magazine_print_digital" value="yes"<?php echo $product_ia_magazine_print_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ia_magazine_print_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>IA Magazine <em style="font-size: 11px;">(Digital only)</em></th>
+          <td>
+            <?php
+              $product_ia_magazine_digital = get_user_meta($user->ID, 'lw_product_ia_magazine_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ia_magazine_digital" id="lw_product_ia_magazine_digital" value="yes"<?php echo $product_ia_magazine_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ia_magazine_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th colspan="2" style="padding: 15px 10px 0 0;"><em>Fund Selector Asia</em></th>
+        </tr>
+        <tr>
+          <th>FSA News</th>
+          <td>
+            <?php
+              $product_fsa_news = get_user_meta($user->ID, 'lw_product_fsa_news', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_fsa_news" id="lw_product_fsa_news" value="yes"<?php echo $product_fsa_news == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_fsa_news == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th colspan="2" style="padding: 15px 10px 0 0;"><em>Expert Investor Europe</em></th>
+        </tr>
+        <tr>
+          <th>EI News</th>
+          <td>
+            <?php
+              $product_ei_news = get_user_meta($user->ID, 'lw_product_ei_news', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ei_news" id="lw_product_ei_news" value="yes"<?php echo $product_ei_news == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ei_news == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>EI Magazine <em style="font-size: 11px;">(Print and Digital)</em></th>
+          <td>
+            <?php
+              $product_ei_magazine_print_digital = get_user_meta($user->ID, 'lw_product_ei_magazine_print_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ei_magazine_print_digital" id="lw_product_ei_magazine_print_digital" value="yes"<?php echo $product_ei_magazine_print_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ei_magazine_print_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>EI Magazine <em style="font-size: 11px;">(Digital only)</em></th>
+          <td>
+            <?php
+              $product_ei_magazine_digital = get_user_meta($user->ID, 'lw_product_ei_magazine_digital', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ei_magazine_digital" id="lw_product_ei_magazine_digital" value="yes"<?php echo $product_ei_magazine_digital == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ei_magazine_digital == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
+        <tr>
+          <th>EI Market Intelligence</th>
+          <td>
+            <?php
+              $product_ei_market_intelligence = get_user_meta($user->ID, 'lw_product_ei_market_intelligence', true);
+              if (current_user_can('manage_options')) {
+              ?>
+                <input type="checkbox" name="lw_product_ei_market_intelligence" id="lw_product_ei_market_intelligence" value="yes"<?php echo $product_ei_market_intelligence == 'yes' ? ' checked' : ''; ?> />
+              <?php
+              }
+              else {
+                echo $product_ei_market_intelligence == 'yes' ? 'Yes' : 'No';
+              }
+            ?>
+          </td>
+        </tr>
       </table>
     <?php
   }
@@ -147,6 +387,104 @@ class last_word_user_meta {
       $this->process_lw_user_meta($user_id, 'lw_linkedin_url', $_POST['lw_linkedin_url']);
       $this->process_lw_user_meta($user_id, 'lw_twitter_username', $_POST['lw_twitter_username']);
       $this->process_lw_user_meta($user_id, 'lw_google_plus_url', $_POST['lw_google_plus_url']);
+
+      if (isset($_POST['lw_product_pa_news'])) {
+        update_user_meta($user_id, 'lw_product_pa_news', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_news', '');
+      }
+
+      if (isset($_POST['lw_product_pa_magazine_print_digital'])) {
+        update_user_meta($user_id, 'lw_product_pa_magazine_print_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_magazine_print_digital', '');
+      }
+
+      if (isset($_POST['lw_product_pa_magazine_digital'])) {
+        update_user_meta($user_id, 'lw_product_pa_magazine_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_magazine_digital', '');
+      }
+
+      if (isset($_POST['lw_product_pa_magazine_free_print_digital'])) {
+        update_user_meta($user_id, 'lw_product_pa_magazine_free_print_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_magazine_free_print_digital', '');
+      }
+
+      if (isset($_POST['lw_product_pa_magazine_free_digital'])) {
+        update_user_meta($user_id, 'lw_product_pa_magazine_free_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_magazine_free_digital', '');
+      }
+
+      if (isset($_POST['lw_product_pa_magazine_ire_print_digital'])) {
+        update_user_meta($user_id, 'lw_product_pa_magazine_ire_print_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_magazine_ire_print_digital', '');
+      }
+
+      if (isset($_POST['lw_product_pa_magazine_ire_digital'])) {
+        update_user_meta($user_id, 'lw_product_pa_magazine_ire_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_pa_magazine_ire_digital', '');
+      }
+
+      if (isset($_POST['lw_product_ia_news'])) {
+        update_user_meta($user_id, 'lw_product_ia_news', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ia_news', '');
+      }
+
+      if (isset($_POST['lw_product_ia_magazine_print_digital'])) {
+        update_user_meta($user_id, 'lw_product_ia_magazine_print_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ia_magazine_print_digital', '');
+      }
+
+      if (isset($_POST['lw_product_ia_magazine_digital'])) {
+        update_user_meta($user_id, 'lw_product_ia_magazine_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ia_magazine_digital', '');
+      }
+
+      if (isset($_POST['lw_product_fsa_news'])) {
+        update_user_meta($user_id, 'lw_product_fsa_news', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_fsa_news', '');
+      }
+
+      if (isset($_POST['lw_product_ei_news'])) {
+        update_user_meta($user_id, 'lw_product_ei_news', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ei_news', '');
+      }
+
+      if (isset($_POST['lw_product_ei_magazine_print_digital'])) {
+        update_user_meta($user_id, 'lw_product_ei_magazine_print_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ei_magazine_print_digital', '');
+      }
+
+      if (isset($_POST['lw_product_ei_magazine_digital'])) {
+        update_user_meta($user_id, 'lw_product_ei_magazine_digital', 'yes');
+      }
+      else {
+        update_user_meta($user_id, 'lw_product_ei_magazine_digital', '');
+      }
 
       if (isset($_POST['lw_product_ei_market_intelligence'])) {
         update_user_meta($user_id, 'lw_product_ei_market_intelligence', 'yes');
