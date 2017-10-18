@@ -8,6 +8,7 @@
 /wp-includes
 /image-archive
 /xml
+/csv
 /wp-content/debug.log
 /wp-content/index.php
 /wp-content/plugins/*
