@@ -116,7 +116,7 @@
                       if (is_user_logged_in()) {
                     ?>
                     <li class="user-login-profile">
-                      <a href="#">
+                      <a href="<?php echo home_url();?>/your-profile">
                         <img src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" class="hidden"/>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
                           <style type="text/css">
