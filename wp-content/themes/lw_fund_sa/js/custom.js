@@ -158,5 +158,18 @@
       });
     });
 
+    // Some devices don't support flexbox, let's make the height equal
+    var $contentFooter = $('.content-footer .row-eq-height'),
+        $firstCol = $contentFooter.find('.col-lg-10');
+    setTimeout(function(){
+        $contentFooter.find('.col-lg-2').height( $firstCol.height() );
+    }, 200);
+
+    $( window ).resize(function() {
+        
+      $contentFooter.find('.col-lg-2').height( $firstCol.height() );
+       
+    });
+
     }); // End document ready
 })(this.jQuery);

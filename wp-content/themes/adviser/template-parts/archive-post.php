@@ -34,9 +34,10 @@
           <a href="<?php echo get_category_link($category->term_id);?>"><?php echo $category->name;?></a>
           <?php if($type): ?>
             <a href="<?php echo get_term_link($terms[0]->term_id);?>">  
-            <?php echo ' | '.$type; ?>
+            <?php echo ($category->name) ? ' | ' : ''; ?>
+            <?php echo $type; ?>
             </a>
-          <?php endif; ?>
+          <?php endif; ?>   
           <span><?php the_time('j M y');?></span>
         </p>
         <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>

@@ -2826,6 +2826,40 @@ article.comment {
     }
 }
 
+@media screen and (min-width: 992px) and (max-width: 1024px) {
+  
+  /* Tablet landscape ads right sidebar fix - start */
+  #main .all-new-analysis .col-lg-9:first-child {
+    width: calc(100% - 300px);
+    padding-right: 25px;
+  }
+
+  #main .right-side-wrap {
+    width: 300px;
+    padding: 0
+  }
+
+  #main .right-side-wrap .content-right{
+    padding-left: 0;
+  }
+
+  .content-page .container > .col-lg-6 {
+    width: calc(75% - 300px);
+    padding-right: 20px;
+  }
+
+  .content-page .container .right-side-wrap .content-right{
+    padding-left: 0;
+  }
+
+  .content-page .container .right-side-wrap {
+    padding: 0;
+    width: 300px;
+  }
+  /* Tablet landscape ads right sidebar fix - end */
+
+}
+
 @media screen and (min-width: 768px) and (max-width: 1024px) { 
 
   .slider-multimedia ul li .content-image,
@@ -2883,6 +2917,10 @@ article.comment {
 }
 
 @media screen and (max-width: 991px) {
+  .logo img {
+    width: 100%;
+  }
+  
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
     display: block; 
     width: 100%;

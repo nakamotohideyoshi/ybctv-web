@@ -44,7 +44,7 @@ if ($errorpageid !== 0) {
                 <a href="<?php echo home_url(); ?>" title="<?php echo __('Go to the Home Page', TEXT_DOMAIN); ?>"><?php echo __('Go to the Home Page', TEXT_DOMAIN); ?></a>
             </div><!-- .page-content -->
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
           <?php get_sidebar('right');?>
         </div>
       </div>

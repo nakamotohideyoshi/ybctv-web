@@ -685,15 +685,15 @@ add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
  *
  * This function is attached to the 'admin_init' action hook.
  */
-function redirect_non_admin_users() {
-  $user = wp_get_current_user();
-  if ( isset( $user->roles ) && is_array( $user->roles ) ) {
-    //check for subscriber
-    if ( in_array( 'subscriber', $user->roles ) ) {
-        wp_redirect( home_url() );
-        exit;
-    }
-  }
-}
-add_action( 'admin_init', 'redirect_non_admin_users' );
+// function redirect_non_admin_users() {
+//   $user = wp_get_current_user();
+//   if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+//     //check for subscriber
+//     if ( in_array( 'subscriber', $user->roles ) ) {
+//         wp_redirect( home_url() );
+//         exit;
+//     }
+//   }
+// }
+// add_action( 'admin_init', 'redirect_non_admin_users' );
 ?>

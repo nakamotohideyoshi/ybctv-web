@@ -763,7 +763,7 @@ get_header(); ?>
               </div>
             </div>
             <?php  } endif; ?>
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
             <div class="content-right">
               <?php lastWordAdUnit('rhs-hpu-2'); ?>
             </div>
