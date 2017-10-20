@@ -16,7 +16,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1 );
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 2277);
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>

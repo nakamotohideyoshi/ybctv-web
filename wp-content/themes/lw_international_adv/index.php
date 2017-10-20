@@ -17,7 +17,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1);
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 12021);
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -589,7 +589,7 @@ get_header(); ?>
                   <div class="content-des">
                     <p class="name-cat"><a href="<?php the_permalink();?>">Magazine</a></p>
                     <a href="<?php the_permalink(); ?>">
-                      <h3>Portfolio Adviser <span>-</span></h3>
+                      <h3>International Adviser <span>-</span></h3>
                       <span class="date"><?php echo get_the_title(); ?></span>
                     </a>
                     <?php echo the_excerpt(); ?>
@@ -625,7 +625,7 @@ get_header(); ?>
                         </div>
                         <div class="content-des">
                           <a href="<?php the_permalink();?>">
-                            Portfolio Adviser<br />
+                            International Adviser<br />
                             <?php echo get_the_title(); ?>
                           </a>
                         </div>

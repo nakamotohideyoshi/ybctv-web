@@ -17,7 +17,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1 );
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 2681);
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -317,8 +317,8 @@ get_header(); ?>
     </section>
     <?php  } ?>
     <?php $variable_news = get_option('toggle_variable');
-          if ($variable_news == "1") { ?>
-        <section id="variable-news" class="variable-news">
+          if ($variable_news == "1") { //remove hidden class from section?>
+        <section id="variable-news" class="variable-news hidden">
         <div class="container">
               <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">

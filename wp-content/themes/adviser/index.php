@@ -17,7 +17,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 17 );
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 8223 );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -246,7 +246,7 @@ get_header(); ?>
               </div>
             </div>
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
             <?php get_sidebar('right');?>
           </div>
         </div>
