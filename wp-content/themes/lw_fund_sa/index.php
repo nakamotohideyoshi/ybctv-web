@@ -428,7 +428,7 @@ get_header(); ?>
             <?php echo do_shortcode('[tmm name="editorial-board"]'); ?>
 
           </div>
-          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
             <div class="content-right">
               <?php lastWordAdUnit('rhs-hpu-2'); ?>
               <?php lastWordAdUnit('rhs-hpu-3'); ?>

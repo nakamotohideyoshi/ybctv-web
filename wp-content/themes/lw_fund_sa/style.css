@@ -1925,6 +1925,12 @@ form[name="register"] input[type="submit"] {
   color: #e40233;
 }
 
+.content-single p.sponsored{
+  font-size: 12px;
+  margin: 5px 0;
+  padding-top: 0;
+}
+
 .content-single .tag-post {
   text-transform: uppercase;
   font-size: 12px;
@@ -2829,7 +2835,8 @@ article.comment {
 @media screen and (min-width: 992px) and (max-width: 1024px) {
   
   /* Tablet landscape ads right sidebar fix - start */
-  #main .all-new-analysis .col-lg-9:first-child {
+  #main .all-new-analysis .col-lg-9:first-child,
+  #main .team-members .col-lg-9:first-child {
     width: calc(100% - 300px);
     padding-right: 25px;
   }
@@ -2861,6 +2868,33 @@ article.comment {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) { 
+
+  .site-main .tmm .tmm_2_columns .tmm_member .tmm_photo, .site-main .tmm .tmm_3_columns .tmm_member .tmm_photo, .home .tmm .tmm_4_columns .tmm_member .tmm_photom {
+    width: 90px;
+    height: 90px;
+  }
+
+  .site-main .tmm .tmm_2_columns .tmm_member, .site-main .tmm .tmm_3_columns .tmm_member, 
+  .site-main .tmm .tmm_4_columns .tmm_member {
+    margin-left: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 44%;
+    /*margin-right: 0;*/
+  }
+
+  .team-members .tmm .tmm_member .tmm_textblock {
+    width: 60%;
+  }
+
+  .col-lg-6 .page-content .tmm .tmm_container .tmm_member {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .team-members .tmm .tmm_member .tmm_textblock {
+    width: 60%;
+  }
 
   .slider-multimedia ul li .content-image,
   .slider-multimedia ul li .content-des {

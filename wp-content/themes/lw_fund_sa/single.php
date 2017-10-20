@@ -133,6 +133,12 @@ get_header(); ?>
                               <?php }?>
                               <h1 class="title-single"><?php the_title();?></h1>
                               <?php
+                                $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                                if($lw_sponsored): 
+                              ?>
+                              <p class="sponsored">SPONSORED BY: <?php echo $lw_sponsored; ?></p>
+                              <?php endif;?>
+                              <?php
                                 $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
                                 if ($tag_list) {
                                   echo $tag_list;

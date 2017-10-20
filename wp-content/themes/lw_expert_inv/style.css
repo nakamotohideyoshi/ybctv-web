@@ -827,16 +827,16 @@ h2.title{
 }
 
 .header-top a:hover svg {
-  fill: #69b42e;
-  stroke: #69b42e;
+  fill: #f9ae00;
+  stroke: #f9ae00;
 }
 
 .header-top a:hover svg .st0 {
-  stroke: #69b42e;
+  stroke: #f9ae00;
 }
 
 .header-top a:hover svg .st1, .header-top a:hover svg .st2 {
-  fill: #69b42e;
+  fill: #f9ae00;
 }
 
 /* Search Box */
