@@ -17,7 +17,7 @@ get_header(); ?>
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
                     <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 17 );
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1 );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -58,7 +58,7 @@ get_header(); ?>
                       <div class="row">
                       <?php
                         $count =0;
-                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6, 'category' => 17 );
+                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6 );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post ); $count++;
                           if ($count == 2) {
