@@ -2,6 +2,7 @@
 /*
  * The Header for our theme.
  */
+ last_word_redirect_404();
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]>

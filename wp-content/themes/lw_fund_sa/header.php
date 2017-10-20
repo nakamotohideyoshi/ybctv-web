@@ -2,6 +2,7 @@
 /*
  * The Header for our theme.
  */
+ last_word_redirect_404();
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]>
@@ -117,7 +118,7 @@
                     ?>
                     <li class="user-login-profile">
                       <a href="<?php echo home_url();?>/your-profile">
-                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" /> 
+                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Sign-in-icon-grey.svg' ?>" alt="" />
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
                           <style type="text/css">
                             .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
@@ -138,7 +139,7 @@
                     ?>
                     <li class="user-login-register">
                       <a href="<?php echo home_url();?>/register">
-                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Register-icon-grey.svg' ?>" alt="" /> 
+                        <img class="hidden" src="<?php echo THEME_PATH.'/images/svg/Register-icon-grey.svg' ?>" alt="" />
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
                           <style type="text/css">
                             .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}

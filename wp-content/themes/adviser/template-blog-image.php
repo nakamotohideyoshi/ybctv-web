@@ -14,7 +14,7 @@
                         <?php get_sidebar('left');?>
                     </div>
                 </div>
-                <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
                     <div class="bread">
                         <?php if(function_exists('bcn_display'))
                         {
@@ -124,7 +124,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
                     <?php get_sidebar('right');?>
                 </div>
             </div>
