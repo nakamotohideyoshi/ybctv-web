@@ -530,13 +530,13 @@ add_filter('default_hidden_meta_boxes', 'show_hidden_meta_fields', 10, 2);
 * Add Page break button to TinyMCE
 */
 function add_page_break_button($buttons, $id) {
-  if ('content' != $id) {
-    return $buttons;
-  }
+	if ('content' != $id) {
+		return $buttons;
+	}
 
-  array_splice($buttons, 13, 0, 'wp_page');
+	array_splice($buttons, 13, 0, 'wp_page');
 
-  return $buttons;
+	return $buttons;
 }
 
 add_filter('mce_buttons', 'add_page_break_button', 1, 2);
@@ -640,8 +640,8 @@ h1 a {width: 170px !important;background-size: contain !important;background-ima
 add_action('login_head', 'custom_loginlogo');
 
 // fixes "Lost Password?" URLs on login page
-add_filter("lostpassword_url", function ($url, $redirect) { 
-  
+add_filter("lostpassword_url", function ($url, $redirect) {
+
   $args = array( 'action' => 'lostpassword' );
   if ( !empty($redirect) )
     $args['redirect_to'] = $redirect;
@@ -650,13 +650,13 @@ add_filter("lostpassword_url", function ($url, $redirect) {
 
 // fixes other password reset related urls
 add_filter( 'network_site_url', function($url, $path, $scheme) {
-  
+
     if (stripos($url, "action=lostpassword") !== false)
     return site_url('wp-login.php?action=lostpassword', $scheme);
-  
+
     if (stripos($url, "action=resetpass") !== false)
     return site_url('wp-login.php?action=resetpass', $scheme);
-  
+
   return $url;
 }, 10, 3 );
 
@@ -712,4 +712,18 @@ add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
 //   }
 // }
 // add_action( 'admin_init', 'redirect_non_admin_users' );
+
+
+/*
+ * Force URLs in srcset attributes into HTTPS scheme.
+*/
+
+function ssl_srcset( $sources ) {
+  foreach ( $sources as &$source ) {
+    $source['url'] = set_url_scheme( $source['url'], 'https' );
+  }
+
+  return $sources;
+}
+add_filter( 'wp_calculate_image_srcset', 'ssl_srcset' );
 ?>
