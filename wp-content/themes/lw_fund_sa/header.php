@@ -230,7 +230,6 @@
                   </a>
                 </div>
               </div>
-              </div>
               <nav id="primary-navigation" class="site-navigation" role="navigation">
                 <a class="home-url" href="<?php echo get_home_url(); ?>"></a>
                 <div class="primary-navigation">
