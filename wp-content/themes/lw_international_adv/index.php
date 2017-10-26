@@ -518,7 +518,7 @@ get_header(); ?>
       <div class="container">
         <div id="feature-sponsored-item" class="owl-carousel owl-theme">
           <?php
-            $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 15 );
+            $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 30 );
             $myposts = get_posts( $args );
             foreach ( $myposts as $post ) : setup_postdata( $post );
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
@@ -542,7 +542,7 @@ get_header(); ?>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des">
-                  <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                  <?php if($lw_sponsored != '') { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
                   <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                   <p><?php echo get_excerpt(100); ?></p>
                   <a href="<?php the_permalink(); ?>" class="view-more">View more</a>
