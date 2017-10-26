@@ -347,7 +347,7 @@ add_action('wp_enqueue_scripts', 'enqueue_pagefair');
 * Search filter applied to only return posts (articles)
 */
 function search_filter($query) {
-  if ($query->is_search) {
+  if ($query->is_search && !is_admin()) {
     $query->set('post_type', 'post');
   }
   return $query;
