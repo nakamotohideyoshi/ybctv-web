@@ -154,6 +154,30 @@
       });
     });
 
+    $(document).on('click', '.search-view-more', function(e) {
+      e.preventDefault();
+      var button = $(this);
+      var currentPage = button.attr('page');
+      var offset = button.attr('offset');
+      var queryString = button.attr('query');
+
+      $.ajax({
+        url: ajaxsearchmore.ajaxurl,
+        type: 'post',
+        data: {
+          action: 'ajax_search_more',
+          page: currentPage,
+          offset: offset,
+          query: queryString
+        },
+        success: function(result) {
+            //alert(result);
+          $('.list-category-ajax').append(result);
+          button.attr('page', parseInt(currentPage) + 1);
+        }
+      });
+    });
+
     // Some devices don't support flexbox, let's make the height equal
     var $contentFooter = $('.content-footer .row-eq-height'),
         $firstCol = $contentFooter.find('.col-lg-10');

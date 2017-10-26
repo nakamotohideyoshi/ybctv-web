@@ -450,6 +450,7 @@ select {
 }
 
 .view-more-btn,
+.search-view-more,
 .view-more.view-more-ajax {
   background-color: #f2f2f2;
   padding: 10px 20px;
@@ -2855,7 +2856,9 @@ article.comment {
 
   #main .right-side-wrap {
     width: 300px;
-    padding: 0
+    padding: 0;
+    margin-left: 0;
+    float: right;
   }
 
   #main .right-side-wrap .content-right{
@@ -2874,6 +2877,8 @@ article.comment {
   .content-page .container .right-side-wrap {
     padding: 0;
     width: 300px;
+    margin-left: 0;
+    float: right;
   }
   /* Ads right sidebar fix - end */
 
@@ -2987,6 +2992,10 @@ article.comment {
 
   .all-new-analysis .content-right {
     padding-left: 0;
+  }
+
+  .single .content-left {
+    display: none;
   }
 }
 
@@ -3508,4 +3517,8 @@ article.comment {
     #multimediaright {
       padding-bottom: 25px;
     }
+}
+
+.site-header .container {
+  padding-right: 0!important;
 }

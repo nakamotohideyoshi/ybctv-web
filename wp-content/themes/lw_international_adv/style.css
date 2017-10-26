@@ -450,6 +450,7 @@ select {
 }
 
 .view-more-btn,
+.search-view-more,
 .view-more.view-more-ajax {
   background-color: #f2f2f2;
   padding: 10px 20px;
@@ -759,7 +760,7 @@ h2.title{
 /* Header */
 .header-content {
   background: #f2f2f2;
-  margin-right: -28px;
+  margin-right: 0px;
 }
 
 .header-top {
@@ -3528,4 +3529,8 @@ article.comment {
     #multimediaright {
       padding-bottom: 25px;
     }
+}
+
+.site-header .container {
+  padding-right: 0!important;
 }

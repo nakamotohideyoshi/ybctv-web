@@ -158,7 +158,29 @@
       });
     });
 
-    }); // End document ready
+    $(document).on('click', '.search-view-more', function(e) {
+      e.preventDefault();
+      var button = $(this);
+      var currentPage = button.attr('page');
+      var offset = button.attr('offset');
+      var queryString = button.attr('query');
+
+      $.ajax({
+        url: ajaxsearchmore.ajaxurl,
+        type: 'post',
+        data: {
+          action: 'ajax_search_more',
+          page: currentPage,
+          offset: offset,
+          query: queryString
+        },
+        success: function(result) {
+            //alert(result);
+          $('.list-category-ajax').append(result);
+          button.attr('page', parseInt(currentPage) + 1);
+        }
+      });
+    });
 
     //Faq functionality
     $('.faq-wrapper .title').on('click touch',function(){
@@ -181,4 +203,5 @@
       $contentFooter.find('.col-lg-2').height( $firstCol.height() );
        
     });
+    }); // End document ready
 })(this.jQuery);

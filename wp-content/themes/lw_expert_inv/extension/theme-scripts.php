@@ -71,6 +71,7 @@ function register_front_end_scripts()
     wp_enqueue_script('custom', THEME_PATH . '/js/custom.js', false, false, $in_footer=true);
 
     wp_localize_script('custom', 'ajaxviewmore', array('ajaxurl' => admin_url('admin-ajax.php')));
+    wp_localize_script('custom', 'ajaxsearchmore', array('ajaxurl' => admin_url('admin-ajax.php')));
 
 }
 
