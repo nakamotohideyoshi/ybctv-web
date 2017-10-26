@@ -14,6 +14,7 @@
 /wp-content/plugins/*
 !/wp-content/plugins/last-word-*
 !/wp-content/plugins/lw-import
+!/wp-content/plugins/email-builder
 /wp-content/themes/*
 !/wp-content/themes/adviser
 !/wp-content/themes/lw_expert_inv
