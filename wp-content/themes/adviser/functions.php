@@ -359,6 +359,7 @@ function ajax_view_more() {
   $category_id = (int)$_POST['category'];
   $term_id = (int)$_POST['term_id'];
   $type = $_POST['type'];
+  $author = (int)$_POST['author'];
 
   //Archive template name
   $template_name = 'post';
@@ -396,7 +397,8 @@ function ajax_view_more() {
         'offset' => ($page * $posts_per_page) + $offset,
         'cat' => $category_id,
         'orderby' => 'date',
-        'order' => 'DESC'
+        'order' => 'DESC',
+        'author' => $author
       );
     }
   }

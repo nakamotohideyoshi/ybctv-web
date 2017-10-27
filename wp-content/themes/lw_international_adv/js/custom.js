@@ -133,6 +133,7 @@
       var term_id =  button.attr('term_id');
       var meta_key = button.attr('meta_key');
       var meta_val = button.attr('meta_val');
+      var author_id = button.attr('author_id');
 
       $.ajax({
         url: ajaxviewmore.ajaxurl,
@@ -145,7 +146,8 @@
           type: type,
           term_id: term_id,
           meta_key: meta_key,
-          meta_val: meta_val
+          meta_val: meta_val,
+          author: author_id
         },
         success: function(result) {
           if(type == 'magazine'){

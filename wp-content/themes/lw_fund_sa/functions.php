@@ -360,11 +360,13 @@ function ajax_view_more() {
   $posts_per_page = 5;
   $offset = (int)$_POST['offset'];
   $category = (int)$_POST['category'];
+  $author = (int)$_POST['author'];
 
   $args = array(
     'posts_per_page' => 5,
     'offset' => ($page * $posts_per_page) + $offset,
     'cat' => $category,
+    'author' => $author,
     'orderby' => 'date',
     'order' => 'DESC'
   );

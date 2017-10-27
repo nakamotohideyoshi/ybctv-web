@@ -69,9 +69,11 @@ get_header(); ?>
         <?php $count = 0; ?>
         <div class="list-category">
           <div class="row">
-            <?php
+            <?php 
+              $authorID = get_the_author_meta('ID');
+              query_posts('orderby=date&order=DESC&posts_per_page=2&author=$authorID'); 
               if(have_posts()): while(have_posts()): the_post(); $count++;
-                if ($count <= 2) {
+                //if ($count <= 2) {
             ?>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="loop-list">
@@ -99,52 +101,27 @@ get_header(); ?>
                   </div>
                 </div>
                 <?php
-                  }
+                  //}
 
                   endwhile;endif;
+                  wp_reset_query();
                 ?>
               </div>
             </div>
             <?php $count = 0; ?>
             <div class="list-category-ajax">
               <?php
+
+                query_posts('offset=2&orderby=date&order=DESC&posts_per_page=3&author=$authorID'); 
                 if(have_posts()): while(have_posts()): the_post(); $count++;
-                  if ($count > 2) {
-              ?>
-              <div class="loop-list loop-list-load">
-                <div class="row">
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="content-image">
-                      <?php
-                        if ( has_post_thumbnail() ) {
-                          the_post_thumbnail();
-                        }
-                        else {
-                      ?>
-                      <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
-                      <?php
-                        }
-                      ?>
-                    </div>
-                  </div>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                    <div class="content-des">
-                      <p class="name-cat">
-                        <?php $category = get_the_category(); ?>
-                        <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                        <span><?php the_time('j M y');?></span>
-                      </p>
-                      <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                      <p><?php echo the_excerpt(); ?></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <?php
-                }
+                  //if ($count > 2) {
+                    include(locate_template('template-parts/archive-author.php'));
+                //}
                 endwhile;endif;
+               wp_reset_query();
               ?>
             </div>
+            <a href="#" class="view-more view-more-ajax author-ajax" page="0" offset="5" author_id="<?php echo $authorID;?>">View more</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12 right-side-wrap">

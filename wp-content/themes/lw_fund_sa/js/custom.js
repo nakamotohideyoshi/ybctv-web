@@ -141,6 +141,7 @@
       var currentPage = button.attr('page');
       var offset = button.attr('offset');
       var category = button.attr('category');
+      var author_id = button.attr('author_id');
 
       $.ajax({
         url: ajaxviewmore.ajaxurl,
@@ -149,7 +150,8 @@
           action: 'ajax_view_more',
           page: currentPage,
           offset: offset,
-          category: category
+          category: category,
+          author: author_id
         },
         success: function(result) {
           $('.list-category-ajax').append(result);

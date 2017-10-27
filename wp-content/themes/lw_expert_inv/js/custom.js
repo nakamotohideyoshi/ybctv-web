@@ -131,6 +131,7 @@
       var category = button.attr('category');
       var type = button.attr('type');
       var term_id =  button.attr('term_id');
+      var author_id = button.attr('author_id');
       
       $.ajax({
         url: ajaxviewmore.ajaxurl,
@@ -140,6 +141,7 @@
           page: currentPage,
           offset: offset,
           category: category,
+          author: author_id,
           type: type,
           portuterm_id: term_id,
         },

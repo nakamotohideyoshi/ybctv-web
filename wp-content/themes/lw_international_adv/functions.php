@@ -364,6 +364,7 @@ function ajax_view_more() {
   $term_id = (int)$_POST['term_id'];
   $meta_key = $_POST['meta_key'];
   $meta_val = $_POST['meta_val'];
+  $author = (int)$_POST['author'];
 
   //Archive template name
   $template_name = 'post';
@@ -409,6 +410,7 @@ function ajax_view_more() {
         'cat' => $category,
         'orderby' => 'date',
         'order' => 'DESC',
+        'author' => $author,
         'meta_query' => array(
           array(
             'key' => $meta_key,
