@@ -9,6 +9,7 @@ const style = {
 
 const boxSource = {
   beginDrag(props) {
+    console.log('*** DRAG STARTED ****');
     props.onStaticDragged(props);
     return {
       name: props.name,
@@ -17,6 +18,7 @@ const boxSource = {
   },
 
   endDrag(props, monitor) {
+    console.log('*** DRAG ENDED ****');
     // const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
 
@@ -44,7 +46,7 @@ const boxSource = {
     const opacity = isDragging ? 0.4 : 1;
     return connectDragSource(
       <div style={{ ...style, opacity }}>
-      <button onClick={onClick} id={id} className="btn btn-primary btn-block" type="button" aria-expanded="false" aria-controls="collapseExample">
+      <button onClick={onClick} id={id} className="btn btn-primary btn-block" type="button" aria-expanded="false" aria-controls="collapseExample" disabled={!this.props.isDisabled}>
       {text}
       </button>
       </div>

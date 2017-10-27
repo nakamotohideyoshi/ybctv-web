@@ -35,7 +35,8 @@ onSaveHtml = () => {
     event.preventDefault();
     //console.dir(event.target.value);
     var val = event.target.value;
-    this.setState(prevState => ({content: val}));
+    //this.setState(prevState => ({content: val.replace(/<img[^>]*>/g,"$1 data-width='200'")}));
+     this.setState(prevState => ({content: val}));
   }
 
   handleHideModal = () => {
@@ -75,7 +76,9 @@ onSaveHtml = () => {
   class Modal extends Component {
   state = { 
     images: [],
-    selectedImages: []
+    selectedImages: [],
+    imagePage: 1,
+    totoalImages: 0
   };
   propTypes ={
       handleHideModal: React.PropTypes.func.isRequired,
@@ -104,10 +107,27 @@ onSaveHtml = () => {
   onSaveImages = () => {
     this.props.onSaveImages(this.state.selectedImages);
     }
+
+    onNextImagePage = () => {
+     this.setState(prevState => ({ imagePage : prevState.imagePage + 1}), () => {
+      this.getImages();
+     });
+    }
+
+    onPrevImagePage = () => {
+     this.setState(prevState => ({ imagePage : prevState.imagePage - 1}), () => {
+      this.getImages();
+     });
+    }
+
     componentDidMount = () => {
       $(ReactDOM.findDOMNode(this.refs.myModal)).trigger('click');
       console.dir(this);
-      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/images?prefix='+ this.props.site + '&cache='+ Guid.raw(), {
+      this.getImages();
+    }
+
+    getImages = () => {
+      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/images?prefix='+ this.props.site + '&page='+ this.state.imagePage +'&cache='+ Guid.raw(), {
         method: 'GET',
         headers: {
           'Accept': 'application/json',
@@ -116,8 +136,8 @@ onSaveHtml = () => {
       }).then(result => {
         result.json().then(val => {
           console.dir(val);
-          this.setState(prevState => ({images: []}));
-        _.map(val, (img) => {
+          this.setState(prevState => ({images: [], totalImages: val[1]}));
+        _.map(val[0], (img) => {
           this.setState(prevState => ({images: [...prevState.images, {
           src: img.guid,
           thumbnail: img.guid,
@@ -169,7 +189,13 @@ onSaveHtml = () => {
                   <h4 className="modal-title">Select Images</h4>
                 </div>
                 <div className="modal-body" style={{height: '600px', overflow: 'scroll'}}>
-                 <div style={{width: '400px', float: 'left', overflow: 'hidden'}}><Gallery images={this.state.images}  onSelectImage={this.onSelectImage}/></div>
+                 <div style={{width: '400px', float: 'left', overflow: 'hidden'}}>
+                   <Gallery images={this.state.images}  onSelectImage={this.onSelectImage}/>
+                    <ul className="pager">
+                      <li>{this.state.imagePage > 1 ? <a href="#" onClick={this.onPrevImagePage}>Previous</a> : ''}</li>
+                      <li>{this.state.imagePage < Math.ceil(this.state.totalImages / 5) ? <a href="#" onClick={this.onNextImagePage}>Next</a> : ''}</li>
+                    </ul>
+                 </div>
                  <div style={{width: '300px', float: 'right'}}>
                 <form className="form-horizontal">
                   <div className="form-group">
@@ -209,57 +235,69 @@ class CreateStatic extends Component {
 
   onChange = (value) => {
     console.log(value);
-    this.setState(prevState => ({ content: value.level.content}));
+    if(this.props.type === 'Newsletter_Subscribe'){
+      this.setState(prevState => ({content: value.level.content.replace(/(<img.*src="([^"]*)"[^>]*)>/ig,'$1 data-width=\"200">')}));
+    }
+    else{
+      this.setState(prevState => ({ content: value.level.content}));
+    }
   }
 
   onCloseStatic = () => {
     this.setState(prevState => ({content: ''}));
     $('#slider').toggleClass('open');
+    this.props.onCloseStatic();
   }
 
 
   onSaveStatic = () => {
     console.dir(this);
-    if(this.state.content.length > 1){
-      console.log(this.state.content);
-      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/static', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-         template: this.props.template,
-         type: this.props.type,
-         content: this.state.content,
-         prefix: this.props.site
-        })
-      }).then(result => {
-        result.json().then(val => {
-          this.setState(prevState => ({content: ''}));
-          $('#slider').toggleClass('open');
+    this.setState(prevState => ({ 
+      content: prevState.content.replace(/<p><br data-mce-bogus="1"><\/p>/g,"")
+    }), () => {
+      if(this.state.content.length > 1){
+        console.log(this.state.content);
+        fetch(Config.BASE_URL + '/wp-json/email-builder/v1/static', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+           template: this.props.template,
+           type: this.props.type,
+           content: this.state.content,
+           prefix: this.props.site
+          })
+        }).then(result => {
+          result.json().then(val => {
+            this.setState(prevState => ({content: ''}));
+            $('#slider').toggleClass('open');
+            this.props.onCloseStatic();
+          });
         });
-      });
-    }
-    else{
-      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/removestatic', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-         template: this.props.template,
-         type: this.props.type,
-         prefix: this.props.site
-        })
-      }).then(result => {
-        result.json().then(val => {
-          this.setState(prevState => ({content: ''}));
-          $('#slider').toggleClass('open');
+      }
+      else{
+        fetch(Config.BASE_URL + '/wp-json/email-builder/v1/removestatic', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+           template: this.props.template,
+           type: this.props.type,
+           prefix: this.props.site
+          })
+        }).then(result => {
+          result.json().then(val => {
+            this.setState(prevState => ({content: ''}));
+            $('#slider').toggleClass('open');
+            this.props.onCloseStatic();
+          });
         });
-      });
-    }
+      }
+    });
   }
 
     handleHideModal = () => {
@@ -276,10 +314,49 @@ class CreateStatic extends Component {
     }
     onSaveImages = (images) => {
       console.log(images);
+      console.log(this.state);
       $(".modal-backdrop").hide();
-      // _.each(images, (img) => {
-        this.setState(prevState => ({content: prevState.content.replace(/<img[^>]*>/g,"<img src='"+ images[0] + "'/>"), showModal: false}));
-      // });
+      if(this.state.content.length > 0 && this.state.content.indexOf('<img') >= 0){
+        if(this.props.type === 'Newsletter_Subscribe'){
+          this.setState(prevState => ({content: prevState.content.replace(/<img[^>]*>/g,"<img data-width='200' src='"+ images[0] + "'/>"), showModal: false}));
+        }
+        else{
+          this.setState(prevState => ({content: prevState.content.replace(/<img[^>]*>/g,"<img src='"+ images[0] + "'/>"), showModal: false}));
+        }
+      }
+      else{
+        if(this.props.type === 'Top_Leaderboard'){
+          let content = '<table class="device_innerblock" width="728" align="center">\
+                          <tbody>\
+                           <tr>\
+                            <td style="padding: 10px 10px 10px 10px;" align="center">\
+                              <a style="vertical-align: bottom; max-width: 100%;" href="">\
+                                <img src="'+ images[0] +'" alt="" />\
+                              </a>\
+                             </td>\
+                           </tr>\
+                          </tbody>\
+                         </table>';
+          this.setState(prevState => ({content: content, showModal: false}));
+        }
+        else if(this.props.type === 'Footer_Leaderboard'){
+          let content = '<table class="device_innerblock" width="728" align="center">\
+                          <tbody>\
+                           <tr>\
+                             <td style="padding: 10px 10px 10px 10px;" align="center">\
+                              <a href="/">\
+                               <img src="'+ images[0] +'" alt="" />\
+                              </a>\
+                             </td>\
+                           </tr>\
+                          </tbody>\
+                         </table>';
+          this.setState(prevState => ({content: content, showModal: false}));
+        }
+        else{
+          this.setState(prevState => ({content: "<img src='"+ images[0] + "'/>", showModal: false}));
+        }
+      }
     }
     onSaveHtml = (html) => {
       console.log(html[html.length - 1]);

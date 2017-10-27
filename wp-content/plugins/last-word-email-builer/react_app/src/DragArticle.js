@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';
 import { DragSource } from 'react-dnd';
 // import { getEmptyImage } from 'react-dnd-html5-backend';
@@ -9,6 +10,7 @@ const style = {
 
 const boxSource = {
   beginDrag(props) {
+    console.log('*** DRAG STARTED ****');
     props.onArticleDragged(props);
     return {
       desc: props.desc,
@@ -16,26 +18,29 @@ const boxSource = {
       isDisabled: props.isDisabled,
       name: props.name,
       category: props.category,
-      type: props.type
+      type: props.type,
+      site: props.site
       // color: props.color
     };
   },
 
+
   endDrag(props, monitor) {
+    console.log('*** DRAG ENDED ****');
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
 
-    console.dir(item);
-    console.dir(dropResult);
-    if (dropResult) {
-      // window.alert( // eslint-disable-line no-alert
-      //   `You dropped ${item.name} into ${dropResult.name}!`,
-      // );
-      props.onArticleDropped(dropResult.name, item.id,item.type);
-    }
-    else{
+    // console.dir(item);
+    // console.dir(dropResult);
+    // if (dropResult) {
+    //   // window.alert( // eslint-disable-line no-alert
+    //   //   `You dropped ${item.name} into ${dropResult.name}!`,
+    //   // );
+    //   // props.onArticleDropped(dropResult.name, item.id,item.type);
+    // }
+    // else{
      props.onCancelDrag();
-    }
+    // }
   },
 };
 

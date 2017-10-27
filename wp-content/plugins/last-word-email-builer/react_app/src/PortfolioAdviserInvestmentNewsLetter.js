@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
+import ItemTypes from './ItemTypes';
+import MostReadComponent from './MostReadComponent';
+import InvestmentComponent from './InvestmentComponent';
 import LatestNewsComponent from './LatestNewsComponent';
+import EventsComponent from './EventsComponent';
+import EditorPickComponent from './EditorPickComponent';
+import MostViewedComponent from './MostViewedComponent';
 import OtherStoriesComponent from './OtherStoriesComponent';
 import SocialMediaComponent from './SocialMediaComponent';
 import PrivacyPolicyComponent from './PrivacyPolicyComponent';
-import ItemTypes from './ItemTypes';
 import _ from 'lodash';
 import $ from 'jquery';
 import Config from './Config';
 import Guid from 'guid';
+
 
 const style = {
   background: '#E6E6E6',
@@ -21,7 +27,7 @@ const boxTarget = {
   },
 };
 
-class BreakingNewsNewsLetter extends Component {
+class PortfolioAdviserInvestmentNewsLetter extends Component {
 static propTypes = {
    connectDropTarget: PropTypes.func.isRequired,
    isOver: PropTypes.bool.isRequired,
@@ -37,78 +43,72 @@ render() {
   let overflow = 'visible';
   let animation = 'none';
   let color = '';
-  let siteLabel = '';
   let baseURL = '';
   switch(this.props.site){
    case 'wp_2_':
       color = '#64a70b';
-      siteLabel = 'Portfolio Adviser';
       baseURL = 'http://www.portfolio-adviser.com/';
      break;
    case 'wp_3_':
       color = '#0085CA';
-      siteLabel = 'International Adviser';
       baseURL = 'http://www.international-adviser.com/';
      break;
    case 'wp_4_':
       color = '#d50032';
-      siteLabel = 'Fund Selector Asia';
       baseURL = 'http://www.fundselectorasia.com/';
      break;
    case 'wp_5_':
       color = '#f2a900';
-       siteLabel = 'Expert Investor';
       baseURL = 'http://www.expertinvestoreurope.com/';
      break;
   }
-      return connectDropTarget(
-  <div style={{ ...style, border, borderStyle, overflow, animation }} id="emailInnerContent">
-
+    return connectDropTarget(
+  <div style={{ ...style, border, borderStyle, overflow , animation}} id="emailInnerContent">
   <style dangerouslySetInnerHTML={{__html: `
-              * {
-                      padding: 0px;
-                      line-height: normal;
-              }
-              .static_content a {
-                      color: #000000;
-              }
-              img {
-                      border: none;
-              }
-              .ReadMsgBody {
-                      width: 100%;
-                      background-color: #ffffff;
-              }
-              .ExternalClass {
-                      width: 100%;
-                      background-color: #ffffff;
-              }
+            * {
+                    padding: 0px;
+                    line-height: normal;
+            }
+            .static_content a {
+                    color: #000000;
+            }
+            img {
+                    border: none;
+            }
+            .ReadMsgBody {
+                    width: 100%;
+                    background-color: #ffffff;
+            }
+            .ExternalClass {
+                    width: 100%;
+                    background-color: #ffffff;
+            }
 
-              .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
-                      line-height: 100%;
-              }
-              #emailInnerContent .container p {
-              margin: 0px;
-              }
-              #emailInnerContent {
-                      width: 100%;
-                      margin: 0;
-                      padding: 0;
-                      -webkit-font-smoothing: antialiased;
-                      font-family: Arial, Helvetica, sans-serif;
-              }
-              table {
-                      border-collapse: collapse;
-                      table-layout: fixed;
-              }
-              .menu td a {
-                      color: #fff;
-                      text-decoration: none;
-                      font-size: 12px;
-              }
-              img {
-                      max-width: 100%;
-              }
+            .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+                    line-height: 100%;
+            }
+            #emailInnerContent .container p {
+            margin: 0px;
+            }
+            #emailInnerContent {
+                    width: 100%;
+                    margin: 0;
+                    padding: 0;
+                    -webkit-font-smoothing: antialiased;
+                    font-family: Arial, Helvetica, sans-serif;
+            }
+            table {
+                    border-collapse: collapse;
+                    table-layout: fixed;
+            }
+            .menu td a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 12px;
+            }
+            img {
+                    max-width: 100%;
+            }
             @media only screen and (max-width: 749px) {
                     #emailInnerContent .deviceWidth {
                             width: 620px !important;
@@ -127,8 +127,11 @@ render() {
                             width: 100% !important;
                     }
 
-                    #emailInnerContent .container {
-                     width: 100% !important;
+                    #emailInnerContent .container:first-child {
+                            width: 67% !important;
+                    }
+                    #emailInnerContent .container:last-child {
+                            width: 33% !important;
                     }
                     #emailInnerContent .container_sub.no_container {
                       width: 100%!important;
@@ -212,7 +215,7 @@ render() {
                     #emailInnerContent .header-block {
                             width: 100% !important;
                     }
-                    #emailInnerContent .header-bg-block,#emailInnerContent .footer_last   {
+                    #emailInnerContent .header-bg-block,#emailInnerContent .footer_last  {
                             width: 100% !important;
                     }
                     #emailInnerContent .footer_block tr:first-child table.more td {
@@ -266,21 +269,20 @@ render() {
             td .white a {
                         color:#fff;
             }
-    `}} />
-
-      <table data-width="100%" data-border="0" cellPadding="0" cellSpacing="0" data-align="center" style={{width: '100%', border: '0px', margin: '0px', textAlign: 'center',borderCollapse: 'collapse',tableLayout: 'fixed',msoTableLspace:'0pt', msoTableRspace:'0pt', borderSpacing:'0px'}}>
+      `}} />
+      <table data-width="100%" data-border="0" cellPadding="0" cellSpacing="0" data-align="center"  style={{textAlign: 'left', width: '100%',margin: '0px', borderCollapse: 'collapse',tableLayout: 'fixed',msoTableLspace:'0pt', msoTableRspace:'0pt', borderSpacing:'0px'}}>
                 <tr>
                                 <td>
-                                        <table cellSpacing="0" cellPadding="0" data-border="0" data-align="center" data-width="750" className="deviceWidth" style={{margin:'0px auto', width: '750px', textAlign: 'center', border: '0px', margin: '0px'}}>
+                                        <table cellSpacing="0" cellPadding="0" data-border="0" data-align="center" data-width="750" className="deviceWidth"  style={{margin:'0px auto',width:'750px',textAlign:'center'}}>
                                                 <tr>
                                                         <td>
-                                                                <table style={{textAlign: 'center', width: '100%', margin: '0px'}} className="email_send" data-align="center" data-width="100%"  cellSpacing="0" cellPadding="0">
+                                                                <table  style={{texatAlign: 'left', width: '100%', margin: '0px'}} data-align="center" className="email_send" data-width="100%"  cellSpacing="0" cellPadding="0">
                                                                         <tr>
-                                                                                {this.props.site === 'wp_2_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.portfolio-adviser.com/" style={{color:'#000000',textDecoration:'none'}}>Portfolio Adviser Newsletter</a></td>: ''}
-                                                                                {this.props.site === 'wp_3_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.international-adviser.com/" style={{color:'#000000',textDecoration:'none'}}>International Adviser Newsletter</a></td>: ''}
-                                                                                {this.props.site === 'wp_4_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.fundselectorasia.com/" style={{color:'#000000',textDecoration:'none'}}>Fund Selector Asia Newsletter</a></td>: ''}
-                                                                                {this.props.site === 'wp_5_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.expertinvestoreurope.com/" style={{color:'#000000',textDecoration:'none'}}>Expert Investor Newsletter</a></td>: ''}
-                                                                                <td data-width="398" style={{width: '398px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px',color: '#2D2C28', textAlign: 'right'}}>If you are unable to view this email, <a style={{color:'#000',textDecoration:'none'}} href="[*link.webversion_url*]">click here</a></td>
+                                                                          {this.props.site === 'wp_2_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.portfolio-adviser.com/" style={{color:'#000000',textDecoration:'none'}}>Portfolio Adviser Newsletter</a></td>: ''}
+                                                                          {this.props.site === 'wp_3_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.international-adviser.com/" style={{color:'#000000',textDecoration:'none'}}>International Adviser Newsletter</a></td>: ''}
+                                                                          {this.props.site === 'wp_4_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.fundselectorasia.com/" style={{color:'#000000',textDecoration:'none'}}>Fund Selector Asia Newsletter</a></td>: ''}
+                                                                          {this.props.site === 'wp_5_' ? <td data-align="left" data-width="280" style={{width:'280px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px', textAlign: 'left'}}><a href="http://www.expertinvestoreurope.com/" style={{color:'#000000',textDecoration:'none'}}>Expert Investor Newsletter</a></td>: ''}
+                                                                          <td data-width="398" data-align="right" style={{width:'398px',padding:'8px 10px 8px 10px',fontFamily: 'Arial, Helvetica, sans-serif',fontSize: '11px',color: '#2D2C28', textAlign: 'right'}}>If you are unable to view this email, <a style={{color:'#000',textDecoration:'none'}} href="[*link.webversion_url*]">click here</a></td>
                                                                         </tr>
                                                                 </table>
                                                         </td>
@@ -290,55 +292,92 @@ render() {
                         </tr>
                         <tr>
                 <td data-valign="top">
-                        <table data-width="750" cellSpacing="0" cellPadding="0" data-align="center" style={{width: '750px', textAlign: 'left', borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',borderTop:'1px solid #CCCCCC',margin:'0px auto'}} className="deviceWidth">
+                        <table data-width="750" cellSpacing="0" cellPadding="0" data-align="center" style={{textAlign: 'left',width:'750px',borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',borderTop:'1px solid #CCCCCC',margin:'0px auto'}} className="deviceWidth">
                                 <tr>
-                                        <td style={{padding:'10px 9px 8px 9px', background: '#000'}} data-bgcolor="#000000" data-align="bottom">
+                                        <td data-bgcolor="#000000" data-align="bottom"  style={{background:'#000',textAlign:'bottom',padding:'10px 9px 8px 9px'}}>
                                         {this.props.site === 'wp_2_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_logo1.jpg" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
                                         {this.props.site === 'wp_3_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/ia_newsletter.png" style={{maxWidth: '100%'}} alt="International Advisor"/></a> :''}
                                         {this.props.site === 'wp_4_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/fsa_newsletter.jpg" style={{maxWidth: '100%'}} alt="Fund Selector Asia"/></a> :''}
-                                        {this.props.site === 'wp_5_' ? <a href="http://www.expertinvestoreurope.com/"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
+                                         {this.props.site === 'wp_5_' ? <a href="http://www.expertinvestoreurope.com/"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
                                         </td>
                                                 </tr>
                                                 {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                 {this.props.topLeaderboard.length > 0 && this.props.showTopLeaderboard === '1' ? <tr>
-                                                  <td style={{position: 'relative',background: '#fff'}}>
-                                                  <div dangerouslySetInnerHTML={{__html:this.props.topLeaderboard}}></div>
+                                                  <td style={{position: 'relative', background: '#fff'}} data-bgcolor="#ffffff" data-align="center">
+                                                  <div dangerouslySetInnerHTML={{__html:this.props.topLeaderboard}}></div> 
                                                   <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Top_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                   </td>
                                                 </tr> : ''}
-                                                        <tr>
-                                                                <td data-bgcolor="#ffffff" data-align="center" style={{verticalAlign: 'bottom',padding:'10px 0px 0px 0px', background: '#fff'}}></td>
-                                                        </tr>
                                         </table>
-                                <table className="deviceWidth" data-width="750" cellSpacing="0" cellPadding="0" data-bgcolor="#ffffff" data-align="center" style={{borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',margin:'0px auto', background: '#fff', width: '750px', textAlign: 'center'}}>
+                                <table className="deviceWidth" data-width="750" cellSpacing="0" cellPadding="0" data-bgcolor="#ffffff" data-align="center" style={{background:'#fff', width:'750px',borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',margin:'0px auto'}}>
                                         <tr>
                                                 <td>
-                                                <table style={{textAlign: 'center', width: '100%', margin: '0px'}} data-align="center" data-width="100%" cellSpacing="0" cellPadding="0">
-                                                        <tr>
+                                                <table style={{maxWidth:'750px', margin: '0px'}} data-align="center" data-width="100%" cellSpacing="0" cellPadding="0">
+<tr>
                                                                 <td>
-                                                                        <table className="container" style={{textAlign: 'left', width: '748px'}} data-width="748" data-align="left">
-        <tr>
-                <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
-                <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isBreakingNews="true"/>
+                                                                <table className="container" style={{width: '490px', textAlign: 'left', float: 'left'}} data-width="490" data-align="left">
+                                                                        <tr>
+        <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
+        <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isLatestNews="true"/>
+        </td>
+</tr>
+<tr>
+<td style={{paddingLeft:'10px'}}>
+
+<InvestmentComponent articles={this.props.selectedInvestmentArticles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} />
+
+</td></tr>
+                                                            </table>
+                                                               <table data-width="235" className="container" data-align="right" style={{width: '235px',textAlign:'left'}}>
+                <tbody><tr>
+                        <td style={{padding:'0px 9px 0px 10px', verticalAlign: 'top',margin:'0px'}}>
+                                <table style={{width: '100%'}} data-width="100%">
+                                                        <tbody><tr>
+                                                                <td style={{padding:'13px 0px 10px 0px'}} data-valign="top">
+                                                                        <table className="subscribe" style={{width: '100%'}}>
+<tbody>
+{this.props.staticHighlight === 'newsletter' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+{ this.props.newsletterSubscribe.length > 0 && this.props.showNewsletterSubscribe === '1' ? <tr>
+  <td style={{position: 'relative', background: '#fff'}}>
+   <div dangerouslySetInnerHTML={{__html:this.props.newsletterSubscribe}}></div>
+  <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{cursor:'pointer',position: 'absolute',right:'10px',top:'10px',width:'10px'}} id="Newsletter_Subscribe" onClick={this.props.onRemoveStatic}/>
+  </td>
+</tr> : ''}
+</tbody>
+</table>
+                                                                </td>
+                                                        </tr>
+                                                        <tr>
+                <td>
+                <EventsComponent selectedEventArticles={this.props.selectedEventArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveEvent={this.props.onRemoveEvent}/>
                 </td>
         </tr>
-</table>
-
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                        {this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
-                                                        { this.props.sponsoredContent.length > 0 && this.props.showSponsoredContent === '1' ? <td style={{background: '#fff', position: 'relative'}}>
-                                                                <div dangerouslySetInnerHTML={{__html:this.props.sponsoredContent}}></div>
-                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
-                                                                </td> : ''}
-                                                        </tr>
+<tr>
+        <td>
+        {this.props.site !== 'wp_4_' ? 
+          <EditorPickComponent selectedEditorArticles={this.props.selectedEditorArticles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveEditor={this.props.onRemoveEditor}/>
+                  : ''}
+        </td>
+</tr>
+                                                
+                                </tbody></table> 
+                        </td>
+            </tr>
+</tbody></table>
+                                                              </td>
+                                                           </tr>
+                                                                                        <tr>
+                                                                                        {this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
+                                                 {this.props.sponsoredContent.length > 0 && this.props.showSponsoredContent === '1' ? <td style={{background: '#fff', position: 'relative'}}>
+                                                                                                <div dangerouslySetInnerHTML={{__html:this.props.sponsoredContent}}></div>
+                                                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
+                                                                                                </td>: ''}
+                                                                                        </tr>
                                                            <tr>
         <td style={{padding:'0px 10px'}}>
-        <table style={{width: '728px', textAlign: 'center'}} className="device_innerblock" data-width="728" data-align="center">
+        <table className="device_innerblock" style={{width:'728px', textAlign:'center'}} data-width="728" data-align="center">
                 <tr>
-                        <td data-align="left" style={{textAlign: 'left', padding:'0px 6px 6px 6px',color: '#000000',fontFamily:'Arial, Helvetica, sans-serif',fontSize: '18px',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Other stories from Last Word</font></td>
+                        <td data-align="left" style={{textAlign:'left',padding:'0px 6px 6px 6px',color: '#000000', fontFamily:'Arial, Helvetica, sans-serif',fontSize: '18px',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Other stories from Last Word</font></td>
                 </tr>
         </table></td>
 </tr>
@@ -347,57 +386,47 @@ render() {
         <OtherStoriesComponent color={color} highlight={this.props.highlight} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped}/>
         </td>
 </tr>
-                                                           <tr>
-                                                                                                <td style={{padding:'0px 9px; 0px 9px'}}>
-                                                                                                        <table style={{textAlign: 'center', width: '728px'}} className="device_innerblock"  data-align="center" data-width="728">
-                                                                                                                        <tr>
-                                                                                                                                <td style={{padding:'10px 0px 10px 0px', textAlign: 'center'}} data-align="center">
-                                                                                                                                </td>
-                                                                                                                        </tr>
-                                                                                                        </table>
-                                                                                                </td>
-                                                                                        </tr>
                                                                                         {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
-                                                                                        { this.props.footerLeaderboard.length > 0 && this.props.showFooterLeaderboard === '1' ? <tr>
+                                                                                        {this.props.footerLeaderboard.length > 0 && this.props.showFooterLeaderboard === '1' ? <tr>
                                                                                           <td style={{position: 'relative', background: '#fff'}}>
-                                                                                          <div dangerouslySetInnerHTML={{__html:this.props.footerLeaderboard}}></div>
-                                                                                          <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
+                                                                                           <div dangerouslySetInnerHTML={{__html:this.props.footerLeaderboard}}></div>
+                                                                                           <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                                                           </td>
                                                                                         </tr> : ''}
                                                            <tr>
-                                                              <td style={{padding: '15px 15px 15px 15px', background: '#000'}} className="footer" data-bgcolor="#000000">
-                                                                                                <table  style={{width:'100%', textAlign: 'left'}} className="footer_content" data-width="100%" data-align="left">
+                                                              <td style={{padding: '15px 15px 15px 15px', background: '#000'}} className="footer" data-bgcolor="#000000" >
+                                                                                                <table style={{width:'100%', textAlign: 'left'}} className="footer_content" data-width="100%" data-align="left">
                                                                                                 <tr>
-                                                                                                        <td style={{padding:'0px 0px 10px 0px', textAlign: 'left'}} data-align="left" data-valign="top">
-                                                                                                         <SocialMediaComponent site={this.props.site} />
+                                                                                                        <td style={{padding:'0px 0px 10px 0px', textAlign: 'left'}} data-width="100%" data-align="left">
+                                                                                                          <SocialMediaComponent site={this.props.site} />
                                                                                                         </td>
                                                             </tr>
                                                                         <tr>
                                                                                 <td>
-                                                                                        <table style={{width: '100%'}} data-width="100%">
+                                                                                        <table data-width="100%">
                                                                                                 <tr>
-                                                                                                        <td className="footer_left" data-valign="bottom" data-align="left" data-width="80%" style={{padding:'0px 20px 0px 0px', width: '80%', textAlign: 'left'}}>
-                                                                                                                <table style={{width: '100%'}} data-width="100%">
+                                                                                                        <td className="footer_left" data-valign="bottom" data-align="left" data-width="80%" style={{padding:'0px 20px 0px 0px', textAlign: 'left', width: '80%'}}>
+                                                                                                                <table data-width="100%">
                                                                                                                         <tr>
-                                                                                                                                <td className="white" style={{color:'#fff',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'11px',textDecoration: 'none',fontWeight: 'bold',padding:'0px 0px 3px 0px'}}> If you wish to unsubscribe from this email, <a href="[*link.prefill_url(1)*]" style={{color:'#FFFFFF',textDecoration: 'none',fontFamily: 'Arial, Helvetica, sans-serif'}}>please click here</a></td>
+                                                                                                                                <td style={{color:'#fff',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'11px',textDecoration: 'none',fontWeight: 'bold',padding:'0px 0px 3px 0px'}}> If you wish to unsubscribe from this email, <a href="[*link.prefill_url(1)*]" style={{color:'#FFFFFF',textDecoration: 'none',fontFamily: 'Arial, Helvetica, sans-serif'}}>please click here</a></td>
                                                                                                                         </tr>
                                                                                                                         <tr>
                                                                                                                                                                 <td className="white" style={{padding:'0px 0px 10px 0px', color:'#fff',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'11px',textDecoration: 'none',fontWeight: 'bold'}}>Do not reply to this email.</td>
                                                                                                                                                         </tr>
                                                                                                                                                         <tr>
-                                                                                                                                                                <td className="white" style={{padding:'0px 0px 10px 0px', color:'#C2C2C2',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'11px'}}>
-                                                                                                                                                                          <PrivacyPolicyComponent site={this.props.site} />
-                                                                                                                                                                          </td>
+                                                                                                                                                                  <td className="white" style={{padding:'0px 0px 10px 0px', color:'#C2C2C2',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'11px'}}>
+                                                                                                                                                                            <PrivacyPolicyComponent site={this.props.site} />
+                                                                                                                                                                            </td>
                                                                                                                                                         </tr>
                                                                                                                                                         <tr>
-                                                                                                                                                                <td className="white" style={{color:'#fff',fontFamily: 'Arial, Helvetica, sans-serif',fontSize:'10px',padding:'0px 0px 3px 0px'}}><font style={{fontFamily: 'Arial, Helvetica, sans-serif'}}> Published by Last Word Media Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) 2017.</font></td>
+                                                                                                                                                                <td className="white" style={{color:'#fff',fontFamily: 'Arial, Helvetica, sans-serif',fontSize:'10px',padding:'0px 0px 3px 0px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}> Published by Last Word Media Limited, Fleet House, 1st Floor, 59-61 Clerkenwell Road, London, EC1M 5LA. Copyright (c) 2017.</font></td>
                                                                                                                                                         </tr>
                                                                                                                                                         <tr>
                                                                                                                                                                 <td className="white" style={{color:'#fff',fontFamily:'Arial, Helvetica, sans-serif',fontSize:'10px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>All rights reserved. Company Reg. No. 05573633. VAT. No. 672 411 728.</font></td>
                                                                                                                                                         </tr>
                                                                                                                  </table>
                                                                                                         </td>
-                                                                                                        <td className="footer_left" style={{textAlign: 'right', width: '20%'}} data-valign="bottom" data-align="right" data-width="20%"><a href="http://www.lastwordmedia.com" target="_blank"><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_lastword1.png" alt="logo" style={{maxWidth: '100%',display:'block'}} /></a></td>
+                                                                                                        <td className="footer_left" data-valign="bottom" data-align="right" data-width="20%" style={{width: '20%', textAlign:'right'}}><a href="http://www.lastwordmedia.com" target="_blank"><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_lastword1.png" alt="logo" style={{maxWidth: '100%',display:'block'}} /></a></td>
                                                                                                          </tr>
                                                                                                 </table>
                                                                                         </td>
@@ -411,7 +440,7 @@ render() {
                                 </table>
                         </td>
                 </tr>
-                </table>     				
+            </table>     				
         </div>
     );
   }
@@ -422,4 +451,4 @@ export default DropTarget(ItemTypes.BOX, boxTarget, (connect, monitor) => ({
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
 })
-)(BreakingNewsNewsLetter);
+)(PortfolioAdviserInvestmentNewsLetter);

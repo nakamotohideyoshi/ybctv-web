@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import logo from './logo.svg';
+import moment from 'moment';
 import './App.css';
 import Header from './Header';
 import update from 'react-addons-update';
@@ -9,7 +11,7 @@ import CreateEmail from './CreateEmail';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import 'bootstrap/dist/js/bootstrap.min';
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import Config from './Config';
 import Guid from 'guid';
 import _ from 'lodash';
@@ -27,16 +29,38 @@ class App extends Component {
     site: 'wp_2_',
     articles: [],
     otherArticles: [],
+    eventArticles: [],
     ratedArticles: [],
+    mostViewedArticles: [],
     totalArticles: 0,
     totalOtherArticles: 0,
+    totalEventArticles: 0,
     totalRatedArticles: 0,
     selectedArticles: [],
     selectedEventArticles: [],
     selectedEditorArticles: [],
-    selectedStoryArticles: [],
+    selectedStoryArticles: {
+       wp_2_: {
+        articles: []
+       },
+       wp_3_: {
+        articles: []
+       },
+       wp_4_: {
+        articles: []
+       },
+       wp_5_: {
+        articles: []
+       }
+      },
+    selectedEventArticles: [],
+    selectedMoreNewsArticles: [],
+    selectedMostViewedArticles: [],
+    selectedMostReadArticles:[],
+    selectedInvestmentArticles:[],
     selectedType: 1,
     selectedCategory: 0,
+    enableDelete: false,
     isLoadingEmails: true,
     isLoadingCategories: false,
     isLoadingEmail: true,
@@ -44,6 +68,8 @@ class App extends Component {
     isLoadingLatest: false,
     isLoadingMostRated: false,
     isLoadingStory: false,
+    isLoadingEvents: false,
+    isLoadingAdestra: false,
     articlePage: 1,
     highlight: '',
     staticHighlight: '',
@@ -51,11 +77,142 @@ class App extends Component {
     hasFooterLeaderboard: "0",
     hasNewsletterSubscribe: "0",
     hasSponsoredContent: "0",
+    hasSponsoredContent2:"0",
+    hasStaticImage1:"0",
+    hasStaticImage2:"0",
+    hasAssetClass: "0",
+    hasQuotable:"0",
     topLeaderboard: '',
     footerLeaderboard: '',
     sponsoredContent: '',
-    newsletterSubscribe: ''
+    sponsoredContent2:'',
+    newsletterSubscribe: '',
+    digitalMagazine: '',
+    staticImage1: '',
+    staticImage2: '',
+    assetClass: '',
+    articleRatedPage: 1,
+    selectedTab: 'Latest',
+    quotable:''
   };
+
+  onNextArticleRatedPage = () => {
+    this.setState(prevState => ({
+      articleRatedPage: this.state.articleRatedPage + 1
+    }),() => this.getMostRatedPosts(this.state.articleRatedPage));
+  }
+
+  onPrevRatedArticlePage = () => {
+    this.setState(prevState => ({
+      articleRatedPage: this.state.articleRatedPage - 1
+    }),() => this.getMostRatedPosts(this.state.articleRatedPage));
+  }
+
+  setSelectedTab = (tab) => {
+    this.setState(prevState => ({selectedTab: tab}), () => {
+      switch(tab){
+       case 'Latest':
+         if(this.state.selectedCategory === 0){
+          this.getLatestPosts();
+         }
+         else{
+           this.getPosts();
+         }
+         break;
+       case 'MostRated':
+          this.getMostRatedPosts(this.state.articleRatedPage);
+         break;
+       case 'Search':
+         this.resetArticles();
+         break;
+      }
+    });
+  }
+
+  onTypeChange = (value) => {
+    this.setState(prevState => ({
+      selectedType: value}));
+  }
+
+  pushToAdestra = () => {
+    $(ReactDOM.findDOMNode(this.refs.mdlProcessingAdestra)).trigger('click');
+    this.setState(prevState => ({isLoadingAdestra: true}))
+    console.log(this.state);
+    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/email?emailId='+ this.state.param_email_id + '&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then(result => {
+     this.setState(prevState => ({isLoadingEmail: false}))
+     result.json().then(val => {
+      console.log(val);
+      var project_id = 0;
+      switch(this.state.site){
+       case 'wp_2_':
+         project_id = 2;
+         break;
+       case 'wp_3_':
+        project_id = 1;
+         break;
+       case 'wp_4_':
+        project_id = 4;
+         break;
+       case 'wp_5_':
+        project_id = 3;
+         break;
+      }
+      var styleTag = val.Content.match(/<style([\S\s]*?)>([\S\s]*?)<\/style>/ig);
+      val.Content = val.Content.replace(/<style([\S\s]*?)>([\S\s]*?)<\/style>/ig, '');
+      var content = '<!doctype html>\
+                  <html xmlns="http://www.w3.org/1999/xhtml">\
+                  <head>\
+                  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />\
+                  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />\
+                  <meta charset="utf-8">\
+                   <title>Last Word Emails</title>\
+                   '+ styleTag[0] +'\
+                   </head>\
+                   <body>\
+                   '+ val.Content +'\
+                   </body>\
+               </html>';
+      content = content.replace(/’/g,"'");
+      content = content.replace(/‘/g,"'");
+      content = content.replace(/data-width/g,"width");
+      content = content.replace(/data-bgcolor/g,"bgcolor");
+      content = content.replace(/data-align/g,"align");
+      content = content.replace(/data-border/g,"border");
+      content = content.replace(/data-valign/g,"valign");
+      console.log(content);
+      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/adestra', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+         project_id: project_id,
+         content: content,
+         name: val.EmailName,
+         subject: val.EmailSubject,
+         emailId: val.EmailId,
+         site: this.state.site
+        })
+      }).then(result => {
+        result.json().then(val => {
+          console.log(val);
+          this.setState(prevState => ({isLoadingAdestra: false}))
+          $(ReactDOM.findDOMNode(this.refs.mdlProcessingAdestra)).trigger('click');
+          this.onChangePage('Dashboard');
+        });
+      });
+     });
+    }).catch(err => {
+      this.setState(prevState => ({isLoadingEmail: false}))
+    });
+  }
 
   onChangeStaticStatus = (name, val) => {
     switch(name){
@@ -70,6 +227,21 @@ class App extends Component {
       break;
     case 'Sponsored_Content':
       this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_2':
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      break;
+    case 'Static_Image_1':
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      break;
+    case 'Static_Image_2':
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      break;
+    case 'Asset_Class':
+      this.setState(prevState => ({ hasAssetClass: val === true ? "1" : "0"}));
+      break;
+    case 'Quotable':
+      this.setState(prevState => ({ hasQuotable: val === true ? "1" : "0"}));
       break;
     }
   }
@@ -89,10 +261,29 @@ class App extends Component {
     case 'Sponsored_Content':
       this.setState(prevState => ({ sponsoredContent: ''}));
       break;
+    case 'Sponsored_Content_2':
+      this.setState(prevState => ({ sponsoredContent2: ''}));
+      break;
+    case 'Digital_Magazine':
+      this.setState(prevState => ({ digitalMagazine: ''}));
+      break;
+    case 'Static_Image_1':
+      this.setState(prevState => ({ staticImage1: ''}));
+      break;
+    case 'Static_Image_2':
+      this.setState(prevState => ({ staticImage2: ''}));
+      break;
+    case 'Asset_Class':
+      this.setState(prevState => ({ assetClass: ''}));
+      break;
+    case 'Quotable':
+      this.setState(prevState => ({ quotable: ''}));
+      break;
     }
   }
 
   onStaticDropped = (name, template) => {
+    console.log(name, template);
     if(name !== undefined){
     this.onChangeStaticStatus(name, true);
      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
@@ -119,6 +310,24 @@ class App extends Component {
            case 'Sponsored_Content':
              this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
              break;
+           case 'Sponsored_Content_2':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+           case 'Digital_Magazine':
+             this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
+             break;
+           case 'Static_Image_1':
+            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            break;
+           case 'Static_Image_2':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Asset_Class':
+           this.setState(prevState => ({ assetClass: leaderBoard.Content}));
+           break;
+          case 'Quotable':
+           this.setState(prevState => ({ quotable: leaderBoard.Content}));
+           break;
            }
           });
          }
@@ -136,7 +345,7 @@ class App extends Component {
       result.json().then(val => {
         if(val !== null){
           console.log(val);
-          this.setState(prevState => ({ topLeaderboard: '', footerLeaderboard: '', newsletterSubscribe: '', sponsoredContent: ''}));
+          this.setState(prevState => ({ topLeaderboard: '', footerLeaderboard: '', newsletterSubscribe: '', sponsoredContent: '', sponsoredContent2:'', digitalMagazine: '', staticImage1: '', staticImage2: '', assetClass: '', quotable: ''}));
          _.each(val, leaderBoard => {
           switch(leaderBoard.Type){
            case 'Top_Leaderboard':
@@ -151,6 +360,24 @@ class App extends Component {
           case 'Sponsored_Content':
             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
             break;
+          case 'Sponsored_Content_2':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+          case 'Digital_Magazine':
+            this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
+            break;
+          case 'Static_Image_1':
+            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            break;
+          case 'Static_Image_2':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Asset_Class':
+            this.setState(prevState => ({ assetClass: leaderBoard.Content}));
+            break;
+          case 'Quotable':
+            this.setState(prevState => ({ quotable: leaderBoard.Content}));
+            break;
           }
          });
         }
@@ -160,14 +387,36 @@ class App extends Component {
   }
 
   onStaticDragged = (props) => {
+    console.log(props);
     if(props.name === 'Top_Leaderboard'){
      this.setState(prevState => ({staticHighlight: 'top'}));
     }
     else if(props.name === 'Footer_Leaderboard'){
      this.setState(prevState => ({staticHighlight: 'footer'}));
     }
+    else if(props.name === 'Sponsored_Content'){
+     this.setState(prevState => ({staticHighlight: 'sponsoredContent'}));
+    }
+    else if(props.name === 'Sponsored_Content_2'){
+     this.setState(prevState => ({staticHighlight: 'sponsoredContent2'}));
+    }
+    else if(props.name === 'Digital_Magazine'){
+     this.setState(prevState => ({staticHighlight: 'digitalMagazine'}));
+    }
     else if(props.name === 'Newsletter_Subscribe'){
      this.setState(prevState => ({staticHighlight: 'newsletter'}));
+    }
+    else if(props.name === 'Static_Image_1'){
+     this.setState(prevState => ({staticHighlight: 'staticImage1'}));
+    }
+    else if(props.name === 'Static_Image_2'){
+     this.setState(prevState => ({staticHighlight: 'staticImage2'}));
+    }
+    else if(props.name === 'Asset_Class'){
+     this.setState(prevState => ({staticHighlight: 'assetClass'}));
+    }
+    else if(props.name === 'Quotable'){
+     this.setState(prevState => ({staticHighlight: 'quotable'}));
     }
   }
 
@@ -182,18 +431,7 @@ class App extends Component {
   onArticleDragged = (props) => {
     console.log(props);
     console.log(this.state.selectedCategory);
-    if(parseInt(this.state.selectedCategory) === 35){
-     this.setState(prevState => ({highlight: 'events'}));
-    }
-    else if(parseInt(this.state.selectedCategory) === 45){
-     this.setState(prevState => ({highlight: 'editor'}));
-    }
-    else if(props.type !== undefined){
-     this.setState(prevState => ({highlight: 'story'}));
-    }
-    else{
-      this.setState(prevState => ({highlight: 'articles'}));
-    }
+    this.setState(prevState => ({highlight: props.type}));
   }
 
   onNextArticlePage = () => {
@@ -209,9 +447,17 @@ class App extends Component {
   }
 
   onCategoryChange = (value) => {
+    console.log(value);
     this.setState({
       selectedCategory: value
-    }, () => this.getPosts());
+    }, () => {
+      if(parseInt(this.state.selectedCategory) !== 0){
+        this.getPosts();
+      }
+      else{
+       this.getLatestPosts();
+      }
+    });
   }
 
   onChangeTemplate = () => {
@@ -220,7 +466,12 @@ class App extends Component {
       hasTopLeaderboard: "0",
       hasFooterLeaderboard: "0",
       hasNewsletterSubscribe: "0",
-      hasSponsoredContent: "0"
+      hasSponsoredContent: "0",
+      hasSponsoredContent2:"0",
+      hasStaticImage1: "0",
+      hasStaticImage2: "0",
+      hasAssetClass: "0",
+      hasQuotable: "0"
     });
   }
 
@@ -241,10 +492,10 @@ class App extends Component {
     this.setState({selectedEventArticles: this.state.selectedEventArticles.filter((article) => {
           return parseInt(article.ID) !== parseInt(event.target.id)
       })});
-      _.each(this.state.articles, (article, index) => {
+      _.each(this.state.eventArticles, (article, index) => {
        if(parseInt(article.ID) === parseInt(event.target.id)){
         this.setState({
-          articles: update(this.state.articles, {[index]: {isDisabled: {$set: false}}})
+          eventArticles: update(this.state.eventArticles, {[index]: {isDisabled: {$set: false}}})
         })
        }
       });
@@ -254,9 +505,9 @@ class App extends Component {
     this.setState(prevState => ({articles : [], totalArticles: 0}))
   }
 
-  getMostRatedPosts = () => {
+  getMostRatedPosts = (page) => {
     this.setState(prevState => ({ratedArticles : [], totalRatedArticles: 0, isLoadingMostRated: true}))
-    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/postsmostrated?page='+ this.state.articleRatedPage + '&prefix='+ this.state.site + '&cache='+ Guid.raw(), {
+    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/postsmostrated?page='+ page + '&prefix='+ this.state.site + '&cache='+ Guid.raw(), {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
@@ -297,6 +548,47 @@ class App extends Component {
     });
   }
 
+  getLatestPostsBySite = () => {
+    this.setState({articles : [], totalArticles: 0, isLoadingLatest: true})
+    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/latestpostsbysite?cache='+ Guid.raw(), {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then(result => {
+     result.json().then(val => {
+        console.log(val);
+         let storyArticles = {
+          wp_2_: {
+           articles: val["0"]
+          },
+          wp_3_: {
+           articles: val["1"]
+          },
+          wp_4_: {
+           articles: val["2"]
+          },
+          wp_5_: {
+           articles: val["3"]
+          }
+         }
+         console.dir(storyArticles);
+        console.log(storyArticles.wp_2_.articles.length);
+         // val["0"].site = 'wp_2_';
+         // val["1"].site = 'wp_3_';
+         // val["2"].site = 'wp_4_';
+         // val["3"].site = 'wp_5_';
+         this.setState(prevState => ({ selectedStoryArticles: storyArticles}));
+         // this.setState(prevState => ({ selectedStoryArticles: [...prevState.selectedStoryArticles, val["1"]]}));
+         // this.setState(prevState => ({ selectedStoryArticles: [...prevState.selectedStoryArticles, val["2"]]}));
+         // this.setState(prevState => ({ selectedStoryArticles: [...prevState.selectedStoryArticles, val["3"]]}));
+      this.setState({isLoadingLatest: false})
+     }).catch(err => {
+      this.setState({isLoadingLatest: false})
+     });
+    });
+  }
   getLatestPosts = () => {
     this.setState({articles : [], totalArticles: 0, isLoadingLatest: true})
     fetch(Config.BASE_URL + '/wp-json/email-builder/v1/latestposts?prefix='+ this.state.site + '&cache='+ Guid.raw(), {
@@ -355,11 +647,29 @@ class App extends Component {
        });
       });
   }
-  onArticleDropped = (emailType, articleId, selectedTab, type) => {
-    console.log(this.state.selectedCategory);
+  getPostsByEvent = (searchFor) => {
+    this.setState(prevState => ({isLoadingEvents: true}))
+      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/postsbyevent?site='+ this.state.site +'&search='+ searchFor + '&cache='+ Guid.raw(), {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }
+      }).then(result => {
+        this.setState(prevState => ({isLoadingEvents: false}))
+       result.json().then(val => {
+         console.log(val);
+         this.setState(prevState => ({eventArticles : val[0], totalEventArticles: val[1]}))
+       }).catch(err => {
+        this.setState(prevState => ({isLoadingEvents: false}))
+       });
+      });
+  }
+  onArticleDropped = (articleId, type, site) => {
+    // console.log(this.state.selectedCategory);
+    console.log(articleId, type, site);
     this.setState(prevState => ({highlight: ''}));
-    if(type === undefined){
-      if(selectedTab === 'Latest' || selectedTab === 'Search'){
+    if(type === 'Latest_News' || type === 'Search'){
         if(parseInt(this.state.selectedCategory) === 35){
           _.each(this.state.articles, (article, index) => {
            if(parseInt(article.ID) === articleId){
@@ -372,18 +682,6 @@ class App extends Component {
            }
           })
         }
-        else if(parseInt(this.state.selectedCategory) === 45){
-            _.each(this.state.articles, (article, index) => {
-             if(parseInt(article.ID) === articleId){
-               this.setState(prevState => ({
-                 selectedEditorArticles: [...prevState.selectedEditorArticles, article]
-               }));
-               this.setState({
-                 articles: update(this.state.articles, {[index]: {isDisabled: {$set: true}}})
-               })
-             }
-            })
-          }
         else{
           _.each(this.state.articles, (article, index) => {
            if(parseInt(article.ID) === articleId){
@@ -397,38 +695,75 @@ class App extends Component {
           })
         }
       }
-      else if(selectedTab === 'MostRated'){
+      else if(type === 'Most_Viewed'){
         _.each(this.state.ratedArticles, (article, index) => {
          if(parseInt(article.ID) === articleId){
            this.setState(prevState => ({
-             selectedArticles: [...prevState.selectedArticles, article]
+             selectedMostViewedArticles: [...prevState.selectedMostViewedArticles, article]
            }));
            this.setState({
              ratedArticles: update(this.state.ratedArticles, {[index]: {isDisabled: {$set: true}}})
            })
          }
         })
-      }
     }
-    else{
-      _.each(this.state.otherArticles, (article, index) => {
+    else if(type === 'Investment'){
+      _.each(this.state.articles, (article, index) => {
        if(parseInt(article.ID) === articleId){
-         article.site = type;
-         var result = _.filter(this.state.selectedStoryArticles, art => art.site === type);
-         console.log(result);
-         if(result.length === 0){
-          this.setState(prevState => ({
-            selectedStoryArticles: [...prevState.selectedStoryArticles, article]
-          }));
-         }
-         else{
-          this.setState(prevState => ({
-            selectedStoryArticles: [..._.filter(prevState.selectedStoryArticles, art => art.site !== type), article]
-          }));
-         }
+         this.setState(prevState => ({
+           selectedInvestmentArticles: [...prevState.selectedInvestmentArticles, article]
+         }));
          this.setState({
-           otherArticles: update(this.state.otherArticles, {[index]: {isDisabled: {$set: true}}})
+           articles: update(this.state.articles, {[index]: {isDisabled: {$set: true}}})
          })
+       }
+      })
+    }
+    else if(type === 'Most_Read'){
+      _.each(this.state.ratedArticles, (article, index) => {
+       if(parseInt(article.ID) === articleId){
+         this.setState(prevState => ({
+           selectedMostReadArticles: [...prevState.selectedMostReadArticles, article]
+         }));
+         this.setState({
+           ratedArticles: update(this.state.ratedArticles, {[index]: {isDisabled: {$set: true}}})
+         })
+       }
+      })
+    }
+    else if(type === 'Events'){
+      _.each(this.state.eventArticles, (article, index) => {
+       if(parseInt(article.ID) === articleId){
+          this.setState(prevState => ({
+            selectedEventArticles: [...prevState.selectedEventArticles, article]
+          }));
+          this.setState({
+            eventArticles: update(this.state.eventArticles, {[index]: {isDisabled: {$set: true}}})
+          })
+       }
+      })
+    }
+    else if(type === 'Editor_Pick'){
+      _.each(this.state.articles, (article, index) => {
+       if(parseInt(article.ID) === articleId){
+          this.setState(prevState => ({
+            selectedEditorArticles: [...prevState.selectedEditorArticles, article]
+          }));
+          this.setState({
+            articles: update(this.state.articles, {[index]: {isDisabled: {$set: true}}})
+          })
+       }
+      })
+    }
+    else if(type === 'More_News'){
+      _.each(this.state.articles, (article, index) => {
+       if(parseInt(article.ID) === articleId){
+          this.setState(prevState => ({
+            selectedMoreNewsArticles: [...prevState.selectedMoreNewsArticles, article]
+          }));
+          this.setState({
+            articles: update(this.state.articles, {[index]: {isDisabled: {$set: true}}})
+          })
        }
       })
     }
@@ -437,6 +772,18 @@ class App extends Component {
   onRemoveArticle = (event) => {
     console.log(event.target.id);
     this.setState({selectedArticles: this.state.selectedArticles.filter(function(article) {
+          return parseInt(article.ID) !== parseInt(event.target.id)
+      })});
+    this.setState({selectedMoreNewsArticles: this.state.selectedMoreNewsArticles.filter(function(article) {
+          return parseInt(article.ID) !== parseInt(event.target.id)
+      })});
+    this.setState({selectedMostViewedArticles: this.state.selectedMostViewedArticles.filter(function(article) {
+          return parseInt(article.ID) !== parseInt(event.target.id)
+      })});
+    this.setState({selectedMostReadArticles: this.state.selectedMostReadArticles.filter(function(article) {
+          return parseInt(article.ID) !== parseInt(event.target.id)
+      })});
+    this.setState({selectedInvestmentArticles: this.state.selectedInvestmentArticles.filter(function(article) {
           return parseInt(article.ID) !== parseInt(event.target.id)
       })});
       _.each(this.state.articles, (article, index) => {
@@ -470,10 +817,22 @@ class App extends Component {
        var t_articles = val.Articles1;
        var ev_articles = val.EventArticles1;
        var ed_articles = val.EditorArticles1;
+       var mv_articles = val.MostViewedArticles1;
+       var mr_articles = val.MostReadArticles1;
+       var mn_articles = val.MoreNewsArticles1;
+       var iv_articles = val.InvestmentArticles1;
 
-       this.setState(prevState => ({ hasTopLeaderboard: val.HasTopLeaderboard, hasFooterLeaderboard: val.HasFooterLeaderboard, hasSponsoredContent: val.HasSponsoredContent, hasNewsletterSubscribe: val.HasNewsletterSubscribe}));
+       this.setState(prevState => ({ hasTopLeaderboard: val.HasTopLeaderboard,
+                                     hasFooterLeaderboard: val.HasFooterLeaderboard,
+                                     hasSponsoredContent: val.HasSponseredContent,
+                                     hasSponsoredContent2: val.HasSponseredContent2,
+                                     hasNewsletterSubscribe: val.HasNewsletterSubscribe,
+                                     hasStaticImage1: val.HasStaticImage1,
+                                     hasStaticImage2: val.HasStaticImage2,
+                                     hasAssetClass: val.HasAssetClass,
+                                     hasQuotable: val.HasQuotable}));
 
-       this.setState(prevState => ({selectedArticles: [], selectedEventArticles: [], selectedEditorArticles: []}));
+       this.setState(prevState => ({selectedArticles: [], selectedEventArticles: [], selectedEditorArticles: [], selectedMostViewedArticles: [], selectedInvestmentArticles:[], selectedMostReadArticles:[], selectedMoreNewsArticles: []}));
         
        _.each(t_articles, (art) => {
           this.setState(prevState => ({
@@ -486,6 +845,22 @@ class App extends Component {
       _.each(ed_articles, (art) => {
          this.setState(prevState => ({
            selectedEditorArticles : [...prevState.selectedEditorArticles,art]}));
+        });
+      _.each(mv_articles, (art) => {
+         this.setState(prevState => ({
+           selectedMostViewedArticles : [...prevState.selectedMostViewedArticles,art]}));
+        });
+      _.each(mr_articles, (art) => {
+         this.setState(prevState => ({
+           selectedMostReadArticles : [...prevState.selectedMostReadArticles,art]}));
+        });
+      _.each(iv_articles, (art) => {
+         this.setState(prevState => ({
+           selectedInvestmentArticles : [...prevState.selectedInvestmentArticles,art]}));
+        });
+      _.each(mn_articles, (art) => {
+         this.setState(prevState => ({
+           selectedMoreNewsArticles : [...prevState.selectedMoreNewsArticles,art]}));
         });
        callBackFn(val.EmailName, val.TemplateName);
      });
@@ -520,17 +895,40 @@ class App extends Component {
                                   selectedArticles: [],
                                   selectedEventArticles: [],
                                   selectedEditorArticles: [],
+                                  selectedMoreNewsArticles: [],
+                                  selectedMostViewedArticles: [],
+                                  selectedMostReadArticles:[],
+                                  selectedInvestmentArticles: [],
                                   hasTopLeaderboard: '0',
                                   hasFooterLeaderboard: '0',
                                   hasNewsletterSubscribe: '0',
                                   hasSponsoredContent: '0',
+                                  hasSponsoredContent2: '0',
+                                  hasStaticImage1:'0',
+                                  hasStaticImage2: '0',
+                                  hasAssetClass: '0',
+                                  hasQuotable: '0',
                                   topLeaderboard: '',
                                   footerLeaderboard: '',
                                   newsletterSubscribe: '',
-                                  sponsoredContent: ''}), () => {
+                                  sponsoredContent: '',
+                                  sponsoredContent2:'',
+                                  digitalMagazine: '',
+                                  staticImage1: '',
+                                  staticImage2: '',
+                                  assetClass: '',
+                                  articles: [],
+                                  otherArticles: [],
+                                  eventArticles: [],
+                                  ratedArticles: [],
+                                  selectedTab: this.state.selectedTab,
+                                  articleRatedPage: 1,
+                                  quotable: ''}), () => {
      this.getEmails(this.state.offset);
      this.getCategories();
      this.getTypes();
+     this.setSelectedTab(this.state.selectedTab);
+     this.setState(prevState => ({selectedCategory: 0}));
     });
   }
 
@@ -556,26 +954,26 @@ class App extends Component {
     });
   }
 
-  getMostRatedPosts = () => {
-    this.setState(prevState => ({ratedArticles : [], totalRatedArticles: 0, isLoadingMostRated: true}))
-    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/postsmostrated?page='+ this.state.articleRatedPage + '&prefix='+ this.state.site + '&cache='+ Guid.raw(), {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      }
-    }).then(result => {
-     result.json().then(val => {
-       if(val[0].length > 0){
-        console.log(val);
-         this.setState(prevState => ({ratedArticles : val[0], totalRatedArticles: val[1]}))
-       }
-      this.setState(prevState => ({isLoadingMostRated: false}))
-     }).catch(err => {
-      this.setState(prevState => ({isLoadingMostRated: false}))
-     });
-    });
-  }
+  // getMostRatedPosts = () => {
+  //   this.setState(prevState => ({ratedArticles : [], totalRatedArticles: 0, isLoadingMostRated: true}))
+  //   fetch(Config.BASE_URL + '/wp-json/email-builder/v1/postsmostrated?page='+ this.state.articleRatedPage + '&prefix='+ this.state.site + '&cache='+ Guid.raw(), {
+  //     method: 'GET',
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Content-Type': 'application/json',
+  //     }
+  //   }).then(result => {
+  //    result.json().then(val => {
+  //      if(val[0].length > 0){
+  //       console.log(val);
+  //        this.setState(prevState => ({ratedArticles : val[0], totalRatedArticles: val[1]}))
+  //      }
+  //     this.setState(prevState => ({isLoadingMostRated: false}))
+  //    }).catch(err => {
+  //     this.setState(prevState => ({isLoadingMostRated: false}))
+  //    });
+  //   });
+  // }
   getCategories = () => {
     this.setState(prevState => ({isLoadingCategories: true}));
     fetch(Config.BASE_URL + '/wp-json/email-builder/v1/categories?prefix='+ this.state.site + '&cache='+ Guid.raw(), {
@@ -617,14 +1015,14 @@ class App extends Component {
   onNextPage = () => {
     this.setState(prevState => ({
       pageNo: prevState.pageNo + 1,
-      offset: prevState.offset + 5
+      offset: prevState.offset + 20
     }), () => this.getEmails(this.state.offset));
   }
 
   onPreviousPage = () => {
     this.setState(prevState => ({
       pageNo: prevState.pageNo - 1,
-      offset: prevState.offset - 5
+      offset: prevState.offset - 20
     }), () => this.getEmails(this.state.offset));
   }
 
@@ -636,7 +1034,20 @@ class App extends Component {
 
   livePreview = (event) => {
    event.preventDefault();
-   window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id);
+   switch (this.state.site) {
+    case 'wp_2_':
+      window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      break;
+    case 'wp_3_':
+      window.open('https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      break;
+    case 'wp_4_':
+      window.open('https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      break;
+    case 'wp_5_':
+      window.open('https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      break;
+   }
   }
   onChangePage = (page, param) => {
     console.log(page);
@@ -666,6 +1077,39 @@ class App extends Component {
     this.setState(prevState => ({isLoadingEmail: false}))
   }
 
+  onCheckChange = (event) => {
+  _.each(this.state.emails, (email, index) => {
+   if(parseInt(email.EmailId) === parseInt(event.target.id)){
+    this.setState({
+      emails: update(this.state.emails, {[index]: {isSelected: {$set: !this.state.emails[index].isSelected}}})
+    }, () => {
+      let count = _.filter(this.state.emails, email => email.isSelected === true);
+      console.log(count);
+     if(count.length > 0)
+      this.setState(prevState => ({enableDelete: true}))
+     else
+      this.setState(prevState => ({enableDelete: false}))
+    })
+   }
+  });
+  }
+
+  onDeleteEmails = () => {
+    let emails = _.filter(this.state.emails, email => email.isSelected === true);
+    fetch(Config.BASE_URL + '/wp-json/email-builder/v1/deleteemails', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+       emails: _.map(emails, email => email.EmailId).join(',')
+      })
+    }).then(result => {
+      this.getEmails(this.state.offset);
+    });
+  }
+
   render() {
     return (
       <div className="container">
@@ -673,8 +1117,11 @@ class App extends Component {
          { this.state.page === 'Dashboard' ? 
           <div className="container">
              <div className="row">
-               <div className="col-xs-12">
+               <div className="col-xs-10">
                  <h1>Newsletters</h1>
+               </div>
+               <div className="col-xs-2">
+                <button type="button" style={{marginTop:'20px', marginBottom:'10px'}} disabled={!this.state.enableDelete}  onClick={this.onDeleteEmails} className="btn btn-primary">Delete Emails</button>
                </div>
              </div>
                <div className="row">
@@ -684,17 +1131,22 @@ class App extends Component {
                      <thead>
                        <tr>
                          <th>Email Name</th>
+                         <th>Subject</th>
                          <th>Status</th>
                          <th>Edit</th>
+                         <th>Delete</th>
+                         <th>Preview</th>
                        </tr>
                      </thead>
                      <tbody>
                      {this.state.emails.map((email, key) => {
                        return <tr key={key}>
                          <td>{email.EmailName}</td>
-                         <td>{email.SendToAdestraOn}</td>
+                         <td>{email.EmailSubject}</td>
+                         <td>{email.SendToAdestraOn !== null ? 'Sent to Adestra -'+ moment(email.SendToAdestraOn).format('ddd Do MMM, YYYY') : 'Editing'}</td>
                          <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={this.editEmail} className="btn btn-primary">Edit</button></td>
-                         <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={this.livePreview} className="btn btn-primary">Live Preview</button></td>
+                         <td><input type="checkbox" id={email.EmailId} checked={email.isSelected} onChange={this.onCheckChange}/></td>
+                         <td><button type="button" id={email.EmailId} onClick={this.livePreview} className="btn btn-primary">Live Preview</button></td>
                        </tr>
                        })}
                      </tbody>
@@ -705,7 +1157,7 @@ class App extends Component {
                <div className="col-xs-12">
                  <ul className="pager">
                    <li className="previous dis">{this.state.pageNo > 1 ? <a href="#" onClick={this.onPreviousPage}>Previous</a> : ''}</li>
-                   <li className="next">{this.state.pageNo < Math.ceil(this.state.totalEmails / 5) ? <a href="#" onClick={this.onNextPage}>Next</a> : ''}</li>
+                   <li className="next">{this.state.pageNo < Math.ceil(this.state.totalEmails / 20) ? <a href="#" onClick={this.onNextPage}>Next</a> : ''}</li>
                  </ul>
                </div>
              </div>
@@ -726,8 +1178,13 @@ class App extends Component {
                                                    selectedEventArticles={this.state.selectedEventArticles}
                                                    selectedEditorArticles={this.state.selectedEditorArticles}
                                                    selectedStoryArticles={this.state.selectedStoryArticles}
+                                                   selectedMoreNewsArticles={this.state.selectedMoreNewsArticles}
+                                                   selectedMostViewedArticles={this.state.selectedMostViewedArticles}
+                                                   selectedMostReadArticles={this.state.selectedMostReadArticles}
+                                                   selectedInvestmentArticles={this.state.selectedInvestmentArticles}
                                                    getPostsByType={this.getPostsByType}
                                                    getPostsBySite={this.getPostsBySite}
+                                                   getPostsByEvent={this.getPostsByEvent}
                                                    resetArticles={this.resetArticles}
                                                    getPosts={this.getPosts}
                                                    getMostRatedPosts={this.getMostRatedPosts}
@@ -736,6 +1193,8 @@ class App extends Component {
                                                    onRemoveEditor={this.onRemoveEditor}
                                                    articles={this.state.articles}
                                                    otherArticles={this.state.otherArticles}
+                                                   eventArticles={this.state.eventArticles}
+                                                   mostViewedArticles={this.state.mostViewedArticles}
                                                    totalArticles={this.state.totalArticles}
                                                    totalOtherArticles={this.state.totalOtherArticles}
                                                    ratedArticles={this.state.ratedArticles}
@@ -746,6 +1205,8 @@ class App extends Component {
                                                    isLoadingMostRated={this.state.isLoadingMostRated}
                                                    isLoadingCategories={this.state.isLoadingCategories}
                                                    isLoadingStory={this.state.isLoadingStory}
+                                                   isLoadingEvents={this.state.isLoadingEvents}
+                                                   isLoadingAdestra={this.state.isLoadingAdestra}
                                                    onCategoryChange={this.onCategoryChange}
                                                    selectedCategory={this.state.selectedCategory}
                                                    onNextArticlePage={this.onNextArticlePage}
@@ -762,6 +1223,12 @@ class App extends Component {
                                                    topLeaderboard={this.state.topLeaderboard}
                                                    footerLeaderboard={this.state.footerLeaderboard}
                                                    sponsoredContent={this.state.sponsoredContent}
+                                                   sponsoredContent2={this.state.sponsoredContent2}
+                                                   digitalMagazine={this.state.digitalMagazine}
+                                                   staticImage1={this.state.staticImage1}
+                                                   staticImage2={this.state.staticImage2}
+                                                   assetClass={this.state.assetClass}
+                                                   quotable={this.state.quotable}
                                                    newsletterSubscribe={this.state.newsletterSubscribe}
                                                    highlight={this.state.highlight}
                                                    staticHighlight={this.state.staticHighlight}
@@ -769,8 +1236,33 @@ class App extends Component {
                                                    hasFooterLeaderboard={this.state.hasFooterLeaderboard}
                                                    hasNewsletterSubscribe={this.state.hasNewsletterSubscribe}
                                                    hasSponsoredContent={this.state.hasSponsoredContent}
+                                                   hasSponsoredContent2={this.state.hasSponsoredContent2}
+                                                   hasStaticImage1={this.state.hasStaticImage1}
+                                                   hasStaticImage2={this.state.hasStaticImage2}
+                                                   hasAssetClass={this.state.hasAssetClass}
+                                                   hasQuotable={this.state.hasQuotable}
+                                                   pushToAdestra={this.pushToAdestra}
+                                                   selectedType={this.state.selectedType}
+                                                   onTypeChange={this.onTypeChange}
+                                                   selectedTab={this.state.selectedTab}
+                                                   setSelectedTab={this.setSelectedTab}
+                                                   articleRatedPage={this.state.articleRatedPage}
+                                                   onNextArticleRatedPage={this.onNextArticleRatedPage}
+                                                   onPrevArticleRatedPage={this.onPrevArticleRatedPage}
+                                                   getLatestPosts={this.getLatestPosts}
+                                                   getLatestPostsBySite={this.getLatestPostsBySite}
                                                    /> : ''}
          { this.state.page === 'PreviewEmail' ? <PreviewEmail onChangePage={this.onChangePage} emailId={this.state.param_email_id} site={this.state.site}/>  : ''}
+        <button data-toggle="modal" data-target="#mdlProcessingAdestra" ref="mdlProcessingAdestra" style={{position: 'absolute',bottom: '0px'}}></button>
+        <div id="mdlProcessingAdestra" className="modal fade" role="dialog" ref="modal">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-body">
+                   {this.state.isLoadingAdestra === true ? <h2>Sending to Adestra. Please wait...</h2> : ''}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
