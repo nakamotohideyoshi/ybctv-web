@@ -476,13 +476,10 @@ class lw_import {
 
           $source = 'http://' . str_replace('350x250', '640x410', (string)$article->image);
           $sub_dir = strtolower(substr(basename($source), 0, 2));
-
           if (!file_exists($destination . $sub_dir)) {
             mkdir($destination . $sub_dir, 0777, true);
           }
-
           $destination .= $sub_dir . '/' . basename($source);
-
           if (!file_exists($destination)) {
             $image = file_get_contents($source);
             $fp = fopen($destination, 'w');
@@ -522,26 +519,31 @@ class lw_import {
           if ($source != '') {
             $source = 'http://' . $source;
             $destination = $_SERVER['DOCUMENT_ROOT'] . "/image-archive/";
-            $destination .= $this->get_image_subdir($source);
+            if ($this->get_image_subdir($source) != '') {
+              $destination .= $this->get_image_subdir($source);
 
-            $sub_dir = strtolower(substr(basename($source), 0, 2));
-            if (!file_exists($destination . $sub_dir)) {
-              mkdir($destination . $sub_dir, 0777, true);
-            }
-            $destination .= $sub_dir . '/' . basename($source);
-
-            if (!file_exists($destination)) {
-              $image = file_get_contents($source);
-              $fp = fopen($destination, 'w');
-
-              fwrite($fp, $image);
-              fclose($fp);
+              $sub_dir = strtolower(substr(basename($source), 0, 2));
+              // if (!file_exists($destination . $sub_dir)) {
+              //   mkdir($destination . $sub_dir, 0777, true);
+              // }
+              $destination .= $sub_dir . '/' . basename($source);
+              if (!file_exists($destination)) {
+                // print_r($destination . PHP_EOL);
+                // $image = file_get_contents($source);
+                // $fp = fopen($destination, 'w');
+                //
+                // fwrite($fp, $image);
+                // fclose($fp);
+              }
             }
             else {
-              print_r('exists' . PHP_EOL);
+              //print_r('exists' . PHP_EOL);
             }
 
-            $gallery[$key]['url'] = '/image-archive/' . $this->get_image_subdir($source) . $sub_dir . '/' . basename($source);
+            if ($this->get_image_subdir($source) != '') {
+              print_r($post->ID . '. /image-archive/' . $this->get_image_subdir($source) . $sub_dir . '/' . basename($source) . PHP_EOL);
+              $gallery[$key]['url'] = '/image-archive/' . $this->get_image_subdir($source) . $sub_dir . '/' . basename($source);
+            }
           }
         }
         $post->lw_gallery = $gallery;
