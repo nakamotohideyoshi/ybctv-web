@@ -1198,16 +1198,20 @@ class App extends Component {
    event.preventDefault();
    switch (this.state.site) {
     case 'wp_2_':
-      window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
     case 'wp_3_':
-      window.open('https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
     case 'wp_4_':
-      window.open('https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
     case 'wp_5_':
-      window.open('https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
    }
   }
