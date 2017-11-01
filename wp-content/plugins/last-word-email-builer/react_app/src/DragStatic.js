@@ -45,10 +45,12 @@ const boxSource = {
     const { name, text, id } = this.props;
     const opacity = isDragging ? 0.4 : 1;
     return connectDragSource(
-      <div style={{ ...style, opacity }}>
-      <button onClick={onClick} id={id} className="btn btn-primary btn-block" type="button" aria-expanded="false" aria-controls="collapseExample" disabled={!this.props.isDisabled}>
-      {text}
-      </button>
+      <div className="col-md-4" style={{ 'padding': '0 5px' }}>
+        <div style={{ ...style, opacity }}>
+          <button style={{ 'white-space': 'normal' }} onClick={onClick} id={id} className="btn btn-primary btn-block btn-sm" type="button" aria-expanded="false" aria-controls="collapseExample" disabled={!this.props.isDisabled}>
+            {text}
+          </button>
+        </div>
       </div>
     );
   }

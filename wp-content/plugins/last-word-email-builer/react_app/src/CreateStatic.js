@@ -135,18 +135,23 @@ onSaveHtml = () => {
         }
       }).then(result => {
         result.json().then(val => {
-          console.dir(val);
-          this.setState(prevState => ({images: [], totalImages: val[1]}));
-        _.map(val[0], (img) => {
-          this.setState(prevState => ({images: [...prevState.images, {
-          src: img.guid,
-          thumbnail: img.guid,
-          thumbnailWidth: 200,
-          }]}))});
-          $('.modal-backdrop').hide();
-          $('body').removeClass('modal-open');
+            this.setState(prevState => ({images: [], totalImages: val[1]}));
+          _.map(val[0], (img) => {
+            if ( typeof img == "string" )
+            {
+              img = { 'guid': img.replace('http', 'https') };
+            }
+
+            this.setState(prevState => ({images: [...prevState.images, {
+              src: img.guid,
+              thumbnail: img.guid,
+              thumbnailWidth: 200,
+              thumbnailHeight: 50,
+            }]}))});
+            $('.modal-backdrop').hide();
+            $('body').removeClass('modal-open');
+          });
         });
-      });
     }
 
     handleHideModal = () => {
@@ -364,7 +369,25 @@ class CreateStatic extends Component {
     }
 
     componentDidMount = () => {
-     fetch(Config.BASE_URL  + '/wp-json/email-builder/v1/static?type='+ this.props.type + '&template='+ this.props.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
+      var type = this.props.type;
+
+      // type = type.replace("_b", "", type);
+      // type = type.replace("_c", "", type);
+      // type = type.replace("_d", "", type);
+      // type = type.replace("_e", "", type);
+      // type = type.replace("_f", "", type);
+
+      // type = type.replace("1b", "1", type);
+      // type = type.replace("1c", "1", type);
+      // type = type.replace("1d", "1", type);
+
+      // type = type.replace("2b", "2", type);
+      // type = type.replace("2c", "2", type);
+      // type = type.replace("2d", "2", type);
+      // type = type.replace("2e", "2", type);
+      // type = type.replace("2f", "2", type);
+
+     fetch(Config.BASE_URL  + '/wp-json/email-builder/v1/static?type='+ type + '&template='+ this.props.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
        method: 'GET',
        headers: {
          'Accept': 'application/json',
@@ -382,6 +405,9 @@ class CreateStatic extends Component {
 
     componentWillReceiveProps = (nextProps) => {
      this.setState(prevState => ({content: ''}));
+
+     var type = nextProps.type;
+
     fetch(Config.BASE_URL + '/wp-json/email-builder/v1/static?type='+ nextProps.type + '&template='+ nextProps.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
       method: 'GET',
       headers: {
@@ -419,7 +445,7 @@ class CreateStatic extends Component {
         </div>
          </div>
          <div className="row text-center" style={{background: '#fff', padding: '10px', width: '100%'}}>
-          <div className="col-sm-4">
+          <div className="col-sm-4" style={{ display: 'none' }}>
             <button type="button" className="btn btn-primary" onClick={this.handleShowModal}>Import Images</button>
           </div>
           <div className="col-sm-4">

@@ -137,7 +137,6 @@ class App extends Component {
   pushToAdestra = () => {
     $(ReactDOM.findDOMNode(this.refs.mdlProcessingAdestra)).trigger('click');
     this.setState(prevState => ({isLoadingAdestra: true}))
-    console.log(this.state);
     fetch(Config.BASE_URL + '/wp-json/email-builder/v1/email?emailId='+ this.state.param_email_id + '&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
       method: 'GET',
       headers: {
@@ -147,7 +146,6 @@ class App extends Component {
     }).then(result => {
      this.setState(prevState => ({isLoadingEmail: false}))
      result.json().then(val => {
-      console.log(val);
       var project_id = 0;
       switch(this.state.site){
        case 'wp_2_':
@@ -185,7 +183,6 @@ class App extends Component {
       content = content.replace(/data-align/g,"align");
       content = content.replace(/data-border/g,"border");
       content = content.replace(/data-valign/g,"valign");
-      console.log(content);
       fetch(Config.BASE_URL + '/wp-json/email-builder/v1/adestra', {
         method: 'POST',
         headers: {
@@ -202,7 +199,6 @@ class App extends Component {
         })
       }).then(result => {
         result.json().then(val => {
-          console.log(val);
           this.setState(prevState => ({isLoadingAdestra: false}))
           $(ReactDOM.findDOMNode(this.refs.mdlProcessingAdestra)).trigger('click');
           this.onChangePage('Dashboard');
@@ -216,27 +212,113 @@ class App extends Component {
 
   onChangeStaticStatus = (name, val) => {
     switch(name){
+     
      case 'Top_Leaderboard':
        this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
        break;
+     case 'Top_Leaderboard_b':
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       break;
+     case 'Top_Leaderboard_c':
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       break;
+     case 'Top_Leaderboard_d':
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       break;
+     case 'Top_Leaderboard_e':
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       break;
+     case 'Top_Leaderboard_f':
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       break;
+    
     case 'Footer_Leaderboard':
       this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
       break;
+    case 'Footer_Leaderboard_b':
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      break;
+    case 'Footer_Leaderboard_c':
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      break;
+    case 'Footer_Leaderboard_d':
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      break;
+    case 'Footer_Leaderboard_e':
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      break;
+    case 'Footer_Leaderboard_f':
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      break;
+    
     case 'Newsletter_Subscribe':
       this.setState(prevState => ({ hasNewsletterSubscribe: val === true ? "1" : "0"}));
       break;
+
     case 'Sponsored_Content':
       this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
       break;
+    case 'Sponsored_Content_b':
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_c':
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_d':
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_e':
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_f':
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      break;
+    
     case 'Sponsored_Content_2':
       this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
       break;
+    case 'Sponsored_Content_2b':
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_2c':
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_2d':
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_2e':
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      break;
+    case 'Sponsored_Content_2f':
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      break;
+    
     case 'Static_Image_1':
       this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
       break;
+    case 'Static_Image_1b':
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      break;
+    case 'Static_Image_1c':
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      break;
+    case 'Static_Image_1d':
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      break;
+    
     case 'Static_Image_2':
       this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
       break;
+    case 'Static_Image_2b':
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      break;
+    case 'Static_Image_2c':
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      break;
+    case 'Static_Image_2d':
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      break;
+
     case 'Asset_Class':
       this.setState(prevState => ({ hasAssetClass: val === true ? "1" : "0"}));
       break;
@@ -283,8 +365,24 @@ class App extends Component {
   }
 
   onStaticDropped = (name, template) => {
-    console.log(name, template);
     if(name !== undefined){
+
+      // name = name.replace("_b", "", name);
+      // name = name.replace("_c", "", name);
+      // name = name.replace("_d", "", name);
+      // name = name.replace("_e", "", name);
+      // name = name.replace("_f", "", name);
+
+      // name = name.replace("1b", "1", name);
+      // name = name.replace("1c", "1", name);
+      // name = name.replace("1d", "1", name);
+
+      // name = name.replace("2b", "2", name);
+      // name = name.replace("2c", "2", name);
+      // name = name.replace("2d", "2", name);
+      // name = name.replace("2e", "2", name);
+      // name = name.replace("2f", "2", name);
+
     this.onChangeStaticStatus(name, true);
      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
        method: 'GET',
@@ -295,33 +393,119 @@ class App extends Component {
      }).then(result => {
        result.json().then(val => {
          if(val !== null){
-           console.log(val);
           _.each(val, leaderBoard => {
            switch(leaderBoard.Type){
+
             case 'Top_Leaderboard':
               this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
               break;
+            case 'Top_Leaderboard_b':
+              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              break;
+            case 'Top_Leaderboard_c':
+              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              break;
+            case 'Top_Leaderboard_d':
+              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              break;
+            case 'Top_Leaderboard_e':
+              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              break;
+            case 'Top_Leaderboard_f':
+              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              break;
+
            case 'Footer_Leaderboard':
              this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
              break;
+           case 'Footer_Leaderboard_b':
+             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             break;
+           case 'Footer_Leaderboard_c':
+             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             break;
+           case 'Footer_Leaderboard_d':
+             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             break;
+           case 'Footer_Leaderboard_e':
+             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             break;
+           case 'Footer_Leaderboard_f':
+             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             break;
+
            case 'Newsletter_Subscribe':
              this.setState(prevState => ({ newsletterSubscribe: leaderBoard.Content}));
              break;
+
            case 'Sponsored_Content':
              this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
              break;
+           case 'Sponsored_Content_b':
+             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             break;
+           case 'Sponsored_Content_c':
+             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             break;
+           case 'Sponsored_Content_d':
+             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             break;
+           case 'Sponsored_Content_e':
+             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             break;
+           case 'Sponsored_Content_f':
+             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             break;
+
            case 'Sponsored_Content_2':
             this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
             break;
-           case 'Digital_Magazine':
+          case 'Sponsored_Content_2b':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2c':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2d':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2e':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2f':
+            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            break;
+
+          case 'Digital_Magazine':
              this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
              break;
-           case 'Static_Image_1':
+
+          case 'Static_Image_1':
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
             break;
+          case 'Static_Image_1b':
+            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            break;
+          case 'Static_Image_1c':
+            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            break;
+          case 'Static_Image_1d':
+            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            break;
+
            case 'Static_Image_2':
             this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
             break;
+          case 'Static_Image_2b':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Static_Image_2c':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Static_Image_2d':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+
           case 'Asset_Class':
            this.setState(prevState => ({ assetClass: leaderBoard.Content}));
            break;
@@ -344,7 +528,6 @@ class App extends Component {
     }).then(result => {
       result.json().then(val => {
         if(val !== null){
-          console.log(val);
           this.setState(prevState => ({ topLeaderboard: '', footerLeaderboard: '', newsletterSubscribe: '', sponsoredContent: '', sponsoredContent2:'', digitalMagazine: '', staticImage1: '', staticImage2: '', assetClass: '', quotable: ''}));
          _.each(val, leaderBoard => {
           switch(leaderBoard.Type){
@@ -387,17 +570,16 @@ class App extends Component {
   }
 
   onStaticDragged = (props) => {
-    console.log(props);
-    if(props.name === 'Top_Leaderboard'){
+    if(props.name === 'Top_Leaderboard' || props.name === 'Top_Leaderboard_b' || props.name === 'Top_Leaderboard_c' || props.name === 'Top_Leaderboard_d' || props.name === 'Top_Leaderboard_e' || props.name === 'Top_Leaderboard_f'){
      this.setState(prevState => ({staticHighlight: 'top'}));
     }
-    else if(props.name === 'Footer_Leaderboard'){
+    else if(props.name === 'Footer_Leaderboard' || props.name === 'Footer_Leaderboard_b' || props.name === 'Footer_Leaderboard_c' || props.name === 'Footer_Leaderboard_d' || props.name === 'Footer_Leaderboard_e' || props.name === 'Footer_Leaderboard_f'){
      this.setState(prevState => ({staticHighlight: 'footer'}));
     }
-    else if(props.name === 'Sponsored_Content'){
+    else if(props.name === 'Sponsored_Content' || props.name === 'Sponsored_Content_b' || props.name === 'Sponsored_Content_c' || props.name === 'Sponsored_Content_d' || props.name === 'Sponsored_Content_e' || props.name === 'Sponsored_Content_f'){
      this.setState(prevState => ({staticHighlight: 'sponsoredContent'}));
     }
-    else if(props.name === 'Sponsored_Content_2'){
+    else if(props.name === 'Sponsored_Content_2' || props.name === 'Sponsored_Content_2b' || props.name === 'Sponsored_Content_2c' || props.name === 'Sponsored_Content_2d' || props.name === 'Sponsored_Content_2e' || props.name === 'Sponsored_Content_2f'){
      this.setState(prevState => ({staticHighlight: 'sponsoredContent2'}));
     }
     else if(props.name === 'Digital_Magazine'){
@@ -429,8 +611,6 @@ class App extends Component {
   }
 
   onArticleDragged = (props) => {
-    console.log(props);
-    console.log(this.state.selectedCategory);
     this.setState(prevState => ({highlight: props.type}));
   }
 
@@ -447,7 +627,6 @@ class App extends Component {
   }
 
   onCategoryChange = (value) => {
-    console.log(value);
     this.setState({
       selectedCategory: value
     }, () => {
@@ -516,7 +695,6 @@ class App extends Component {
     }).then(result => {
      result.json().then(val => {
        if(val[0].length > 0){
-        console.log(val);
          this.setState(prevState => ({ratedArticles : val[0], totalRatedArticles: val[1]}))
        }
       this.setState(prevState => ({isLoadingMostRated: false}))
@@ -537,7 +715,6 @@ class App extends Component {
     }).then(result => {
      result.json().then(val => {
        if(val[0].length > 0){
-        console.log(val);
          this.setState({articles : val[0], totalArticles: val[1]})
          // this.props.emailId > 0 ? this.getEmail(this.props.emailId) : '';
        }
@@ -558,7 +735,6 @@ class App extends Component {
       }
     }).then(result => {
      result.json().then(val => {
-        console.log(val);
          let storyArticles = {
           wp_2_: {
            articles: val["0"]
@@ -574,7 +750,6 @@ class App extends Component {
           }
          }
          console.dir(storyArticles);
-        console.log(storyArticles.wp_2_.articles.length);
          // val["0"].site = 'wp_2_';
          // val["1"].site = 'wp_3_';
          // val["2"].site = 'wp_4_';
@@ -600,7 +775,6 @@ class App extends Component {
     }).then(result => {
      result.json().then(val => {
        if(val[0].length > 0){
-        console.log(val);
          this.setState({articles : val[0], totalArticles: val[1]})
          // this.props.emailId > 0 ? this.getEmail(this.props.emailId) : '';
        }
@@ -621,7 +795,6 @@ class App extends Component {
       }).then(result => {
         this.setState(prevState => ({isLoadingSearch: false}))
        result.json().then(val => {
-         console.log(val);
          this.setState(prevState => ({articles : val[0], totalArticles: val[1]}))
        }).catch(err => {
         this.setState(prevState => ({isLoadingSearch: false}))
@@ -640,7 +813,6 @@ class App extends Component {
       }).then(result => {
         this.setState(prevState => ({isLoadingStory: false}))
        result.json().then(val => {
-         console.log(val);
          this.setState(prevState => ({otherArticles : val[0], totalOtherArticles: val[1]}))
        }).catch(err => {
         this.setState(prevState => ({isLoadingStory: false}))
@@ -658,7 +830,6 @@ class App extends Component {
       }).then(result => {
         this.setState(prevState => ({isLoadingEvents: false}))
        result.json().then(val => {
-         console.log(val);
          this.setState(prevState => ({eventArticles : val[0], totalEventArticles: val[1]}))
        }).catch(err => {
         this.setState(prevState => ({isLoadingEvents: false}))
@@ -666,8 +837,6 @@ class App extends Component {
       });
   }
   onArticleDropped = (articleId, type, site) => {
-    // console.log(this.state.selectedCategory);
-    console.log(articleId, type, site);
     this.setState(prevState => ({highlight: ''}));
     if(type === 'Latest_News' || type === 'Search'){
         if(parseInt(this.state.selectedCategory) === 35){
@@ -770,7 +939,6 @@ class App extends Component {
   }
 
   onRemoveArticle = (event) => {
-    console.log(event.target.id);
     this.setState({selectedArticles: this.state.selectedArticles.filter(function(article) {
           return parseInt(article.ID) !== parseInt(event.target.id)
       })});
@@ -812,7 +980,6 @@ class App extends Component {
     }).then(result => {
      this.setState(prevState => ({isLoadingEmail: false}))
      result.json().then(val => {
-      console.log(val);
        var s_articles = [];
        var t_articles = val.Articles1;
        var ev_articles = val.EventArticles1;
@@ -879,7 +1046,6 @@ class App extends Component {
       }
     }).then(result => {
      result.json().then(val => {
-      console.log(val);
        this.setState({emails : val[0], totalEmails: val[1], isLoadingEmails: false})
      }).catch(err => {
        this.setState(prevState => ({isLoadingEmails: false}));
@@ -888,7 +1054,6 @@ class App extends Component {
   };
 
   onSetSite = (site) => {
-    console.log(site);
     this.setState(prevState => ({ site: site,
                                   offset: 0,
                                   pageNo: 1,
@@ -943,7 +1108,6 @@ class App extends Component {
     }).then(result => {
      result.json().then(val => {
        if(val[0].length > 0){
-        console.log(val);
          this.setState({articles : val[0], totalArticles: val[1]})
          // this.props.emailId > 0 ? this.getEmail(this.props.emailId) : '';
        }
@@ -984,7 +1148,6 @@ class App extends Component {
       }
     }).then(result => {
      result.json().then(val => {
-      console.log(val);
       if(val.length > 0){
         this.setState({categories : val, isLoadingCategories: false}, () => {
           this.setState(prevState => ({categories: [{id: 0, name: '-- Select Category --'}, ...prevState.categories]}))
@@ -1006,7 +1169,6 @@ class App extends Component {
       }
     }).then(result => {
      result.json().then(val => {
-      console.log(val);
        val.push({id: 1, name: 'All'});
        this.setState({types : val})
      });
@@ -1050,7 +1212,6 @@ class App extends Component {
    }
   }
   onChangePage = (page, param) => {
-    console.log(page);
     this.setState(prevState => ({
       page: page,
       param_email_id: param
@@ -1065,7 +1226,7 @@ class App extends Component {
     window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
     window.onhashchange=function(){window.location.hash="no-back-button";}
     window.onbeforeunload  = () => {
-      return "Are you sure you want to leave?";
+      // return "Are you sure you want to leave?";
     }
     this.setState(prevState => ({
       site: 'wp_2_',
@@ -1084,7 +1245,6 @@ class App extends Component {
       emails: update(this.state.emails, {[index]: {isSelected: {$set: !this.state.emails[index].isSelected}}})
     }, () => {
       let count = _.filter(this.state.emails, email => email.isSelected === true);
-      console.log(count);
      if(count.length > 0)
       this.setState(prevState => ({enableDelete: true}))
      else
