@@ -375,7 +375,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
 					  if($thumb != null){
-					  	$row->featured_image = $thumb[0]->guid; 
+					  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  	$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 					  }
 					  else{
 					  	$row->featured_image = null; 
@@ -408,7 +409,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
 					  if($thumb != null){
-					  	$row->featured_image = $thumb[0]->guid; 
+					  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  	$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 					  }
 					  else{
 					  	$row->featured_image = null; 
@@ -446,7 +448,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
 					  if($thumb != null){
-					  	$row->featured_image = $thumb[0]->guid; 
+					  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  	$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 					  }
 					  else{
 					  	$row->featured_image = null; 
@@ -475,12 +478,13 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 
                 $count = $wpdb->get_results("SELECT count(*) as count FROM ".$params['prefix']."posts p JOIN ".$params['prefix']."term_relationships tr ON (p.ID = tr.object_id) JOIN ".$params['prefix']."term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) JOIN ".$params['prefix']."terms t ON (tt.term_id = t.term_id) WHERE p.post_type='post' AND p.post_status = 'publish' AND tt.taxonomy = 'category' AND t.term_id = ".$params['categoryId']);
 				
-			    foreach($posts as $row){ 
+			    foreach($posts as $row){
 					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
 					  if($thumb != null){
-					  	$row->featured_image = $thumb[0]->guid; 
+					  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  	$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 					  }
 					  else{
 					  	$row->featured_image = null; 
@@ -509,7 +513,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
 					  if($thumb != null){
-					  	$row->featured_image = $thumb[0]->guid; 
+					  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  	$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 					  }
 					  else{
 					  	$row->featured_image = null; 
@@ -560,7 +565,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
 					  if($thumb != null){
-					  	$row->featured_image = $thumb[0]->guid; 
+					  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  	$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 					  }
 					  else{
 					  	$row->featured_image = null; 
@@ -676,7 +682,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 						if($ftd_image == null){
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$posts[0]->ID."");
 						  if($thumb != null){
-						  	$posts[0]->featured_image = $thumb[0]->guid; 
+						  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  		$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 						  }
 						  else{
 						  	$posts[0]->featured_image = null; 
@@ -755,7 +762,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 						if($ftd_image == null){
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$value."");
 						  if($thumb != null){
-						  	$posts[0]->featured_image = $thumb[0]->guid; 
+						  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  		$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 						  }
 						  else{
 						  	$posts[0]->featured_image = null; 
@@ -780,7 +788,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 						if($ftd_image == null){
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$value."");
 						  if($thumb != null){
-						  	$posts[0]->featured_image = $thumb[0]->guid; 
+						  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
+					  		$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 						  }
 						  else{
 						  	$posts[0]->featured_image = null; 
