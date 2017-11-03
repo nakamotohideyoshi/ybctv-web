@@ -302,9 +302,9 @@ render() {
                                         </td>
                                                 </tr>
                                                 {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
-                                                {this.props.topLeaderboard.length > 0 && this.props.showTopLeaderboard === '1' ? <tr>
+                                                {this.props.showTopLeaderboard !== '0' ? <tr>
                                                   <td style={{position: 'relative', background: '#fff'}} data-bgcolor="#ffffff" data-align="center">
-                                                  <div dangerouslySetInnerHTML={{__html:this.props.topLeaderboard}}></div> 
+                                                  <div dangerouslySetInnerHTML={{__html: ( this.props.showTopLeaderboard === '1' ? this.props.topLeaderboard : ( this.props.showTopLeaderboard === '2' ? this.props.topLeaderboardB : ( this.props.showTopLeaderboard === '3' ? this.props.topLeaderboardC : ( this.props.showTopLeaderboard === '4' ? this.props.topLeaderboardD : ( this.props.showTopLeaderboard === '5' ? this.props.topLeaderboardE : ( this.props.showTopLeaderboard === '6' ? this.props.topLeaderboardF : "" ) ) ) ) ) ) }}></div> 
                                                   <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Top_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                   </td>
                                                 </tr> : ''}
@@ -323,8 +323,8 @@ render() {
 </tr>
 <tr>
 {this.props.staticHighlight === 'sponsoredContent2' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
-{this.props.sponsoredContent2.length > 0 && this.props.showSponsoredContent2 === '1' ? <td style={{background: '#dadada', position: 'relative', left:'10px', bottom:'4px'}}>
-        <div dangerouslySetInnerHTML={{__html:this.props.sponsoredContent2}}></div>
+{this.props.showSponsoredContent2 !== '0' ? <td style={{background: '#dadada', position: 'relative', left:'10px', bottom:'4px'}}>
+        <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent2 === '1' ? this.props.sponsoredContent2 : ( this.props.showSponsoredContent2 === '2' ? this.props.sponsoredContent2B : ( this.props.showSponsoredContent2 === '3' ? this.props.sponsoredContent2C : ( this.props.showSponsoredContent2 === '4' ? this.props.sponsoredContent2D : ( this.props.showSponsoredContent2 === '5' ? this.props.sponsoredContent2E : ( this.props.showSponsoredContent2 === '6' ? this.props.sponsoredContent2F : "" ) ) ) ) ) ) }}></div> 
         <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content_2" onClick={this.props.onRemoveStatic}/>
         </td>: ''}
 </tr>
@@ -375,8 +375,8 @@ render() {
 				                           </tr>
                                                                                         <tr>
                                                                                         {this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
-                                                 {this.props.sponsoredContent.length > 0 && this.props.showSponsoredContent === '1' ? <td style={{background: '#fff', position: 'relative'}}>
-                                                                                                <div dangerouslySetInnerHTML={{__html:this.props.sponsoredContent}}></div>
+                                                                                                {this.props.showSponsoredContent !== '0' ? <td style={{background: '#fff', position: 'relative'}}>
+                                                                                                <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent === '1' ? this.props.sponsoredContent : ( this.props.showSponsoredContent === '2' ? this.props.sponsoredContentB : ( this.props.showSponsoredContent === '3' ? this.props.sponsoredContentC : ( this.props.showSponsoredContent === '4' ? this.props.sponsoredContentD : ( this.props.showSponsoredContent === '5' ? this.props.sponsoredContentE : ( this.props.showSponsoredContent === '6' ? this.props.sponsoredContentF : "" ) ) ) ) ) ) }}></div> 
                                                                                                 <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
                                                                                                 </td>: ''}
                                                                                         </tr>
@@ -394,9 +394,9 @@ render() {
         </td>
 </tr>
                                                                                         {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
-                                                                                        {this.props.footerLeaderboard.length > 0 && this.props.showFooterLeaderboard === '1' ? <tr>
+                                                                                        {this.props.showFooterLeaderboard !== '0' ? <tr>
                                                                                           <td style={{position: 'relative', background: '#fff'}}>
-                                                                                           <div dangerouslySetInnerHTML={{__html:this.props.footerLeaderboard}}></div>
+                                                                                           <div dangerouslySetInnerHTML={{__html: ( this.props.showFooterLeaderboard === '1' ? this.props.footerLeaderboard : ( this.props.showFooterLeaderboard === '2' ? this.props.footerLeaderboardB : ( this.props.showFooterLeaderboard === '3' ? this.props.footerLeaderboardC : ( this.props.showFooterLeaderboard === '4' ? this.props.footerLeaderboardD : ( this.props.showFooterLeaderboard === '5' ? this.props.footerLeaderboardE : ( this.props.showFooterLeaderboard === '6' ? this.props.footerLeaderboardF : "" ) ) ) ) ) ) }}></div> 
                                                                                            <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                                                           </td>
                                                                                         </tr> : ''}

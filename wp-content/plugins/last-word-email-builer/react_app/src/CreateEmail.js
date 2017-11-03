@@ -124,13 +124,13 @@ class CreateEmail extends Component {
       investmentArticles: _.map(this.props.selectedInvestmentArticles, article => article.ID).join(','),
       template: this.state.template,
       content: ReactDOM.findDOMNode(this.refs.emailContent).innerHTML,
-      hasTopLeaderboard: this.props.hasTopLeaderboard === null || this.props.hasTopLeaderboard === "0" ? "0" : "1",
-      hasFooterLeaderboard: this.props.hasFooterLeaderboard === null || this.props.hasFooterLeaderboard === "0" ? "0" : "1",
-      hasSponsoredContent: this.props.hasSponsoredContent === null || this.props.hasSponsoredContent === "0" ? "0" : "1",
-      hasSponsoredContent2: this.props.hasSponsoredContent2 === null || this.props.hasSponsoredContent2 === "0" ? "0" : "1",
+      hasTopLeaderboard: this.props.hasTopLeaderboard === null || this.props.hasTopLeaderboard === "0" ? "0" : this.props.hasTopLeaderboard,
+      hasFooterLeaderboard: this.props.hasFooterLeaderboard === null || this.props.hasFooterLeaderboard === "0" ? "0" : this.props.hasFooterLeaderboard,
+      hasSponsoredContent: this.props.hasSponsoredContent === null || this.props.hasSponsoredContent === "0" ? "0" : this.props.hasSponsoredContent,
+      hasSponsoredContent2: this.props.hasSponsoredContent2 === null || this.props.hasSponsoredContent2 === "0" ? "0" : this.props.hasSponsoredContent2,
       hasNewsletterSubscribe: this.props.hasNewsletterSubscribe === null || this.props.hasNewsletterSubscribe === "0" ? "0" : "1",
-      hasStaticImage1: this.props.hasStaticImage1 === null || this.props.hasStaticImage1 === "0" ? "0" : "1",
-      hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : "1",
+      hasStaticImage1: this.props.hasStaticImage1 === null || this.props.hasStaticImage1 === "0" ? "0" : this.props.hasStaticImage1,
+      hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : this.props.hasStaticImage2,
       hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : "1",
       hasQuotable: this.props.hasQuotable === null || this.props.hasQuotable === "0" ? "0" : "1",
       prefix: this.props.site
@@ -307,15 +307,482 @@ class CreateEmail extends Component {
       <div className="row">
        { this.props.isLoadingEmail === true ? <div className="col-xs-8" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
         <div className="col-xs-8" id="emailContent" ref="emailContent">
-           { this.state.template === 'Video_Newsletter' ? <VideoNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} onRemoveArticle={this.props.onRemoveArticle}  highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped}/>  : ''}
-           { this.state.template === 'Insights_Newsletter' ? <InsightsNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} insights={this.props.insights} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} onRemoveArticle={this.props.onRemoveArticle} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped}/>  : ''}
-           { this.state.template === 'Digital_Magazine_Newsletter' ? <DigitalMagazineNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} digitalMagazine={this.props.digitalMagazine} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} onRemoveArticle={this.props.onRemoveArticle} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped}/>  : ''}
-           { this.state.template === 'Breaking_News_Newsletter' ? <BreakingNewsNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} onRemoveArticle={this.props.onRemoveArticle} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped}/>  : ''}
-           { this.state.template === 'Portfolio_Adviser_Newsletter' ? <PortfolioAdviserNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} selectedEditorArticles={this.props.selectedEditorArticles} selectedEventArticles={this.props.selectedEventArticles} onRemoveArticle={this.props.onRemoveArticle} onRemoveEvent={this.props.onRemoveEvent} onRemoveEditor={this.props.onRemoveEditor} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} selectedInvestmentArticles={this.props.selectedInvestmentArticles} selectedMostReadArticles={this.props.selectedMostReadArticles} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped} />  : ''}
-           { this.state.template === 'Portfolio_Adviser_Newsletter_Investment' ? <PortfolioAdviserInvestmentNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} selectedEditorArticles={this.props.selectedEditorArticles} selectedEventArticles={this.props.selectedEventArticles} onRemoveArticle={this.props.onRemoveArticle} onRemoveEvent={this.props.onRemoveEvent} onRemoveEditor={this.props.onRemoveEditor} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} selectedInvestmentArticles={this.props.selectedInvestmentArticles} selectedMostReadArticles={this.props.selectedMostReadArticles} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped} />  : ''}
-           { this.state.template === 'Portfolio_Adviser_MR_Newsletter' ? <PortfolioAdviserMRInvestmentNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} selectedEditorArticles={this.props.selectedEditorArticles} selectedEventArticles={this.props.selectedEventArticles} onRemoveArticle={this.props.onRemoveArticle} onRemoveEvent={this.props.onRemoveEvent} onRemoveEditor={this.props.onRemoveEditor} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} selectedInvestmentArticles={this.props.selectedInvestmentArticles} selectedMostReadArticles={this.props.selectedMostReadArticles} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped} />  : ''}
-           { this.state.template === 'China_Insights_Newsletter' ? <ChinaInsightsNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} staticImage1={this.props.staticImage1} staticImage2={this.props.staticImage2} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} selectedEditorArticles={this.props.selectedEditorArticles} showStaticImage1={this.props.hasStaticImage1} showStaticImage2={this.props.hasStaticImage2} selectedEventArticles={this.props.selectedEventArticles} onRemoveArticle={this.props.onRemoveArticle} onRemoveEvent={this.props.onRemoveEvent} onRemoveEditor={this.props.onRemoveEditor} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped} selectedMoreNewsArticles={this.props.selectedMoreNewsArticles}/>  : ''}
-           { this.state.template === 'All_Blocks_Newsletter' ? <AllBlocksNewsLetter topLeaderboard={this.props.topLeaderboard} footerLeaderboard={this.props.footerLeaderboard} assetClass={this.props.assetClass} quotable={this.props.quotable} staticImage1={this.props.staticImage1} staticImage2={this.props.staticImage2} sponsoredContent2={this.props.sponsoredContent2} sponsoredContent={this.props.sponsoredContent} showQuotable={this.props.hasQuotable} showAssetClass={this.props.hasAssetClass} showStaticImage1={this.props.hasStaticImage1} showStaticImage2={this.props.hasStaticImage2} newsletterSubscribe={this.props.newsletterSubscribe} articles={this.props.selectedArticles} selectedEditorArticles={this.props.selectedEditorArticles} selectedMostViewedArticles={this.props.selectedMostViewedArticles} selectedEventArticles={this.props.selectedEventArticles} onRemoveArticle={this.props.onRemoveArticle} onRemoveEvent={this.props.onRemoveEvent} onRemoveEditor={this.props.onRemoveEditor} highlight={this.props.highlight} staticHighlight={this.props.staticHighlight} showTopLeaderboard={this.props.hasTopLeaderboard} showFooterLeaderboard={this.props.hasFooterLeaderboard} showNewsletterSubscribe={this.props.hasNewsletterSubscribe} showSponsoredContent2={this.props.hasSponsoredContent2} showSponsoredContent={this.props.hasSponsoredContent} onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} selectedStoryArticles={this.props.selectedStoryArticles} onArticleDropped={this.props.onArticleDropped} selectedMoreNewsArticles={this.props.selectedMoreNewsArticles}/>  : ''}
+           
+           { this.state.template === 'Video_Newsletter' ? 
+           
+           <VideoNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped}
+          /> : ''}
+           
+           { this.state.template === 'Insights_Newsletter' ? 
+           
+           <InsightsNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+            
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            insights={this.props.insights} 
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped}
+          /> : ''}
+           
+           { this.state.template === 'Digital_Magazine_Newsletter' ? 
+           
+           <DigitalMagazineNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            digitalMagazine={this.props.digitalMagazine} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped}
+          /> : ''}
+           
+           { this.state.template === 'Breaking_News_Newsletter' ? 
+           
+           <BreakingNewsNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+            
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped}
+          /> : ''}
+           
+           { this.state.template === 'Portfolio_Adviser_Newsletter' ? 
+           
+           <PortfolioAdviserNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            selectedEditorArticles={this.props.selectedEditorArticles} 
+            selectedEventArticles={this.props.selectedEventArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            onRemoveEvent={this.props.onRemoveEvent} 
+            onRemoveEditor={this.props.onRemoveEditor} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            selectedInvestmentArticles={this.props.selectedInvestmentArticles} 
+            selectedMostReadArticles={this.props.selectedMostReadArticles} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped} 
+          /> : ''}
+           
+           { this.state.template === 'Portfolio_Adviser_Newsletter_Investment' ? 
+           
+           <PortfolioAdviserInvestmentNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+            
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            selectedEditorArticles={this.props.selectedEditorArticles} 
+            selectedEventArticles={this.props.selectedEventArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            onRemoveEvent={this.props.onRemoveEvent} 
+            onRemoveEditor={this.props.onRemoveEditor} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            selectedInvestmentArticles={this.props.selectedInvestmentArticles} 
+            selectedMostReadArticles={this.props.selectedMostReadArticles} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped} 
+          /> : ''}
+           
+           { this.state.template === 'Portfolio_Adviser_MR_Newsletter' ? 
+           
+           <PortfolioAdviserMRInvestmentNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            selectedEditorArticles={this.props.selectedEditorArticles} 
+            selectedEventArticles={this.props.selectedEventArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            onRemoveEvent={this.props.onRemoveEvent} 
+            onRemoveEditor={this.props.onRemoveEditor} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            selectedInvestmentArticles={this.props.selectedInvestmentArticles} 
+            selectedMostReadArticles={this.props.selectedMostReadArticles} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped} 
+          /> : ''}
+           
+           { this.state.template === 'China_Insights_Newsletter' ? 
+           
+           <ChinaInsightsNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            staticImage1={this.props.staticImage1} 
+            staticImage2={this.props.staticImage2} 
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            selectedEditorArticles={this.props.selectedEditorArticles} 
+            showStaticImage1={this.props.hasStaticImage1} 
+            showStaticImage2={this.props.hasStaticImage2} 
+            selectedEventArticles={this.props.selectedEventArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            onRemoveEvent={this.props.onRemoveEvent} 
+            onRemoveEditor={this.props.onRemoveEditor} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped} 
+            selectedMoreNewsArticles={this.props.selectedMoreNewsArticles}
+          /> : ''}
+           
+           { this.state.template === 'All_Blocks_Newsletter' ? 
+           <AllBlocksNewsLetter 
+            
+            topLeaderboard={this.props.topLeaderboard} 
+            topLeaderboardB={this.props.topLeaderboardB} 
+            topLeaderboardC={this.props.topLeaderboardC} 
+            topLeaderboardD={this.props.topLeaderboardD} 
+            topLeaderboardE={this.props.topLeaderboardE} 
+            topLeaderboardF={this.props.topLeaderboardF} 
+            
+            footerLeaderboard={this.props.footerLeaderboard} 
+            footerLeaderboardB={this.props.footerLeaderboardB} 
+            footerLeaderboardC={this.props.footerLeaderboardC} 
+            footerLeaderboardD={this.props.footerLeaderboardD} 
+            footerLeaderboardE={this.props.footerLeaderboardE} 
+            footerLeaderboardF={this.props.footerLeaderboardF} 
+            
+            assetClass={this.props.assetClass} 
+            quotable={this.props.quotable} 
+            staticImage1={this.props.staticImage1} 
+            staticImage2={this.props.staticImage2} 
+            
+            sponsoredContent2={this.props.sponsoredContent2} 
+            sponsoredContent2B={this.props.sponsoredContent2B} 
+            sponsoredContent2C={this.props.sponsoredContent2C} 
+            sponsoredContent2D={this.props.sponsoredContent2D} 
+            sponsoredContent2E={this.props.sponsoredContent2E} 
+            sponsoredContent2F={this.props.sponsoredContent2F} 
+            
+            sponsoredContent={this.props.sponsoredContent}
+            sponsoredContentB={this.props.sponsoredContentB}
+            sponsoredContentC={this.props.sponsoredContentC}
+            sponsoredContentD={this.props.sponsoredContentD}
+            sponsoredContentE={this.props.sponsoredContentE}
+            sponsoredContentF={this.props.sponsoredContentF}
+            
+            showQuotable={this.props.hasQuotable} 
+            showAssetClass={this.props.hasAssetClass} 
+            showStaticImage1={this.props.hasStaticImage1} 
+            showStaticImage2={this.props.hasStaticImage2} 
+            newsletterSubscribe={this.props.newsletterSubscribe} 
+            articles={this.props.selectedArticles} 
+            selectedEditorArticles={this.props.selectedEditorArticles} 
+            selectedMostViewedArticles={this.props.selectedMostViewedArticles} 
+            selectedEventArticles={this.props.selectedEventArticles} 
+            onRemoveArticle={this.props.onRemoveArticle} 
+            onRemoveEvent={this.props.onRemoveEvent} 
+            onRemoveEditor={this.props.onRemoveEditor} 
+            highlight={this.props.highlight} 
+            staticHighlight={this.props.staticHighlight} 
+            showTopLeaderboard={this.props.hasTopLeaderboard} 
+            showFooterLeaderboard={this.props.hasFooterLeaderboard} 
+            showNewsletterSubscribe={this.props.hasNewsletterSubscribe} 
+            showSponsoredContent2={this.props.hasSponsoredContent2} 
+            showSponsoredContent={this.props.hasSponsoredContent} 
+            onRemoveStatic={this.props.onRemoveStatic} 
+            site={this.props.site} 
+            selectedStoryArticles={this.props.selectedStoryArticles} 
+            onArticleDropped={this.props.onArticleDropped} 
+            selectedMoreNewsArticles={this.props.selectedMoreNewsArticles}
+          />  : ''}
+        
         </div> }
         <div className="col-xs-4 email-builder-content">
 

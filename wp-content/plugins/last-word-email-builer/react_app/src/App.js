@@ -82,10 +82,35 @@ class App extends Component {
     hasStaticImage2:"0",
     hasAssetClass: "0",
     hasQuotable:"0",
+    
     topLeaderboard: '',
+    topLeaderboardB: '',
+    topLeaderboardC: '',
+    topLeaderboardD: '',
+    topLeaderboardE: '',
+    topLeaderboardF: '',
+    
     footerLeaderboard: '',
+    footerLeaderboardB: '',
+    footerLeaderboardC: '',
+    footerLeaderboardD: '',
+    footerLeaderboardE: '',
+    footerLeaderboardF: '',
+    
     sponsoredContent: '',
+    sponsoredContentB: '',
+    sponsoredContentC: '',
+    sponsoredContentD: '',
+    sponsoredContentE: '',
+    sponsoredContentF: '',
+    
     sponsoredContent2:'',
+    sponsoredContent2B:'',
+    sponsoredContent2C:'',
+    sponsoredContent2D:'',
+    sponsoredContent2E:'',
+    sponsoredContent2F:'',
+    
     newsletterSubscribe: '',
     digitalMagazine: '',
     staticImage1: '',
@@ -217,38 +242,38 @@ class App extends Component {
        this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
        break;
      case 'Top_Leaderboard_b':
-       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "2" : "0"}));
        break;
      case 'Top_Leaderboard_c':
-       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "3" : "0"}));
        break;
      case 'Top_Leaderboard_d':
-       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "4" : "0"}));
        break;
      case 'Top_Leaderboard_e':
-       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "5" : "0"}));
        break;
      case 'Top_Leaderboard_f':
-       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
+       this.setState(prevState => ({ hasTopLeaderboard: val === true ? "6" : "0"}));
        break;
     
     case 'Footer_Leaderboard':
       this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
       break;
     case 'Footer_Leaderboard_b':
-      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "2" : "0"}));
       break;
     case 'Footer_Leaderboard_c':
-      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "3" : "0"}));
       break;
     case 'Footer_Leaderboard_d':
-      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "4" : "0"}));
       break;
     case 'Footer_Leaderboard_e':
-      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "5" : "0"}));
       break;
     case 'Footer_Leaderboard_f':
-      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "6" : "0"}));
       break;
     
     case 'Newsletter_Subscribe':
@@ -259,64 +284,64 @@ class App extends Component {
       this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
       break;
     case 'Sponsored_Content_b':
-      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "2" : "0"}));
       break;
     case 'Sponsored_Content_c':
-      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "3" : "0"}));
       break;
     case 'Sponsored_Content_d':
-      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "4" : "0"}));
       break;
     case 'Sponsored_Content_e':
-      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "5" : "0"}));
       break;
     case 'Sponsored_Content_f':
-      this.setState(prevState => ({ hasSponsoredContent: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent: val === true ? "6" : "0"}));
       break;
     
     case 'Sponsored_Content_2':
       this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
       break;
     case 'Sponsored_Content_2b':
-      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "2" : "0"}));
       break;
     case 'Sponsored_Content_2c':
-      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "3" : "0"}));
       break;
     case 'Sponsored_Content_2d':
-      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "4" : "0"}));
       break;
     case 'Sponsored_Content_2e':
-      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "5" : "0"}));
       break;
     case 'Sponsored_Content_2f':
-      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasSponsoredContent2: val === true ? "6" : "0"}));
       break;
     
     case 'Static_Image_1':
       this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
       break;
     case 'Static_Image_1b':
-      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "2" : "0"}));
       break;
     case 'Static_Image_1c':
-      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "3" : "0"}));
       break;
     case 'Static_Image_1d':
-      this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasStaticImage1: val === true ? "4" : "0"}));
       break;
     
     case 'Static_Image_2':
       this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
       break;
     case 'Static_Image_2b':
-      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "2" : "0"}));
       break;
     case 'Static_Image_2c':
-      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "3" : "0"}));
       break;
     case 'Static_Image_2d':
-      this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
+      this.setState(prevState => ({ hasStaticImage2: val === true ? "4" : "0"}));
       break;
 
     case 'Asset_Class':
@@ -331,21 +356,27 @@ class App extends Component {
   onRemoveStatic = (event) => {
     this.onChangeStaticStatus(event.target.id, false);
     switch(event.target.id){
-     case 'Top_Leaderboard':
+    
+    case 'Top_Leaderboard':
        this.setState(prevState => ({ topLeaderboard: ''}));
        break;
+    
     case 'Footer_Leaderboard':
       this.setState(prevState => ({ footerLeaderboard: ''}));
       break;
+    
     case 'Newsletter_Subscribe':
       this.setState(prevState => ({ newsletterSubscribe: ''}));
       break;
+    
     case 'Sponsored_Content':
       this.setState(prevState => ({ sponsoredContent: ''}));
       break;
+    
     case 'Sponsored_Content_2':
       this.setState(prevState => ({ sponsoredContent2: ''}));
       break;
+    
     case 'Digital_Magazine':
       this.setState(prevState => ({ digitalMagazine: ''}));
       break;
@@ -394,44 +425,45 @@ class App extends Component {
        result.json().then(val => {
          if(val !== null){
           _.each(val, leaderBoard => {
+
            switch(leaderBoard.Type){
 
             case 'Top_Leaderboard':
               this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
               break;
             case 'Top_Leaderboard_b':
-              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              this.setState(prevState => ({ topLeaderboardB: leaderBoard.Content}));
               break;
             case 'Top_Leaderboard_c':
-              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              this.setState(prevState => ({ topLeaderboardC: leaderBoard.Content}));
               break;
             case 'Top_Leaderboard_d':
-              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              this.setState(prevState => ({ topLeaderboardD: leaderBoard.Content}));
               break;
             case 'Top_Leaderboard_e':
-              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              this.setState(prevState => ({ topLeaderboardE: leaderBoard.Content}));
               break;
             case 'Top_Leaderboard_f':
-              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
+              this.setState(prevState => ({ topLeaderboardF: leaderBoard.Content}));
               break;
 
            case 'Footer_Leaderboard':
              this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
              break;
            case 'Footer_Leaderboard_b':
-             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             this.setState(prevState => ({ footerLeaderboardB: leaderBoard.Content}));
              break;
            case 'Footer_Leaderboard_c':
-             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             this.setState(prevState => ({ footerLeaderboardC: leaderBoard.Content}));
              break;
            case 'Footer_Leaderboard_d':
-             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             this.setState(prevState => ({ footerLeaderboardD: leaderBoard.Content}));
              break;
            case 'Footer_Leaderboard_e':
-             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             this.setState(prevState => ({ footerLeaderboardE: leaderBoard.Content}));
              break;
            case 'Footer_Leaderboard_f':
-             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
+             this.setState(prevState => ({ footerLeaderboardF: leaderBoard.Content}));
              break;
 
            case 'Newsletter_Subscribe':
@@ -442,38 +474,38 @@ class App extends Component {
              this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
              break;
            case 'Sponsored_Content_b':
-             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             this.setState(prevState => ({ sponsoredContentB: leaderBoard.Content}));
              break;
            case 'Sponsored_Content_c':
-             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             this.setState(prevState => ({ sponsoredContentC: leaderBoard.Content}));
              break;
            case 'Sponsored_Content_d':
-             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             this.setState(prevState => ({ sponsoredContentD: leaderBoard.Content}));
              break;
            case 'Sponsored_Content_e':
-             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             this.setState(prevState => ({ sponsoredContentE: leaderBoard.Content}));
              break;
            case 'Sponsored_Content_f':
-             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
+             this.setState(prevState => ({ sponsoredContentF: leaderBoard.Content}));
              break;
 
            case 'Sponsored_Content_2':
             this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
             break;
           case 'Sponsored_Content_2b':
-            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            this.setState(prevState => ({ sponsoredContent2B: leaderBoard.Content}));
             break;
           case 'Sponsored_Content_2c':
-            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            this.setState(prevState => ({ sponsoredContent2C: leaderBoard.Content}));
             break;
           case 'Sponsored_Content_2d':
-            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            this.setState(prevState => ({ sponsoredContent2D: leaderBoard.Content}));
             break;
           case 'Sponsored_Content_2e':
-            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            this.setState(prevState => ({ sponsoredContent2E: leaderBoard.Content}));
             break;
           case 'Sponsored_Content_2f':
-            this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
+            this.setState(prevState => ({ sponsoredContent2F: leaderBoard.Content}));
             break;
 
           case 'Digital_Magazine':
@@ -484,26 +516,26 @@ class App extends Component {
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
             break;
           case 'Static_Image_1b':
-            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage1B: leaderBoard.Content}));
             break;
           case 'Static_Image_1c':
-            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage1C: leaderBoard.Content}));
             break;
           case 'Static_Image_1d':
-            this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage1D: leaderBoard.Content}));
             break;
 
            case 'Static_Image_2':
             this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
             break;
           case 'Static_Image_2b':
-            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage2B: leaderBoard.Content}));
             break;
           case 'Static_Image_2c':
-            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage2C: leaderBoard.Content}));
             break;
           case 'Static_Image_2d':
-            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage2D: leaderBoard.Content}));
             break;
 
           case 'Asset_Class':
@@ -528,36 +560,107 @@ class App extends Component {
     }).then(result => {
       result.json().then(val => {
         if(val !== null){
+
           this.setState(prevState => ({ topLeaderboard: '', footerLeaderboard: '', newsletterSubscribe: '', sponsoredContent: '', sponsoredContent2:'', digitalMagazine: '', staticImage1: '', staticImage2: '', assetClass: '', quotable: ''}));
          _.each(val, leaderBoard => {
+
           switch(leaderBoard.Type){
            case 'Top_Leaderboard':
              this.setState(prevState => ({ topLeaderboard: leaderBoard.Content}));
              break;
+           case 'Top_Leaderboard_b':
+             this.setState(prevState => ({ topLeaderboardB: leaderBoard.Content}));
+             break;
+           case 'Top_Leaderboard_c':
+             this.setState(prevState => ({ topLeaderboardC: leaderBoard.Content}));
+             break;
+           case 'Top_Leaderboard_d':
+             this.setState(prevState => ({ topLeaderboardD: leaderBoard.Content}));
+             break;
+           case 'Top_Leaderboard_e':
+             this.setState(prevState => ({ topLeaderboardE: leaderBoard.Content}));
+             break;
+           case 'Top_Leaderboard_f':
+             this.setState(prevState => ({ topLeaderboardF: leaderBoard.Content}));
+             break;
+          
           case 'Footer_Leaderboard':
             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
             break;
+          case 'Footer_Leaderboard_b':
+            this.setState(prevState => ({ footerLeaderboardB: leaderBoard.Content}));
+            break;
+          case 'Footer_Leaderboard_c':
+            this.setState(prevState => ({ footerLeaderboardC: leaderBoard.Content}));
+            break;
+          case 'Footer_Leaderboard_d':
+            this.setState(prevState => ({ footerLeaderboardD: leaderBoard.Content}));
+            break;
+          case 'Footer_Leaderboard_e':
+            this.setState(prevState => ({ footerLeaderboardE: leaderBoard.Content}));
+            break;
+          case 'Footer_Leaderboard_f':
+            this.setState(prevState => ({ footerLeaderboardF: leaderBoard.Content}));
+            break;
+          
           case 'Newsletter_Subscribe':
             this.setState(prevState => ({ newsletterSubscribe: leaderBoard.Content}));
             break;
+          
           case 'Sponsored_Content':
             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
             break;
+          case 'Sponsored_Content_b':
+            this.setState(prevState => ({ sponsoredContentB: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_c':
+            this.setState(prevState => ({ sponsoredContentC: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_d':
+            this.setState(prevState => ({ sponsoredContentD: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_e':
+            this.setState(prevState => ({ sponsoredContentE: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_f':
+            this.setState(prevState => ({ sponsoredContentF: leaderBoard.Content}));
+            break;
+          
           case 'Sponsored_Content_2':
             this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
             break;
+          case 'Sponsored_Content_2b':
+            this.setState(prevState => ({ sponsoredContent2B: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2c':
+            this.setState(prevState => ({ sponsoredContent2C: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2d':
+            this.setState(prevState => ({ sponsoredContent2D: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2e':
+            this.setState(prevState => ({ sponsoredContent2E: leaderBoard.Content}));
+            break;
+          case 'Sponsored_Content_2f':
+            this.setState(prevState => ({ sponsoredContent2F: leaderBoard.Content}));
+            break;
+          
           case 'Digital_Magazine':
             this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
             break;
+          
           case 'Static_Image_1':
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
             break;
+          
           case 'Static_Image_2':
             this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
             break;
+          
           case 'Asset_Class':
             this.setState(prevState => ({ assetClass: leaderBoard.Content}));
             break;
+          
           case 'Quotable':
             this.setState(prevState => ({ quotable: leaderBoard.Content}));
             break;
@@ -1198,20 +1301,20 @@ class App extends Component {
    event.preventDefault();
    switch (this.state.site) {
     case 'wp_2_':
-      // window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      window.open('https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
     case 'wp_3_':
-      // window.open('https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      window.open('https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
     case 'wp_4_':
-      // window.open('https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      window.open('fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
     case 'wp_5_':
-      // window.open('https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      window.open('https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      window.open('https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      // window.open('https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
       break;
    }
   }
@@ -1384,13 +1487,47 @@ class App extends Component {
                                                    onStaticDropped={this.onStaticDropped}
                                                    onRemoveStatic={this.onRemoveStatic}
                                                    onChangeStaticStatus={this.onChangeStaticStatus}
+                                                   
                                                    topLeaderboard={this.state.topLeaderboard}
+                                                   topLeaderboardB={this.state.topLeaderboardB}
+                                                   topLeaderboardC={this.state.topLeaderboardC}
+                                                   topLeaderboardD={this.state.topLeaderboardD}
+                                                   topLeaderboardE={this.state.topLeaderboardE}
+                                                   topLeaderboardF={this.state.topLeaderboardF}
+                                                   
                                                    footerLeaderboard={this.state.footerLeaderboard}
+                                                   footerLeaderboardB={this.state.footerLeaderboardB}
+                                                   footerLeaderboardC={this.state.footerLeaderboardC}
+                                                   footerLeaderboardD={this.state.footerLeaderboardD}
+                                                   footerLeaderboardE={this.state.footerLeaderboardE}
+                                                   footerLeaderboardF={this.state.footerLeaderboardF}
+                                                   
                                                    sponsoredContent={this.state.sponsoredContent}
+                                                   sponsoredContentB={this.state.sponsoredContentB}
+                                                   sponsoredContentC={this.state.sponsoredContentC}
+                                                   sponsoredContentD={this.state.sponsoredContentD}
+                                                   sponsoredContentE={this.state.sponsoredContentE}
+                                                   sponsoredContentF={this.state.sponsoredContentF}
+                                                   
                                                    sponsoredContent2={this.state.sponsoredContent2}
+                                                   sponsoredContent2B={this.state.sponsoredContent2B}
+                                                   sponsoredContent2C={this.state.sponsoredContent2C}
+                                                   sponsoredContent2D={this.state.sponsoredContent2D}
+                                                   sponsoredContent2E={this.state.sponsoredContent2E}
+                                                   sponsoredContent2F={this.state.sponsoredContent2F}
+                                                   
                                                    digitalMagazine={this.state.digitalMagazine}
+                                                   
                                                    staticImage1={this.state.staticImage1}
+                                                   staticImage1B={this.state.staticImage1B}
+                                                   staticImage1C={this.state.staticImage1C}
+                                                   staticImage1D={this.state.staticImage1D}
+                                                   
                                                    staticImage2={this.state.staticImage2}
+                                                   staticImage2B={this.state.staticImage2B}
+                                                   staticImage2C={this.state.staticImage2C}
+                                                   staticImage2D={this.state.staticImage2D}
+                                                   
                                                    assetClass={this.state.assetClass}
                                                    quotable={this.state.quotable}
                                                    newsletterSubscribe={this.state.newsletterSubscribe}
