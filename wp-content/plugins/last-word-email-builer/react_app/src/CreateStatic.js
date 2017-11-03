@@ -145,8 +145,7 @@ onSaveHtml = () => {
             this.setState(prevState => ({images: [...prevState.images, {
               src: img.guid,
               thumbnail: img.guid,
-              thumbnailWidth: 200,
-              thumbnailHeight: 50,
+              thumbnailWidth: 200
             }]}))});
             $('.modal-backdrop').hide();
             $('body').removeClass('modal-open');
@@ -186,6 +185,13 @@ onSaveHtml = () => {
         return (
           <div>
           <button data-toggle="modal" data-target="#myModal" ref="myModal"></button>
+
+          <style dangerouslySetInnerHTML={{__html: `
+            .tile { height: 100px; width: 100px; margin: 0 3px 3px 0; border: 1px solid #555; }
+            .tile .tile-viewport { line-height: 100px; text-align: center; height: 100px !important; }
+            .tile .tile-viewport img { vertical-align: middle; max-width: 100%; max-height: 100%; width: auto !important; height: auto !important; }
+          `}} />
+
           <div id="myModal"  className="modal fade" ref="dialog">
             <div className="modal-dialog">
               <div className="modal-content" style={{width: '800px'}}>
@@ -205,7 +211,7 @@ onSaveHtml = () => {
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-12">
-                      <label htmlFor="article" className="control-label">Image Name</label>
+                      <label htmlFor="article" className="control-label">Search by Image Name</label>
                       <input type="text" className="form-control" id="article" placeholder="Image Name" onChange={this.onKeyUp}/>
                     </div>
                   </div>
@@ -239,7 +245,6 @@ class CreateStatic extends Component {
  }
 
   onChange = (value) => {
-    console.log(value);
     if(this.props.type === 'Newsletter_Subscribe'){
       this.setState(prevState => ({content: value.level.content.replace(/(<img.*src="([^"]*)"[^>]*)>/ig,'$1 data-width=\"200">')}));
     }
@@ -433,19 +438,19 @@ class CreateStatic extends Component {
         config={{
           height: 500,
           toolbar: 'undo redo | bold italic | alignleft aligncenter alignright',
-  plugins: [
-    'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-    'searchreplace wordcount visualblocks visualchars code fullscreen',
-    'insertdatetime media nonbreaking save table contextmenu directionality',
-    'emoticons template paste textcolor colorpicker textpattern imagetools'
-  ],
+          plugins: [
+            'advlist autolink lists link contextmenu image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools'
+          ]
         }}
         onChange={this.onChange}
       />
         </div>
          </div>
          <div className="row text-center" style={{background: '#fff', padding: '10px', width: '100%'}}>
-          <div className="col-sm-4" style={{ display: 'none' }}>
+          <div className="col-sm-4">
             <button type="button" className="btn btn-primary" onClick={this.handleShowModal}>Import Images</button>
           </div>
           <div className="col-sm-4">

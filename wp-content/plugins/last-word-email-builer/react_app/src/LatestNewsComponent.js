@@ -55,7 +55,7 @@ render() {
                           <tbody><tr>
                                                                   <td className="container_sub" style={this.props.isAllBlocksNews !== undefined ? {padding:'20px 10px 14px 0px',verticalAlign: 'top', width: '180px'} : {padding:'20px 10px 14px 0px',verticalAlign: 'top', width: '230px'}}> 
                                                                           <a href={article.guid}>
-                                                                           <img data-width="219" src={ article.featured_image !== null ? article.featured_image : "http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg"} style={ this.props.isAllBlocksNews !== undefined ? {width: '180px'} : {maxWidth:'219px',height:'122px',width:'219px'}} title={article.post_title}/>
+                                                                           <img data-width="219" src={ article.featured_image !== null && typeof article.featured_image != 'undefined' ? article.featured_image : "http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg"} style={ this.props.isAllBlocksNews !== undefined ? {width: '180px'} : {maxWidth:'219px',height:'122px',width:'219px'}} title={article.post_title}/>
                                                                            </a>
                                                                   </td>
                                                                   <td className="container_sub" style={{verticalAlign: 'top',padding:'13px 0px 14px'}}>						

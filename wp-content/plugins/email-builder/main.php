@@ -587,10 +587,10 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
             'methods' => 'GET',
             'callback' => function ($params ){
 				global $wpdb;
-				$offset = ($params['page'] - 1) * 5;	
+				$offset = ($params['page'] - 1) * 50;	
 				$table_name = $params['prefix'].'posts';
 				
-				$images = $wpdb->get_results("SELECT guid FROM ".$table_name." WHERE post_type = 'Attachment' and post_mime_type in ('image/jpeg','image/gif','image/png') order by ID desc LIMIT 5 OFFSET ".$offset);
+				$images = $wpdb->get_results("SELECT guid FROM ".$table_name." WHERE post_type = 'Attachment' and post_mime_type in ('image/jpeg','image/gif','image/png') order by ID desc LIMIT 50 OFFSET ".$offset);
 
                 $count = $wpdb->get_results("SELECT count(*) as count FROM ".$table_name." WHERE post_type = 'Attachment' and post_mime_type in ('image/jpeg','image/gif','image/png')");
 
@@ -683,14 +683,14 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$posts[0]->ID."");
 						  if($thumb != null){
 						  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
-					  		$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
+					  		$posts[0]->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 						  }
 						  else{
 						  	$posts[0]->featured_image = null; 
 						  }
 						}
 						else{
-							$row->featured_image = $ftd_image[0]->meta_value; 
+							$posts[0] = $ftd_image[0]->meta_value; 
 						}
 						array_push($email->Articles1,$posts[0]);
 					}
@@ -763,7 +763,7 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$value."");
 						  if($thumb != null){
 						  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
-					  		$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
+					  		$posts[0]->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 						  }
 						  else{
 						  	$posts[0]->featured_image = null; 
@@ -789,7 +789,7 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$value."");
 						  if($thumb != null){
 						  	$ext = "." . pathinfo($thumb[0]->guid, PATHINFO_EXTENSION);
-					  		$row->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
+					  		$posts[0]->featured_image = str_replace($ext, "-219x122" . $ext, $thumb[0]->guid); 
 						  }
 						  else{
 						  	$posts[0]->featured_image = null; 
@@ -804,7 +804,15 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
-				}				
+				}		
+
+				$email->Content = str_replace('https://', 'http://', $email->Content);		
+
+				foreach ( $email->Articles1 as $key => $value )
+				{
+					$email->Articles1[$key]->guid = str_replace('http://', 'https://', $value->guid);
+				}
+
 			    return $email;
 			  }
         )
@@ -920,8 +928,7 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.491e0f02.js', __FILE__),array(),  '0.0.1', true );
-
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.5d09a619.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {

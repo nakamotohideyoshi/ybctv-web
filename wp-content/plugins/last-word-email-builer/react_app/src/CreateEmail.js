@@ -275,13 +275,6 @@ class CreateEmail extends Component {
   }
 
   render() {
-
-    console.log('=========');
-    console.log(this.state.template);
-    console.log(this.state);
-    console.log(this.props);
-    console.log('=========');
-
     return (
    <div className="container">
       <div className="row">
