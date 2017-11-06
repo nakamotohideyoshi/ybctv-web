@@ -259,9 +259,10 @@ class last_word_gallery {
         );
         $i++;
       }
+
+      update_post_meta($post_id, 'lw_gallery', $lw_gallery);
     }
 
-    update_post_meta($post_id, 'lw_gallery', $lw_gallery);
   }
 
 }
