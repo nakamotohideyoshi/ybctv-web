@@ -172,15 +172,15 @@ class CreateEmail extends Component {
       moreNewsArticles: _.map(this.props.selectedMoreNewsArticles, article => article.ID).join(','),
       template: this.state.template,
       content: ReactDOM.findDOMNode(this.refs.emailContent).innerHTML,
-      hasTopLeaderboard: this.props.hasTopLeaderboard === null || this.props.hasTopLeaderboard === "0" ? "0" : "1",
-      hasFooterLeaderboard: this.props.hasFooterLeaderboard === null || this.props.hasFooterLeaderboard === "0" ? "0": "1",
-      hasSponsoredContent: this.props.hasSponsoredContent === null || this.props.hasSponsoredContent === "0" ? "0": "1",
-      hasSponsoredContent2: this.props.hasSponsoredContent2 === null || this.props.hasSponsoredContent2 === "0" ? "0": "1",
-      hasNewsletterSubscribe: this.props.hasNewsletterSubscribe === null || this.props.hasNewsletterSubscribe === "0" ? "0": "1",
-      hasStaticImage1: this.props.hasStaticImage1 === null || this.props.hasStaticImage1 === "0" ? "0" : "1",
-      hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : "1",
-      hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : "1",
-      hasQuotable: this.props.hasQuotable === null || this.props.hasQuotable === "0" ? "0" : "1",
+      hasTopLeaderboard: this.props.hasTopLeaderboard === null || this.props.hasTopLeaderboard === "0" ? "0" : this.props.hasTopLeaderboard,
+      hasFooterLeaderboard: this.props.hasFooterLeaderboard === null || this.props.hasFooterLeaderboard === "0" ? "0": this.props.hasFooterLeaderboard,
+      hasSponsoredContent: this.props.hasSponsoredContent === null || this.props.hasSponsoredContent === "0" ? "0": this.props.hasSponsoredContent,
+      hasSponsoredContent2: this.props.hasSponsoredContent2 === null || this.props.hasSponsoredContent2 === "0" ? "0": this.props.hasSponsoredContent2,
+      hasNewsletterSubscribe: this.props.hasNewsletterSubscribe === null || this.props.hasNewsletterSubscribe === "0" ? "0": this.props.hasNewsletterSubscribe,
+      hasStaticImage1: this.props.hasStaticImage1 === null || this.props.hasStaticImage1 === "0" ? "0" : this.props.hasStaticImage1,
+      hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : this.props.hasStaticImage2,
+      hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : this.props.hasAssetClass,
+      hasQuotable: this.props.hasQuotable === null || this.props.hasQuotable === "0" ? "0" : this.props.hasQuotable,
       prefix: this.props.site
     }
     console.log(body);
@@ -697,7 +697,15 @@ class CreateEmail extends Component {
             sponsoredContentF={this.props.sponsoredContentF}
             
             staticImage1={this.props.staticImage1} 
+            staticImage1B={this.props.staticImage1B} 
+            staticImage1C={this.props.staticImage1C} 
+            staticImage1D={this.props.staticImage1D} 
+            
             staticImage2={this.props.staticImage2} 
+            staticImage2B={this.props.staticImage2B} 
+            staticImage2C={this.props.staticImage2C} 
+            staticImage2D={this.props.staticImage2D} 
+            
             newsletterSubscribe={this.props.newsletterSubscribe} 
             articles={this.props.selectedArticles} 
             selectedEditorArticles={this.props.selectedEditorArticles} 
@@ -740,8 +748,16 @@ class CreateEmail extends Component {
             
             assetClass={this.props.assetClass} 
             quotable={this.props.quotable} 
+            
             staticImage1={this.props.staticImage1} 
+            staticImage1B={this.props.staticImage1B} 
+            staticImage1C={this.props.staticImage1C} 
+            staticImage1D={this.props.staticImage1D} 
+            
             staticImage2={this.props.staticImage2} 
+            staticImage2B={this.props.staticImage2B} 
+            staticImage2C={this.props.staticImage2C} 
+            staticImage2D={this.props.staticImage2D} 
             
             sponsoredContent2={this.props.sponsoredContent2} 
             sponsoredContent2B={this.props.sponsoredContent2B} 

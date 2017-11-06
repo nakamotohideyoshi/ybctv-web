@@ -360,9 +360,10 @@ render() {
     <MostViewedComponent selectedMostViewedArticles={this.props.selectedMostViewedArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
         </td></tr>
         {this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
-        { this.props.staticImage1.length > 0 && this.props.showStaticImage1 === '1' ? <tr>
+
+        { this.props.showStaticImage1 !== '0' ? <tr>
           <td style={{position: 'relative', background: '#fff',paddingTop:'20px'}}>
-           <div dangerouslySetInnerHTML={{__html:this.props.staticImage1}}></div>
+           <div dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage1 === '1' ? this.props.staticImage1 : ( this.props.showStaticImage1 === '2' ? this.props.staticImage1B : ( this.props.showStaticImage1 === '3' ? this.props.staticImage1C : ( this.props.showStaticImage1 === '4' ? this.props.staticImage1D : '' ) ) ) ) }}></div> 
           <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{cursor:'pointer',position: 'absolute',right:'10px',top:'10px',width:'10px'}} id="Static_Image_1" onClick={this.props.onRemoveStatic}/>
           </td>
         </tr> : ''}
@@ -415,9 +416,9 @@ render() {
 <table style={{border: '1px solid #cccccc',textAlign:'left', border:'0', width:'320px', float:'left'}} data-align="left" data-width="320">
 <tbody>
   {this.props.staticHighlight === 'staticImage2' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
-  { this.props.staticImage2.length > 0 && this.props.showStaticImage2 === '1' ? <tr>
+  { this.props.showStaticImage2 !== '0' ? <tr>
     <td style={{position: 'relative', background: '#fff',padding:'7px 7px 7px 7px'}}>
-     <div className="width320" style={{overflow:'hidden'}} dangerouslySetInnerHTML={{__html:this.props.staticImage2}}></div>
+     <div className="width320" style={{overflow:'hidden'}} dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage2 === '1' ? this.props.staticImage2 : ( this.props.showStaticImage2 === '2' ? this.props.staticImage2B : ( this.props.showStaticImage2 === '3' ? this.props.staticImage2C : ( this.props.showStaticImage2 === '4' ? this.props.staticImage2D : '' ) ) ) ) }}></div>
     <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{cursor:'pointer',position: 'absolute',right:'10px',top:'10px',width:'10px'}} id="Static_Image_2" onClick={this.props.onRemoveStatic}/>
     </td>
   </tr> : ''}

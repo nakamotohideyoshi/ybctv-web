@@ -113,8 +113,17 @@ class App extends Component {
     
     newsletterSubscribe: '',
     digitalMagazine: '',
+    
     staticImage1: '',
+    staticImage1B: '',
+    staticImage1C: '',
+    staticImage1D: '',
+    
     staticImage2: '',
+    staticImage2B: '',
+    staticImage2C: '',
+    staticImage2D: '',
+    
     assetClass: '',
     articleRatedPage: 1,
     selectedTab: 'Latest',
@@ -398,22 +407,6 @@ class App extends Component {
   onStaticDropped = (name, template) => {
     if(name !== undefined){
 
-      // name = name.replace("_b", "", name);
-      // name = name.replace("_c", "", name);
-      // name = name.replace("_d", "", name);
-      // name = name.replace("_e", "", name);
-      // name = name.replace("_f", "", name);
-
-      // name = name.replace("1b", "1", name);
-      // name = name.replace("1c", "1", name);
-      // name = name.replace("1d", "1", name);
-
-      // name = name.replace("2b", "2", name);
-      // name = name.replace("2c", "2", name);
-      // name = name.replace("2d", "2", name);
-      // name = name.replace("2e", "2", name);
-      // name = name.replace("2f", "2", name);
-
     this.onChangeStaticStatus(name, true);
      fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
        method: 'GET',
@@ -652,8 +645,26 @@ class App extends Component {
           case 'Static_Image_1':
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
             break;
+          case 'Static_Image_1b':
+            this.setState(prevState => ({ staticImage1B: leaderBoard.Content}));
+            break;
+          case 'Static_Image_1c':
+            this.setState(prevState => ({ staticImage1C: leaderBoard.Content}));
+            break;
+          case 'Static_Image_1d':
+            this.setState(prevState => ({ staticImage1D: leaderBoard.Content}));
+            break;
           
           case 'Static_Image_2':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Static_Image_2b':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Static_Image_2c':
+            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            break;
+          case 'Static_Image_2d':
             this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
             break;
           
@@ -691,10 +702,10 @@ class App extends Component {
     else if(props.name === 'Newsletter_Subscribe'){
      this.setState(prevState => ({staticHighlight: 'newsletter'}));
     }
-    else if(props.name === 'Static_Image_1'){
+    else if(props.name === 'Static_Image_1' || props.name === 'Static_Image_1b' || props.name === 'Static_Image_1c' || props.name === 'Static_Image_1d'){
      this.setState(prevState => ({staticHighlight: 'staticImage1'}));
     }
-    else if(props.name === 'Static_Image_2'){
+    else if(props.name === 'Static_Image_2' || props.name === 'Static_Image_2b' || props.name === 'Static_Image_2c' || props.name === 'Static_Image_2d'){
      this.setState(prevState => ({staticHighlight: 'staticImage2'}));
     }
     else if(props.name === 'Asset_Class'){
@@ -1299,22 +1310,45 @@ class App extends Component {
 
   livePreview = (event) => {
    event.preventDefault();
+
+   var isStaging = Config.BASE_URL.indexOf('staging') != -1;
+
    switch (this.state.site) {
     case 'wp_2_':
-      window.open('https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      // window.open('https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      var url = 'https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+
+      if (isStaging)
+        url = 'https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+
+      window.open(url);
+      
       break;
     case 'wp_3_':
-      window.open('https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      // window.open('https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      var url = 'https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      
+      if (isStaging)
+        url = 'https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+
+      window.open(url);
+      
       break;
     case 'wp_4_':
-      window.open('https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      // window.open('fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      var url = 'https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      
+      if (isStaging)
+        url = 'https://fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+
+      window.open(url);
+      
       break;
     case 'wp_5_':
-      window.open('https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
-      // window.open('https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site);
+      var url = 'https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      
+      if (isStaging)
+        url = 'https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+
+      window.open(url);
+      
       break;
    }
   }
