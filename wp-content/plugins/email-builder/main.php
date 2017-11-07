@@ -31,7 +31,7 @@ class EmailBuilder {
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
 				$no_rows = $wpdb->get_var("SELECT count(*) FROM ".$table_name."");
-				$emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn FROM ".$table_name." WHERE  Site = '".$params['prefix']."' ORDER BY EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
+				$emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt FROM ".$table_name." WHERE  Site = '".$params['prefix']."' ORDER BY EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
@@ -70,7 +70,7 @@ class EmailBuilder {
         array(
             'methods' => 'POST',
             'callback' => function ($data ){
-				$json_result = json_decode($data->get_body(), true);
+            	$json_result = json_decode($data->get_body(), true);
 				$email_name = $json_result["name"];
 				$email_subject = $json_result["subject"];
 				$email_articles = $json_result["articles"];
@@ -129,9 +129,16 @@ class EmailBuilder {
 						'HasStaticImage2' => $has_staticimage2,
 						'HasAssetClass' => $has_assetclass,
 						'HasQuotable' => $has_quotable,
-						'Site' => $site
+						'Site' => $site,
+						'EditorId' => 0,
+						'EditorName' => '',
+						'CreatedAt' => gmdate('Y-m-d H:i:s'),
+						'UpdatedAt' => gmdate('Y-m-d H:i:s')
 					) 
 				);
+
+				$response = new WP_REST_Response( $arr );
+				return $response;			
 
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
@@ -149,7 +156,7 @@ class EmailBuilder {
         array(
             'methods' => 'POST',
             'callback' => function ($data ){
-				$json_result = json_decode($data->get_body(), true);
+            	$json_result = json_decode($data->get_body(), true);
 				$email_id = $json_result["emailId"];
 				$email_articles = $json_result["articles"];
 				$event_articles = $json_result["eventArticles"];
@@ -205,7 +212,11 @@ class EmailBuilder {
 						'HasStaticImage2' => $has_staticimage2,
 						'HasAssetClass' => $has_assetclass,
 						'HasQuotable' => $has_quotable,
-						'Site' => $site
+						'Site' => $site,
+						'EditorId' => 0,
+						'EditorName' => '',
+						'CreatedAt' => gmdate('Y-m-d H:i:s'),
+						'UpdatedAt' => gmdate('Y-m-d H:i:s')
 					),
 					array(
 					 'EmailId' => $email_id

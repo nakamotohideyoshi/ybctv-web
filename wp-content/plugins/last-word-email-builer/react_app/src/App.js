@@ -1433,7 +1433,9 @@ class App extends Component {
                        <tr>
                          <th>Email Name</th>
                          <th>Subject</th>
+                         <th>Editor</th>
                          <th>Status</th>
+                         <th>Saved On</th>
                          <th>Edit</th>
                          <th>Delete</th>
                          <th>Preview</th>
@@ -1444,7 +1446,9 @@ class App extends Component {
                        return <tr key={key}>
                          <td>{email.EmailName}</td>
                          <td>{email.EmailSubject}</td>
+                         <td>-</td>
                          <td>{email.SendToAdestraOn !== null ? 'Sent to Adestra -'+ moment(email.SendToAdestraOn).format('ddd Do MMM, YYYY') : 'Editing'}</td>
+                         <td>{email.UpdatedAt}</td>
                          <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={this.editEmail} className="btn btn-primary">Edit</button></td>
                          <td><input type="checkbox" id={email.EmailId} checked={email.isSelected} onChange={this.onCheckChange}/></td>
                          <td><button type="button" id={email.EmailId} onClick={this.livePreview} className="btn btn-primary">Live Preview</button></td>
