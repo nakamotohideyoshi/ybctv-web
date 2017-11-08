@@ -20,7 +20,6 @@ onSaveHtml = () => {
   const { editorState, onChange } = this.props;
 
     this.setState(prevState => ({content: [...prevState.content, this.state.content]}), () =>  {
-      console.log(this.state.content);
       this.props.onSaveHtml(this.state.content)
       if ($("#myHtmlModal").is(":visible")) {
           $(".modal-close").trigger('click');
@@ -376,23 +375,7 @@ class CreateStatic extends Component {
     componentDidMount = () => {
       var type = this.props.type;
 
-      // type = type.replace("_b", "", type);
-      // type = type.replace("_c", "", type);
-      // type = type.replace("_d", "", type);
-      // type = type.replace("_e", "", type);
-      // type = type.replace("_f", "", type);
-
-      // type = type.replace("1b", "1", type);
-      // type = type.replace("1c", "1", type);
-      // type = type.replace("1d", "1", type);
-
-      // type = type.replace("2b", "2", type);
-      // type = type.replace("2c", "2", type);
-      // type = type.replace("2d", "2", type);
-      // type = type.replace("2e", "2", type);
-      // type = type.replace("2f", "2", type);
-
-     fetch(Config.BASE_URL  + '/wp-json/email-builder/v1/static?type='+ type + '&template='+ this.props.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
+      fetch(Config.BASE_URL  + '/wp-json/email-builder/v1/static?type='+ type + '&template='+ this.props.template + '&cache='+ Guid.raw() + '&prefix='+ this.props.site, {
        method: 'GET',
        headers: {
          'Accept': 'application/json',
@@ -421,8 +404,14 @@ class CreateStatic extends Component {
       }
     }).then(result => {
       result.json().then(val => {
-        if(val !== null)
-        this.setState(prevState => ({ content: val.Content}));
+          if(val !== null)
+          {
+            this.setState(prevState => ({ 
+              content: val.Content
+            }));
+
+            $('.slider-loader').css('display', 'none');
+          }
       });
     });
     }
@@ -430,6 +419,19 @@ class CreateStatic extends Component {
   render() {
     return (
         <div id="slider" className="transition">
+          <img 
+            className="slider-loader1"
+            src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" 
+            style={{ 
+              'position': 'fixed', 
+              'zIndex': '50000', 
+              'left': '50%', 
+              'top': '50%', 
+              'marginLeft': '-128px', 
+              'marginTop': '-128px',
+              'display': 'none'
+            }} 
+          />
          <div className="editor" style={{background: '#fff'}}>
            <div className="text-editor">
   <TinyMCE

@@ -863,7 +863,7 @@ class App extends Component {
            articles: val["3"]
           }
          }
-         console.dir(storyArticles);
+         
          // val["0"].site = 'wp_2_';
          // val["1"].site = 'wp_3_';
          // val["2"].site = 'wp_4_';
@@ -1446,9 +1446,9 @@ class App extends Component {
                        return <tr key={key}>
                          <td>{email.EmailName}</td>
                          <td>{email.EmailSubject}</td>
-                         <td>-</td>
+                         <td>{email.EditorDisplayName}</td>
                          <td>{email.SendToAdestraOn !== null ? 'Sent to Adestra -'+ moment(email.SendToAdestraOn).format('ddd Do MMM, YYYY') : 'Editing'}</td>
-                         <td>{email.UpdatedAt}</td>
+                         <td>{email.UpdatedAt == '0000-00-00 00:00:00' ? '-' : email.UpdatedAt}</td>
                          <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={this.editEmail} className="btn btn-primary">Edit</button></td>
                          <td><input type="checkbox" id={email.EmailId} checked={email.isSelected} onChange={this.onCheckChange}/></td>
                          <td><button type="button" id={email.EmailId} onClick={this.livePreview} className="btn btn-primary">Live Preview</button></td>

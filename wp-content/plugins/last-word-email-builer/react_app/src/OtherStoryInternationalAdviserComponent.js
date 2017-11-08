@@ -6,7 +6,6 @@ class OtherStoryInternationalAdviserComponent extends Component {
   };
 
   render() {
-    console.dir(this.props.selectedStoryArticles);
     return (
       <div className="section_content component_block" style={{float:'left',display: 'inline'}} id="component_dda127db-bd7e-4399-8c75-1500c688370c">
 <div className ="inner_section_content">

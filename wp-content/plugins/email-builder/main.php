@@ -92,6 +92,9 @@ class EmailBuilder {
 				$has_assetclass = $json_result['hasAssetClass'];
 				$has_quotable = $json_result['hasQuotable'];
 				$site = $json_result['prefix'];
+
+				$editor_id = isset($json_result['editor_id']) ? $json_result['editor_id'] : 0;
+				$editor_display_name = isset($json_result['editor_display_name']) ? $json_result['editor_display_name'] : '';
 				
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
@@ -108,7 +111,7 @@ class EmailBuilder {
 				
 				$wpdb->insert( 
 					$table_name, 
-					array( 
+					$arr = array( 
 						'EmailName' => $email_name,
 						'EmailSubject' => $email_subject, 
 						'Articles' => $email_articles,
@@ -130,15 +133,12 @@ class EmailBuilder {
 						'HasAssetClass' => $has_assetclass,
 						'HasQuotable' => $has_quotable,
 						'Site' => $site,
-						'EditorId' => 0,
-						'EditorName' => '',
+						'EditorId' => $editor_id,
+						'EditorDisplayName' => $editor_display_name,
 						'CreatedAt' => gmdate('Y-m-d H:i:s'),
 						'UpdatedAt' => gmdate('Y-m-d H:i:s')
-					) 
-				);
-
-				$response = new WP_REST_Response( $arr );
-				return $response;			
+					)
+				);	
 
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
@@ -146,6 +146,7 @@ class EmailBuilder {
 				}
 				
                 $response = new WP_REST_Response( $json_result["name"] );
+				
 				return $wpdb->insert_id;
 			  }
         )
@@ -177,6 +178,9 @@ class EmailBuilder {
 				$has_assetclass = $json_result['hasAssetClass'];
 				$has_quotable = $json_result['hasQuotable'];
 				$site = $json_result['prefix'];
+
+				$editor_id = isset($json_result['editor_id']) ? $json_result['editor_id'] : 0;
+				$editor_display_name = isset($json_result['editor_display_name']) ? $json_result['editor_display_name'] : '';
 				
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
@@ -213,9 +217,8 @@ class EmailBuilder {
 						'HasAssetClass' => $has_assetclass,
 						'HasQuotable' => $has_quotable,
 						'Site' => $site,
-						'EditorId' => 0,
-						'EditorName' => '',
-						'CreatedAt' => gmdate('Y-m-d H:i:s'),
+						'EditorId' => $editor_id,
+						'EditorDisplayName' => $editor_display_name,
 						'UpdatedAt' => gmdate('Y-m-d H:i:s')
 					),
 					array(
@@ -939,7 +942,7 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.ca1ab578.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.0a7924a6.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {

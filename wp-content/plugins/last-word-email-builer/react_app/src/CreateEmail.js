@@ -133,6 +133,8 @@ class CreateEmail extends Component {
       hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : this.props.hasStaticImage2,
       hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : "1",
       hasQuotable: this.props.hasQuotable === null || this.props.hasQuotable === "0" ? "0" : "1",
+      editor_id: typeof window.EmailBuilderEditor != 'undefined' && typeof window.EmailBuilderEditor.Id != 'undefined' ? window.EmailBuilderEditor.Id : 0,
+      editor_display_name: typeof window.EmailBuilderEditor != 'undefined' && typeof window.EmailBuilderEditor.DisplayName != 'undefined' ? window.EmailBuilderEditor.DisplayName : '',
       prefix: this.props.site
     }
     console.log(body);
@@ -145,10 +147,16 @@ class CreateEmail extends Component {
       body: JSON.stringify(body)
     }).then(result => {
       result.json().then(val => {
-        console.log(val);
-        $('.modal-backdrop').hide();
-        $('body').removeClass('modal-open');
-        this.props.onChangePage('Dashboard');
+          if ( val != null && typeof val.code != 'undefined' && val.code == 500 )
+          {
+            alert( typeof val.message != 'undefined' ? val.message : 'There was an error. Please try again.' );
+          }
+          else
+          {
+            $('.modal-backdrop').hide();
+            $('body').removeClass('modal-open');
+            this.props.onChangePage('Dashboard');
+          }
       });
     });
   }
@@ -201,7 +209,10 @@ class CreateEmail extends Component {
     });
   }
   onNameChange = (event) => {
-    this.setState({name: event.target.value});
+    if (event.target.value.length > 50)
+      alert('The name maximum length is 50 characters.');
+      
+    this.setState({ name: event.target.value.substring(0,50) });
   }
 
   onSubjectChange = (event) => {
@@ -221,11 +232,13 @@ class CreateEmail extends Component {
      alert('Please select template');
      return;
     }
+
     this.setState(prevState => ({
       staticType: type,
       showStatic: true
     }), () => {
       $('#slider').toggleClass('open');
+      $('.slider-loader').css('display', 'block');
       $(window).scrollTop(0);
     });
   }
@@ -980,7 +993,7 @@ class CreateEmail extends Component {
             <div className="modal-body">
                <div className="form-group">
                 <label htmlFor="pwd">Name:</label>
-                <input type="text" className="form-control" id="name" onChange={this.onNameChange}/>
+                <input type="text" className="form-control" id="name" onChange={this.onNameChange} value={ this.state.name }  />
               </div>
               <div className="form-group">
                <label htmlFor="pwd">Subject:</label>
