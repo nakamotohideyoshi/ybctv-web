@@ -307,7 +307,7 @@ render() {
                         <table data-width="750" cellSpacing="0" cellPadding="0" data-align="center"  style={{width: '750px', textAlign: 'left', borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',borderTop:'1px solid #CCCCCC',margin:'0px auto'}} className="deviceWidth">
                                 <tr>
                                         <td style={{padding:'10px 9px 8px 9px', background: '#000'}} bgcolor="#000000" data-align="bottom">
-                                        {this.props.site === 'wp_2_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_logo1.jpg" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
+                                        {this.props.site === 'wp_2_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_logo1.jpg" style={{maxWidth: '100%'}} alt="Portfolio Adviser"/></a> :''}
                                         {this.props.site === 'wp_3_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/ia_newsletter.png" style={{maxWidth: '100%'}} alt="International Advisor"/></a> :''}
                                         {this.props.site === 'wp_4_' ? <a href={baseURL}><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/fsa_newsletter.jpg" style={{maxWidth: '100%'}} alt="Fund Selector Asia"/></a> :''}
                                         {this.props.site === 'wp_5_' ? <a href="http://www.expertinvestoreurope.com/"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
