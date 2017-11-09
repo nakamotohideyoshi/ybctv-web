@@ -103,7 +103,7 @@ class frontend {
             self::generate_article_targeting();
             self::generate_tags_targeting();
           ?>
-           
+
 
           googletag.pubads().enableSingleRequest();
           googletag.pubads().addEventListener('slotRenderEnded', function(event) {
@@ -164,6 +164,13 @@ class frontend {
         $output .= "googletag.pubads().setTargeting(\"tag\", [\"";
         $output .= implode("\", \"", array_map(function ($tag) { return $tag->name; }, $tags));
         $output .= "\"]);\n";
+      }
+    }
+    else if (is_search()) {
+      $search_term = $_GET['s'];
+      if ($search_term != '') {
+        $output = str_repeat(" ", 14);
+        $output .= "googletag.pubads().setTargeting(\"tag\", [\"" . urldecode($search_term) . "\"]);\n";
       }
     }
 
