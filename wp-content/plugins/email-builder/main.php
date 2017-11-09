@@ -631,9 +631,13 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
             'methods' => 'GET',
             'callback' => function ($params ){
                 global $wpdb;	
-                $offset = ($params['page'] - 1) * 10;			
-                $posts= $wpdb->get_results("select ps.ID, ps.post_name, ps.post_title, ps.post_date, ps.post_excerpt, ps.guid, pm.meta_value from ".$params['prefix']."posts as ps inner join ".$params['prefix']."postmeta as pm on ps.ID = pm.post_id where pm.meta_key = 'lw_read_count' and ps.post_date > NOW() - INTERVAL 30 DAY and post_type='post' and post_status='publish' order by convert(pm.meta_value, unsigned)  DESC LIMIT 10 OFFSET ".$offset);
-                $count= $wpdb->get_results("select count(*) as count from ".$params['prefix']."posts as ps inner join ".$params['prefix']."postmeta as pm on ps.ID = pm.post_id where pm.meta_key = 'lw_read_count' and ps.post_date > NOW() - INTERVAL 30 DAY and post_type='post' and post_status='publish' order by convert(pm.meta_value, unsigned)  DESC");
+                $offset = ($params['page'] - 1) * 10;		
+
+                $max = $wpdb->get_var("select option_value from ".$params['prefix']."options where option_name = 'most_read_days'");
+
+                $posts = $wpdb->get_results("select ps.ID, ps.post_name, ps.post_title, ps.post_date, ps.post_excerpt, ps.guid, pm.meta_value from ".$params['prefix']."posts as ps inner join ".$params['prefix']."postmeta as pm on ps.ID = pm.post_id where pm.meta_key = 'lw_read_count' and ps.post_date > NOW() - INTERVAL " . $max . " DAY and post_type='post' and post_status='publish' order by convert(pm.meta_value, unsigned) DESC LIMIT 10 OFFSET ".$offset);
+                
+                $count = $wpdb->get_results("select count(*) as count from ".$params['prefix']."posts as ps inner join ".$params['prefix']."postmeta as pm on ps.ID = pm.post_id where pm.meta_key = 'lw_read_count' and ps.post_date > NOW() - INTERVAL 5 DAY and post_type='post' and post_status='publish' order by convert(pm.meta_value, unsigned)  DESC");
 
 			    foreach($posts as $row){ 
 			    	$row->post_title = parse_special_chars($row->post_title);
@@ -652,7 +656,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					else{
 						$row->featured_image = $ftd_image[0]->meta_value; 
 					}					
-				}				
+				}
+
 			    return (object)array($posts, $count[0]->count);
 			  }
         )
@@ -1011,7 +1016,7 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.0a7924a6.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.a9abe771.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {

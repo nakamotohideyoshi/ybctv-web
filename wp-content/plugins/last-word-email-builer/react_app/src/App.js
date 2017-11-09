@@ -1469,6 +1469,10 @@ class App extends Component {
            </div>
            : ''}
          { this.state.page === 'CreateEmail' ?  <CreateEmail
+
+                                                   onPrevRatedArticlePage={this.onPrevRatedArticlePage}
+                                                   onNextRatedArticlePage={this.onNextArticleRatedPage}
+
                                                    onChangePage={this.onChangePage}
                                                    emailId={this.state.param_email_id}
                                                    site={this.state.site}
