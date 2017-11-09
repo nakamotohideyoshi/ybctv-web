@@ -19,6 +19,58 @@ class EmailBuilder {
 		$this->version       = '1.0';
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'rest_api_init', array( $this, 'wpshout_register_routes' ) );
+
+		$this->overwrite_ajax_calls();
+	}
+
+	private function overwrite_ajax_calls() {
+		global $wpdb;
+
+		$g = isset($_GET) ? $_GET : array();
+		$s = isset($_SERVER) ? $_SERVER : array();
+
+		if ( isset( $s['REDIRECT_URL'] ) && $s['REQUEST_METHOD'] == 'GET' ) {
+			$url = $s['REDIRECT_URL'];
+
+			if ( $url == '/wp-json/email-builder/v1/static' && isset($g['type']) && isset($g['template']) && isset($g['prefix']) ) {
+				
+				header("Access-Control-Allow-Origin: *");
+				header("Access-Control-Allow-Headers: *");
+
+				$table_name = 'wp_2_email_builder_static';
+				$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Type = '". $_GET['type'] ."' AND Template = '". $_GET['template'] ."' and Site = '".$_GET['prefix']."'");
+				
+				if ($wpdb->last_error) {
+					$response = new WP_REST_Response( $wpdb->last_error );
+					
+					echo $response;
+				}				
+			    
+			    echo json_encode($static[0]);
+			    exit();
+			
+			} else if ( $url == '/wp-json/email-builder/v1/statictemplate' && isset($g['template']) && isset($g['prefix']) ) {
+				header("Access-Control-Allow-Origin: *");
+				header("Access-Control-Allow-Headers: *");
+
+				$table_name = 'wp_2_email_builder_static';
+				
+				if (isset($g['type']) ) {
+					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' and Site = '".$g['prefix']."'");
+				} else {
+					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' AND Type = '".$g['type']."' and Site = '".$params['prefix']."'");
+				}
+
+				if ($wpdb->last_error) {
+  					$response = new WP_REST_Response( $wpdb->last_error );
+					
+					echo $response;
+				}			
+
+				echo json_encode($static);
+			    exit();
+			}
+		}
 	}
 	
 	public function wpshout_register_routes() {
@@ -385,6 +437,8 @@ class EmailBuilder {
 global $wpdb;
 $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN ".$params['prefix']."term_relationships tr ON ".$params['prefix']."posts.ID = tr.object_id INNER JOIN ".$params['prefix']."term_taxonomy tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN ".$params['prefix']."terms t ON t.term_id = tt.term_id where t.term_id = ".$params['type']." and  ".$params['prefix']."posts.post_title like '%".$params['search']."%' and ".$params['prefix']."posts.post_type='post' and ".$params['prefix']."posts.post_status='publish' LIMIT 10;");
 			    foreach($posts as $row){ 
+			    	$row->post_title = parse_special_chars($row->post_title);
+
 					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
@@ -419,6 +473,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 				
 
 			    foreach($posts as $row){ 
+			    	$row->post_title = parse_special_chars($row->post_title);
+
 					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
@@ -453,6 +509,7 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 				
 
 			    foreach($posts as $row){ 
+			    	$row->post_title = parse_special_chars($row->post_title);
 
                     $start_date = $wpdb->get_results("SELECT meta_value from ".$params['site']."postmeta where meta_key = 'lw_event_start_date' and post_id = ".$row->ID."");
 
@@ -493,6 +550,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
                 $count = $wpdb->get_results("SELECT count(*) as count FROM ".$params['prefix']."posts p JOIN ".$params['prefix']."term_relationships tr ON (p.ID = tr.object_id) JOIN ".$params['prefix']."term_taxonomy tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id) JOIN ".$params['prefix']."terms t ON (tt.term_id = t.term_id) WHERE p.post_type='post' AND p.post_status = 'publish' AND tt.taxonomy = 'category' AND t.term_id = ".$params['categoryId']);
 				
 			    foreach($posts as $row){
+			    	$row->post_title = parse_special_chars($row->post_title);
+
 					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
@@ -523,6 +582,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 				$posts= $wpdb->get_results("select * from ".$params['prefix']."posts where post_type='post' and post_status='publish' order by ID desc limit 10");
 
 			    foreach($posts as $row){ 
+			    	$row->post_title = parse_special_chars($row->post_title);
+
 					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
@@ -575,6 +636,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
                 $count= $wpdb->get_results("select count(*) as count from ".$params['prefix']."posts as ps inner join ".$params['prefix']."postmeta as pm on ps.ID = pm.post_id where pm.meta_key = 'lw_read_count' and ps.post_date > NOW() - INTERVAL 30 DAY and post_type='post' and post_status='publish' order by convert(pm.meta_value, unsigned)  DESC");
 
 			    foreach($posts as $row){ 
+			    	$row->post_title = parse_special_chars($row->post_title);
+
 					$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$row->ID." and meta_key = 'lw_featured_image_url'");
 					if($ftd_image == null){
 					  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$row->ID."");
@@ -692,6 +755,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					foreach($array as $value) //loop over values
 					{
 						$posts= $wpdb->get_results("select *  from ".$params['prefix']."posts where ID = ".$value."");
+						$posts[0]->post_title = parse_special_chars($posts[0]->post_title);
+
 						$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$posts[0]->ID." and meta_key = 'lw_featured_image_url'");
 						if($ftd_image == null){
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$posts[0]->ID."");
@@ -772,6 +837,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					foreach($array5 as $value) //loop over values
 					{
 						$posts= $wpdb->get_results("select *  from ".$params['prefix']."posts where ID = ".$value."");
+						$posts[0]->post_title = parse_special_chars($posts[0]->post_title);
+
 						$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$value." and meta_key = 'lw_featured_image_url'");
 						if($ftd_image == null){
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$value."");
@@ -798,6 +865,8 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 					foreach($array6 as $value) //loop over values
 					{
 						$posts= $wpdb->get_results("select *  from ".$params['prefix']."posts where ID = ".$value."");
+						$posts[0]->post_title = parse_special_chars($posts[0]->post_title);
+
 						$ftd_image = $wpdb->get_results("SELECT meta_value FROM ".$params['prefix']."postmeta WHERE post_id = ".$value." and meta_key = 'lw_featured_image_url'");
 						if($ftd_image == null){
 						  $thumb = $wpdb->get_results("SELECT (select guid from ".$params['prefix']."posts where ID = pm.meta_value) as guid  FROM ".$params['prefix']."posts ps inner join  ".$params['prefix']."postmeta pm on ps.ID = pm.post_id where meta_key = '_thumbnail_id' and post_id = ".$value."");
@@ -1054,4 +1123,9 @@ class XMLRPC_Client {
 }
 register_activation_hook( __FILE__, array('EmailBuilder', 'jal_install') );
 new EmailBuilder();
-?>
+
+function parse_special_chars($str) {
+	$str = str_replace('&amp;', '&', $str);
+
+	return $str;
+}
