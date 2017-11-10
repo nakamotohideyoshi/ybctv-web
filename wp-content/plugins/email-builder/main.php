@@ -333,15 +333,20 @@ class EmailBuilder {
 					$from_address= 'newsletter@campaign.lastwordmedia.com';			    
 				    $auto_tracking= 1;
 				    
-					$client->call( 'campaign.setAllOptions', $new_campaign['id'] ,['subject_line' => $subject_line,
-						                                           'domain' => $domain,
-						                                           'from_prefix' => $from_prefix,
-						                                           'user_from' => 1,
-						                                           'from_name' => $from_name,
-						                                           'from_address' => $from_address,
-						                                           'auto_tracking' => $auto_tracking,
-						                                           'unsub_list' => $unsub_list,
-						                                           'suppress_lists' => $suppress_lists]);
+					$client->call( 'campaign.setAllOptions', $new_campaign['id'], [
+																	'subject_line' => $subject_line,
+						                                           	'domain' => $domain,
+						                                           	'from_prefix' => $from_prefix,
+						                                           	'user_from' => 1,
+						                                           	'from_name' => $from_name,
+						                                           	'from_address' => $from_address,
+						                                           	'auto_tracking' => $auto_tracking,
+						                                           	'unsub_list' => $unsub_list,
+						                                           	'suppress_lists' => $suppress_lists,
+						                                           	'user_reply' => 1,
+						                                           	'reply_address' => 'subscriptions@lastwordmedia.com',
+						                                           	'reply_name' => 'Last Word'
+					                                           ]);
 					
 
 					$html_content = $content;
