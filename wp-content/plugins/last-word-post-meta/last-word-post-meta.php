@@ -203,11 +203,14 @@ class last_word_post_meta {
       update_post_meta($post_id, 'lw_subtitle', strip_tags($_POST['lw_subtitle']));
       update_post_meta($post_id, 'lw_description', strip_tags($_POST['lw_description']));
       update_post_meta($post_id, 'lw_expiry_date', strip_tags($_POST['lw_expiry_date']));
-      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
       update_post_meta($post_id, 'lw_twitter_headline', strip_tags($_POST['lw_twitter_headline']));
       update_post_meta($post_id, 'lw_read_count', strip_tags($_POST['lw_read_count']));
     }
 
+    if (isset($_POST['lw_sponsored_nonce'])) {
+      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
+    }
+    
     if (isset($_POST['lw_premium_nonce'])) {
       if (isset($_POST['lw_premium'])) {
         update_post_meta($post_id, 'lw_premium', 'yes');
