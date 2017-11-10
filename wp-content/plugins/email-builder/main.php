@@ -58,7 +58,7 @@ class EmailBuilder {
 				if (!isset($g['type']) ) {
 					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' and Site = '".$g['prefix']."'");
 				} else {
-					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' AND Type = '".$g['type']."' and Site = '".$params['prefix']."'");
+					$static = $wpdb->get_results($qr = "SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' AND Type = '".$g['type']."' and Site = '".$g['prefix']."'");
 				}
 
 				if ($wpdb->last_error) {
@@ -345,7 +345,7 @@ class EmailBuilder {
 						                                           	'suppress_lists' => $suppress_lists,
 						                                           	'user_reply' => 1,
 						                                           	'reply_address' => 'subscriptions@lastwordmedia.com',
-						                                           	'reply_name' => 'Last Word'
+						                                           	'reply_name' => 'Subscriptions'
 					                                           ]);
 					
 
@@ -437,10 +437,27 @@ class EmailBuilder {
         '/postsbytype',
         array(
             'methods' => 'GET',
-            'callback' => function ($params ){
+            'callback' => function ($params) {
+            		$join = '';
+            		$where = '';
 
-global $wpdb;
-$posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN ".$params['prefix']."term_relationships tr ON ".$params['prefix']."posts.ID = tr.object_id INNER JOIN ".$params['prefix']."term_taxonomy tt ON tt.term_taxonomy_id=tr.term_taxonomy_id INNER JOIN ".$params['prefix']."terms t ON t.term_id = tt.term_id where t.term_id = ".$params['type']." and  ".$params['prefix']."posts.post_title like '%".$params['search']."%' and ".$params['prefix']."posts.post_type='post' and ".$params['prefix']."posts.post_status='publish' LIMIT 10;");
+            		if ( $params['type'] != '1' ) {
+						$join = "LEFT JOIN ".$params['prefix']."term_relationships tr ON ".$params['prefix']."posts.ID = tr.object_id 
+								INNER JOIN ".$params['prefix']."term_taxonomy tt ON tt.term_taxonomy_id=tr.term_taxonomy_id 
+								INNER JOIN ".$params['prefix']."terms t ON t.term_id = tt.term_id ";
+	            		
+	            		$where = "and t.term_id = ".$params['type']." ";
+            		}
+
+					global $wpdb;
+					$posts= $wpdb->get_results("
+							select * from ".$params['prefix']."posts " . $join . " where 1 = 1 " . $where . "
+							and  ".$params['prefix']."posts.post_title like '%".$params['search']."%' 
+							and ".$params['prefix']."posts.post_type='post' 
+							and ".$params['prefix']."posts.post_status='publish' 
+							order by ID desc
+							LIMIT 10;
+					");
 			    foreach($posts as $row){ 
 			    	$row->post_title = parse_special_chars($row->post_title);
 
@@ -623,6 +640,19 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
+				}
+
+				foreach ( $latest_portfolio as $key => $row ) {
+					$latest_portfolio[ $key ]->post_title = parse_special_chars($row->post_title);
+				}
+				foreach ( $latest_international as $key => $row ) {
+					$latest_international[ $key ]->post_title = parse_special_chars($row->post_title);
+				}
+				foreach ( $latest_fundselector as $key => $row ) {
+					$latest_fundselector[ $key ]->post_title = parse_special_chars($row->post_title);
+				}
+				foreach ( $latest_expertinvestor as $key => $row ) {
+					$latest_expertinvestor[ $key ]->post_title = parse_special_chars($row->post_title);
 				}
 			
 			    return (object)array($latest_portfolio, $latest_international, $latest_fundselector, $latest_expertinvestor);

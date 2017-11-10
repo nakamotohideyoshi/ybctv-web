@@ -259,7 +259,7 @@ render() {
                           padding-top: 15px;
                   }
                   #emailInnerContent .common_left:last-child td {
-                          text-align: center !important;
+                          /* text-align: center !important; */
                           padding: 10px 0px 0px 0px !important;
                   }
           }

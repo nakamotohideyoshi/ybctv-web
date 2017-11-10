@@ -264,7 +264,7 @@ render() {
                               padding-top: 15px;
                       }
                       #emailInnerContent .common_left:last-child td {
-                              text-align: center !important;
+                              /* text-align: center !important; */
                               padding: 10px 0px 0px 0px !important;
                       }
               }
@@ -424,7 +424,7 @@ render() {
   </tr> : ''}
 </tbody>
 </table>
-<table className="fund_linked" style={{margin: '0px auto', textAlign: 'center', border: '0px', width: '321px',float:'right',position:'relative',left:'-50px'}} data-width="321" data-align="right">
+<table className="fund_linked" style={{margin: '0px auto', textAlign: 'center', border: '0px', width: '321px',float:'right',position:'relative'}} data-width="321" data-align="right">
 <tbody>
 {this.props.staticHighlight === 'quotable' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.quotable.length > 0 && this.props.showQuotable === '1' ? <tr>
