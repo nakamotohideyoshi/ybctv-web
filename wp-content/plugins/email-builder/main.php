@@ -55,7 +55,7 @@ class EmailBuilder {
 
 				$table_name = 'wp_2_email_builder_static';
 				
-				if (isset($g['type']) ) {
+				if (!isset($g['type']) ) {
 					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' and Site = '".$g['prefix']."'");
 				} else {
 					$static = $wpdb->get_results("SELECT * FROM ".$table_name." WHERE Template = '". $g['template'] ."' AND Type = '".$g['type']."' and Site = '".$params['prefix']."'");
