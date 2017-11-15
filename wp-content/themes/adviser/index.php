@@ -35,7 +35,7 @@ get_header(); ?>
                           <span class="overlay"></span>
                         </div>
                         <div class="content-des">
-                          <h2 class="title">LATEST NEWS ...</h2>
+                          <h2 class="title">TOP STORIES...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           <p>
                             <?php
@@ -111,7 +111,7 @@ get_header(); ?>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="new-analysis">
-                  <h2 class="title">PA ANALYSIS</h2>
+                  <h2 class="title" style="visibility: hidden;">PA ANALYSIS</h2>
                     <div class="list-new-analysis">
                     <?php
                       $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 40 );
@@ -274,11 +274,18 @@ get_header(); ?>
                     $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 49 );
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
+                      $primary_medium = get_post_meta($post->ID,'lw_primary_medium')[0];
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                   ?>
                   <li>
                     <div class="content-image">
-                      <?php brightcove_video($lw_brightcove_video_id, false); ?>
+                      <?php 
+                      if ($primary_medium == "video") {
+                        brightcove_video($lw_brightcove_video_id, false); 
+                      } else {
+                        the_post_thumbnail();
+                      }
+                      ?>
                       <span class="overlay"></span>
                     </div>
                     <div class="content-des">
@@ -351,9 +358,9 @@ get_header(); ?>
       <div class="container">
         <div id="feature-sponsored-item" class="owl-carousel owl-theme">
           <?php
-            $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 15 );
-            $myposts = get_posts( $args );
-            foreach ( $myposts as $post ) : setup_postdata( $post );
+            $args = array( 'posts_per_page' => 2, 'showposts' => 2, 'category' => 15);
+            $myposts = query_posts( $args );
+            if (have_posts()) : while (have_posts()) : the_post();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
           ?>
           <div class="item">
@@ -375,7 +382,7 @@ get_header(); ?>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des">
-                  <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                  <?php if($lw_sponsored != '') { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
                   <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                   <p><?php echo get_excerpt(100); ?></p>
                   <a href="<?php the_permalink(); ?>" class="view-more">View more</a>
@@ -384,8 +391,8 @@ get_header(); ?>
             </div>
           </div>
           <?php
-            endforeach;
-            wp_reset_postdata();
+            endwhile;endif;
+            wp_reset_query();
           ?>
         </div>
       </div>

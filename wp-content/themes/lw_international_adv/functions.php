@@ -444,7 +444,7 @@ function ajax_search_more() {
   $offset = (int)$_POST['offset'];
   $posts_per_page = 5;
   $query = $_POST['query'];
-      
+
   $args = array(
     'posts_per_page' => 5,
     'offset' => $offset * $page,
@@ -471,10 +471,11 @@ add_action('wp_ajax_nopriv_ajax_search_more', 'ajax_search_more');
 add_action('wp_ajax_ajax_search_more', 'ajax_search_more');
 
 function change_wp_search_size($queryVars) {
-  if ( isset($_REQUEST['s']) ) // Make sure it is a search page
+  if ( isset($_REQUEST['s']) ){// Make sure it is a search page
     $queryVars['posts_per_page'] = 5;
     $queryVars['orderby'] = 'date';
     $queryVars['order'] = 'DESC';
+  }
   return $queryVars; // Return our modified query variables
 }
 add_filter('request', 'change_wp_search_size'); // Hook our custom function onto the request filter
@@ -573,13 +574,13 @@ add_filter('default_hidden_meta_boxes', 'show_hidden_meta_fields', 10, 2);
 * Add Page break button to TinyMCE
 */
 function add_page_break_button($buttons, $id) {
-  if ('content' != $id) {
-    return $buttons;
-  }
+	if ('content' != $id) {
+		return $buttons;
+	}
 
-  array_splice($buttons, 13, 0, 'wp_page');
+	array_splice($buttons, 13, 0, 'wp_page');
 
-  return $buttons;
+	return $buttons;
 }
 
 add_filter('mce_buttons', 'add_page_break_button', 1, 2);

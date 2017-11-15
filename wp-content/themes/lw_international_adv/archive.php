@@ -42,7 +42,7 @@ get_header(); ?>
                         };?>
                         <?php 
                           $post_type = get_queried_object();
-                          if($post_type && $post_type->term_id == 8309): //type video
+                          if($post_type && $post_type->term_id == 8309 || $post_type->term_id == 8304): //type video
                             $term_id = $post_type->term_id; ?>
                             <a href="#" class="view-more view-more-ajax" term_id="<?php echo $term_id; ?>" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>  
                           <?php else: ?>

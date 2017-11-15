@@ -3,7 +3,7 @@
     <?php
       lastWordAdUnit('rhs-hpu-1');
 
-      if (is_single()) {
+    /*  if (is_single()) {
     ?>
     <div class="feature-sponsored">
         <?php
@@ -32,8 +32,8 @@
         <?php endforeach;
         wp_reset_postdata();?>
     </div>
-    <?php
-      }
+    <?php 
+      }*/
       if (!is_home()) {
         lastWordAdUnit('rhs-hpu-2');
         lastWordAdUnit('rhs-hpu-3');

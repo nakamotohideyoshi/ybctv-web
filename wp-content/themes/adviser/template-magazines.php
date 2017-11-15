@@ -70,46 +70,21 @@
             </div>
             <div class="list-magazines-ajax">
               <?php
-                query_posts(array('offset'=>1,'post_type' =>'magazine'));
+                query_posts(array( 'offset'=>1, 'posts_per_page' => 4, 'post_type' =>'magazine'));
 
                 if (have_posts()) : while (have_posts()) : the_post();
-              ?>
-              <div class="loop-list">
-                <div class="row">
-                  <div class="col-md-4 col-sm-4 col-xs-12">
-                    <div class="content-image">
-                      <?php
-                        if ( has_post_thumbnail() ) {
-                          echo '<a href="' . get_the_permalink() . '">';
-                          the_post_thumbnail();
-                          echo '</a>';
-                        }
-                        else {
-                      ?>
-                      <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
-                      <?php
-                        }
-                      ?>
-                    </div>
-                  </div>
-                  <div class="col-md-8 col-sm-8 col-xs-12">
-                    <div class="content-des">
-                      <p class="name-cat">Portfolio Adviser Magazine</p>
-                      <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
-                      <p><?php echo get_excerpt(100); ?></p>
-                      <p class="date">Published <?php the_time('j M y');?></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <?php
+
+                  get_template_part('template-parts/archive', 'magazine');
+
                 endwhile;endif;
                 wp_reset_query();
               ?>
+               
             </div>
+            <a href="#" class="view-more view-more-ajax magazines" page="1" offset="5" type="magazine">View more</a>
           </div>
         </div>
-        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
           <?php get_sidebar('right');?>
         </div>
       </div>

@@ -12,7 +12,7 @@
             <table>
                 <tr class="lwa-username">
                     <td class="lwa-username-label">
-                        <label><?php esc_html_e( 'Username','login-with-ajax' ) ?></label>
+                        <label><?php esc_html_e( 'Email address','login-with-ajax' ) ?></label>
                     </td>
                     <td class="lwa-username-input">
                         <input type="text" name="log" />
@@ -42,7 +42,7 @@
                 </tr>
                 <tr class="lwa-lostpass">
                     <td class="lwa-forgot">         
-                        <a class="lwa-links-remember modal-link" href="<?php echo esc_attr(LoginWithAjax::$url_remember); ?>" title="<?php esc_attr_e('Password Lost and Found','login-with-ajax') ?>"><?php esc_attr_e('Lost your password?','login-with-ajax') ?></a> 
+                        <a class="lwa-links-remember modal-link" href="<?php echo esc_attr(LoginWithAjax::$url_remember); ?>" title="<?php esc_attr_e('Password Lost and Found','login-with-ajax') ?>"><?php esc_attr_e('Forgot your password?','login-with-ajax') ?></a> 
                     </td>
                 </tr>
             </table>

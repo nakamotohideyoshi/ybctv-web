@@ -36,13 +36,13 @@
              </div>
           </div>
           <p><strong>Expert Investor’s Market Intelligence section is for delegates to Expert Investor events only, sign in now and have access to: </strong></p>
-          <ul>
+          <ul style="margin-left: 25px;">
              <li><strong>Countries:</strong> Discover what European fund buyers think of all the major asset classes</li>
              <li><strong>Strategies:</strong> Explore forward-looking investment sentiments across Europe towards all the major asset classes</li>
              <li><strong>Fund Manager Sentiment:</strong> Learn about the house views of 20 global asset management groups with regards to a series of equities, bonds and other indices</li>
              <li><strong>European Fund Flows:</strong> Find out how monies have flown in and out of all active and passive European-domiciled funds</li>
           </ul>
-          <p>If you wish to gain access to this, please contact <strong><a href="subscriptions@lastwordmedia.com">subscriptions@lastwordmedia.com</a></strong></p>
+          <p>If you wish to gain access to this, please contact <strong><a href="mailto:subscriptions@lastwordmedia.com">subscriptions@lastwordmedia.com</a></strong></p>
        </div>
     <?php endwhile;endif;?>
  </div>

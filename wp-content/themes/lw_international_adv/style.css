@@ -2499,7 +2499,7 @@ form[name="register"] input[type="submit"] {
   overflow: hidden;
 }
 
-.contlocked a {
+.contlocked .name-cat a {
   color: #0095db;
 }
 

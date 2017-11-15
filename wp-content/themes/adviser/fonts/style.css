@@ -3,6 +3,7 @@
     src: url('Kommissar-Bold-Web.eot');
     src: url('Kommissar-Bold-Web.eot?#iefix') format('embedded-opentype'),
      url('Kommissar-Bold-Web.woff') format('woff'),
+     url('Kommissar-Bold-Web.woff2') format('woff2'),
      url('Kommissar-Bold-Web.ttf')  format('truetype'),
      url('Kommissar-Bold-Web.svg#svgFontName') format('svg');
 }

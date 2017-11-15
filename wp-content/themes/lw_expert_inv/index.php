@@ -34,7 +34,7 @@ get_header(); ?>
                           <span class="overlay"></span>
                         </div>
                         <div class="content-des">
-                          <h2 class="title">LATEST NEWS ...</h2>
+                          <h2 class="title">TOP STORIES...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           <p>
                             <?php
@@ -110,7 +110,7 @@ get_header(); ?>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="new-analysis">
-                  <h2 class="title">INTERVIEWS</h2>
+                  <h2 class="title" style="visibility: hidden;">INTERVIEWS</h2>
                     <div class="list-new-analysis">
                     <?php
                       $args = array(
@@ -415,7 +415,7 @@ get_header(); ?>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des">
-                  <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                  <?php if($lw_sponsored != '') { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
                   <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                   <p><?php echo get_excerpt(100); ?></p>
                   <a href="<?php the_permalink(); ?>" class="view-more">View more</a>

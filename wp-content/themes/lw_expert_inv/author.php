@@ -26,6 +26,7 @@ get_header(); ?>
         <div class="list-content-page">
           <div class="author-info">
             <div class="author-avatar clearfix">
+
               <?php echo get_avatar( get_the_author_meta('user_email'), $size = '80');  ?>
               <h2 class="author-title"><?php echo get_the_author(); ?></h2>
               <p class="author-job-title"><?php echo get_the_author_meta('lw_title'); ?></p>
@@ -66,13 +67,20 @@ get_header(); ?>
             ?>
           </div>
         </div>
-        <?php $count = 0; ?>
+        <?php //$count = 0; ?>
         <div class="list-category">
           <div class="row">
             <?php 
               $authorID = get_the_author_meta('ID');
-              query_posts('orderby=date&order=DESC&posts_per_page=2&author=$authorID'); 
-              if(have_posts()): while(have_posts()): the_post(); $count++;
+              $args = array (
+                        'post_type' => 'post',
+                        'author' => $authorID,
+                        'posts_per_page' => 2,
+                        'orderby' => 'date',
+                        'order' => 'DESC'    
+              );
+              $the_query = new WP_Query( $args );
+              if($the_query->have_posts()): while($the_query->have_posts()): $the_query->the_post();
                 //if ($count <= 2) {
             ?>
                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -104,24 +112,30 @@ get_header(); ?>
                   //}
 
                   endwhile;endif;
-                  wp_reset_query();
+                  wp_reset_postdata();
                 ?>
               </div>
             </div>
-            <?php $count = 0; ?>
             <div class="list-category-ajax">
               <?php
-
-                query_posts('offset=2&orderby=date&order=DESC&posts_per_page=3&author=$authorID'); 
-                if(have_posts()): while(have_posts()): the_post(); $count++;
+              $args2 = array (
+                        'post_type' => 'post',
+                        'author' => $authorID,
+                        'posts_per_page' => 5,
+                        'offset' => 2,
+                        'orderby' => 'date',
+                        'order' => 'DESC'    
+              );
+              $the_query2 = new WP_Query( $args2 );
+              if($the_query2->have_posts()): while($the_query2->have_posts()): $the_query2->the_post();
                   //if ($count > 2) {
                     include(locate_template('template-parts/archive-author.php'));
                 //}
                 endwhile;endif;
-               wp_reset_query();
+               wp_reset_postdata();
               ?>
             </div>
-            <a href="#" class="view-more view-more-ajax author-ajax" page="0" offset="5" author_id="<?php echo $authorID;?>">View more</a>
+            <a href="#" class="view-more view-more-ajax author-ajax" page="0" offset="7" author_id="<?php echo $authorID;?>">View more</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12 right-side-wrap">

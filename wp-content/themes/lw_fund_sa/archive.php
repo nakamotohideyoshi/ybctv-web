@@ -24,6 +24,9 @@ get_header(); ?>
           </div>
           <div class="content-category">
             <?php
+              $cat_obj = get_queried_object();
+              $cat_id = $cat_obj->term_id;
+              $cat_title = single_cat_title('',false );
               $category = get_the_category();
               $category_id = $category[0]->cat_ID;
               if ( have_posts() ) :
@@ -42,7 +45,17 @@ get_header(); ?>
                 endwhile;endif;
                 ?>
             </div>
-            <a href="#" class="view-more view-more-ajax" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
+            <?php if(empty($category_id)){
+                            $category_id = get_the_category()[0]->term_id;
+                        };?>
+            <?php 
+            $post_type = get_queried_object();
+            if($post_type && $post_type->term_id == 2440 || $post_type->term_id == 2438): //type video and gallery
+               $term_id = $post_type->term_id; ?>
+               <a href="#" class="view-more view-more-ajax" term_id="<?php echo $term_id; ?>" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>  
+            <?php else: ?>
+              <a href="#" class="view-more view-more-ajax" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
+            <?php endif; ?> 
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-md-offset-1 col-sm-12 col-xs-12 right-side-wrap">

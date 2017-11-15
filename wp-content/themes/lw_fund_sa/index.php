@@ -58,11 +58,39 @@ get_header(); ?>
                       <div class="row">
                       <?php
                         $count =0;
-                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6 );
+                        $args = array( 'posts_per_page' => 5,'offset' => 1,'showposts' => 5 );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post ); $count++;
-                          if ($count == 2) {
+                          if ($count == 1) {
                         ?>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                          <div class="loop-list clearfix">
+                            <div class="content-image">
+                            <?php
+                              if ( has_post_thumbnail() ) {
+                                the_post_thumbnail('thumbnail-article');
+                              }
+                              else {
+                            ?>
+                            <a href="<?php the_permalink();?>">
+                              <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                            </a>
+                            <?php
+                              }
+                            ?>
+                            <span class="overlay"></span>
+                          </div>
+                          <div class="content-des">
+                            <p class="name-cat">
+                              <?php $category = get_the_category(); ?>
+                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                            </p>
+                            <a href="<?php the_permalink(); ?>">
+                              <h3><?php echo get_the_title(); ?></h3>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                           <div class="loop-list clearfix">
                             <?php lastWordAdUnit('top-news-ad'); ?>
@@ -105,7 +133,7 @@ get_header(); ?>
                         wp_reset_postdata();
                       ?>
                     </div>
-                    <a class="readmore readmore-new" href="<?php echo get_category_link( "17" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new" href="<?php echo get_category_link( "20" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                   </div>
                 </div>
               </div>
@@ -273,7 +301,7 @@ get_header(); ?>
             <div class="col-lg-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Head to head</h2>
-                <h2 class="nocolor">A COMPARATIVE ANALISYS<br/>OF 2 FUNDS</h2>
+                <h2 class="nocolor">A COMPARATIVE ANALYSIS<br/>OF 2 FUNDS</h2>
                   <a href="<?php echo get_category_link( "21" ); ?>" class="view-more">View more</a>
               </div>
             </div>
@@ -379,7 +407,7 @@ get_header(); ?>
 
             <div class="row">
                   <?php
-                    $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 15 );
+                    $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 2682 );
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
                   ?>

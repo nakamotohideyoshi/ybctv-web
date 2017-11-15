@@ -49,9 +49,12 @@ get_header(); ?>
                             endwhile;endif;
                             ?>
                         </div>
+                        <?php if(empty($category_id)){
+                            $category_id = get_the_category()[0]->term_id;
+                        };?>
                         <?php 
                           $post_type = get_queried_object();
-                          if($post_type && $post_type->term_id == 1947): //type video
+                          if($post_type && $post_type->term_id == 1947 || $post_type->term_id == 1943): //type video or gallery
                             $term_id = $post_type->term_id; ?>
                             <a href="#" class="view-more view-more-ajax" term_id="<?php echo $term_id; ?>" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>  
                           <?php else: ?>

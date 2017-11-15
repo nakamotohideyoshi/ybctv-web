@@ -81,7 +81,7 @@
               ?>
                
             </div>
-            <a href="#" class="view-more view-more-ajax magazines" page="1" offset="5" type="magazine">View more</a>
+            <a href="#" class="view-more view-more-ajax magazines" page="1" offset="6" type="magazine">View more</a>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">

@@ -275,7 +275,7 @@ function _custom_meta_boxes(){
      * Register our meta boxes using the
      * ot_register_meta_box() function.
      */
-//    ot_register_meta_box( $event_meta_box );
+    ot_register_meta_box( $event_meta_box );
 //    ot_register_meta_box( $post_meta_box );
     ot_register_meta_box( $page_meta_box );
 

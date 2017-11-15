@@ -5,7 +5,16 @@
     <div class="flexslider-spon">
       <ul class="slides">
         <?php
-        $args = array( 'posts_per_page' => 4,'showposts' => 4, 'category' => 30 );
+        $args = array(
+                    'posts_per_page' => 4,
+                    'showposts' => 4,
+                    'tax_query' => array(
+                        array(
+                          'taxonomy' => 'type',
+                          'field' => 'id',
+                          'terms' => array( 8308 ),
+                          'operator' => 'AND'
+                        )));
         $myposts = get_posts( $args );
         foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
           <li>
@@ -25,8 +34,7 @@
               </div>
               <div class="content-des">
                 <p class="name-cat">
-                  <?php $category = get_the_category(); ?>
-                  <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                  <a href="/type/sponsored/">SPONSORED</a>
                 </p>
                 <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
               </div>

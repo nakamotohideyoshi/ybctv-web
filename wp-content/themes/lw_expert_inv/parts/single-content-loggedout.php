@@ -35,7 +35,15 @@
                 <img src="<?php echo THEME_PATH.'/images/T-Rowe-Price-logo-overimage.png' ?>" alt="T. Rowe Price"/>
              </div>
           </div>
-          <p class="locked-notice">To access this content please sign in:</p>
+          <p><strong>Expert Investor’s Market Intelligence section is for delegates to Expert Investor events only, sign in now with your unique details and have access to: </strong></p>
+          <ul style="margin-left: 25px;">
+             <li><strong>Countries:</strong> Discover what European fund buyers think of all the major asset classes</li>
+             <li><strong>Strategies:</strong> Explore forward-looking investment sentiments across Europe towards all the major asset classes</li>
+             <li><strong>Fund Manager Sentiment:</strong> Learn about the house views of 20 global asset management groups with regards to a series of equities, bonds and other indices</li>
+             <li><strong>European Fund Flows:</strong> Find out how monies have flown in and out of all active and passive European-domiciled funds</li>
+          </ul>
+          <p>If you wish to gain access to this, please contact <strong><a href="mailto:subscriptions@lastwordmedia.com">subscriptions@lastwordmedia.com</a></strong></p>
+          <br/>
           <div class="locked-buttons">
              <a href="#" data-toggle="modal" data-target="#myModal" class="locked-button signin">Sign in</a>
           </div>

@@ -1,0 +1,114 @@
+@media screen and (max-width: 480px) {
+    .site{
+        background: #fff;
+    }
+    .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
+    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories,
+    .user-login{
+        display: none;
+    }
+    
+    .site-header.fixed {
+        position: relative;
+    }
+    .btn-sp button{
+        display: block;
+    }
+    .header-top{
+        padding: 0;
+    }
+    .header-content{
+        margin-right: 0;
+    }
+
+    .first-last-new > div{
+        width: 100%!important;
+        height: auto;
+    }
+    .first-last-new .content-des{
+        padding: 20px;
+    }
+    .list-last-new .row > div{
+        margin-bottom: 5px;
+    }
+    .list-last-new .row > div:nth-child(2){
+        display: none;
+    }
+    .list-last-new .loop-list .content-image{
+        background: #f2f2f2;
+    }
+    .box-analysis h2{
+        float: left;
+        margin-right: 10px;
+    }
+    .list-new-analysis .loop-list .content-des{
+        background: #f2f2f2;
+        margin-bottom: 10px;
+    }
+    .content-right {
+        padding-left: 0px;
+    }
+
+    .slider-multimedia ul li .content-image{
+        width: 100%;
+    }
+    .slider-multimedia ul li .content-des{
+        width: 100%;
+        padding: 20px;
+    }
+    .multimedia-title{
+        margin-bottom: 20px;
+    }
+    .multimedia-title .view-more{
+        display: none;
+    }
+    .feature-sponsored .container{
+        padding-bottom: 0;
+    }
+    .slider-portfolio .content-image{
+        width: 50%;
+        padding: 0;
+    }
+    .slider-portfolio .content-des{
+        width: 50%;
+        padding: 20px 0 0 10px;
+    }
+    .slider-portfolio .content-des p{
+        display: none;
+    }
+    .event{
+        margin: 0;
+        padding: 30px 10px;
+    }
+    .event:before{
+        display: none;
+    }
+    .box-sponsored{
+        margin: 0 -6px;
+    }
+    .most-popular{
+        display: none;
+    }
+    .home .most-popular{
+        display: block;
+    }
+
+    .content-image{
+        overflow: hidden;
+    }
+    .content-image img{
+        width: 100%;
+    }
+    .content-image .readmore img{
+        width: 18px;
+    }
+
+    .site-navigation{
+        display: none;
+    }
+
+    .logo {
+        padding: 5px 20px 0 0;
+        background: #fff;
+    }
+}
