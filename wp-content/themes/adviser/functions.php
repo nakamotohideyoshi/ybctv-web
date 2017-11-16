@@ -802,4 +802,81 @@ function ssl_srcset( $sources ) {
   return $sources;
 }
 add_filter( 'wp_calculate_image_srcset', 'ssl_srcset' );
-?>
+
+/* Articles Control */
+add_action('admin_menu', 'add_featured_box_menu_item');
+function add_featured_box_menu_item() {
+  add_options_page(
+    'Featured Page',
+    'Featured Page',
+    'manage_options',
+    'featured_box_settings',
+    'add_featured_box_settings_page'
+  );
+}
+
+function add_featured_box_settings_page() {
+  $posts = get_posts( array( 'posts_per_page' => 100 ) );
+
+  if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['featured_left_box_article']) && isset($_POST['featured_right_box_article']) )
+  {
+    update_option('featured_left_box_article', $_POST['featured_left_box_article'] );
+    update_option('featured_right_box_article', $_POST['featured_right_box_article'] );
+  }
+
+  $featured_left_box_article = get_option('featured_left_box_article', 0);
+  $featured_right_box_article = get_option('featured_right_box_article', 0);
+
+  ?>
+  <div class="most-read-settings wrap">
+    <h2>Featured Page Settings</h2>
+    <form action="" method="post">
+      <table class="form-table">
+        <tr>
+          <th scope="row">Left Box Article</th>
+          <td>
+            <select name="featured_left_box_article" id="featured_left_box_article_combo" onchange="document.getElementById('featured_left_box_article_field').value = this.value;">
+              <option value="">-</option>
+              <?php foreach( $posts as $post ): ?>
+                <option value="<?php echo $post->ID; ?>" <?php echo (int)$featured_left_box_article == $post->ID ? 'selected="selected"' : ''; ?>>
+                  <?php echo $post->post_title; ?></option>
+              <?php endforeach; ?>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">&nbsp;</th>
+          <td>
+            <input type="text" id="featured_left_box_article_field" name="featured_left_box_article" value="<?php echo $featured_left_box_article; ?>" />
+          </td>
+        </tr>
+        
+        <tr>
+          <th scope="row">Right Box Article</th>
+          <td>
+            <select name="featured_right_box_article" id="featured_right_box_article_combo" onchange="document.getElementById('featured_right_box_article_field').value = this.value;">
+              <option value="">-</option>
+              <?php foreach( $posts as $post ): ?>
+                <option value="<?php echo $post->ID; ?>" <?php echo (int)$featured_right_box_article == $post->ID ? 'selected="selected"' : ''; ?>><?php echo $post->post_title; ?></option>
+              <?php endforeach; ?>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">&nbsp;</th>
+          <td>
+            <input type="text" id="featured_right_box_article_field" name="featured_right_box_article" value="<?php echo $featured_right_box_article; ?>" />
+          </td>
+        </tr>
+
+        <tr>
+          <th colspan="2">
+            <?php submit_button(); ?>
+          </th>
+      </table>
+    </form>
+  </div>
+  <?
+}
+/* End Articles Control */
+

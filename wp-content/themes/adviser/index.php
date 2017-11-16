@@ -358,7 +358,9 @@ get_header(); ?>
       <div class="container">
         <div id="feature-sponsored-item" class="owl-carousel owl-theme">
           <?php
-            $args = array( 'posts_per_page' => 2, 'showposts' => 2, 'category' => 15);
+            $args = array( 'posts_per_page' => 1, 'numberposts' => 1, 'numberposts' => 1, 'p' => get_option('featured_left_box_article', 0));
+            // 'category' => 15, 
+            wp_reset_query();
             $myposts = query_posts( $args );
             if (have_posts()) : while (have_posts()) : the_post();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
@@ -377,7 +379,57 @@ get_header(); ?>
                   <?php
                     }
                   ?>
-                  <p class="readmore button-feature">Featured  <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></p>
+                  <p class="readmore button-feature" style="background: #f07f00;">
+                    Sponsored  
+                    <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news-orange.png' ?>" alt="" style="width: auto; margin-left: 3px;" />
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="content-des" style="padding-top: 15px;">
+                  <?php if($lw_sponsored != '' || true) { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
+                  <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                  <p><?php echo get_excerpt(100); ?></p>
+                  <a href="<?php the_permalink(); ?>" class="view-more" style="margin-top: 10px;">View more</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <?php
+            endwhile;endif;
+            wp_reset_query();
+          ?>
+
+          <?php
+            $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('featured_right_box_article', 0));
+            $myposts = query_posts( $args );
+            if (have_posts()) : while (have_posts()) : the_post();
+              $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+          ?>
+          <div class="item">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="content-image">
+                  <?php
+                    if ( has_post_thumbnail() ) {
+                      the_post_thumbnail('featured-article');
+                    }
+                    else {
+                  ?>
+                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                  <?php
+                    }
+                  ?>
+                  <p class="readmore button-feature">
+                    Featured 
+                    <img id="imggg" src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" />
+                    <style type="text/css">
+                      #imggg path { 
+                        fill: #000;  
+                        background-color: #ff0000;
+                      }
+                    </style>
+                  </p>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

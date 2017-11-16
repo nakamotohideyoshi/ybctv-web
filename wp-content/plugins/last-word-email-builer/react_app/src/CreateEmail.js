@@ -110,7 +110,14 @@ class CreateEmail extends Component {
 
   saveEmail = (event) => {
     event.preventDefault();
+
     console.dir(this.state);
+
+    if ( $.trim(this.state.subject) == '' ) {
+      alert('Please enter the subject');
+      return;
+    }
+
     $(".cross-img").remove();
     let body = {
       name: this.state.name,

@@ -124,7 +124,7 @@ class EmailBuilder {
             'callback' => function ($data ){
             	$json_result = json_decode($data->get_body(), true);
 				$email_name = $json_result["name"];
-				$email_subject = $json_result["subject"];
+				$email_subject = isset($json_result["subject"]) ? $json_result["subject"] : "";
 				$email_articles = $json_result["articles"];
 				$event_articles = $json_result["eventArticles"];
 				$editor_articles = $json_result["editorArticles"];
@@ -144,6 +144,12 @@ class EmailBuilder {
 				$has_assetclass = $json_result['hasAssetClass'];
 				$has_quotable = $json_result['hasQuotable'];
 				$site = $json_result['prefix'];
+
+				if(trim($email_subject) == "") {
+					 $error = new WP_Error;
+					 $error->add( "500", "The email subject cannot be empty." );
+					 return $error;
+				}
 
 				$editor_id = isset($json_result['editor_id']) ? $json_result['editor_id'] : 0;
 				$editor_display_name = isset($json_result['editor_display_name']) ? $json_result['editor_display_name'] : '';
@@ -1055,7 +1061,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.5a2d1a34.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.31eb6071.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {
