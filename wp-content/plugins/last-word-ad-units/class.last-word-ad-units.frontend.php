@@ -170,7 +170,7 @@ class frontend {
       $search_term = $_GET['s'];
       if ($search_term != '') {
         $output = str_repeat(" ", 14);
-        $output .= "googletag.pubads().setTargeting(\"tag\", [\"" . urldecode($search_term) . "\"]);\n";
+        $output .= "googletag.pubads().setTargeting(\"tag\", [\"" . urldecode($search_term) . "\", \"Result\"]);\n";
       }
     }
 
