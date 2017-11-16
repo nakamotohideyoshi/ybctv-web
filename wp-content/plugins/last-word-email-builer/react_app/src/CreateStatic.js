@@ -439,6 +439,7 @@ class CreateStatic extends Component {
         key={this.state.content}
         config={{
           height: 500,
+          convert_urls: false,
           toolbar: 'undo redo | bold italic | alignleft aligncenter alignright',
           plugins: [
             'advlist autolink lists link contextmenu image charmap print preview hr anchor pagebreak',

@@ -1061,7 +1061,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.31eb6071.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.5578750c.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {
