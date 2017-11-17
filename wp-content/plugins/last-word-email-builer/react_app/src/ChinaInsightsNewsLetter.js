@@ -143,9 +143,6 @@ render() {
                   #emailInnerContent .container:first-child {
                           width: 55% !important;
                   }
-                  #emailInnerContent .container:last-child {
-                          width: 45% !important;
-                  }
 
                   #emailInnerContent .footer_block {
                           width: 33.33% !important;
@@ -316,17 +313,17 @@ render() {
                                 </tr> : ''}
                                         <tr>
                                                 <td>
-                                                <table style={{width:'748px', margin: '0px'}} data-width="748" cellSpacing="0" cellPadding="0" data-align="center">
+                                                <table style={{width:'748px', margin: '0px'}} data-width="748" cellSpacing="0" cellPadding="0" data-align="center" className="deviceWidth">
 <tr>
                                                                 <td>
-                                                                <table style={{width: '405px', textAlign: 'left', float: 'left'}} data-align="center" data-width="405" cellSpacing="0" cellPadding="0">
+                                                                <table className="deviceWidth" style={{width: '405px', textAlign: 'left', float: 'left'}} data-align="center" data-width="405" cellSpacing="0" cellPadding="0">
                                                                         <tbody><tr>
         <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
         <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true" isChinaNews="true"/>
         </td>
 </tr>
                                                             </tbody></table>
-                                                              <table style={{textAlign:'left',width:'320px', float: 'right'}} data-width="320" className="container" data-align="right">
+                                                              <table style={{textAlign:'left',width:'320px', float: 'right'}} data-width="320" className="container deviceWidth" data-align="right">
                 <tbody><tr>
                         <td style={{padding:'0px 9px 0px 10px', verticalAlign: 'top',margin:'0px'}}>
                                 <table style={{width: '100%'}} data-width="100%">
