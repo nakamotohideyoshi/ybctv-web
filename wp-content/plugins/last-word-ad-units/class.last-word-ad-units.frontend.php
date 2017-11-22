@@ -27,6 +27,9 @@ class frontend {
     if ($post_id == 0) { // Homepage
       $group_slug = 'home';
     }
+    else if (is_search() && get_current_blog_id() == 2) { // Search Page on Portfolio Adviser
+      $group_slug = 'search';
+    }
     else if (is_page() && get_page_template_slug($post_id) == 'template-blog.php') { // Category Page
       $category_id = get_post_meta($post_id, 'category_page', true);
       $category = get_term_by('id', $category_id, 'category');
