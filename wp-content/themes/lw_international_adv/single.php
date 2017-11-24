@@ -368,6 +368,24 @@ get_header(); ?>
                                   ?>
                                 </div>
                             </div>
+                            <div>
+                              <?php
+                                if (get_the_ID() == 4842) {
+                                  if(wp_is_mobile()) {
+                                    ?>
+                                    <div style="width: 300px; margin: 0 auto;">
+                                    <?php
+                                    lastWordAdUnit('native-content-mobile');
+                                    ?>
+                                    </div>
+                                    <?php
+                                  }
+                                  else {
+                                    lastWordAdUnit('native-content-desktop');
+                                  }
+                                }
+                              ?>
+                            </div>
                             <div class="comment-post">
                                 <?php if ( comments_open() || get_comments_number() ) :
                                     comments_template();

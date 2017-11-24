@@ -93,7 +93,7 @@ get_header(); ?>
                               <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                             </p>
                             <a href="<?php the_permalink(); ?>">
-                              <h3><?php echo mb_strimwidth( get_the_title(), 0, 45, '...' ); ?></h3>
+                              <h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3>
                             </a>
                           </div>
                         </div>
@@ -410,7 +410,9 @@ get_header(); ?>
                   <?php
                     }
                   ?>
+                  <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature">Featured  <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="more news" /></p>
+                </a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

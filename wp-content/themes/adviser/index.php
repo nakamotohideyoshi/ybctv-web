@@ -379,10 +379,12 @@ get_header(); ?>
                   <?php
                     }
                   ?>
+                  <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature" style="background: #f07f00;">
                     Sponsored  
                     <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news-orange.png' ?>" alt="" style="width: auto; margin-left: 3px;" />
                   </p>
+                </a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -420,6 +422,7 @@ get_header(); ?>
                   <?php
                     }
                   ?>
+                  <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature">
                     Featured 
                     <img id="imggg" src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" />
@@ -430,6 +433,7 @@ get_header(); ?>
                       }
                     </style>
                   </p>
+                </a>
                 </div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
