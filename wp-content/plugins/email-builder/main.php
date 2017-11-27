@@ -8,6 +8,9 @@ Version: 0.1
 Author URI: http://codebasehq.com
 Network: True
 */
+
+require_once "manage.php";
+
 class EmailBuilder {
 	public $plugin_domain;
 	public $views_dir;
@@ -65,7 +68,33 @@ class EmailBuilder {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					
 					echo $response;
-				}			
+				}
+
+				foreach ($static as $staticKey => $staticEntity) {
+					if ( isset( $static[$staticKey] ) ) {
+						if ( isset($static[$staticKey]->Version) && isset($static[$staticKey]->Data) && $static[$staticKey]->Version == 2 ) {
+							$data = json_decode($static[$staticKey]->Data, true);
+							$sourceCode = isset($data['source_code']) ? $data['source_code'] : '';
+
+							if ( is_array($data) ) {
+								foreach ( $data as $key => $value ) {
+									$sourceCode = str_replace( '{{' . $key . '}}', $value, $sourceCode );
+								}
+							}
+
+							$colors = array(
+								'wp_2_' => '#69b42e',
+								'wp_3_' => '#0095db',
+								'wp_4_' => '#e40233',
+								'wp_5_' => '#f9ae00'
+							);
+
+							$sourceCode = str_replace( '<a ', '<a style="color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $sourceCode );
+
+							$static[$staticKey]->Content = $sourceCode;
+						}
+					}	
+				}
 
 				echo json_encode($static);
 			    exit();
@@ -1061,7 +1090,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.3d6c05de.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.9aa95d63.js', __FILE__),array(),  '1.0.1', true );
 	}
 	
     public function jal_install() {

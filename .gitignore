@@ -22,3 +22,5 @@
 !/wp-content/themes/lw_fund_sa
 /wp-content/uploads
 .DS_Store
+
+/ui/
