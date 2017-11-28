@@ -16,7 +16,7 @@
   <script>
    $(document).ready(function () {
       $.ajax({
-        url:'https://pa.cms-lastwordmedia.com/wp-json/email-builder/v1/email?emailId='+ getParameterByName('emailId') + '&prefix='+ getParameterByName('prefix'),
+        url:'https://pa.cms-lastwordmedia.com/wp-json/email-builder/v1/email?emailId='+ getParameterByName('emailId') + '&prefix='+ getParameterByName('prefix') + '&cache=' + (new Date().getTime()),
         complete: function (response) {
         console.dir(response);
             $('#emails').html(response.responseJSON.Content);

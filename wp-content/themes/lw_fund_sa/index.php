@@ -248,8 +248,10 @@ get_header(); ?>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
                     <div class="analysis-list">
+
                       <?php
                         $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
+                        $args = array( 'numberposts' => 1, 'p' => get_option('featured_left_box_article', 0));
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -280,6 +282,44 @@ get_header(); ?>
                         endforeach;
                         wp_reset_postdata();
                       ?>
+
+                      <?php
+                        $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
+                        $args = array( 'numberposts' => 1, 'p' => get_option('featured_right_box_article', 0));
+                        $myposts = get_posts( $args );
+                        foreach ( $myposts as $post ) : setup_postdata( $post );
+                      ?>
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="loop-list" style="background: #d8d8d8;">
+                          <div class="content-image">
+                            <?php
+                              if ( has_post_thumbnail() ) {
+                                the_post_thumbnail('featured-article');
+                              }
+                              else {
+                            ?>
+                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                            <?php
+                              }
+                            ?>
+                          </div>
+                          <div class="content-des" style="padding-left: 10px; padding-right: 10px;">
+                            <?php $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE); ?>
+                            <?php if($lw_sponsored != '' || true) { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
+
+                            <p class="name-cat" style="display: none;">
+                              <?php $category = get_the_category(); ?>
+                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                            </p>
+                            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                          </div>
+                        </div>
+                      </div>
+                      <?php
+                        endforeach;
+                        wp_reset_postdata();
+                      ?>
+                    
                     </div>
                   </div>
                 </div>

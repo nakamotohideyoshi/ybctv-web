@@ -306,7 +306,7 @@ class CreateEmail extends Component {
           <h1 className="text-center">Newsletter Builder</h1>
         </div>
         <div className="col-xs-6 email-builder-content">
-          <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#mdlSaveEmail">Save for later</button>
+          <button type="button" className="btn btn-primary pull-right" data-toggle="modal" data-target="#mdlSaveEmail">Save As...</button>
           { this.props.emailId > 0 ? <button type="button" className="btn btn-primary pull-right" onClick={this.saveExistingEmail} style={{marginRight: '5px'}}>Save</button> : ''}
           { this.props.emailId > 0 ? <button type="button" className="btn btn-primary pull-right action-buttons" onClick={this.pushToAdestra}>Push to Adestra</button> : ''}
         </div>
