@@ -9,7 +9,7 @@ Author URI: http://codebasehq.com
 Network: True
 */
 
-require_once "manage.php";
+// require_once "manage.php";
 
 class EmailBuilder {
 	public $plugin_domain;
@@ -326,6 +326,9 @@ class EmailBuilder {
         array(
             'methods' => 'POST',
             'callback' => function ($data ){
+
+            	global $wpdb;
+				$table_name_logs = 'wp_2_email_builder_logs';
 				
 				try{
 					$json_result = json_decode($data->get_body(), true);
@@ -341,6 +344,8 @@ class EmailBuilder {
 					$new_campaign = $client->call( 'campaign.create', ['name' => $name,
 						                                           'description' => $description,
 						                                           'project_id' => $project_id]);
+
+					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.create', " . addslashes(json_encode($new_campaign)) . "', '" . date('Y-m-d H:i:s') . "')");
 
 				    $subject_line= $subject;
 				    $domain= 'campaign.lastwordmedia.com';
@@ -368,7 +373,7 @@ class EmailBuilder {
 					$from_address= 'newsletter@campaign.lastwordmedia.com';			    
 				    $auto_tracking= 1;
 				    
-					$client->call( 'campaign.setAllOptions', $new_campaign['id'], [
+					$r1 = $client->call( 'campaign.setAllOptions', $new_campaign['id'], [
 																	'subject_line' => $subject_line,
 						                                           	'domain' => $domain,
 						                                           	'from_prefix' => $from_prefix,
@@ -383,18 +388,25 @@ class EmailBuilder {
 						                                           	'reply_name' => 'Subscriptions'
 					                                           ]);
 					
+					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.setAllOptions', '" . addslashes(json_encode($r1)) . "', '" . date('Y-m-d H:i:s') . "')");
 
 					$html_content = $content;
 
-					$client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
+					$r2 = $client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
+
+					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.setMessage', '" . addslashes(json_encode($r2)) . "', '" . date('Y-m-d H:i:s') . "')");
 
 					//$client->call( 'campaign.setMessage', $new_campaign['id'], 'text' , $html_content);
 
-					$client->call( 'campaign.publish', $new_campaign['id']);
+					$r3 = $client->call( 'campaign.publish', $new_campaign['id']);
+
+					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.publish', '" . addslashes(json_encode($r3)) . "', '" . date('Y-m-d H:i:s') . "')");
 
                     //$launch_label = '2016-01-01 daily email';
 
 					//$response = $client->call( 'campaign.launch', $new_campaign['id'], ['launch_label' => $launch_label]);
+
+					$response = 'Ready at: ' . date('Y-m-d H:i:s');
 
                     global $wpdb;
                     $table_name = 'wp_2_email_builder_emails';
@@ -1090,7 +1102,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.9aa95d63.js', __FILE__),array(),  '1.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.c091f2a9.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {

@@ -708,6 +708,32 @@ function customFeed($object){
   return $html;
 }
 
+// armin Limit Excerpt Length by number of Words
+function excerpt( $limit ) {
+$excerpt = explode(' ', get_the_excerpt(), $limit);
+if (count($excerpt)>=$limit) {
+array_pop($excerpt);
+$excerpt = implode(" ",$excerpt).'...';
+} else {
+$excerpt = implode(" ",$excerpt);
+}
+$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+return $excerpt;
+}
+function content($limit) {
+$content = explode(' ', get_the_content(), $limit);
+if (count($content)>=$limit) {
+array_pop($content);
+$content = implode(" ",$content).'...';
+} else {
+$content = implode(" ",$content);
+}
+$content = preg_replace('/[.+]/','', $content);
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
+return $content;
+}
+
 //Set custom logo on login/l
 function custom_loginlogo() {
 echo '<style type="text/css">
@@ -807,9 +833,9 @@ add_filter( 'wp_calculate_image_srcset', 'ssl_srcset' );
 add_action('admin_menu', 'add_featured_box_menu_item');
 function add_featured_box_menu_item() {
   add_options_page(
-    'Featured Page',
-    'Featured Page',
-    'manage_options',
+    'Featured boxes',
+    'Featured boxes',
+    'edit_posts',
     'featured_box_settings',
     'add_featured_box_settings_page'
   );
@@ -829,12 +855,20 @@ function add_featured_box_settings_page() {
 
   ?>
   <div class="most-read-settings wrap">
-    <h2>Featured Page Settings</h2>
+    <h2>Featured boxes</h2>
     <form action="" method="post">
       <table class="form-table">
         <tr>
-          <th scope="row">Left Box Article</th>
+          <th scope="row">Sponsored Box (left hand)</th>
           <td>
+            <div>
+              Please either select the article from the drop down option or add the Wordpress article ID in the box.
+              To find the Wordpress article ID please use the instructions from this
+              <a href="https://www.youtube.com/watch?v=fLg2T1AvmFE" target="_blank">video</a>.
+            </div>
+
+            <br/>
+
             <select name="featured_left_box_article" id="featured_left_box_article_combo" onchange="document.getElementById('featured_left_box_article_field').value = this.value;">
               <option value="">-</option>
               <?php foreach( $posts as $post ): ?>
@@ -848,12 +882,22 @@ function add_featured_box_settings_page() {
           <th scope="row">&nbsp;</th>
           <td>
             <input type="text" id="featured_left_box_article_field" name="featured_left_box_article" value="<?php echo $featured_left_box_article; ?>" />
+
+            <span>(Wordpress article ID)</span>
           </td>
         </tr>
         
         <tr>
-          <th scope="row">Right Box Article</th>
+          <th scope="row">Editorial Box (right hand)</th>
           <td>
+            <div>
+              Please either select the article from the drop down option or add the Wordpress article ID in the box.
+              To find the Wordpress article ID please use the instructions from this
+              <a href="https://www.youtube.com/watch?v=fLg2T1AvmFE" target="_blank">video</a>.
+            </div>
+
+            <br/>
+
             <select name="featured_right_box_article" id="featured_right_box_article_combo" onchange="document.getElementById('featured_right_box_article_field').value = this.value;">
               <option value="">-</option>
               <?php foreach( $posts as $post ): ?>
@@ -866,6 +910,8 @@ function add_featured_box_settings_page() {
           <th scope="row">&nbsp;</th>
           <td>
             <input type="text" id="featured_right_box_article_field" name="featured_right_box_article" value="<?php echo $featured_right_box_article; ?>" />
+
+            <span>(Wordpress article ID)</span>
           </td>
         </tr>
 

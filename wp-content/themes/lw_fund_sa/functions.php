@@ -466,13 +466,20 @@ function remove_post_edit_meta_boxes() {
 add_action('add_meta_boxes', 'remove_post_edit_meta_boxes', 999);
 
 /*
-* Remove Menu items from Author admins
+* Remove Menu items from non-admin roles
 */
 function remove_menu_pages() {
+  // Hide LW Ad Unit from all non-admin roles
   if (!current_user_can('manage_options')) {
     remove_menu_page('edit.php?post_type=lw_ad_unit');
+  }
+
+  // Hide Teams from authors
+  $user = wp_get_current_user();
+  if (in_array('author', (array)$user->roles)) {
     remove_menu_page('edit.php?post_type=tmm');
   }
+
 }
 
 add_action('admin_init', 'remove_menu_pages');
@@ -618,11 +625,36 @@ function customFeed($object){
     foreach ( $rss_items as $item ){
       $html .= '<p>';
       $html .= '<a href="'. esc_url( $item->get_permalink() ) .'" target="_blank" title="'. esc_html( $item->get_title() ).'">';
-      $html .= mb_strimwidth( esc_html( $item->get_title() ), 0, 35, '...' );
+      $html .= wp_trim_words( esc_html( $item->get_title() ),5, '...');
       $html .= '</a></p>';
     }
   }
   return $html;
+}
+// armin Limit Excerpt Length by number of Words
+function excerpt( $limit ) {
+$excerpt = explode(' ', get_the_excerpt(), $limit);
+if (count($excerpt)>=$limit) {
+array_pop($excerpt);
+$excerpt = implode(" ",$excerpt).'...';
+} else {
+$excerpt = implode(" ",$excerpt);
+}
+$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+return $excerpt;
+}
+function content($limit) {
+$content = explode(' ', get_the_content(), $limit);
+if (count($content)>=$limit) {
+array_pop($content);
+$content = implode(" ",$content).'...';
+} else {
+$content = implode(" ",$content);
+}
+$content = preg_replace('/[.+]/','', $content);
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
+return $content;
 }
 
 
