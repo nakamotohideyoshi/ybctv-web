@@ -345,6 +345,9 @@ class EmailBuilder {
 						                                           'description' => $description,
 						                                           'project_id' => $project_id]);
 
+					$name = preg_replace('/[[:^print:]]/', '', $name);
+					$description = preg_replace('/[[:^print:]]/', '', $description);
+
 					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.create', " . addslashes(json_encode($new_campaign)) . "', '" . date('Y-m-d H:i:s') . "')");
 
 				    $subject_line= $subject;
