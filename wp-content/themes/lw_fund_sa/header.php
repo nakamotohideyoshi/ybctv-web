@@ -2,7 +2,6 @@
 /*
  * The Header for our theme.
  */
- last_word_redirect_404();
 ?>
 <!DOCTYPE html>
 <!--[if IE 7]>
@@ -12,7 +11,7 @@
 <html class="ie ie8" <?php language_attributes(); ?>>
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?>>
+<html>
 <!--<![endif]-->
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
