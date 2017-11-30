@@ -41,7 +41,7 @@ get_header(); ?>
                             <?php
                               $excerpt = get_the_excerpt();
                               if (strlen($excerpt) > 100) {
-                                echo substr($excerpt, 0, 100) . '...';
+                               echo excerpt(16);
                               }
                               else {
                                 echo $excerpt;
@@ -253,7 +253,7 @@ get_header(); ?>
                               }
                               else {
                             ?>
-                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo wp_trim_words( esc_html( $item->get_title() ),5, '...'); ?>" /></a>
                             <?php
                               }
                             ?>

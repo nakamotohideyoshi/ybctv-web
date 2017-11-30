@@ -245,16 +245,14 @@ function include_for_author($where){
 
     return $where;
 }
-
 /*
  * Method limit excerpt
  */
 function limitexcerpt($lenght){
-    $limitexcerpt = ot_get_option('porlimitexcerpt',25);;
+    $limitexcerpt = ot_get_option('porlimitexcerpt',125);;
     return $limitexcerpt ;
 }
 add_filter('excerpt_length','limitexcerpt');
-
 
 function new_excerpt_more( $more ) {
     return '...';
@@ -268,8 +266,34 @@ function get_excerpt($count){
     $excerpt      = get_the_content();
     $excerpt      = strip_tags($excerpt);
     $excerpt      = substr($excerpt, 0, $count);
-    $excerpt      = $excerpt.'<a href="'.$permalink.'">...</a>';
-    return $excerpt;
+    $excerpt      = $excerpt.'<a href="'.$permalink.'">....</a>';
+    return excerpt(15);
+}
+
+// armin Limit Excerpt Length by number of Words
+function excerpt( $limit ) {
+$excerpt = explode(' ', get_the_excerpt(), $limit);
+if (count($excerpt)>=$limit) {
+array_pop($excerpt);
+$excerpt = implode(" ",$excerpt).'...';
+} else {
+$excerpt = implode(" ",$excerpt);
+}
+$excerpt = preg_replace('`[[^]]*]`','',$excerpt);
+return $excerpt;
+}
+function content($limit) {
+$content = explode(' ', get_the_content(), $limit);
+if (count($content)>=$limit) {
+array_pop($content);
+$content = implode(" ",$content).'...';
+} else {
+$content = implode(" ",$content);
+}
+$content = preg_replace('/[.+]/','', $content);
+$content = apply_filters('the_content', $content);
+$content = str_replace(']]>', ']]&gt;', $content);
+return $content;
 }
 
 /*wpb_set_post_views*/
@@ -668,7 +692,7 @@ function customFeed($object){
     foreach ( $rss_items as $item ){
       $html .= '<p>';
       $html .= '<a href="'. esc_url( $item->get_permalink() ) .'" target="_blank" title="'. esc_html( $item->get_title() ).'">';
-      $html .= mb_strimwidth( esc_html( $item->get_title() ), 0, 35, '...' );
+      $html .= wp_trim_words( esc_html( $item->get_title() ),5, '...');
       $html .= '</a></p>';
     }
   }
