@@ -168,7 +168,7 @@ get_header(); ?>
                                             'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
-                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                    <?php echo do_shortcode('[printicon align="left"]');?>
                                 </div>
                             </div>
 
@@ -291,7 +291,7 @@ get_header(); ?>
                                             'buttons' => array( 'email','facebook' ,'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
-                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                    <?php echo do_shortcode('[printicon align="left"]');?>
                                 </div>
                             </div>
 
@@ -370,19 +370,17 @@ get_header(); ?>
                             </div>
                             <div>
                               <?php
-                                if (get_the_ID() == 4842) {
-                                  if(wp_is_mobile()) {
-                                    ?>
-                                    <div style="width: 300px; margin: 0 auto;">
-                                    <?php
-                                    lastWordAdUnit('native-content-mobile');
-                                    ?>
-                                    </div>
-                                    <?php
-                                  }
-                                  else {
-                                    lastWordAdUnit('native-content-desktop');
-                                  }
+                                if(wp_is_mobile()) {
+                                  ?>
+                                  <div style="width: 300px; margin: 0 auto;">
+                                  <?php
+                                  lastWordAdUnit('native-content-mobile');
+                                  ?>
+                                  </div>
+                                  <?php
+                                }
+                                else {
+                                  lastWordAdUnit('native-content-desktop');
                                 }
                               ?>
                             </div>
