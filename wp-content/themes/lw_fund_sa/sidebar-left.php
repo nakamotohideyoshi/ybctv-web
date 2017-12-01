@@ -12,6 +12,7 @@
             ),
             'meta_key' => 'lw_read_count',
             'orderby' => 'meta_value_num',
+            'ignore_sticky_posts' => 1,
             'order' => 'DESC'
           );
           $myposts = get_posts( $args );
