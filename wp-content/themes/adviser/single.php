@@ -85,10 +85,10 @@ get_header(); ?>
                                 <div class="like_button clearfix">
                                     <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
                                         ADDTOANY_SHARE_SAVE_KIT( array(
-                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
+                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin'),
                                         ) );
                                     } ?>
-                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                    <?php echo do_shortcode('[printicon align="left"]');?>
                                 </div>
                             </div>
 
@@ -165,6 +165,22 @@ get_header(); ?>
                                   }
                                 ?>
                               </div>
+                            </div>
+                            <div>
+                              <?php
+                                if(wp_is_mobile()) {
+                                  ?>
+                                  <div style="width: 300px; margin: 0 auto;">
+                                  <?php
+                                  lastWordAdUnit('native-content-mobile');
+                                  ?>
+                                  </div>
+                                  <?php
+                                }
+                                else {
+                                  lastWordAdUnit('native-content-desktop');
+                                }
+                              ?>
                             </div>
                             <div class="comment-post">
                                 <?php if ( comments_open() || get_comments_number() ) :
