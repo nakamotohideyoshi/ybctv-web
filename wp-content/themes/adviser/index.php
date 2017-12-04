@@ -41,7 +41,8 @@ get_header(); ?>
                             <?php
                               $excerpt = get_the_excerpt();
                               if (strlen($excerpt) > 100) {
-                                echo substr($excerpt, 0, 100) . '...';
+                                
+echo excerpt(13) . '...';
                               }
                               else {
                                 echo $excerpt;
