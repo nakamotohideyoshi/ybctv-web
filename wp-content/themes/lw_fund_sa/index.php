@@ -251,7 +251,7 @@ get_header(); ?>
 
                       <?php
                         $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
-                        $args = array( 'numberposts' => 1, 'p' => get_option('featured_left_box_article', 0));
+                        $args = array( 'numberposts' => 1, 'posts_per_page' => 1, 'p' => get_option('featured_left_box_article', 0));
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -285,7 +285,7 @@ get_header(); ?>
 
                       <?php
                         $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
-                        $args = array( 'numberposts' => 1, 'p' => get_option('featured_right_box_article', 0));
+                        $args = array( 'numberposts' => 1, 'posts_per_page' => 1, 'p' => get_option('featured_right_box_article', 0));
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
