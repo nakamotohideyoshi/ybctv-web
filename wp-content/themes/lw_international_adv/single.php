@@ -19,7 +19,21 @@ get_header(); ?>
                             <div class="list-most-popular">
                                 <?php
 
-                                $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
+                                $no_of_days = (int)get_option('most_read_days');
+                                $start_date = date('Y-m-d', strtotime('-' . $no_of_days . ' days'));
+
+                                $popularpost = new WP_Query( array( 
+                                    'posts_per_page' => 3,
+                                    'showposts' => 3,
+                                    'date_query' => array(
+                                      'after' => $start_date
+                                    ),
+                                    'meta_key' => 'lw_read_count',
+                                    'orderby' => 'meta_value_num',
+                                    'ignore_sticky_posts' => 1,
+                                    'order' => 'DESC'
+                                    )
+                                );        
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
                                 ?>
                                     <div class="loop-list">
@@ -168,7 +182,7 @@ get_header(); ?>
                                             'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
-                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                    <?php echo do_shortcode('[printicon align="left"]');?>
                                 </div>
                             </div>
 
@@ -291,7 +305,7 @@ get_header(); ?>
                                             'buttons' => array( 'email','facebook' ,'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
-                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+                                    <?php echo do_shortcode('[printicon align="left"]');?>
                                 </div>
                             </div>
 
@@ -370,19 +384,17 @@ get_header(); ?>
                             </div>
                             <div>
                               <?php
-                                if (get_the_ID() == 4842) {
-                                  if(wp_is_mobile()) {
-                                    ?>
-                                    <div style="width: 300px; margin: 0 auto;">
-                                    <?php
-                                    lastWordAdUnit('native-content-mobile');
-                                    ?>
-                                    </div>
-                                    <?php
-                                  }
-                                  else {
-                                    lastWordAdUnit('native-content-desktop');
-                                  }
+                                if(wp_is_mobile()) {
+                                  ?>
+                                  <div style="width: 300px; margin: 0 auto;">
+                                  <?php
+                                  lastWordAdUnit('native-content-mobile');
+                                  ?>
+                                  </div>
+                                  <?php
+                                }
+                                else {
+                                  lastWordAdUnit('native-content-desktop');
                                 }
                               ?>
                             </div>

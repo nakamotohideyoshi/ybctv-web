@@ -371,6 +371,21 @@ class last_word_user_meta {
             ?>
           </td>
         </tr>
+        <?php
+          if (current_user_can('manage_options')) {
+        ?>
+        <tr>
+          <th>Contact GUID</th>
+          <td>
+            <?php
+              $contactId = get_user_meta($user->ID, '_contactId', true);
+              echo $contactId;
+               ?>
+          </td>
+        </tr>
+        <?php
+          }
+        ?>
       </table>
     <?php
   }

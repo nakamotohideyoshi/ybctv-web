@@ -3,14 +3,21 @@
     <?php lastWordAdUnit('top-news-ad'); ?>
     <div class="list-most-popular">
         <?php
-        $popularpost = new WP_Query( 
-            array( 
-                'posts_per_page' => 2, 
-                'meta_key' => 'wpb_post_views_count', 
-                'orderby' => 'meta_value_num', 
-                'order' => 'DESC',
-                'category__not_in' => array( 26, 21 ),
-            ) );
+        $no_of_days = (int)get_option('most_read_days');
+        $start_date = date('Y-m-d', strtotime('-' . $no_of_days . ' days'));
+
+        $popularpost = new WP_Query( array( 
+            'posts_per_page' => 3,
+            'showposts' => 3,
+            'date_query' => array(
+              'after' => $start_date
+            ),
+            'meta_key' => 'lw_read_count',
+            'orderby' => 'meta_value_num',
+            'ignore_sticky_posts' => 1,
+            'order' => 'DESC'
+            )
+        );
         while ( $popularpost->have_posts() ) : $popularpost->the_post(); ?>
             <div class="loop-list">
                 <div class="content-image">

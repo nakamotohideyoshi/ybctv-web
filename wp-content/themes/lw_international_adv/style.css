@@ -3534,3 +3534,33 @@ article.comment {
 .site-header .container {
   padding-right: 0!important;
 }
+
+.box-sponsored {
+display:none;
+}
+
+.home .box-sponsored {
+display:block;
+}
+
+.content-single .h5ab-print-button-container {
+    float: unset!important;
+    margin-right: 10px!important;
+    font-size: 16px!important;
+    display: inline!important;
+    width: 20px!important;
+    margin: 0!important;
+    margin-left: 10px!important;
+}
+
+.thump-single .h5ab-print-button-container {
+  display: none!important;
+}
+
+.content-magazine .h5ab-print-button-container {
+  display: none!important;
+}
+
+.thump-single .text-content {
+  line-height: 20px;
+}  

@@ -26,7 +26,7 @@
             <div class="page-header">
               <h1 class="page-title"><?php the_title();?></h1>
               <div class="page-description"><?php the_content();?></div>
-              <?php if(get_the_ID() == 14930): //if page is best practice ?>
+              <?php if(get_the_ID() == 14930 || get_the_ID() == 17952): //if page is best practice or best practice adviser awards ?>
                 <div class="cat-sponsor-logo">
                   <img src="<?php echo THEME_PATH.'/images/old_mutual_international.jpg' ?>" />
               </div>
