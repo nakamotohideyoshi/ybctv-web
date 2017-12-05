@@ -15,6 +15,56 @@ $data = array(
 	'source_code' => ''
 );
 
+$config = array(
+	'Digital_Magazine' => array(
+		'Image' => 'image',
+		'Link' => 'text',
+		'Title' => 'text',
+		'Body' => 'editor',
+		'CTA' => 'editor'
+	),
+	'Digital_Magazine_2' => array(
+		'Image' => 'image',
+		'Link' => 'text',
+		'Title' => 'text',
+		'Body' => 'editor',
+		'CTA' => 'editor'
+	),
+	'Newsletter_Subscribe' => array(
+		'Link' => 'text',
+		'Image' => 'image',
+		'Button Text' => 'text'
+	),
+	'Top_Leaderboard' => array(
+		'Image' => 'image',
+		'Image Link' => 'text'
+	),
+	'Footer_Leaderboard' => array(
+		'Image' => 'image',
+		'Image Link' => 'text'
+	),
+	'Static_Image_1' => array(
+		'Image' => 'image',
+		'Image Link' => 'text'
+	),
+	'Static_Image_2' => array(
+		'Image' => 'image',
+		'Image Link' => 'text'
+	),
+	'Sponsored_Content' => array(
+		'Body' => 'editor',
+		'Image' => 'image',
+		'Image Link' => 'text'
+	),
+	'Sponsored_Content_2' => array(
+		'Title' => 'text',
+		'Image' => 'image',
+		'Image Link' => 'text',
+		'Subtitle' => 'editor',
+		'Excerpt' => 'editor'
+	)
+);
+
 if ( $static != null && isset( $static->Data ) ) {
 	$dbData = json_decode($static->Data, true);
 
@@ -51,11 +101,10 @@ include('email-builder-editor-tpl-js.php');
 	<input type="hidden" name="type" value="<?php echo $fragment_type; ?>" />
 
 	<div class="cols">
-		<?php if ( strpos( trim($fragment_type), 'Top_Leaderboard' ) !== false ): ?>
-			<?php include('email-builder-editor-tpl-top-leaderboard.php'); ?>
-		<?php else: ?>
-			<?php include('email-builder-editor-tpl-sponsored-content2.php'); ?>
-		<?php endif; ?>
+		<?php $fragment_type_normalized = str_replace(array('_a','_b','_c','_d','_e','_f'), '', $fragment_type); ?>
+		<?php $fragment_type_normalized = str_replace(array('_2a','_2b','_2c','_2d','_2e','_2f'), '_2', $fragment_type_normalized); ?>
+		<?php $GLOBALS['email_builder_editor_config'] = $config[ $fragment_type_normalized ]; ?>
+		<?php include('email-builder-editor-tpl-form-fields.php'); ?>
 
 		<div class="col">
 			<div class="formfield">

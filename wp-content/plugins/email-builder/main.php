@@ -9,7 +9,7 @@ Author URI: http://codebasehq.com
 Network: True
 */
 
-// require_once "manage.php";
+require_once "manage.php";
 
 class EmailBuilder {
 	public $plugin_domain;
@@ -82,15 +82,18 @@ class EmailBuilder {
 								}
 							}
 
-							$colors = array(
-								'wp_2_' => '#69b42e',
-								'wp_3_' => '#0095db',
-								'wp_4_' => '#e40233',
-								'wp_5_' => '#f9ae00'
-							);
+							if ( $g['type'] != 'Newsletter_Subscribe' ) {
+								$colors = array(
+									'wp_2_' => '#69b42e',
+									'wp_3_' => '#0095db',
+									'wp_4_' => '#e40233',
+									'wp_5_' => '#f9ae00'
+								);
 
-							$sourceCode = str_replace( '<a ', '<a style="color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $sourceCode );
+								$sourceCode = str_replace( '<a ', '<a style="color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $sourceCode );
 
+							}
+							
 							$static[$staticKey]->Content = $sourceCode;
 						}
 					}	
@@ -1105,7 +1108,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.c091f2a9.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.d1b5a8c5.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {

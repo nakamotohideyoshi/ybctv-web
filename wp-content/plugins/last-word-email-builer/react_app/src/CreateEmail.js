@@ -240,8 +240,8 @@ class CreateEmail extends Component {
      return;
     }
 
-    if ( Config.VERSION == 2 && ( type.indexOf('Sponsored_Content_2') != -1 || type.indexOf('Top_Leaderboard') != -1 ) ) {
-      window.open( '/wp-admin/tools.php?page=last-word-email-builder-editor&site=' + this.props.site + '&template=' + this.state.template + '&type=' + type, '_blank' );
+    if ( Config.VERSION == 2 ) {
+      window.open( Config.BASE_URL + '/wp-admin/tools.php?page=last-word-email-builder-editor&site=' + this.props.site + '&template=' + this.state.template + '&type=' + type, '_blank' );
     } else {
       this.setState(prevState => ({
         staticType: type,
