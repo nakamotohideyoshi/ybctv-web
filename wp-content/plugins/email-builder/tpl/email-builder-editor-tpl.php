@@ -62,6 +62,26 @@ $config = array(
 		'Image Link' => 'text',
 		'Subtitle' => 'editor',
 		'Excerpt' => 'editor'
+	),
+	'Quotable' => array(
+		'Title' => 'text',
+		'Subtitle' => 'text',
+		'Image' => 'image',
+		'Body' => 'editor',
+		'Footer' => 'editor'
+	),
+	'Asset_Class' => array(
+		'Title' => 'text',
+		'Left Box Title' => 'text',
+		'Left Box Subtitle' => 'text',
+		'Left Box Body' => 'text',
+		'Left Box Image' => 'image',
+		'Left Box Image Link' => 'text',
+
+		'Right Box Title' => 'text',
+		'Right Box Body' => 'text',
+		'Right Box Image' => 'image',
+		'Right Box Image Link' => 'text'
 	)
 );
 
@@ -102,6 +122,7 @@ include('email-builder-editor-tpl-js.php');
 
 	<div class="cols">
 		<?php $fragment_type_normalized = str_replace(array('_a','_b','_c','_d','_e','_f'), '', $fragment_type); ?>
+		<?php $fragment_type_normalized = str_replace(array('_1a','_1b','_1c','_1d','_1e','_1f'), '_1', $fragment_type_normalized); ?>
 		<?php $fragment_type_normalized = str_replace(array('_2a','_2b','_2c','_2d','_2e','_2f'), '_2', $fragment_type_normalized); ?>
 		<?php $GLOBALS['email_builder_editor_config'] = $config[ $fragment_type_normalized ]; ?>
 		<?php include('email-builder-editor-tpl-form-fields.php'); ?>
