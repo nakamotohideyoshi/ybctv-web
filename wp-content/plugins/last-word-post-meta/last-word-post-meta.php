@@ -28,6 +28,8 @@ class last_word_post_meta {
     add_meta_box('lw_cross_post', 'Cross Post', array($this, 'add_lw_cross_post'), 'post', 'side');
     add_meta_box('categorydiv', 'Categories', 'post_categories_meta_box', 'post', 'side', 'low');
     add_meta_box('tagsdiv-post_tag', 'Tags', 'post_tags_meta_box', 'post', 'side', 'low');
+    add_meta_box('lw_top_story', 'Top Story', array($this, 'add_lw_top_story'), 'post', 'side');
+    add_meta_box('lw_reset_counter', 'Reset Read Counter', array($this, 'add_lw_reset_counter'), 'post', 'side');
 
     if (current_user_can('manage_options')) {
       add_meta_box('lw_meta', 'Last Word Meta', array($this, 'add_lw_meta'), 'post', 'normal');
@@ -94,6 +96,36 @@ class last_word_post_meta {
     <label for="lw_premium">
       <input type="checkbox" name="lw_premium" id="lw_premium" value="yes"<?php echo $premium == 'yes' ? ' checked' : ''; ?> />
       Premium Content
+    </label>
+    <?php
+
+  }
+
+  function add_lw_top_story() {
+    global $post;
+
+    $top_story = get_post_meta($post->ID, 'lw_top_story', true);
+
+    wp_nonce_field( basename( __FILE__ ), 'lw_top_story_nonce' );
+    ?>
+    <label for="lw_top_story">
+      <input type="checkbox" name="lw_top_story" id="lw_top_story" value="yes"<?php echo $top_story == 'yes' ? ' checked' : ''; ?> />
+      Top Story
+    </label>
+    <?php
+
+  }
+
+  function add_lw_reset_counter() {
+    global $post;
+
+    $reset_counter = get_post_meta($post->ID, 'lw_reset_counter', true);
+
+    wp_nonce_field( basename( __FILE__ ), 'lw_reset_counter_nonce' );
+    ?>
+    <label for="lw_reset_counter">
+      <input type="checkbox" name="lw_reset_counter" id="lw_reset_counter" value="yes"<?php echo $reset_counter == 'yes' ? ' checked' : ''; ?> />
+      Reset Read Counter
     </label>
     <?php
 
@@ -203,20 +235,36 @@ class last_word_post_meta {
       update_post_meta($post_id, 'lw_subtitle', strip_tags($_POST['lw_subtitle']));
       update_post_meta($post_id, 'lw_description', strip_tags($_POST['lw_description']));
       update_post_meta($post_id, 'lw_expiry_date', strip_tags($_POST['lw_expiry_date']));
+      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
       update_post_meta($post_id, 'lw_twitter_headline', strip_tags($_POST['lw_twitter_headline']));
       update_post_meta($post_id, 'lw_read_count', strip_tags($_POST['lw_read_count']));
     }
 
-    if (isset($_POST['lw_sponsored_nonce'])) {
-      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
-    }
-    
     if (isset($_POST['lw_premium_nonce'])) {
       if (isset($_POST['lw_premium'])) {
         update_post_meta($post_id, 'lw_premium', 'yes');
       }
       else {
         update_post_meta($post_id, 'lw_premium', '');
+      }
+    }
+
+    if (isset($_POST['lw_top_story_nonce'])) {
+      if (isset($_POST['lw_top_story'])) {
+        update_post_meta($post_id, 'lw_top_story', 'yes');
+      }
+      else {
+        update_post_meta($post_id, 'lw_top_story', '');
+      }
+    }
+
+    if (isset($_POST['lw_reset_counter_nonce'])) {
+      if (isset($_POST['lw_reset_counter'])) {
+        update_post_meta($post_id, 'lw_reset_counter', 'yes');
+        update_post_meta($post_id, 'lw_read_count', '0');
+      }
+      else {
+        update_post_meta($post_id, 'lw_reset_counter', '');
       }
     }
 
@@ -252,6 +300,10 @@ class last_word_post_meta {
       else {
         update_post_meta($post_id, 'lw_cross_post_google_plus', '');
       }
+    }
+
+    if (isset($_POST['lw_sponsored_nonce'])) {
+      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
     }
 
     if (isset($_POST['lw_brightcove_video_nonce'])) {
