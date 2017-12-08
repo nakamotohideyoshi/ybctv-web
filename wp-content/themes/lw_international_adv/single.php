@@ -22,7 +22,7 @@ get_header(); ?>
                                 $no_of_days = (int)get_option('most_read_days');
                                 $start_date = date('Y-m-d', strtotime('-' . $no_of_days . ' days'));
 
-                                $popularpost = new WP_Query( array( 
+                                $popularpost = new WP_Query( array(
                                     'posts_per_page' => 3,
                                     'showposts' => 3,
                                     'date_query' => array(
@@ -33,7 +33,7 @@ get_header(); ?>
                                     'ignore_sticky_posts' => 1,
                                     'order' => 'DESC'
                                     )
-                                );        
+                                );
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
                                 ?>
                                     <div class="loop-list">
@@ -255,9 +255,29 @@ get_header(); ?>
                                       ));
 
                                       echo '</div>';
+
+                                    }
+                                    if (wp_is_mobile()) {
+                                      lastWordAdUnit('lhs-mpu');
                                     }
                                   ?>
                                 </div>
+                            </div>
+                            <div>
+                              <?php
+                                if(wp_is_mobile()) {
+                                  ?>
+                                  <div style="width: 300px; margin: 0 auto;">
+                                  <?php
+                                  lastWordAdUnit('native-content-mobile');
+                                  ?>
+                                  </div>
+                                  <?php
+                                }
+                                else {
+                                  lastWordAdUnit('native-content-desktop');
+                                }
+                              ?>
                             </div>
                             <div class="comment-post">
                                 <?php if ( comments_open() || get_comments_number() ) :
@@ -378,6 +398,9 @@ get_header(); ?>
                                       ));
 
                                       echo '</div>';
+                                    }
+                                    if (wp_is_mobile()) {
+                                      lastWordAdUnit('lhs-mpu');
                                     }
                                   ?>
                                 </div>

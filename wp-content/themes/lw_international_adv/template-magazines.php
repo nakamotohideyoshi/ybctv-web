@@ -78,8 +78,12 @@
 
                 endwhile;endif;
                 wp_reset_query();
+
+                if (wp_is_mobile()) {
+                  lastWordAdUnit('lhs-mpu');
+                }
               ?>
-               
+
             </div>
             <a href="#" class="view-more view-more-ajax magazines" page="1" offset="6" type="magazine">View more</a>
           </div>

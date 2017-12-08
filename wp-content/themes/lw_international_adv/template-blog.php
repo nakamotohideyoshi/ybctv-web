@@ -119,6 +119,10 @@
                   get_template_part('template-parts/archive', 'post');
                 endforeach;
                 wp_reset_postdata();
+
+                if (wp_is_mobile()) {
+                  lastWordAdUnit('lhs-mpu');
+                }
               ?>
             </div>
             <a href="#" class="view-more view-more-ajax" page="2" offset="4" category="<?php echo $category_page; ?>">View more</a>
