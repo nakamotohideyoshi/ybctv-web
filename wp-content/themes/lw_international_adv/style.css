@@ -701,6 +701,11 @@ h2.title{
   padding: 15px 0;
 }
 
+.ads-lhs-mpu {
+  width: 300px;
+  margin: 0 auto;
+}
+
 .ads-rhs-hpu-1, .ads-rhs-hpu-2 {
   margin-bottom: 18px;
 }
@@ -2872,7 +2877,7 @@ article.comment {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
-  
+
   /* Tablet landscape ads right sidebar fix - start */
   #main .all-new-analysis .col-lg-9:first-child {
     width: calc(100% - 300px);
@@ -2959,7 +2964,7 @@ article.comment {
   .home .most-popular,
   .content-left .most-popular { padding:0; }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -3029,7 +3034,7 @@ article.comment {
     height: auto;
   }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -3165,7 +3170,7 @@ article.comment {
       min-height: 120px;
     }
 
-    .ads-top-billboard, .ads-lhs-mpu, .ads-rhs-hpu-1, .ads-rhs-hpu-2,
+    .ads-top-billboard, .ads-rhs-hpu-1, .ads-rhs-hpu-2,
     .carousel-multimedia, .carousel-portfolio, .other-stories,
     .user-login {
         display: none;
@@ -3213,7 +3218,7 @@ article.comment {
       background: #fff;
     }
     .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
-    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
+    .ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
         display: none;
     }
 
@@ -3354,7 +3359,7 @@ article.comment {
         margin-right: 10px;
     }
 
-    .list-new-analysis .loop-list .content-image img, 
+    .list-new-analysis .loop-list .content-image img,
     .analysis-list .loop-list .content-image img {
       max-height: 100%;
     }
@@ -3563,4 +3568,4 @@ display:block;
 
 .thump-single .text-content {
   line-height: 20px;
-}  
+}
