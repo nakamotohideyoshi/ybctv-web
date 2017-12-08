@@ -35,19 +35,23 @@ get_header(); ?>
                             if(have_posts()): while(have_posts()): the_post();
                               include(locate_template('template-parts/archive-post.php'));
                             endwhile;endif;
+
+                            if (wp_is_mobile()) {
+                              lastWordAdUnit('lhs-mpu');
+                            }
                             ?>
                         </div>
                         <?php if(empty($category_id)){
                             $category_id = get_the_category()[0]->term_id;
                         };?>
-                        <?php 
+                        <?php
                           $post_type = get_queried_object();
                           if($post_type && $post_type->term_id == 8309 || $post_type->term_id == 8304): //type video
                             $term_id = $post_type->term_id; ?>
-                            <a href="#" class="view-more view-more-ajax" term_id="<?php echo $term_id; ?>" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>  
+                            <a href="#" class="view-more view-more-ajax" term_id="<?php echo $term_id; ?>" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
                           <?php else: ?>
                               <a href="#" class="view-more view-more-ajax" page="2" offset="0" category="<?php echo $category_id; ?>">View more</a>
-                        <?php endif; ?>            
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">

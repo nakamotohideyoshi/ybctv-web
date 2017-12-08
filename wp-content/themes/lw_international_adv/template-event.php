@@ -175,6 +175,10 @@
               <?php
                 endwhile;endif;
                 wp_reset_query();
+
+                if (wp_is_mobile()) {
+                  lastWordAdUnit('lhs-mpu');
+                }
               ?>
             </div>
           </div>

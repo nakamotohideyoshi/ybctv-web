@@ -219,6 +219,17 @@ get_header(); ?>
                   <button id="scroll-more" class="readmore">Scroll to more IA analysis <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="" /></button>
                 </div>
               </div>
+              <div class="row">
+                <?php
+                  if (wp_is_mobile()) {
+                  ?>
+                  <div class="col-sm-12 col-xs-12">
+                    <?php lastWordAdUnit('lhs-mpu'); ?>
+                  </div>
+                  <?
+                  }
+                ?>
+              </div>
             </div>
             <div id="box-analysis" class="box-analysis">
               <div class="row">
@@ -305,7 +316,11 @@ get_header(); ?>
               </div>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                  <?php lastWordAdUnit('lhs-mpu'); ?>
+                  <?php
+                    if (!wp_is_mobile()) {
+                      lastWordAdUnit('lhs-mpu');
+                    }
+                  ?>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
@@ -519,7 +534,7 @@ get_header(); ?>
         <div id="feature-sponsored-item" class="owl-carousel owl-theme">
           <?php
             $args = array( 'posts_per_page' => 1, 'numberposts' => 1, 'numberposts' => 1, 'p' => get_option('featured_left_box_article', 0));
-            // 'category' => 15, 
+            // 'category' => 15,
             wp_reset_query();
             $myposts = query_posts( $args );
             if (have_posts()) : while (have_posts()) : the_post();
@@ -541,7 +556,7 @@ get_header(); ?>
                   ?>
                   <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature" style="background: #f07f00;">
-                    Sponsored  
+                    Sponsored
                     <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news-orange.png' ?>" alt="" style="width: auto; margin-left: 3px;" />
                   </p>
                 </a>
@@ -584,11 +599,11 @@ get_header(); ?>
                   ?>
                   <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature">
-                    Featured 
+                    Featured
                     <img id="imggg" src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" />
                     <style type="text/css">
-                      #imggg path { 
-                        fill: #000;  
+                      #imggg path {
+                        fill: #000;
                         background-color: #ff0000;
                       }
                     </style>
