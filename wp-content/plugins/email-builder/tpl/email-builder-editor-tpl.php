@@ -17,11 +17,9 @@ $data = array(
 
 $config = array(
 	'Digital_Magazine' => array(
-		'Image' => 'image',
 		'Link' => 'text',
-		'Title' => 'text',
-		'Body' => 'editor',
-		'CTA' => 'editor'
+		'Image' => 'image',
+		'Button Text' => 'text'
 	),
 	'Digital_Magazine_2' => array(
 		'Image' => 'image',
@@ -127,11 +125,11 @@ include('email-builder-editor-tpl-js.php');
 		<?php $GLOBALS['email_builder_editor_config'] = $config[ $fragment_type_normalized ]; ?>
 		<?php include('email-builder-editor-tpl-form-fields.php'); ?>
 
-		<div class="col">
+		<div class="col" style="clear: both; width: 100%;">
 			<div class="formfield">
 				<label>Preview</label>
 				
-				<div class="preview-box"></div>
+				<div class="preview-box" style="overflow: auto;"></div>
 			</div>
 			<div class="formfield">
 				<input type="submit" value="Save and Refresh Preview" class="button button-primary button-large" />

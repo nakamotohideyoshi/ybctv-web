@@ -78,11 +78,11 @@ class EmailBuilder {
 
 							if ( is_array($data) ) {
 								foreach ( $data as $key => $value ) {
-									$sourceCode = str_replace( '{{' . $key . '}}', $value, $sourceCode );
+									$sourceCode = str_replace( '{{' . $key . '}}', $key == 'image' ? $value :wpautop($value), $sourceCode );
 								}
 							}
 
-							if ( $g['type'] != 'Newsletter_Subscribe' ) {
+							if ( $g['type'] != 'Newsletter_Subscribe' && $g['type'] != 'Digital_Magazine' ) {
 								$colors = array(
 									'wp_2_' => '#69b42e',
 									'wp_3_' => '#0095db',

@@ -25,6 +25,7 @@
 	.form .preview-box table { max-width: 100%; }
 	.form .preview-box table img { max-width: 100%; }
 	.form .preview-box table td { width: 50%; }
+	.form .preview-box ul { list-style-type: disc; padding-left: 30px; margin: 20px 0px; }
 
 	#wpfooter { display: none !important; }
 </style>
