@@ -504,6 +504,9 @@ class App extends Component {
           case 'Digital_Magazine':
              this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
              break;
+           case 'Digital_Magazine_2':
+             this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
+             break;
 
           case 'Static_Image_1':
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
@@ -641,6 +644,9 @@ class App extends Component {
           case 'Digital_Magazine':
             this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
             break;
+          case 'Digital_Magazine_2':
+            this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
+            break;
           
           case 'Static_Image_1':
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
@@ -696,7 +702,7 @@ class App extends Component {
     else if(props.name === 'Sponsored_Content_2' || props.name === 'Sponsored_Content_2b' || props.name === 'Sponsored_Content_2c' || props.name === 'Sponsored_Content_2d' || props.name === 'Sponsored_Content_2e' || props.name === 'Sponsored_Content_2f'){
      this.setState(prevState => ({staticHighlight: 'sponsoredContent2'}));
     }
-    else if(props.name === 'Digital_Magazine'){
+    else if(props.name === 'Digital_Magazine' || props.name === 'Digital_Magazine_2'){
      this.setState(prevState => ({staticHighlight: 'digitalMagazine'}));
     }
     else if(props.name === 'Newsletter_Subscribe'){
@@ -756,6 +762,7 @@ class App extends Component {
   onChangeTemplate = () => {
     this.setState({
       selectedArticles: [],
+      hasDigitalMagazine: "0",
       hasTopLeaderboard: "0",
       hasFooterLeaderboard: "0",
       hasNewsletterSubscribe: "0",
@@ -1103,7 +1110,8 @@ class App extends Component {
        var mn_articles = val.MoreNewsArticles1;
        var iv_articles = val.InvestmentArticles1;
 
-       this.setState(prevState => ({ hasTopLeaderboard: val.HasTopLeaderboard,
+       this.setState(prevState => ({ hasDigitalMagazine: val.HasDigitalMagazine,
+                                     hasTopLeaderboard: val.HasTopLeaderboard,
                                      hasFooterLeaderboard: val.HasFooterLeaderboard,
                                      hasSponsoredContent: val.HasSponseredContent,
                                      hasSponsoredContent2: val.HasSponseredContent2,
@@ -1178,6 +1186,7 @@ class App extends Component {
                                   selectedMostViewedArticles: [],
                                   selectedMostReadArticles:[],
                                   selectedInvestmentArticles: [],
+                                  hasDigitalMagazine: '0',
                                   hasTopLeaderboard: '0',
                                   hasFooterLeaderboard: '0',
                                   hasNewsletterSubscribe: '0',
@@ -1575,6 +1584,7 @@ class App extends Component {
                                                    newsletterSubscribe={this.state.newsletterSubscribe}
                                                    highlight={this.state.highlight}
                                                    staticHighlight={this.state.staticHighlight}
+                                                   hasDigitalMagazine={this.state.hasDigitalMagazine}
                                                    hasTopLeaderboard={this.state.hasTopLeaderboard}
                                                    hasFooterLeaderboard={this.state.hasFooterLeaderboard}
                                                    hasNewsletterSubscribe={this.state.hasNewsletterSubscribe}

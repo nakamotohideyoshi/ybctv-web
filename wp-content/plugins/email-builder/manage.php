@@ -7,7 +7,7 @@ function last_word_email_builder_editor_add_page() {
         'tools.php',
         'Email Builder Editor',
         'Email Builder Editor',
-        'manage_options',
+        'edit_posts',
         'last-word-email-builder-editor',
         'last_word_email_builder_editor_callback' 
     );

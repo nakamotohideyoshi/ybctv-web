@@ -78,7 +78,15 @@ class EmailBuilder {
 
 							if ( is_array($data) ) {
 								foreach ( $data as $key => $value ) {
-									$sourceCode = str_replace( '{{' . $key . '}}', $key == 'image' ? $value :wpautop($value), $sourceCode );
+									if  ( 	( $key != 'image' ) && 
+											( $key != 'left_box_image' ) && 
+											( $key != 'right_box_image' ) &&
+											strpos( $value, "\n" ) !== false 
+										) {
+											$value = wpautop($value);
+									}
+
+									$sourceCode = str_replace( '{{' . $key . '}}', $value, $sourceCode );
 								}
 							}
 
