@@ -420,11 +420,15 @@ add_action('wp_ajax_nopriv_ajax_search_more', 'ajax_search_more');
 add_action('wp_ajax_ajax_search_more', 'ajax_search_more');
 
 function change_wp_search_size($queryVars) {
-  if ( isset($_REQUEST['s']) ){// Make sure it is a search page
-    $queryVars['posts_per_page'] = 5;
+  if ( isset($_REQUEST['s']) ) {// Make sure it is a search page
+    if (is_admin () ) {
+      $queryVars['posts_per_page'] = 20;
+    } else {
+      $queryVars['posts_per_page'] = 5;
+    }   
     $queryVars['orderby'] = 'date';
     $queryVars['order'] = 'DESC';
-  }  
+  }
   return $queryVars; // Return our modified query variables
 }
 add_filter('request', 'change_wp_search_size'); // Hook our custom function onto the request filter
