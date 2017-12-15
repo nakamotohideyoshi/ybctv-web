@@ -26,17 +26,10 @@
     <div class="col-md-8 col-sm-8 col-xs-12">
       <div class="content-des">
         <p class="name-cat">
-          <?php
-            $category = get_term_by('id', $category_id, 'category');
-            $terms = wp_get_post_terms( get_the_ID(), 'type');
-            $type = $terms[0]->name;
-          ?>
-          <a href="<?php echo get_category_link($cat_id);?>"><?php echo $cat_title;?></a>
-          <?php if($type): ?>
-            <a href="<?php echo get_term_link($terms[0]->term_id);?>">  
-            <?php echo ' | '.$type; ?>
-            </a>
-          <?php endif; ?>   
+          <?php $category = get_the_category();
+ echo '<a class="category" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; ?>
+
+<a> | <?php echo $type; ?> </a>
           <span><?php the_time('j M y');?></span>
         </p>
         <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
