@@ -15,8 +15,8 @@ get_header(); ?>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="last-new">
                     <h2 class="title toptitle" style="visibility: hidden">Last New</h2>
-                    <?php
-                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 2277);
+                   <?php
+                      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'meta_key' => 'lw_top_story', 'meta_value' => 'yes' );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
                     ?>
@@ -40,7 +40,7 @@ get_header(); ?>
                             <?php
                               $excerpt = get_the_excerpt();
                               if (strlen($excerpt) > 100) {
-                                echo excerpt(15);
+                                echo substr($excerpt, 0, 100) . '...';
                               }
                               else {
                                 echo $excerpt;
@@ -55,54 +55,200 @@ get_header(); ?>
                     ?>
                     <div class="list-last-new">
                       <div class="row">
-                      <?php
-                        $count =0;
-                        $args = array( 'posts_per_page' => 6,'offset' => 1,'showposts' => 6);
-                        $myposts = get_posts( $args );
-                        foreach ( $myposts as $post ) : setup_postdata( $post ); $count++;
-                          if ($count == 2) {
-                        ?>
-                        <div class="col-md-6 col-sm-12 col-xs-12">
-                          <div class="loop-list clearfix">
-                            <?php lastWordAdUnit('top-news-ad'); ?>
-                          </div>
-                        </div>
                         <?php
-                          } else {
+                        $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_2', 0));
+                        $myposts = query_posts( $args );
+                        if (have_posts()) : while (have_posts()) : the_post();
+                        ?>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="loop-list clearfix">
+                                  <div class="content-image">
+                                  <?php
+                                    if ( has_post_thumbnail() ) {
+                                      the_post_thumbnail('thumbnail-article');
+                                    }
+                                    else {
+                                  ?>
+                                  <a href="<?php the_permalink();?>">
+                                    <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                  </a>
+                                  <?php
+                                    }
+                                  ?>
+                                  <span class="overlay"></span>
+                                </div>
+                                <div class="content-des">
+                                  <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                  </p>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h3><?php echo get_the_title(); ?></h3>
+                                  </a>
+                                </div>
+                              </div>
+                         </div>
+                        <?php
+                          endwhile;endif;
+                          wp_reset_query();
                         ?>
                         <div class="col-md-6 col-sm-12 col-xs-12">
                           <div class="loop-list clearfix">
-                            <div class="content-image">
-                            <?php
-                              if ( has_post_thumbnail() ) {
-                                the_post_thumbnail('thumbnail-article');
-                              }
-                              else {
-                            ?>
-                            <a href="<?php the_permalink();?>">
-                              <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
-                            </a>
-                            <?php
-                              }
-                            ?>
-                            <span class="overlay"></span>
-                          </div>
-                          <div class="content-des">
-                            <p class="name-cat">
-                              <?php $category = get_the_category(); ?>
-                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                            </p>
-                            <a href="<?php the_permalink(); ?>">
-                              <h3><?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?></h3>
-                            </a>
+                              <?php lastWordAdUnit('top-news-ad'); ?>
                           </div>
                         </div>
-                      </div>
-                      <?php
-                        }
-                        endforeach;
-                        wp_reset_postdata();
-                      ?>
+
+                        <?php
+                        $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_3', 0));
+                        $myposts = query_posts( $args );
+                        if (have_posts()) : while (have_posts()) : the_post();
+                        ?>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="loop-list clearfix">
+                                  <div class="content-image">
+                                  <?php
+                                    if ( has_post_thumbnail() ) {
+                                      the_post_thumbnail('thumbnail-article');
+                                    }
+                                    else {
+                                  ?>
+                                  <a href="<?php the_permalink();?>">
+                                    <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                  </a>
+                                  <?php
+                                    }
+                                  ?>
+                                  <span class="overlay"></span>
+                                </div>
+                                <div class="content-des">
+                                  <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                  </p>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h3><?php echo get_the_title(); ?></h3>
+                                  </a>
+                                </div>
+                              </div>
+                         </div>
+                        <?php
+                          endwhile;endif;
+                          wp_reset_query();
+                        ?>
+
+                        <?php
+                        $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_5', 0));
+                        $myposts = query_posts( $args );
+                        if (have_posts()) : while (have_posts()) : the_post();
+                        ?>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="loop-list clearfix">
+                                  <div class="content-image">
+                                  <?php
+                                    if ( has_post_thumbnail() ) {
+                                      the_post_thumbnail('thumbnail-article');
+                                    }
+                                    else {
+                                  ?>
+                                  <a href="<?php the_permalink();?>">
+                                    <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                  </a>
+                                  <?php
+                                    }
+                                  ?>
+                                  <span class="overlay"></span>
+                                </div>
+                                <div class="content-des">
+                                  <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                  </p>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h3><?php echo get_the_title(); ?></h3>
+                                  </a>
+                                </div>
+                              </div>
+                         </div>
+                        <?php
+                          endwhile;endif;
+                          wp_reset_query();
+                        ?>
+
+                        <?php
+                        $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_4', 0));
+                        $myposts = query_posts( $args );
+                        if (have_posts()) : while (have_posts()) : the_post();
+                        ?>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="loop-list clearfix">
+                                  <div class="content-image">
+                                  <?php
+                                    if ( has_post_thumbnail() ) {
+                                      the_post_thumbnail('thumbnail-article');
+                                    }
+                                    else {
+                                  ?>
+                                  <a href="<?php the_permalink();?>">
+                                    <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                  </a>
+                                  <?php
+                                    }
+                                  ?>
+                                  <span class="overlay"></span>
+                                </div>
+                                <div class="content-des">
+                                  <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                  </p>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h3><?php echo get_the_title(); ?></h3>
+                                  </a>
+                                </div>
+                              </div>
+                         </div>
+                        <?php
+                          endwhile;endif;
+                          wp_reset_query();
+                        ?>
+
+                        <?php
+                        $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_6', 0));
+                        $myposts = query_posts( $args );
+                        if (have_posts()) : while (have_posts()) : the_post();
+                        ?>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="loop-list clearfix">
+                                  <div class="content-image">
+                                  <?php
+                                    if ( has_post_thumbnail() ) {
+                                      the_post_thumbnail('thumbnail-article');
+                                    }
+                                    else {
+                                  ?>
+                                  <a href="<?php the_permalink();?>">
+                                    <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                  </a>
+                                  <?php
+                                    }
+                                  ?>
+                                  <span class="overlay"></span>
+                                </div>
+                                <div class="content-des">
+                                  <p class="name-cat">
+                                    <?php $category = get_the_category(); ?>
+                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                  </p>
+                                  <a href="<?php the_permalink(); ?>">
+                                    <h3><?php echo get_the_title(); ?></h3>
+                                  </a>
+                                </div>
+                              </div>
+                         </div>
+                        <?php
+                          endwhile;endif;
+                          wp_reset_query();
+                        ?>
                     </div>
                     <a class="readmore readmore-new" href="/type/news/">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="more news" /></a>
                   </div>
@@ -302,7 +448,11 @@ get_header(); ?>
               <div id="slider-multimedia" class="flexslider slider-multimedia">
                 <ul class="slides bxslider">
                   <?php
-                    $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 49 );
+                    $args = array( 
+                      'posts_per_page' => 3,
+                      'showposts' => 3,
+                      'category' => 10
+                    );
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
@@ -352,7 +502,7 @@ get_header(); ?>
           <div id="carousel-multimedia" class="flexslider carousel-multimedia">
             <ul class="slides">
               <?php
-                $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 49 );
+                $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 10 );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
               ?>

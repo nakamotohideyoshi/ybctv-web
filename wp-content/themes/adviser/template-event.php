@@ -109,6 +109,7 @@
                 $today = date('Ymd');
                 query_posts(array(
                   'offset' => 1,
+                  'posts_per_page' => 999,
                   'post_type' => 'event',
                   'meta_key' => 'lw_event_start_date',
                   'orderby' => 'meta_value_num',

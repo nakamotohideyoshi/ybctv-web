@@ -78,7 +78,7 @@ get_header(); ?>
                   </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                  <strong> In the latest edition:</strong>
+                  <strong>In the latest edition:</strong>
                   <?php the_content();?>
                   <a target="_blank" class="readmore readmore-new" href="<?php echo $post->lw_magazine_link; ?>">View digital edition <img src="https://ia.cms-lastwordmedia.com/wp-content/themes/lw_international_adv/images/assets/Arrow-More-news.svg" alt="" id="exifviewer-img-2" exifid="-614362903" oldsrc="https://pa.cms-lastwordmedia.com/wp-content/themes/adviser/images/assets/Arrow-More-news.svg"></a>
                 </div>

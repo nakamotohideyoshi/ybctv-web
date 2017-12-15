@@ -671,7 +671,6 @@ h2.title{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   color: #0095db;
-  font-weight: 700;
   font-size: 23px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1051,7 +1050,6 @@ h2.title{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
-  font-weight: 700;
   margin-top: 10px;
   text-transform: uppercase;
   color: #0095db;
@@ -1176,7 +1174,6 @@ h2.title{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
-  font-weight: 700;
   margin-top: 10px;
   text-transform: uppercase;
   color: #fff;
@@ -1292,7 +1289,6 @@ h2.title{
   font-size: 18px;
   text-transform: uppercase;
   margin-bottom: 5px;
-  font-weight: bold;
   color: #0095db;
 }
 
@@ -1442,7 +1438,6 @@ h2.title{
   letter-spacing: 1px;
   font-size: 21px;
   text-transform: uppercase;
-  font-weight: bold;
   line-height: normal;
 }
 
@@ -1509,7 +1504,6 @@ h2.title{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
-  font-weight: 700;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -1674,7 +1668,6 @@ h2.title{
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
-  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 10px;
 }
@@ -1824,7 +1817,6 @@ h2.title{
   letter-spacing: 1px;
   font-size: 36px;
   text-transform: uppercase;
-  font-weight: 700;
   margin-bottom: 0;
 }
 
@@ -2184,7 +2176,6 @@ form[name="register"] input[type="submit"] {
   color: #0095db;
   margin-top: 5px;
   margin-bottom: 5px;
-  font-weight: bold;
   letter-spacing: -1px;
   line-height: 0.8;
 }
@@ -2230,7 +2221,6 @@ form[name="register"] input[type="submit"] {
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   font-size: 36px;
-  font-weight: bold;
   margin-bottom: 30px;
   margin-top: 30px;
 }
@@ -2270,7 +2260,6 @@ form[name="register"] input[type="submit"] {
   text-transform: uppercase;
   /*margin-bottom: 5px;*/
   margin-bottom: 0px;
-  font-weight: bold;
   color: #0095db;
   padding: 0;
 }
@@ -2375,7 +2364,6 @@ form[name="register"] input[type="submit"] {
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 1px;
   color: #0095db;
-  font-weight: 700;
   font-size: 18px;
   margin-top: 10px;
   line-height: 1;
@@ -2386,7 +2374,6 @@ form[name="register"] input[type="submit"] {
   font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
   letter-spacing: 2px;
   color: #fff;
-  font-weight: 700;
   font-size: 40px;
   line-height: 1;
   margin-top: 0;
@@ -2522,7 +2509,6 @@ form[name="register"] input[type="submit"] {
 
 .page-id-15504 .page-content h2 {
   font-size: 24px;
-  font-weight: bold;
   text-transform: uppercase;
   font-family: 'Kommissar', sans-serif;
   margin-top: 52px;
@@ -2534,7 +2520,6 @@ form[name="register"] input[type="submit"] {
   font-size: 24px;
   text-transform: uppercase;
   font-family: 'Kommissar', sans-serif;
-  font-weight: bold;
 }
 
 .page-id-15504 .page-content p {
@@ -2585,7 +2570,6 @@ form[name="register"] input[type="submit"] {
 
 .page-template-template-panel .list-content-page h3 {
   color: #0095db;
-  font-weight: bold;
   font-family: 'Kommissar', sans-serif;
   text-transform: uppercase;
 }
@@ -2671,7 +2655,6 @@ form[name="register"] input[type="submit"] {
 
 .CommentTitle, .comment-reply-title {
   font-family: Kommissar;
-    font-weight: bold;
     font-size: 24px;
     color: #0095db;
     text-transform: uppercase;
@@ -2709,7 +2692,6 @@ article.comment {
   letter-spacing: 1px;
   color: #0095db;
   font-size: 24px;
-  font-weight: 700;
   margin-bottom: 24px;
   display: block;
 }

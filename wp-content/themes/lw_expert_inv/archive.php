@@ -49,7 +49,9 @@ get_header(); ?>
                             endwhile;endif;
                             ?>
                         </div>
-                        <?php the_posts_navigation(); ?>
+
+<?php the_posts_navigation(); ?>
+                        
 
                     </div>
                 </div>
