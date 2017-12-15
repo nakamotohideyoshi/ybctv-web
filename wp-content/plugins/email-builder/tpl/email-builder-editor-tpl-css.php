@@ -21,7 +21,7 @@
 	.form .triggerable.active .triggerable-button .hide { display: inline-block; }
 	.form .triggerable.active .triggerable-content { display: block; }
 
-	.form .preview-box { background: #fff; width: 100%; min-height: 50px; }
+	.form .preview-box { background: #fff; width: 100%; min-height: 50px; max-width: 728px; }
 	.form .preview-box table { max-width: 100%; }
 	.form .preview-box table img { max-width: 100%; }
 	.form .preview-box table td { width: 50%; }
