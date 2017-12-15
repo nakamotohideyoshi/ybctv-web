@@ -33,7 +33,7 @@
                    'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
                ) );
                } ?>
-            <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
+            <?php echo do_shortcode('[printicon align="left"]');?>
          </div>
       </div>
     <div class="content-post">
