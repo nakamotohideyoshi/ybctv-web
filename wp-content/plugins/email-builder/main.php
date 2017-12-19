@@ -395,7 +395,9 @@ class EmailBuilder {
 
 					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.create', " . addslashes(json_encode($new_campaign)) . "', '" . date('Y-m-d H:i:s') . "')");
 
-				    $subject_line= $subject;
+				    $subject_line = $subject;
+				    $subject_line = parse_special_chars_3($subject_line);
+
 				    $domain= 'campaign.lastwordmedia.com';
 				    $from_prefix= 'mail';
 				    if($site == 'wp_2_'){
@@ -439,6 +441,7 @@ class EmailBuilder {
 					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.setAllOptions', '" . addslashes(json_encode($r1)) . "', '" . date('Y-m-d H:i:s') . "')");
 
 					$html_content = $content;
+					$html_content = parse_special_chars_2($html_content);
 
 					$r2 = $client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
 
@@ -1263,9 +1266,25 @@ class XMLRPC_Client {
 register_activation_hook( __FILE__, array('EmailBuilder', 'jal_install') );
 new EmailBuilder();
 
+
 function parse_special_chars($str) {
 	$str = str_replace('&amp;', '&', $str);
 	$str = str_replace('—', '-', $str);
+	$str = str_replace("€", "&euro;", $str);
+
+	return $str;
+}
+
+function parse_special_chars_2($str) {
+	$str = str_replace("€", "&euro;", $str);
+	$str = str_replace("£", "&#8356;", $str);
+
+	return $str;
+}
+
+function parse_special_chars_3($str) {
+	$str = str_replace("€", "&#8364;", $str);
+	$str = str_replace("£", "&#8356;", $str);
 
 	return $str;
 }
