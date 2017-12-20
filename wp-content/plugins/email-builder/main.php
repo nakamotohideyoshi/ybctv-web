@@ -133,7 +133,7 @@ class EmailBuilder {
 								);
 
 								$sourceCode = str_replace( '<a ', '<a style="color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $sourceCode );
-
+								$sourceCode = str_replace( '#4caf50', $colors[ $static[$staticKey]->Site ], $sourceCode );
 							}
 							
 							$static[$staticKey]->Content = $sourceCode;
