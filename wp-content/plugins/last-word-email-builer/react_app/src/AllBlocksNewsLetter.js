@@ -329,19 +329,10 @@ render() {
         </td>
 </tr>
 <tr>
-{this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
-{this.props.showSponsoredContent !== '0' ? <td style={{position: 'relative', left:'0px', bottom:'0px', paddingLeft: '10px'}}>
-        <table width="100%" cellPadding="0" cellSpacing="0">
-          <tr>
-            <td style={{ background: '#dadada' }}>
-              <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent === '1' ? this.props.sponsoredContent : ( this.props.showSponsoredContent === '2' ? this.props.sponsoredContentB : ( this.props.showSponsoredContent === '3' ? this.props.sponsoredContentC : ( this.props.showSponsoredContent === '4' ? this.props.sponsoredContentD : ( this.props.showSponsoredContent === '5' ? this.props.sponsoredContentE : ( this.props.showSponsoredContent === '6' ? this.props.sponsoredContentF : "" ) ) ) ) ) ) }}></div> 
-            </td>
-          </tr>
-          <tr>
-            <td height="10">&nbsp;</td>
-          </tr>
-        </table>
-        <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
+{this.props.staticHighlight === 'sponsoredContent2' ? <td><div><br/></div><div style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><br/></div><div><br/></div></td> : ''}
+{this.props.showSponsoredContent2 !== '0' ? <td style={{background: '#dadada', position: 'relative', left:'10px', bottom:'4px', textAlign: 'left' }}>
+        <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent2 === '1' ? this.props.sponsoredContent2 : ( this.props.showSponsoredContent2 === '2' ? this.props.sponsoredContent2B : ( this.props.showSponsoredContent2 === '3' ? this.props.sponsoredContent2C : ( this.props.showSponsoredContent2 === '4' ? this.props.sponsoredContent2D : ( this.props.showSponsoredContent2 === '5' ? this.props.sponsoredContent2E : ( this.props.showSponsoredContent2 === '6' ? this.props.sponsoredContent2F : "" ) ) ) ) ) ) }}></div> 
+        <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content_2" onClick={this.props.onRemoveStatic}/>
         </td>: ''}
 </tr>
                                                             </tbody></table>
@@ -421,22 +412,23 @@ render() {
 </td>
 </tr>
 <tr>
-{this.props.staticHighlight === 'sponsoredContent2' ? <td><div><br/></div><div style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><br/></div><div><br/></div></td> : ''}
-{this.props.showSponsoredContent2 !== '0' ? <td style={{position: 'relative', left:'0px', bottom:'4px', textAlign: 'left' }}>
-        <div><br/></div>
-        <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent2 === '1' ? this.props.sponsoredContent2 : ( this.props.showSponsoredContent2 === '2' ? this.props.sponsoredContent2B : ( this.props.showSponsoredContent2 === '3' ? this.props.sponsoredContent2C : ( this.props.showSponsoredContent2 === '4' ? this.props.sponsoredContent2D : ( this.props.showSponsoredContent2 === '5' ? this.props.sponsoredContent2E : ( this.props.showSponsoredContent2 === '6' ? this.props.sponsoredContent2F : "" ) ) ) ) ) ) }}></div> 
-        <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'20px',top:'20px'}} id="Sponsored_Content_2" onClick={this.props.onRemoveStatic}/>
-        <div><br/></div>
-        <div><br/></div>
-        </td>: ''}
+  <td><br/></td>
 </tr>
-                                                           <tr>
-        <td style={{padding:'0px 10px'}}>
-        <table className="device_innerblock" style={{width:'728px', textAlign:'center'}} data-align="center" data-width="728" data-border="0">
-                <tr>
-                        <td className="container_td"  style={{textAlign:'left',padding:'0px 6px 6px 6px',color: '#000000', fontFamily:'Arial, Helvetica, sans-serif',fontSize: '18px',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Other stories from Last Word</font></td>
-                </tr>
-        </table></td>
+<tr>
+{this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
+{this.props.showSponsoredContent !== '0' ? <td style={{position: 'relative', left:'0px', bottom:'0px', paddingLeft: '10px'}}>
+        <table width="100%" cellPadding="0" cellSpacing="0">
+          <tr>
+            <td>
+              <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent === '1' ? this.props.sponsoredContent : ( this.props.showSponsoredContent === '2' ? this.props.sponsoredContentB : ( this.props.showSponsoredContent === '3' ? this.props.sponsoredContentC : ( this.props.showSponsoredContent === '4' ? this.props.sponsoredContentD : ( this.props.showSponsoredContent === '5' ? this.props.sponsoredContentE : ( this.props.showSponsoredContent === '6' ? this.props.sponsoredContentF : "" ) ) ) ) ) ) }}></div> 
+            </td>
+          </tr>
+          <tr>
+            <td height="10">&nbsp;</td>
+          </tr>
+        </table>
+        <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
+        </td>: ''}
 </tr>
 <tr>
 <td style={{borderBottom: '1px solid #E5EAEE', padding: '15px 0px 15px 0px'}}>
@@ -463,6 +455,14 @@ render() {
 </tbody>
 </table>
 </td>
+</tr>
+<tr>
+        <td style={{padding:'0px 10px'}}>
+        <table className="device_innerblock" style={{width:'728px', textAlign:'center'}} data-align="center" data-width="728" data-border="0">
+                <tr>
+                        <td className="container_td"  style={{textAlign:'left',padding:'0px 6px 6px 6px',color: '#000000', fontFamily:'Arial, Helvetica, sans-serif',fontSize: '18px',fontWeight:'bold'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>Other stories from Last Word</font></td>
+                </tr>
+        </table></td>
 </tr>
 <tr>
         <td style={{padding:'0px 10px 0px 10px'}}>
