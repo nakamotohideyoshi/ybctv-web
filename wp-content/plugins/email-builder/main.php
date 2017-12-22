@@ -131,7 +131,7 @@ class EmailBuilder {
 
 									if ( $key == 'subtitle' && strpos($g['type'], 'Sponsored_Content_2') !== false )
 									{
-										$value = str_replace( '<a ', '<a style="text-decoration: none; color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $value );
+										$value = str_replace( '<a ', '<a style="font-weight: normal; text-decoration: none; color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $value );
 										$value = '<div style="font-size: 14px; color: ' . $colors[ $static[$staticKey]->Site ] . '">' . $value . '</div>';
 									}
 
