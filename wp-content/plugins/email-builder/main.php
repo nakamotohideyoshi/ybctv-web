@@ -471,6 +471,7 @@ class EmailBuilder {
 					//echo $html_content; die();
 
 					$r2 = $client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
+					//$r2b = $client->call( 'campaign.setMessage', $new_campaign['id'], 'text' , '[*hints.subject = BLOCK*] TEST SUBJECT LINE &#8364 [*END*]');
 
 					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.setMessage', '" . addslashes(json_encode($r2)) . "', '" . date('Y-m-d H:i:s') . "')");
 
@@ -1058,7 +1059,7 @@ class EmailBuilder {
 					return $response;
 				}		
 
-				$email->Content = str_replace('https://', 'http://', $email->Content);		
+				// $email->Content = str_replace('https://', 'http://', $email->Content);		
 
 				foreach ( $email->Articles1 as $key => $value )
 				{
@@ -1180,7 +1181,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.41db4315.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.2ebcdc21.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {
