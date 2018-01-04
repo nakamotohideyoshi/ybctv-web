@@ -122,6 +122,13 @@ class EmailBuilder {
 
 							if ( is_array($data) ) 
 							{
+								if ( $staticEntity->Type == 'Asset_Class' && isset( $data['boxes_count'] ) && is_numeric( $data['boxes_count'] ) )
+								{
+									$data['row_1_display'] = $data['boxes_count'] > 0 ? '' : 'style="display: none;"';
+									$data['row_2_display'] = $data['boxes_count'] > 2 ? '' : 'style="display: none;"';
+									$data['row_3_display'] = $data['boxes_count'] > 4 ? '' : 'style="display: none;"';
+								}
+
 								foreach ( $data as $key => $value ) 
 								{
 									if  ( 	
@@ -131,7 +138,11 @@ class EmailBuilder {
 											strpos( $value, "\n" ) !== false 
 										) 
 									{
-											$value = wpautop($value);
+										$value = wpautop($value);
+									}
+									else if ( in_array( $key, array('left_box_color', 'right_box_color', 'left_box_color_3', 'right_box_color_4', 'left_box_color_5', 'right_box_color_6') ) )
+									{
+										$value = str_replace('gray', '#dadada', $value);
 									}
 
 									if ( $key == 'subtitle' && strpos($g['type'], 'Sponsored_Content_2') !== false )
@@ -1181,7 +1192,7 @@ class EmailBuilder {
 		wp_register_script( 'TinyMCE', 'https://tinymce.cachefly.net/4.2/tinymce.min.js', null, null, true );
         wp_enqueue_script('TinyMCE');
 		wp_enqueue_style( 'prefix-style', plugins_url('css/main.5d029046.css', __FILE__) );
-        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.2ebcdc21.js', __FILE__),array(),  '0.0.1', true );
+        wp_enqueue_script( 'plugin-scripts', plugins_url('js/main.fbbdc6f0.js', __FILE__),array(),  '0.0.1', true );
 	}
 	
     public function jal_install() {

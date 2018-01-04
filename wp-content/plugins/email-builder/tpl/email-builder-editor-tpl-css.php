@@ -5,8 +5,10 @@
 	.form .input { height: 30px; padding: 0 10px; width: 100%; }
 	.form textarea { height: 120px; padding: 5px 10px; width: 100%; }
 	.form .cols { overflow: hidden; }
-	.form .cols .col { float: left; width: 49%; margin: 0px 2% 0px 0px; }
-	.form .cols .col:last-child { margin-right: 0; }
+	.form .cols .col { float: left; width: 49%; margin: 0px 2% 20px 0px; }
+	.form .cols .col.bordered { box-sizing: border-box; border: 1px solid #aaa; padding: 20px; }
+	.form .cols .col:last-child, .form .cols .col:nth-child(2n) { margin-right: 0; }
+	.form .cols .col:nth-child(2n+1) { clear: both; }
 
 	.form .upload img, .form .upload .update-image-button, .form .upload .remove-image-button { display: none; }
 	.form .upload img { max-width: 100%; max-height: 150px; vertical-align: middle; }

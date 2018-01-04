@@ -70,16 +70,46 @@ $config = array(
 	),
 	'Asset_Class' => array(
 		'Title' => 'text',
+		'Boxes Count' => 'select:2,4,6',
+		
 		'Left Box Title' => 'text',
 		'Left Box Subtitle' => 'text',
 		'Left Box Body' => 'text',
 		'Left Box Image' => 'image',
 		'Left Box Image Link' => 'text',
+		'Left Box Color' => 'select:white,gray',
 
 		'Right Box Title' => 'text',
 		'Right Box Body' => 'text',
 		'Right Box Image' => 'image',
-		'Right Box Image Link' => 'text'
+		'Right Box Image Link' => 'text',
+		'Right Box Color' => 'select:white,gray',
+
+		'Left Box Title 3' => 'text',
+		'Left Box Subtitle 3' => 'text',
+		'Left Box Body 3' => 'text',
+		'Left Box Image 3' => 'image',
+		'Left Box Image Link 3' => 'text',
+		'Left Box Color 3' => 'select:white,gray',
+
+		'Right Box Title 4' => 'text',
+		'Right Box Body 4' => 'text',
+		'Right Box Image 4' => 'image',
+		'Right Box Image Link 4' => 'text',
+		'Right Box Color 4' => 'select:white,gray',
+
+		'Left Box Title 5' => 'text',
+		'Left Box Subtitle 5' => 'text',
+		'Left Box Body 5' => 'text',
+		'Left Box Image 5' => 'image',
+		'Left Box Image Link 5' => 'text',
+		'Left Box Color 5' => 'select:white,gray',
+
+		'Right Box Title 6' => 'text',
+		'Right Box Body 6' => 'text',
+		'Right Box Image 6' => 'image',
+		'Right Box Image Link 6' => 'text',
+		'Right Box Color 6' => 'select:white,gray'
 	)
 );
 
@@ -155,7 +185,12 @@ include('email-builder-editor-tpl-js.php');
 		<?php $fragment_type_normalized = str_replace(array('_1a','_1b','_1c','_1d','_1e','_1f'), '_1', $fragment_type_normalized); ?>
 		<?php $fragment_type_normalized = str_replace(array('_2a','_2b','_2c','_2d','_2e','_2f'), '_2', $fragment_type_normalized); ?>
 		<?php $GLOBALS['email_builder_editor_config'] = $config[ $fragment_type_normalized ]; ?>
-		<?php include('email-builder-editor-tpl-form-fields.php'); ?>
+
+		<?php if ( $fragment_type_normalized == 'Asset_Class' ): ?>
+			<?php include('email-builder-editor-tpl-form-fields-asset-class.php'); ?>
+		<?php else: ?>
+			<?php include('email-builder-editor-tpl-form-fields.php'); ?>
+		<?php endif; ?>
 
 		<div class="col" style="clear: both; width: 100%;">
 			<div class="formfield">
