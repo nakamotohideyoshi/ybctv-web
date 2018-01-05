@@ -80,6 +80,7 @@ $config = array(
 		'Left Box Color' => 'select:white,gray',
 
 		'Right Box Title' => 'text',
+		'Right Box Subtitle' => 'text',
 		'Right Box Body' => 'text',
 		'Right Box Image' => 'image',
 		'Right Box Image Link' => 'text',
@@ -93,6 +94,7 @@ $config = array(
 		'Left Box Color 3' => 'select:white,gray',
 
 		'Right Box Title 4' => 'text',
+		'Right Box Subtitle 4' => 'text',
 		'Right Box Body 4' => 'text',
 		'Right Box Image 4' => 'image',
 		'Right Box Image Link 4' => 'text',
@@ -106,6 +108,7 @@ $config = array(
 		'Left Box Color 5' => 'select:white,gray',
 
 		'Right Box Title 6' => 'text',
+		'Right Box Subtitle 6' => 'text',
 		'Right Box Body 6' => 'text',
 		'Right Box Image 6' => 'image',
 		'Right Box Image Link 6' => 'text',

@@ -91,7 +91,7 @@
 	<?php if ( isset($email_builder_editor_config) && !is_null($email_builder_editor_config) && is_array($email_builder_editor_config) ): ?>
 		<?php foreach ( $email_builder_editor_config as $title => $type ): ?>
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
-			<?php if ( in_array( $key, array( 'right_box_title', 'right_box_body', 'right_box_image', 'right_box_image_link', 'right_box_color' ) ) ): ?>
+			<?php if ( in_array( $key, array( 'right_box_title', 'right_box_subtitle', 'right_box_body', 'right_box_image', 'right_box_image_link', 'right_box_color' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
 
 				<?php if (  $type == 'image'  ): ?>
@@ -180,7 +180,7 @@
 	<?php if ( isset($email_builder_editor_config) && !is_null($email_builder_editor_config) && is_array($email_builder_editor_config) ): ?>
 		<?php foreach ( $email_builder_editor_config as $title => $type ): ?>
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
-			<?php if ( in_array( $key, array( 'right_box_title_4', 'right_box_body_4', 'right_box_image_4', 'right_box_image_link_4', 'right_box_color_4' ) ) ): ?>
+			<?php if ( in_array( $key, array( 'right_box_title_4', 'right_box_subtitle_4', 'right_box_body_4', 'right_box_image_4', 'right_box_image_link_4', 'right_box_color_4' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
 				<?php if (  $type == 'image'  ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
@@ -269,7 +269,7 @@
 	<?php if ( isset($email_builder_editor_config) && !is_null($email_builder_editor_config) && is_array($email_builder_editor_config) ): ?>
 		<?php foreach ( $email_builder_editor_config as $title => $type ): ?>
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
-			<?php if ( in_array( $key, array( 'right_box_title_6', 'right_box_body_6', 'right_box_image_6', 'right_box_image_link_6', 'right_box_color_6' ) ) ): ?>
+			<?php if ( in_array( $key, array( 'right_box_title_6', 'right_box_subtitle_6', 'right_box_body_6', 'right_box_image_6', 'right_box_image_link_6', 'right_box_color_6' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
 				<?php if (  $type == 'image'  ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
