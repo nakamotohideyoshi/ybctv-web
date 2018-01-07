@@ -39,13 +39,13 @@ get_header(); ?>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           <p>
                             <?php
-                              $excerpt = get_the_excerpt();
-                              if (strlen($excerpt) > 100) {
-                                echo substr($excerpt, 0, 100) . '...';
-                              }
-                              else {
+                              $excerpt = excerpt(20);
+                              //if (strlen($excerpt) > 100) {
+                                //echo substr($excerpt, 0, 100) . '...';
+                              //}
+                              //else {
                                 echo $excerpt;
-                              }
+                              //}
                             ?>
                           </p>
                         </div>

@@ -53,7 +53,7 @@
       pagerCustom: '#bx-pager'
     });
 
-    $('#feature-sponsored-item').owlCarousel({
+    /*$('#feature-sponsored-item').owlCarousel({
         loop:true,
         nav:true,
         responsiveClass:true,
@@ -71,7 +71,7 @@
                 items:2,
             }
         }
-    })
+    })*/
 
     $(window).scroll(function() {
         var scroll = $(window).scrollTop();

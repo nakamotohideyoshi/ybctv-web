@@ -26,7 +26,7 @@
     <div class="col-md-8 col-sm-8 col-xs-12">
       <div class="content-des">
         <p class="name-cat">
-          <?php $category = get_the_category();
+         <?php $category = get_the_category();
  echo '<a class="category" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; ?>
 
 <a> | <?php echo $type; ?> </a>

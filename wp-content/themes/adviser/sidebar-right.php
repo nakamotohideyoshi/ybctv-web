@@ -1,20 +1,33 @@
 <div class="content-right">
   <h2 class="title" style="visibility: hidden">Ads</h2>
-  <?php lastWordAdUnit('rhs-hpu-1'); ?>
+  <?php lastWordAdUnit('rhs-hpu-1'); 
+
+          $sponsored_post_1_pre = get_option('sponsored_box_article_1', 0);
+          $sponsored_post_2_pre = get_option('sponsored_box_article_2', 0);
+          $sponsored_post_3_pre = get_option('sponsored_box_article_3', 0);
+          $sponsored_post_4_pre = get_option('sponsored_box_article_4', 0);
+          $sponsored_post_5_pre = get_option('sponsored_box_article_5', 0);
+
+          $sponsored_posts_pre = Array(
+            $sponsored_post_1_pre, $sponsored_post_2_pre, $sponsored_post_3_pre, $sponsored_post_4_pre, $sponsored_post_5_pre
+          );
+
+          $sponsored_posts = Array();
+          $counter = 0;
+          foreach ($sponsored_posts_pre as $sponsored_post) {
+            if ($sponsored_post != 0) {
+              $sponsored_posts[$counter] = $sponsored_post;
+              $counter++;
+            }
+          }
+  ?>
   <div class="box-sponsored">
     <div class="flexslider-spon">
       <ul class="slides">
         <?php
-                  $args = array(
-                    'posts_per_page' => 1,
-                    'showposts' => 1,
-                    'tax_query' => array(
-                        array(
-                          'taxonomy' => 'type',
-                          'field' => 'id',
-                          'terms' => array( 7016 ),
-                          'operator' => 'AND'
-                        )));
+
+        foreach ($sponsored_posts as $spon_id) {
+        $args = array( 'posts_per_page' => 1,'showposts' => 1, 'p' => $spon_id );
         $myposts = get_posts( $args );
         foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
           <li>
@@ -34,7 +47,8 @@
               </div>
               <div class="content-des">
                 <p class="name-cat">
-                  <a href="/type/sponsored/">SPONSORED</a>
+                  <?php $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE); ?>
+                  <a>SPONSORED BY <?php echo $lw_sponsored;?></a>
                 </p>
                 <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
               </div>
@@ -43,6 +57,7 @@
         <?php
           endforeach;
           wp_reset_postdata();
+        }
         ?>
       </ul>
     </div>
