@@ -122,13 +122,6 @@ class EmailBuilder {
 
 							if ( is_array($data) ) 
 							{
-								if ( $staticEntity->Type == 'Asset_Class' && isset( $data['boxes_count'] ) && is_numeric( $data['boxes_count'] ) )
-								{
-									$data['row_1_display'] = $data['boxes_count'] > 0 ? '' : 'style="display: none;"';
-									$data['row_2_display'] = $data['boxes_count'] > 2 ? '' : 'style="display: none;"';
-									$data['row_3_display'] = $data['boxes_count'] > 4 ? '' : 'style="display: none;"';
-								}
-
 								foreach ( $data as $key => $value ) 
 								{
 									if  ( 	
@@ -152,6 +145,17 @@ class EmailBuilder {
 									}
 
 									$sourceCode = str_replace( '{{' . $key . '}}', $value, $sourceCode );
+								}
+
+								if ( $staticEntity->Type == 'Asset_Class' && isset( $data['boxes_count'] ) && is_numeric( $data['boxes_count'] ) )
+								{
+									if ( $data['boxes_count'] < 4 )									
+										$sourceCode = preg_replace("/<!-- ROW 2 -->.*<!-- END ROW 2 -->/ms", "", $sourceCode);
+
+									if ( $data['boxes_count'] < 6 )
+										$sourceCode = preg_replace("/<!-- ROW 3 -->.*<!-- END ROW 3 -->/ms", "", $sourceCode);
+
+							        $sourceCode = preg_replace("/<!--.*?-->/ms","", $sourceCode);
 								}
 							}
 
