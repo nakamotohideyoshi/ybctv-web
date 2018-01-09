@@ -38,13 +38,13 @@ get_header(); ?>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           <p>
                             <?php
-                              $excerpt = get_the_excerpt();
-                              if (strlen($excerpt) > 100) {
-                                echo substr($excerpt, 0, 100) . '...';
-                              }
-                              else {
+                              $excerpt = excerpt(20);
+                              //if (strlen($excerpt) > 100) {
+                                //echo substr($excerpt, 0, 100) . '...';
+                              //}
+                              //else {
                                 echo $excerpt;
-                              }
+                              //}
                             ?>
                           </p>
                         </div>
@@ -281,7 +281,9 @@ get_header(); ?>
                           }
                           else {
                         ?>
-                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo wp_trim_words( esc_html( $item->get_title() ),5, '...'); ?>" /></a>
+                        <a href="<?php the_permalink();?>">
+                          <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                        </a>
                         <?php
                           }
                         ?>
@@ -539,17 +541,21 @@ get_header(); ?>
     </section>
     <section class="feature-sponsored">
       <div class="container">
-        <div id="feature-sponsored-item" class="owl-carousel owl-theme">
+                <div id="feature-sponsored-item">
           <?php
+            $featured_left = get_option('featured_left_box_article', 0);
+
+            if ($featured_left == 0 || $featured_left == '0' || $featured_left == '') {
+              //
+            } else {
             $args = array( 'posts_per_page' => 1, 'numberposts' => 1, 'numberposts' => 1, 'p' => get_option('featured_left_box_article', 0));
-            // 'category' => 15, 
+            // 'category' => 15,
             wp_reset_query();
             $myposts = query_posts( $args );
             if (have_posts()) : while (have_posts()) : the_post();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
           ?>
-          <div class="item">
-            <div class="row">
+          <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">  
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-image">
                   <?php
@@ -564,7 +570,7 @@ get_header(); ?>
                   ?>
                   <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature" style="background: #f07f00;">
-                    Sponsored  
+                    Sponsored
                     <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news-orange.png' ?>" alt="" style="width: auto; margin-left: 3px;" />
                   </p>
                 </a>
@@ -579,20 +585,24 @@ get_header(); ?>
                 </div>
               </div>
             </div>
-          </div>
           <?php
             endwhile;endif;
             wp_reset_query();
+            }
           ?>
 
           <?php
+            $featured_right = get_option('featured_right_box_article', 0);
+
+            if ($featured_right == 0 || $featured_right == '0' || $featured_right == '') {
+              //
+            } else {
             $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('featured_right_box_article', 0));
             $myposts = query_posts( $args );
             if (have_posts()) : while (have_posts()) : the_post();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
           ?>
-          <div class="item">
-            <div class="row">
+          <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-image">
                   <?php
@@ -607,11 +617,11 @@ get_header(); ?>
                   ?>
                   <a href="<?php the_permalink();?>">
                   <p class="readmore button-feature">
-                    Featured 
+                    Featured
                     <img id="imggg" src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" />
                     <style type="text/css">
-                      #imggg path { 
-                        fill: #000;  
+                      #imggg path {
+                        fill: #000;
                         background-color: #ff0000;
                       }
                     </style>
@@ -627,12 +637,13 @@ get_header(); ?>
                   <a href="<?php the_permalink(); ?>" class="view-more">View more</a>
                 </div>
               </div>
-            </div>
           </div>
           <?php
             endwhile;endif;
             wp_reset_query();
+          }
           ?>
+          </div>
         </div>
       </div>
     </section>

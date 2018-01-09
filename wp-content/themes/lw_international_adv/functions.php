@@ -813,6 +813,17 @@ function add_featured_box_menu_item() {
 
 function add_featured_box_settings_page() {
   $posts = get_posts( array( 'posts_per_page' => 100 ) );
+  $posts2 = get_posts( array( 
+    'posts_per_page' => 100,
+    'tax_query' => array(
+        array(
+          'taxonomy' => 'type',
+          'field' => 'slug',
+          'terms' => 'sponsored',
+        )     
+      )
+    ) 
+  );
 
   if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['featured_left_box_article']) && isset($_POST['featured_right_box_article']) )
   {
@@ -841,7 +852,7 @@ function add_featured_box_settings_page() {
 
             <select name="featured_left_box_article" id="featured_left_box_article_combo" onchange="document.getElementById('featured_left_box_article_field').value = this.value;">
               <option value="">-</option>
-              <?php foreach( $posts as $post ): ?>
+              <?php foreach( $posts2 as $post ): ?>
                 <option value="<?php echo $post->ID; ?>" <?php echo (int)$featured_left_box_article == $post->ID ? 'selected="selected"' : ''; ?>>
                   <?php echo $post->post_title; ?></option>
               <?php endforeach; ?>

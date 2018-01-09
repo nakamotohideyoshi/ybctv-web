@@ -3522,10 +3522,6 @@ article.comment {
   padding-right: 0!important;
 }
 
-.box-sponsored {
-display:none;
-}
-
 .home .box-sponsored {
 display:block;
 }
