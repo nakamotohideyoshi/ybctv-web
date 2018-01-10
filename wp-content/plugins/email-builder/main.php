@@ -160,9 +160,9 @@ class EmailBuilder {
 							}
 
 							if 	( 
-									$g['type'] != 'Newsletter_Subscribe' && 
-									$g['type'] != 'Digital_Magazine' &&
-									strpos($g['type'], 'Sponsored_Content_2') === false
+									$staticEntity->Type != 'Newsletter_Subscribe' && 
+									$staticEntity->Type != 'Digital_Magazine' &&
+									strpos($staticEntity->Type, 'Sponsored_Content_2') === false
 								)
 							{
 								$sourceCode = str_replace( '<a ', '<a style="color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $sourceCode );
