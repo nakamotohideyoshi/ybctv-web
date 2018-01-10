@@ -162,10 +162,13 @@ class EmailBuilder {
 							if 	( 
 									$staticEntity->Type != 'Newsletter_Subscribe' && 
 									$staticEntity->Type != 'Digital_Magazine' &&
+									strpos($staticEntity->Type, 'Sponsored_Content') === false &&
 									strpos($staticEntity->Type, 'Sponsored_Content_2') === false
 								)
 							{
 								$sourceCode = str_replace( '<a ', '<a style="color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $sourceCode );
+							} else if ( strpos($staticEntity->Type, 'Sponsored_Content') !== false && strpos($staticEntity->Type, 'Sponsored_Content_2') === false ) {
+								$sourceCode = str_replace( '<a ', '<a style="color: #000; font-weight: normal; text-decoration: underline;" ', $sourceCode );
 							}
 
 							$sourceCode = str_replace( '#4caf50', $colors[ $static[$staticKey]->Site ], $sourceCode );
