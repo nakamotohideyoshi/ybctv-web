@@ -466,7 +466,7 @@ class EmailBuilder {
 				    $auto_tracking= 1;
 				    
 					$r1 = $client->call( 'campaign.setAllOptions', $new_campaign['id'], [
-																	'subject_line' => $subject_line,
+																	//'subject_line' => $subject_line,
 						                                           	'domain' => $domain,
 						                                           	'from_prefix' => $from_prefix,
 						                                           	'user_from' => 1,
@@ -489,7 +489,7 @@ class EmailBuilder {
 					//echo $html_content; die();
 
 					$r2 = $client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
-					//$r2b = $client->call( 'campaign.setMessage', $new_campaign['id'], 'text' , '[*hints.subject = BLOCK*] TEST SUBJECT LINE &#8364 [*END*]');
+					$r2b = $client->call( 'campaign.setMessage', $new_campaign['id'], 'text' , '[*hints.subject = BLOCK*] TEST SUBJECT LINE &#8364 [*END*] This is the text version of the newsletter.');
 
 					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.setMessage', '" . addslashes(json_encode($r2)) . "', '" . date('Y-m-d H:i:s') . "')");
 
@@ -1324,7 +1324,8 @@ function parse_special_chars($str) {
 function parse_special_chars_2($str) {
 	$str = str_replace("€", "&euro;", $str);
 	$str = str_replace("£", "&#8356;", $str);
-	$str = str_replace("—", "&ndash;", $str);
+	$str = str_replace("₤", "&pound;", $str);
+	$str = str_replace("—", "-", $str);
 	$str = str_replace("â", "&ndash;", $str);
 	$str = str_replace("&ndash;", "", $str);
 	$str = str_replace("\u2013", "&ndash;", $str);
@@ -1336,6 +1337,7 @@ function parse_special_chars_3($str) {
 	$str = str_replace("€", "&#8364;", $str);
 	$str = str_replace("£", "&#8356;", $str);
 	$str = str_replace('—', '-', $str);
+	$str = str_replace("—", "-", $str);
 
 	return $str;
 }
