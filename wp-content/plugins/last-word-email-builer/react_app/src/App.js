@@ -1024,12 +1024,19 @@ class App extends Component {
     else if(type === 'Events'){
       _.each(this.state.eventArticles, (article, index) => {
        if(parseInt(article.ID) === articleId){
+          var sortCallback = function(r) {
+              r.sort(function(a,b){
+                return a.startdate > b.startdate;
+              });
+              
+              return r;
+          };
           this.setState(prevState => ({
-            selectedEventArticles: [...prevState.selectedEventArticles, article]
+            selectedEventArticles: sortCallback([...prevState.selectedEventArticles, article])
           }));
           this.setState({
             eventArticles: update(this.state.eventArticles, {[index]: {isDisabled: {$set: true}}})
-          })
+          });
        }
       })
     }
