@@ -984,7 +984,18 @@ class CreateEmail extends Component {
             </div>
             {this.props.isLoadingEvents === true ? <div style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : <div className="col-sm-12" style={{marginTop:'12px'}}>
               {this.props.eventArticles.map((article, key) => {
-               return <DragArticle name={article.post_title} type="event" desc={article.post_excerpt} id={parseInt(article.ID)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
+                var now = new Date();
+                var month = now.getMonth() + 1 * 1;
+                var day = now.getDate();
+                if (month.toString().length < 2) {
+                  month = '0' + month;
+                }
+                if (day.toString().length < 2) {
+                  day = '0' + day;
+                }
+                var today = now.getFullYear() + month + day;
+
+                return article.startdate < today ? '' : <DragArticle name={article.post_title} type="event" desc={article.post_excerpt} id={parseInt(article.ID)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
               })}
               </div>}
             </div>

@@ -45,6 +45,12 @@ render() {
                           </td>
                   </tr>
                     {this.props.selectedEventArticles.map((article, key) => {
+                      var formatDate = function(date) {
+                        var datePieces = date.split(' ');
+                        date = datePieces[2] + ' ' + datePieces[1] + ' ' + datePieces[3];
+                        
+                        return date;
+                      };
   return <tr key={key}>
   <td>
   <table style={{width: '100%'}}>
@@ -58,7 +64,7 @@ render() {
             <tr>
                <td style={{fontFamily:'Arial, Helvetica, sans-serif',fontSize: '14px',padding:'0px 0px 2px 0px',color: '#2c2c2c'}}>
                   <font>
-                  {(new Date(article.startdate.replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'))).toDateString()}
+                  {formatDate((new Date(article.startdate.replace(/(\d{4})(\d{2})(\d{2})/,'$1-$2-$3'))).toDateString())}
                   </font>
                </td>
             </tr>
