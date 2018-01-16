@@ -786,17 +786,22 @@ function add_featured_box_settings_page() {
     <h2>ACIF Homepage Boxes</h2>
     <form action="" method="post">
       <table class="form-table">
+        <tr> 
+          <br>
+          <div>
+            Please either select the article from the drop down option or add the Wordpress article ID in the box.
+            To find the Wordpress article ID please use the instructions from this
+            <a href="https://www.youtube.com/watch?v=fLg2T1AvmFE" target="_blank">video</a>.
+          </div>
+          <br>
+          <div>
+            The shaded background of the ACIF boxes on the homepage is automatically put in place depending on whether the article’s ‘sponsored by’ field is completed.  If the ‘sponsored by’ text is filled, the background of the box on the homepage will turn grey and the sponsor's name will appear. If the field is left blank the article remains editorial (white background and no ‘sponsored by’ text).
+          </div>
+        </tr>
+
         <tr>
-          <th scope="row">Editorial - left hand box</th>
+        <th scope="row">Left box</th>    
           <td>
-            <div>
-              Please either select the article from the drop down option or add the Wordpress article ID in the box.
-              To find the Wordpress article ID please use the instructions from this
-              <a href="https://www.youtube.com/watch?v=fLg2T1AvmFE" target="_blank">video</a>.
-            </div>
-
-            <br/>
-
             <select name="featured_left_box_article" id="featured_left_box_article_combo" onchange="document.getElementById('featured_left_box_article_field').value = this.value;">
               <option value="">-</option>
               <?php foreach( $posts as $post ): ?>
@@ -807,7 +812,7 @@ function add_featured_box_settings_page() {
           </td>
         </tr>
         <tr>
-          <th scope="row">&nbsp;</th>
+          <th scope="row"></th> 
           <td>
             <input type="text" id="featured_left_box_article_field" name="featured_left_box_article" value="<?php echo $featured_left_box_article; ?>" />
 
@@ -816,16 +821,8 @@ function add_featured_box_settings_page() {
         </tr>
         
         <tr>
-          <th scope="row">Sponsored - right hand box</th>
+        <th scope="row">Right box</th>  
           <td>
-            <div>
-              Please either select the article from the drop down option or add the Wordpress article ID in the box.
-              To find the Wordpress article ID please use the instructions from this
-              <a href="https://www.youtube.com/watch?v=fLg2T1AvmFE" target="_blank">video</a>.
-            </div>
-
-            <br/>
-
             <select name="featured_right_box_article" id="featured_right_box_article_combo" onchange="document.getElementById('featured_right_box_article_field').value = this.value;">
               <option value="">-</option>
               <?php foreach( $posts as $post ): ?>
@@ -835,7 +832,7 @@ function add_featured_box_settings_page() {
           </td>
         </tr>
         <tr>
-          <th scope="row">&nbsp;</th>
+          <th scope="row"></th>  
           <td>
             <input type="text" id="featured_right_box_article_field" name="featured_right_box_article" value="<?php echo $featured_right_box_article; ?>" />
 

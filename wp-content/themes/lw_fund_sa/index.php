@@ -250,13 +250,15 @@ get_header(); ?>
                     <div class="analysis-list">
 
                       <?php
-                        $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
                         $args = array( 'numberposts' => 1, 'posts_per_page' => 1, 'p' => get_option('featured_left_box_article', 0));
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
+                        $postctype = wp_get_post_terms( $post->ID, 'type');
+                        $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                        $chkspnsrd = $postctype[0]->slug;
                       ?>
                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="loop-list">
+                        <div class="loop-list" <?php if ($chkspnsrd == 'sponsored' || $lw_sponsored != '') { echo 'style="background: #d8d8d8;"'; }?>>
                           <div class="content-image">
                             <?php
                               if ( has_post_thumbnail() ) {
@@ -269,11 +271,20 @@ get_header(); ?>
                               }
                             ?>
                           </div>
-                          <div class="content-des">
-                            <p class="name-cat">
-                              <?php $category = get_the_category(); ?>
-                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                            </p>
+                          <div class="content-des" style="padding-left: 10px; padding-right: 10px;">              
+                              <?php 
+                              
+                              if($chkspnsrd == 'sponsored' || $lw_sponsored != '') { 
+                              ?>
+                                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                              <?php } else { ?>
+                                <p class="name-cat">
+                                <?php $category = get_the_category(); ?>
+                                  <a href="<?php echo get_category_link($category[0]->cat_ID);?>">
+                                    <?php echo $category[0]->cat_name;?>
+                                  </a>
+                                </p>
+                              <?php } ?>
                             <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           </div>
                         </div>
@@ -284,13 +295,15 @@ get_header(); ?>
                       ?>
 
                       <?php
-                        $args = array( 'posts_per_page' => 2 ,'showposts' => 2, 'category' => 14 );
                         $args = array( 'numberposts' => 1, 'posts_per_page' => 1, 'p' => get_option('featured_right_box_article', 0));
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
+                        $postctype = wp_get_post_terms( $post->ID, 'type');
+                        $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+                        $chkspnsrd = $postctype[0]->slug;
                       ?>
                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="loop-list" style="background: #d8d8d8;">
+                        <div class="loop-list" <?php if ($chkspnsrd == 'sponsored' || $lw_sponsored != '') { echo 'style="background: #d8d8d8;"'; }?>>
                           <div class="content-image">
                             <?php
                               if ( has_post_thumbnail() ) {
@@ -304,13 +317,17 @@ get_header(); ?>
                             ?>
                           </div>
                           <div class="content-des" style="padding-left: 10px; padding-right: 10px;">
-                            <?php $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE); ?>
-                            <?php if($lw_sponsored != '' || true) { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
-
-                            <p class="name-cat" style="display: none;">
-                              <?php $category = get_the_category(); ?>
-                              <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                            </p>
+                            <?php 
+                            if($chkspnsrd == 'sponsored' || $lw_sponsored != '') { ?>
+                                <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
+                              <?php } else { ?>
+                                <p class="name-cat">
+                                <?php $category = get_the_category(); ?>
+                                  <a href="<?php echo get_category_link($category[0]->cat_ID);?>">
+                                    <?php echo $category[0]->cat_name;?>
+                                  </a>
+                                </p>
+                              <?php } ?>
                             <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           </div>
                         </div>

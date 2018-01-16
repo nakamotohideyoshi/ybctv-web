@@ -38,7 +38,8 @@ get_header(); ?>
               endwhile;endif;?>
             </div>
             <?php 
-              $queryString = $_GET['s'];
+              $queryStringPre = $_GET['s'];
+              $queryString = stripslashes(str_replace( '"', '', $queryStringPre ));
             ?>
             <a href="#" offset="5" page="1" query="<?php echo $queryString; ?>" class="search-view-more view-more-ajax">View more</a>
             <div class="page-navi">
