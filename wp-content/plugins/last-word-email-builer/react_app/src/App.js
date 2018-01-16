@@ -17,6 +17,15 @@ import Guid from 'guid';
 import _ from 'lodash';
 import $ from 'jquery';
 class App extends Component {
+  getDefaultSite = () => {
+    var h = window.location.host;
+    var defaultSite =   (h == 'ia-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h == 'international-adviser.com') ? 'wp_3_' :
+                          ((h == 'fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h == 'fundselectorasia.com') ? 'wp_4_' :
+                            ((h == 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h == 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_2_' ));
+
+    return defaultSite;
+  };
+
   state = {
     page: 'Dashboard',
     param_email_id: 0,
@@ -26,7 +35,7 @@ class App extends Component {
     totalEmails: 0,
     offset: 0,
     pageNo: 1,
-    site: 'wp_2_',
+    site: this.getDefaultSite(),
     articles: [],
     otherArticles: [],
     eventArticles: [],
@@ -1386,8 +1395,8 @@ class App extends Component {
       // return "Are you sure you want to leave?";
     }
     this.setState(prevState => ({
-      site: 'wp_2_',
-    }));
+      site: this.getDefaultSite(),
+    }));    
     this.getEmails(this.state.offset);
   }
 
