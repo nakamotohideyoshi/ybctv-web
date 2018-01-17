@@ -4,6 +4,7 @@ import logo from './logo.svg';
 import moment from 'moment';
 import './App.css';
 import Header from './Header';
+import PreviewBox from './PreviewBox';
 import update from 'react-addons-update';
 import PropTypes from 'prop-types';
 import PreviewEmail from './PreviewEmail';
@@ -28,6 +29,8 @@ class App extends Component {
 
   state = {
     page: 'Dashboard',
+    showPreview: false,
+    previewBoxContent: '',
     param_email_id: 0,
     emails: [],
     categories:[],
@@ -1436,9 +1439,36 @@ class App extends Component {
     });
   }
 
+  onShowPreviewBox = (name, template) => {
+    this.setState(prevState => ({showPreview: true, previewBoxContent: template == '' ? 'Please select the template' : 'Loading... Please wait...' }));
+
+    if ( template != '' ) {
+        fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+          }
+        }).then(result => {
+          result.json().then(val => {
+            if(val !== null) {
+              _.each(val, leaderBoard => {
+                this.setState(prevState => ({previewBoxContent: leaderBoard.Content}));
+            });
+          }
+        });
+      }).catch(err => console.log(err));
+    }
+  }
+  
+  onHidePreviewBox = () => {
+    this.setState(prevState => ({showPreview: false, previewBoxContent: ''}));
+  }
+
   render() {
     return (
       <div className="container">
+         <PreviewBox show={this.state.showPreview} content={this.state.previewBoxContent} />
          <Header onChangePage={this.onChangePage} currentPage={this.state.page} onSetSite={this.onSetSite} site={this.state.site}/>
          { this.state.page === 'Dashboard' ? 
           <div className="container">
@@ -1494,6 +1524,9 @@ class App extends Component {
            </div>
            : ''}
          { this.state.page === 'CreateEmail' ?  <CreateEmail
+
+                                                   onShowPreviewBox={this.onShowPreviewBox} 
+                                                   onHidePreviewBox={this.onHidePreviewBox}
 
                                                    onPrevRatedArticlePage={this.onPrevRatedArticlePage}
                                                    onNextRatedArticlePage={this.onNextArticleRatedPage}

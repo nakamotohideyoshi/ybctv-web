@@ -40,6 +40,11 @@ const boxSource = {
     isDragging: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired
   };
+
+  onShowPreviewBox = () => {
+    this.props.onShowPreviewBox( this.props.name );
+  }
+
   render() {
     const { onClick, isDragging, connectDragSource } = this.props;
     const { name, text, id } = this.props;
@@ -47,7 +52,7 @@ const boxSource = {
     return connectDragSource(
       <div className="col-md-4" style={{ 'padding': '0 5px' }}>
         <div style={{ ...style, opacity }}>
-          <button style={{ 'white-space': 'normal', 'line-height': '14px' }} onClick={onClick} id={id} className="btn btn-primary btn-block btn-sm" type="button" aria-expanded="false" aria-controls="collapseExample" disabled={!this.props.isDisabled}>
+          <button style={{ 'white-space': 'normal', 'line-height': '14px' }} onMouseEnter={this.onShowPreviewBox} onMouseLeave={this.props.onHidePreviewBox} onClick={onClick} id={id} className="btn btn-primary btn-block btn-sm" type="button" aria-expanded="false" aria-controls="collapseExample" disabled={!this.props.isDisabled}>
             {text}
           </button>
         </div>
