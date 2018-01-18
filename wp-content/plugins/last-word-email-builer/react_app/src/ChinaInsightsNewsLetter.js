@@ -14,7 +14,7 @@ import _ from 'lodash';
 import $ from 'jquery';
 import Config from './Config';
 import Guid from 'guid';
-
+import LetterNote from './LetterNote';
 
 const style = {
   background: '#E6E6E6',
@@ -309,6 +309,7 @@ render() {
                                   <td style={{position: 'relative', background: '#fff'}}>
                                   <div dangerouslySetInnerHTML={{__html: ( this.props.showTopLeaderboard === '1' ? this.props.topLeaderboard : ( this.props.showTopLeaderboard === '2' ? this.props.topLeaderboardB : ( this.props.showTopLeaderboard === '3' ? this.props.topLeaderboardC : ( this.props.showTopLeaderboard === '4' ? this.props.topLeaderboardD : ( this.props.showTopLeaderboard === '5' ? this.props.topLeaderboardE : ( this.props.showTopLeaderboard === '6' ? this.props.topLeaderboardF : "" ) ) ) ) ) ) }}></div> 
                                   <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Top_Leaderboard" onClick={this.props.onRemoveStatic}/>
+                                  <LetterNote letter={this.props.showTopLeaderboard} />
                                   </td>
                                 </tr> : ''}
                                         <tr>
@@ -398,6 +399,7 @@ render() {
                                                                                           <td style={{position: 'relative', background: '#fff'}}>
                                                                                            <div dangerouslySetInnerHTML={{__html: ( this.props.showFooterLeaderboard === '1' ? this.props.footerLeaderboard : ( this.props.showFooterLeaderboard === '2' ? this.props.footerLeaderboardB : ( this.props.showFooterLeaderboard === '3' ? this.props.footerLeaderboardC : ( this.props.showFooterLeaderboard === '4' ? this.props.footerLeaderboardD : ( this.props.showFooterLeaderboard === '5' ? this.props.footerLeaderboardE : ( this.props.showFooterLeaderboard === '6' ? this.props.footerLeaderboardF : "" ) ) ) ) ) ) }}></div> 
                                                                                           <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Footer_Leaderboard" onClick={this.props.onRemoveStatic}/>
+                                                                                          <LetterNote letter={this.props.showFooterLeaderboard} />
                                                                                           </td>
                                                                                         </tr> : ''}
                                                            <tr>

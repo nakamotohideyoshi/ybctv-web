@@ -1468,7 +1468,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-         <PreviewBox show={this.state.showPreview} content={this.state.previewBoxContent} />
+         <PreviewBox closePreviewBox={this.onHidePreviewBox} show={this.state.showPreview} content={this.state.previewBoxContent} />
          <Header onChangePage={this.onChangePage} currentPage={this.state.page} onSetSite={this.onSetSite} site={this.state.site}/>
          { this.state.page === 'Dashboard' ? 
           <div className="container">

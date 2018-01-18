@@ -11,6 +11,7 @@ const boxSource = {
   beginDrag(props) {
     console.log('*** DRAG STARTED ****');
     props.onStaticDragged(props);
+    props.onHidePreviewBox();
     return {
       name: props.name,
       text: props.text
