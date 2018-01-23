@@ -44,8 +44,9 @@
 
     		    var custom_uploader = wp.media({
 						title: 'Insert image',
-						library : { type : 'image' },
+						library: { type : 'image' },
 						button: { text: 'Use this image' },
+						id: 'library-' + (Math.random() * 10),
 						multiple: false
 					}).on('select', function() {
 						var attachment = custom_uploader.state().get('selection').first().toJSON();
