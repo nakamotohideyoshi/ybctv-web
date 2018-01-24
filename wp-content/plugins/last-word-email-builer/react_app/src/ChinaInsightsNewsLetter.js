@@ -337,6 +337,7 @@ render() {
   <td style={{position: 'relative', background: '#fff'}}>
    <div dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage1 === '1' ? this.props.staticImage1 : ( this.props.showStaticImage1 === '2' ? this.props.staticImage1B : ( this.props.showStaticImage1 === '3' ? this.props.staticImage1C : ( this.props.showStaticImage1 === '4' ? this.props.staticImage1D : '' ) ) ) ) }}></div> 
   <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Static_Image_1" onClick={this.props.onRemoveStatic}/>
+  <LetterNote letter={this.props.showStaticImage1} />
   </td>
 </tr> : ''}
 </tbody>
@@ -368,6 +369,7 @@ render() {
                                                   <td style={{position: 'relative', background: '#fff'}}>
                                                                                                 <div dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage2 === '1' ? this.props.staticImage2 : ( this.props.showStaticImage2 === '2' ? this.props.staticImage2B : ( this.props.showStaticImage2 === '3' ? this.props.staticImage2C : ( this.props.showStaticImage2 === '4' ? this.props.staticImage2D : '' ) ) ) ) }}></div> 
                                                                                                 <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Static_Image_2" onClick={this.props.onRemoveStatic}/>
+                                                                                                <LetterNote letter={this.props.showStaticImage2} />
                                                                                                 </td></tr>: ''}
 </tbody></table></td>
                                                                                         </tr>

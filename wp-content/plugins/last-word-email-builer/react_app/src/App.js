@@ -677,13 +677,13 @@ class App extends Component {
             this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
             break;
           case 'Static_Image_2b':
-            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage2B: leaderBoard.Content}));
             break;
           case 'Static_Image_2c':
-            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage2C: leaderBoard.Content}));
             break;
           case 'Static_Image_2d':
-            this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
+            this.setState(prevState => ({ staticImage2D: leaderBoard.Content}));
             break;
           
           case 'Asset_Class':
