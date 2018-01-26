@@ -160,9 +160,10 @@ class CreateEmail extends Component {
           }
           else
           {
-            $('.modal-backdrop').hide();
-            $('body').removeClass('modal-open');
-            this.props.onChangePage('Dashboard');
+            //$('.modal-backdrop').hide();
+            //$('body').removeClass('modal-open');
+            // this.props.onChangePage('Dashboard');
+            window.location.reload();
           }
       });
     });
@@ -209,9 +210,10 @@ class CreateEmail extends Component {
     }).then(result => {
       result.json().then(val => {
         console.log(val);
-        $('.modal-backdrop').hide();
-        $('body').removeClass('modal-open');
-        this.props.onChangePage('Dashboard');
+        // $('.modal-backdrop').hide();
+        // $('body').removeClass('modal-open');
+        // this.props.onChangePage('Dashboard');
+        window.location.reload();
       });
     });
   }

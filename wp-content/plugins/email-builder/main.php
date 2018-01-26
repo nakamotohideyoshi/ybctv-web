@@ -466,7 +466,7 @@ class EmailBuilder {
 				    $auto_tracking= 1;
 				    
 					$r1 = $client->call( 'campaign.setAllOptions', $new_campaign['id'], [
-																	//'subject_line' => $subject_line,
+																	'subject_line' => $subject_line,
 						                                           	'domain' => $domain,
 						                                           	'from_prefix' => $from_prefix,
 						                                           	'user_from' => 1,
@@ -485,11 +485,11 @@ class EmailBuilder {
 					$html_content = $content;
 					$html_content = parse_special_chars_2($html_content);
 					$html_content = preg_replace("/<!--.*?-->/ms","", $html_content);
+					$html_content = preg_replace("/<address.*?<\/address>/ms","", $html_content);
 
 					//echo $html_content; die();
 
 					$r2 = $client->call( 'campaign.setMessage', $new_campaign['id'], 'html' , $html_content);
-					$r2b = $client->call( 'campaign.setMessage', $new_campaign['id'], 'text' , '[*hints.subject = BLOCK*] TEST SUBJECT LINE &#8364 [*END*] This is the text version of the newsletter.');
 
 					$wpdb->query("INSERT INTO " . $table_name_logs . " (Ref, Body, CreatedAt) VALUES ('campaign.setMessage', '" . addslashes(json_encode($r2)) . "', '" . date('Y-m-d H:i:s') . "')");
 
