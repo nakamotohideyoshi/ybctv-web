@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
-import update from 'react-addons-update';
 import VideoNewsLetter from './VideoNewsLetter';
 import InsightsNewsLetter from './InsightsNewsLetter';
 import ChinaInsightsNewsLetter from './ChinaInsightsNewsLetter';
@@ -19,8 +18,6 @@ import '../node_modules/font-awesome/css/font-awesome.css';
 import _ from 'lodash';
 import $ from 'jquery';
 import Config from './Config';
-import Guid from 'guid';
-
 
 class CreateEmail extends Component {
   state = { 
@@ -113,7 +110,7 @@ class CreateEmail extends Component {
 
     console.dir(this.state);
 
-    if ( $.trim(this.state.subject) == '' ) {
+    if ( $.trim(this.state.subject) === '' ) {
       alert('Please enter the subject');
       return;
     }
@@ -140,8 +137,8 @@ class CreateEmail extends Component {
       hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : this.props.hasStaticImage2,
       hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : "1",
       hasQuotable: this.props.hasQuotable === null || this.props.hasQuotable === "0" ? "0" : "1",
-      editor_id: typeof window.EmailBuilderEditor != 'undefined' && typeof window.EmailBuilderEditor.Id != 'undefined' ? window.EmailBuilderEditor.Id : 0,
-      editor_display_name: typeof window.EmailBuilderEditor != 'undefined' && typeof window.EmailBuilderEditor.DisplayName != 'undefined' ? window.EmailBuilderEditor.DisplayName : '',
+      editor_id: typeof window.EmailBuilderEditor !== 'undefined' && typeof window.EmailBuilderEditor.Id !== 'undefined' ? window.EmailBuilderEditor.Id : 0,
+      editor_display_name: typeof window.EmailBuilderEditor !== 'undefined' && typeof window.EmailBuilderEditor.DisplayName !== 'undefined' ? window.EmailBuilderEditor.DisplayName : '',
       prefix: this.props.site
     }
     console.log(body);
@@ -154,9 +151,9 @@ class CreateEmail extends Component {
       body: JSON.stringify(body)
     }).then(result => {
       result.json().then(val => {
-          if ( val != null && typeof val.code != 'undefined' && val.code == 500 )
+          if ( val !== null && typeof val.code !== 'undefined' && val.code === 500 )
           {
-            alert( typeof val.message != 'undefined' ? val.message : 'There was an error. Please try again.' );
+            alert( typeof val.message !== 'undefined' ? val.message : 'There was an error. Please try again.' );
           }
           else
           {
@@ -242,7 +239,7 @@ class CreateEmail extends Component {
      return;
     }
 
-    if ( Config.VERSION == 2 ) {
+    if ( Config.VERSION === 2 ) {
       window.open( Config.BASE_URL + '/wp-admin/tools.php?page=last-word-email-builder-editor&site=' + this.props.site + '&template=' + this.state.template + '&type=' + type, '_blank' );
     } else {
       this.setState(prevState => ({
@@ -339,7 +336,7 @@ class CreateEmail extends Component {
         </div>
       </div>
       <div className="row">
-       { this.props.isLoadingEmail === true ? <div className="col-xs-8" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
+       { this.props.isLoadingEmail === true ? <div className="col-xs-8" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" alt="Loading"/></div> : 
         <div className="col-xs-8" id="emailContent" ref="emailContent">
            
            { this.state.template === 'Video_Newsletter' ? 
@@ -852,7 +849,7 @@ class CreateEmail extends Component {
             <fieldset>
               <div className="form-group">
                 <label htmlFor="chooseContent">Choose Content</label>
-                { this.props.isLoadingCategories === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
+                { this.props.isLoadingCategories === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" alt="Loading"/></div> : 
                 <select id="category" name="category" value={this.props.selectedCategory || ''} onChange={this.onCategoryChange} className="form-control">
                   {this.props.categories.map((category, key) => {
                    return <option key={key} value={category.id}>{category.name}</option>
@@ -871,7 +868,7 @@ class CreateEmail extends Component {
           { this.props.isLoadingLatest === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
             <div className="tab-pane fade active in" role="tabpanel" id="latest" aria-labelledby="latest-tab">
              {this.props.articles.map((article, key) => {
-              return <DragArticle type="article" name={article.post_title} desc={article.post_excerpt} id={parseInt(article.ID)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
+              return <DragArticle type="article" article={article} name={article.post_title} desc={article.post_excerpt} id={parseInt(article.ID, 10)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
              })}
               <ul className="pager">
                 <li>{this.props.articlePage > 1 ? <a href="#" onClick={this.props.onPrevArticlePage}>Previous</a> : ''}</li>
@@ -881,7 +878,7 @@ class CreateEmail extends Component {
             { this.props.isLoadingMostRated === true ? <div className="tab-pane fade" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
             <div className="tab-pane fade" role="tabpanel" id="mostrated" aria-labelledby="most-rated-tab">
             {this.props.ratedArticles.map((article, key) => {
-             return <DragArticle type="rated" name={article.post_title} desc={article.post_excerpt} id={parseInt(article.ID)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
+             return <DragArticle type="rated" article={article} name={article.post_title} desc={article.post_excerpt} id={parseInt(article.ID, 10)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
             })}
             <ul className="pager">
               <li>{this.props.articleRatedPage > 1 ? <a href="#" onClick={this.onPrevRatedArticlePage}>Previous</a> : ''}</li>
@@ -906,9 +903,9 @@ class CreateEmail extends Component {
                   </div>
                 </div>
                 <div className="form-group">
-                {this.props.isLoadingSearch === true ? <div style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : <div className="col-sm-12" style={{marginTop:'12px'}}>
+                {this.props.isLoadingSearch === true ? <div style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" alt="Loading"/></div> : <div className="col-sm-12" style={{marginTop:'12px'}}>
                 {this.props.articles.map((article, key) => {
-                 return <DragArticle name={article.post_title.substring(0, 30)} type="article" desc={article.post_excerpt} id={parseInt(article.ID)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
+                 return <DragArticle article={article} name={article.post_title.substring(0, 30)} type="article" desc={article.post_excerpt} id={parseInt(article.ID, 10)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
                 })}
                 </div>}
                 </div>
@@ -963,14 +960,14 @@ class CreateEmail extends Component {
             <DragStatic id="button27" name="Footer_Leaderboard_f" text="Footer Leaderboard F" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Footer_Leaderboard_f')} isDisabled={this.props.hasFooterLeaderboard === "0" ? true : false}/>
             
             <DragStatic id="button28" name="Static_Image_1" text="Static Image 1A" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/>
-            { this.props.site == 'wp_4_' ? <DragStatic id="button29" name="Static_Image_1b" text="Static Image 1B" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1b')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/> : null }
-            { this.props.site == 'wp_4_' ? <DragStatic id="button30" name="Static_Image_1c" text="Static Image 1C" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1c')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/> : null }
-            { this.props.site == 'wp_4_' ? <DragStatic id="button31" name="Static_Image_1d" text="Static Image 1D" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1d')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/> : null }
+            { this.props.site === 'wp_4_' ? <DragStatic id="button29" name="Static_Image_1b" text="Static Image 1B" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1b')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/> : null }
+            { this.props.site === 'wp_4_' ? <DragStatic id="button30" name="Static_Image_1c" text="Static Image 1C" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1c')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/> : null }
+            { this.props.site === 'wp_4_' ? <DragStatic id="button31" name="Static_Image_1d" text="Static Image 1D" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_1d')} isDisabled={this.props.hasStaticImage1 === "0" ? true : false}/> : null }
             
             <DragStatic id="button32" name="Static_Image_2" text="Static Image 2A" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/>
-            { this.props.site == 'wp_4_' ? <DragStatic id="button33" name="Static_Image_2b" text="Static Image 2B" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2b')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
-            { this.props.site == 'wp_4_' ? <DragStatic id="button34" name="Static_Image_2c" text="Static Image 2C" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2c')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
-            { this.props.site == 'wp_4_' ? <DragStatic id="button35" name="Static_Image_2d" text="Static Image 2D" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2d')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
+            { this.props.site === 'wp_4_' ? <DragStatic id="button33" name="Static_Image_2b" text="Static Image 2B" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2b')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
+            { this.props.site === 'wp_4_' ? <DragStatic id="button34" name="Static_Image_2c" text="Static Image 2C" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2c')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
+            { this.props.site === 'wp_4_' ? <DragStatic id="button35" name="Static_Image_2d" text="Static Image 2D" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2d')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
             
             <DragStatic id="button36" name="Asset_Class" text="Asset Class" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Asset_Class')} isDisabled={this.props.hasAssetClass === "0" ? true : false}/>
             <DragStatic id="button37" name="Quotable" text="Quotable" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Quotable')} isDisabled={this.props.hasQuotable === "0" ? true : false}/>
@@ -1005,7 +1002,7 @@ class CreateEmail extends Component {
                 }
                 var today = now.getFullYear() + month + day;
 
-                return article.startdate < today ? '' : <DragArticle name={article.post_title} type="event" desc={article.post_excerpt} id={parseInt(article.ID)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
+                return article.startdate < today ? '' : <DragArticle article={article} name={article.post_title} type="event" desc={article.post_excerpt} id={parseInt(article.ID, 10)} onArticleDragged={this.props.onArticleDragged} onArticleDropped={this.onArticleDropped} isDisabled={article.isDisabled} key={key} onCancelDrag={this.props.onCancelDrag}/>
               })}
               </div>}
             </div>

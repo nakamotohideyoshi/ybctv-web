@@ -1,8 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import update from 'react-addons-update';
-import _ from 'lodash';
-import $ from 'jquery';
 import Config from './Config';
 import Guid from 'guid';
 

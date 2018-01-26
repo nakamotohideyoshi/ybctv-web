@@ -6,10 +6,6 @@ import OtherStoriesComponent from './OtherStoriesComponent';
 import SocialMediaComponent from './SocialMediaComponent';
 import PrivacyPolicyComponent from './PrivacyPolicyComponent';
 import LatestNewsComponent from './LatestNewsComponent';
-import _ from 'lodash';
-import $ from 'jquery';
-import Config from './Config';
-import Guid from 'guid';
 import LetterNote from './LetterNote';
 
 const style = {
@@ -279,7 +275,7 @@ render() {
       <table data-width="100%" data-border="0" cellPadding="0" cellSpacing="0" data-align="center" style={{width: '100%', border: '0px', margin: '0px', textAlign: 'center',borderCollapse: 'collapse',tableLayout: 'fixed',msoTableLspace:'0pt', msoTableRspace:'0pt', borderSpacing:'0px'}}>
          	<tr>
 				<td>
-					<table cellSpacing="0" cellPadding="0" data-border="0" data-align="center" data-width="750" className="deviceWidth" style={{margin:'0px auto', width: '750px', textAlign: 'center', border: '0px', margin: '0px'}}>
+					<table cellSpacing="0" cellPadding="0" data-border="0" data-align="center" data-width="750" className="deviceWidth" style={{width: '750px', textAlign: 'center', border: '0px', margin: '0px'}}>
 						<tr>
 							<td>
 								<table data-align="center" data-width="100%"  cellSpacing="0" cellPadding="0" style={{textAlign: 'center', width: '100%', margin: '0px'}} className="email_send">

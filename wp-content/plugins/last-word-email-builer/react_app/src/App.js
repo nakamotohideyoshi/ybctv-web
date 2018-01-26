@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import moment from 'moment';
 import './App.css';
 import Header from './Header';
 import PreviewBox from './PreviewBox';
 import update from 'react-addons-update';
-import PropTypes from 'prop-types';
 import PreviewEmail from './PreviewEmail';
 import CreateEmail from './CreateEmail';
-import { DragDropContext } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
 import 'bootstrap/dist/js/bootstrap.min';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Config from './Config';
@@ -20,9 +16,9 @@ import $ from 'jquery';
 class App extends Component {
   getDefaultSite = () => {
     var h = window.location.host;
-    var defaultSite =   (h == 'ia-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h == 'international-adviser.com') ? 'wp_3_' :
-                          ((h == 'fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h == 'fundselectorasia.com') ? 'wp_4_' :
-                            ((h == 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h == 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_2_' ));
+    var defaultSite =   (h === 'ia-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'international-adviser.com') ? 'wp_3_' :
+                          ((h === 'fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'fundselectorasia.com') ? 'wp_4_' :
+                            ((h === 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_2_' ));
 
     return defaultSite;
   };
@@ -171,6 +167,8 @@ class App extends Component {
        case 'Search':
          this.resetArticles();
          break;
+       default:
+        // do nothing
       }
     });
   }
@@ -371,6 +369,8 @@ class App extends Component {
     case 'Quotable':
       this.setState(prevState => ({ hasQuotable: val === true ? "1" : "0"}));
       break;
+    default:
+      // do nothing
     }
   }
 
@@ -413,6 +413,8 @@ class App extends Component {
     case 'Quotable':
       this.setState(prevState => ({ quotable: ''}));
       break;
+    default:
+      // do nothing
     }
   }
 
@@ -552,6 +554,8 @@ class App extends Component {
           case 'Quotable':
            this.setState(prevState => ({ quotable: leaderBoard.Content}));
            break;
+          default:
+            // do nothing
            }
           });
          }
@@ -762,7 +766,7 @@ class App extends Component {
     this.setState({
       selectedCategory: value
     }, () => {
-      if(parseInt(this.state.selectedCategory) !== 0){
+      if(parseInt(this.state.selectedCategory, 10) !== 0){
         this.getPosts();
       }
       else{
@@ -789,10 +793,10 @@ class App extends Component {
 
   onRemoveEditor = (event) => {
     this.setState({selectedEditorArticles: this.state.selectedEditorArticles.filter((article) => {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
       _.each(this.state.articles, (article, index) => {
-       if(parseInt(article.ID) === parseInt(event.target.id)){
+       if(parseInt(article.ID, 10) === parseInt(event.target.id, 10)){
         this.setState({
           articles: update(this.state.articles, {[index]: {isDisabled: {$set: false}}})
         })
@@ -802,10 +806,10 @@ class App extends Component {
 
   onRemoveEvent = (event) => {
     this.setState({selectedEventArticles: this.state.selectedEventArticles.filter((article) => {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
       _.each(this.state.eventArticles, (article, index) => {
-       if(parseInt(article.ID) === parseInt(event.target.id)){
+       if(parseInt(article.ID, 10) === parseInt(event.target.id, 10)){
         this.setState({
           eventArticles: update(this.state.eventArticles, {[index]: {isDisabled: {$set: false}}})
         })
@@ -972,9 +976,9 @@ class App extends Component {
   onArticleDropped = (articleId, type, site) => {
     this.setState(prevState => ({highlight: ''}));
     if(type === 'Latest_News' || type === 'Search'){
-        if(parseInt(this.state.selectedCategory) === 35){
+        if(parseInt(this.state.selectedCategory, 10) === 35){
           _.each(this.state.articles, (article, index) => {
-           if(parseInt(article.ID) === articleId){
+           if(parseInt(article.ID, 10) === articleId){
              this.setState(prevState => ({
                selectedEventArticles: [...prevState.selectedEventArticles, article]
              }));
@@ -986,7 +990,7 @@ class App extends Component {
         }
         else{
           _.each(this.state.articles, (article, index) => {
-           if(parseInt(article.ID) === articleId){
+           if(parseInt(article.ID, 10) === articleId){
              this.setState(prevState => ({
                selectedArticles: [...prevState.selectedArticles, article]
              }));
@@ -999,7 +1003,7 @@ class App extends Component {
       }
       else if(type === 'Most_Viewed'){
         _.each(this.state.ratedArticles, (article, index) => {
-         if(parseInt(article.ID) === articleId){
+         if(parseInt(article.ID, 10) === articleId){
            this.setState(prevState => ({
              selectedMostViewedArticles: [...prevState.selectedMostViewedArticles, article]
            }));
@@ -1011,7 +1015,7 @@ class App extends Component {
     }
     else if(type === 'Investment'){
       _.each(this.state.articles, (article, index) => {
-       if(parseInt(article.ID) === articleId){
+       if(parseInt(article.ID, 10) === articleId){
          this.setState(prevState => ({
            selectedInvestmentArticles: [...prevState.selectedInvestmentArticles, article]
          }));
@@ -1023,7 +1027,7 @@ class App extends Component {
     }
     else if(type === 'Most_Read'){
       _.each(this.state.ratedArticles, (article, index) => {
-       if(parseInt(article.ID) === articleId){
+       if(parseInt(article.ID, 10) === articleId){
          this.setState(prevState => ({
            selectedMostReadArticles: [...prevState.selectedMostReadArticles, article]
          }));
@@ -1035,7 +1039,7 @@ class App extends Component {
     }
     else if(type === 'Events'){
       _.each(this.state.eventArticles, (article, index) => {
-       if(parseInt(article.ID) === articleId){
+       if(parseInt(article.ID, 10) === articleId){
           var sortCallback = function(r) {
               r.sort(function(a,b){
                 return a.startdate > b.startdate;
@@ -1054,7 +1058,7 @@ class App extends Component {
     }
     else if(type === 'Editor_Pick'){
       _.each(this.state.articles, (article, index) => {
-       if(parseInt(article.ID) === articleId){
+       if(parseInt(article.ID, 10) === articleId){
           this.setState(prevState => ({
             selectedEditorArticles: [...prevState.selectedEditorArticles, article]
           }));
@@ -1066,7 +1070,7 @@ class App extends Component {
     }
     else if(type === 'More_News'){
       _.each(this.state.articles, (article, index) => {
-       if(parseInt(article.ID) === articleId){
+       if(parseInt(article.ID, 10) === articleId){
           this.setState(prevState => ({
             selectedMoreNewsArticles: [...prevState.selectedMoreNewsArticles, article]
           }));
@@ -1080,29 +1084,29 @@ class App extends Component {
 
   onRemoveArticle = (event) => {
     this.setState({selectedArticles: this.state.selectedArticles.filter(function(article) {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
     this.setState({selectedMoreNewsArticles: this.state.selectedMoreNewsArticles.filter(function(article) {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
     this.setState({selectedMostViewedArticles: this.state.selectedMostViewedArticles.filter(function(article) {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
     this.setState({selectedMostReadArticles: this.state.selectedMostReadArticles.filter(function(article) {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
     this.setState({selectedInvestmentArticles: this.state.selectedInvestmentArticles.filter(function(article) {
-          return parseInt(article.ID) !== parseInt(event.target.id)
+          return parseInt(article.ID, 10) !== parseInt(event.target.id, 10)
       })});
       _.each(this.state.articles, (article, index) => {
-       if(parseInt(article.ID) === parseInt(event.target.id)){
+       if(parseInt(article.ID, 10) === parseInt(event.target.id, 10)){
         this.setState({
           articles: update(this.state.articles, {[index]: {isDisabled: {$set: false}}})
         })
        }
       });
       _.each(this.state.ratedArticles, (article, index) => {
-       if(parseInt(article.ID) === parseInt(event.target.id)){
+       if(parseInt(article.ID, 10) === parseInt(event.target.id, 10)){
         this.setState({
           ratedArticles: update(this.state.ratedArticles, {[index]: {isDisabled: {$set: false}}})
         })
@@ -1339,11 +1343,12 @@ class App extends Component {
   livePreview = (event) => {
    event.preventDefault();
 
-   var isStaging = Config.BASE_URL.indexOf('staging') != -1;
+   var isStaging = Config.BASE_URL.indexOf('staging') !== -1;
+   var url = '';
 
    switch (this.state.site) {
     case 'wp_2_':
-      var url = 'https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      url = 'https://pa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
 
       if (isStaging)
         url = 'https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
@@ -1352,7 +1357,7 @@ class App extends Component {
       
       break;
     case 'wp_3_':
-      var url = 'https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      url = 'https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
       
       if (isStaging)
         url = 'https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
@@ -1361,7 +1366,7 @@ class App extends Component {
       
       break;
     case 'wp_4_':
-      var url = 'https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      url = 'https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
       
       if (isStaging)
         url = 'https://fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
@@ -1370,7 +1375,7 @@ class App extends Component {
       
       break;
     case 'wp_5_':
-      var url = 'https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
+      url = 'https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
       
       if (isStaging)
         url = 'https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
@@ -1409,7 +1414,7 @@ class App extends Component {
 
   onCheckChange = (event) => {
   _.each(this.state.emails, (email, index) => {
-   if(parseInt(email.EmailId) === parseInt(event.target.id)){
+   if(parseInt(email.EmailId, 10) === parseInt(event.target.id, 10)){
     this.setState({
       emails: update(this.state.emails, {[index]: {isSelected: {$set: !this.state.emails[index].isSelected}}})
     }, () => {
@@ -1440,9 +1445,9 @@ class App extends Component {
   }
 
   onShowPreviewBox = (name, template) => {
-    this.setState(prevState => ({showPreview: true, previewBoxContent: template == '' ? 'Please select the template' : 'Loading... Please wait...' }));
+    this.setState(prevState => ({showPreview: true, previewBoxContent: template === '' ? 'Please select the template' : 'Loading... Please wait...' }));
 
-    if ( template != '' ) {
+    if ( template !== '' ) {
         fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
           method: 'GET',
           headers: {
@@ -1503,7 +1508,7 @@ class App extends Component {
                          <td>{email.EmailSubject}</td>
                          <td>{email.EditorDisplayName}</td>
                          <td>{email.SendToAdestraOn !== null ? 'Sent to Adestra -'+ moment(email.SendToAdestraOn).format('ddd Do MMM, YYYY') : 'Editing'}</td>
-                         <td>{email.UpdatedAt == '0000-00-00 00:00:00' ? '-' : email.UpdatedAt}</td>
+                         <td>{email.UpdatedAt === '0000-00-00 00:00:00' ? '-' : email.UpdatedAt}</td>
                          <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={this.editEmail} className="btn btn-primary">Edit</button></td>
                          <td><input type="checkbox" id={email.EmailId} checked={email.isSelected} onChange={this.onCheckChange}/></td>
                          <td><button type="button" id={email.EmailId} onClick={this.livePreview} className="btn btn-primary">Live Preview</button></td>

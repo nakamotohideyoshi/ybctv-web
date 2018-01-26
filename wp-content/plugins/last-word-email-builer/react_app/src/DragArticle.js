@@ -59,11 +59,17 @@ const boxSource = {
     const { isDragging, connectDragSource } = this.props;
     const { name, desc, image, id, isDisabled} = this.props;
     const opacity = isDragging ? 0.4 : 1;
+
+    let isBadImage = this.props.article.featured_image.indexOf('-219x122') == -1;
+
     return connectDragSource(
       <div style={{ ...style, opacity }}>
-      <button className="btn btn-primary btn-block collapsed" disabled={isDisabled} type="button" data-toggle="collapse" data-target={"#collapsearticle"+ id} aria-expanded="false" aria-controls="collapseExample">
-      {name.substring(0,50)}
+      <button className="btn btn-primary btn-block collapsed" disabled={isDisabled || isBadImage} type="button" data-toggle="collapse" data-target={"#collapsearticle"+ id} aria-expanded="false" aria-controls="collapseExample">
+        {name.substring(0,50)}
       </button>
+      <div style={{ 'display': isBadImage ? 'block' : 'none', 'fontSize': '12px', 'margin': '-5px 0 10px' }}>
+        <a href={ '/wp-admin/post.php?post=' + this.props.article.ID + '&action=edit' } target="_blank">This article uses a Kreatio legacy featured image not supported in this version of mailbuilder. Please edit the article to set a new featured image via Wordpress as you usually do, and then save your update. The article can then be used.</a>
+      </div>
       <div className="collapse" id={"collapsearticle"+ id} aria-expanded="false" >
         <div className="well">
           <img src={image} className="img-responsive"/>

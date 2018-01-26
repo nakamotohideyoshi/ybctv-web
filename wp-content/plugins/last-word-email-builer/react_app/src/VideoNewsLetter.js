@@ -7,12 +7,6 @@ import PrivacyPolicyComponent from './PrivacyPolicyComponent';
 import { DropTarget } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 import 'font-awesome/css/font-awesome.min.css';
-import theme from 'react-quill/dist/quill.snow.css';
-import _ from 'lodash';
-import $ from 'jquery';
-import Config from './Config';
-import Guid from 'guid';
-
 
 const style = {
   background: '#E6E6E6',
@@ -34,7 +28,6 @@ class VideoNewsLetter extends Component {
 
   render() {
     const { canDrop, isOver, connectDropTarget } = this.props;
-    const isActive = canDrop && isOver;
 
     let border = 'none';
     let borderStyle = 'none';
@@ -64,6 +57,8 @@ class VideoNewsLetter extends Component {
         siteLabel = 'Expert Investor';
         baseURL = 'http://www.expertinvestoreurope.com/';
        break;
+      default:
+        // do nothing
     }
         return connectDropTarget(
     <div style={{ ...style, border, borderStyle, overflow, animation }} id="emailInnerContent">
@@ -308,7 +303,7 @@ class VideoNewsLetter extends Component {
                                                 {this.props.showTopLeaderboard !== '0' ? <tr>
                                                   <td data-bgcolor="#ffffff" data-align="center" style={{position: 'relative', background: '#fff'}}>
                                                   <div dangerouslySetInnerHTML={{__html: ( this.props.showTopLeaderboard === '1' ? this.props.topLeaderboard : ( this.props.showTopLeaderboard === '2' ? this.props.topLeaderboardB : ( this.props.showTopLeaderboard === '3' ? this.props.topLeaderboardC : ( this.props.showTopLeaderboard === '4' ? this.props.topLeaderboardD : ( this.props.showTopLeaderboard === '5' ? this.props.topLeaderboardE : ( this.props.showTopLeaderboard === '6' ? this.props.topLeaderboardF : "" ) ) ) ) ) ) }}></div> 
-                                                  <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Top_Leaderboard" onClick={this.props.onRemoveStatic}/>
+                                                  <img alt="Remove" src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Top_Leaderboard" onClick={this.props.onRemoveStatic}/>
                                                   </td>
                                                 </tr> : ''}
 					</table>

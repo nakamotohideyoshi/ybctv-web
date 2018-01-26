@@ -31,7 +31,7 @@ class Header extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#"><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/last-word-logo.png"/></a>
+            <a className="navbar-brand" href="#"><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/last-word-logo.png" alt="Logo"/></a>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right">
