@@ -12,6 +12,7 @@
       color: #ffffff;
       margin-left: 10px;
     }
+    #wpadminbar, #catapult-cookie-bar { display: none !important; }
   </style>
   <script>
   $(document).ready(function () {
