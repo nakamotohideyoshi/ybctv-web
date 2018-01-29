@@ -34,7 +34,7 @@ get_header(); ?>
                           <span class="overlay"></span>
                         </div>
                         <div class="content-des">
-                          <h2 class="title">TOP STORIES...</h2>
+                          <h2 class="title">TOP STORY...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           <p>
                             <?php
@@ -79,8 +79,36 @@ get_header(); ?>
                                 </div>
                                 <div class="content-des">
                                   <p class="name-cat">
-                                    <?php $category = get_the_category(); ?>
-                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                   <?php
+                                  $category = get_the_category();
+                                  $useCatLink = true;
+                                  // If post has a category assigned.
+                                    if ($category) {
+                                        $category_display = '';
+                                        $category_link = '';
+                                        if ( class_exists('WPSEO_Primary_Term') ){
+                                        // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+                                        $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+                                        $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+                                        $term = get_term( $wpseo_primary_term );
+                                        if (is_wp_error($term)) { 
+                                            // Default to first category (not Yoast) if an error is returned
+                                            $category_display = $category[0]->name;
+                                            $category_link = get_category_link( $category[0]->term_id );
+                                        } else { 
+                                            // Yoast Primary category
+                                            $category_display = $term->name;
+                                            $category_link = get_category_link( $term->term_id );
+                                        }
+                                      } 
+                                      else {
+                                        // Default, display the first category in WP's list of assigned categories
+                                        $category_display = $category[0]->name;
+                                        $category_link = get_category_link( $category[0]->term_id );
+                                      }
+                                    }
+                                  ?>
+                                  <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                   </p>
                                   <a href="<?php the_permalink(); ?>">
                                     <h3><?php echo get_the_title(); ?></h3>
@@ -122,8 +150,36 @@ get_header(); ?>
                                 </div>
                                 <div class="content-des">
                                   <p class="name-cat">
-                                    <?php $category = get_the_category(); ?>
-                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                    <?php
+                                  $category = get_the_category();
+                                  $useCatLink = true;
+                                  // If post has a category assigned.
+                                    if ($category) {
+                                        $category_display = '';
+                                        $category_link = '';
+                                        if ( class_exists('WPSEO_Primary_Term') ){
+                                        // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+                                        $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+                                        $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+                                        $term = get_term( $wpseo_primary_term );
+                                        if (is_wp_error($term)) { 
+                                            // Default to first category (not Yoast) if an error is returned
+                                            $category_display = $category[0]->name;
+                                            $category_link = get_category_link( $category[0]->term_id );
+                                        } else { 
+                                            // Yoast Primary category
+                                            $category_display = $term->name;
+                                            $category_link = get_category_link( $term->term_id );
+                                        }
+                                      } 
+                                      else {
+                                        // Default, display the first category in WP's list of assigned categories
+                                        $category_display = $category[0]->name;
+                                        $category_link = get_category_link( $category[0]->term_id );
+                                      }
+                                    }
+                                  ?>
+                                  <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                   </p>
                                   <a href="<?php the_permalink(); ?>">
                                     <h3><?php echo get_the_title(); ?></h3>
@@ -160,8 +216,36 @@ get_header(); ?>
                                 </div>
                                 <div class="content-des">
                                   <p class="name-cat">
-                                    <?php $category = get_the_category(); ?>
-                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                    <?php
+                                  $category = get_the_category();
+                                  $useCatLink = true;
+                                  // If post has a category assigned.
+                                    if ($category) {
+                                        $category_display = '';
+                                        $category_link = '';
+                                        if ( class_exists('WPSEO_Primary_Term') ){
+                                        // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+                                        $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+                                        $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+                                        $term = get_term( $wpseo_primary_term );
+                                        if (is_wp_error($term)) { 
+                                            // Default to first category (not Yoast) if an error is returned
+                                            $category_display = $category[0]->name;
+                                            $category_link = get_category_link( $category[0]->term_id );
+                                        } else { 
+                                            // Yoast Primary category
+                                            $category_display = $term->name;
+                                            $category_link = get_category_link( $term->term_id );
+                                        }
+                                      } 
+                                      else {
+                                        // Default, display the first category in WP's list of assigned categories
+                                        $category_display = $category[0]->name;
+                                        $category_link = get_category_link( $category[0]->term_id );
+                                      }
+                                    }
+                                  ?>
+                                  <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                   </p>
                                   <a href="<?php the_permalink(); ?>">
                                     <h3><?php echo get_the_title(); ?></h3>
@@ -198,8 +282,36 @@ get_header(); ?>
                                 </div>
                                 <div class="content-des">
                                   <p class="name-cat">
-                                    <?php $category = get_the_category(); ?>
-                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                    <?php
+                                  $category = get_the_category();
+                                  $useCatLink = true;
+                                  // If post has a category assigned.
+                                    if ($category) {
+                                        $category_display = '';
+                                        $category_link = '';
+                                        if ( class_exists('WPSEO_Primary_Term') ){
+                                        // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+                                        $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+                                        $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+                                        $term = get_term( $wpseo_primary_term );
+                                        if (is_wp_error($term)) { 
+                                            // Default to first category (not Yoast) if an error is returned
+                                            $category_display = $category[0]->name;
+                                            $category_link = get_category_link( $category[0]->term_id );
+                                        } else { 
+                                            // Yoast Primary category
+                                            $category_display = $term->name;
+                                            $category_link = get_category_link( $term->term_id );
+                                        }
+                                      } 
+                                      else {
+                                        // Default, display the first category in WP's list of assigned categories
+                                        $category_display = $category[0]->name;
+                                        $category_link = get_category_link( $category[0]->term_id );
+                                      }
+                                    }
+                                  ?>
+                                  <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                   </p>
                                   <a href="<?php the_permalink(); ?>">
                                     <h3><?php echo get_the_title(); ?></h3>
@@ -236,8 +348,36 @@ get_header(); ?>
                                 </div>
                                 <div class="content-des">
                                   <p class="name-cat">
-                                    <?php $category = get_the_category(); ?>
-                                    <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                                    <?php
+                                  $category = get_the_category();
+                                  $useCatLink = true;
+                                  // If post has a category assigned.
+                                    if ($category) {
+                                        $category_display = '';
+                                        $category_link = '';
+                                        if ( class_exists('WPSEO_Primary_Term') ){
+                                        // Show the post's 'Primary' category, if this Yoast feature is available, & one is set
+                                        $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
+                                        $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
+                                        $term = get_term( $wpseo_primary_term );
+                                        if (is_wp_error($term)) { 
+                                            // Default to first category (not Yoast) if an error is returned
+                                            $category_display = $category[0]->name;
+                                            $category_link = get_category_link( $category[0]->term_id );
+                                        } else { 
+                                            // Yoast Primary category
+                                            $category_display = $term->name;
+                                            $category_link = get_category_link( $term->term_id );
+                                        }
+                                      } 
+                                      else {
+                                        // Default, display the first category in WP's list of assigned categories
+                                        $category_display = $category[0]->name;
+                                        $category_link = get_category_link( $category[0]->term_id );
+                                      }
+                                    }
+                                  ?>
+                                  <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                   </p>
                                   <a href="<?php the_permalink(); ?>">
                                     <h3><?php echo get_the_title(); ?></h3>
@@ -435,42 +575,85 @@ get_header(); ?>
       <div class="container">
         <div class="content-multimedia">
           <div class="row row-eq-height">
-            <div class="col-lg-3 col-sm-12 col-xs-12">
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
               <div class="multimedia-title">
                 <h2>Multimedia</h2>
-                <div id="bx-pager">
-                  <a data-slide-index="0" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="1" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                  <a data-slide-index="2" href=""><i class="fa fa-circle" aria-hidden="true"></i></a>
-                </div>
-                <a href="/media" class="view-more">View more</a>
+                  <a href="/media" class="view-more">View more</a>
               </div>
             </div>
-            <div class="col-lg-9 col-sm-12 col-xs-12" id="multimediaright">
-              <div id="slider-multimedia" class="flexslider slider-multimedia">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" id="multimediaright">
+              <div id="slider-multimedia" class="slider-multimedia flexslider">
                 <ul class="slides bxslider">
                   <?php
-                    $args = array( 
-                      'posts_per_page' => 3,
-                      'showposts' => 3,
-                      'category' => 10
-                    );
+                    $postsarray = array();
+
+                    for ($i = 1; $i <= 4; $i++) {
+                      $postsarray[$i] = get_option('multimedia_section_article_'.$i, 0);
+                    }
+
+                    $args = array(  'posts_per_page' => 4,
+                            'showposts' => 4,
+                            'post__in' => $postsarray,
+                            'orderby' => 'post__in'
+                          );
+
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
+                      $primary_medium = get_post_meta($post->ID,'lw_primary_medium')[0];
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                   ?>
                   <li>
-                    <?php
-                     $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
-                    ?>
-                    <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?>">
+                    <div class="content-image">
+                      <?php 
+                      if ($primary_medium == "video") {
+                        brightcove_video($lw_brightcove_video_id, false); 
+                      } else {
+                        the_post_thumbnail();
+                      }
+                      ?>
+                      <span class="overlay"></span>
+                    </div>
+                    <div class="content-des">
+                      <p class="name-cat">
+                        <?php $category = get_the_category(); ?>
+                        <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
+                      </p>
+                      <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                      <p><?php echo excerpt(15); ?></p>
+                    </div>
+                  </li>
+                  <?php
+                    endforeach;
+                    wp_reset_postdata();
+                  ?>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+          <div id="carousel-multimedia" class="carousel-multimedia flexslider">
+            <ul class="slides">
+              <?php
+                $args = array(  'posts_per_page' => 4,
+                            'showposts' => 4,
+                            'post__in' => $postsarray,
+                            'orderby' => 'post__in'
+                          );
+                $myposts = get_posts( $args );
+                foreach ( $myposts as $post ) : setup_postdata( $post );
+              ?>
+              <li>
+                <?php
+                 $isVideo = get_post_meta($post->ID,'lw_primary_medium')[0];
+                ?>
+                <div class="content-image <?php echo ($isVideo == 'video' ? 'has-video': '');?> col-md-3">
                   <?php
 
                     if ( has_post_thumbnail() ) {
                       if($isVideo == 'video'){
                         echo '<a href="'. get_the_permalink() .'">';
                       }
-                      the_post_thumbnail();
+                      the_post_thumbnail('homepage-latest-article');
                       echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
                       if($isVideo == 'video'){
                         echo '</a>';
@@ -483,46 +666,7 @@ get_header(); ?>
                   ?>
                   <span class="overlay"></span>
                 </div>
-                    <div class="content-des">
-                      <p class="name-cat">
-                        <?php $category = get_the_category(); ?>
-                        <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                      </p>
-                      <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
-                      <p><?php echo the_excerpt(); ?></p>
-                    </div>
-                  </li>
-                  <?php
-                    endforeach;
-                    wp_reset_postdata();
-                  ?>
-                </ul>
-
-              </div>
-            </div>
-          </div>
-          <div id="carousel-multimedia" class="flexslider carousel-multimedia">
-            <ul class="slides">
-              <?php
-                $args = array( 'posts_per_page' => 3,'showposts' => 3, 'category' => 10 );
-                $myposts = get_posts( $args );
-                foreach ( $myposts as $post ) : setup_postdata( $post );
-              ?>
-              <li>
-                <div class="content-image">
-                  <?php
-                    if ( has_post_thumbnail() ) {
-                      the_post_thumbnail();
-                    }
-                    else {
-                  ?>
-                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
-                  <?php
-                    }
-                  ?>
-                  <span class="overlay"></span>
-                </div>
-                <div class="content-des">
+                <div class="content-des col-md-9">
                   <p class="name-cat">
                     <?php $category = get_the_category(); ?>
                     <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>

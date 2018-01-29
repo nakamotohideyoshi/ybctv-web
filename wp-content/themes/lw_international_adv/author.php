@@ -28,7 +28,19 @@ get_header(); ?>
             <div class="author-avatar clearfix">
 
               <?php echo get_avatar( get_the_author_meta('user_email'), $size = '80');  ?>
-              <h2 class="author-title"><?php echo get_the_author(); ?></h2>
+              <h2 class="author-title">
+              <?php 
+              $firstname = get_the_author_meta('user_firstname');
+              $lastname = get_the_author_meta('user_lastname');
+              $displayname = get_the_author_meta('display_name');
+
+              if ($firstname == '' || $lastname == '') {
+                $authorname = $displayname;
+              } else {
+                $authorname = $firstname . ' ' . $lastname;
+              }      
+              echo $authorname; 
+              ?></h2>
               <p class="author-job-title"><?php echo get_the_author_meta('lw_title'); ?></p>
             </div>
           <div class="author-description">

@@ -3,20 +3,19 @@
   <?php lastWordAdUnit('rhs-hpu-1'); 
 
           if (!is_page('best-practice')) {
-            $sponsored_post_1_pre = get_option('sponsored_box_article_1', 0);
-            $sponsored_post_2_pre = get_option('sponsored_box_article_2', 0);
-            $sponsored_post_3_pre = get_option('sponsored_box_article_3', 0);
-            $sponsored_post_4_pre = get_option('sponsored_box_article_4', 0);
-            $sponsored_post_5_pre = get_option('sponsored_box_article_5', 0);
+            $sponsored_post_1_pre = get_option('sponsored_box_article_2', 0);
+            $sponsored_post_2_pre = get_option('sponsored_box_article_3', 0);
+            $sponsored_post_3_pre = get_option('sponsored_box_article_4', 0);
+            $sponsored_post_4_pre = get_option('sponsored_box_article_5', 0);
+            $sponsored_post_5_pre = get_option('sponsored_box_article_1', 0);
           } else {
-            $sponsored_post_1_pre = get_option('best_practices_box_article_1', 0);
-            $sponsored_post_2_pre = get_option('best_practices_box_article_2', 0);
-            $sponsored_post_3_pre = get_option('best_practices_box_article_3', 0);
-            $sponsored_post_4_pre = get_option('best_practices_box_article_4', 0);
-            $sponsored_post_5_pre = get_option('best_practices_box_article_5', 0);
+            $sponsored_post_1_pre = get_option('best_practices_box_article_2', 0);
+            $sponsored_post_2_pre = get_option('best_practices_box_article_3', 0);
+            $sponsored_post_3_pre = get_option('best_practices_box_article_4', 0);
+            $sponsored_post_4_pre = get_option('best_practices_box_article_5', 0);
+            $sponsored_post_5_pre = get_option('best_practices_box_article_1', 0);
           }
           
-
           $sponsored_posts_pre = Array(
             $sponsored_post_1_pre, $sponsored_post_2_pre, $sponsored_post_3_pre, $sponsored_post_4_pre, $sponsored_post_5_pre
           );
@@ -34,11 +33,16 @@
     <div class="flexslider-spon">
       <ul class="slides">
         <?php
+        $args = array( 
+          'posts_per_page' => 5,
+          'ignore_sticky_posts' => 1,
+          'post__in' => $sponsored_posts_pre,
+          'orderby' => 'post__in',
+          'order' => 'ASC'
+        );
 
-        foreach ($sponsored_posts as $spon_id) {
-        $args = array( 'posts_per_page' => 1,'showposts' => 1, 'p' => $spon_id );
-        $myposts = get_posts( $args );
-        foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+        $myposts = new WP_Query( $args );
+         if($myposts->have_posts()): while ( $myposts->have_posts() ) : $myposts->the_post(); ?>
           <li>
             <div class="loop-list">
               <div class="content-image">
@@ -64,9 +68,9 @@
             </div>
           </li>
         <?php
-          endforeach;
+          endwhile; 
+          endif;
           wp_reset_postdata();
-        }
         ?>
       </ul>
     </div>

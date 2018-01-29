@@ -100,7 +100,7 @@
         }, 700);
     });
 
-    $("#togglemenu").click(function() {
+    $("#togglemenu").on('click', function() {
         $('.mobnavigation').slideToggle();
     });
 

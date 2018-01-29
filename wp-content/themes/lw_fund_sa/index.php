@@ -35,7 +35,7 @@ get_header(); ?>
                           <span class="overlay"></span>
                         </div>
                         <div class="content-des">
-                          <h2 class="title">TOP STORIES...</h2>
+                          <h2 class="title">TOP STORY...</h2>
                           <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
                           <p>
                             <?php

@@ -1187,6 +1187,7 @@ h2.title{
 .slider-multimedia ul li .content-image {
   width: 65%;
   max-height: 367px;
+  overflow: hidden;
 }
 
 .slider-multimedia ul li .content-des {
@@ -3551,4 +3552,8 @@ display:block;
 
 .thump-single .text-content {
   line-height: 20px;
+}
+
+.content-single .text-content ul {
+  padding-left: 35px;
 }

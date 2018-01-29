@@ -99,11 +99,11 @@
               ?>
             </div>
           </div>
-          <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+          <div class="col-lg-10 col-md-10 col-sm-8 col-xs-8">
             <div class="header-content">
               <div class="header-top clearfix">
-                <div class="btn-sp">
-                  <button id="togglemenu"><span></span></button>
+                <div class="btn-sp" id="togglemenu">
+                  <button id="togglemenu"><span id="togglemenu"></span></button>
                 </div>
                 <?php lastWordAdUnit('top-search'); ?>
                 <div class="user-login">

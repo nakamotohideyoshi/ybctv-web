@@ -3532,3 +3532,7 @@ article.comment {
 .thump-single .text-content {
   line-height: 20px;
 }  
+
+.content-single .text-content ul {
+  padding-left: 35px;
+}
