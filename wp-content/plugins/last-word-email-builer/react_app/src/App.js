@@ -18,7 +18,7 @@ class App extends Component {
     var h = window.location.host;
     var defaultSite =   (h === 'ia-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'international-adviser.com') ? 'wp_3_' :
                           ((h === 'fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'fundselectorasia.com') ? 'wp_4_' :
-                            ((h === 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_2_' ));
+                            ((h === 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_4_' ));
 
     return defaultSite;
   };
@@ -133,6 +133,9 @@ class App extends Component {
     staticImage2D: '',
     
     assetClass: '',
+    assetClassB: '',
+    assetClassC: '',
+
     articleRatedPage: 1,
     selectedTab: 'Latest',
     quotable:''
@@ -366,6 +369,13 @@ class App extends Component {
     case 'Asset_Class':
       this.setState(prevState => ({ hasAssetClass: val === true ? "1" : "0"}));
       break;
+    case 'Asset_Class_b':
+      this.setState(prevState => ({ hasAssetClass: val === true ? "2" : "0"}));
+      break;
+    case 'Asset_Class_c':
+      this.setState(prevState => ({ hasAssetClass: val === true ? "3" : "0"}));
+      break;
+    
     case 'Quotable':
       this.setState(prevState => ({ hasQuotable: val === true ? "1" : "0"}));
       break;
@@ -551,6 +561,13 @@ class App extends Component {
           case 'Asset_Class':
            this.setState(prevState => ({ assetClass: leaderBoard.Content}));
            break;
+          case 'Asset_Class_b':
+           this.setState(prevState => ({ assetClassB: leaderBoard.Content}));
+           break;
+          case 'Asset_Class_c':
+           this.setState(prevState => ({ assetClassC: leaderBoard.Content}));
+           break;
+
           case 'Quotable':
            this.setState(prevState => ({ quotable: leaderBoard.Content}));
            break;
@@ -693,6 +710,12 @@ class App extends Component {
           case 'Asset_Class':
             this.setState(prevState => ({ assetClass: leaderBoard.Content}));
             break;
+          case 'Asset_Class_b':
+            this.setState(prevState => ({ assetClassB: leaderBoard.Content}));
+            break;
+          case 'Asset_Class_c':
+            this.setState(prevState => ({ assetClassC: leaderBoard.Content}));
+            break;
           
           case 'Quotable':
             this.setState(prevState => ({ quotable: leaderBoard.Content}));
@@ -730,7 +753,7 @@ class App extends Component {
     else if(props.name === 'Static_Image_2' || props.name === 'Static_Image_2b' || props.name === 'Static_Image_2c' || props.name === 'Static_Image_2d'){
      this.setState(prevState => ({staticHighlight: 'staticImage2'}));
     }
-    else if(props.name === 'Asset_Class'){
+    else if(props.name === 'Asset_Class' || props.name === 'Asset_Class_b' || props.name === 'Asset_Class_c'){
      this.setState(prevState => ({staticHighlight: 'assetClass'}));
     }
     else if(props.name === 'Quotable'){
@@ -1634,6 +1657,9 @@ class App extends Component {
                                                    staticImage2D={this.state.staticImage2D}
                                                    
                                                    assetClass={this.state.assetClass}
+                                                   assetClassB={this.state.assetClassB}
+                                                   assetClassC={this.state.assetClassC}
+
                                                    quotable={this.state.quotable}
                                                    newsletterSubscribe={this.state.newsletterSubscribe}
                                                    highlight={this.state.highlight}

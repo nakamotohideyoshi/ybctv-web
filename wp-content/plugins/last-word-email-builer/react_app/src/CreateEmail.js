@@ -135,7 +135,7 @@ class CreateEmail extends Component {
       hasNewsletterSubscribe: this.props.hasNewsletterSubscribe === null || this.props.hasNewsletterSubscribe === "0" ? "0" : "1",
       hasStaticImage1: this.props.hasStaticImage1 === null || this.props.hasStaticImage1 === "0" ? "0" : this.props.hasStaticImage1,
       hasStaticImage2: this.props.hasStaticImage2 === null || this.props.hasStaticImage2 === "0" ? "0" : this.props.hasStaticImage2,
-      hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : "1",
+      hasAssetClass: this.props.hasAssetClass === null || this.props.hasAssetClass === "0" ? "0" : this.props.hasAssetClass,
       hasQuotable: this.props.hasQuotable === null || this.props.hasQuotable === "0" ? "0" : "1",
       editor_id: typeof window.EmailBuilderEditor !== 'undefined' && typeof window.EmailBuilderEditor.Id !== 'undefined' ? window.EmailBuilderEditor.Id : 0,
       editor_display_name: typeof window.EmailBuilderEditor !== 'undefined' && typeof window.EmailBuilderEditor.DisplayName !== 'undefined' ? window.EmailBuilderEditor.DisplayName : '',
@@ -778,6 +778,9 @@ class CreateEmail extends Component {
             footerLeaderboardF={this.props.footerLeaderboardF} 
             
             assetClass={this.props.assetClass} 
+            assetClassB={this.props.assetClassB} 
+            assetClassC={this.props.assetClassC}
+
             quotable={this.props.quotable} 
             
             staticImage1={this.props.staticImage1} 
@@ -970,7 +973,10 @@ class CreateEmail extends Component {
             { this.props.site === 'wp_4_' ? <DragStatic id="button35" name="Static_Image_2d" text="Static Image 2D" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Static_Image_2d')} isDisabled={this.props.hasStaticImage2 === "0" ? true : false}/> : null }
             
             <DragStatic id="button36" name="Asset_Class" text="Asset Class" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Asset_Class')} isDisabled={this.props.hasAssetClass === "0" ? true : false}/>
-            <DragStatic id="button37" name="Quotable" text="Quotable" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Quotable')} isDisabled={this.props.hasQuotable === "0" ? true : false}/>
+            <DragStatic id="button37" name="Asset_Class_b" text="Asset Class B" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Asset_Class_b')} isDisabled={this.props.hasAssetClass === "0" ? true : false}/>
+            <DragStatic id="button38" name="Asset_Class_c" text="Asset Class C" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Asset_Class_c')} isDisabled={this.props.hasAssetClass === "0" ? true : false}/>
+
+            <DragStatic id="button39" name="Quotable" text="Quotable" onShowPreviewBox={this.onShowPreviewBox} onHidePreviewBox={this.onHidePreviewBox} onStaticDragged={this.props.onStaticDragged} onCancelStaticDrag={this.props.onCancelStaticDrag} onStaticDropped={this.onStaticDropped} onClick={() => this.onSetTemplate('Quotable')} isDisabled={this.props.hasQuotable === "0" ? true : false}/>
         </div>
       </div>
     </div>

@@ -410,9 +410,9 @@ render() {
      <tbody>
 
       {this.props.staticHighlight === 'assetClass' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
-      { this.props.assetClass.length > 0 && this.props.showAssetClass === '1' ? <tr>
+      { this.props.showAssetClass !== '0' ? <tr>
         <td style={{position: 'relative', background: '#fff'}}>
-         <div dangerouslySetInnerHTML={{__html:this.props.assetClass}}></div>
+         <div dangerouslySetInnerHTML={{__html: this.props.showAssetClass === '1' ? this.props.assetClass : ( this.props.showAssetClass === '2' ? this.props.assetClassB : ( this.props.showAssetClass === '3' ? this.props.assetClassC : "" ) ) }}></div>
         <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{cursor:'pointer',position: 'absolute',right:'10px',top:'10px',width:'10px'}} id="Asset_Class" onClick={this.props.onRemoveStatic}/>
         </td>
       </tr> : ''}
