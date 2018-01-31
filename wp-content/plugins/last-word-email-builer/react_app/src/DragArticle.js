@@ -60,13 +60,12 @@ const boxSource = {
     const { name, desc, image, id, isDisabled} = this.props;
     const opacity = isDragging ? 0.4 : 1;
 
-    let isBadImage = true;
-    if (  typeof this.props !== 'undefined' && 
-          typeof this.props.article !== 'undefined' && 
+    let isBadImage = false;
+    if (  typeof this.props.article.post_type !== 'undefined' &&
           typeof this.props.article.featured_image !== 'undefined'  &&
-          this.props.article.featured_image !== null
+          this.props.article.post_type === 'post'
     ) {
-      isBadImage = this.props.article.featured_image.indexOf('-219x122') === -1;
+      isBadImage = this.props.article.featured_image === null || this.props.article.featured_image.indexOf('-219x122') === -1;
     }
 
     return connectDragSource(

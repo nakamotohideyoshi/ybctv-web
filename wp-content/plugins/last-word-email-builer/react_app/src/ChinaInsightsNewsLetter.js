@@ -304,7 +304,7 @@ render() {
                                         </tr>
                                         </table>
                                 <table data-width="748" cellSpacing="0" cellPadding="0" data-border="0" data-align="center" className="deviceWidth" style={{background:'#fff', width:'750px',borderLeft:'1px solid #CCCCCC',borderRight:'1px solid #CCCCCC',margin:'0px auto'}}>
-                                {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+                                {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                 {this.props.showTopLeaderboard !== '0' ? <tr>
                                   <td style={{position: 'relative', background: '#fff'}}>
                                   <div dangerouslySetInnerHTML={{__html: ( this.props.showTopLeaderboard === '1' ? this.props.topLeaderboard : ( this.props.showTopLeaderboard === '2' ? this.props.topLeaderboardB : ( this.props.showTopLeaderboard === '3' ? this.props.topLeaderboardC : ( this.props.showTopLeaderboard === '4' ? this.props.topLeaderboardD : ( this.props.showTopLeaderboard === '5' ? this.props.topLeaderboardE : ( this.props.showTopLeaderboard === '6' ? this.props.topLeaderboardF : "" ) ) ) ) ) ) }}></div> 
@@ -332,7 +332,7 @@ render() {
                                                                 <td style={{padding:'13px 0px 10px 0px'}} data-align="center">
                                                                         <table className="subscribe" style={{width: '100%'}} data-width="100%">
 <tbody>
-{this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+{this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.showStaticImage1 !== '0' ? <tr>
   <td style={{position: 'relative', background: '#fff'}}>
    <div dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage1 === '1' ? this.props.staticImage1 : ( this.props.showStaticImage1 === '2' ? this.props.staticImage1B : ( this.props.showStaticImage1 === '3' ? this.props.staticImage1C : ( this.props.showStaticImage1 === '4' ? this.props.staticImage1D : '' ) ) ) ) }}></div> 
@@ -364,7 +364,7 @@ render() {
                                                                                         <td style={{padding:'13px 10px 10px 10px'}}>
                                                                                                 <table className="subscribe" style={{width: '728px',textAlign:'center'}} data-width="728" data-align="center">
                                                                                                 <tbody>
-                                                 {this.props.staticHighlight === 'staticImage2' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+                                                 {this.props.staticHighlight === 'staticImage2' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                  {this.props.showStaticImage2 !== '0' ? <tr>
                                                   <td style={{position: 'relative', background: '#fff'}}>
                                                                                                 <div dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage2 === '1' ? this.props.staticImage2 : ( this.props.showStaticImage2 === '2' ? this.props.staticImage2B : ( this.props.showStaticImage2 === '3' ? this.props.staticImage2C : ( this.props.showStaticImage2 === '4' ? this.props.staticImage2D : '' ) ) ) ) }}></div> 
@@ -396,7 +396,7 @@ render() {
                                                                                                         </table>
                                                                                                 </td>
                                                                                         </tr>
-                                                                                        {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+                                                                                        {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                                                         {this.props.showFooterLeaderboard !== '0' ? <tr>
                                                                                           <td style={{position: 'relative', background: '#fff'}}>
                                                                                            <div dangerouslySetInnerHTML={{__html: ( this.props.showFooterLeaderboard === '1' ? this.props.footerLeaderboard : ( this.props.showFooterLeaderboard === '2' ? this.props.footerLeaderboardB : ( this.props.showFooterLeaderboard === '3' ? this.props.footerLeaderboardC : ( this.props.showFooterLeaderboard === '4' ? this.props.footerLeaderboardD : ( this.props.showFooterLeaderboard === '5' ? this.props.footerLeaderboardE : ( this.props.showFooterLeaderboard === '6' ? this.props.footerLeaderboardF : "" ) ) ) ) ) ) }}></div> 

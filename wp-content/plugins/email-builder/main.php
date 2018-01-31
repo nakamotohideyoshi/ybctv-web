@@ -147,7 +147,10 @@ class EmailBuilder {
 									$sourceCode = str_replace( '{{' . $key . '}}', $value, $sourceCode );
 								}
 
-								if ( $staticEntity->Type == 'Asset_Class' && isset( $data['boxes_count'] ) && is_numeric( $data['boxes_count'] ) )
+								if ( 	($staticEntity->Type == 'Asset_Class' || $staticEntity->Type == 'Asset_Class_b' || $staticEntity->Type == 'Asset_Class_c') && 
+										isset( $data['boxes_count'] ) && 
+										is_numeric( $data['boxes_count'] ) 
+									)
 								{
 									if ( $data['boxes_count'] < 4 )									
 										$sourceCode = preg_replace("/<!-- ROW 2 -->.*<!-- END ROW 2 -->/ms", "", $sourceCode);

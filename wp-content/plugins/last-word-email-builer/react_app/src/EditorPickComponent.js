@@ -36,7 +36,7 @@
         let color = this.props.color;
 
             return connectDropTarget(
-        <table data-width="100%" style={this.props.highlight === 'article' ? {animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
+        <table data-width="100%" style={this.props.highlight === 'article' ? {animation : 'twinkle .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
                               <tbody><tr>
                                       <td style={{color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding:'20px 0px 3px 0px',fontFamily:'Georgia'}}>
                                                <font>Editor's pick</font>

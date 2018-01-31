@@ -313,7 +313,7 @@ render() {
                                          {this.props.site === 'wp_5_' ? <a href="http://www.expertinvestoreurope.com/"><img src="http://assets.kreatio.net/expert_investor_europe/images/newsletter_logo.png" style={{maxWidth: '100%'}} alt="Expert Investor"/></a> :''}
                                         </td>
                                                 </tr>
-                                                {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+                                                {this.props.staticHighlight === 'top' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                 {this.props.showTopLeaderboard !== '0' ? <tr>
                                                   <td style={{position: 'relative', background: '#fff'}}>
                                                   <div dangerouslySetInnerHTML={{__html: ( this.props.showTopLeaderboard === '1' ? this.props.topLeaderboard : ( this.props.showTopLeaderboard === '2' ? this.props.topLeaderboardB : ( this.props.showTopLeaderboard === '3' ? this.props.topLeaderboardC : ( this.props.showTopLeaderboard === '4' ? this.props.topLeaderboardD : ( this.props.showTopLeaderboard === '5' ? this.props.topLeaderboardE : ( this.props.showTopLeaderboard === '6' ? this.props.topLeaderboardF : "" ) ) ) ) ) ) }}></div> 
@@ -336,7 +336,7 @@ render() {
         </td>
 </tr>
 <tr>
-{this.props.staticHighlight === 'sponsoredContent2' ? <td><div><br/></div><div style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><br/></div><div><br/></div></td> : ''}
+{this.props.staticHighlight === 'sponsoredContent2' ? <td><div><br/></div><div style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><br/></div><div><br/></div></td> : ''}
 {this.props.showSponsoredContent2 !== '0' ? <td id="cell-spc2" style={{background: '#dadada', position: 'relative', left:'10px', bottom:'4px', textAlign: 'left' }}>
         <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent2 === '1' ? this.props.sponsoredContent2 : ( this.props.showSponsoredContent2 === '2' ? this.props.sponsoredContent2B : ( this.props.showSponsoredContent2 === '3' ? this.props.sponsoredContent2C : ( this.props.showSponsoredContent2 === '4' ? this.props.sponsoredContent2D : ( this.props.showSponsoredContent2 === '5' ? this.props.sponsoredContent2E : ( this.props.showSponsoredContent2 === '6' ? this.props.sponsoredContent2F : "" ) ) ) ) ) ) }}></div> 
         <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content_2" onClick={this.props.onRemoveStatic}/>
@@ -352,7 +352,7 @@ render() {
                                                                 <td style={{padding:'13px 0px 10px 0px'}}>
                                                                         <table className="subscribe" style={{width: '100%'}}>
 <tbody>
-{this.props.staticHighlight === 'newsletter' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+{this.props.staticHighlight === 'newsletter' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.newsletterSubscribe.length > 0 && this.props.showNewsletterSubscribe === '1' ? <tr>
   <td style={{position: 'relative', background: '#fff'}}>
    <div dangerouslySetInnerHTML={{__html:this.props.newsletterSubscribe}}></div>
@@ -367,7 +367,7 @@ render() {
                 <td>
     <MostViewedComponent selectedMostViewedArticles={this.props.selectedMostViewedArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
         </td></tr>
-        {this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+        {this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 
         { this.props.showStaticImage1 !== '0' ? <tr>
           <td style={{position: 'relative', background: '#fff',paddingTop:'20px'}}>
@@ -409,7 +409,7 @@ render() {
     <table className="device_linked" style={{border: '1px solid #cccccc;',align:'center',border:'0',width:'728px',margin:'0px auto'}} data-align="center" data-width="728">
      <tbody>
 
-      {this.props.staticHighlight === 'assetClass' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+      {this.props.staticHighlight === 'assetClass' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
       { this.props.showAssetClass !== '0' ? <tr>
         <td style={{position: 'relative', background: '#fff'}}>
          <div dangerouslySetInnerHTML={{__html: this.props.showAssetClass === '1' ? this.props.assetClass : ( this.props.showAssetClass === '2' ? this.props.assetClassB : ( this.props.showAssetClass === '3' ? this.props.assetClassC : "" ) ) }}></div>
@@ -424,7 +424,7 @@ render() {
   <td><br/></td>
 </tr>
 <tr>
-{this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
+{this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
 {this.props.showSponsoredContent !== '0' ? <td style={{position: 'relative', left:'0px', bottom:'0px', paddingLeft: '10px'}}>
         <table width="100%" cellPadding="0" cellSpacing="0">
           <tr>
@@ -444,7 +444,7 @@ render() {
 <td style={{borderBottom: '1px solid #E5EAEE', padding: '15px 0px 15px 0px'}}>
 <table style={{border: '1px solid #cccccc',textAlign:'left', border:'0', width:'320px', float:'left'}} data-align="left" data-width="320">
 <tbody>
-  {this.props.staticHighlight === 'staticImage2' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+  {this.props.staticHighlight === 'staticImage2' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
   { this.props.showStaticImage2 !== '0' ? <tr>
     <td style={{position: 'relative', background: '#fff',padding:'7px 7px 7px 7px'}}>
      <div className="width320" style={{overflow:'hidden'}} dangerouslySetInnerHTML={{__html: ( this.props.showStaticImage2 === '1' ? this.props.staticImage2 : ( this.props.showStaticImage2 === '2' ? this.props.staticImage2B : ( this.props.showStaticImage2 === '3' ? this.props.staticImage2C : ( this.props.showStaticImage2 === '4' ? this.props.staticImage2D : '' ) ) ) ) }}></div>
@@ -456,7 +456,7 @@ render() {
 </table>
 <table className="fund_linked" style={{margin: '0px auto', textAlign: 'center', border: '0px', width: '321px',float:'right',position:'relative'}} data-width="321" data-align="right">
 <tbody>
-{this.props.staticHighlight === 'quotable' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+{this.props.staticHighlight === 'quotable' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.quotable.length > 0 && this.props.showQuotable === '1' ? <tr>
   <td style={{position: 'relative', background: '#fff'}}>
    <div dangerouslySetInnerHTML={{__html:this.props.quotable}}></div>
@@ -490,7 +490,7 @@ render() {
                                                                                                         </table>
                                                                                                 </td>
                                                                                         </tr>
-                                                                                        {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'blink .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
+                                                                                        {this.props.staticHighlight === 'footer' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
                                                                                         {this.props.showFooterLeaderboard !== '0' ? <tr>
                                                                                           <td style={{position: 'relative', background: '#fff'}}>
                                                                                            <div dangerouslySetInnerHTML={{__html: ( this.props.showFooterLeaderboard === '1' ? this.props.footerLeaderboard : ( this.props.showFooterLeaderboard === '2' ? this.props.footerLeaderboardB : ( this.props.showFooterLeaderboard === '3' ? this.props.footerLeaderboardC : ( this.props.showFooterLeaderboard === '4' ? this.props.footerLeaderboardD : ( this.props.showFooterLeaderboard === '5' ? this.props.footerLeaderboardE : ( this.props.showFooterLeaderboard === '6' ? this.props.footerLeaderboardF : "" ) ) ) ) ) ) }}></div> 

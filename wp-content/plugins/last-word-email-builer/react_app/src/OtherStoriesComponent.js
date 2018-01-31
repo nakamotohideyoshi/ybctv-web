@@ -41,7 +41,7 @@ render() {
 
       return connectDropTarget(
   <div>
-  <table  data-width="728" data-align="center" className="device_innerblock" style={this.props.highlight === 'story' ? { animation : 'blink .5s step-end infinite alternate', border: '2px solid', width: '728px',textAlign: 'center'} : {width: '728px',textAlign: 'center'}}>
+  <table  data-width="728" data-align="center" className="device_innerblock" style={this.props.highlight === 'story' ? { animation : 'twinkle .5s step-end infinite alternate', border: '2px solid', width: '728px',textAlign: 'center'} : {width: '728px',textAlign: 'center'}}>
           <tr>
                   <td>
                   {this.props.site === 'wp_5_'  ?

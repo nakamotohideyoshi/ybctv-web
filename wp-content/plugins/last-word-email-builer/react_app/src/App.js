@@ -18,7 +18,7 @@ class App extends Component {
     var h = window.location.host;
     var defaultSite =   (h === 'ia-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'international-adviser.com') ? 'wp_3_' :
                           ((h === 'fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'fundselectorasia.com') ? 'wp_4_' :
-                            ((h === 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_4_' ));
+                            ((h === 'ei-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'expertinvestoreurope.com') ? 'wp_5_' : 'wp_2_' ));
 
     return defaultSite;
   };
@@ -27,6 +27,8 @@ class App extends Component {
     page: 'Dashboard',
     showPreview: false,
     previewBoxContent: '',
+    previewBoxTimestamp: 0,
+    previewBoxId: '',
     param_email_id: 0,
     emails: [],
     categories:[],
@@ -1468,29 +1470,47 @@ class App extends Component {
   }
 
   onShowPreviewBox = (name, template) => {
-    this.setState(prevState => ({showPreview: true, previewBoxContent: template === '' ? 'Please select the template' : 'Loading... Please wait...' }));
+    var self = this;
+    var timestamp = new Date().getTime();
+    var id = name + '_' + template + '_' + timestamp;
 
-    if ( template !== '' ) {
-        fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ this.state.site +'&cache='+ Guid.raw(), {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          }
-        }).then(result => {
-          result.json().then(val => {
-            if(val !== null) {
-              _.each(val, leaderBoard => {
-                this.setState(prevState => ({previewBoxContent: leaderBoard.Content}));
+    self.setState(prevState => ({
+      previewBoxId: id,
+      previewBoxTimestamp: timestamp
+    }));
+
+    setTimeout(function(){
+      if ( timestamp == self.state.previewBoxTimestamp && id == self.state.previewBoxId ) {
+        self.setState(prevState => ({
+          showPreview: true, 
+          previewBoxContent: template === '' ? 'Please select the template' : 'Loading... Please wait...'
+        }));
+
+        if ( template !== '' ) {
+            console.log('call');
+            
+            fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ self.state.site +'&cache='+ Guid.raw(), {
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+              }
+            }).then(result => {
+              result.json().then(val => {
+                if(val !== null) {
+                  _.each(val, leaderBoard => {
+                    self.setState(prevState => ({previewBoxContent: leaderBoard.Content}));
+                });
+              }
             });
-          }
-        });
-      }).catch(err => console.log(err));
-    }
+          }).catch(err => console.log(err));
+        }
+      }
+    }, 2000);
   }
   
   onHidePreviewBox = () => {
-    this.setState(prevState => ({showPreview: false, previewBoxContent: ''}));
+    this.setState(prevState => ({showPreview: false, previewBoxContent: '', previewBoxId: '', previewBoxTimestamp: 0}));
   }
 
   render() {

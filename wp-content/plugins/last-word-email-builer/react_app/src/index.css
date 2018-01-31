@@ -6045,5 +6045,5 @@ button.close {
                         }
 
 
-                        @-webkit-keyframes blink { 50% { border-color: #ff0000; }  }
+                        @-webkit-keyframes twinkle { 50% { border-color: #ff0000; }  }
 
