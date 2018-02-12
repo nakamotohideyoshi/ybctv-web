@@ -144,6 +144,11 @@ class EmailBuilder {
 										$value = '<div style="font-size: 14px; color: ' . $colors[ $static[$staticKey]->Site ] . '">' . $value . '</div>';
 									}
 
+									if ( $key == 'excerpt' && strpos($g['type'], 'Sponsored_Content_2') !== false )
+									{
+										$value = str_replace( '<a ', '<a style="font-weight: normal; text-decoration: none; color: ' . $colors[ $static[$staticKey]->Site ] . '" ', $value );
+									}
+
 									$sourceCode = str_replace( '{{' . $key . '}}', $value, $sourceCode );
 								}
 

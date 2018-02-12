@@ -175,7 +175,12 @@ include('email-builder-editor-tpl-js.php');
 
 <h3 style="text-transform: uppercase; line-height: 2;">
 	Template: <?php echo str_replace('_', ' ', $fragment_site); ?><br/>
-	Fragment Type: <?php echo str_replace('_', ' ', $fragment_type); ?>
+	<?php if ( in_array( $fragment_type, array( 'Sponsored_Content', 'Top_Leaderboard', 'Footer_Leaderboard', 'Asset_Class' ) ) ): ?>
+		<?php $addition = ' A'; ?>
+	<?php elseif ( in_array( $fragment_type, array( 'Sponsored_Content_2', 'Static_Image_1', 'Static_Image_2' ) ) ): ?>
+		<?php $addition = 'A'; ?>
+	<?php endif; ?>
+	Fragment Type: <?php echo str_replace('_', ' ', $fragment_type) . $addition; ?>
 </h3>
 
 <form action="" class="form" method="post">

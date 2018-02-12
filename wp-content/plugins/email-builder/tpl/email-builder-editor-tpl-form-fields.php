@@ -9,7 +9,10 @@
 			<?php if (  $type == 'image'  ): ?>
 				<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
 				<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-					<label><?php echo $title; ?></label>
+					<label>
+						<?php echo $title; ?>
+						<?php echo strpos($fragment_type, 'Sponsored_Content') !== false && strpos($fragment_type, 'Sponsored_Content_2') === false ? '<br/><em>(*recommended size: 120x60 pixels)</em>' : ''; ?>		
+					</label>
 					
 					<button type="button" class="button add-image-button">Add Image</button>
 					<button type="button" class="button update-image-button">Update Image</button>
@@ -20,7 +23,10 @@
 				</div>
 			<?php elseif ( $type == 'text' ): ?>
 				<div class="formfield">
-					<label><?php echo $title; ?></label>
+					<label>
+						<?php echo $title; ?>
+						<?php echo strpos(strtolower($title), 'link') !== false ? '<br/><em>(*http:// or https:// suffix is required)</em>' : ''; ?>
+					</label>
 					<input type="text" class="input" name="<?php echo $dataKey; ?>" value="<?php echo isset($data[$key]) ? $data[$key]: ''; ?>" />	
 				</div>
 			<?php elseif ( $type == 'editor' ): ?>

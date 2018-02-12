@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
-    h1 {
+    .navbar h1 {
       color: #ffffff;
       margin-left: 10px;
     }
@@ -17,10 +17,11 @@
   <script>
   $(document).ready(function () {
       $.ajax({
-        url:'https://pa.cms-lastwordmedia.com/wp-json/email-builder/v1/email?emailId='+ getParameterByName('emailId') + '&prefix='+ getParameterByName('prefix') + '&cache=' + (new Date().getTime()),
+        url:'/wp-json/email-builder/v1/email?emailId='+ getParameterByName('emailId') + '&prefix='+ getParameterByName('prefix') + '&cache=' + (new Date().getTime()),
         complete: function (response) {
         console.dir(response);
-            $('#emails').html(response.responseJSON.Content);
+            $('#emails').html(response.responseJSON.Content)
+                        .find('a').attr('target', '_blank');
         },
         error: function () {
             $('#emails').html('There was an error!');
