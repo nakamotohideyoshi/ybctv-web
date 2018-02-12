@@ -1,3 +1,9 @@
+/*
+
+This class handles the screen where the editors are able to create or update email templates. 
+
+*/
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { DragDropContext } from 'react-dnd';
@@ -254,7 +260,7 @@ class CreateEmail extends Component {
   }
 
   onChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.setState({
       template: value,
     });
@@ -262,19 +268,19 @@ class CreateEmail extends Component {
   }
 
   onCategoryChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     console.log(value);
     this.props.onCategoryChange(value);
   }
 
   onOtherStoryChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.setState(prevState => ({
       otherStory: value}));
   }
 
   onTypeChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.props.onTypeChange(value);
   }
 
@@ -875,7 +881,7 @@ class CreateEmail extends Component {
              })}
               <ul className="pager">
                 <li>{this.props.articlePage > 1 ? <a href="#" onClick={this.props.onPrevArticlePage}>Previous</a> : ''}</li>
-                <li>{this.props.articlePage < Math.ceil(this.props.totalArticles / 10) ? <a href="#" onClick={this.props.onNextArticlePage}>Next</a> : ''}</li>
+                <li>{this.props.articlePage < Math.ceil(this.props.totalArticles / 10) ? <button onClick={this.props.onNextArticlePage}>Next</button> : ''}</li>
               </ul>
             </div>}
             { this.props.isLoadingMostRated === true ? <div className="tab-pane fade" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
@@ -885,7 +891,7 @@ class CreateEmail extends Component {
             })}
             <ul className="pager">
               <li>{this.props.articleRatedPage > 1 ? <a href="#" onClick={this.onPrevRatedArticlePage}>Previous</a> : ''}</li>
-              <li>{this.props.articleRatedPage < Math.ceil(this.props.totalRatedArticles / 10) ? <a href="#" onClick={this.onNextRatedArticlePage}>Next</a> : ''}</li>
+              <li>{this.props.articleRatedPage < Math.ceil(this.props.totalRatedArticles / 10) ? <button onClick={this.onNextRatedArticlePage}>Next</button> : ''}</li>
             </ul>
             </div>}
             <div className="tab-pane fade" role="tabpanel" id="featuredsearch" aria-labelledby="featuredsearch">

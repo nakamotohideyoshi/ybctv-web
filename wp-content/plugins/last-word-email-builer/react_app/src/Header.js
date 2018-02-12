@@ -16,7 +16,7 @@ class Header extends Component {
   }
 
   onChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     this.props.onSetSite(value);
   }
 
@@ -31,7 +31,7 @@ class Header extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#"><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/last-word-logo.png" alt="Logo"/></a>
+            <span className="navbar-brand" ><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/last-word-logo.png" alt="Logo"/></span>
           </div>
           <div id="navbar" className="navbar-collapse collapse">
             <ul className="nav navbar-nav navbar-right">

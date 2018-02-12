@@ -1,3 +1,9 @@
+/* 
+
+The core class of the app. It controls most of the actions, callbacks and events.
+
+*/
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
@@ -63,7 +69,6 @@ class App extends Component {
         articles: []
        }
       },
-    selectedEventArticles: [],
     selectedMoreNewsArticles: [],
     selectedMostViewedArticles: [],
     selectedMostReadArticles:[],
@@ -209,22 +214,23 @@ class App extends Component {
        case 'wp_5_':
         project_id = 3;
          break;
+       default:
       }
       var styleTag = val.Content.match(/<style([\S\s]*?)>([\S\s]*?)<\/style>/ig);
       val.Content = val.Content.replace(/<style([\S\s]*?)>([\S\s]*?)<\/style>/ig, '');
-      var content = '<!doctype html>\
-                  <html xmlns="http://www.w3.org/1999/xhtml">\
-                  <head>\
-                  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />\
-                  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />\
-                  <meta charset="utf-8">\
-                   <title>Last Word Emails</title>\
-                   '+ styleTag[0] +'\
-                   </head>\
-                   <body>\
-                   '+ val.Content +'\
-                   </body>\
-               </html>';
+      var content = '<!doctype html>' +
+                  '<html xmlns="http://www.w3.org/1999/xhtml">' +
+                  '<head>' +
+                  '<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />' +
+                  '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />' +
+                  '<meta charset="utf-8">' +
+                   '<title>Last Word Emails</title>' +
+                   + styleTag[0] +
+                   '</head>' +
+                   '<body>' +
+                   + val.Content +
+                   '</body>' +
+               '</html>';
       content = content.replace(/’/g,"'");
       content = content.replace(/‘/g,"'");
       content = content.replace(/data-width/g,"width");
@@ -1149,7 +1155,6 @@ class App extends Component {
     }).then(result => {
      this.setState(prevState => ({isLoadingEmail: false}))
      result.json().then(val => {
-       var s_articles = [];
        var t_articles = val.Articles1;
        var ev_articles = val.EventArticles1;
        var ed_articles = val.EditorArticles1;
@@ -1408,6 +1413,8 @@ class App extends Component {
       window.open(url);
       
       break;
+
+    default:
    }
   }
   onChangePage = (page, param) => {
@@ -1480,7 +1487,7 @@ class App extends Component {
     }));
 
     setTimeout(function(){
-      if ( timestamp == self.state.previewBoxTimestamp && id == self.state.previewBoxId ) {
+      if ( timestamp === self.state.previewBoxTimestamp && id === self.state.previewBoxId ) {
         self.setState(prevState => ({
           showPreview: true, 
           previewBoxContent: template === '' ? 'Please select the template' : 'Loading... Please wait...'
@@ -1530,7 +1537,7 @@ class App extends Component {
              </div>
                <div className="row">
                  <div className="col-xs-12">
-                { this.state.isLoadingEmails === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif"/></div> : 
+                { this.state.isLoadingEmails === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" alt="Loading" /></div> : 
                    <table className="table">
                      <thead>
                        <tr>
@@ -1564,8 +1571,8 @@ class App extends Component {
              <div className="row">
                <div className="col-xs-12">
                  <ul className="pager">
-                   <li className="previous dis">{this.state.pageNo > 1 ? <a href="#" onClick={this.onPreviousPage}>Previous</a> : ''}</li>
-                   <li className="next">{this.state.pageNo < Math.ceil(this.state.totalEmails / 20) ? <a href="#" onClick={this.onNextPage}>Next</a> : ''}</li>
+                   <li className="previous dis">{this.state.pageNo > 1 ? <button onClick={this.onPreviousPage}>Previous</button> : ''}</li>
+                   <li className="next">{this.state.pageNo < Math.ceil(this.state.totalEmails / 20) ? <button onClick={this.onNextPage}>Next</button> : ''}</li>
                  </ul>
                </div>
              </div>

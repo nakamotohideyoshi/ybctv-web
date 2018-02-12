@@ -1,3 +1,10 @@
+/*
+
+This class generates the articles and events buttons which can be dragged inside the templates 
+from the right sidebar in the create email screen.
+
+*/
+
 import React, { Component } from 'react';
 import { findDOMNode } from 'react-dom';
 import PropTypes from 'prop-types';

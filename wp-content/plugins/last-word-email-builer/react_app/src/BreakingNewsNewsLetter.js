@@ -1,3 +1,9 @@
+/*
+
+This class generates the Breaking News template.
+
+*/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';

@@ -34,32 +34,22 @@ render() {
   let overflow = 'visible';
   let animation = 'none';
   let color = '';
-  let DigiContainerClass = '';
-  let siteLabel = '';
   let baseURL = '';
   switch(this.props.site){
    case 'wp_2_':
       color = '#64a70b';
-      DigiContainerClass = 'Digi_2';
-      siteLabel = 'Portfolio Adviser';
       baseURL = 'http://www.portfolio-adviser.com/';
      break;
    case 'wp_3_':
       color = '#0085CA';
-      DigiContainerClass = 'Digi_3';
-      siteLabel = 'International Adviser';
       baseURL = 'http://www.international-adviser.com/';
      break;
    case 'wp_4_':
       color = '#d50032';
-      DigiContainerClass = 'Digi_4';
-      siteLabel = 'Fund Selector Asia';
       baseURL = 'http://www.fundselectorasia.com/';
      break;
    case 'wp_5_':
       color = '#f2a900';
-      DigiContainerClass = 'Digi_5';
-      siteLabel = 'Expert Investor';
       baseURL = 'http://www.expertinvestoreurope.com/';
      break;
   }
@@ -333,7 +323,7 @@ render() {
                                                         {this.props.staticHighlight === 'sponsoredContent' ? <td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td> : ''}
                                                         { this.props.showSponsoredContent !== '0' ? <td style={{background: '#fff', position: 'relative'}}>
                                                                 <div dangerouslySetInnerHTML={{__html: ( this.props.showSponsoredContent === '1' ? this.props.sponsoredContent : ( this.props.showSponsoredContent === '2' ? this.props.sponsoredContentB : ( this.props.showSponsoredContent === '3' ? this.props.sponsoredContentC : ( this.props.showSponsoredContent === '4' ? this.props.sponsoredContentD : ( this.props.showSponsoredContent === '5' ? this.props.sponsoredContentE : ( this.props.showSponsoredContent === '6' ? this.props.sponsoredContentF : "" ) ) ) ) ) ) }}></div> 
-                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
+                                                                <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" alt="Delete" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Sponsored_Content" onClick={this.props.onRemoveStatic}/>
                                                                 <LetterNote letter={this.props.showSponsoredContent} />
                                                                 </td> : ''}
                                                         </tr>

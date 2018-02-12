@@ -392,7 +392,7 @@ class VideoNewsLetter extends Component {
 																			</tr>
 				                                						 </table>
 				                              						</td>
-				                              						<td className="footer_left" data-valign="bottom" data-align="right" data-width="20%" style={{width: '20%', textAlign: 'right'}}><a href="http://www.lastwordmedia.com" target="_blank"><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_lastword1.png" alt="logo" style={{maxWidth: '100%',display:'block'}} /></a></td>
+				                              						<td className="footer_left" data-valign="bottom" data-align="right" data-width="20%" style={{width: '20%', textAlign: 'right'}}><a href="http://www.lastwordmedia.com" rel="noopener noreferrer" target="_blank"><img src="https://pa.cms-lastwordmedia.com/wp-content/uploads/email-template-images/newsletter_lastword1.png" alt="logo" style={{maxWidth: '100%',display:'block'}} /></a></td>
 				                          						 </tr>
 			                        						</table>
 			                     						</td>

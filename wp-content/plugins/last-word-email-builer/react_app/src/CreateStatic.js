@@ -1,3 +1,10 @@
+/*
+
+This class was used to manage the static fragments through the TinyMCE editor popup. 
+Since V2 was released for the static fragments this class stopped being used anymore.
+
+*/
+
 import React, { Component } from 'react';
 import TinyMCE from 'react-tinymce';
 import ReactDOM from 'react-dom';

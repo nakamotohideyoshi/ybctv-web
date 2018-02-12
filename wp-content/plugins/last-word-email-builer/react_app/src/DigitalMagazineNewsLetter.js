@@ -1,3 +1,9 @@
+/*
+
+This class generates the Digital Magazine Newsletter template.
+
+*/
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';

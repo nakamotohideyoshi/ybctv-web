@@ -1,3 +1,8 @@
+/*
+
+This class generates the China Insights Newsletter template.
+
+*/
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { DropTarget } from 'react-dnd';
