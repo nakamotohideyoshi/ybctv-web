@@ -224,13 +224,17 @@ class App extends Component {
                   '<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />' +
                   '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.0,minimum-scale=1.0" />' +
                   '<meta charset="utf-8">' +
-                   '<title>Last Word Emails</title>' +
-                   + styleTag[0] +
+                   '<title>Last Word Emails</title>{{TOKEN_HEAD_STRING}}' +
+                   //+ styleTag[0] +
                    '</head>' +
-                   '<body>' +
-                   + val.Content +
+                   '<body>{{TOKEN_BODY_STRING}}' +
+                   //+ val.Content +
                    '</body>' +
                '</html>';
+
+      content = content.replace( "{{TOKEN_HEAD_STRING}}", styleTag[0] );
+      content = content.replace( "{{TOKEN_BODY_STRING}}", val.Content );
+
       content = content.replace(/’/g,"'");
       content = content.replace(/‘/g,"'");
       content = content.replace(/data-width/g,"width");
