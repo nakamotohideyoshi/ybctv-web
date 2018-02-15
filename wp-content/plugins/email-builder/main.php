@@ -167,7 +167,9 @@ class EmailBuilder {
 								}
 							}
 
-							if 	( 
+							if ( strpos($staticEntity->Type, 'Asset_Class') !== false ) {
+								$sourceCode = str_replace( '<a ', '<a style="color: #' . $colors[ $static[$staticKey]->Site ] . '; text-decoration: none;" ', $sourceCode );
+							} else if 	( 
 									$staticEntity->Type != 'Newsletter_Subscribe' && 
 									$staticEntity->Type != 'Digital_Magazine' &&
 									strpos($staticEntity->Type, 'Sponsored_Content') === false &&

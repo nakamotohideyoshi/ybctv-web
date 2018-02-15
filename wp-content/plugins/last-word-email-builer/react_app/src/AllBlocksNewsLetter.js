@@ -420,6 +420,7 @@ render() {
         <td style={{position: 'relative', background: '#fff'}}>
          <div dangerouslySetInnerHTML={{__html: this.props.showAssetClass === '1' ? this.props.assetClass : ( this.props.showAssetClass === '2' ? this.props.assetClassB : ( this.props.showAssetClass === '3' ? this.props.assetClassC : "" ) ) }}></div>
         <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{cursor:'pointer',position: 'absolute',right:'10px',top:'10px',width:'10px'}} id="Asset_Class" onClick={this.props.onRemoveStatic}/>
+        <LetterNote letter={this.props.showAssetClass} />
         </td>
       </tr> : ''}
 </tbody>
