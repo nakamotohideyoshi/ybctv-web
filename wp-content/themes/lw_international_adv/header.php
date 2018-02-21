@@ -47,8 +47,17 @@
   <?php
     wp_head();
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
+
+    if (!wp_is_mobile()) {
+      $show_ad_units_status = get_option('show_ad_units');
+
+      if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+      ?>
+        <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
+      <?php
+      }
+    }
   ?>
-  <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>

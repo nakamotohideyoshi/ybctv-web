@@ -50,9 +50,13 @@
     wp_head();
 
     if (!wp_is_mobile()) {
-  ?>
-    <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
-  <?php
+      $show_ad_units_status = get_option('show_ad_units');
+
+      if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+      ?>
+        <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
+      <?php
+      }
     }
   ?>
 </head>
@@ -227,7 +231,6 @@
                       <style type="text/css">
                        .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
                        .st1{fill:#1D1D1B;}
-                      </style>
                       </style>
                       <path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
                       <path class="st1" d="M21.5 13.2c0 0.1 0 0.3 0 0.4 0 4.1-3.1 8.8-8.8 8.8 -1.7 0-3.4-0.5-4.7-1.4 0.2 0 0.5 0 0.7 0 1.4 0 2.8-0.5 3.8-1.3 -1.3 0-2.5-0.9-2.9-2.1 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0 0.8-0.1 -1.4-0.3-2.5-1.5-2.5-3v0C9 14.7 9.5 14.8 10 14.8c-0.8-0.6-1.4-1.5-1.4-2.6 0-0.6 0.2-1.1 0.4-1.6 1.5 1.9 3.8 3.1 6.4 3.2 -0.1-0.2-0.1-0.5-0.1-0.7 0-1.7 1.4-3.1 3.1-3.1 0.9 0 1.7 0.4 2.3 1 0.7-0.1 1.4-0.4 2-0.7 -0.2 0.7-0.7 1.3-1.4 1.7 0.6-0.1 1.2-0.2 1.8-0.5C22.6 12.2 22.1 12.7 21.5 13.2z"/>

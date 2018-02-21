@@ -17,14 +17,22 @@ $frontend = new last_word_ad_units\frontend();
 // Expose function for Initialize Ad Units Template Tag
 if (!function_exists('lastWordAdUnitInitialize')) {
   function lastWordAdUnitInitialize($post_id) {
-    echo last_word_ad_units\frontend::last_word_ad_unit_initialize($post_id);
+    $show_ad_units_status = get_option('show_ad_units');
+
+    if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+      echo last_word_ad_units\frontend::last_word_ad_unit_initialize($post_id);
+    }
   }
 }
 
 // Expose function for Ad Unit Template Tag
 if (!function_exists('lastWordAdUnit')) {
   function lastWordAdUnit($slug) {
-    $id = is_home() ? 0 : get_the_ID();
-    echo last_word_ad_units\frontend::last_word_ad_unit($slug, $id);
+    $show_ad_units_status = get_option('show_ad_units');
+
+    if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+      $id = is_home() ? 0 : get_the_ID();
+      echo last_word_ad_units\frontend::last_word_ad_unit($slug, $id);
+    }
   }
 }
