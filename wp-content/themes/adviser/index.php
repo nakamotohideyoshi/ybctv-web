@@ -395,10 +395,8 @@ get_header(); ?>
                     <?php
                       if (wp_is_mobile()) {
                     ?>
-                    <div style="display:none">
-                      <div style="max-width: 300px; margin: 30px auto 0 auto">
-                        <?php lastWordAdUnit('lhs-mpu'); ?>
-                      </div>
+                    <div style="max-width: 300px; margin: 30px auto 0 auto">
+                      <?php lastWordAdUnit('lhs-mpu'); ?>
                     </div>
                     <?php
                       }
@@ -494,13 +492,11 @@ get_header(); ?>
               </div>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                  <div style="display:none">
-                    <?php
-                      if (!wp_is_mobile()) {
-                        lastWordAdUnit('lhs-mpu');
-                      }
-                    ?>
-                  </div>
+                  <?php
+                    if (!wp_is_mobile()) {
+                      lastWordAdUnit('lhs-mpu');
+                    }
+                  ?>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
