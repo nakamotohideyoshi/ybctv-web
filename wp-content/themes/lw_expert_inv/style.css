@@ -2750,7 +2750,7 @@ article.comment {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
-  
+
   /* Tablet landscape ads right sidebar fix - start */
   #main .all-new-analysis .col-lg-9:first-child {
     width: calc(100% - 300px);
@@ -2838,7 +2838,7 @@ article.comment {
   .home .most-popular,
   .content-left .most-popular { padding:0; }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -2848,7 +2848,7 @@ article.comment {
   .logo img {
     width: 100%;
   }
-  
+
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
     display: block;
     width: 100%;
@@ -2911,7 +2911,7 @@ article.comment {
     height: auto;
   }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -3091,7 +3091,7 @@ article.comment {
       background: #fff;
     }
     .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
-    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
+    .ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
         display: none;
     }
 
@@ -3232,7 +3232,7 @@ article.comment {
         margin-right: 10px;
     }
 
-    .list-new-analysis .loop-list .content-image img, 
+    .list-new-analysis .loop-list .content-image img,
     .analysis-list .loop-list .content-image img {
       max-height: 100%;
     }
@@ -3421,7 +3421,7 @@ article.comment {
 
 .thump-single .text-content {
   line-height: 20px;
-}  
+}
 
 .content-single .text-content ul {
   padding-left: 35px;

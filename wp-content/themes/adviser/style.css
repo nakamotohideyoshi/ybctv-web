@@ -2725,7 +2725,7 @@ article.comment {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1024px) {
-  
+
   /* Tablet landscape ads right sidebar fix - start */
   #main .all-new-analysis .col-lg-9:first-child {
     width: calc(100% - 300px);
@@ -2758,7 +2758,7 @@ article.comment {
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) { 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 
   .header-content {
     width: 100%;
@@ -2771,13 +2771,13 @@ article.comment {
   .slider-multimedia ul li .content-image {max-height: 100%;}
 
   .box-sponsored .flex-control-nav {
-    bottom: 0px; 
+    bottom: 0px;
   }
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) { 
-  
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
   .content-multimedia .row-eq-height {
     display: block;
   }
@@ -2792,7 +2792,7 @@ article.comment {
   }
 
   .multimedia-title #bx-pager { margin-bottom: 10px; }
-  
+
   .list-last-new .loop-list { background: #f2f2f2;}
   .list-last-new .loop-list .content-image { width: 96px; }
   .list-last-new .loop-list .content-des {
@@ -2808,11 +2808,11 @@ article.comment {
   .list-most-popular .loop-list { float: left; width: 30%; margin: 0 5% 0 0; }
   .list-most-popular .loop-list:last-child { margin: 0;}
   .list-most-popular .loop-list img { width: 100%; }
-  
+
   .home .most-popular,
   .content-left .most-popular { padding:0; }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -2823,20 +2823,20 @@ article.comment {
     width: 100%;
   }
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
-    display: block; 
+    display: block;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
     padding: 0;
   }
-  
+
 }
 
 @media screen  and (max-width: 768px) {
   .list-most-popular {max-width: 100%;}
 
-   .sf-menu li.menu-item-has-children.sfHover .sub-menu { 
-    position: static; 
+   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
+    position: static;
   }
 
   .all-new-analysis .content-right {
@@ -2883,7 +2883,7 @@ article.comment {
     height: auto;
   }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -2944,7 +2944,7 @@ article.comment {
     }
 
     .list-last-new .row > div:nth-child(2) { display: none; }
-    
+
     .list-last-new .loop-list .content-image {
       width: 20%;
     }
@@ -2965,7 +2965,7 @@ article.comment {
       padding: 10px;
       background-color: #e0e0e0;
     }
-    
+
     #multimediaright {
       padding-bottom: 25px;
     }
@@ -3014,7 +3014,7 @@ article.comment {
       width: 100%;
     }
 
-    .list-new-analysis .loop-list .content-image img, 
+    .list-new-analysis .loop-list .content-image img,
     .analysis-list .loop-list .content-image img {
       max-height: 100%;
     }
@@ -3067,7 +3067,7 @@ article.comment {
       background: #fff;
     }
     .ads-top-billboard,.ads-top-search,.ads-top-news-ad,
-    .ads-lhs-mpu,.ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
+    .ads-rhs-hpu-1,.ads-rhs-hpu-2,.carousel-multimedia,.carousel-portfolio,.ads-bottom-billboard,.other-stories {
         display: none;
     }
 
@@ -3078,7 +3078,7 @@ article.comment {
     .mobnavigation, .site-navigation {
       display: none;
     }
-    
+
     .user-login {
       display: block;
       margin-top: 5px;
@@ -3208,7 +3208,7 @@ article.comment {
         margin-right: 10px;
     }
 
-    .list-new-analysis .loop-list .content-image img, 
+    .list-new-analysis .loop-list .content-image img,
     .analysis-list .loop-list .content-image img {
       max-height: 100%;
     }
@@ -3409,7 +3409,7 @@ article.comment {
 
 .thump-single .text-content {
   line-height: 20px;
-}  
+}
 
 .content-single .text-content ul {
   padding-left: 35px;
@@ -3445,7 +3445,7 @@ article.comment {
   font-weight: 300;
 }
 
-.wmasingle .page-header .awnav { 
+.wmasingle .page-header .awnav {
   padding: 0;
 }
 
@@ -3490,6 +3490,7 @@ article.comment {
   opacity: 0.75;
   margin: 0;
   padding: 0;
+  margin-bottom: 5px;
 }
 
 .wmasingle .awnavigation a:hover img {
@@ -3501,6 +3502,10 @@ article.comment {
   overflow: hidden;
   width: 100%;
   background: #eee;
+}
+
+.wmasingle .page-content{
+  padding-bottom: 20px;
 }
 
 .wma .filterout {
@@ -3525,7 +3530,7 @@ article.comment {
   margin-left: 0;
   color: #555;
   border-bottom: 3px solid #fff;
-  
+
 }
 
 .wma .filter a:hover {
