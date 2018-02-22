@@ -1357,6 +1357,9 @@ function parse_special_chars_2($str) {
 	$str = str_replace("&ndash;", "", $str);
 	$str = str_replace("\u2013", "&ndash;", $str);
 
+	$str = str_replace("“", '"', $str);
+	$str = str_replace("”", '"', $str);
+
 	return $str;
 }
 
