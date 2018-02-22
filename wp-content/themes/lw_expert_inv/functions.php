@@ -451,7 +451,7 @@ function ajax_search_more() {
   $offset = (int)$_POST['offset'];
   $posts_per_page = 5;
   $query = $_POST['query'];
-      
+
   $args = array(
     'posts_per_page' => 5,
     'offset' => $offset * $page,
@@ -596,8 +596,12 @@ add_filter('mce_buttons', 'add_page_break_button', 1, 2);
 * Teads JS.
 */
 function enqueue_teads() {
-  wp_register_script('teads', '//a.teads.tv/page/62515/tag', array(), '1.0.0', false);
-  wp_enqueue_script('teads');
+  $show_ad_units_status = get_option('show_ad_units');
+
+  if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+    wp_register_script('teads', '//a.teads.tv/page/62515/tag', array(), '1.0.0', false);
+    wp_enqueue_script('teads');
+  }
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
@@ -835,7 +839,7 @@ function add_featured_box_settings_page() {
             <span>(Wordpress article ID)</span>
           </td>
         </tr>
-        
+
         <tr>
           <th scope="row">Editorial Box (right hand)</th>
           <td>
@@ -874,4 +878,3 @@ function add_featured_box_settings_page() {
   <?
 }
 /* End Articles Control */
-

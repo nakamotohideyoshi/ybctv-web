@@ -91,16 +91,16 @@ get_header(); ?>
                                         $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
                                         $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
                                         $term = get_term( $wpseo_primary_term );
-                                        if (is_wp_error($term)) { 
+                                        if (is_wp_error($term)) {
                                             // Default to first category (not Yoast) if an error is returned
                                             $category_display = $category[0]->name;
                                             $category_link = get_category_link( $category[0]->term_id );
-                                        } else { 
+                                        } else {
                                             // Yoast Primary category
                                             $category_display = $term->name;
                                             $category_link = get_category_link( $term->term_id );
                                         }
-                                      } 
+                                      }
                                       else {
                                         // Default, display the first category in WP's list of assigned categories
                                         $category_display = $category[0]->name;
@@ -162,16 +162,16 @@ get_header(); ?>
                                         $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
                                         $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
                                         $term = get_term( $wpseo_primary_term );
-                                        if (is_wp_error($term)) { 
+                                        if (is_wp_error($term)) {
                                             // Default to first category (not Yoast) if an error is returned
                                             $category_display = $category[0]->name;
                                             $category_link = get_category_link( $category[0]->term_id );
-                                        } else { 
+                                        } else {
                                             // Yoast Primary category
                                             $category_display = $term->name;
                                             $category_link = get_category_link( $term->term_id );
                                         }
-                                      } 
+                                      }
                                       else {
                                         // Default, display the first category in WP's list of assigned categories
                                         $category_display = $category[0]->name;
@@ -228,16 +228,16 @@ get_header(); ?>
                                         $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
                                         $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
                                         $term = get_term( $wpseo_primary_term );
-                                        if (is_wp_error($term)) { 
+                                        if (is_wp_error($term)) {
                                             // Default to first category (not Yoast) if an error is returned
                                             $category_display = $category[0]->name;
                                             $category_link = get_category_link( $category[0]->term_id );
-                                        } else { 
+                                        } else {
                                             // Yoast Primary category
                                             $category_display = $term->name;
                                             $category_link = get_category_link( $term->term_id );
                                         }
-                                      } 
+                                      }
                                       else {
                                         // Default, display the first category in WP's list of assigned categories
                                         $category_display = $category[0]->name;
@@ -294,16 +294,16 @@ get_header(); ?>
                                         $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
                                         $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
                                         $term = get_term( $wpseo_primary_term );
-                                        if (is_wp_error($term)) { 
+                                        if (is_wp_error($term)) {
                                             // Default to first category (not Yoast) if an error is returned
                                             $category_display = $category[0]->name;
                                             $category_link = get_category_link( $category[0]->term_id );
-                                        } else { 
+                                        } else {
                                             // Yoast Primary category
                                             $category_display = $term->name;
                                             $category_link = get_category_link( $term->term_id );
                                         }
-                                      } 
+                                      }
                                       else {
                                         // Default, display the first category in WP's list of assigned categories
                                         $category_display = $category[0]->name;
@@ -360,16 +360,16 @@ get_header(); ?>
                                         $wpseo_primary_term = new WPSEO_Primary_Term( 'category', get_the_id() );
                                         $wpseo_primary_term = $wpseo_primary_term->get_primary_term();
                                         $term = get_term( $wpseo_primary_term );
-                                        if (is_wp_error($term)) { 
+                                        if (is_wp_error($term)) {
                                             // Default to first category (not Yoast) if an error is returned
                                             $category_display = $category[0]->name;
                                             $category_link = get_category_link( $category[0]->term_id );
-                                        } else { 
+                                        } else {
                                             // Yoast Primary category
                                             $category_display = $term->name;
                                             $category_link = get_category_link( $term->term_id );
                                         }
-                                      } 
+                                      }
                                       else {
                                         // Default, display the first category in WP's list of assigned categories
                                         $category_display = $category[0]->name;
@@ -391,6 +391,15 @@ get_header(); ?>
                         ?>
                     </div>
                     <a class="readmore readmore-new" href="/type/news/">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="more news" /></a>
+                    <?php
+                      if (wp_is_mobile()) {
+                    ?>
+                    <div style="max-width: 300px; margin: 30px auto 0 auto">
+                      <?php lastWordAdUnit('lhs-mpu'); ?>
+                    </div>
+                    <?php
+                      }
+                    ?>
                   </div>
                 </div>
               </div>
@@ -505,7 +514,11 @@ get_header(); ?>
               </div>
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                  <?php lastWordAdUnit('lhs-mpu'); ?>
+                  <?php
+                    if (!wp_is_mobile()) {
+                      lastWordAdUnit('lhs-mpu');
+                    }
+                  ?>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
@@ -604,11 +617,11 @@ get_header(); ?>
                   ?>
                   <li>
                     <div class="content-image">
-                      <?php 
+                      <?php
                       if ($primary_medium == "video") {
-                        brightcove_video($lw_brightcove_video_id, false); 
+                        brightcove_video($lw_brightcove_video_id, false);
                       } else {
-                        the_post_thumbnail();
+                        the_post_thumbnail('medium_large');
                       }
                       ?>
                       <span class="overlay"></span>
@@ -699,7 +712,7 @@ get_header(); ?>
             if (have_posts()) : while (have_posts()) : the_post();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
           ?>
-          <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">  
+          <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-image">
                   <?php
@@ -810,7 +823,7 @@ get_header(); ?>
                     <?php
                       echo '<a href="' . get_the_permalink() . '">';
                       if ( has_post_thumbnail() ) {
-                        the_post_thumbnail();
+                        the_post_thumbnail('medium');
                       }
                       else {
                     ?>
@@ -847,7 +860,7 @@ get_header(); ?>
                           <?php
                             if ( has_post_thumbnail() ) {
                               echo '<a href="' . get_the_permalink() . '">';
-                              the_post_thumbnail();
+                              the_post_thumbnail('medium');
                               echo '</a>';
                             }
                             else {
@@ -914,7 +927,7 @@ get_header(); ?>
                         <?php
                           if ( has_post_thumbnail() ) {
                             echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
-                            the_post_thumbnail();
+                            the_post_thumbnail('medium');
                             echo '</a>';
                           }
                           else {
@@ -982,7 +995,7 @@ get_header(); ?>
                               <?php
                                 if ( has_post_thumbnail() ) {
                                   echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
-                                  the_post_thumbnail();
+                                  the_post_thumbnail('medium');
                                   echo '</a>';
                                 }
                                 else {
@@ -1060,7 +1073,7 @@ get_header(); ?>
                         <?php
                           if ( has_post_thumbnail() ) {
                             echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
-                            the_post_thumbnail();
+                            the_post_thumbnail('medium');
                             echo '</a>';
                           }
                           else {
@@ -1128,7 +1141,7 @@ get_header(); ?>
                               <?php
                                 if ( has_post_thumbnail() ) {
                                   echo '<a' . ($post->lw_event_target_blank == 'yes' ? ' target="_blank"' : '') . ' href="' . $post->lw_event_link . '">';
-                                  the_post_thumbnail();
+                                  the_post_thumbnail('medium');
                                   echo '</a>';
                                 }
                                 else {

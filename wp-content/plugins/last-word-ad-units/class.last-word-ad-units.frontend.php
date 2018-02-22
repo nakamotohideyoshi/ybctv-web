@@ -2,8 +2,12 @@
 
 class frontend {
   function __construct() {
-    add_action('wp_enqueue_scripts', array($this, 'enqueue_google_tag_services'));
-    add_action('script_loader_tag', array($this, 'add_async_attribute'), 10, 2);
+    $show_ad_units_status = get_option('show_ad_units');
+
+    if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+      add_action('wp_enqueue_scripts', array($this, 'enqueue_google_tag_services'));
+      add_action('script_loader_tag', array($this, 'add_async_attribute'), 10, 2);
+    }
   }
 
   // Google Tag Services JS.

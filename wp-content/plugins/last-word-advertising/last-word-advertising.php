@@ -23,6 +23,7 @@ function add_advertising_settings_menu_item() {
 
 function register_advertising_settings() {
   register_setting('advertising_settings', 'lazy_load');
+  register_setting('advertising_settings', 'show_ad_units');
 }
 
 function add_advertising_settings_page() {
@@ -35,14 +36,23 @@ function add_advertising_settings_page() {
         do_settings_sections('advertising_settings');
 
         $lazy_load = get_option('lazy_load');
-        $checked = ($lazy_load && $lazy_load == 'yes') ? ' checked' : '';
+        $show_ad_units = get_option('show_ad_units');
+        $lazy_load_checked = ($lazy_load && $lazy_load == 'yes') ? ' checked' : '';
+        $show_ad_units_checked = ($show_ad_units && $show_ad_units == 'yes') ? ' checked' : '';
       ?>
       <table class="form-table">
         <tr>
           <th scope="row">Lazy Load</th>
           <td>
-            <input type="checkbox" name="lazy_load" value="yes"<?php echo $checked; ?> />
+            <input type="checkbox" name="lazy_load" value="yes"<?php echo $lazy_load_checked; ?> />
             <span class="description">Enable lazy loading on advertising</span>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Show Ad Units</th>
+          <td>
+            <input type="checkbox" name="show_ad_units" value="yes"<?php echo $show_ad_units_checked; ?> />
+            <span class="description">Enable display of ad units on site</span>
           </td>
         </tr>
         <tr>

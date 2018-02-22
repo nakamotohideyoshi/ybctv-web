@@ -500,7 +500,7 @@ function change_wp_search_size($queryVars) {
       $queryVars['posts_per_page'] = 20;
     } else {
       $queryVars['posts_per_page'] = 5;
-    }   
+    }
     $queryVars['orderby'] = 'date';
     $queryVars['order'] = 'DESC';
   }
@@ -617,8 +617,12 @@ add_filter('mce_buttons', 'add_page_break_button', 1, 2);
 * Teads JS.
 */
 function enqueue_teads() {
-  wp_register_script('teads', '//a.teads.tv/page/52910/tag', array(), '1.0.0', false);
-  wp_enqueue_script('teads');
+  $show_ad_units_status = get_option('show_ad_units');
+
+  if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+    wp_register_script('teads', '//a.teads.tv/page/52910/tag', array(), '1.0.0', false);
+    wp_enqueue_script('teads');
+  }
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
@@ -813,16 +817,16 @@ function add_featured_box_menu_item() {
 
 function add_featured_box_settings_page() {
   $posts = get_posts( array( 'posts_per_page' => 100 ) );
-  $posts2 = get_posts( array( 
+  $posts2 = get_posts( array(
     'posts_per_page' => 100,
     'tax_query' => array(
         array(
           'taxonomy' => 'type',
           'field' => 'slug',
           'terms' => 'sponsored',
-        )     
+        )
       )
-    ) 
+    )
   );
 
   if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['featured_left_box_article']) && isset($_POST['featured_right_box_article']) )
@@ -867,7 +871,7 @@ function add_featured_box_settings_page() {
             <span>(Wordpress article ID)</span>
           </td>
         </tr>
-        
+
         <tr>
           <th scope="row">Editorial Box (right hand)</th>
           <td>
@@ -906,4 +910,3 @@ function add_featured_box_settings_page() {
   <?
 }
 /* End Articles Control */
-

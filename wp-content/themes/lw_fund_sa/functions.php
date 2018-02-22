@@ -393,7 +393,7 @@ function ajax_search_more() {
   $offset = (int)$_POST['offset'];
   $posts_per_page = 5;
   $query = $_POST['query'];
-      
+
   $args = array(
     'posts_per_page' => 5,
     'offset' => $offset * $page,
@@ -425,7 +425,7 @@ function change_wp_search_size($queryVars) {
       $queryVars['posts_per_page'] = 20;
     } else {
       $queryVars['posts_per_page'] = 5;
-    }   
+    }
     $queryVars['orderby'] = 'date';
     $queryVars['order'] = 'DESC';
   }
@@ -550,8 +550,12 @@ add_filter('mce_buttons', 'add_page_break_button', 1, 2);
 * Teads JS.
 */
 function enqueue_teads() {
-  wp_register_script('teads', '//a.teads.tv/page/63053/tag', array(), '1.0.0', false);
-  wp_enqueue_script('teads');
+  $show_ad_units_status = get_option('show_ad_units');
+
+  if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+    wp_register_script('teads', '//a.teads.tv/page/63053/tag', array(), '1.0.0', false);
+    wp_enqueue_script('teads');
+  }
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
@@ -786,7 +790,7 @@ function add_featured_box_settings_page() {
     <h2>ACIF Homepage Boxes</h2>
     <form action="" method="post">
       <table class="form-table">
-        <tr> 
+        <tr>
           <br>
           <div>
             Please either select the article from the drop down option or add the Wordpress article ID in the box.
@@ -800,7 +804,7 @@ function add_featured_box_settings_page() {
         </tr>
 
         <tr>
-        <th scope="row">Left box</th>    
+        <th scope="row">Left box</th>
           <td>
             <select name="featured_left_box_article" id="featured_left_box_article_combo" onchange="document.getElementById('featured_left_box_article_field').value = this.value;">
               <option value="">-</option>
@@ -812,16 +816,16 @@ function add_featured_box_settings_page() {
           </td>
         </tr>
         <tr>
-          <th scope="row"></th> 
+          <th scope="row"></th>
           <td>
             <input type="text" id="featured_left_box_article_field" name="featured_left_box_article" value="<?php echo $featured_left_box_article; ?>" />
 
             <span>(Wordpress article ID)</span>
           </td>
         </tr>
-        
+
         <tr>
-        <th scope="row">Right box</th>  
+        <th scope="row">Right box</th>
           <td>
             <select name="featured_right_box_article" id="featured_right_box_article_combo" onchange="document.getElementById('featured_right_box_article_field').value = this.value;">
               <option value="">-</option>
@@ -832,7 +836,7 @@ function add_featured_box_settings_page() {
           </td>
         </tr>
         <tr>
-          <th scope="row"></th>  
+          <th scope="row"></th>
           <td>
             <input type="text" id="featured_right_box_article_field" name="featured_right_box_article" value="<?php echo $featured_right_box_article; ?>" />
 
@@ -850,4 +854,3 @@ function add_featured_box_settings_page() {
   <?
 }
 /* End Articles Control */
-
