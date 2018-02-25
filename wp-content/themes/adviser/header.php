@@ -62,6 +62,7 @@
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
+  <?php lastWordAdUnit('oop-teads'); ?>
   <div id="page" class="hfeed site">
     <section class="ads-side-panels">
       <div class="container">
