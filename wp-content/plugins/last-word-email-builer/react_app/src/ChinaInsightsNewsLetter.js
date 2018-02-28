@@ -337,6 +337,10 @@ render() {
                                                                 <td style={{padding:'13px 0px 10px 0px'}} data-align="center">
                                                                         <table className="subscribe" style={{width: '100%'}} data-width="100%">
 <tbody>
+<tr>
+                <td>
+    <MostViewedComponent selectedMostViewedArticles={this.props.selectedMostViewedArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
+        </td></tr>
 {this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.showStaticImage1 !== '0' ? <tr>
   <td style={{position: 'relative', background: '#fff'}}>

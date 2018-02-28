@@ -746,6 +746,7 @@ class CreateEmail extends Component {
             newsletterSubscribe={this.props.newsletterSubscribe} 
             articles={this.props.selectedArticles} 
             selectedEditorArticles={this.props.selectedEditorArticles} 
+            selectedMostViewedArticles={this.props.selectedMostViewedArticles} 
             showStaticImage1={this.props.hasStaticImage1} 
             showStaticImage2={this.props.hasStaticImage2} 
             selectedEventArticles={this.props.selectedEventArticles} 
