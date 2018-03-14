@@ -269,7 +269,11 @@ render() {
                       }
 
                       #emailInnerContent .header-block, #emailInnerContent .linked:first-child, #emailInnerContent .common_left,body[yahoo] .common_left:last-child, #emailInnerContent .common_left:first-child {
+                      /*
+                                Gogi, test, mobile image:
                               width: 100% !important;
+                              */
+                              max-width: 140px!important;
                       }
 
                       #emailInnerContent .fund_linked:last-child  tr:first-child td:first-child {
