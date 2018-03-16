@@ -322,7 +322,7 @@ render() {
                                                 <table style={{width:'748px', margin: '0px'}} data-width="748" cellSpacing="0" cellPadding="0" data-align="center" className="deviceWidth">
 <tr>
                                                                 <td>
-                                                                <table className="deviceWidth" style={{width: '405px', textAlign: 'left', float: 'left'}} data-align="center" data-width="405" cellSpacing="0" cellPadding="0">
+                                                                <table className="deviceWidth" style={{width: '405px', textAlign: 'left', float: 'left'}} data-align="left" data-width="405" cellSpacing="0" cellPadding="0">
                                                                         <tbody><tr>
         <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
         <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true" isChinaNews="true"/>
