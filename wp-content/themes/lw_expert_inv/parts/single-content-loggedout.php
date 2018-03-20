@@ -47,6 +47,13 @@
           <div class="locked-buttons">
              <a href="#" data-toggle="modal" data-target="#myModal" class="locked-button signin">Sign in</a>
           </div>
+          <?php
+            if (wp_is_mobile()) {
+              echo '<div style="max-width: 300px; margin: 30px auto 0 auto">';
+              lastWordAdUnit('lhs-mpu');
+              echo '</div>';
+            }
+          ?>
       </div>
     <?php endwhile;endif;?>
  </div>

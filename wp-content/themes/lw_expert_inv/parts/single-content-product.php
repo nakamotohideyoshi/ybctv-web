@@ -27,7 +27,7 @@
             ?>
          </span></p>
          <p><b>By <?php coauthors_posts_links(', '); ?>,</b> <?php the_time('j M y');?></p>
-         
+
       </div>
     <div class="content-post">
        <div class="description-single">
@@ -50,7 +50,7 @@
              else {
                // All others show feature image
                if ( has_post_thumbnail() ) {
-                   the_post_thumbnail();
+                   the_post_thumbnail('main-article');
                }
              }
 
@@ -93,6 +93,11 @@
                'separator'   => '<span class="screen-reader-text">, </span>',
              ));
 
+             echo '</div>';
+           }
+           if (wp_is_mobile()) {
+             echo '<div style="max-width: 300px; margin: 30px auto 0 auto">';
+             lastWordAdUnit('lhs-mpu');
              echo '</div>';
            }
          ?>

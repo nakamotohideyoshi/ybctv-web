@@ -1,5 +1,5 @@
 <div class="content-category content-single contlocked">
-   <?php 
+   <?php
    if(have_posts()): while(have_posts()): the_post();
       setReadCount(get_the_ID());
       $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
@@ -34,7 +34,7 @@
          <div class="thump-single">
             <?php
                if ( has_post_thumbnail() ) {
-                   the_post_thumbnail();
+                   the_post_thumbnail('main-article');
                }
                else { ?>
             <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" />
@@ -60,6 +60,13 @@
          <p>For assistance please contact our customer service team or visit our <a href="#">FAQ page</a>.<br />
             Phone: +44 20 7382 4477<br />
             Email: subscriptions@lastwordmedia.com
+        <?php
+          if (wp_is_mobile()) {
+            echo '<div style="max-width: 300px; margin: 30px auto 0 auto">';
+            lastWordAdUnit('lhs-mpu');
+            echo '</div>';
+          }
+        ?>
       </div>
    <?php endwhile;endif;?>
 </div>

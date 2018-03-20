@@ -43,6 +43,13 @@
              <li><strong>European Fund Flows:</strong> Find out how monies have flown in and out of all active and passive European-domiciled funds</li>
           </ul>
           <p>If you wish to gain access to this, please contact <strong><a href="mailto:subscriptions@lastwordmedia.com">subscriptions@lastwordmedia.com</a></strong></p>
+          <?php
+            if (wp_is_mobile()) {
+              echo '<div style="max-width: 300px; margin: 30px auto 0 auto">';
+              lastWordAdUnit('lhs-mpu');
+              echo '</div>';
+            }
+          ?>
        </div>
     <?php endwhile;endif;?>
  </div>

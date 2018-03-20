@@ -42,7 +42,7 @@
               else {
                 // All others show feature image
                 if ( has_post_thumbnail() ) {
-                    the_post_thumbnail();
+                    the_post_thumbnail('main-article');
                 }
               }
 
@@ -91,6 +91,11 @@
                 'pagelink'    => '<span class="screen-reader-text">Page </span>%',
                 'separator'   => '<span class="screen-reader-text">, </span>',
               ));
+              echo '</div>';
+            }
+            if (wp_is_mobile()) {
+              echo '<div style="max-width: 300px; margin: 30px auto 0 auto">';
+              lastWordAdUnit('lhs-mpu');
               echo '</div>';
             }
           ?>

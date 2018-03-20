@@ -3604,3 +3604,17 @@ article.comment {
     column-gap: 0;
   }
 }
+
+#carousel-multimedia ul li.flex-active-slide {
+  display: none!important;
+}
+@media screen and (max-width: 1439px) {
+  #carousel-multimedia {
+    margin-left: -18px;
+    margin-right: -18px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .content-right {display: none;}
+}
