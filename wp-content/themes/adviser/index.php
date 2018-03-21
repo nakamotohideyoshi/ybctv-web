@@ -20,6 +20,8 @@ get_header(); ?>
                           $args = array( 'posts_per_page' => 1,'showposts' => 1, 'meta_key' => 'lw_top_story', 'meta_value' => 'yes' );
                           $myposts = get_posts( $args );
                           foreach ( $myposts as $post ) : setup_postdata( $post );
+                            $current_permalink = get_permalink();
+                            $current_title = get_the_title();
                         ?>
                           <div class="first-last-new clearfix">
                             <div class="content-image">
@@ -28,7 +30,7 @@ get_header(); ?>
                                   the_post_thumbnail('homepage-latest-article');
                                 }
                                 else { ?>
-                                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                                  <a href="<?php echo $current_permalink; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                               <?php
                                 }
                               ?>
@@ -36,7 +38,7 @@ get_header(); ?>
                             </div>
                             <div class="content-des">
                               <h2 class="title">TOP STORY...</h2>
-                              <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                              <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                               <p>
                                 <?php
                                   $excerpt = excerpt(20);
@@ -60,6 +62,8 @@ get_header(); ?>
                       $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_2', 0));
                       $myposts = query_posts( $args );
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
@@ -70,8 +74,8 @@ get_header(); ?>
                                   }
                                   else {
                                 ?>
-                                <a href="<?php the_permalink();?>">
-                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" />
                                 </a>
                                 <?php
                                   }
@@ -111,8 +115,8 @@ get_header(); ?>
                                   ?>
                                   <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                 </p>
-                                <a href="<?php the_permalink(); ?>">
-                                  <h3><?php echo get_the_title(); ?></h3>
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <h3><?php echo $current_title; ?></h3>
                                 </a>
                               </div>
                             </div>
@@ -131,6 +135,8 @@ get_header(); ?>
                       $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_3', 0));
                       $myposts = query_posts( $args );
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
@@ -141,8 +147,8 @@ get_header(); ?>
                                   }
                                   else {
                                 ?>
-                                <a href="<?php the_permalink();?>">
-                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" />
                                 </a>
                                 <?php
                                   }
@@ -182,8 +188,8 @@ get_header(); ?>
                                   ?>
                                   <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                 </p>
-                                <a href="<?php the_permalink(); ?>">
-                                  <h3><?php echo get_the_title(); ?></h3>
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <h3><?php echo $current_title; ?></h3>
                                 </a>
                               </div>
                             </div>
@@ -197,6 +203,8 @@ get_header(); ?>
                       $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_5', 0));
                       $myposts = query_posts( $args );
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
@@ -207,8 +215,8 @@ get_header(); ?>
                                   }
                                   else {
                                 ?>
-                                <a href="<?php the_permalink();?>">
-                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                <a href="<?php echo $current_permalink;?>">
+                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" />
                                 </a>
                                 <?php
                                   }
@@ -248,8 +256,8 @@ get_header(); ?>
                                   ?>
                                   <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                 </p>
-                                <a href="<?php the_permalink(); ?>">
-                                  <h3><?php echo get_the_title(); ?></h3>
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <h3><?php echo  $current_title; ?></h3>
                                 </a>
                               </div>
                             </div>
@@ -263,6 +271,8 @@ get_header(); ?>
                       $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_4', 0));
                       $myposts = query_posts( $args );
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
@@ -273,8 +283,8 @@ get_header(); ?>
                                   }
                                   else {
                                 ?>
-                                <a href="<?php the_permalink();?>">
-                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                <a href="<?php $current_permalink();?>">
+                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" />
                                 </a>
                                 <?php
                                   }
@@ -314,8 +324,8 @@ get_header(); ?>
                                   ?>
                                   <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                 </p>
-                                <a href="<?php the_permalink(); ?>">
-                                  <h3><?php echo get_the_title(); ?></h3>
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <h3><?php echo $current_title; ?></h3>
                                 </a>
                               </div>
                             </div>
@@ -329,6 +339,8 @@ get_header(); ?>
                       $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('top_stories_article_6', 0));
                       $myposts = query_posts( $args );
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
@@ -339,8 +351,8 @@ get_header(); ?>
                                   }
                                   else {
                                 ?>
-                                <a href="<?php the_permalink();?>">
-                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" />
+                                <a href="<?php echo $current_permalink;?>">
+                                  <img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" />
                                 </a>
                                 <?php
                                   }
@@ -380,8 +392,8 @@ get_header(); ?>
                                   ?>
                                   <a href="<?php echo $category_link; ?>"><?php echo $category_display; ?></a>
                                 </p>
-                                <a href="<?php the_permalink(); ?>">
-                                  <h3><?php echo get_the_title(); ?></h3>
+                                <a href="<?php echo $current_permalink; ?>">
+                                  <h3><?php echo $current_title; ?></h3>
                                 </a>
                               </div>
                             </div>
@@ -412,6 +424,8 @@ get_header(); ?>
                       $args = array( 'posts_per_page' => 2,'showposts' => 2, 'category' => 40 );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
                     ?>
                       <div class="loop-list">
                         <div class="content-image">
@@ -421,7 +435,7 @@ get_header(); ?>
                           }
                           else {
                         ?>
-                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                          <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                         <?php
                           }
                         ?>
@@ -432,7 +446,7 @@ get_header(); ?>
                             <?php $category = get_the_category(); ?>
                             <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                           </p>
-                          <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                          <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                         </div>
                       </div>
                       <?php
@@ -457,6 +471,8 @@ get_header(); ?>
                         $args = array( 'posts_per_page' => 2,'offset' => 2 ,'showposts' => 2, 'category' => 40 );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
+                            $current_permalink = get_the_permalink();
+                            $current_title = get_the_title();
                       ?>
                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="loop-list">
@@ -467,7 +483,7 @@ get_header(); ?>
                               }
                               else {
                             ?>
-                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                            <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                             <?php
                               }
                             ?>
@@ -478,7 +494,7 @@ get_header(); ?>
                               <?php $category = get_the_category(); ?>
                               <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                             </p>
-                            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                            <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                           </div>
                         </div>
                       </div>
@@ -505,6 +521,8 @@ get_header(); ?>
                         $args = array( 'posts_per_page' => 2,'offset' => 4 ,'showposts' => 2, 'category' => 40 );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
+                            $current_permalink = get_permalink();
+                            $current_title = get_the_title();
                       ?>
                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="loop-list">
@@ -515,7 +533,7 @@ get_header(); ?>
                               }
                               else {
                             ?>
-                            <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                            <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                             <?php
                               }
                             ?>
@@ -526,7 +544,7 @@ get_header(); ?>
                               <?php $category = get_the_category(); ?>
                               <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                             </p>
-                            <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                            <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                           </div>
                         </div>
                       </div>
@@ -579,6 +597,8 @@ get_header(); ?>
 
                     $myposts = get_posts( $args );
                     foreach ( $myposts as $post ) : setup_postdata( $post );
+                        $current_permalink = get_permalink();
+                        $current_title = get_the_title();
                       $primary_medium = get_post_meta($post->ID,'lw_primary_medium')[0];
                       $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                   ?>
@@ -598,7 +618,7 @@ get_header(); ?>
                         <?php $category = get_the_category(); ?>
                         <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                       </p>
-                      <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                      <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                       <p><?php echo excerpt(15); ?></p>
                     </div>
                   </li>
@@ -621,6 +641,8 @@ get_header(); ?>
                           );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
+                    $current_permalink = get_the_permalink();
+                    $current_title = get_the_title();
               ?>
               <li>
                 <?php
@@ -631,7 +653,7 @@ get_header(); ?>
 
                     if ( has_post_thumbnail() ) {
                       if($isVideo == 'video'){
-                        echo '<a href="'. get_the_permalink() .'">';
+                        echo '<a href="'. $current_permalink .'">';
                       }
                       the_post_thumbnail('homepage-latest-article');
                       echo ($isVideo == 'video' ? '<div class="voverlay"></div>': '');
@@ -640,7 +662,7 @@ get_header(); ?>
                       }
                     }else {
                   ?>
-                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                  <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                   <?php
                     }
                   ?>
@@ -651,7 +673,7 @@ get_header(); ?>
                     <?php $category = get_the_category(); ?>
                     <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                   </p>
-                  <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                  <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                 </div>
               </li>
               <?php
@@ -677,6 +699,8 @@ get_header(); ?>
             wp_reset_query();
             $myposts = query_posts( $args );
             if (have_posts()) : while (have_posts()) : the_post();
+                $current_permalink = get_the_permalink();
+                $current_title = get_the_title();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
           ?>
           <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -688,11 +712,11 @@ get_header(); ?>
                     }
                     else {
                   ?>
-                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                  <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                   <?php
                     }
                   ?>
-                  <a href="<?php the_permalink();?>">
+                  <a href="<?php echo $current_permalink;?>">
                   <p class="readmore button-feature" style="background: #f07f00;">
                     Sponsored
                     <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news-orange.png' ?>" alt="" style="width: auto; margin-left: 3px;" />
@@ -703,9 +727,9 @@ get_header(); ?>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des" style="padding-top: 15px;">
                   <?php if($lw_sponsored != '' || true) { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
-                  <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                  <a href="<?php echo $current_permalink ?>"><h3><?php echo $current_title; ?></h3></a>
                   <p><?php echo get_excerpt(100); ?></p>
-                  <a href="<?php the_permalink(); ?>" class="view-more" style="margin-top: 10px;">View more</a>
+                  <a href="<?php echo $current_permalink; ?>" class="view-more" style="margin-top: 10px;">View more</a>
                 </div>
               </div>
             </div>
@@ -724,6 +748,8 @@ get_header(); ?>
             $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('featured_right_box_article', 0));
             $myposts = query_posts( $args );
             if (have_posts()) : while (have_posts()) : the_post();
+                $current_permalink = get_the_permalink();
+                $current_title = get_the_title();
               $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
           ?>
           <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -735,11 +761,11 @@ get_header(); ?>
                     }
                     else {
                   ?>
-                  <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                  <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                   <?php
                     }
                   ?>
-                  <a href="<?php the_permalink();?>">
+                  <a href="<?php echo $current_permalink;?>">
                   <p class="readmore button-feature">
                     Featured
                     <img id="imggg" src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" />
@@ -756,9 +782,9 @@ get_header(); ?>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des">
                   <?php if($lw_sponsored != '') { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
-                  <a href="<?php the_permalink(); ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                  <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_permalink; ?></h3></a>
                   <p><?php echo get_excerpt(100); ?></p>
-                  <a href="<?php the_permalink(); ?>" class="view-more">View more</a>
+                  <a href="<?php echo $current_permalink; ?>" class="view-more">View more</a>
                 </div>
               </div>
           </div>
@@ -785,26 +811,28 @@ get_header(); ?>
                   $args = array('showposts' => 1, 'post_type' => 'magazine');
                   $myposts = get_posts($args);
                   foreach ($myposts as $post) : setup_postdata($post);
+                      $current_permalink = get_the_permalink();
+                      $current_title = get_the_title();
                   ?>
                   <div class="content-image">
                     <?php
-                      echo '<a href="' . get_the_permalink() . '">';
+                      echo '<a href="' . $current_permalink . '">';
                       if ( has_post_thumbnail() ) {
                         the_post_thumbnail('medium');
                       }
                       else {
                     ?>
-                    <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                    <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                     <?php
                       }
                       echo '</a>';
                     ?>
                   </div>
                   <div class="content-des">
-                    <p class="name-cat"><a href="<?php the_permalink();?>">Magazine</a></p>
-                    <a href="<?php the_permalink(); ?>">
+                    <p class="name-cat"><a href="<?php echo $current_permalink;?>">Magazine</a></p>
+                    <a href="<?php echo $current_permalink; ?>">
                       <h3>Portfolio Adviser <span>-</span></h3>
-                      <span class="date"><?php echo get_the_title(); ?></span>
+                      <span class="date"><?php echo $current_title; ?></span>
                     </a>
                     <?php echo the_excerpt(); ?>
                   </div>
@@ -821,26 +849,28 @@ get_header(); ?>
                         $args = array( 'posts_per_page' => 16, 'offset' => 1, 'showposts' => 16, 'post_type' => 'magazine' );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
+                            $current_permalink = get_the_permalink();
+                            $current_title = get_the_title();
                       ?>
                       <div class="magazine">
                         <div class="content-image">
                           <?php
                             if ( has_post_thumbnail() ) {
-                              echo '<a href="' . get_the_permalink() . '">';
+                              echo '<a href="' . $current_permalink . '">';
                               the_post_thumbnail('medium');
                               echo '</a>';
                             }
                             else {
                           ?>
-                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                          <a href="<?php echo $current_permalink; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                           <?php
                             }
                           ?>
                         </div>
                         <div class="content-des">
-                          <a href="<?php the_permalink();?>">
+                          <a href="<?php echo $current_permalink; ?>">
                             Portfolio Adviser<br />
-                            <?php echo get_the_title(); ?>
+                            <?php echo $current_title; ?>
                           </a>
                         </div>
                       </div>
@@ -881,6 +911,9 @@ get_header(); ?>
                         )
                       ));
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_the_permalink();
+                          $current_title = get_the_title();
+
                         if ($post->lw_event_start_date) {
                           $event_start_date = new DateTime($post->lw_event_start_date);
                         }
@@ -899,13 +932,13 @@ get_header(); ?>
                           }
                           else {
                         ?>
-                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                         <?php
                           }
                         ?>
                       </div>
                       <div class="content-des">
-                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo $current_title; ?></h3></a>
                         <p class="date">
                           <?php
                             echo date_format($event_start_date, 'l jS F');
@@ -942,6 +975,9 @@ get_header(); ?>
                           )
                         ));
                         if(have_posts()): while(have_posts()): the_post();
+                            $current_permalink = get_the_permalink();
+                            $current_title = get_the_title();
+
                           if ($post->lw_event_start_date) {
                             $event_start_date = new DateTime($post->lw_event_start_date);
                           }
@@ -967,13 +1003,13 @@ get_header(); ?>
                                 }
                                 else {
                               ?>
-                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                               <?php
                                 }
                               ?>
                             </div>
                             <div class="content-des">
-                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo $current_title; ?></h3></a>
                               <p class="date">
                                 <?php
                                   echo date_format($event_start_date, 'l jS F');
@@ -1021,6 +1057,9 @@ get_header(); ?>
                         )
                       ));
                       if (have_posts()) : while (have_posts()) : the_post();
+                          $current_permalink = get_permalink();
+                          $current_title = get_the_title();
+
                         if ($post->lw_event_start_date) {
                           $event_start_date = new DateTime($post->lw_event_start_date);
                         }
@@ -1045,13 +1084,13 @@ get_header(); ?>
                           }
                           else {
                         ?>
-                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                         <?php
                           }
                         ?>
                       </div>
                       <div class="content-des">
-                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                        <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo $current_title; ?></h3></a>
                         <p class="date">
                           <?php
                             echo date_format($event_start_date, 'l jS F');
@@ -1088,6 +1127,9 @@ get_header(); ?>
                             )
                           ));
                           if(have_posts()): while(have_posts()): the_post();
+                              $current_permalink = get_the_permalink();
+                              $current_title = get_the_title();
+
                             if ($post->lw_event_start_date) {
                               $event_start_date = new DateTime($post->lw_event_start_date);
                             }
@@ -1113,13 +1155,13 @@ get_header(); ?>
                                 }
                                 else {
                               ?>
-                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( get_the_title(), 0, 50, '...' ); ?>" /></a>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php $post->lw_event_link; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo mb_strimwidth( $current_title, 0, 50, '...' ); ?>" /></a>
                               <?php
                                 }
                               ?>
                             </div>
                             <div class="content-des">
-                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo get_the_title(); ?></h3></a>
+                              <a<?php echo $post->lw_event_target_blank == 'yes' ? ' target="_blank"' : ''; ?> href="<?php echo $post->lw_event_link; ?>"><h3><?php echo $current_title; ?></h3></a>
                               <p class="date">
                                 <?php
                                   echo date_format($event_start_date, 'l jS F');

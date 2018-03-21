@@ -17,22 +17,10 @@ get_header(); ?>
                             <?php lastWordAdUnit('top-news-ad'); ?>
                             <div class="list-most-popular">
                                 <?php
-                                $no_of_days = (int)get_option('most_read_days');
-                                $start_date = date('Y-m-d', strtotime('-' . $no_of_days . ' days'));
-
-                                $popularpost = new WP_Query( array( 
-                                    'posts_per_page' => 3,
-                                    'showposts' => 3,
-                                    'date_query' => array(
-                                      'after' => $start_date
-                                    ),
-                                    'meta_key' => 'lw_read_count',
-                                    'orderby' => 'meta_value_num',
-                                    'ignore_sticky_posts' => 1,
-                                    'order' => 'DESC'
-                                    )
-                                );                              
+                                $popularpost = new WP_Query( array( 'posts_per_page' => 3, 'meta_key' => 'wpb_post_views_count', 'orderby' => 'meta_value_num', 'order' => 'DESC'  ) );
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
+                                    $current_permalink = get_the_permalink();
+                                    $current_title = get_the_title();
                                 ?>
                                     <div class="loop-list">
                                         <div class="content-image">
@@ -41,7 +29,7 @@ get_header(); ?>
                                                 the_post_thumbnail('popular-article');
                                             }
                                             else { ?>
-                                                <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo $current_title;?>" /></a>
                                             <?php }
                                             ?>
                                             <span class="overlay"></span>
@@ -51,7 +39,7 @@ get_header(); ?>
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                             </p>
-                                            <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                            <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title;?></h3></a>
                                         </div>
                                     </div>
                                 <?php endwhile;wp_reset_postdata(); ?>
@@ -69,6 +57,9 @@ get_header(); ?>
                     </div>
                     <div class="content-category content-single">
                         <?php if(have_posts()): while(have_posts()): the_post();
+                            $current_permalink = get_the_permalink();
+                            $current_title = get_the_title();
+
                             setReadCount(get_the_ID());
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
@@ -80,14 +71,7 @@ get_header(); ?>
                                     <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                 </p>
                                 <?php }?>
-                                <h1 class="title-single"><?php the_title();?></h1>
-                                <?php
-                                   //If is sponsored
-                                   $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
-                                   if($lw_sponsored): ?>
-                                     <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
-                                     <p>Published: <?php the_time('j M y');?></p>
-                                  <?php endif; ?>
+                                <h1 class="title-single"><?php echo $current_title;?></h1>
                                 <?php
                                   $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
                                   if ($tag_list) {
@@ -99,10 +83,49 @@ get_header(); ?>
                                 <div class="like_button clearfix">
                                     <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
                                         ADDTOANY_SHARE_SAVE_KIT( array(
-                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin'),
+                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
-                                    <?php echo do_shortcode('[printicon align="left"]');?>
+                                    <?php 
+                                      if( is_user_logged_in() ) {
+                                        $websiteId = get_current_blog_id();
+                                        $user_id = get_current_user_id();
+                                        $savedarr = get_user_meta($user_id, 'saved_posts');
+                                        $savedposts = $savedarr[0];
+                                        if (!$savedarr) {
+                                          $savedinit = Array();
+                                          add_user_meta($user_id, 'saved_posts', $savedinit);
+                                        } 
+                                        
+                                        $post_id = get_the_ID(); 
+  
+                                          if (isset($_POST['savepost'])) {
+                                            $chkfrm = $_POST['savepost'];
+                                            if (!in_array($post_id, $savedposts)) {
+                                              array_push($savedposts, $post_id);
+                                              $savedposts = update_user_meta($user_id, 'saved_posts', $savedposts);
+                                            }
+                                          } else {
+                                            //
+                                          }
+                                           
+                                        if ( !in_array($post_id, $savedposts) ) {
+                                          if (!$chkfrm) {
+                                        ?>
+                                     
+                                      <form method="post">
+                                        <input type="hidden" name="savepost" value="1">
+                                        <button type="submit" id="savepost"><i class="fa fa-bookmark"></i></button>
+                                      </form>
+
+                                      <?php }
+
+                                      else { ?>
+                                        <p class="saved">Saved to your posts!</p>
+                                      <?php }}} ?>
+
+                                    
+                                    <?php //echo do_shortcode('[ngfb buttons="email, facebook, linkedin, twitter"]');?>
                                 </div>
                             </div>
 
@@ -180,22 +203,6 @@ get_header(); ?>
                                 ?>
                               </div>
                             </div>
-                            <div>
-                              <?php
-                                if(wp_is_mobile()) {
-                                  ?>
-                                  <div style="width: 300px; margin: 0 auto;">
-                                  <?php
-                                  lastWordAdUnit('native-content-mobile');
-                                  ?>
-                                  </div>
-                                  <?php
-                                }
-                                else {
-                                  lastWordAdUnit('native-content-desktop');
-                                }
-                              ?>
-                            </div>
                             <div class="comment-post">
                                 <?php if ( comments_open() || get_comments_number() ) :
                                     comments_template();
@@ -241,7 +248,11 @@ get_header(); ?>
                                     <li>
                                         <div class="row">
                                     <?php
-                                    foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); $count++; ?>
+                                    foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); $count++;
+                                        $current_permalink = get_the_permalink();
+                                        $current_title = get_the_title();
+                                        
+                                        ?>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
                                                 <div class="loop-list">
                                                     <div class="content-image">
@@ -250,7 +261,7 @@ get_header(); ?>
                                                           the_post_thumbnail('section-article');
                                                       }
                                                       else { ?>
-                                                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                          <a href="<?php echo $current_permalink; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo $current_title;?>" /></a>
                                                       <?php }
                                                       ?>
                                                         <span class="overlay"></span>
@@ -260,7 +271,7 @@ get_header(); ?>
                                                             <?php $category = get_the_category(); ?>
                                                             <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                         </p>
-                                                        <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                        <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title;?></h3></a>
                                                     </div>
                                                 </div>
                                             </div>
