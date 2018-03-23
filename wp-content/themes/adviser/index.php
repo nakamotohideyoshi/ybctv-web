@@ -606,7 +606,7 @@ get_header(); ?>
                     <div class="content-image">
                       <?php
                       if ($primary_medium == "video") {
-                        brightcove_video($lw_brightcove_video_id, false);
+                        brightcove2_video($lw_brightcove_video_id, false);
                       } else {
                         the_post_thumbnail('large');
                       }
