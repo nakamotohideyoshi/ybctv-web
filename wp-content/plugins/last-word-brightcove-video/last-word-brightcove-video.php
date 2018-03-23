@@ -154,11 +154,6 @@ function brightcove2_footer ()
 
                     var vTag = document.getElementById(videoId);
 
-                    console.log("vTag");
-                    console.log(vTag);
-                    console.log('video1');
-                    console.log(videoDivs[i]);
-
                     vTag.setAttribute('data-account', "<?php echo $account_id; ?>");
                     vTag.setAttribute('data-player', playerId);
                     vTag.setAttribute('data-video-id', videoId);

@@ -339,7 +339,7 @@ class frontend {
         jQuery(document).ready (function () {
             window.setTimeout ( function () {
                 googletag.cmd.push(function() { googletag.display("$ad_unit_div"); });    
-            }, 300);                
+            }, 150);                
         });        
       </script>
 A3;
