@@ -782,7 +782,7 @@ get_header(); ?>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des">
                   <?php if($lw_sponsored != '') { ?><p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p><?php } ?>
-                  <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_permalink; ?></h3></a>
+                  <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                   <p><?php echo get_excerpt(100); ?></p>
                   <a href="<?php echo $current_permalink; ?>" class="view-more">View more</a>
                 </div>
