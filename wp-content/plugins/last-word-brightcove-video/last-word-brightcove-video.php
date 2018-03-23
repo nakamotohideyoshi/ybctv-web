@@ -140,32 +140,31 @@ function brightcove2_footer ()
     <script src="//players.brightcove.net/<?php echo $account_id; ?>/<?php echo $player_id ?>_default/index.min.js"></script>
 
     <script type="text/javascript">
-        jQuery(document).ready( function () {
-            var videoDivs = document.querySelector('.video-js');
+            console.log("brightcove2_footer...");
+
+            var videoDivs = document.querySelectorAll('.video-js[data-pid]');
 
             if (videoDivs == null || videoDivs.length == 0) {
-                return;
+                console.log("no video divs found");
+
+            } else {
+                for (var i = 0; i<videoDivs.length; i++) {
+                    var videoId = videoDivs[i].getAttribute('id');
+                    var playerId = videoDivs[i].getAttribute('data-pid');
+
+                    var vTag = document.getElementById(videoId);
+
+                    console.log("vTag");
+                    console.log(vTag);
+                    console.log('video1');
+                    console.log(videoDivs[i]);
+
+                    vTag.setAttribute('data-account', "<?php echo $account_id; ?>");
+                    vTag.setAttribute('data-player', playerId);
+                    vTag.setAttribute('data-video-id', videoId);
+                    bc(vTag);
+                }
             }
-
-            for (var i = 0; i<videoDivs.length; i++) {
-                var videoId = videoDivs[i].getAttribute('id');
-                var playerId = videosDivs[i].getAttribute('data-pid');
-
-                var vTag = document.getElementById(videoId);
-
-                console.log("vTag");
-                console.log(vTag);
-                console.log('video1');
-                console.log(video1);
-
-                vTag.setAttribute('data-account', "<?php echo $account_id; ?>");
-                vTag.setAttribute('data-player', playerId);
-                vTag.setAttribute('data-video-id', videoId);
-                bc(vTag);
-            }
-
-        });
-
 
     </script>
     <?php

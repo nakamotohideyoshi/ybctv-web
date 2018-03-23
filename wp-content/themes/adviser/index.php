@@ -127,7 +127,7 @@ get_header(); ?>
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="loop-list clearfix">
-                            <?php lastWordAdUnit('top-news-ad'); ?>
+                            <?php lastWordAdUnit2('top-news-ad'); ?>
                         </div>
                       </div>
 
@@ -408,7 +408,7 @@ get_header(); ?>
                       if (wp_is_mobile()) {
                     ?>
                     <div style="max-width: 300px; margin: 30px auto 0 auto">
-                      <?php lastWordAdUnit('lhs-mpu'); ?>
+                      <?php lastWordAdUnit2('lhs-mpu'); ?>
                     </div>
                     <?php
                       }
@@ -510,7 +510,7 @@ get_header(); ?>
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <?php
                     if (!wp_is_mobile()) {
-                      lastWordAdUnit('lhs-mpu');
+                      lastWordAdUnit2('lhs-mpu');
                     }
                   ?>
                 </div>
@@ -1188,7 +1188,7 @@ get_header(); ?>
             <?php  } endif; ?>
           <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">
             <div class="content-right">
-              <?php lastWordAdUnit('rhs-hpu-2'); ?>
+              <?php lastWordAdUnit2('rhs-hpu-2'); ?>
             </div>
           </div>
         </div>
