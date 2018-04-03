@@ -10,11 +10,12 @@
 	.form .cols .col:last-child, .form .cols .col:nth-child(2n) { margin-right: 0; }
 	.form .cols .col:nth-child(2n+1) { clear: both; }
 
-	.form .upload img, .form .upload .update-image-button, .form .upload .remove-image-button { display: none; }
+	.form .upload img, .form .upload .update-image-button, .form .upload .remove-image-button, .form .upload .size-warning { display: none; }
 	.form .upload img { max-width: 100%; max-height: 150px; vertical-align: middle; }
 	.form .upload.active .add-image-button { display: none; }
 	.form .upload.active .update-image-button, .form .upload.active .remove-image-button { display: inline-block; }
 	.form .upload.active img { display: block; }
+	.form .upload.active .size-warning { display: block; font-weight: bold; color: #ff0000; margin: 5px 0px; }
 	
 	.form .triggerable .triggerable-button { margin-bottom: 10px; }
 	.form .triggerable .triggerable-content,

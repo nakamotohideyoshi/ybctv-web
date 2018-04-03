@@ -6,16 +6,22 @@
 		<?php if ( in_array( $key, array( 'title', 'boxes_count' ) ) ): ?>
 			<?php $dataKey = 'data_' . $key; ?>
 
-			<?php if (  $type == 'image'  ): ?>
+			<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 				<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+				<?php $typePieces = explode(':', $type); ?>
+				<?php $imageSizes = explode('x', $typePieces[1]); ?>
 				<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-					<label><?php echo $title; ?></label>
+					<label>
+						<?php echo $title; ?>
+						(width: <?php echo $imageSizes[0]; ?> pixels, 
+						height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+					</label>
 					<button type="button" class="button add-image-button">Add Image</button>
 					<button type="button" class="button update-image-button">Update Image</button>
 					<button type="button" class="button remove-image-button">Remove Image</button>
 					<br/><br/>
 					<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-					<img src="<?php echo $image; ?>" />
+					<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 				</div>
 			<?php elseif ( $type == 'text' ): ?>
 				<div class="formfield">
@@ -52,17 +58,22 @@
 			<?php if ( in_array( $key, array( 'left_box_title', 'left_box_subtitle', 'left_box_body', 'left_box_image', 'left_box_image_link', 'left_box_color' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
 
-				<?php if (  $type == 'image'  ): ?>
+				<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+					<?php $typePieces = explode(':', $type); ?>
+					<?php $imageSizes = explode('x', $typePieces[1]); ?>
 					<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-						<label><?php echo $title; ?></label>
-						
+						<label>
+							<?php echo $title; ?>
+							(width: <?php echo $imageSizes[0]; ?> pixels, 
+							height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+						</label>
 						<button type="button" class="button add-image-button">Add Image</button>
 						<button type="button" class="button update-image-button">Update Image</button>
 						<button type="button" class="button remove-image-button">Remove Image</button>
 						<br/><br/>
 						<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-						<img src="<?php echo $image; ?>" />
+						<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 					</div>
 				<?php elseif ( $type == 'text' ): ?>
 					<div class="formfield">
@@ -100,17 +111,22 @@
 			<?php if ( in_array( $key, array( 'right_box_title', 'right_box_subtitle', 'right_box_body', 'right_box_image', 'right_box_image_link', 'right_box_color' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
 
-				<?php if (  $type == 'image'  ): ?>
+				<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+					<?php $typePieces = explode(':', $type); ?>
+					<?php $imageSizes = explode('x', $typePieces[1]); ?>
 					<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-						<label><?php echo $title; ?></label>
-						
+						<label>
+							<?php echo $title; ?>
+							(width: <?php echo $imageSizes[0]; ?> pixels, 
+							height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+						</label>
 						<button type="button" class="button add-image-button">Add Image</button>
 						<button type="button" class="button update-image-button">Update Image</button>
 						<button type="button" class="button remove-image-button">Remove Image</button>
 						<br/><br/>
 						<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-						<img src="<?php echo $image; ?>" />
+						<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 					</div>
 				<?php elseif ( $type == 'text' ): ?>
 					<div class="formfield">
@@ -147,17 +163,22 @@
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
 			<?php if ( in_array( $key, array( 'left_box_title_3', 'left_box_subtitle_3', 'left_box_body_3', 'left_box_image_3', 'left_box_image_link_3', 'left_box_color_3' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
-				<?php if (  $type == 'image'  ): ?>
+				<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+					<?php $typePieces = explode(':', $type); ?>
+					<?php $imageSizes = explode('x', $typePieces[1]); ?>
 					<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-						<label><?php echo $title; ?></label>
-						
+						<label>
+							<?php echo $title; ?>
+							(width: <?php echo $imageSizes[0]; ?> pixels, 
+							height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+						</label>
 						<button type="button" class="button add-image-button">Add Image</button>
 						<button type="button" class="button update-image-button">Update Image</button>
 						<button type="button" class="button remove-image-button">Remove Image</button>
 						<br/><br/>
 						<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-						<img src="<?php echo $image; ?>" />
+						<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 					</div>
 				<?php elseif ( $type == 'text' ): ?>
 					<div class="formfield">
@@ -194,17 +215,22 @@
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
 			<?php if ( in_array( $key, array( 'right_box_title_4', 'right_box_subtitle_4', 'right_box_body_4', 'right_box_image_4', 'right_box_image_link_4', 'right_box_color_4' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
-				<?php if (  $type == 'image'  ): ?>
+				<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+					<?php $typePieces = explode(':', $type); ?>
+					<?php $imageSizes = explode('x', $typePieces[1]); ?>
 					<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-						<label><?php echo $title; ?></label>
-						
+						<label>
+							<?php echo $title; ?>
+							(width: <?php echo $imageSizes[0]; ?> pixels, 
+							height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+						</label>
 						<button type="button" class="button add-image-button">Add Image</button>
 						<button type="button" class="button update-image-button">Update Image</button>
 						<button type="button" class="button remove-image-button">Remove Image</button>
 						<br/><br/>
 						<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-						<img src="<?php echo $image; ?>" />
+						<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 					</div>
 				<?php elseif ( $type == 'text' ): ?>
 					<div class="formfield">
@@ -242,17 +268,22 @@
 			<?php if ( in_array( $key, array( 'left_box_title_5', 'left_box_subtitle_5', 'left_box_body_5', 'left_box_image_5', 'left_box_image_link_5', 'left_box_color_5' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
 
-				<?php if (  $type == 'image'  ): ?>
+				<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+					<?php $typePieces = explode(':', $type); ?>
+					<?php $imageSizes = explode('x', $typePieces[1]); ?>
 					<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-						<label><?php echo $title; ?></label>
-						
+						<label>
+							<?php echo $title; ?>
+							(width: <?php echo $imageSizes[0]; ?> pixels, 
+							height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+						</label>
 						<button type="button" class="button add-image-button">Add Image</button>
 						<button type="button" class="button update-image-button">Update Image</button>
 						<button type="button" class="button remove-image-button">Remove Image</button>
 						<br/><br/>
 						<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-						<img src="<?php echo $image; ?>" />
+						<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 					</div>
 				<?php elseif ( $type == 'text' ): ?>
 					<div class="formfield">
@@ -289,17 +320,22 @@
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
 			<?php if ( in_array( $key, array( 'right_box_title_6', 'right_box_subtitle_6', 'right_box_body_6', 'right_box_image_6', 'right_box_image_link_6', 'right_box_color_6' ) ) ): ?>
 				<?php $dataKey = 'data_' . $key; ?>
-				<?php if (  $type == 'image'  ): ?>
+				<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 					<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+					<?php $typePieces = explode(':', $type); ?>
+					<?php $imageSizes = explode('x', $typePieces[1]); ?>
 					<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
-						<label><?php echo $title; ?></label>
-						
+						<label>
+							<?php echo $title; ?>
+							(width: <?php echo $imageSizes[0]; ?> pixels, 
+							height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
+						</label>
 						<button type="button" class="button add-image-button">Add Image</button>
 						<button type="button" class="button update-image-button">Update Image</button>
 						<button type="button" class="button remove-image-button">Remove Image</button>
 						<br/><br/>
 						<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-						<img src="<?php echo $image; ?>" />
+						<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 					</div>
 				<?php elseif ( $type == 'text' ): ?>
 					<div class="formfield">

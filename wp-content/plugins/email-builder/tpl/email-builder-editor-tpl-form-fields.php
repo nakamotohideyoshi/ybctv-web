@@ -6,11 +6,15 @@
 			<?php $key = strtolower(str_replace(' ', '_', $title)); ?>
 			<?php $dataKey = 'data_' . $key; ?>
 
-			<?php if (  $type == 'image'  ): ?>
+			<?php if ( $type == 'image' || strpos($type, 'image:') !== false ): ?>
 				<?php $image = isset($data[$key]) ? $data[$key]: ''; ?>
+				<?php $typePieces = explode(':', $type); ?>
+				<?php $imageSizes = explode('x', $typePieces[1]); ?>
 				<div class="formfield upload <?php echo $image != '' ? 'active' : ''; ?>">
 					<label>
 						<?php echo $title; ?>
+						(width: <?php echo $imageSizes[0]; ?> pixels, 
+						height: <?php echo $imageSizes[1] == '0' ? 'flexible' : ($imageSizes[1] . ' pixels'); ?>)
 						<?php echo strpos($fragment_type, 'Sponsored_Content') !== false && strpos($fragment_type, 'Sponsored_Content_2') === false ? '<br/><em>(*recommended size: 120x60 pixels)</em>' : ''; ?>		
 					</label>
 					
@@ -19,7 +23,7 @@
 					<button type="button" class="button remove-image-button">Remove Image</button>
 					<br/><br/>
 					<input type="hidden" name="<?php echo $dataKey; ?>" value="<?php echo $image; ?>" />
-					<img src="<?php echo $image; ?>" />
+					<img src="<?php echo $image; ?>" data-width="<?php echo $imageSizes[0]; ?>" data-height="<?php echo $imageSizes[1]; ?>" />
 				</div>
 			<?php elseif ( $type == 'text' ): ?>
 				<div class="formfield">
