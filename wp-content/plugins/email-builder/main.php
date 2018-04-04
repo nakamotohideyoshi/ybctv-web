@@ -1156,7 +1156,7 @@ class EmailBuilder {
 					 );
 				 return $result[0]->ContentId;
 				}
-				
+
 				$wpdb->insert( 
 					$table_name, 
 					array( 

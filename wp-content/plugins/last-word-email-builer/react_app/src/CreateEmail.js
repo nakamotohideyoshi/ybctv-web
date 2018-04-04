@@ -732,8 +732,15 @@ class CreateEmail extends Component {
             sponsoredContentD={this.props.sponsoredContentD}
             sponsoredContentE={this.props.sponsoredContentE}
             sponsoredContentF={this.props.sponsoredContentF}
-            
-            staticImage1={this.props.staticImage1} 
+
+           assetClass={this.props.assetClass}
+           assetClassB={this.props.assetClassB}
+           assetClassC={this.props.assetClassC}
+               quotable={this.props.quotable}
+               showQuotable={this.props.hasQuotable}
+               showAssetClass={this.props.hasAssetClass}
+
+               staticImage1={this.props.staticImage1}
             staticImage1B={this.props.staticImage1B} 
             staticImage1C={this.props.staticImage1C} 
             staticImage1D={this.props.staticImage1D} 
