@@ -342,7 +342,7 @@ render() {
                         <td style={{padding:'0px 9px 0px 10px', verticalAlign: 'top',margin:'0px'}}>
                                 <table style={{width: '100%'}} data-width="100%">
                                                         <tbody><tr>
-                                                                <td style={{padding:'13px 0px 10px 0px'}} data-align="center">
+                                                                <td style={{padding:'13px 0px 0px 0px'}} data-align="center">
                                                                         <table className="subscribe" style={{width: '100%'}} data-width="100%">
 <tbody>
 <tr>
