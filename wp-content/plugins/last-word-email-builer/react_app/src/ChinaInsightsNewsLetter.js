@@ -424,10 +424,8 @@ render() {
                                                                                                 <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id="Static_Image_2" onClick={this.props.onRemoveStatic}/>
                                                                                                 <LetterNote letter={this.props.showStaticImage2} />
                                                                                                 </td></tr>: ''}
-</tbody></table></td>
-                                                                                        </tr>
-        <tr>
-        <td>
+</tbody></table>
+
     <table className="fund_linked" style={{margin: '0px auto', textAlign: 'center', border: '0px', width: '321px',float:'right',position:'relative'}} data-width="321" data-align="right">
     <tbody>
     {this.props.staticHighlight === 'quotable' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
@@ -439,8 +437,8 @@ render() {
         </tr> : ''}
         </tbody>
         </table>
-        </td>
-        </tr>
+    </td>
+                                                                                        </tr>
                                                            <tr>
         <td style={{padding:'0px 10px'}}>
         <table className="device_innerblock" style={{width:'728px', textAlign:'center'}} data-width="728" data-align="center" >
