@@ -1,6 +1,27 @@
 <script type="text/javascript">
 	(function($) {
 		$(document).ready(function(){
+			var clearWarning = function(img) {
+				img.siblings(".size-warning").remove();
+			}
+			var checkIfWarningIsRequired = function(img) {
+				var w = parseFloat(img.attr('data-width'));
+				var h = parseFloat(img.attr('data-height'));
+
+				var i = new Image();
+				i.src = img.attr('src');
+				i.onload = function() {
+					img.siblings(".size-warning").remove();
+
+					if ( i.naturalWidth !== w || ( i.naturalHeight !== h && h > 0 ) ) {
+						img.after( $("<div/>", { 
+							"class": "size-warning", 
+							"text": "Wrong image size!!! (" + i.naturalWidth + "x" + i.naturalHeight + " instead of " + w + "x" + ( h > 0 ? h : '' ) + ")" 
+						}) );
+					}
+				};
+			}
+
 			$(".ngfb-notice").remove();
 
 			$(".preview-box").each(function(){
@@ -49,14 +70,18 @@
 						id: 'library-' + (Math.random() * 10),
 						multiple: false
 					}).on('select', function() {
+						clearWarning(image);
 						var attachment = custom_uploader.state().get('selection').first().toJSON();
 
 						button.parent().addClass('active');
 
 						input.val(attachment.url);
 						image.attr('src', attachment.url);
+						checkIfWarningIsRequired(image);
 				})
 				.open();
+			}).siblings("img").each(function(){
+				checkIfWarningIsRequired( $(this) );
 			});
 			 
 			$('.remove-image-button').on('click', function(e) {

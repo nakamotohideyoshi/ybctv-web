@@ -1037,6 +1037,8 @@ class App extends Component {
         }
       }
       else if(type === 'Most_Viewed'){
+        let articleFound = false;
+
         _.each(this.state.ratedArticles, (article, index) => {
          if(parseInt(article.ID, 10) === articleId){
            this.setState(prevState => ({
@@ -1045,8 +1047,22 @@ class App extends Component {
            this.setState({
              ratedArticles: update(this.state.ratedArticles, {[index]: {isDisabled: {$set: true}}})
            })
+           articleFound = true;
          }
         })
+
+        if ( !articleFound ) {
+          _.each(this.state.articles, (article, index) => {
+           if(parseInt(article.ID, 10) === articleId){
+             this.setState(prevState => ({
+               selectedMostViewedArticles: [...prevState.selectedMostViewedArticles, article]
+             }));
+             this.setState({
+               articles: update(this.state.articles, {[index]: {isDisabled: {$set: true}}})
+             })
+           }
+          })
+        }
     }
     else if(type === 'Investment'){
       _.each(this.state.articles, (article, index) => {
@@ -1061,6 +1077,8 @@ class App extends Component {
       })
     }
     else if(type === 'Most_Read'){
+      let articleFound = false;
+
       _.each(this.state.ratedArticles, (article, index) => {
        if(parseInt(article.ID, 10) === articleId){
          this.setState(prevState => ({
@@ -1069,8 +1087,22 @@ class App extends Component {
          this.setState({
            ratedArticles: update(this.state.ratedArticles, {[index]: {isDisabled: {$set: true}}})
          })
+         articleFound = true;
        }
       })
+
+      if ( !articleFound ) {
+        _.each(this.state.articles, (article, index) => {
+         if(parseInt(article.ID, 10) === articleId){
+           this.setState(prevState => ({
+             selectedMostReadArticles: [...prevState.selectedMostReadArticles, article]
+           }));
+           this.setState({
+             articles: update(this.state.articles, {[index]: {isDisabled: {$set: true}}})
+           })
+         }
+        })
+      }
     }
     else if(type === 'Events'){
       _.each(this.state.eventArticles, (article, index) => {

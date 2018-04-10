@@ -18,11 +18,11 @@ $data = array(
 $config = array(
 	'Digital_Magazine' => array(
 		'Link' => 'text',
-		'Image' => 'image',
+		'Image' => 'image:300x0',
 		'Button Text' => 'text'
 	),
 	'Digital_Magazine_2' => array(
-		'Image' => 'image',
+		'Image' => 'image:300x0',
 		'Link' => 'text',
 		'Title' => 'text',
 		'Body' => 'editor',
@@ -30,33 +30,33 @@ $config = array(
 	),
 	'Newsletter_Subscribe' => array(
 		'Link' => 'text',
-		'Image' => 'image',
+		'Image' => 'image:300x0',
 		'Button Text' => 'text'
 	),
 	'Top_Leaderboard' => array(
-		'Image' => 'image',
+		'Image' => 'image:728x90',
 		'Image Link' => 'text'
 	),
 	'Footer_Leaderboard' => array(
-		'Image' => 'image',
+		'Image' => 'image:728x90',
 		'Image Link' => 'text'
 	),
 	'Static_Image_1' => array(
-		'Image' => 'image',
+		'Image' => 'image:300x0',
 		'Image Link' => 'text'
 	),
 	'Static_Image_2' => array(
-		'Image' => 'image',
+		'Image' => 'image:300x0',
 		'Image Link' => 'text'
 	),
 	'Sponsored_Content' => array(
 		'Body' => 'editor',
-		'Image' => 'image',
+		'Image' => 'image:120x60',
 		'Image Link' => 'text'
 	),
 	'Sponsored_Content_2' => array(
 		'Title' => 'text',
-		'Image' => 'image',
+		'Image' => 'image:192x0',
 		'Image Link' => 'text',
 		'Subtitle' => 'editor',
 		'Excerpt' => 'editor'
@@ -64,7 +64,7 @@ $config = array(
 	'Quotable' => array(
 		'Title' => 'text',
 		'Subtitle' => 'text',
-		'Image' => 'image',
+		'Image' => 'image:300x0',
 		'Body' => 'editor',
 		'Footer' => 'editor'
 	),
@@ -75,42 +75,42 @@ $config = array(
 		'Left Box Title' => 'text',
 		'Left Box Subtitle' => 'text',
 		'Left Box Body' => 'text',
-		'Left Box Image' => 'image',
+		'Left Box Image' => 'image:140x0',
 		'Left Box Image Link' => 'text',
 		'Left Box Color' => 'select:white,gray',
 
 		'Right Box Title' => 'text',
 		'Right Box Subtitle' => 'text',
 		'Right Box Body' => 'text',
-		'Right Box Image' => 'image',
+		'Right Box Image' => 'image:140x0',
 		'Right Box Image Link' => 'text',
 		'Right Box Color' => 'select:white,gray',
 
 		'Left Box Title 3' => 'text',
 		'Left Box Subtitle 3' => 'text',
 		'Left Box Body 3' => 'text',
-		'Left Box Image 3' => 'image',
+		'Left Box Image 3' => 'image:140x0',
 		'Left Box Image Link 3' => 'text',
 		'Left Box Color 3' => 'select:white,gray',
 
 		'Right Box Title 4' => 'text',
 		'Right Box Subtitle 4' => 'text',
 		'Right Box Body 4' => 'text',
-		'Right Box Image 4' => 'image',
+		'Right Box Image 4' => 'image:140x0',
 		'Right Box Image Link 4' => 'text',
 		'Right Box Color 4' => 'select:white,gray',
 
 		'Left Box Title 5' => 'text',
 		'Left Box Subtitle 5' => 'text',
 		'Left Box Body 5' => 'text',
-		'Left Box Image 5' => 'image',
+		'Left Box Image 5' => 'image:140x0',
 		'Left Box Image Link 5' => 'text',
 		'Left Box Color 5' => 'select:white,gray',
 
 		'Right Box Title 6' => 'text',
 		'Right Box Subtitle 6' => 'text',
 		'Right Box Body 6' => 'text',
-		'Right Box Image 6' => 'image',
+		'Right Box Image 6' => 'image:140x0',
 		'Right Box Image Link 6' => 'text',
 		'Right Box Color 6' => 'select:white,gray'
 	)
