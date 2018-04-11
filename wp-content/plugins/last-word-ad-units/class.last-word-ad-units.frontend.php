@@ -263,4 +263,94 @@ class frontend {
     return $output;
 
   }
+
+
+    // Displays Ad Unit
+    // Improved performance in this version
+    public static function last_word_ad_unit2($slug, $id) {
+        $output = '';
+        $group_slug = 'rest-of-site';
+        $full_slug = '';
+
+        if ($id == 0) { // Homepage
+            $group_slug = 'home';
+        }
+        else if (is_page($id) && get_page_template_slug($id) == 'template-blog.php') { // Category
+            $category_id = get_post_meta($id, 'category_page', true);
+            $category = get_term_by('id', $category_id, 'category');
+            if ($category) {
+                $group_slug = $category->slug;
+            }
+        }
+        else if (is_page($id) && get_page_template_slug($id) != 'template-blog.php') { // Normal Page
+            $page = sanitize_post($GLOBALS['wp_the_query']->get_queried_object());
+            $group_slug = $page->post_name;
+        }
+        else if (is_archive()) { // Category Archive
+            $category_id = get_query_var('cat');
+            $category = get_category($category_id);
+
+            if ($category) {
+                $group_slug = $category->slug;
+            }
+        }
+        else if (is_single()) { // Article
+            $category = get_the_category();
+
+            if ($category) {
+                $group_slug = $category[0]->slug;
+            }
+        }
+
+        // Check if ad unit group exists otherwise use 'rest-of-site'
+        $ad_unit_group = get_term_by('slug', $group_slug, 'lw_ad_unit_group');
+
+        if ($ad_unit_group) {
+            $ad_unit_group_slug = $ad_unit_group->slug;
+        }
+        else {
+            $ad_unit_group_slug = 'rest-of-site';
+        }
+
+
+        $full_slug = $ad_unit_group_slug . '-' . $slug;
+
+        $args = array(
+            'post_type' => 'lw_ad_unit',
+            'posts_per_page' => 1,
+            'meta_query' => array(
+                array(
+                    'key' => 'lw_ad_unit_slug',
+                    'value' => $full_slug,
+                    'compare' => '='
+                )
+            )
+        );
+        $query = new \WP_Query($args);
+
+        if ($query->have_posts()) {
+            $query->the_post();
+            $ad_unit_div = get_post_meta(get_the_ID(), 'lw_ad_unit_div', true);
+            $output .= "<div class=\"ads-" . $slug . " ads-" . get_post_meta(get_the_ID(), 'lw_ad_unit_slug', true) . "\">\n";
+            $output .= "\t<div id=\"" . $ad_unit_div . "\">\n";
+
+            $output.=<<<A3
+      <script type="text/javascript">
+        jQuery(document).ready (function () {
+            window.setTimeout ( function () {
+                googletag.cmd.push(function() { googletag.display("$ad_unit_div"); });    
+            }, 150);                
+        });        
+      </script>
+A3;
+
+            $output .= "\t</div>\n";
+            $output .= "</div>\n";
+        }
+
+        wp_reset_query();
+
+        return $output;
+
+    }
 }

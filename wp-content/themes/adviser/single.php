@@ -14,7 +14,7 @@ get_header(); ?>
                     <div class="content-left">
                         <div class="most-popular most-popular-new">
                             <h2>Most Popular News</h2>
-                            <?php lastWordAdUnit('top-news-ad'); ?>
+                            <?php lastWordAdUnit2('top-news-ad'); ?>
                             <div class="list-most-popular">
                                 <?php
                                 $no_of_days = (int)get_option('most_read_days');
@@ -32,7 +32,10 @@ get_header(); ?>
                                     'order' => 'DESC'
                                     )
                                 );
+
                                 while ( $popularpost->have_posts() ) : $popularpost->the_post();
+                                    $current_permalink = get_the_permalink();
+                                    $current_title = get_the_title();
                                 ?>
                                     <div class="loop-list">
                                         <div class="content-image">
@@ -41,7 +44,7 @@ get_header(); ?>
                                                 the_post_thumbnail('popular-article');
                                             }
                                             else { ?>
-                                                <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                <a href="<?php echo $current_permalink;?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo $current_title;?>" /></a>
                                             <?php }
                                             ?>
                                             <span class="overlay"></span>
@@ -51,7 +54,7 @@ get_header(); ?>
                                                 <?php $category = get_the_category(); ?>
                                                 <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                             </p>
-                                            <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                            <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title;?></h3></a>
                                         </div>
                                     </div>
                                 <?php endwhile;wp_reset_postdata(); ?>
@@ -69,6 +72,9 @@ get_header(); ?>
                     </div>
                     <div class="content-category content-single">
                         <?php if(have_posts()): while(have_posts()): the_post();
+                            $current_permalink = get_the_permalink();
+                            $current_title = get_the_title();
+
                             setReadCount(get_the_ID());
                             $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
                             $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
@@ -80,14 +86,7 @@ get_header(); ?>
                                     <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                 </p>
                                 <?php }?>
-                                <h1 class="title-single"><?php the_title();?></h1>
-                                <?php
-                                   //If is sponsored
-                                   $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
-                                   if($lw_sponsored): ?>
-                                     <p class="name-cat">Sponsored by <?php echo $lw_sponsored;?></p>
-                                     <p>Published: <?php the_time('j M y');?></p>
-                                  <?php endif; ?>
+                                <h1 class="title-single"><?php echo $current_title;?></h1>
                                 <?php
                                   $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
                                   if ($tag_list) {
@@ -99,10 +98,12 @@ get_header(); ?>
                                 <div class="like_button clearfix">
                                     <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
                                         ADDTOANY_SHARE_SAVE_KIT( array(
-                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin'),
+                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin' ),
                                         ) );
                                     } ?>
+
                                     <?php echo do_shortcode('[printicon align="left"]');?>
+
                                     <?php 
                                       if( is_user_logged_in() ) {
                                         $websiteId = get_current_blog_id();
@@ -129,8 +130,9 @@ get_header(); ?>
                                         if ( !in_array($post_id, $savedposts) ) {
                                           if (!$chkfrm) {
                                         ?>
-                                     
+
                                       <form method="post" id="savepostform">
+
                                         <input type="hidden" name="savepost" value="1">
                                         <button type="submit" id="savepost"><i class="fa fa-bookmark"></i></button>
                                       </form>
@@ -216,7 +218,7 @@ get_header(); ?>
                                   }
                                   if (wp_is_mobile()) {
                                     echo '<div style="max-width: 300px; margin: 30px auto 0 auto">';
-                                    lastWordAdUnit('lhs-mpu');
+                                    lastWordAdUnit2('lhs-mpu');
                                     echo '</div>';
                                   }
                                 ?>
@@ -227,13 +229,13 @@ get_header(); ?>
                                 ?>
                                 <div style="width: 300px; margin: 0 auto;">
                                 <?php
-                                lastWordAdUnit('native-content-mobile');
+                                lastWordAdUnit2('native-content-mobile');
                                 ?>
                                 </div>
                                 <?php
                               }
                               else {
-                                lastWordAdUnit('native-content-desktop');
+                                lastWordAdUnit2('native-content-desktop');
                               }
                             ?>
                             <div class="comment-post">
@@ -281,7 +283,11 @@ get_header(); ?>
                                     <li>
                                         <div class="row">
                                     <?php
-                                    foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); $count++; ?>
+                                    foreach( $wpex_query->posts as $post ) : setup_postdata( $post ); $count++;
+                                        $current_permalink = get_the_permalink();
+                                        $current_title = get_the_title();
+                                        
+                                        ?>
                                             <div class="col-md-6 col-sm-6 col-xs-6">
                                                 <div class="loop-list">
                                                     <div class="content-image">
@@ -290,7 +296,7 @@ get_header(); ?>
                                                           the_post_thumbnail('section-article');
                                                       }
                                                       else { ?>
-                                                          <a href="<?php the_permalink();?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php the_title();?>" /></a>
+                                                          <a href="<?php echo $current_permalink; ?>"><img src="<?php echo THEME_PATH.'/images/not-image.jpg' ?>" alt="<?php echo $current_title;?>" /></a>
                                                       <?php }
                                                       ?>
                                                         <span class="overlay"></span>
@@ -300,7 +306,7 @@ get_header(); ?>
                                                             <?php $category = get_the_category(); ?>
                                                             <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
                                                         </p>
-                                                        <a href="<?php the_permalink(); ?>"><h3><?php the_title();?></h3></a>
+                                                        <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title;?></h3></a>
                                                     </div>
                                                 </div>
                                             </div>

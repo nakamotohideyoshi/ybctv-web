@@ -140,6 +140,8 @@
 
 </script>
 */ ?>
+<?php echo brightcove2_footer(); ?>
 <?php wp_footer(); ?>
+
 </body>
 </html>

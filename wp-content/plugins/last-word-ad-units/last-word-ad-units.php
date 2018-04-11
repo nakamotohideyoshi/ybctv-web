@@ -36,3 +36,16 @@ if (!function_exists('lastWordAdUnit')) {
     }
   }
 }
+
+
+// Expose function for Ad Unit Template Tag (improved performance version)
+if (!function_exists('lastWordAdUnit2')) {
+    function lastWordAdUnit2($slug) {
+        $show_ad_units_status = get_option('show_ad_units');
+
+        if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+            $id = is_home() ? 0 : get_the_ID();
+            echo last_word_ad_units\frontend::last_word_ad_unit2($slug, $id);
+        }
+    }
+}

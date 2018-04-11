@@ -94,3 +94,73 @@ function brightcove_video($video_id, $autoplay = true) {
   </div>
   <?php
 }
+
+
+
+/***
+ * Improved version, capable of lazy loading
+ */
+function brightcove2_video($video_id, $autoplay = true) {
+    $account_id = esc_attr(get_option('brightcove_account_id'));
+
+    if ($autoplay) {
+        $player_id = esc_attr(get_option('brightcove_player_id'));
+    }
+    else {
+        $player_id = esc_attr(get_option('brightcove_player_non_autoplay_id'));
+    }
+
+    ?>
+    <div class="brightcove-video-wrap">
+        <div style="position: relative; display: block; max-width: 100%;">
+            <div style="padding-top: 50%;">
+                <video
+                        id="<?php echo $video_id;?>"
+                        data-pid="<?php echo $player_id;?>"
+                        data-embed="default"
+                        class="video-js"
+                        controls
+                        style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;">
+                </video>
+
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+/***
+ * This goes to page footer to save some speed (lazy load)
+ */
+function brightcove2_footer ()
+{
+    $account_id = esc_attr(get_option('brightcove_account_id'));
+    $player_id = esc_attr(get_option('brightcove_player_non_autoplay_id'));
+    ?>
+    <script src="//players.brightcove.net/<?php echo $account_id; ?>/<?php echo $player_id ?>_default/index.min.js"></script>
+
+    <script type="text/javascript">
+            console.log("brightcove2_footer...");
+
+            var videoDivs = document.querySelectorAll('.video-js[data-pid]');
+
+            if (videoDivs == null || videoDivs.length == 0) {
+                console.log("no video divs found");
+
+            } else {
+                for (var i = 0; i<videoDivs.length; i++) {
+                    var videoId = videoDivs[i].getAttribute('id');
+                    var playerId = videoDivs[i].getAttribute('data-pid');
+
+                    var vTag = document.getElementById(videoId);
+
+                    vTag.setAttribute('data-account', "<?php echo $account_id; ?>");
+                    vTag.setAttribute('data-player', playerId);
+                    vTag.setAttribute('data-video-id', videoId);
+                    bc(vTag);
+                }
+            }
+
+    </script>
+    <?php
+}

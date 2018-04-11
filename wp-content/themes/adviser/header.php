@@ -62,24 +62,26 @@
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
-  <?php lastWordAdUnit('oop-teads'); ?>
-  <?php lastWordAdUnit('oop-overlay'); ?>
+
+  <?php lastWordAdUnit2('oop-teads'); ?>
+  <?php lastWordAdUnit2('oop-overlay'); ?>
+
   <div id="page" class="hfeed site">
     <section class="ads-side-panels">
       <div class="container">
         <div class="side-panel-left-container">
           <div class="side-panel-left">
-            <?php lastWordAdUnit('oop-lskin'); ?>
+            <?php lastWordAdUnit2('oop-lskin'); ?>
           </div>
         </div>
         <div class="side-panel-right-container">
           <div class="side-panel-right">
-            <?php lastWordAdUnit('oop-rskin'); ?>
+            <?php lastWordAdUnit2('oop-rskin'); ?>
           </div>
         </div>
       </div>
     </section>
-    <?php lastWordAdUnit('top-billboard'); ?>
+    <?php lastWordAdUnit2('top-billboard'); ?>
     <header id="masthead" class="site-header" role="banner">
       <div class="container">
         <div class="row">
@@ -145,7 +147,7 @@
                 <div class="btn-sp">
                   <button id="togglemenu"><span></span></button>
                 </div>
-                <?php lastWordAdUnit('top-search'); ?>
+                <?php lastWordAdUnit2('top-search'); ?>
                 <div class="user-login">
                   <ul>
                     <li class="user-login-contact">
@@ -334,6 +336,6 @@ jQuery(document).ready(function($) {
     <div id="main" class="site-main">
       <?php if(wp_is_mobile()) : ?>
         <div style="padding-top: 20px; max-width: 320px; margin: 0 auto">
-          <?php lastWordAdUnit('adh-banner'); ?>
+          <?php lastWordAdUnit2('adh-banner'); ?>
         </div>
       <?php endif; ?>
