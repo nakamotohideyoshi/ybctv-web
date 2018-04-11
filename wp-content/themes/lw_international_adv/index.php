@@ -406,19 +406,13 @@ get_header(); ?>
               </div>
               <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="new-analysis">
-                  <h2 class="title" style="visibility: hidden;">IA ANALYSIS</h2>
+                  <h2 class="title" style="visibility: hidden;">BEST PRACTICE</h2>
                     <div class="list-new-analysis">
                     <?php
                       $args = array(
                         'posts_per_page' => 2,
                         'showposts' => 2,
-                        'tax_query' => array(
-                          array(
-                            'taxonomy' => 'type',
-                            'field' => 'term_id',
-                            'terms' => '8302'
-                          )
-                        )
+                        'category__in' => 44
                       );
                       $myposts = get_posts( $args );
                       foreach ( $myposts as $post ) : setup_postdata( $post );
@@ -479,31 +473,24 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
-                  <button id="scroll-more" class="readmore">Scroll to more IA analysis <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="" /></button>
                 </div>
               </div>
             </div>
             <div id="box-analysis" class="box-analysis">
               <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                  <h2>Analysis</h2>
+                  <h2>BEST PRACTICE</h2>
                 </div>
                 <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                   <div class="row">
                     <div class="analysis-list">
                       <?php
                         $args = array(
-                          'posts_per_page' => 2,
-                          'offset'=> 2,
-                          'showposts' => 2,
-                          'tax_query' => array(
-                            array(
-                              'taxonomy' => 'type',
-                              'field' => 'term_id',
-                              'terms' => '8302'
-                            )
-                          )
-                        );
+                        'posts_per_page' => 2,
+                        'offset' => 2,
+                        'showposts' => 2,
+                        'category__in' => 44
+                      );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -579,17 +566,11 @@ get_header(); ?>
                     <div class="analysis-list">
                       <?php
                         $args = array(
-                          'posts_per_page' => 2,
-                          'offset'=> 4,
-                          'showposts' => 2,
-                          'tax_query' => array(
-                            array(
-                              'taxonomy' => 'type',
-                              'field' => 'term_id',
-                              'terms' => '8302'
-                            )
-                          )
-                        );
+                        'posts_per_page' => 2,
+                        'offset' => 4,
+                        'showposts' => 2,
+                        'category__in' => 44
+                      );
                         $myposts = get_posts( $args );
                         foreach ( $myposts as $post ) : setup_postdata( $post );
                       ?>
@@ -654,7 +635,7 @@ get_header(); ?>
               </div>
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <a href="<?php echo get_term_link(8302); ?>" class="view-more">View more</a>
+                  <a href="/best-practice" class="view-more">View more</a>
                 </div>
               </div>
             </div>
@@ -916,7 +897,7 @@ get_header(); ?>
                     ?>
                   </div>
                   <div class="content-des">
-                    <p class="name-cat"><a href="<?php the_permalink();?>">Magazine</a></p>
+                    <p class="name-cat"><a href="<?php the_permalink();?>">Digital Edition</a></p>
                     <a href="<?php the_permalink(); ?>">
                       <h3>International Adviser <span>-</span></h3>
                       <span class="date"><?php echo get_the_title(); ?></span>
@@ -970,7 +951,7 @@ get_header(); ?>
                     </li>
                   </ul>
                 </div>
-                <a href="/magazines" class="view-more">View more</a>
+                <a href="/digital-editions" class="view-more">View more</a>
               </div>
             </div>
             <?php if(!wp_is_mobile()) : { ?>

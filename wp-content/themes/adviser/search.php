@@ -41,9 +41,7 @@ get_header(); ?>
               $queryStringPre = $_GET['s'];
               $queryString = stripslashes(str_replace( '"', '', $queryStringPre ));
             ?>
-            <a href="#" offset="5" page="1" query="<?php echo $queryString; ?>" class="search-view-more view-more-ajax">View more</a>
-            <div class="page-navi">
-            </div>
+            <?php the_posts_navigation(); ?>
           </div>
         </div>
         <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 right-side-wrap">

@@ -106,10 +106,10 @@
         }, 700);
     });
 
-    $("#togglemenu").click(function() {
-        $('.mobnavigation').slideToggle();
+    jQuery("#togglemenu").on('click', function() {
+        jQuery('.mobnavigation').slideToggle();
+        console.log('success');
     });
-
 
     $('.button-video').on('click', function (e) {
         $('.video-img').addClass('hide');

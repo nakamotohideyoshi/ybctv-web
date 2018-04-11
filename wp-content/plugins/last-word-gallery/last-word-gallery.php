@@ -181,7 +181,7 @@ class last_word_gallery {
               echo '<td class="description">';
               wp_editor($gallery_image['description'], $image_id . '_gallery-image-description', array(
                 'media_buttons' => false,
-                'teeny' => true,
+                'teeny' => false,
                 'textarea_rows' => 4,
                 'textarea_name' => 'gallery-image-description[]'
               ));
@@ -198,7 +198,7 @@ class last_word_gallery {
         <?php
         wp_editor('', 'no_gallery-image-description', array(
           'media_buttons' => false,
-          'teeny' => true,
+          'teeny' => false,
           'textarea_rows' => 4
         ));
         ?>
@@ -231,7 +231,7 @@ class last_word_gallery {
     $id = $options['id'];
     wp_editor('', $id . '_gallery-image-description', array(
       'media_buttons' => false,
-      'teeny' => true,
+      'teeny' => false,
       'textarea_rows' => 4,
       'textarea_name' => 'gallery-image-description[]'
     ));

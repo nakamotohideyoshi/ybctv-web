@@ -933,3 +933,22 @@ function add_featured_box_settings_page() {
   <?
 }
 /* End Articles Control */
+/* Switch default core markup for search form, comment form, and comments
+		 * to output valid HTML5.
+		 */
+		add_theme_support( 'html5', array(
+			'search-form',
+			'comment-form',
+			'comment-list',
+			'gallery',
+			'caption',
+		) );
+		
+		
+		function ea_primary_menu_extras( $menu, $args ) {
+    if( 'primary' == $args->theme_location )
+      $menu .= '<li class="menu-item search"><a href="#" class="search-toggle"><i class="icon-search"></i></a>' . get_search_form( false ) . '</li>';
+    return $menu;
+}
+add_filter( 'wp_nav_menu_items', 'ea_primary_menu_extras', 10, 2 );
+

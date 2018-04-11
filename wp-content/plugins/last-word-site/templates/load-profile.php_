@@ -1,0 +1,24 @@
+<?php
+
+include "../../../../wp-load.php";
+
+if ( 
+    ! isset( $_POST['wp_nonce'] ) 
+    || ! wp_verify_nonce( $_POST['wp_nonce'], 'update_profile' ) 
+):
+
+$contactId = $_POST['contact_id'];
+
+$args=array(
+		'firstname' => $_POST['first_name'],
+		'lastname' => $_POST['last_name'],
+		'emailaddress1' =>  $_POST['email_address'],
+		'telephone1' => $_POST['telephone'],
+	);
+	$result = dynamic365_update_contact($contactId, $args);
+
+	if( $result ) echo "updated"; else echo "failed";
+	
+endif;
+	
+?>

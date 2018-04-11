@@ -1,9 +1,11 @@
 <?php
+
+wp_redirect('https://portfolio-adviser.com/fundawards2018/awards/');
 /*
  * Template name: WM Awards
  */
 
-get_header(); ?>
+/* get_header();  ?>
 <style>
   .ngg-pro-masonry {
     margin-left: 0;
@@ -15,7 +17,7 @@ get_header(); ?>
       <div class="container">
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
           <div class="bread">
-            <?php
+            <?php 
               if(function_exists('bcn_display')) {
                 bcn_display();
               }
@@ -113,4 +115,4 @@ jQuery(document).ready( function ($) {
 });
 </script>
 
-<?php get_footer();?>
+<?php get_footer(); */ ?>

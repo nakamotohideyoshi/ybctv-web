@@ -48,21 +48,22 @@
   <?php
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
     wp_head();
-
     if (!wp_is_mobile()) {
-      $show_ad_units_status = get_option('show_ad_units');
+        $show_ad_units_status = get_option('show_ad_units');
 
-      if ($show_ad_units_status && $show_ad_units_status == 'yes') {
-      ?>
-        <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
-      <?php
-      }
+        if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+            ?>
+            <script type="text/javascript" src="/wp-content/common/js/sticky.js?ver=1.1.0"></script>
+            <?php
+        }
     }
-  ?>
+    ?>
+
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
   <?php lastWordAdUnit('oop-teads'); ?>
+  <?php lastWordAdUnit('oop-overlay'); ?>
   <div id="page" class="hfeed site">
     <section class="ads-side-panels">
       <div class="container">
@@ -82,7 +83,7 @@
     <header id="masthead" class="site-header" role="banner">
       <div class="container">
         <div class="row">
-          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 hidden-md hidden-sm">
             <div class="logo">
               <?php
                 $logotype = ot_get_option('logotype',1);
@@ -110,9 +111,37 @@
               ?>
             </div>
           </div>
-          <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+          <div class="col-lg-10 col-md-12 col-sm-12 col-xs-8">
             <div class="header-content">
-              <div class="header-top clearfix">
+			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-4 hidden-xl hidden-lg hidden-xs">
+            <div class="logo">
+              <?php
+                $logotype = ot_get_option('logotype',1);
+                if(isset($logotype) && $logotype == 1) {
+                  $logo = ot_get_option('logo');
+                  if ($logo) {
+              ?>
+              <a class="" href="<?php echo get_home_url(); ?>" title="<?php bloginfo('name'); ?>">
+                <img src="<?php echo $logo; ?>" alt="" />
+              </a>
+              <?php
+                  } else {
+              ?>
+              <a class="" href="<?php echo get_home_url(); ?>" title="<?php bloginfo('name'); ?>">
+                <img src="<?php echo THEME_PATH.'/images/Portfolio-Advisor-logo.svg' ?>" alt="" />
+              </a>
+              <?php
+                  }
+                } else {
+                  $logotext = ot_get_option('logoText','logo');
+              ?>
+              <a class="" href="<?php echo get_home_url(); ?>" title="<?php bloginfo('name'); ?>"><?php echo $logotext; ?></a>
+              <?php
+                }
+              ?>
+            </div>
+          </div>
+              <div class="header-top clearfix ">
                 <div class="btn-sp">
                   <button id="togglemenu"><span></span></button>
                 </div>
@@ -244,9 +273,47 @@
                 <div class="primary-navigation">
                   <?php wp_nav_menu( array( 'theme_location' => 'main_nav', 'menu_class' => 'sf-menu sf-navbar' ) ); ?>
                 </div>
-                <div class="search-box">
-                  <?php get_search_form(); ?>
-                </div>
+
+                  <div class="search-input-wrapper">
+						<div class="trigger-btn">
+						<div class="icon-wrapper">
+						<div class="icon"></div>
+						</div>
+						<form role="search" method="get" id="searchform" class="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                        <div class="iconsubmit">
+                        <label class="screen-reader-text" for="s"><?php _x( 'Search for:', 'label' ); ?></label>
+                        <input  type="submit" id="searchsubmit" value="<?php echo esc_attr_x( 'GO!', 'submit button' ); ?>" class="banner-text-btn"/>
+
+                        </div>
+
+
+						</div>
+
+						<div class="input-wrap">
+							    <input placeholder="Search..." type="text" value="<?php echo get_search_query(); ?>" name="s" id="s" class="banner-text-box" />
+								<span class="close" id="closesearch">X</span>
+							</form>
+						</div>
+					</div>
+                <script>
+				//Header search button
+jQuery(document).ready(function($) {
+    //Header search button
+    $('.search-input-wrapper .trigger-btn').on('click touch', function() {
+        $('.search-input-wrapper').toggleClass('active');
+		$( ".icon-wrapper" ).hide();
+		$('input').focus();
+
+    });
+	 $('#closesearch').on('click touch', function() {
+        $('.search-input-wrapper').toggleClass('active');
+		$( ".icon-wrapper" ).show();
+
+    });
+});
+
+
+				</script>
               </nav>
             </div>
           </div>

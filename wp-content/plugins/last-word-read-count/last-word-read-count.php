@@ -16,7 +16,7 @@ function add_read_count_menu_item() {
   add_options_page(
     'Read Count',
     'Read Count',
-    'manage_options',
+    'edit_posts',
     'read_count_settings',
     'add_read_count_settings_page'
   );
@@ -65,3 +65,8 @@ function setReadCount($post_id) {
     add_post_meta($post_id, 'lw_read_count', $read_count);
   }
 }
+
+function read_count_capability( $capability ) {
+    return 'edit_posts';
+}
+add_filter( 'option_page_capability_read_count_settings', 'read_count_capability' );

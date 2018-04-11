@@ -2965,7 +2965,104 @@ article.comment {
     min-width: 100%;
     padding: 0;
   }
+  
+  .mobnavigation  {
+    margin-top: 15px;
+    width: 100%;
+  }
 
+  .mobnavigation, .site-navigation, .user-login {
+    display: none;
+  }
+
+  .btn-sp {
+    position: relative;
+    border: none;
+    cursor: pointer;
+    transition: all 200ms linear;
+    outline: none;
+    float: right;
+    margin-top: 10px;
+    padding: 15px 15px;
+    background: #000;
+  }
+  
+  .btn-sp:before {
+    content: '';
+    width: 28px;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    left: 10px;
+    transition: all 200ms linear;
+    top: 10px;
+  }
+
+  .btn-sp:after {
+    content: '';
+    width: 28px;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    transition: all 200ms linear;
+  }
+  
+  .btn-sp span {
+    width: 28px;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    margin: auto;
+    top: 0px;
+    left: 10px;
+    bottom: 0;
+    transition: all 200ms linear;
+}
+
+.btn-sp {
+    display: block;
+  }
+
+  .btn-sp button {
+    display: block;
+    background-color: #000;
+  }
+  
+  .user-login {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .user-login-contact {
+      display: none;
+  }
+
+  .user-login-profile a,
+  .user-login-register a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+  }
+
+  .user-login-register { margin-right: 17px; }
+
+  .user-login-profile a svg,
+  .user-login-register a svg { margin:0; }
+
+  .header-top .social { padding-top: 18px;}
+
+  .logo {
+    padding: 10px 10px 0 0;
+    background: #fff;
+  }
+
+  .sf-menu li {
+    width: 50%;
+    text-align: center;
+  }
 }
 
 @media screen  and (max-width: 768px) {
@@ -3187,7 +3284,7 @@ article.comment {
     .header-top .social { padding-top: 18px;}
 
     .event {
-      margin: 0 -30px;
+      margin: 0;
       padding: 40px;
     }
 
@@ -3533,13 +3630,12 @@ display:block;
     float: left;
 }
 .content-single .h5ab-print-button-container {
-    float: unset!important;
-    margin-right: 10px!important;
+    float: left!important;
     font-size: 16px!important;
     display: inline!important;
     width: 20px!important;
     margin: 0!important;
-    margin-left: 10px!important;
+    margin-right: 10px!important;
 }
 
 .thump-single .h5ab-print-button-container {
@@ -3556,4 +3652,122 @@ display:block;
 
 .content-single .text-content ul {
   padding-left: 35px;
+}
+
+.locked .inner {
+  padding: 10px;
+  border: 2px solid #0095db;
+  overflow: hidden;
+  min-height: 300px;
+  margin-bottom: 15px;
+}
+
+.locked h3 {
+  text-align: center;
+}
+
+.locked .inner #lwa_wp-submit {
+    background-image: url(images/assets/Arrow-More-news.svg);
+    background-position: right center;
+    background-color: #232c4a;
+    background-position: right center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+    border-right: 10px solid #232c4a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 20px 10px 10px;
+    width: 100px;
+    display: block;
+    float: left;
+    text-align: left;
+}
+
+.locked p, .locked label {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.locked li {
+  font-size: 13px!important;
+  line-height: 20px!important;
+  padding-left: 10px;
+}
+
+.locked .login p {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.locked .inner .locked-buttons {
+  margin-top: 15px;
+}
+
+h4.locked-notice {
+  margin-bottom: 5px!important;
+}
+
+.lwa-form .lwa-forgot {
+  width: 145px;
+  font-size: 14px;
+}
+
+.lwa-form .lwa-submit-links {
+  font-size: 14px;
+}
+
+.locked-list {
+  margin-top: 10px;
+}
+
+.locked .noticetext {
+  margin-bottom: 15px;
+}
+
+.locked .lwa-default {
+  margin-bottom: 0;
+}
+
+
+@media screen and (min-width: 991px) and (max-width: 1160px) {
+  .first-last-new .content-des {
+    padding: 20px 15px 0 15px;
+  }
+
+  .sf-menu a {
+    color: #fff;
+    padding: 10px 8px;
+    font-size: 13px;
+    text-decoration: none;
+    zoom: 1;
+    }
+}
+
+@media screen and (max-width: 991px) {
+  .content-right {display: none;}
+}
+
+
+@media screen and (min-width: 992px) {
+  .right-side-wrap .content-right {
+    top: 410px!important;
+  }
+}
+
+#savepostform {
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+}
+
+#savepost {
+    padding: 0;
+    background-color: transparent;
+    font-size: 24px;
+}
+
+#savepost:hover {
+   color: #0095db;
+   transition: 0.4s ease all;
 }

@@ -1,4 +1,8 @@
-<div class="loop-list loop-list-load">
+<?php 
+  $category = get_the_category(); 
+  $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);
+?>
+<div class="loop-list loop-list-load" <?php if ($category[0]->term_id == 14 && $lw_sponsored != '') { echo 'style="background: #d8d8d8; padding-top: 10px; padding-left: 10px;"'; }?>>
   <div class="row">
     <div class="col-md-4 col-sm-4 col-xs-12">
       <?php
@@ -24,11 +28,15 @@
       <span class="overlay"></span>
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12">
-      <div class="content-des">
+      <div class="content-des" style="padding-top: 0px;">
         <p class="name-cat">
-         <?php $category = get_the_category();
- echo '<a class="category" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; ?>
-
+  <?php       
+  if ($category[0]->term_id == 14 && $lw_sponsored != '') { 
+    echo '<a class="category">Sponsored by '.$lw_sponsored.'</a>'; 
+  } else {
+    echo '<a class="category" href="'.get_category_link($category[0]->term_id ).'">'.$category[0]->cat_name.'</a>'; 
+  } ?>
+  
 <a> | <?php echo $type; ?> </a>
           <span><?php the_time('j M y');?></span>
         </p>

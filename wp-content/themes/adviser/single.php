@@ -103,6 +103,43 @@ get_header(); ?>
                                         ) );
                                     } ?>
                                     <?php echo do_shortcode('[printicon align="left"]');?>
+                                    <?php 
+                                      if( is_user_logged_in() ) {
+                                        $websiteId = get_current_blog_id();
+                                        $user_id = get_current_user_id();
+                                        $savedarr = get_user_meta($user_id, 'saved_posts');
+                                        $savedposts = $savedarr[0];
+                                        if (!$savedarr) {
+                                          $savedinit = Array();
+                                          add_user_meta($user_id, 'saved_posts', $savedinit);
+                                        } 
+                                        
+                                        $post_id = get_the_ID(); 
+  
+                                          if (isset($_POST['savepost'])) {
+                                            $chkfrm = $_POST['savepost'];
+                                            if (!in_array($post_id, $savedposts)) {
+                                              array_push($savedposts, $post_id);
+                                              $savedposts = update_user_meta($user_id, 'saved_posts', $savedposts);
+                                            }
+                                          } else {
+                                            //
+                                          }
+                                           
+                                        if ( !in_array($post_id, $savedposts) ) {
+                                          if (!$chkfrm) {
+                                        ?>
+                                     
+                                      <form method="post" id="savepostform">
+                                        <input type="hidden" name="savepost" value="1">
+                                        <button type="submit" id="savepost"><i class="fa fa-bookmark"></i></button>
+                                      </form>
+
+                                      <?php }
+
+                                      else { ?>
+                                        <p class="saved">Saved to your posts!</p>
+                                      <?php }}} ?>
                                 </div>
                             </div>
 

@@ -3512,13 +3512,12 @@ article.comment {
 }
 
 .content-single .h5ab-print-button-container {
-    float: unset!important;
-    margin-right: 10px!important;
+    float: left!important;
     font-size: 16px!important;
     display: inline!important;
     width: 20px!important;
     margin: 0!important;
-    margin-left: 10px!important;
+    margin-right: 10px!important;
 }
 
 .thump-single .h5ab-print-button-container {
@@ -3535,4 +3534,31 @@ article.comment {
 
 .content-single .text-content ul {
   padding-left: 35px;
+}
+
+@media screen and (max-width: 991px) {
+  .content-right {display: none;}
+}
+
+@media screen and (min-width: 992px) {
+  .right-side-wrap .content-right {
+    top: 410px!important;
+  }
+}
+
+#savepostform {
+  display: inline-block;
+  float: left;
+  margin-left: 10px;
+}
+
+#savepost {
+    padding: 0;
+    background-color: transparent;
+    font-size: 24px;
+}
+
+#savepost:hover {
+   color: #e40233;
+   transition: 0.4s ease all;
 }

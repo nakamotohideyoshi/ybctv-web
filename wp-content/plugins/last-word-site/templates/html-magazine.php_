@@ -1,0 +1,500 @@
+
+<form id="req-magazine" action="#">
+	<div>
+	<!-- <div id="progress" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress</h3>
+	<section>
+		<p><strong>Magazine subscription</strong></p>
+		<p>To apply to receive a monthly copy of Portfolio Adviser, complete the form below.</p>
+		<p><strong>How would you like to receive the magazine?</strong></p>
+		<p><input type="radio" name="receive_magazine" value="digital"> <label> Digital version </label></p>
+		<p><input type="radio" name="receive_magazine" value="printed and digital"> <label> Printed and Digital version </label></p>
+		<p>We regret that we are unable to send Portfolio Adviser to non-UK addresses. If you are located outside of the UK you will receive the digital edition only.</p>
+		<p><strong>Audit Bureau of Circulations (ABC) question**</strong></p>
+		<p>What is your county of birth (country if born outside the UK)?</p>
+		<p><input type="text" name="country_born" placeholder="County (country if born outside the UK)" required></p>
+		<p>** This is required as an independent verification of the magazine circulation by the Audit Bureau of Circulations (ABC), the industry body for media measurement.</p>
+		<p>* Mandatory fields</p>
+		<p><input type="text" name="address1" required placeholder="Address line 1*"></p>
+		<p><input type="text" name="address2" placeholder="Address line 2"></p>
+		<p><input type="text" name="address3" placeholder="Address line 3"></p>
+		<p><input type="text" name="city" placeholder="City*"></p>
+		<p><input type="text" name="state" placeholder="State"></p>
+		<p><input type="text" name="post_code" placeholder="Post/Zip code*" required></p>
+		<p><select name="country" style="width:100%;" required>
+				<option value="">Country*</option>
+				<option <?php selected($country, "Afghanistan") ?> value="Afghanistan">Afghanistan</option>
+				<option <?php selected($country, "Albania") ?> value="Albania">Albania</option>
+				<option <?php selected($country, "Algeria") ?> value="Algeria">Algeria</option>
+				<option <?php selected($country, "Angola") ?> value="Angola">Angola</option>
+				<option <?php selected($country, "Argentina") ?> value="Argentina">Argentina</option>
+				<option <?php selected($country, "Australia") ?> value="Australia">Australia</option>
+				<option <?php selected($country, "Austria") ?> value="Austria">Austria</option>
+				<option <?php selected($country, "Azerbaijan") ?> value="Azerbaijan">Azerbaijan</option>
+				<option <?php selected($country, "Bahamas") ?> value="Bahamas">Bahamas</option>
+				<option <?php selected($country, "Bahrain") ?> value="Bahrain">Bahrain</option>
+				<option <?php selected($country, "Bangladesh") ?> value="Bangladesh">Bangladesh</option>
+				<option <?php selected($country, "Barbados") ?> value="Barbados">Barbados</option>
+				<option <?php selected($country, "Belarus") ?> value="Belarus">Belarus</option>
+				<option <?php selected($country, "Belgium") ?> value="Belgium">Belgium</option>
+				<option <?php selected($country, "Bolivia") ?> value="Bolivia">Bolivia</option>
+				<option <?php selected($country, "Bosnia and Herzegovina") ?> value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+				<option <?php selected($country, "Botswana") ?> value="Botswana">Botswana</option>
+				<option <?php selected($country, "Brazil") ?> value="Brazil">Brazil</option>
+				<option <?php selected($country, "Bulgaria") ?> value="Bulgaria">Bulgaria</option>
+				<option <?php selected($country, "Cambodia") ?> value="Cambodia">Cambodia</option>
+				<option <?php selected($country, "Cameroon") ?> value="Cameroon">Cameroon</option>
+				<option <?php selected($country, "Canada") ?> value="Canada">Canada</option>
+				<option <?php selected($country, "Central African Republic") ?> value="Central African Republic">Central African Republic</option>
+				<option <?php selected($country, "Chile") ?> value="Chile">Chile</option>
+				<option <?php selected($country, "China") ?> value="China">China</option>
+				<option <?php selected($country, "Colombia") ?> value="Colombia">Colombia</option>
+				<option <?php selected($country, "Costa Rica") ?> value="Costa Rica">Costa Rica</option>
+				<option <?php selected($country, "Croatia") ?> value="Croatia">Croatia</option>
+				<option <?php selected($country, "Cuba") ?> value="Cuba">Cuba</option>
+				<option <?php selected($country, "Cyprus") ?> value="Cyprus">Cyprus</option>
+				<option <?php selected($country, "Czech Republic") ?> value="Czech Republic">Czech Republic</option>
+				<option <?php selected($country, "Denmark") ?> value="Denmark">Denmark</option>
+				<option <?php selected($country, "Ecuador") ?> value="Ecuador">Ecuador</option>
+				<option <?php selected($country, "Egypt") ?> value="Egypt">Egypt</option>
+				<option <?php selected($country, "El Salvador") ?> value="El Salvador">El Salvador</option>
+				<option <?php selected($country, "Estonia") ?> value="Estonia">Estonia</option>
+				<option <?php selected($country, "Ethiopia") ?> value="Ethiopia">Ethiopia</option>
+				<option <?php selected($country, "Finland") ?> value="Finland">Finland</option>
+				<option <?php selected($country, "France") ?> value="France">France</option>
+				<option <?php selected($country, "Gambia") ?> value="Gambia">Gambia</option>
+				<option <?php selected($country, "Georgia") ?> value="Georgia">Georgia</option>
+				<option <?php selected($country, "Germany") ?> value="Germany">Germany</option>
+				<option <?php selected($country, "Ghana") ?> value="Ghana">Ghana</option>
+				<option <?php selected($country, "Greece") ?> value="Greece">Greece</option>
+				<option <?php selected($country, "Greenland") ?> value="Greenland">Greenland</option>
+				<option <?php selected($country, "Haiti") ?> value="Haiti">Haiti</option>
+				<option <?php selected($country, "Honduras") ?> value="Honduras">Honduras</option>
+				<option <?php selected($country, "Hong Kong") ?> value="Hong Kong">Hong Kong</option>
+				<option <?php selected($country, "Hungary") ?> value="Hungary">Hungary</option>
+				<option <?php selected($country, "Iceland") ?> value="Iceland">Iceland</option>
+				<option <?php selected($country, "India") ?> value="India">India</option>
+				<option <?php selected($country, "Indonesia") ?> value="Indonesia">Indonesia</option>
+				<option <?php selected($country, "Iran") ?> value="Iran">Iran</option>
+				<option <?php selected($country, "Ireland") ?> value="Ireland">Ireland</option>
+				<option <?php selected($country, "Israel") ?> value="Israel">Israel</option>
+				<option <?php selected($country, "Italy") ?> value="Italy">Italy</option>
+				<option <?php selected($country, "Ivory Coast") ?> value="Ivory Coast">Ivory Coast</option>
+				<option <?php selected($country, "Jamaica") ?> value="Jamaica">Jamaica</option>
+				<option <?php selected($country, "Japan") ?> value="Japan">Japan</option>
+				<option <?php selected($country, "Jordan") ?> value="Jordan">Jordan</option>
+				<option <?php selected($country, "Kazakhstan") ?> value="Kazakhstan">Kazakhstan</option>
+				<option <?php selected($country, "Kenya") ?> value="Kenya">Kenya</option>
+				<option <?php selected($country, "Kuwait") ?> value="Kuwait">Kuwait</option>
+				<option <?php selected($country, "Laos") ?> value="Laos">Laos</option>
+				<option <?php selected($country, "Latvia") ?> value="Latvia">Latvia</option>
+				<option <?php selected($country, "Lebanon") ?> value="Lebanon">Lebanon</option>
+				<option <?php selected($country, "Liberia") ?> value="Liberia">Liberia</option>
+				<option <?php selected($country, "Libya") ?> value="Libya">Libya</option>
+				<option <?php selected($country, "Liechtenstein") ?> value="Liechtenstein">Liechtenstein</option>
+				<option <?php selected($country, "Lithuania") ?> value="Lithuania">Lithuania</option>
+				<option <?php selected($country, "Luxembourg") ?> value="Luxembourg">Luxembourg</option>
+				<option <?php selected($country, "Macedonia") ?> value="Macedonia">Macedonia</option>
+				<option <?php selected($country, "Madagascar") ?> value="Madagascar">Madagascar</option>
+				<option <?php selected($country, "Malawi") ?> value="Malawi">Malawi</option>
+				<option <?php selected($country, "Malaysia") ?> value="Malaysia">Malaysia</option>
+				<option <?php selected($country, "Mali") ?> value="Mali">Mali</option>
+				<option <?php selected($country, "Malta") ?> value="Malta">Malta</option>
+				<option <?php selected($country, "Mauritius") ?> value="Mauritius">Mauritius</option>
+				<option <?php selected($country, "Mexico") ?> value="Mexico">Mexico</option>
+				<option <?php selected($country, "Moldova") ?> value="Moldova">Moldova</option>
+				<option <?php selected($country, "Mongolia") ?> value="Mongolia">Mongolia</option>
+				<option <?php selected($country, "Montenegro") ?> value="Montenegro">Montenegro</option>
+				<option <?php selected($country, "Morocco") ?> value="Morocco">Morocco</option>
+				<option <?php selected($country, "Mozambique") ?> value="Mozambique">Mozambique</option>
+				<option <?php selected($country, "Myanmar") ?> value="Myanmar">Myanmar</option>
+				<option <?php selected($country, "Namibia") ?> value="Namibia">Namibia</option>
+				<option <?php selected($country, "Nepal") ?> value="Nepal">Nepal</option>
+				<option <?php selected($country, "Netherlands") ?> value="Netherlands">Netherlands</option>
+				<option <?php selected($country, "New Zealand") ?> value="New Zealand">New Zealand</option>
+				<option <?php selected($country, "Nicaragua") ?> value="Nicaragua">Nicaragua</option>
+				<option <?php selected($country, "Nigeria") ?> value="Nigeria">Nigeria</option>
+				<option <?php selected($country, "Norway") ?> value="Norway">Norway</option>
+				<option <?php selected($country, "Oman") ?> value="Oman">Oman</option>
+				<option <?php selected($country, "Pakistan") ?> value="Pakistan">Pakistan</option>
+				<option <?php selected($country, "Panama") ?> value="Panama">Panama</option>
+				<option <?php selected($country, "Papua New Guinea") ?> value="Papua New Guinea">Papua New Guinea</option>
+				<option <?php selected($country, "Paraguay") ?> value="Paraguay">Paraguay</option>
+				<option <?php selected($country, "Peru") ?> value="Peru">Peru</option>
+				<option <?php selected($country, "Philippines") ?> value="Philippines">Philippines</option>
+				<option <?php selected($country, "Poland") ?> value="Poland">Poland</option>
+				<option <?php selected($country, "Portugal") ?> value="Portugal">Portugal</option>
+				<option <?php selected($country, "Qatar") ?> value="Qatar">Qatar</option>
+				<option <?php selected($country, "Romania") ?> value="Romania">Romania</option>
+				<option <?php selected($country, "Russian Federation") ?> value="Russian Federation">Russian Federation</option>
+				<option <?php selected($country, "Rwanda") ?> value="Rwanda">Rwanda</option>
+				<option <?php selected($country, "Saudi Arabia") ?> value="Saudi Arabia">Saudi Arabia</option>
+				<option <?php selected($country, "Senegal") ?> value="Senegal">Senegal</option>
+				<option <?php selected($country, "Serbia") ?> value="Serbia">Serbia</option>
+				<option <?php selected($country, "Sierra Leone") ?> value="Sierra Leone">Sierra Leone</option>
+				<option <?php selected($country, "Singapore") ?> value="Singapore">Singapore</option>
+				<option <?php selected($country, "Slovakia") ?> value="Slovakia">Slovakia</option>
+				<option <?php selected($country, "Slovenia") ?> value="Slovenia">Slovenia</option>
+				<option <?php selected($country, "South Africa") ?> value="South Africa">South Africa</option>
+				<option <?php selected($country, "South Korea") ?> value="South Korea">South Korea</option>
+				<option <?php selected($country, "Spain") ?> value="Spain">Spain</option>
+				<option <?php selected($country, "Sri Lanka") ?> value="Sri Lanka">Sri Lanka</option>
+				<option <?php selected($country, "Sudan") ?> value="Sudan">Sudan</option>
+				<option <?php selected($country, "Swaziland") ?> value="Swaziland">Swaziland</option>
+				<option <?php selected($country, "Sweden") ?> value="Sweden">Sweden</option>
+				<option <?php selected($country, "Switzerland") ?> value="Switzerland">Switzerland</option>
+				<option <?php selected($country, "Syria") ?> value="Syria">Syria</option>
+				<option <?php selected($country, "Taiwan") ?> value="Taiwan">Taiwan</option>
+				<option <?php selected($country, "Tanzania") ?> value="Tanzania">Tanzania</option>
+				<option <?php selected($country, "Thailand") ?> value="Thailand">Thailand</option>
+				<option <?php selected($country, "Togo") ?> value="Togo">Togo</option>
+				<option <?php selected($country, "Trinidad and Tobago") ?> value="Trinidad and Tobago">Trinidad and Tobago</option>
+				<option <?php selected($country, "Tunisia") ?> value="Tunisia">Tunisia</option>
+				<option <?php selected($country, "Turkey") ?> value="Turkey">Turkey</option>
+				<option <?php selected($country, "Uganda") ?> value="Uganda">Uganda</option>
+				<option <?php selected($country, "Ukraine") ?> value="Ukraine">Ukraine</option>
+				<option <?php selected($country, "United Arab Emirates") ?> value="United Arab Emirates">United Arab Emirates</option>
+				<option <?php selected($country, "United Kingdom") ?> value="United Kingdom">United Kingdom</option>
+				<option <?php selected($country, "Uruguay") ?> value="Uruguay">Uruguay</option>
+				<option <?php selected($country, "Uzbekistan") ?> value="Uzbekistan">Uzbekistan</option>
+				<option <?php selected($country, "Venezuela") ?> value="Venezuela">Venezuela</option>
+				<option <?php selected($country, "Vietnam") ?> value="Vietnam">Vietnam</option>
+				<option <?php selected($country, "Yemen") ?> value="Yemen">Yemen</option>
+				<option <?php selected($country, "Zambia") ?> value="Zambia">Zambia</option>
+			</select>
+		</p>
+	</section>
+	<!-- <a href="#" class="button" onclick="openCity(event, 'progress1')">Next</a>
+	 </div>
+	
+	<div id="progress1" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 1</h3>
+	<section>
+		<p><strong>1) Are you a: (tick most relevant box)</strong></p>
+		<p><input type="radio" name="tick" value="Wealth manager"> <label> Wealth manager </label></p>
+		<p><input type="radio" name="tick" value="Wealth adviser"> <label> Wealth adviser </label></p>
+		<p><input type="radio" name="tick" value="Multi-manager"> <label> Multi-manager </label></p>
+		<p><input type="radio" name="tick" value="Discretionary portfolio manager"> <label> Discretionary portfolio manager </label></p>
+		<p><input type="radio" name="tick" value="Private client stockbroker"> <label> Private client stockbroker </label></p>
+		<p><input type="radio" name="tick" value="Solicitor investment manager"> <label> Solicitor investment manager </label></p>
+		<p><input type="radio" name="tick" value="Private banker"> <label> Private banker </label></p>
+		<p><input type="radio" name="tick" value="Accountant"> <label> Accountant </label></p>
+		<p><input type="radio" name="tick" value="Trustee"> <label> Trustee </label></p>
+		<p><input type="radio" name="tick" value="Consulting actuary"> <label> Consulting actuary </label></p>
+		<p><input type="radio" name="tick" value="Investment researcher/analyst"> <label> Investment researcher/analyst </label></p>
+		<p><input type="radio" name="tick" value="Family office employee"> <label> Family office employee </label></p>
+		<p><input type="radio" name="tick" value="Life company employee"> <label> Life company employee </label></p>
+		<p><input type="radio" name="tick" value="Independent financial adviser"> <label> Independent financial adviser </label></p>
+		<p><input type="radio" name="tick" value="Other"> <label> Other </label></p>
+		<p><input type="text" name="tick" id="other" placeholder="(please specify)" style="display:none"></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress2')">Next</a>
+	</div>
+	
+	<div id="progress2" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 2</h3>
+	<section>	
+		<p><strong>2) Roughly what % of your revenue comes from Client fees</strong></p>
+		<p><input type="radio" name="fees" value="1-25"> <label> 1-25% </label></p>
+		<p><input type="radio" name="fees" value="26-50"> <label> 26-50% </label></p>
+		<p><input type="radio" name="fees" value="51-75"> <label> 51-75% </label></p>
+		<p><input type="radio" name="fees" value="76-100"> <label> 76-100% </label></p>
+		<p><input type="radio" name="fees" value="Not applicable"> <label> Not applicable </label></p>
+
+		<p><strong>Up-front commission</strong></p>
+		<p><input type="radio" name="front-commission" value="1-25"> <label> 1-25% </label></p>
+		<p><input type="radio" name="front-commission" value="26-50"> <label> 26-50% </label></p>
+		<p><input type="radio" name="front-commission" value="51-75"> <label> 51-75% </label></p>
+		<p><input type="radio" name="front-commission" value="76-100"> <label> 76-100% </label></p>
+		<p><input type="radio" name="front-commission" value="Not applicable"> <label> Not applicable </label></p>
+		
+		<p><strong>Trail commission</strong></p>
+		<p><input type="radio" name="trail-commission" value="1-25"> <label> 1-25% </label></p>
+		<p><input type="radio" name="trail-commission" value="26-50"> <label> 26-50% </label></p>
+		<p><input type="radio" name="trail-commission" value="51-75"> <label> 51-75% </label></p>
+		<p><input type="radio" name="trail-commission" value="76-100"> <label> 76-100% </label></p>
+		<p><input type="radio" name="trail-commission" value="Not applicable"> <label> Not applicable </label></p>
+	</section>		
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress1')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress3')">Next</a>
+	</div>
+	
+	<div id="progress3" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 3</h3>
+	<section>	
+		<p><strong>3) What is your company’s total AUM?</strong></p>
+		<p><input type="radio" name="total-aum" value="Up to £10m"> <label> Up to £10m </label></p>
+		<p><input type="radio" name="total-aum" value="from £10m to £100m"> <label> from £10m to £100m </label></p>
+		<p><input type="radio" name="total-aum" value="from £100m to £1bn"> <label> from £100m to £1bn </label></p>
+		<p><input type="radio" name="total-aum" value="£1bn+"> <label> £1bn+ </label></p>
+		<p><input type="radio" name="total-aum" value="Not applicable"> <label> Not applicable </label></p>
+	</section>	
+	<!--<a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress2')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress4')">Next</a>
+	</div>
+	
+	<div id="progress4" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 4</h3>
+	<section>
+		<p><strong>4) Approximately how much business do you personally write each year:</strong></p>
+		<p><input type="radio" name="total-business" value="Up to £1m"> <label> Up to £1m </label></p>
+		<p><input type="radio" name="total-business" value="from £1m to £10m"> <label> from £1m to £10m </label></p>
+		<p><input type="radio" name="total-business" value="from £10m to £100m"> <label> from £10m to £100m </label></p>
+		<p><input type="radio" name="total-business" value="£100m+"> <label> £100m+ </label></p>
+		<p><input type="radio" name="total-business" value="Not applicable"> <label> Not applicable </label></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress3')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress5')">Next</a>
+	</div>
+	
+	<div id="progress5" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 5</h3>
+	<section>
+		<p><strong>5) What is the average net worth of your clients:</strong></p>
+		<p><input type="radio" name="total-average" value="Less than £1m"> <label> Less than £1m </label></p>
+		<p><input type="radio" name="total-average" value="from £1m to £10m"> <label> from £1m to £10m </label></p>
+		<p><input type="radio" name="total-average" value="from £10m to £100m"> <label> from £10m to £100m </label></p>
+		<p><input type="radio" name="total-average" value="£100m+"> <label> £100m+ </label></p>
+		<p><input type="radio" name="total-average" value="Not applicable"> <label> Not applicable </label></p>
+	</section>
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress4')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress6')">Next</a>
+	</div>
+	
+	<div id="progress6" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 6</h3>
+	<section>
+		<p><strong>6) Do you use the fund/manager ratings from any of the following?</strong></p>
+		<p><input type="radio" name="manager-ratings" value="Rayner Spencer Mills Research (qual)"> <label> Rayner Spencer Mills Research (qual) </label></p>
+		<p><input type="radio" name="manager-ratings" value="Square Mile (qual)"> <label> Square Mile (qual) </label></p>
+		<p><input type="radio" name="manager-ratings" value="Morningstar Star (quant)"> <label> Morningstar Star (quant) </label></p>
+		<p><input type="radio" name="manager-ratings" value="Morningstar OBSR (qual)"> <label> Morningstar OBSR (qual) </label></p>
+		<p><input type="radio" name="manager-ratings" value="FE Crown (quant)"> <label> FE Crown (quant) </label></p>
+		<p><input type="radio" name="manager-ratings" value="Lipper Leader (quant)"> <label> Lipper Leader (quant) </label></p>
+		<p><input type="radio" name="manager-ratings" value="Citywire (quant)"> <label> Citywire (quant) </label></p>
+		<p><input type="radio" name="manager-ratings" value="FE Alpha Manager (quant)"> <label> FE Alpha Manager (quant) </label></p>
+		<p><input type="radio" name="manager-ratings" value="FundCalibre Elite (qual)"> <label> FundCalibre Elite (qual) </label></p>
+		<p><input type="radio" name="manager-ratings" value="Other"> <label> Other </label></p>
+		<p><input type="text" name="manager-ratings" id="other2" placeholder="(please state)" style="display:none"></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress5')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress7')">Next</a>
+	</div> 
+	
+	<div id="progress7" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 7</h3>
+	<section>
+		<p><strong>7) Do you regularly use fund data from any of the following?</strong></p>
+		<p><input type="radio" name="regularly" value="Morningstar"> <label> Morningstar </label></p>
+		<p><input type="radio" name="regularly" value="Lipper"> <label> Lipper </label></p>
+		<p><input type="radio" name="regularly" value="Financial Express Analytics"> <label> Financial Express Analytics </label></p>
+		<p><input type="radio" name="regularly" value="Funds Library"> <label> Funds Library </label></p>
+		<p><input type="radio" name="regularly" value="Bloomberg"> <label> Bloomberg </label></p>
+		<p><input type="radio" name="regularly" value="Not applicable"> <label> Not applicable </label></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress6')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress8')">Next</a>
+	</div>
+	
+	<div id="progress8" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 8</h3>
+	<section>
+		<p><strong>8) Which platforms do you use?</strong></p>
+		<p><input type="radio" name="platforms" value="Old Mutual Wealth"> <label> Old Mutual Wealth </label></p>
+		<p><input type="radio" name="platforms" value="Fidelity FundsNetwork"> <label> Fidelity FundsNetwork </label></p>
+		<p><input type="radio" name="platforms" value="CoFunds"> <label> CoFunds </label></p>
+		<p><input type="radio" name="platforms" value="Standard Life"> <label> Standard Life </label></p>
+		<p><input type="radio" name="platforms" value="Transact"> <label> Transact </label></p>
+		<p><input type="radio" name="platforms" value="Santander – James Hay"> <label> Santander – James Hay </label></p>
+		<p><input type="radio" name="platforms" value="Ascentric"> <label> Ascentric </label></p>
+		<p><input type="radio" name="platforms" value="7IM"> <label> 7IM </label></p>
+		<p><input type="radio" name="platforms" value="Nucleus"> <label> Nucleus </label></p>
+		<p><input type="radio" name="platforms" value="Lifetime"> <label> Lifetime </label></p>
+		<p><input type="radio" name="platforms" value="Elevate"> <label> Elevate </label></p>
+		<p><input type="radio" name="platforms" value="Not applicable"> <label> Not applicable </label></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress7')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress9')">Next</a>
+	</div>
+	 
+	<div id="progress9" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 9</h3>
+	<section>
+		<p><strong>9) Which of these product types do you regularly advise your clients to use? (please tick as many boxes as appropriate)</strong></p>
+		<p><input type="checkbox" name="product-type" value="Equity funds"> <label> Equity funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Bond funds"> <label> Bond funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Multi-manager funds"> <label> Multi-manager funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Multi-asset funds"> <label> Multi-asset funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Funds of hedge funds"> <label> Funds of hedge funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Single strategy hedge funds"> <label> Single strategy hedge funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Absolute return funds"> <label> Absolute return funds </label></p>
+		<p><input type="checkbox" name="product-type" value="130/30 funds or similar"> <label> 130/30 funds or similar </label></p>
+		<p><input type="checkbox" name="product-type" value="Private equity funds"> <label> Private equity funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Property funds"> <label> Property funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Money market / cash funds"> <label> Money market / cash funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Closed-ended funds / investment trusts"> <label> Closed-ended funds / investment trusts </label></p>
+		<p><input type="checkbox" name="product-type" value="Structured products"> <label> Structured products </label></p>
+		<p><input type="checkbox" name="product-type" value="ETFs/ETCs"> <label> ETFs/ETCs </label></p>
+		<p><input type="checkbox" name="product-type" value="Index-tracking funds"> <label> Index-tracking funds </label></p>
+		<p><input type="checkbox" name="product-type" value="Other"> <label> Other </label></p>
+		<p><input type="text" name="tick" id="other3" placeholder="(please specify)" style="display:none"></p>
+	</section>
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress8')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress10')">Next</a>
+	</div>
+	
+	<div id="progress10" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 10</h3>
+	<section>
+		<p><strong>10) Do you regularly use non-UK-domiciled funds?</strong></p>
+		<p><input type="radio" name="domiciled" value="Yes"> <label> Yes </label></p>
+		<p><input type="radio" name="domiciled" value="No"> <label> No </label></p>
+		<p><input type="radio" name="domiciled" value="Not applicable"> <label> Not applicable </label></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress9')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress11')">Next</a>
+	</div>
+	
+	<div id="progress11" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 11</h3>
+	<section>
+		<p><strong>11) Which of these wrappers are important to your business?</strong></p>
+		<p><input type="radio" name="wrappers" value="SIPPs"> <label> SIPPs </label></p>
+		<p><input type="radio" name="wrappers" value="Pensions"> <label> Pensions </label></p>
+		<p><input type="radio" name="wrappers" value="ISAs"> <label> ISAs </label></p>
+		<p><input type="radio" name="wrappers" value="Onshore Bonds"> <label> Onshore Bonds </label></p>
+		<p><input type="radio" name="wrappers" value="Offshore Bonds"> <label> Offshore Bonds </label></p>
+		<p><input type="radio" name="wrappers" value="Trusts"> <label> Trusts </label></p>
+		<p><input type="radio" name="wrappers" value="Not applicable"> <label> Not applicable </label></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress10')">Previous</a>
+		<a href="#" class="button" onclick="openCity(event, 'progress12')">Next</a>
+	</div>
+	
+	<div id="progress12" class="tabcontent" style="display:none;"> -->
+	<h3 style="display:none;">Progress 12</h3>
+	<section>
+		<p><strong>12) Which websites do you use on a regular basis? (please tick as many boxes as appropriate)</strong></p>
+		<p><input type="checkbox" name="websites" value="portfolio-adviser.com"> <label> portfolio-adviser.com </label></p>
+		<p><input type="checkbox" name="websites" value="international-adviser.com"> <label> international-adviser.com </label></p>
+		<p><input type="checkbox" name="websites" value="ifaonline.co.uk"> <label> ifaonline.co.uk </label></p>
+		<p><input type="checkbox" name="websites" value="ft.com"> <label> ft.com </label></p>
+		<p><input type="checkbox" name="websites" value="ftadviser.com"> <label> ftadviser.com </label></p>
+		<p><input type="checkbox" name="websites" value="moneymarketing.co.uk"> <label> moneymarketing.co.uk </label></p>
+		<p><input type="checkbox" name="websites" value="citywire.co.uk"> <label> citywire.co.uk </label></p>
+		<p><input type="checkbox" name="websites" value="fundweb.co.uk"> <label> fundweb.co.uk </label></p>
+		<p><input type="checkbox" name="websites" value="investmentweek.co.uk"> <label> investmentweek.co.uk </label></p>
+	</section>	
+	<!-- <a href="#" class="button" id="defaultOpen" onclick="openCity(event, 'progress11')">Previous</a>
+		<button>Submit</button>
+	</div> -->
+	</div>
+</form>
+
+<!--
+<script>
+	function openCity(evt, cityName) {
+		// Declare all variables
+		var i, tabcontent, tablinks;
+
+		// Get all elements with class="tabcontent" and hide them
+		tabcontent = document.getElementsByClassName("tabcontent");
+		for (i = 0; i < tabcontent.length; i++) {
+			tabcontent[i].style.display = "none";
+		}
+
+		// Get all elements with class="tablinks" and remove the class "active"
+		tablinks = document.getElementsByClassName("tablinks");
+		for (i = 0; i < tablinks.length; i++) {
+			tablinks[i].className = tablinks[i].className.replace(" active", "");
+		}
+
+		// Show the current tab, and add an "active" class to the button that opened the tab
+		document.getElementById(cityName).style.display = "block";
+		evt.currentTarget.className += " active";
+	}
+	
+	// Get the element with id="defaultOpen" and click on it
+	document.getElementById("defaultOpen").click();
+	
+</script>
+-->
+
+<?php /*
+<form id="example-form" action="#">
+    <div>
+        <h3 style="display:none;">Account</h3>
+        <section>
+            <label for="userName">User name *</label>
+            <input id="userName" name="userName" type="text" class="required">
+            <label for="password">Password *</label>
+            <input id="password" name="password" type="text" class="required">
+            <label for="confirm">Confirm Password *</label>
+            <input id="confirm" name="confirm" type="text" class="required">
+            <p>(*) Mandatory</p>
+        </section>
+        <h3 style="display:none;">Profile</h3>
+        <section>
+            <label for="name">First name *</label>
+            <input id="name" name="name" type="text" class="required">
+            <label for="surname">Last name *</label>
+            <input id="surname" name="surname" type="text" class="required">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="text" class="required email">
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text">
+            <p>(*) Mandatory</p>
+        </section>
+        <h3 style="display:none;">Hints</h3>
+        <section>
+            <ul>
+                <li>Foo</li>
+                <li>Bar</li>
+                <li>Foobar</li>
+            </ul>
+        </section>
+        <h3 style="display:none;">Finish</h3>
+        <section>
+            <input id="acceptTerms" name="acceptTerms" type="checkbox" class="required"> <label for="acceptTerms">I agree with the Terms and Conditions.</label>
+        </section>
+    </div>
+</form>
+*/ ?>
+
+<script>
+	var form = jQuery("#req-magazine");
+	form.validate({
+		errorPlacement: function errorPlacement(error, element) { element.before(error); },
+		rules: {
+			confirm: {
+				equalTo: "#password"
+			}
+		}
+	});
+	form.children("div").steps({
+		headerTag: "h3",
+		bodyTag: "section",
+		transitionEffect: "slideLeft",
+		onStepChanging: function (event, currentIndex, newIndex)
+		{
+			form.validate().settings.ignore = ":disabled,:hidden";
+			return form.valid();
+		},
+		onFinishing: function (event, currentIndex)
+		{
+			form.validate().settings.ignore = ":disabled";
+			return form.valid();
+		},
+		onFinished: function (event, currentIndex)
+		{
+			alert("Submitted!");
+		}
+	});
+</script>
+
+<style>
+	form#req-magazine .steps{
+		display: none;
+	}
+</style>

@@ -67,7 +67,7 @@
   ?>
   <div class="feature-sponsored">
       <?php
-      $args = array( 'posts_per_page' => 1,'showposts' => 1, 'category' => 15 );
+      $args = array( 'posts_per_page' => 1, 'showposts' => 1, 'p' => get_option('featured_left_box_article', 0));
       $myposts = get_posts( $args );
       foreach ( $myposts as $post ) : setup_postdata( $post );
       $lw_sponsored = get_post_meta($post->ID,'lw_sponsored', TRUE);

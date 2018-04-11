@@ -391,7 +391,7 @@ get_header(); ?>
                         wp_reset_query();
                       ?>
                   </div>
-                    <a class="readmore readmore-new" href="<?php echo get_category_link( "17" ); ?>">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
+                    <a class="readmore readmore-new" href="/type/news">Read more news <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news.svg' ?>" alt="" /></a>
                     <?php
                       if (wp_is_mobile()) {
                     ?>
@@ -441,7 +441,6 @@ get_header(); ?>
                       ?>
                     </div>
                   </div>
-                  <button id="scroll-more" class="readmore">Scroll to more PA analysis <img src="<?php echo THEME_PATH.'/images/assets/Arrow-Analysis-scroll.svg' ?>" alt="" /></button>
                 </div>
               </div>
             </div>

@@ -59,7 +59,7 @@ get_header(); ?>
           </div>
           <div class="content-magazine content-single">
             <?php if(have_posts()): while(have_posts()): the_post(); ?>
-            <p class="name-cat">International Adviser Magazine</p>
+            <p class="name-cat">International Adviser Digital</p>
             <h1 class="title-single"><?php the_title();?></h1>
             <div class="content-post">
               <div class="row">
@@ -89,7 +89,7 @@ get_header(); ?>
                 </div>
               </div>
             </div>
-            <a href="/magazines" class="view-more-btn">View all magazines</a>
+            <a href="/digital-editions" class="view-more-btn">View all digital editions</a>
             <div class="comment-post">
               <?php
                 if ( comments_open() || get_comments_number() ) :

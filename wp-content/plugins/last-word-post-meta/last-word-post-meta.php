@@ -116,21 +116,6 @@ class last_word_post_meta {
 
   }
 
-  function add_lw_reset_counter() {
-    global $post;
-
-    $reset_counter = get_post_meta($post->ID, 'lw_reset_counter', true);
-
-    wp_nonce_field( basename( __FILE__ ), 'lw_reset_counter_nonce' );
-    ?>
-    <label for="lw_reset_counter">
-      <input type="checkbox" name="lw_reset_counter" id="lw_reset_counter" value="yes"<?php echo $reset_counter == 'yes' ? ' checked' : ''; ?> />
-      Reset Read Counter
-    </label>
-    <?php
-
-  }
-
   function add_lw_primary_medium() {
     global $post;
 
@@ -228,6 +213,21 @@ class last_word_post_meta {
 
   }
 
+  function add_lw_reset_counter() {
+    global $post;
+
+    $reset_counter = get_post_meta($post->ID, 'lw_reset_counter', true);
+
+    wp_nonce_field( basename( __FILE__ ), 'lw_reset_counter_nonce' );
+    ?>
+    <label for="lw_reset_counter">
+      <input type="checkbox" name="lw_reset_counter" id="lw_reset_counter" value="yes"<?php echo $reset_counter == 'yes' ? ' checked' : ''; ?> />
+      Reset Read Counter
+    </label>
+    <?php
+
+  }
+
   function save_lw_meta($post_id) {
     if (isset($_POST['lw_meta_nonce'])) {
       update_post_meta($post_id, 'lw_old_article_id', strip_tags($_POST['lw_old_article_id']));
@@ -235,11 +235,14 @@ class last_word_post_meta {
       update_post_meta($post_id, 'lw_subtitle', strip_tags($_POST['lw_subtitle']));
       update_post_meta($post_id, 'lw_description', strip_tags($_POST['lw_description']));
       update_post_meta($post_id, 'lw_expiry_date', strip_tags($_POST['lw_expiry_date']));
-      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
       update_post_meta($post_id, 'lw_twitter_headline', strip_tags($_POST['lw_twitter_headline']));
       update_post_meta($post_id, 'lw_read_count', strip_tags($_POST['lw_read_count']));
     }
 
+    if (isset($_POST['lw_sponsored_nonce'])) {
+      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
+    }
+    
     if (isset($_POST['lw_premium_nonce'])) {
       if (isset($_POST['lw_premium'])) {
         update_post_meta($post_id, 'lw_premium', 'yes');
@@ -247,6 +250,10 @@ class last_word_post_meta {
       else {
         update_post_meta($post_id, 'lw_premium', '');
       }
+    }
+
+    if (isset($_POST['lw_primary_medium_nonce'])) {
+      update_post_meta($post_id, 'lw_primary_medium', strip_tags($_POST['lw_primary_medium']));
     }
 
     if (isset($_POST['lw_top_story_nonce'])) {
@@ -266,10 +273,6 @@ class last_word_post_meta {
       else {
         update_post_meta($post_id, 'lw_reset_counter', '');
       }
-    }
-
-    if (isset($_POST['lw_primary_medium_nonce'])) {
-      update_post_meta($post_id, 'lw_primary_medium', strip_tags($_POST['lw_primary_medium']));
     }
 
     if (isset($_POST['lw_cross_post_nonce'])) {
@@ -300,10 +303,6 @@ class last_word_post_meta {
       else {
         update_post_meta($post_id, 'lw_cross_post_google_plus', '');
       }
-    }
-
-    if (isset($_POST['lw_sponsored_nonce'])) {
-      update_post_meta($post_id, 'lw_sponsored', strip_tags($_POST['lw_sponsored']));
     }
 
     if (isset($_POST['lw_brightcove_video_nonce'])) {

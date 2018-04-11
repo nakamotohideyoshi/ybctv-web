@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-8 col-sm-8 col-xs-12">
       <div class="content-des">
-        <p class="name-cat">International Adviser Magazine</p>
+        <p class="name-cat">International Adviser Digital</p>
         <a href="<?php the_permalink();?>"><h3><?php echo get_the_title(); ?></h3></a>
         <p><?php echo get_excerpt(100); ?></p>
         <p class="date">Published <?php the_time('j M y');?></p>

@@ -536,7 +536,7 @@ function remove_post_edit_meta_boxes() {
     remove_meta_box('wpcrmShortcodeWizardContainer', 'post', 'normal');
     remove_meta_box('wordpresscrm_databinding_meta', 'post', 'side');
     remove_meta_box('formatdiv', 'post', 'side');
-    remove_meta_box('lw_cross_post', 'post', 'side');
+    //remove_meta_box('lw_cross_post', 'post', 'side');
     remove_meta_box('tagsdiv-collection', 'post', 'side');
   }
 }
