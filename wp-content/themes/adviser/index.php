@@ -24,7 +24,7 @@ get_header(); ?>
                             $current_title = get_the_title();
                         ?>
                           <div class="first-last-new clearfix">
-                            <div class="content-image">
+                            <div class="content-image"><a href="<?php the_permalink(); ?>">
                               <?php
                                 if ( has_post_thumbnail() ) {
                                   the_post_thumbnail('homepage-latest-article');
@@ -35,11 +35,11 @@ get_header(); ?>
                                 }
                               ?>
                               <span class="overlay"></span>
-                            </div>
+                           </a> </div>
                             <div class="content-des">
                               <h2 class="title">TOP STORY...</h2>
                               <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
-                              <p>
+                             <a href="<?php the_permalink(); ?>"> <p>
                                 <?php
                                   $excerpt = excerpt(20);
                                   //if (strlen($excerpt) > 100) {
@@ -49,7 +49,7 @@ get_header(); ?>
                                     echo $excerpt;
                                   //}
                                 ?>
-                              </p>
+                              </p></a>
                             </div>
                           </div>
                         <?php
@@ -67,7 +67,7 @@ get_header(); ?>
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
-                                <div class="content-image">
+                                <div class="content-image"><a href="<?php the_permalink(); ?>">
                                 <?php
                                   if ( has_post_thumbnail() ) {
                                     the_post_thumbnail('thumbnail-article');
@@ -81,7 +81,7 @@ get_header(); ?>
                                   }
                                 ?>
                                 <span class="overlay"></span>
-                              </div>
+                             </a> </div>
                               <div class="content-des">
                                 <p class="name-cat">
                                   <?php
@@ -140,7 +140,7 @@ get_header(); ?>
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
-                                <div class="content-image">
+                                <div class="content-image"><a href="<?php the_permalink(); ?>">
                                 <?php
                                   if ( has_post_thumbnail() ) {
                                     the_post_thumbnail('thumbnail-article');
@@ -154,7 +154,7 @@ get_header(); ?>
                                   }
                                 ?>
                                 <span class="overlay"></span>
-                              </div>
+                              </a></div>
                               <div class="content-des">
                                 <p class="name-cat">
                                   <?php
@@ -208,7 +208,7 @@ get_header(); ?>
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
-                                <div class="content-image">
+                                <div class="content-image"><a href="<?php the_permalink(); ?>">
                                 <?php
                                   if ( has_post_thumbnail() ) {
                                     the_post_thumbnail('thumbnail-article');
@@ -222,7 +222,7 @@ get_header(); ?>
                                   }
                                 ?>
                                 <span class="overlay"></span>
-                              </div>
+                              </a></div>
                               <div class="content-des">
                                 <p class="name-cat">
                                   <?php
@@ -276,7 +276,7 @@ get_header(); ?>
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
-                                <div class="content-image">
+                                <div class="content-image"><a href="<?php the_permalink(); ?>">
                                 <?php
                                   if ( has_post_thumbnail() ) {
                                     the_post_thumbnail('thumbnail-article');
@@ -290,7 +290,7 @@ get_header(); ?>
                                   }
                                 ?>
                                 <span class="overlay"></span>
-                              </div>
+                             </a> </div>
                               <div class="content-des">
                                 <p class="name-cat">
                                   <?php
@@ -344,7 +344,7 @@ get_header(); ?>
                       ?>
                       <div class="col-md-6 col-sm-12 col-xs-12">
                               <div class="loop-list clearfix">
-                                <div class="content-image">
+                                <div class="content-image"><a href="<?php the_permalink(); ?>">
                                 <?php
                                   if ( has_post_thumbnail() ) {
                                     the_post_thumbnail('thumbnail-article');
@@ -358,7 +358,7 @@ get_header(); ?>
                                   }
                                 ?>
                                 <span class="overlay"></span>
-                              </div>
+                              </a></div>
                               <div class="content-des">
                                 <p class="name-cat">
                                   <?php
@@ -428,7 +428,7 @@ get_header(); ?>
                           $current_title = get_the_title();
                     ?>
                       <div class="loop-list">
-                        <div class="content-image">
+                        <div class="content-image"><a href="<?php the_permalink(); ?>">
                         <?php
                           if ( has_post_thumbnail() ) {
                             the_post_thumbnail('featured-article');
@@ -440,7 +440,7 @@ get_header(); ?>
                           }
                         ?>
                           <span class="overlay"></span>
-                        </div>
+                       </a> </div>
                         <div class="content-des">
                           <p class="name-cat">
                             <?php $category = get_the_category(); ?>
@@ -475,7 +475,7 @@ get_header(); ?>
                       ?>
                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="loop-list">
-                          <div class="content-image">
+                          <div class="content-image"><a href="<?php the_permalink(); ?>">
                             <?php
                               if ( has_post_thumbnail() ) {
                                 the_post_thumbnail('featured-article');
@@ -487,7 +487,7 @@ get_header(); ?>
                               }
                             ?>
                             <span class="overlay"></span>
-                          </div>
+                          </a></div>
                           <div class="content-des">
                             <p class="name-cat">
                               <?php $category = get_the_category(); ?>
@@ -525,7 +525,7 @@ get_header(); ?>
                       ?>
                       <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="loop-list">
-                          <div class="content-image">
+                          <div class="content-image"><a href="<?php the_permalink(); ?>">
                             <?php
                               if ( has_post_thumbnail() ) {
                                 the_post_thumbnail('featured-article');
@@ -537,7 +537,7 @@ get_header(); ?>
                               }
                             ?>
                             <span class="overlay"></span>
-                          </div>
+                          </a></div>
                           <div class="content-des">
                             <p class="name-cat">
                               <?php $category = get_the_category(); ?>
@@ -704,7 +704,7 @@ get_header(); ?>
           ?>
           <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="content-image">
+                <div class="content-image"><a href="<?php the_permalink(); ?>">
                   <?php
                     if ( has_post_thumbnail() ) {
                       the_post_thumbnail('featured-article');
@@ -721,7 +721,7 @@ get_header(); ?>
                     <img src="<?php echo THEME_PATH.'/images/assets/Arrow-More-news-orange.png' ?>" alt="" style="width: auto; margin-left: 3px;" />
                   </p>
                 </a>
-                </div>
+                </a></div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des" style="padding-top: 15px;">
@@ -753,7 +753,7 @@ get_header(); ?>
           ?>
           <div class="item col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                <div class="content-image">
+                <div class="content-image"><a href="<?php the_permalink(); ?>">
                   <?php
                     if ( has_post_thumbnail() ) {
                       the_post_thumbnail('featured-article');
@@ -776,7 +776,7 @@ get_header(); ?>
                     </style>
                   </p>
                 </a>
-                </div>
+                </a></div>
               </div>
               <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <div class="content-des">
