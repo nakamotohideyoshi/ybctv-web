@@ -64,8 +64,7 @@
   <?php lazyLoadStatus(); ?>
 
   <?php lastWordAdUnit2('oop-teads'); ?>
-  <?php lastWordAdUnit2('oop-overlay'); ?>
-
+  
   <div id="page" class="hfeed site">
     <section class="ads-side-panels">
       <div class="container">
