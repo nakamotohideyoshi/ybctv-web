@@ -64,7 +64,40 @@
   <?php lazyLoadStatus(); ?>
 
   <?php lastWordAdUnit2('oop-teads'); ?>
-  
+  <script>
+    (function($) {
+      $(window).load(function() {
+        var adUnitContainer = $('.ads-oop-overlay');
+        var adUnit = adUnitContainer.find('[id^=div-gpt-ad]');
+
+        if (adUnit.length && adUnit.css('display') != 'none') {
+          $('#lw-popup-overlay').css({ 'display' : 'block' });
+          $('#lw-popup-holder').css({ 'display' : 'flex' });
+
+          $(document).keyup(function(e) {
+            if (e.which == 27) {
+              $('#lw-popup-overlay').css({ 'display' : 'none' });
+              $('#lw-popup-holder').css({ 'display' : 'none' });
+            }
+          });
+        }
+
+        $('#lw-popup-close').on('click', function(e) {
+          e.preventDefault();
+          $('#lw-popup-overlay').css({ 'display' : 'none' });
+          $('#lw-popup-holder').css({ 'display' : 'none' });
+        });
+      });
+    })(jQuery);
+  </script>
+  <div id="lw-popup-overlay" style="width: 100%; height: 100%; left: 0; top: 0; position: fixed; z-index: 5000; background-color: #000000; opacity: 0.6; display: none;">
+  </div>
+  <div id="lw-popup-holder" style="width: 100%; height: 100%; left: 0; top: 0; position: fixed; z-index: 5001; display: none; justify-content: center; -webkit-justify-content: center; align-items: center; -webkit-align-items: center;">
+    <div id="lw-popup" style="display: block; position: relative;">
+      <a id="lw-popup-close" href="#" style="position: absolute; top: -15px; right: -15px; color: #ffffff; border: solid 3px #ffffff; border-radius: 15px; width: 30px; height: 30px; background-color: #000000; text-align: center; line-height: normal; font-size: 16px; padding-top: 2px; box-shadow: 1px 1px 5px #333333;">x</a>
+      <?php lastWordAdUnit('oop-overlay'); ?>
+    </div>
+  </div>
   <div id="page" class="hfeed site">
     <section class="ads-side-panels">
       <div class="container">
