@@ -42,7 +42,7 @@ const SortableItem = SortableElement(({value}) => {
 									? article.featured_image
 									: 'http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg'}
 										 style={{width: '180px'}}
-										  
+
 										 title={article.post_title}/>
 							</a>
 						</td>
@@ -132,6 +132,40 @@ class LatestNewsComponent extends Component {
 
 		this.props.onArticleSortUpdated(articleId, num);
 	}
+/*
+	onSortEnd = ({oldIndex, newIndex}) => {
+		let articleId = this.props.articles[oldIndex].ID;
+
+		this.props.onArticleSortUpdated(articleId, newIndex);
+	};
+*/
+
+	// consider everyone here...
+	onSortEnd = ({oldIndex, newIndex}) => {
+
+/*
+		let sortAssoc = new Object();
+		let index = 0;
+		this.props.articles.forEach ( (el) => {
+			let articleId = this.props.articles[index].ID;
+			sortAssoc[articleId] = index;
+			index++;
+		});
+
+
+		let newArticles = this.props.articles;
+
+		newArticles.sort ( function (a,b) {
+			return sortAssoc[a.ID] > sortAssoc[b.ID];
+		});
+*/
+		let newArticles = arrayMove(this.props.articles, oldIndex, newIndex);
+
+		console.log('new articles:');
+		console.log(newArticles);
+
+		this.props.onArticleSortUpdated(newArticles);
+	};
 
 	render () {
 		const {canDrop, isOver, connectDropTarget} = this.props;
@@ -181,7 +215,7 @@ class LatestNewsComponent extends Component {
 					</td>
 				</tr>
 
-				<SortableList items={this.props.articles}/>
+				<SortableList items={this.props.articles} onSortEnd={cThis.onSortEnd} />
 
 				</tbody>
 			</table>,

@@ -1008,38 +1008,20 @@ class App extends Component {
        });
       });
   }
-  onArticleSortUpdated = (articleId, val) => {
 
-    alert('Going to update article id ' + articleId + ' with value ' + val);
+  onArticleSortUpdated = (newArticles) => {
+    
+    let newArticlesCopy = newArticles.slice();
 
-			_.each(this.state.selectedArticles, (article, index) => {
-				let art = Object.assign({},article);
-				art.sortValue = val;
-				alert('checking ' + article.ID + ' in loop 2');
+    // this is not needed, pending delete:
+    let len = newArticlesCopy.length;
+    for (let i = 0; i < len; i++) {
+      newArticlesCopy[i].sortValue = i;
+    }
 
-				let newSelectedArticles = this.state.selectedArticles;
-
-				if(parseInt(article.ID, 10) == articleId){
-          newSelectedArticles[index] = art;
-
-				   //let newState = this.state;
-/*
-				   newState.selectedArticles = Object.assign ({}, this.state, {
-						selectedArticles: newSelectedArticles
-          });
-*/
-
-					this.setState({
-						selectedArticles: update(this.state.selectedArticles, {[index]:  {$set: art}})
-					})
-
-					alert ('updated 2');
-					return;
-				}
-			});
-
-
-		alert('done with updates');
+    this.setState({
+      selectedArticles: newArticlesCopy
+    });
 
   }
 
