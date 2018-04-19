@@ -17,6 +17,7 @@
     "react-dom": "^15.6.1",
     "react-grid-gallery": "^0.4.2",
     "react-reorder": "^3.0.0-alpha.6",
+    "react-sortable-hoc": "^0.6.8",
     "react-tinymce": "^0.6.0",
     "summernote": "^0.8.7"
   },
