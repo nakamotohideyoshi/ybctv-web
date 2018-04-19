@@ -1008,6 +1008,41 @@ class App extends Component {
        });
       });
   }
+  onArticleSortUpdated = (articleId, val) => {
+
+    alert('Going to update article id ' + articleId + ' with value ' + val);
+
+			_.each(this.state.selectedArticles, (article, index) => {
+				let art = Object.assign({},article);
+				art.sortValue = val;
+				alert('checking ' + article.ID + ' in loop 2');
+
+				let newSelectedArticles = this.state.selectedArticles;
+
+				if(parseInt(article.ID, 10) == articleId){
+          newSelectedArticles[index] = art;
+
+				   //let newState = this.state;
+/*
+				   newState.selectedArticles = Object.assign ({}, this.state, {
+						selectedArticles: newSelectedArticles
+          });
+*/
+
+					this.setState({
+						selectedArticles: update(this.state.selectedArticles, {[index]:  {$set: art}})
+					})
+
+					alert ('updated 2');
+					return;
+				}
+			});
+
+
+		alert('done with updates');
+
+  }
+
   onArticleDropped = (articleId, type, site) => {
     this.setState(prevState => ({highlight: ''}));
     if(type === 'Latest_News' || type === 'Search'){
@@ -1632,6 +1667,7 @@ class App extends Component {
                                                    getEmail={this.getEmail}
                                                    onRemoveArticle={this.onRemoveArticle}
                                                    onArticleDropped={this.onArticleDropped}
+                                                   onArticleSortUpdated = {this.onArticleSortUpdated}
                                                    selectedArticles={this.state.selectedArticles}
                                                    selectedEventArticles={this.state.selectedEventArticles}
                                                    selectedEditorArticles={this.state.selectedEditorArticles}

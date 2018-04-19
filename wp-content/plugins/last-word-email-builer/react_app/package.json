@@ -8,7 +8,7 @@
     "guid": "0.0.12",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",
-    "moment": "^2.18.1",
+    "moment": "^2.19.1",
     "random-string": "^0.2.0",
     "react": "^15.6.1",
     "react-addons-update": "^15.6.0",
@@ -16,9 +16,9 @@
     "react-dnd-html5-backend": "^2.5.3",
     "react-dom": "^15.6.1",
     "react-grid-gallery": "^0.4.2",
+    "react-reorder": "^3.0.0-alpha.6",
     "react-tinymce": "^0.6.0",
-    "summernote": "^0.8.7",
-    "moment": "^2.19.1"
+    "summernote": "^0.8.7"
   },
   "devDependencies": {
     "react-scripts": "1.0.11"

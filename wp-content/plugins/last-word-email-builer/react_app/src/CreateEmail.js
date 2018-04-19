@@ -291,6 +291,9 @@ class CreateEmail extends Component {
   onPrevRatedArticlePage = () => {
     this.props.onPrevRatedArticlePage();
   }
+	onArticleSortUpdated (articleId, value) {
+    this.props.onArticleSortUpdated(articleId, value);
+  }
   onArticleDropped = (emailType, articleId, type) => {
     this.props.onArticleDropped(emailType, articleId, this.props.selectedTab, type);
   }
@@ -775,8 +778,9 @@ class CreateEmail extends Component {
           /> : ''}
            
            { this.state.template === 'All_Blocks_Newsletter' ? 
-           <AllBlocksNewsLetter 
-            
+           <AllBlocksNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
+
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 

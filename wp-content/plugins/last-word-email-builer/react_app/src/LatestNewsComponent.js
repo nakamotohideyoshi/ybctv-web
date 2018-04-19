@@ -30,10 +30,18 @@ static propTypes = {
    articles: PropTypes.any.isRequired,
    color: PropTypes.any.isRequired
  };
+
+editPriority (articleId) {
+	let num = window.prompt("Enter a number", "Here");
+	num = parseInt(num);
+
+	this.props.onArticleSortUpdated(articleId, num);
+}
 render() {
   const { canDrop, isOver, connectDropTarget } = this.props;
   const isActive = canDrop && isOver;
   let color = this.props.color;
+  let cThis = this;
 
       return connectDropTarget(
   <table data-width="100%" style={this.props.highlight === 'article' ? { animation : 'twinkle .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
@@ -48,9 +56,20 @@ render() {
                   </td>
           </tr>
 
-          {this.props.articles.map((article,key) => {
+          {this.props.articles.sort(function (a,b) {
+            alert('sorting '  + a.sortValue + ' with ' + b.sortValue );
+            let av = 0;
+            if (a.sortValue) av = a.sortValue;
+
+						let bv = 0;
+						if (b.sortValue) bv = b.sortValue;
+
+
+						return av > bv}).map((article,key) => {
                           return article !== null ?  <tr key={key}>
                           {this.props.isInsights === undefined ? <td>
+
+															<button onClick={ () => cThis.editPriority(article.ID)}>EDIT PRIORITY</button>
                   <table style={{borderBottom: '1px solid #e5eaee', width: '100%', position: 'relative'}} data-width="100%">
                           <tbody><tr>
                                                                   <td className="container_sub" style={this.props.isAllBlocksNews !== undefined ? {padding:'20px 10px 14px 0px',verticalAlign: 'top', width: '180px'} : {padding:'20px 10px 14px 0px',verticalAlign: 'top', width: '230px'}}> 

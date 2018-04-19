@@ -342,7 +342,7 @@ render() {
                                                                         <tbody><tr>
         <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
 
- <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} onRemoveArticle={this.props.onRemoveArticle} color={color} isAllBlocks="true" isAllBlocksNews="true"/>
+ <LatestNewsComponent onArticleSortUpdated={this.props.onArticleSortUpdated} articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} onRemoveArticle={this.props.onRemoveArticle} color={color} isAllBlocks="true" isAllBlocksNews="true"/>
         </td>
 </tr>
 <tr>
