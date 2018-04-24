@@ -39,8 +39,25 @@
             <?php
         }
     }
+  ?>
+  <!-- Hotjar Tracking Code for https://portfolio-adviser.com -->
+  <script>
+      (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:858475,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    <?php
+      if (get_post_type() == 'post' && !is_archive() && !is_home()) {
+      ?>
+      hj('trigger', 'article');
+      <?php
+      }
     ?>
-
+  </script>
 </head>
 <body id="bd" <?php body_class(); ?>>
   <?php lazyLoadStatus(); ?>
