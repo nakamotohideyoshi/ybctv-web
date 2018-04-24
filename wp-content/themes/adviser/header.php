@@ -17,31 +17,13 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width" />
-  <meta name="description" content="<?php bloginfo('description'); ?>" />
 
   <link rel="shortcut icon" href="<?php echo THEME_PATH.'/images/favicon/favicon.ico' ?>" type="image/x-icon">
   <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/PA_16x16.ico' ?>" sizes="16x16">
   <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/PA_32x32.ico' ?>" sizes="32x32">
   <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/PA_152x152.png' ?>" sizes="152x152">
 
-  <title>
-    <?php
-      /*
-       * Print the <title> tag based on what is being viewed.
-       */
-      global $page, $paged;
-      wp_title( '|', true, 'right' );
-      // Add the blog name.
-      bloginfo( 'name' );
-      // Add the blog description for the home/front page.
-      $site_description = get_bloginfo( 'description', 'display' );
-      if ( $site_description && ( is_home() || is_front_page() ) )
-          echo " | $site_description";
-      // Add a page number if necessary:
-      if ( $paged >= 2 || $page >= 2 )
-          echo ' | ' . sprintf( __( 'Page %s', TEXT_DOMAIN ), max( $paged, $page ) );
-    ?>
-  </title>
+  <title><?php wp_title(''); ?></title>
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <!--stickadd scripts-->
@@ -64,32 +46,6 @@
   <?php lazyLoadStatus(); ?>
 
   <?php lastWordAdUnit2('oop-teads'); ?>
-  <script>
-    (function($) {
-      $(window).load(function() {
-        var adUnitContainer = $('.ads-oop-overlay');
-        var adUnit = adUnitContainer.find('[id^=div-gpt-ad]');
-
-        if (adUnit.length && adUnit.css('display') != 'none') {
-          $('#lw-popup-overlay').css({ 'display' : 'block' });
-          $('#lw-popup-holder').css({ 'display' : 'flex' });
-
-          $(document).keyup(function(e) {
-            if (e.which == 27) {
-              $('#lw-popup-overlay').css({ 'display' : 'none' });
-              $('#lw-popup-holder').css({ 'display' : 'none' });
-            }
-          });
-        }
-
-        $('#lw-popup-close').on('click', function(e) {
-          e.preventDefault();
-          $('#lw-popup-overlay').css({ 'display' : 'none' });
-          $('#lw-popup-holder').css({ 'display' : 'none' });
-        });
-      });
-    })(jQuery);
-  </script>
   <div id="lw-popup-overlay" style="width: 100%; height: 100%; left: 0; top: 0; position: fixed; z-index: 5000; background-color: #000000; opacity: 0.6; display: none;">
   </div>
   <div id="lw-popup-holder" style="width: 100%; height: 100%; left: 0; top: 0; position: fixed; z-index: 5001; display: none; justify-content: center; -webkit-justify-content: center; align-items: center; -webkit-align-items: center;">

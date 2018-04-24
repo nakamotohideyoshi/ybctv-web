@@ -119,6 +119,30 @@ class frontend {
             } else {
               storeAdChanges.push(event);
             }
+
+            // Popup functionality for oop overlay
+            (function($) {
+              var adUnit = $('#' + event.slot.getSlotElementId());
+              var adUnitContainer = adUnit.parent();
+
+              if (!event.isEmpty && adUnitContainer.hasClass('ads-oop-overlay')) {
+                $('#lw-popup-overlay').css({ 'display' : 'block' });
+                $('#lw-popup-holder').css({ 'display' : 'flex' });
+
+                $(document).keyup(function(e) {
+                  if (e.which == 27) {
+                    $('#lw-popup-overlay').css({ 'display' : 'none' });
+                    $('#lw-popup-holder').css({ 'display' : 'none' });
+                  }
+                });
+
+                $('#lw-popup-close').on('click', function(e) {
+                  e.preventDefault();
+                  $('#lw-popup-overlay').css({ 'display' : 'none' });
+                  $('#lw-popup-holder').css({ 'display' : 'none' });
+                });
+              }
+            })(jQuery);
           });
           googletag.enableServices();
         });
@@ -338,9 +362,9 @@ class frontend {
       <script type="text/javascript">
         jQuery(document).ready (function () {
             window.setTimeout ( function () {
-                googletag.cmd.push(function() { googletag.display("$ad_unit_div"); });    
-            }, 150);                
-        });        
+                googletag.cmd.push(function() { googletag.display("$ad_unit_div"); });
+            }, 150);
+        });
       </script>
 A3;
 
