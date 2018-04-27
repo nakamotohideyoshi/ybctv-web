@@ -7,6 +7,49 @@ import $ from 'jquery';
 import Config from './Config';
 import Guid from 'guid';
 
+// Using an ES6 transpiler like Babel
+import {
+	SortableContainer,
+	SortableElement,
+	arrayMove,
+} from 'react-sortable-hoc';
+
+const SortableItem = SortableElement(({value, onRemoveArticle}) => {
+	let article = value;
+	let color = '';
+	let cThis = this;
+
+	return <tr>
+    <td>
+      <table style={{width: '100%'}}>
+        <tbody>
+        <tr>
+          <td style={{padding:'7px 0px 7px', position: 'relative'}}>
+            <a href={article.guid} style={{color,fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none'}}><font>{article.post_title}</font></a>
+            <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={onRemoveArticle}/>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>;
+
+});
+
+
+const SortableList = SortableContainer(({items, onRemoveArticle}) => {
+	let cThis = this;
+	return (
+    <table className="test-sortable">
+			{items.map((value, index) => (
+        <SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} />
+			))}
+
+
+    </table>
+	);
+});
+
 
 const style = {
   background: '#E6E6E6',
@@ -29,13 +72,27 @@ static propTypes = {
    canDrop: PropTypes.bool.isRequired,
    selectedMoreNewsArticles: PropTypes.any.isRequired,
  };
+
+
+
+// consider everyone here...
+onSortEnd = ({oldIndex, newIndex}) => {
+	let newArticles = arrayMove(this.props.selectedMoreNewsArticles, oldIndex, newIndex);
+
+	console.log('new articles:');
+	console.log(newArticles);
+
+	this.props.onArticleSortUpdated(newArticles, 'More_News');
+};
+
 render() {
   const { canDrop, isOver, connectDropTarget } = this.props;
   const isActive = canDrop && isOver;
   let color = this.props.color;
+  let cThis = this;
 
       return connectDropTarget(
-  <div>
+  <div class="test1">
   <table style={this.props.highlight === 'article' ? {animation : 'twinkle .5s step-end infinite alternate', border: '2px solid', width: '100%'} : {width: '100%'}}>
   <tbody><tr>
   <td style={this.props.isAllBlocks !== undefined ? {fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia'} : {color,fontSize: '22px',fontWeight: 'normal',borderBottom: '1px solid #e5eaee',padding: '10px 0px 3px 0px',fontFamily:'Georgia'}}> 
@@ -44,21 +101,10 @@ render() {
           </font> 
   </td>
   </tr>
-  {this.props.selectedMoreNewsArticles.map((article, key) => {
-  return <tr key={key}>
-  <td>
-  <table style={{width: '100%'}}>
-  <tbody>
-  <tr>
-          <td style={{padding:'7px 0px 7px', position: 'relative'}}>
-                  <a href={article.guid} style={{color,fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none'}}><font>{article.post_title}</font></a>
-                  <img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width:'10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={this.props.onRemoveArticle}/>
-          </td>
-  </tr>
-  </tbody>
-  </table>
-  </td>
-  </tr>})}</tbody></table>
+
+  <SortableList items={this.props.selectedMoreNewsArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.props.onRemoveArticle.bind(cThis)} />
+
+  </tbody></table>
         </div>
     );
   }

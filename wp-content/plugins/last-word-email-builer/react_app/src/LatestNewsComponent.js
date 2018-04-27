@@ -130,7 +130,7 @@ class LatestNewsComponent extends Component {
 		let num = window.prompt('Enter a number', 'Here');
 		num = parseInt(num);
 
-		this.props.onArticleSortUpdated(articleId, num);
+		// this.props.onArticleSortUpdated(articleId, num);
 	}
 /*
 	onSortEnd = ({oldIndex, newIndex}) => {
@@ -164,7 +164,7 @@ class LatestNewsComponent extends Component {
 		console.log('new articles:');
 		console.log(newArticles);
 
-		this.props.onArticleSortUpdated(newArticles);
+		this.props.onArticleSortUpdated(newArticles, 'Latest News');
 	};
 
 	render () {

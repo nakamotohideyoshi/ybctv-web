@@ -97,48 +97,48 @@ class App extends Component {
     hasStaticImage2:"0",
     hasAssetClass: "0",
     hasQuotable:"0",
-    
+
     topLeaderboard: '',
     topLeaderboardB: '',
     topLeaderboardC: '',
     topLeaderboardD: '',
     topLeaderboardE: '',
     topLeaderboardF: '',
-    
+
     footerLeaderboard: '',
     footerLeaderboardB: '',
     footerLeaderboardC: '',
     footerLeaderboardD: '',
     footerLeaderboardE: '',
     footerLeaderboardF: '',
-    
+
     sponsoredContent: '',
     sponsoredContentB: '',
     sponsoredContentC: '',
     sponsoredContentD: '',
     sponsoredContentE: '',
     sponsoredContentF: '',
-    
+
     sponsoredContent2:'',
     sponsoredContent2B:'',
     sponsoredContent2C:'',
     sponsoredContent2D:'',
     sponsoredContent2E:'',
     sponsoredContent2F:'',
-    
+
     newsletterSubscribe: '',
     digitalMagazine: '',
-    
+
     staticImage1: '',
     staticImage1B: '',
     staticImage1C: '',
     staticImage1D: '',
-    
+
     staticImage2: '',
     staticImage2B: '',
     staticImage2C: '',
     staticImage2D: '',
-    
+
     assetClass: '',
     assetClassB: '',
     assetClassC: '',
@@ -271,7 +271,7 @@ class App extends Component {
 
   onChangeStaticStatus = (name, val) => {
     switch(name){
-     
+
      case 'Top_Leaderboard':
        this.setState(prevState => ({ hasTopLeaderboard: val === true ? "1" : "0"}));
        break;
@@ -290,7 +290,7 @@ class App extends Component {
      case 'Top_Leaderboard_f':
        this.setState(prevState => ({ hasTopLeaderboard: val === true ? "6" : "0"}));
        break;
-    
+
     case 'Footer_Leaderboard':
       this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "1" : "0"}));
       break;
@@ -309,7 +309,7 @@ class App extends Component {
     case 'Footer_Leaderboard_f':
       this.setState(prevState => ({ hasFooterLeaderboard: val === true ? "6" : "0"}));
       break;
-    
+
     case 'Newsletter_Subscribe':
       this.setState(prevState => ({ hasNewsletterSubscribe: val === true ? "1" : "0"}));
       break;
@@ -332,7 +332,7 @@ class App extends Component {
     case 'Sponsored_Content_f':
       this.setState(prevState => ({ hasSponsoredContent: val === true ? "6" : "0"}));
       break;
-    
+
     case 'Sponsored_Content_2':
       this.setState(prevState => ({ hasSponsoredContent2: val === true ? "1" : "0"}));
       break;
@@ -351,7 +351,7 @@ class App extends Component {
     case 'Sponsored_Content_2f':
       this.setState(prevState => ({ hasSponsoredContent2: val === true ? "6" : "0"}));
       break;
-    
+
     case 'Static_Image_1':
       this.setState(prevState => ({ hasStaticImage1: val === true ? "1" : "0"}));
       break;
@@ -364,7 +364,7 @@ class App extends Component {
     case 'Static_Image_1d':
       this.setState(prevState => ({ hasStaticImage1: val === true ? "4" : "0"}));
       break;
-    
+
     case 'Static_Image_2':
       this.setState(prevState => ({ hasStaticImage2: val === true ? "1" : "0"}));
       break;
@@ -387,7 +387,7 @@ class App extends Component {
     case 'Asset_Class_c':
       this.setState(prevState => ({ hasAssetClass: val === true ? "3" : "0"}));
       break;
-    
+
     case 'Quotable':
       this.setState(prevState => ({ hasQuotable: val === true ? "1" : "0"}));
       break;
@@ -399,27 +399,27 @@ class App extends Component {
   onRemoveStatic = (event) => {
     this.onChangeStaticStatus(event.target.id, false);
     switch(event.target.id){
-    
+
     case 'Top_Leaderboard':
        this.setState(prevState => ({ topLeaderboard: ''}));
        break;
-    
+
     case 'Footer_Leaderboard':
       this.setState(prevState => ({ footerLeaderboard: ''}));
       break;
-    
+
     case 'Newsletter_Subscribe':
       this.setState(prevState => ({ newsletterSubscribe: ''}));
       break;
-    
+
     case 'Sponsored_Content':
       this.setState(prevState => ({ sponsoredContent: ''}));
       break;
-    
+
     case 'Sponsored_Content_2':
       this.setState(prevState => ({ sponsoredContent2: ''}));
       break;
-    
+
     case 'Digital_Magazine':
       this.setState(prevState => ({ digitalMagazine: ''}));
       break;
@@ -624,7 +624,7 @@ class App extends Component {
            case 'Top_Leaderboard_f':
              this.setState(prevState => ({ topLeaderboardF: leaderBoard.Content}));
              break;
-          
+
           case 'Footer_Leaderboard':
             this.setState(prevState => ({ footerLeaderboard: leaderBoard.Content}));
             break;
@@ -643,11 +643,11 @@ class App extends Component {
           case 'Footer_Leaderboard_f':
             this.setState(prevState => ({ footerLeaderboardF: leaderBoard.Content}));
             break;
-          
+
           case 'Newsletter_Subscribe':
             this.setState(prevState => ({ newsletterSubscribe: leaderBoard.Content}));
             break;
-          
+
           case 'Sponsored_Content':
             this.setState(prevState => ({ sponsoredContent: leaderBoard.Content}));
             break;
@@ -666,7 +666,7 @@ class App extends Component {
           case 'Sponsored_Content_f':
             this.setState(prevState => ({ sponsoredContentF: leaderBoard.Content}));
             break;
-          
+
           case 'Sponsored_Content_2':
             this.setState(prevState => ({ sponsoredContent2: leaderBoard.Content}));
             break;
@@ -685,14 +685,14 @@ class App extends Component {
           case 'Sponsored_Content_2f':
             this.setState(prevState => ({ sponsoredContent2F: leaderBoard.Content}));
             break;
-          
+
           case 'Digital_Magazine':
             this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
             break;
           case 'Digital_Magazine_2':
             this.setState(prevState => ({ digitalMagazine: leaderBoard.Content}));
             break;
-          
+
           case 'Static_Image_1':
             this.setState(prevState => ({ staticImage1: leaderBoard.Content}));
             break;
@@ -705,7 +705,7 @@ class App extends Component {
           case 'Static_Image_1d':
             this.setState(prevState => ({ staticImage1D: leaderBoard.Content}));
             break;
-          
+
           case 'Static_Image_2':
             this.setState(prevState => ({ staticImage2: leaderBoard.Content}));
             break;
@@ -718,7 +718,7 @@ class App extends Component {
           case 'Static_Image_2d':
             this.setState(prevState => ({ staticImage2D: leaderBoard.Content}));
             break;
-          
+
           case 'Asset_Class':
             this.setState(prevState => ({ assetClass: leaderBoard.Content}));
             break;
@@ -728,7 +728,7 @@ class App extends Component {
           case 'Asset_Class_c':
             this.setState(prevState => ({ assetClassC: leaderBoard.Content}));
             break;
-          
+
           case 'Quotable':
             this.setState(prevState => ({ quotable: leaderBoard.Content}));
             break;
@@ -921,7 +921,7 @@ class App extends Component {
            articles: val["3"]
           }
          }
-         
+
          // val["0"].site = 'wp_2_';
          // val["1"].site = 'wp_3_';
          // val["2"].site = 'wp_4_';
@@ -1009,19 +1009,34 @@ class App extends Component {
       });
   }
 
-  onArticleSortUpdated = (newArticles) => {
-    
+  onArticleSortUpdated = (newArticles, articleType) => {
+
     let newArticlesCopy = newArticles.slice();
 
     // this is not needed, pending delete:
     let len = newArticlesCopy.length;
+
     for (let i = 0; i < len; i++) {
       newArticlesCopy[i].sortValue = i;
     }
 
-    this.setState({
-      selectedArticles: newArticlesCopy
-    });
+    if (articleType === 'Latest News') {
+			this.setState({
+				selectedArticles: newArticlesCopy
+			});
+    }
+    else if(articleType === 'Most_Viewed') {
+			this.setState(prevState => ({
+				selectedMostViewedArticles: newArticlesCopy
+			}));
+    }
+		else if(articleType === 'More_News') {
+			this.setState(prevState => ({
+				selectedMoreNewsArticles: newArticlesCopy
+			}));
+		}
+
+
 
   }
 
@@ -1128,7 +1143,7 @@ class App extends Component {
               r.sort(function(a,b){
                 return a.startdate > b.startdate;
               });
-              
+
               return r;
           };
           this.setState(prevState => ({
@@ -1228,7 +1243,7 @@ class App extends Component {
                                      hasQuotable: val.HasQuotable}));
 
        this.setState(prevState => ({selectedArticles: [], selectedEventArticles: [], selectedEditorArticles: [], selectedMostViewedArticles: [], selectedInvestmentArticles:[], selectedMostReadArticles:[], selectedMoreNewsArticles: []}));
-        
+
        _.each(t_articles, (art) => {
           this.setState(prevState => ({
             selectedArticles : [...prevState.selectedArticles,art]}));
@@ -1437,34 +1452,34 @@ class App extends Component {
         url = 'https://pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
 
       window.open(url);
-      
+
       break;
     case 'wp_3_':
       url = 'https://ia.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
-      
+
       if (isStaging)
         url = 'https://ia-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
 
       window.open(url);
-      
+
       break;
     case 'wp_4_':
       url = 'https://fsa.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
-      
+
       if (isStaging)
         url = 'https://fsa-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
 
       window.open(url);
-      
+
       break;
     case 'wp_5_':
       url = 'https://ei.cms-lastwordmedia.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
-      
+
       if (isStaging)
         url = 'https://ei-cms-lastwordmedia-com.lastword.staging.wpengine.com/email-approve?emailId='+ event.target.id + '&prefix='+ this.state.site;
 
       window.open(url);
-      
+
       break;
 
     default:
@@ -1489,7 +1504,7 @@ class App extends Component {
     }
     this.setState(prevState => ({
       site: this.getDefaultSite(),
-    }));    
+    }));
     this.getEmails(this.state.offset);
   }
 
@@ -1542,13 +1557,13 @@ class App extends Component {
     setTimeout(function(){
       if ( timestamp === self.state.previewBoxTimestamp && id === self.state.previewBoxId ) {
         self.setState(prevState => ({
-          showPreview: true, 
+          showPreview: true,
           previewBoxContent: template === '' ? 'Please select the template' : 'Loading... Please wait...'
         }));
 
         if ( template !== '' ) {
             console.log('call');
-            
+
             fetch(Config.BASE_URL + '/wp-json/email-builder/v1/statictemplate?template='+ template +'&type='+ name +'&prefix='+ self.state.site +'&cache='+ Guid.raw(), {
               method: 'GET',
               headers: {
@@ -1568,7 +1583,7 @@ class App extends Component {
       }
     }, 2000);
   }
-  
+
   onHidePreviewBox = () => {
     this.setState(prevState => ({showPreview: false, previewBoxContent: '', previewBoxId: '', previewBoxTimestamp: 0}));
   }
@@ -1578,7 +1593,7 @@ class App extends Component {
       <div className="container">
          <PreviewBox closePreviewBox={this.onHidePreviewBox} show={this.state.showPreview} content={this.state.previewBoxContent} />
          <Header onChangePage={this.onChangePage} currentPage={this.state.page} onSetSite={this.onSetSite} site={this.state.site}/>
-         { this.state.page === 'Dashboard' ? 
+         { this.state.page === 'Dashboard' ?
           <div className="container">
              <div className="row">
                <div className="col-xs-10">
@@ -1590,7 +1605,7 @@ class App extends Component {
              </div>
                <div className="row">
                  <div className="col-xs-12">
-                { this.state.isLoadingEmails === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" alt="Loading" /></div> : 
+                { this.state.isLoadingEmails === true ? <div className="tab-pane fade active in" style={{textAlign: 'center'}}><img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/loading.gif" alt="Loading" /></div> :
                    <table className="table">
                      <thead>
                        <tr>
@@ -1633,7 +1648,7 @@ class App extends Component {
            : ''}
          { this.state.page === 'CreateEmail' ?  <CreateEmail
 
-                                                   onShowPreviewBox={this.onShowPreviewBox} 
+                                                   onShowPreviewBox={this.onShowPreviewBox}
                                                    onHidePreviewBox={this.onHidePreviewBox}
 
                                                    onPrevRatedArticlePage={this.onPrevRatedArticlePage}
@@ -1696,47 +1711,47 @@ class App extends Component {
                                                    onStaticDropped={this.onStaticDropped}
                                                    onRemoveStatic={this.onRemoveStatic}
                                                    onChangeStaticStatus={this.onChangeStaticStatus}
-                                                   
+
                                                    topLeaderboard={this.state.topLeaderboard}
                                                    topLeaderboardB={this.state.topLeaderboardB}
                                                    topLeaderboardC={this.state.topLeaderboardC}
                                                    topLeaderboardD={this.state.topLeaderboardD}
                                                    topLeaderboardE={this.state.topLeaderboardE}
                                                    topLeaderboardF={this.state.topLeaderboardF}
-                                                   
+
                                                    footerLeaderboard={this.state.footerLeaderboard}
                                                    footerLeaderboardB={this.state.footerLeaderboardB}
                                                    footerLeaderboardC={this.state.footerLeaderboardC}
                                                    footerLeaderboardD={this.state.footerLeaderboardD}
                                                    footerLeaderboardE={this.state.footerLeaderboardE}
                                                    footerLeaderboardF={this.state.footerLeaderboardF}
-                                                   
+
                                                    sponsoredContent={this.state.sponsoredContent}
                                                    sponsoredContentB={this.state.sponsoredContentB}
                                                    sponsoredContentC={this.state.sponsoredContentC}
                                                    sponsoredContentD={this.state.sponsoredContentD}
                                                    sponsoredContentE={this.state.sponsoredContentE}
                                                    sponsoredContentF={this.state.sponsoredContentF}
-                                                   
+
                                                    sponsoredContent2={this.state.sponsoredContent2}
                                                    sponsoredContent2B={this.state.sponsoredContent2B}
                                                    sponsoredContent2C={this.state.sponsoredContent2C}
                                                    sponsoredContent2D={this.state.sponsoredContent2D}
                                                    sponsoredContent2E={this.state.sponsoredContent2E}
                                                    sponsoredContent2F={this.state.sponsoredContent2F}
-                                                   
+
                                                    digitalMagazine={this.state.digitalMagazine}
-                                                   
+
                                                    staticImage1={this.state.staticImage1}
                                                    staticImage1B={this.state.staticImage1B}
                                                    staticImage1C={this.state.staticImage1C}
                                                    staticImage1D={this.state.staticImage1D}
-                                                   
+
                                                    staticImage2={this.state.staticImage2}
                                                    staticImage2B={this.state.staticImage2B}
                                                    staticImage2C={this.state.staticImage2C}
                                                    staticImage2D={this.state.staticImage2D}
-                                                   
+
                                                    assetClass={this.state.assetClass}
                                                    assetClassB={this.state.assetClassB}
                                                    assetClassC={this.state.assetClassC}
