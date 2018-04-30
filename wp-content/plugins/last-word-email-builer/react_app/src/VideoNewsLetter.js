@@ -316,7 +316,7 @@ class VideoNewsLetter extends Component {
                                                                 <table data-width="748" data-align="left" className="container" style={{width:'748px', textAlign: 'left'}}>
                                                                   <tr>
                                                                     <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
-                                                                    <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isVideoNews="true"/>
+                                                                    <LatestNewsComponent onArticleSortUpdated={this.props.onArticleSortUpdated} articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isVideoNews="true"/>
                                                              </td>
                                                             </tr>
                                                            </table>
