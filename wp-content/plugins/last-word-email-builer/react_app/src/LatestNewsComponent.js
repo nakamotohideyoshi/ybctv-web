@@ -14,90 +14,69 @@ import {
 	arrayMove,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value, onRemoveArticle}) => {
+const SortableItem = SortableElement(({value, onRemoveArticle, isInsights, isAllBlocksNews}) => {
 	let article = value;
 	let color = '';
 	let cThis = this;
 
-	return (
-		<tr>
-			<td className="sort-item1">
 
-				<table style={{
-					borderBottom: '1px solid #e5eaee',
-					width: '100%',
-					position: 'relative',
-				}} data-width="100%">
-					<tbody>
-					<tr>
-						<td className="container_sub"
-								style={{
-									padding: '20px 10px 14px 0px',
-									verticalAlign: 'top',
-									width: '230px',
-								}}>
+	return article !== null ?  <tr>
+		{isInsights === undefined ? <td>
+				<table style={{borderBottom: '1px solid #e5eaee', width: '100%', position: 'relative'}} data-width="100%">
+					<tbody><tr>
+						<td className="container_sub" style={isAllBlocksNews !== undefined ? {padding:'20px 10px 14px 0px',verticalAlign: 'top', width: '180px'} : {padding:'20px 10px 14px 0px',verticalAlign: 'top', width: '230px'}}>
 							<a href={article.guid}>
-								<img data-width="219" src={article.featured_image !== null &&
-								typeof article.featured_image != 'undefined'
-									? article.featured_image
-									: 'http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg'}
-										 style={{width: '180px'}}
-
-										 title={article.post_title}/>
+								<img data-width="219" src={ article.featured_image !== null && typeof article.featured_image != 'undefined' ? article.featured_image : "http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg"} style={ isAllBlocksNews !== undefined ? {width: '180px'} : {maxWidth:'219px',height:'122px',width:'219px'}} title={article.post_title}/>
 							</a>
 						</td>
-						<td className="container_sub"
-								style={{verticalAlign: 'top', padding: '13px 0px 14px'}}>
+						<td className="container_sub" style={{verticalAlign: 'top',padding:'13px 0px 14px'}}>
 							<table data-width="100%">
-								<tbody>
-								<tr>
+								<tbody><tr>
 									<td style={{padding: '0px 0px 7px'}}>
-										<a href={article.guid} style={{
-											fontSize: '14px',
-											fontFamily: 'Arial, Helvetica, sans-serif',
-											textDecoration: 'none',
-											color,
-										}} title={article.post_title}><font
-											style={{fontFamily: 'Arial, Helvetica, sans-serif'}}>{article.post_title}</font></a>
-									</td>
+										<a href={article.guid} style={{fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none', color}} title={article.post_title}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{article.post_title}</font></a> </td>
 								</tr>
 								<tr>
-									<td style={{
-										color: '#2c2c2c',
-										fontSize: '14px',
-										fontFamily: 'Arial, Helvetica, sans-serif',
-										lineHeight: '20px',
-									}}><font style={{fontFamily: 'Arial, Helvetica, sans-serif'}}
-													 dangerouslySetInnerHTML={{
-														 __html: article.post_excerpt.replace(
-															 /^(.{110}[^\s]*).*/, '$1...'),
-													 }}></font></td>
+									<td style={{color: '#2c2c2c',fontSize: '14px',fontFamily: 'Arial, Helvetica, sans-serif',lineHeight: '20px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}} dangerouslySetInnerHTML={{__html:article.post_excerpt.replace(/^(.{110}[^\s]*).*/, "$1...")}}></font></td>
 								</tr>
-								</tbody>
-							</table>
-							<img
-								src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png"
-								className="cross-img" style={{
-								width: '10px',
-								cursor: 'pointer',
-								position: 'absolute',
-								right: '10px',
-								top: '10px',
-							}} id={article.ID} onRemoveArticle={onRemoveArticle}/>
+								</tbody></table>
+							<img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={onRemoveArticle}/>
 						</td>
 					</tr>
-					</tbody>
-				</table>
-			</td>
-		</tr>
-	);
+					</tbody></table>
+			</td> :
+			<td>
+				<table style={{borderBottom: '1px solid #e5eaee', width: '100%', position: 'relative'}} data-width="100%">
+					<tbody><tr>
+						<td className="container_sub" data-width="718" style={isAllBlocksNews !== undefined ? {padding:'20px 10px 14px 0px',verticalAlign: 'top'} : {padding:'20px 10px 14px 0px',verticalAlign: 'top'}}>
+							<a href={article.guid}>
+								<img src={ article.featured_image !== null ? article.featured_image : "http://www.expertinvestoreurope.com/w-images/2dd14d1d-57c2-4dfb-b6c9-ed1644ebb96d/2/cliffdownmoneydanger-219x122.jpg"}  title={article.post_title}/>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td className="container_sub" style={{verticalAlign: 'top',padding:'13px 0px 14px'}}>
+							<table data-width="100%">
+								<tbody><tr>
+									<td style={{padding: '0px 0px 7px'}}>
+										<a href={article.guid} style={{fontSize: '14px',fontFamily:'Arial, Helvetica, sans-serif',textDecoration: 'none', color}} title={article.post_title}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}}>{article.post_title}</font></a> </td>
+								</tr>
+								<tr>
+									<td style={{color: '#2c2c2c',fontSize: '14px',fontFamily: 'Arial, Helvetica, sans-serif',lineHeight: '20px'}}><font style={{fontFamily:'Arial, Helvetica, sans-serif'}} dangerouslySetInnerHTML={{__html:article.post_excerpt.replace(/^(.{110}[^\s]*).*/, "$1...")}}></font></td>
+								</tr>
+								</tbody></table>
+							<img src="https://pa.cms-lastwordmedia.com//wp-content/plugins/email-builder/cross.png" className="cross-img" style={{width: '10px',cursor:'pointer',position: 'absolute',right:'10px',top:'10px'}} id={article.ID} onClick={onRemoveArticle}/>
+						</td>
+					</tr>
+					</tbody></table>
+			</td>}
+	</tr> : ''
 });
 
-const SortableList = SortableContainer(({items, onRemoveArticle}) => {
+const SortableList = SortableContainer(({items, onRemoveArticle, isInsights, isAllBlocksNews}) => {
 	return (
 		<table className="test-sortable">
 			{items.map((value, index) => (
-				<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle}/>
+				<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} isInsights={isInsights} isAllBlocksNews={isAllBlocksNews} />
 			))}
 		</table>
 	);
@@ -215,7 +194,7 @@ class LatestNewsComponent extends Component {
 					</td>
 				</tr>
 
-				<SortableList items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle}/>
+				<SortableList items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle} isInsights={this.props.isInsights} isAllBlocksNews={this.props.isAllBlocksNews} />
 
 				</tbody>
 			</table>,
