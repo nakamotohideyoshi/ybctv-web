@@ -14,7 +14,7 @@ import {
 	arrayMove,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value}) => {
+const SortableItem = SortableElement(({value, onRemoveArticle}) => {
 	let article = value;
 	let color = '';
 	let cThis = this;
@@ -83,7 +83,7 @@ const SortableItem = SortableElement(({value}) => {
 								position: 'absolute',
 								right: '10px',
 								top: '10px',
-							}} id={article.ID}/>
+							}} id={article.ID} onRemoveArticle={onRemoveArticle}/>
 						</td>
 					</tr>
 					</tbody>
@@ -93,11 +93,11 @@ const SortableItem = SortableElement(({value}) => {
 	);
 });
 
-const SortableList = SortableContainer(({items}) => {
+const SortableList = SortableContainer(({items, onRemoveArticle}) => {
 	return (
 		<table className="test-sortable">
 			{items.map((value, index) => (
-				<SortableItem key={`item-${index}`} index={index} value={value}/>
+				<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle}/>
 			))}
 		</table>
 	);
@@ -215,7 +215,7 @@ class LatestNewsComponent extends Component {
 					</td>
 				</tr>
 
-				<SortableList items={this.props.articles} onSortEnd={cThis.onSortEnd} />
+				<SortableList items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle}/>
 
 				</tbody>
 			</table>,
