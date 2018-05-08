@@ -587,12 +587,30 @@ function enqueue_teads() {
   $show_ad_units_status = get_option('show_ad_units');
 
   if ($show_ad_units_status && $show_ad_units_status == 'yes') {
-    wp_register_script('teads', '//a.teads.tv/page/52800/tag', array(), '1.0.0', false);
+    if (wp_is_mobile()) {
+      wp_register_script('teads', '//a.teads.tv/page/52801/tag', array(), '1.0.0', true);
+    }
+    else {
+      wp_register_script('teads', '//a.teads.tv/page/52800/tag', array(), '1.0.0', true);
+    }
     wp_enqueue_script('teads');
   }
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
+
+/*
+* Add async attribute to Teads JS
+*/
+function add_async_js_attribute($tag, $handle, $src) {
+  if ($handle == 'teads') {
+    $tag = '<script type="text/javascript" src="' . esc_url($src) . '" async="true"></script>';
+  }
+
+  return $tag;
+}
+
+add_filter('script_loader_tag', 'add_async_js_attribute', 10, 3);
 
 /*
 * Co Authors Plus config
@@ -943,8 +961,8 @@ function add_featured_box_settings_page() {
 			'gallery',
 			'caption',
 		) );
-		
-		
+
+
 		function ea_primary_menu_extras( $menu, $args ) {
     if( 'primary' == $args->theme_location )
       $menu .= '<li class="menu-item search"><a href="#" class="search-toggle"><i class="icon-search"></i></a>' . get_search_form( false ) . '</li>';
@@ -952,3 +970,12 @@ function add_featured_box_settings_page() {
 }
 add_filter( 'wp_nav_menu_items', 'ea_primary_menu_extras', 10, 2 );
 
+add_filter( 'lw_title_args', 'lw_title_args_yoastb', 10, 1 );
+function lw_title_args_yoastb( $args ) {
+  $args['breadcrumb'] = false;
+  ob_start();
+  yoast_breadcrumb();
+  $yoastb = ob_get_clean();
+  $args['additions'] = '<div class="breadcrumb breadcrumbs avia-breadcrumbs">'.$yoastb.'</div>';
+  return $args;
+}

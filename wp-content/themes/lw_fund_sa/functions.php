@@ -553,12 +553,25 @@ function enqueue_teads() {
   $show_ad_units_status = get_option('show_ad_units');
 
   if ($show_ad_units_status && $show_ad_units_status == 'yes') {
-    wp_register_script('teads', '//a.teads.tv/page/63053/tag', array(), '1.0.0', false);
+    wp_register_script('teads', '//a.teads.tv/page/63053/tag', array(), '1.0.0', true);
     wp_enqueue_script('teads');
   }
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_teads');
+
+/*
+* Add async attribute to Teads JS
+*/
+function add_async_js_attribute($tag, $handle, $src) {
+  if ($handle == 'teads') {
+    $tag = '<script type="text/javascript" src="' . esc_url($src) . '" async="true"></script>';
+  }
+
+  return $tag;
+}
+
+add_filter('script_loader_tag', 'add_async_js_attribute', 10, 3);
 
 /*
 * Co Authors Plus config
