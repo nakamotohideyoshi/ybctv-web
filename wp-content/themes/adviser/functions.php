@@ -583,34 +583,34 @@ add_filter('mce_buttons', 'add_page_break_button', 1, 2);
 /*
 * Teads JS.
 */
-function enqueue_teads() {
-  $show_ad_units_status = get_option('show_ad_units');
-
-  if ($show_ad_units_status && $show_ad_units_status == 'yes') {
-    if (wp_is_mobile()) {
-      wp_register_script('teads', '//a.teads.tv/page/52801/tag', array(), '1.0.0', true);
-    }
-    else {
-      wp_register_script('teads', '//a.teads.tv/page/52800/tag', array(), '1.0.0', true);
-    }
-    wp_enqueue_script('teads');
-  }
-}
-
-add_action('wp_enqueue_scripts', 'enqueue_teads');
+// function enqueue_teads() {
+//   $show_ad_units_status = get_option('show_ad_units');
+//
+//   if ($show_ad_units_status && $show_ad_units_status == 'yes') {
+//     if (wp_is_mobile()) {
+//       wp_register_script('teads', '//a.teads.tv/page/52801/tag', array(), '1.0.0', true);
+//     }
+//     else {
+//       wp_register_script('teads', '//a.teads.tv/page/52800/tag', array(), '1.0.0', true);
+//     }
+//     wp_enqueue_script('teads');
+//   }
+// }
+//
+// add_action('wp_enqueue_scripts', 'enqueue_teads');
 
 /*
 * Add async attribute to Teads JS
 */
-function add_async_js_attribute($tag, $handle, $src) {
-  if ($handle == 'teads') {
-    $tag = '<script type="text/javascript" src="' . esc_url($src) . '" async="true"></script>';
-  }
-
-  return $tag;
-}
-
-add_filter('script_loader_tag', 'add_async_js_attribute', 10, 3);
+// function add_async_js_attribute($tag, $handle, $src) {
+//   if ($handle == 'teads') {
+//     $tag = '<script type="text/javascript" src="' . esc_url($src) . '" async="true"></script>';
+//   }
+//
+//   return $tag;
+// }
+//
+// add_filter('script_loader_tag', 'add_async_js_attribute', 10, 3);
 
 /*
 * Co Authors Plus config
