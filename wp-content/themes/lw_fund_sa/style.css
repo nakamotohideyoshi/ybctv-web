@@ -691,7 +691,8 @@ h2.title{
 }
 
 .content-right{
-  padding-left: 15px;
+  margin-left: 9px;
+  padding-left: 1px;
 }
 
 /* Advertising */
@@ -2465,7 +2466,7 @@ form[name="register"] input[type="submit"] {
 
 .list-most-viewed h4 {
   font-size: 18px;
-  font-weight: bold;
+  font-weight: normal;
   margin: 0;
 }
 
@@ -2780,9 +2781,9 @@ article.comment {
   #menu-footer-menu #menu-item-4329 { display: none; }
 }
 
-@media (min-width: 1024px) and (max-width: 1200px) { 
-  .home-url{ 
-    margin: 10px 0px 10px 15px; 
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .home-url{
+    margin: 10px 0px 10px 15px;
     width: 20px;
   }
   .search-box input[type="text"]{
@@ -2828,7 +2829,7 @@ article.comment {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1380px) {
-  
+
   /* Ads right sidebar fix - start */
   #main .all-new-analysis .col-lg-9:first-child,
   #main .team-members .col-lg-9:first-child {
@@ -2866,14 +2867,14 @@ article.comment {
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 1024px) { 
+@media screen and (min-width: 768px) and (max-width: 1024px) {
 
   .site-main .tmm .tmm_2_columns .tmm_member .tmm_photo, .site-main .tmm .tmm_3_columns .tmm_member .tmm_photo, .home .tmm .tmm_4_columns .tmm_member .tmm_photom {
     width: 90px;
     height: 90px;
   }
 
-  .site-main .tmm .tmm_2_columns .tmm_member, .site-main .tmm .tmm_3_columns .tmm_member, 
+  .site-main .tmm .tmm_2_columns .tmm_member, .site-main .tmm .tmm_3_columns .tmm_member,
   .site-main .tmm .tmm_4_columns .tmm_member {
     margin-left: 0;
     margin-top: 20px;
@@ -2902,13 +2903,13 @@ article.comment {
   .slider-multimedia ul li .content-image {max-height: 100%;}
 
   .box-sponsored .flex-control-nav {
-    bottom: 0px; 
+    bottom: 0px;
   }
 
 }
 
-@media screen and (min-width: 768px) and (max-width: 991px) { 
-  
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
   .content-multimedia .row-eq-height {
     display: block;
   }
@@ -2923,7 +2924,7 @@ article.comment {
   }
 
   .multimedia-title #bx-pager { margin-bottom: 10px; }
-  
+
   .list-last-new .loop-list { background: #f2f2f2;}
   .list-last-new .loop-list .content-image { width: 96px; }
   .list-last-new .loop-list .content-des {
@@ -2939,11 +2940,11 @@ article.comment {
   .list-most-popular .loop-list { float: left; width: 30%; margin: 0 5% 0 0; }
   .list-most-popular .loop-list:last-child { margin: 0;}
   .list-most-popular .loop-list img { width: 100%; }
-  
+
   .home .most-popular,
   .content-left .most-popular { padding:0; }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -2953,23 +2954,23 @@ article.comment {
   .logo img {
     width: 100%;
   }
-  
+
   .sf-menu li.menu-item-has-children.sfHover .sub-menu {
-    display: block; 
+    display: block;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
     padding: 0;
   }
-  
+
 }
 
 @media screen  and (max-width: 768px) {
   .list-most-popular {max-width: 100%;}
 
    .sf-menu li.menu-item-has-children.sfHover .sub-menu {
-     
-    position: static; 
+
+    position: static;
   }
 
   .all-new-analysis .content-right {
@@ -3019,7 +3020,7 @@ article.comment {
     height: auto;
   }
 
-  .list-new-analysis .loop-list .content-image img, 
+  .list-new-analysis .loop-list .content-image img,
   .analysis-list .loop-list .content-image img {
     max-height: 100%;
   }
@@ -3208,7 +3209,7 @@ article.comment {
     .mobnavigation, .site-navigation {
       display: none;
     }
-    
+
     .user-login {
       display: block;
       margin-top: 5px;
@@ -3338,7 +3339,7 @@ article.comment {
         margin-right: 10px;
     }
 
-    .list-new-analysis .loop-list .content-image img, 
+    .list-new-analysis .loop-list .content-image img,
     .analysis-list .loop-list .content-image img {
       max-height: 100%;
     }
@@ -3530,7 +3531,7 @@ article.comment {
 
 .thump-single .text-content {
   line-height: 20px;
-}  
+}
 
 .content-single .text-content ul {
   padding-left: 35px;
@@ -3538,12 +3539,6 @@ article.comment {
 
 @media screen and (max-width: 991px) {
   .content-right {display: none;}
-}
-
-@media screen and (min-width: 992px) {
-  .right-side-wrap .content-right {
-    top: 410px!important;
-  }
 }
 
 #savepostform {

@@ -491,7 +491,7 @@ img[class*="wp-image-"], img[class*="attachment-"], #site-header img {
   height: auto;
     max-height: 435px;
     width: auto;
-    
+
 }
 
 img.size-full, img.size-large, .wp-post-image, .post-thumbnail img {
@@ -737,6 +737,10 @@ h2.title{
 
 .ads-side-panels .side-panel-right-container .side-panel-right {
   position: fixed;
+}
+
+.ads-oop-teads {
+  height: 0;
 }
 
 /* Logo */
@@ -3392,14 +3396,14 @@ article.comment {
     padding: 10px 20px;
     float: left;
 }
+
 .content-single .h5ab-print-button-container {
-    float: unset!important;
-    margin-right: 10px!important;
+    float: left!important;
     font-size: 16px!important;
     display: inline!important;
     width: 20px!important;
     margin: 0!important;
-    margin-left: 10px!important;
+    margin-right: 20px!important;
 }
 
 .thump-single .h5ab-print-button-container {
@@ -3621,7 +3625,7 @@ width: 100%;
   display: inline-block;
   float: right;
   margin: 0 0px 0 0px;
-  
+
   position: absolute;
     right: 0;
     z-index: 1;
@@ -3651,7 +3655,7 @@ width: 100%;
     margin-right: 10px;
 	margin-top:-40px;
 	 transition: opacity 1.5s;
-	
+
 }
 .search-input-wrapper.active .input-wrap #closesearch {
 	margin-top:0px;
@@ -3661,7 +3665,7 @@ width: 100%;
   margin-top: 0px;
   display: inline-block;
   float: right;
-  border-left: 0px solid #363636; 
+  border-left: 0px solid #363636;
   height: 40px;
   width: 10px;
   text-align: left;
@@ -3735,7 +3739,7 @@ width: 100%;
   height: 40px;
   width: 20px;
   cursor: pointer;
-  background: #454545 url(//pa-cms-lastwordmedia-com.lastword.staging.wpengine.com/wp-content/themes/adviser/images/svg/Search-icon.svg) center no-repeat;
+  background: #454545 url(//portfolio-adviser.com/wp-content/themes/adviser/images/svg/Search-icon.svg) center no-repeat;
 }
 
 #searchsubmit{
@@ -3782,6 +3786,7 @@ width: 100%;
   padding: 0;
   background-color: transparent;
   font-size: 24px;
+  margin-top: -2px;
 }
 
 #savepost:hover {
@@ -3801,7 +3806,7 @@ p.saved {
 }
 .clearfix {
     clear: right;
-}	
+}
 .sf-menu a {
     color: #fff;
     padding: 9px 15px;

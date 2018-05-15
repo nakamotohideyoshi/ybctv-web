@@ -77,7 +77,6 @@ function stickySide() {
     if ( jQuery("section.multimedia").length) {
         var topOfSideAdContainerTop = ".all-new-analysis .content-right";
         var parentWidth = jQuery(topOfSideAdContainerTop).parent().width();
-        
         if( parentWidth < width ) {
             width = parentWidth;
         }
@@ -88,7 +87,7 @@ function stickySide() {
                 if (scrolled >= 0) {
                     jQuery(topOfSideAdContainerTop).css('position', 'fixed');
                     jQuery(topOfSideAdContainerTop).css('top', topOffset);
-                    jQuery(topOfSideAdContainerTop).css('overflow', 'hidden');
+                    //jQuery(topOfSideAdContainerTop).css('overflow', 'hidden');
                     jQuery(topOfSideAdContainerTop).css('width', width);
                 }
                 if (scrolled > jQuery(stopPoint).offset().top - (parseInt(jQuery(topOfSideAdContainerTop).outerHeight()) + topOffset) && jQuery(stopPoint).offset().top - (parseInt(jQuery(topOfSideAdContainerTop).outerHeight()) + topOffset) > 0) {
@@ -107,7 +106,7 @@ function stickySide() {
             if (scrolled >= parseInt(jQuery(billboardCSS).outerHeight())) {
                 jQuery(topOfSideAdContainerTop).css('position', 'fixed');
                 jQuery(topOfSideAdContainerTop).css('top', topOffset);
-                jQuery(topOfSideAdContainerTop).css('overflow', 'hidden');
+                //jQuery(topOfSideAdContainerTop).css('overflow', 'hidden');
                 jQuery(topOfSideAdContainerTop).css('width', width);
             }
             if (scrolled > jQuery(stopPoint).offset().top - (parseInt(jQuery(topOfSideAdContainerTop).outerHeight()) + topOffset)) {
