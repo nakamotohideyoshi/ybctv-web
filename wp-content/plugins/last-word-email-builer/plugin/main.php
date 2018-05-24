@@ -531,10 +531,10 @@ $posts= $wpdb->get_results("select * from ".$params['prefix']."posts LEFT JOIN "
             'callback' => function ($params ){
 				global $wpdb;
 
-				$latest_portfolio= $wpdb->get_results("select * from wp_2_posts where post_type='post' and post_status='publish' order by ID desc limit 2");
-				$latest_international= $wpdb->get_results("select * from wp_3_posts where post_type='post' and post_status='publish' order by ID desc limit 2");
-				$latest_fundselector= $wpdb->get_results("select * from wp_4_posts where post_type='post' and post_status='publish' order by ID desc limit 2");
-				$latest_expertinvestor= $wpdb->get_results("select * from wp_5_posts where post_type='post' and post_status='publish' order by ID desc limit 2");
+				$latest_portfolio= $wpdb->get_results("select * from wp_2_posts where post_type='post' and post_status='publish' order by post_date desc, ID desc limit 2");
+				$latest_international= $wpdb->get_results("select * from wp_3_posts where post_type='post' and post_status='publish' order by  post_date desc, ID desc limit 2");
+				$latest_fundselector= $wpdb->get_results("select * from wp_4_posts where post_type='post' and post_status='publish' order by  post_date desc, ID desc limit 2");
+				$latest_expertinvestor= $wpdb->get_results("select * from wp_5_posts where post_type='post' and post_status='publish' order by  post_date desc, ID desc limit 2");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
