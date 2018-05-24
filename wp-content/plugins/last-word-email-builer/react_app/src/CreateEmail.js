@@ -291,6 +291,9 @@ class CreateEmail extends Component {
   onPrevRatedArticlePage = () => {
     this.props.onPrevRatedArticlePage();
   }
+	onArticleSortUpdated (articleId, value) {
+    this.props.onArticleSortUpdated(articleId, value);
+  }
   onArticleDropped = (emailType, articleId, type) => {
     this.props.onArticleDropped(emailType, articleId, this.props.selectedTab, type);
   }
@@ -347,8 +350,8 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Video_Newsletter' ? 
            
-           <VideoNewsLetter 
-            
+           <VideoNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 
@@ -395,8 +398,8 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Insights_Newsletter' ? 
            
-           <InsightsNewsLetter 
-            
+           <InsightsNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 
@@ -443,8 +446,8 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Digital_Magazine_Newsletter' ? 
            
-           <DigitalMagazineNewsLetter 
-            
+           <DigitalMagazineNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 
@@ -493,8 +496,9 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Breaking_News_Newsletter' ? 
            
-           <BreakingNewsNewsLetter 
-            
+           <BreakingNewsNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
+
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 
@@ -541,8 +545,9 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Portfolio_Adviser_Newsletter' ? 
            
-           <PortfolioAdviserNewsLetter 
-            
+           <PortfolioAdviserNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
+
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 
@@ -595,7 +600,8 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Portfolio_Adviser_Newsletter_Investment' ? 
            
-           <PortfolioAdviserInvestmentNewsLetter 
+           <PortfolioAdviserInvestmentNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
             
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
@@ -649,7 +655,8 @@ class CreateEmail extends Component {
            
            { this.state.template === 'Portfolio_Adviser_MR_Newsletter' ? 
            
-           <PortfolioAdviserMRInvestmentNewsLetter 
+           <PortfolioAdviserMRInvestmentNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
             
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
@@ -703,7 +710,8 @@ class CreateEmail extends Component {
            
            { this.state.template === 'China_Insights_Newsletter' ? 
            
-           <ChinaInsightsNewsLetter 
+           <ChinaInsightsNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
             
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
@@ -775,8 +783,9 @@ class CreateEmail extends Component {
           /> : ''}
            
            { this.state.template === 'All_Blocks_Newsletter' ? 
-           <AllBlocksNewsLetter 
-            
+           <AllBlocksNewsLetter
+             onArticleSortUpdated = {this.props.onArticleSortUpdated}
+
             topLeaderboard={this.props.topLeaderboard} 
             topLeaderboardB={this.props.topLeaderboardB} 
             topLeaderboardC={this.props.topLeaderboardC} 

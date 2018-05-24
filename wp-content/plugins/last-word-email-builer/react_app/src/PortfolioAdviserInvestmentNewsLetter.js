@@ -325,7 +325,7 @@ render() {
                                                                 <table className="container" style={{width: '490px', textAlign: 'left', float: 'left'}} data-width="490" data-align="left">
                                                                         <tr>
         <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
-        <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isLatestNews="true"/>
+        <LatestNewsComponent onArticleSortUpdated={this.props.onArticleSortUpdated} articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isLatestNews="true"/>
         </td>
 </tr>
 <tr>

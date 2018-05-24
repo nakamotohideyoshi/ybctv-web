@@ -325,7 +325,7 @@ render() {
                                                                 <table className="deviceWidth" style={{width: '405px', textAlign: 'left', float: 'left'}} data-align="left" data-width="405" cellSpacing="0" cellPadding="0">
                                                                         <tbody><tr>
         <td style={{padding:'0px 10px 0px 9px',verticalAlign: 'top',margin:'0px'}}>
-        <LatestNewsComponent articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true" isChinaNews="true"/>
+        <LatestNewsComponent onArticleSortUpdated={this.props.onArticleSortUpdated} articles={this.props.articles} highlight={this.props.highlight} onArticleDropped={this.props.onArticleDropped} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true" isChinaNews="true"/>
         </td>
 </tr>
                                 <tr>
@@ -347,7 +347,7 @@ render() {
 <tbody>
 <tr>
                 <td>
-    <MostViewedComponent selectedMostViewedArticles={this.props.selectedMostViewedArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
+    <MostViewedComponent onArticleSortUpdated={this.props.onArticleSortUpdated} selectedMostViewedArticles={this.props.selectedMostViewedArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
         </td></tr>
 {this.props.staticHighlight === 'staticImage1' ? <tr><td style={{ animation : 'twinkle .5s step-end infinite alternate', border: '2px solid'}}><div><br/></div></td></tr> : ''}
 { this.props.showStaticImage1 !== '0' ? <tr>
@@ -368,7 +368,7 @@ render() {
         </tr>
 <tr>
         <td>
-        <MoreNewsComponent selectedMoreNewsArticles={this.props.selectedMoreNewsArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
+        <MoreNewsComponent onArticleSortUpdated={this.props.onArticleSortUpdated} selectedMoreNewsArticles={this.props.selectedMoreNewsArticles} onArticleDropped={this.props.onArticleDropped} highlight={this.props.highlight} color={color} onRemoveArticle={this.props.onRemoveArticle} isAllBlocks="true"/>
         </td>
 </tr>
                                 </tbody></table>
