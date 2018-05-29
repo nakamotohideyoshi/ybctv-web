@@ -102,7 +102,7 @@ render() {
   </td>
   </tr>
 
-  <SortableList items={this.props.selectedMoreNewsArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.props.onRemoveArticle.bind(cThis)} />
+  <SortableList pressDelay="200" items={this.props.selectedMoreNewsArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.props.onRemoveArticle.bind(cThis)} />
 
   </tbody></table>
         </div>

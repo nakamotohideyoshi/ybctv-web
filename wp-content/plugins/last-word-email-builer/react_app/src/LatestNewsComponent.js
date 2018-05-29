@@ -194,7 +194,7 @@ class LatestNewsComponent extends Component {
 					</td>
 				</tr>
 
-				<SortableList items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle} isInsights={this.props.isInsights} isAllBlocksNews={this.props.isAllBlocksNews} />
+				<SortableList pressDelay="200" items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle} isInsights={this.props.isInsights} isAllBlocksNews={this.props.isAllBlocksNews} />
 
 				</tbody>
 			</table>,

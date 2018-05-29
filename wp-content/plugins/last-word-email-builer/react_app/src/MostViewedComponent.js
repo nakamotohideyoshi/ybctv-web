@@ -103,7 +103,7 @@ render() {
                   </tr>
 
 
-									<SortableList items={this.props.selectedMostViewedArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.onRemoveArticle} />
+									<SortableList pressDelay="200" items={this.props.selectedMostViewedArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.props.onRemoveArticle} />
 									</tbody></table>
     );
   }
