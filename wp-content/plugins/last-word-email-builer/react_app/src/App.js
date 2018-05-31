@@ -63,10 +63,74 @@ class App extends Component {
 		console.log('old=' + oldIndex);
 		console.log('new=' + newIndex);
 
+/*
+
+		if (newArticles[newIndex].sortValue == newArticles[oldIndex].sortValue) {
+		    alert('Error: The sort by value for both items is the same.');
+		    return;
+    }
+
+		var tempIndex = newArticles[newIndex].sortValue;
+
+		newArticles[newIndex].sortValue = newArticles[oldIndex].sortValue;
+		newArticles[oldIndex].sortValue = tempIndex;
+
+*/
+		console.log(newArticles);
+
+		this.saveDraftSortOrder(newArticles);
 		this.onDraftsSortUpdated(newArticles);
+
 
     //	this.props.onArticleSortUpdated(newArticles, 'Latest News');
 	};
+
+	/*
+
+	Save sort order
+	 */
+	saveDraftSortOrder (newEmails) {
+
+	  let sortOrderObj = {};
+
+	  if (newEmails == null) {
+	    console.log('no emails to sort...');
+	    return;
+    }
+
+    let allSortNumbers =  _.map(newEmails,'sortValue');
+	  allSortNumbers = _.sortBy(allSortNumbers, function (o) {return o});
+
+	  let counter = 0;
+
+    for(let k in newEmails) {
+	    let em = newEmails[k];
+	    sortOrderObj[em.EmailId] = allSortNumbers[counter];
+	    counter++;
+    }
+
+    console.log("SORT ORDER:");
+	  console.log(sortOrderObj);
+
+	  // return;
+
+		fetch(Config.BASE_URL + '/wp-json/email-builder/v1/email-sort-save', {
+			method: 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(sortOrderObj)
+		}).then(result => {
+			result.json().then(val => {
+				alert('OK');
+        console.log(val);
+			});
+		});
+
+
+
+  }
 
   getDefaultSite = () => {
     var h = window.location.host;
@@ -1067,7 +1131,7 @@ class App extends Component {
 		let len = newArticlesCopy.length;
 
 		for (let i = 0; i < len; i++) {
-			newArticlesCopy[i].sortValue = i;
+			// newArticlesCopy[i].sortValue = i;
 		}
 		this.setState({
 			emails: newArticlesCopy

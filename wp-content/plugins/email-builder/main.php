@@ -211,7 +211,11 @@ class EmailBuilder {
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
 				$no_rows = $wpdb->get_var("SELECT count(*) FROM ".$table_name."");
-				$emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt FROM ".$table_name." WHERE  Site = '".$params['prefix']."' ORDER BY EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
+				$emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt, global_sort_value AS sortValue FROM ".$table_name." 
+				LEFT JOIN wp_2_builder_emails_sort_order s
+				ON
+				$table_name.EmailID = s.email_id
+				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
@@ -223,6 +227,48 @@ class EmailBuilder {
 			  }
         )
      );
+		register_rest_route(
+			'email-builder/v1',
+			'/email-sort-save',
+			array(
+				'methods' => 'POST',
+				'callback' => function ($data ){
+					global $wpdb;
+					$table_name = 'wp_2_builder_emails_sort_order';
+
+					$json_sort_obj = json_decode( $data->get_body(), true );
+
+					foreach ( $json_sort_obj as $email_id => $sort_value ) {
+						$wpdb->get_results( "SELECT * FROM " . $table_name . " WHERE email_id = " . $email_id . "" );
+
+						if ( $wpdb->num_rows > 0 ) {
+
+							$wpdb->update(
+								$table_name,
+								array(
+									'email_id'          => $email_id,
+									'global_sort_value' => $sort_value,
+								),
+								array(
+									'email_id' => $email_id
+								)
+							);
+						} else {
+							$wpdb->insert(
+								$table_name,
+								array(
+									'email_id'          => $email_id,
+									'global_sort_value' => $sort_value,
+								)
+							);
+						}
+					}
+
+					// return
+					return ['status' => 1];
+				}
+			)
+		);
 	 register_rest_route( 
         'email-builder/v1',
         '/deleteemails',
@@ -324,7 +370,15 @@ class EmailBuilder {
 						'CreatedAt' => gmdate('Y-m-d H:i:s'),
 						'UpdatedAt' => gmdate('Y-m-d H:i:s')
 					)
-				);	
+				);
+
+
+				/*
+				 * TO-DO: INSERT NEW MAX SORT VALUE:
+				 * READ
+				 * INSERT INTO TABLE 2				 *
+				 */
+
 
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
