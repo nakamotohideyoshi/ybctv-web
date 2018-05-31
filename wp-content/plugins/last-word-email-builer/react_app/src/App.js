@@ -4,6 +4,12 @@ The core class of the app. It controls most of the actions, callbacks and events
 
 */
 
+import {
+	SortableContainer,
+	SortableElement,
+	arrayMove,
+} from 'react-sortable-hoc';
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
@@ -15,11 +21,53 @@ import PreviewEmail from './PreviewEmail';
 import CreateEmail from './CreateEmail';
 import 'bootstrap/dist/js/bootstrap.min';
 // import 'bootstrap/dist/css/bootstrap.min.css';
+
 import Config from './Config';
 import Guid from 'guid';
 import _ from 'lodash';
 import $ from 'jquery';
+
+
+const SortableItem = SortableElement(({value, livePreview, onCheckChange, editEmail}) => {
+	let email = value;
+  return <tr>
+    <td>{email.EmailName}</td>
+    <td>{email.EmailSubject}</td>
+    <td>{email.EditorDisplayName}</td>
+    <td>{email.SendToAdestraOn !== null ? 'Sent to Adestra -'+ moment(email.SendToAdestraOn).format('ddd Do MMM, YYYY') : 'Editing'}</td>
+    <td>{email.UpdatedAt === '0000-00-00 00:00:00' ? '-' : email.UpdatedAt}</td>
+    <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={editEmail} className="btn btn-primary">Edit</button></td>
+    <td><input type="checkbox" id={email.EmailId} checked={email.isSelected} onChange={onCheckChange}/></td>
+    <td><button type="button" id={email.EmailId} onClick={livePreview} className="btn btn-primary">Live Preview</button></td>
+  </tr>;
+});
+
+
+const SortableList = SortableContainer(({items,  livePreview, onCheckChange, editEmail}) => {
+	return (
+    <tbody>
+			{items.map((value, index) => (
+        <SortableItem key={`item-${index}`} index={index} value={value} livePreview={livePreview} onCheckChange={onCheckChange} editEmail={editEmail} />
+			))}
+    </tbody>
+	);
+});
+
+
 class App extends Component {
+
+	onSortEnd = ({oldIndex, newIndex}) => {
+
+		let newArticles = arrayMove(this.state.emails, oldIndex, newIndex);
+
+		console.log('old=' + oldIndex);
+		console.log('new=' + newIndex);
+
+		this.onDraftsSortUpdated(newArticles);
+
+    //	this.props.onArticleSortUpdated(newArticles, 'Latest News');
+	};
+
   getDefaultSite = () => {
     var h = window.location.host;
     var defaultSite =   (h === 'ia-cms-lastwordmedia-com.lastword.staging.wpengine.com' || h === 'international-adviser.com') ? 'wp_3_' :
@@ -1009,6 +1057,23 @@ class App extends Component {
       });
   }
 
+  /*
+  Re-order email list...
+   */
+  onDraftsSortUpdated = (newDrafts) => {
+		let newArticlesCopy = newDrafts.slice();
+
+		// this is not needed, pending delete:
+		let len = newArticlesCopy.length;
+
+		for (let i = 0; i < len; i++) {
+			newArticlesCopy[i].sortValue = i;
+		}
+		this.setState({
+			emails: newArticlesCopy
+		});
+  }
+
   onArticleSortUpdated = (newArticles, articleType) => {
 
     let newArticlesCopy = newArticles.slice();
@@ -1619,20 +1684,9 @@ class App extends Component {
                          <th>Preview</th>
                        </tr>
                      </thead>
-                     <tbody>
-                     {this.state.emails.map((email, key) => {
-                       return <tr key={key}>
-                         <td>{email.EmailName}</td>
-                         <td>{email.EmailSubject}</td>
-                         <td>{email.EditorDisplayName}</td>
-                         <td>{email.SendToAdestraOn !== null ? 'Sent to Adestra -'+ moment(email.SendToAdestraOn).format('ddd Do MMM, YYYY') : 'Editing'}</td>
-                         <td>{email.UpdatedAt === '0000-00-00 00:00:00' ? '-' : email.UpdatedAt}</td>
-                         <td><button type="button" disabled={email.SendToAdestraOn !== null}  id={email.EmailId} onClick={this.editEmail} className="btn btn-primary">Edit</button></td>
-                         <td><input type="checkbox" id={email.EmailId} checked={email.isSelected} onChange={this.onCheckChange}/></td>
-                         <td><button type="button" id={email.EmailId} onClick={this.livePreview} className="btn btn-primary">Live Preview</button></td>
-                       </tr>
-                       })}
-                     </tbody>
+
+                      <SortableList pressDelay="200" items={this.state.emails} onSortEnd={this.onSortEnd}  livePreview={this.livePreview} onCheckChange={this.onCheckChange} editEmail={this.editEmail} />
+
                    </table>}
                  </div>
                </div>
