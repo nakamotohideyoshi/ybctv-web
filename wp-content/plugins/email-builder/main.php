@@ -379,8 +379,11 @@ class EmailBuilder {
 				 * INSERT INTO TABLE 2				 *
 				 */
 
+	            $lastid = $wpdb->insert_id;
+	            $wpdb->query("INSERT INTO wp_2_email_builder_emails (email_id, global_sort_value) VALUES ($lastid, MAX(global_sort_value) + 1)");
 
-				if ($wpdb->last_error) {
+
+	            if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
 				}
