@@ -219,14 +219,14 @@ class EmailBuilder {
 				LEFT JOIN wp_2_builder_emails_sort_order s
 				ON
 				$table_name.EmailID = s.email_id
-				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
+				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value DESC, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
 				 *
 				 */
 
 
 				// V2 - using existing table:
 	            $emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt, global_sort_value AS sortValue FROM ".$table_name." 
-				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
+				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value DESC, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
 
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );

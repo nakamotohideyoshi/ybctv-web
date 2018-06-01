@@ -100,6 +100,7 @@ class App extends Component {
 
     let allSortNumbers =  _.map(newEmails,'sortValue');
 	  allSortNumbers = _.sortBy(allSortNumbers, function (o) {return o});
+    allSortNumbers = allSortNumbers.reverse(); // DESC
 
 	  let counter = 0;
 
@@ -108,10 +109,10 @@ class App extends Component {
 	    sortOrderObj[em.EmailId] = allSortNumbers[counter];
 	    counter++;
     }
-
+/*
     console.log("SORT ORDER:");
 	  console.log(sortOrderObj);
-
+*/
 	  // return;
 
 		fetch(Config.BASE_URL + '/wp-json/email-builder/v1/email-sort-save', {
@@ -1418,6 +1419,10 @@ class App extends Component {
       }
     }).then(result => {
      result.json().then(val => {
+       /*
+       console.log('emails:');
+			 console.log(val);
+      */
        this.setState({emails : val[0], totalEmails: val[1], isLoadingEmails: false})
      }).catch(err => {
        this.setState(prevState => ({isLoadingEmails: false}));
