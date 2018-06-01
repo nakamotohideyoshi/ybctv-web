@@ -211,11 +211,23 @@ class EmailBuilder {
 				global $wpdb;
 				$table_name = 'wp_2_email_builder_emails';
 				$no_rows = $wpdb->get_var("SELECT count(*) FROM ".$table_name."");
-				$emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt, global_sort_value AS sortValue FROM ".$table_name." 
+				/*
+				 * V1:
+				 */
+				/*
+				 $emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt, global_sort_value AS sortValue FROM ".$table_name."
 				LEFT JOIN wp_2_builder_emails_sort_order s
 				ON
 				$table_name.EmailID = s.email_id
 				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
+				 *
+				 */
+
+
+				// V2 - using existing table:
+	            $emails = $wpdb->get_results("SELECT EmailId, EmailName, EmailSubject, SendToAdestraOn, EditorId, EditorDisplayName, CreatedAt, UpdatedAt, global_sort_value AS sortValue FROM ".$table_name." 
+				WHERE  Site = '".$params['prefix']."' ORDER BY  global_sort_value, EmailId DESC  LIMIT 20 OFFSET ".$params['offset']."");
+
 				if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
 					return $response;
@@ -233,6 +245,10 @@ class EmailBuilder {
 			array(
 				'methods' => 'POST',
 				'callback' => function ($data ){
+					/*
+					 * V1:
+					 */
+					/*
 					global $wpdb;
 					$table_name = 'wp_2_builder_emails_sort_order';
 
@@ -266,6 +282,32 @@ class EmailBuilder {
 
 					// return
 					return ['status' => 1];
+					*/
+
+
+					// V2: using existing builder emails table:
+					global $wpdb;
+					$table_name = 'wp_2_email_builder_emails';
+
+					$json_sort_obj = json_decode( $data->get_body(), true );
+
+					foreach ( $json_sort_obj as $email_id => $sort_value ) {
+						$wpdb->update(
+								$table_name,
+								array(
+									'EmailID'          => $email_id,
+									'global_sort_value' => $sort_value,
+								),
+								array(
+									'EmailID' => $email_id
+								)
+							);
+					}
+
+					// return
+					return ['status' => 1];
+
+
 				}
 			)
 		);
@@ -380,8 +422,12 @@ class EmailBuilder {
 				 */
 
 	            $lastid = $wpdb->insert_id;
-	            $wpdb->query("INSERT INTO wp_2_email_builder_emails (email_id, global_sort_value) VALUES ($lastid, MAX(global_sort_value) + 1)");
 
+	            // V1:
+	            // $wpdb->query("INSERT INTO wp_2_email_builder_emails (email_id, global_sort_value) VALUES ($lastid, MAX(global_sort_value) + 1)");
+
+	            // V2:
+	            $wpdb->query("UPDATE wp_2_email_builder_emails SET global_sort_value=MAX(global_sort_value)+1 WHERE EmailID=" . $lastid);
 
 	            if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
