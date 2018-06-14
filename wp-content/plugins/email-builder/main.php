@@ -426,8 +426,16 @@ class EmailBuilder {
 	            // V1:
 	            // $wpdb->query("INSERT INTO wp_2_email_builder_emails (email_id, global_sort_value) VALUES ($lastid, MAX(global_sort_value) + 1)");
 
+	            /*
+	             *
+	             * Example:
+UPDATE wp_2_email_builder_emails dest, (SELECT MAX(global_sort_value) + 1 AS new_global_sort_value  FROM wp_2_email_builder_emails) src SET dest.global_sort_value = src.new_global_sort_value
+WHERE EmailID=2402
+	             *
+	             */
 	            // V2:
-	            $wpdb->query("UPDATE wp_2_email_builder_emails SET global_sort_value=MAX(global_sort_value)+1 WHERE EmailID=" . $lastid);
+	            $wpdb->query("UPDATE wp_2_email_builder_emails dest, (SELECT MAX(global_sort_value) + 1 AS new_global_sort_value  FROM wp_2_email_builder_emails) src SET dest.global_sort_value = src.new_global_sort_value
+WHERE EmailID=" . $lastid);
 
 	            if ($wpdb->last_error) {
   					$response = new WP_REST_Response( $wpdb->last_error );
