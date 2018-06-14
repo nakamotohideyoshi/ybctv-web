@@ -74,11 +74,15 @@ const SortableItem = SortableElement(({value, onRemoveArticle, isInsights, isAll
 
 const SortableList = SortableContainer(({items, onRemoveArticle, isInsights, isAllBlocksNews}) => {
 	return (
-		<table className="test-sortable">
-			{items.map((value, index) => (
-				<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} isInsights={isInsights} isAllBlocksNews={isAllBlocksNews} />
-			))}
-		</table>
+		<tr>
+			<td>
+				<table className="test-sortable">
+					{items.map((value, index) => (
+						<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} isInsights={isInsights} isAllBlocksNews={isAllBlocksNews} />
+					))}
+				</table>
+			</td>
+		</tr>
 	);
 });
 

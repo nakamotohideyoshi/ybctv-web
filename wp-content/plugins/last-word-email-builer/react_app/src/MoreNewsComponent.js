@@ -40,13 +40,15 @@ const SortableItem = SortableElement(({value, onRemoveArticle}) => {
 const SortableList = SortableContainer(({items, onRemoveArticle}) => {
 	let cThis = this;
 	return (
-    <table className="test-sortable">
-			{items.map((value, index) => (
-        <SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} />
-			))}
-
-
-    </table>
+		<tr>
+			<td>
+				<table className="test-sortable">
+					{items.map((value, index) => (
+						<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} />
+					))}
+				</table>
+			</td>
+		</tr>
 	);
 });
 
