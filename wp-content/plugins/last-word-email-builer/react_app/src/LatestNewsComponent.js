@@ -14,9 +14,9 @@ import {
 	arrayMove,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value, onRemoveArticle, isInsights, isAllBlocksNews}) => {
+const SortableItem = SortableElement(({value, onRemoveArticle, isInsights, isAllBlocksNews, color}) => {
 	let article = value;
-	let color = '';
+	// let color = '';
 	let cThis = this;
 
 
@@ -72,13 +72,13 @@ const SortableItem = SortableElement(({value, onRemoveArticle, isInsights, isAll
 	</tr> : ''
 });
 
-const SortableList = SortableContainer(({items, onRemoveArticle, isInsights, isAllBlocksNews}) => {
+const SortableList = SortableContainer(({items, onRemoveArticle, isInsights, isAllBlocksNews, color}) => {
 	return (
 		<tr>
 			<td>
 				<table className="test-sortable">
 					{items.map((value, index) => (
-						<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} isInsights={isInsights} isAllBlocksNews={isAllBlocksNews} />
+						<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} isInsights={isInsights} isAllBlocksNews={isAllBlocksNews} color={color} />
 					))}
 				</table>
 			</td>
@@ -198,7 +198,7 @@ class LatestNewsComponent extends Component {
 					</td>
 				</tr>
 
-				<SortableList pressDelay="200" items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle} isInsights={this.props.isInsights} isAllBlocksNews={this.props.isAllBlocksNews} />
+				<SortableList pressDelay="200" items={this.props.articles} onSortEnd={cThis.onSortEnd} onRemoveArticle={this.props.onRemoveArticle} isInsights={this.props.isInsights} isAllBlocksNews={this.props.isAllBlocksNews} color={color} />
 
 				</tbody>
 			</table>,

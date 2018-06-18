@@ -14,9 +14,9 @@ import {
 	arrayMove,
 } from 'react-sortable-hoc';
 
-const SortableItem = SortableElement(({value, onRemoveArticle}) => {
+const SortableItem = SortableElement(({value, onRemoveArticle, color}) => {
 	let article = value;
-	let color = '';
+	// let color = '';
 	let cThis = this;
 
 	return <tr>
@@ -37,14 +37,14 @@ const SortableItem = SortableElement(({value, onRemoveArticle}) => {
 });
 
 
-const SortableList = SortableContainer(({items, onRemoveArticle}) => {
+const SortableList = SortableContainer(({items, onRemoveArticle, color}) => {
 	let cThis = this;
 	return (
 		<tr>
 			<td>
 				<table className="test-sortable">
 					{items.map((value, index) => (
-						<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} />
+						<SortableItem key={`item-${index}`} index={index} value={value} onRemoveArticle={onRemoveArticle} color={color} />
 					))}
 				</table>
 			</td>
@@ -104,7 +104,7 @@ render() {
   </td>
   </tr>
 
-  <SortableList pressDelay="200" items={this.props.selectedMoreNewsArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.props.onRemoveArticle.bind(cThis)} />
+  <SortableList pressDelay="200" items={this.props.selectedMoreNewsArticles} onSortEnd={cThis.onSortEnd} onRemoveArticle={cThis.props.onRemoveArticle.bind(cThis)} color={color} />
 
   </tbody></table>
         </div>
