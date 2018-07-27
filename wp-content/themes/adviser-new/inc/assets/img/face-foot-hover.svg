@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="1603.669 -4685.801 41.176 41.176">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #69b42e;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="facebook_hover_on_black_bcg" data-name="facebook hover on black bcg" transform="translate(1484 -4891)">
+    <circle id="Oval-1" class="cls-1" cx="20.588" cy="20.588" r="20.588" transform="translate(119.669 205.199)"/>
+    <path id="Fill-4" class="cls-2" d="M28.876,37.609h3.75V27.31h2.813l.556-3.218H32.626V21.759c0-.752.486-1.541,1.181-1.541h1.915V17H33.374v.014c-3.672.133-4.426,2.26-4.492,4.494h-.007v2.583H27V27.31h1.876Z" transform="translate(108.551 198.199)"/>
+  </g>
+</svg>
