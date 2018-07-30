@@ -9,8 +9,9 @@
 
 get_header(); ?>
 <div class="col-md-3" id="sidebar">
-   <div class="empty-box1" id="addsblock-sidebar1">
-   </div>
+  <div class="ads-placeholder ads-placeholder-article-left">
+    <span></span>
+  </div>
 	</div>
 	<section id="primary" class="content-area col-sm-12 col-lg-6">
 		<main id="main" class="site-main" role="main">
@@ -36,14 +37,7 @@ get_header(); ?>
 		<h2 class="no-border">NEWSLETTER</h2>
 		<P><b>Sign Up for Portfolio<BR> Adviser Daily Newsletter</b></p>
 		<button type="button" class="btn btn-newsletter">Subscribe</button>
-
-    <div class="sidebar-content-container">
-      <?php lastWordAdUnit('rhs-hpu-1'); ?>
-      <div class="empty-box1" id="addsblock-sidebar1">
-      <!--SPACE FOR AD 300X250-->
-      </div>
-      <?php lastWordAdUnit('rhs-hpu-2'); ?>
-    </div>
+    <?php get_template_part('template-parts/sidebar', 'container'); ?>
 	</div>
 
 <?php

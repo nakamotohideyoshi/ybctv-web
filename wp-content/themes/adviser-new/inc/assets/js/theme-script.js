@@ -1,5 +1,14 @@
 jQuery(function($) {
     'use strict';
+
+    // Set content div margin top to match header height
+    function addContentMargin() {
+      $('#content').css({ 'marginTop' : $('#masthead').outerHeight(),  'paddingTop' : 0 });
+      console.log($('.site-content').css('marginTop'));
+    }
+    $(document).ready(addContentMargin());
+    $(window).resize(addContentMargin());
+
     // here for each comment reply link of wordpress
     $('.comment-reply-link').addClass('btn btn-primary');
 
@@ -159,5 +168,4 @@ jQuery(function($) {
             templateCont.append(t);
         }
     }
-
 });

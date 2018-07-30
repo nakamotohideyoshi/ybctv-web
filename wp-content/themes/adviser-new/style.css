@@ -258,7 +258,7 @@ h5 {
 
 p {
   margin-bottom: 1.5em;
-  
+
 }
 h1.entry-title {
   font-size: 1.31rem;
@@ -391,7 +391,7 @@ img.logo{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    
+
 }
 .social a {
     display: inline-block;
@@ -399,7 +399,7 @@ img.logo{
 }
 .social {
     padding: 9px 0 7px;
-    
+
 	float: right;
 }
 .social a svg {
@@ -650,7 +650,7 @@ dl, ol, ul {
 ## HOMEPAGE
 --------------------------------------------------------------*/
 .home #content.site-content {
-    
+
     padding-top: 101px;
 
 }
@@ -714,8 +714,9 @@ dl, ol, ul {
     margin-top: 110px;
 }
 
-.content-footer{
+.content-footer .row {
     padding-top: 30px;
+    background-color: #000000;
 }
 .menu-footer{
     margin-bottom: 129px;
@@ -1016,7 +1017,7 @@ p.story-content{
 .mag-image{
     padding-left: 0;
     padding-right: 0;
-} 
+}
 .empty-box {
     background: white;
     width: 100%;
@@ -1088,7 +1089,7 @@ h3.related-title{
     margin-top: 10px;
 }
 .breadcrumb_last{
-color:#69B42E;	
+color:#69B42E;
 text-transform:none;
 }
 .description-single {
@@ -1144,7 +1145,7 @@ ul.related{
     text-transform: uppercase;
     color: #a5a0a0;
 	}
-	
+
 .tag-post a{
 	color:#69B42E;
 }
@@ -1163,7 +1164,7 @@ ul.related{
     line-height: 47px;
     border-radius: 50%;
     font-size: 17px;
-	
+
 }
 .no-date {
     margin-top: 35%;
@@ -1321,7 +1322,7 @@ ul.related{
     text-transform: uppercase;
 	margin-top: 45px;
 	margin-bottom:11px;
-	
+
 }
 .event-body {
     font-size: 21px;
@@ -1902,7 +1903,6 @@ footer#colophon {
 }
 body:not(.theme-preset-active) footer#colophon {
     color: white;
-    background-color: #000000;
 }
 .navbar-dark .site-info {
   color: #fff;

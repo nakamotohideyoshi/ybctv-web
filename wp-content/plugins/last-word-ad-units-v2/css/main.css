@@ -1,0 +1,102 @@
+/* Top Billboard */
+.ads-top-billboard-container {
+  width: 100%;
+  display: block;
+  background: #f5f5f5;
+  text-align: center;
+  z-index: 150;
+}
+
+.ads-top-billboard {
+  text-align: center;
+}
+
+.ads-top-billboard > div {
+  padding: 26px 0;
+}
+
+/* Bottom Billboard */
+.ads-bottom-billboard {
+  text-align: center;
+  width: 100%;
+}
+
+/* Side Panels */
+.ads-side-panels .container {
+    position: relative;
+    padding: 0;
+}
+
+.ads-side-panels .container .side-panel-left-container {
+  position: absolute;
+  top: 0;
+  left: -140px;
+  z-index: 200;
+}
+
+.ads-side-panels .container .side-panel-left-container .side-panel-left {
+  position: fixed;
+}
+
+.ads-side-panels .container .side-panel-right-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 200;
+}
+
+.ads-side-panels .container .side-panel-right-container .side-panel-right {
+  position: fixed;
+}
+
+/* RHS */
+.ads-rhs-hpu-1, .ads-rhs-hpu-2 {
+  padding-top: 50px;
+}
+
+/* Native Content */
+.ads-native-content-desktop, .ads-native-content-mobile {
+  text-align: center;
+}
+
+.ads-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.ads-placeholder.ads-placeholder-sidebar-mpu {
+  margin-top: 50px;
+  width: 300px;
+  height: 250px;
+}
+
+.ads-placeholder.ads-placeholder-home-sponsored-banner {
+  width: 728px;
+  height: 90px;
+  margin: 50px 0 0 auto;
+}
+
+.ads-placeholder.ads-placeholder-billboard-mpu {
+  width: 970px;
+  height: 250px;
+  margin: 50px 0 50px auto;
+}
+
+.ads-placeholder.ads-placeholder-esg-clarity {
+  width: 324px;
+  height: 720px;
+}
+
+.ads-placeholder.ads-placeholder-article-left {
+  width: 300px;
+  height: 250px;
+  margin-top: 50px;
+}
+
+.ads-placeholder span {
+  display: block;
+  color: #cccccc;
+  text-transform: uppercase;
+}

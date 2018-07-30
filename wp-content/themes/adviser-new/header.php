@@ -18,10 +18,11 @@
     <link rel="profile" href="http://gmpg.org/xfn/11">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-	
+
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+    <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/7138392/css/fonts.css" />
 <?php
-  lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
+  lastWordAdUnitInitialize(is_front_page() ? 0 : get_the_ID());
   wp_head();
 ?>
 </head>
@@ -200,6 +201,6 @@
   	<div class="ads-top-billboard-container">
        <?php lastWordAdUnit2('top-billboard'); ?>
     </div>
-	<div class="container">
-			<div class="row">
-                <?php endif; ?>
+    <div class="container">
+      <div class="row">
+        <?php endif; ?>

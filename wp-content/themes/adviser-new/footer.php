@@ -17,7 +17,7 @@
             $rssEi = fetch_feed( 'https://ei.cms-lastwordmedia.com/feed/' );
             $rssIa = fetch_feed( 'https://ia.cms-lastwordmedia.com/feed/' );
         ?>
-<?php lastWordAdUnit('bottom-billboard'); ?>        
+<?php lastWordAdUnit2('bottom-billboard'); ?>        
 <div class="col-md-12 footer-other">
 <h2>OTHER STORIES FROM LAST WORD...</h2>
 </div>
