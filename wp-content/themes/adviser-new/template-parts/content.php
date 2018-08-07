@@ -139,11 +139,6 @@
 									  echo '<p class="article-date-bottom">By ';
 									coauthors_posts_links(', '); ?>, <?php the_time('j M y');
 									echo '</p>';
-									if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
-                                        ADDTOANY_SHARE_SAVE_KIT( array(
-                                            'buttons' => array( 'email','facebook', 'twitter', 'linkedin', 'print' ),
-                                        ) );
-                                    }
                                     }
 
                                     wp_link_pages(array(
