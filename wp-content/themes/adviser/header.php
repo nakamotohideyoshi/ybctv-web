@@ -29,6 +29,7 @@
   <!--stickadd scripts-->
   <?php
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
+    do_action('tagManagerHeadScript');
     wp_head();
     if (!wp_is_mobile()) {
         $show_ad_units_status = get_option('show_ad_units');
@@ -58,9 +59,23 @@
       }
     ?>
   </script>
+  <script>
+  jQuery(window).scroll(function() {
+        var scroll = jQuery(window).scrollTop();
+
+        if(scroll >= 300) {
+            jQuery("#masthead").addClass("fixed");
+        } else {
+            jQuery("#masthead").removeClass("fixed");
+        }
+    });
+  </script>
 </head>
 <body id="bd" <?php body_class(); ?>>
-  <?php lazyLoadStatus(); ?>
+  <?php
+    lazyLoadStatus();
+    do_action('tagManagerBodyScript');
+  ?>
 
   <?php lastWordAdUnit2('oop-teads'); ?>
   <div id="lw-popup-overlay" style="width: 100%; height: 100%; left: 0; top: 0; position: fixed; z-index: 5000; background-color: #000000; opacity: 0.6; display: none;">

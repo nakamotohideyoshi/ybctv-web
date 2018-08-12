@@ -17,36 +17,20 @@
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>" />
   <meta name="viewport" content="width=device-width" />
-  <meta name="description" content="<?php bloginfo('description'); ?>" />
 
   <link rel="shortcut icon" href="<?php echo THEME_PATH.'/images/favicon/favicon.ico' ?>" type="image/x-icon">
   <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/IA_16x16.ico' ?>" sizes="16x16">
   <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/IA_32x32.ico' ?>" sizes="32x32">
   <link rel="icon" href="<?php echo THEME_PATH.'/images/favicon/IA_152x152.png' ?>" sizes="152x152">
 
-  <title>
-    <?php
-      /*
-       * Print the <title> tag based on what is being viewed.
-       */
-      global $page, $paged;
-      wp_title( '|', true, 'right' );
-      // Add the blog name.
-      bloginfo( 'name' );
-      // Add the blog description for the home/front page.
-      $site_description = get_bloginfo( 'description', 'display' );
-      if ( $site_description && ( is_home() || is_front_page() ) )
-          echo " | $site_description";
-      // Add a page number if necessary:
-      if ( $paged >= 2 || $page >= 2 )
-          echo ' | ' . sprintf( __( 'Page %s', TEXT_DOMAIN ), max( $paged, $page ) );
-    ?>
-  </title>
+
+  <title><?php wp_title(''); ?></title>
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/6822792/css/fonts.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
   <?php
     wp_head();
     lastWordAdUnitInitialize(is_home() ? 0 : get_the_ID());
+    do_action('tagManagerHeadScript');
 
     if (!wp_is_mobile()) {
       $show_ad_units_status = get_option('show_ad_units');
@@ -58,9 +42,21 @@
       }
     }
   ?>
+
+    <script>
+      jQuery( document ).ready(function($) {
+        $("#togglemenu").on('click', function() {
+            $('.mobnavigation').slideToggle();
+        });
+      });
+  </script>
+
 </head>
 <body id="bd" <?php body_class(); ?>>
-  <?php lazyLoadStatus(); ?>
+  <?php
+    lazyLoadStatus();
+    do_action('tagManagerBodyScript');
+  ?>
   <div id="page" class="hfeed site">
     <section class="ads-side-panels">
       <div class="container">
@@ -112,7 +108,7 @@
             <div class="header-content">
               <div class="header-top clearfix">
                 <div class="btn-sp" id="togglemenu">
-                  <button id="togglemenu"><span id="togglemenu"></span></button>
+                  <button><span></span></button>
                 </div>
                 <?php lastWordAdUnit('top-search'); ?>
                 <div class="user-login">
@@ -267,4 +263,5 @@
         </div>
       </div>
     </header><!-- #masthead -->
+
     <div id="main" class="site-main">
