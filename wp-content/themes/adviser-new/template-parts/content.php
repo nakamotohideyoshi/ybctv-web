@@ -9,6 +9,25 @@
 
 ?>
 
+<style>
+    .spon_placeholder {
+      background: #eee;
+      border: 2px solid #aaa;
+      color: #aaa;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      padding: 30px 0;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    p.pull-quote {
+      color: #69B42E;
+      font-style: italic;
+    }
+</style>
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <div class="bread">
                         <?php if ( function_exists('yoast_breadcrumb') )
@@ -22,15 +41,11 @@
                                 <?php }?>
                                 <h1 class="title-single"><?php echo the_title();?></h1>
 								<p class="article-date">By <?php coauthors_posts_links(', '); ?>, <?php the_time('j M y');?></p>
-                                <?php
-                                  $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
-                                  if ($tag_list) {
-                                    echo $tag_list;
-                                  }
-                                ?>
                                 </span></p>
-
-                                <div class="like_button clearfix">
+<div class="description-single">
+                                  <?php the_excerpt(); ?>
+                              </div>
+                                <div class="like_button clearfix float-right">
                                     <?php if ( function_exists( 'ADDTOANY_SHARE_SAVE_KIT' ) ) {
                                         ADDTOANY_SHARE_SAVE_KIT( array(
                                             'buttons' => array( 'email','facebook', 'twitter', 'linkedin', 'print' ),
@@ -79,9 +94,7 @@
                                       <?php }}} ?>
                                 </div>
                             </div>
-							<div class="description-single">
-                                  <?php the_excerpt(); ?>
-                              </div>
+							
 	   <div class="thump-single">
                                 <?php
                                   if ($lw_primary_medium == 'gallery') {
@@ -100,15 +113,23 @@
                                       // All others show feature image
                                       if ( has_post_thumbnail() ) {
                                           the_post_thumbnail('main-article');
+										  
                                       }
+									  if (get_post(get_post_thumbnail_id())->post_excerpt) {
+    echo '<p class="featured-image-caption text-center ">';
+    echo wp_kses_post(get_post(get_post_thumbnail_id())->post_excerpt);
+    echo '</p>';
+} 
                                     }
 
                                     echo '<div class="text-content">';
+                                    $sponsored_after_paragraph = 6;
 
                                     global $page;
                                     if ($post->lw_pull_quote != '' && $page == 1) {
 
-                                      $pullquote_after_paragraph = 5;
+                                      $pullquote_after_paragraph = 4;
+                                      
 
                                       $content = apply_filters('the_content', get_the_content());
 
@@ -125,6 +146,9 @@
                                             echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
                                           }
 
+                                          if ($paragraph_count == $sponsored_after_paragraph) {
+                                            echo '<div class="spon_placeholder">SPONSORED CONTENT</div>';
+                                          }
 
                                           $paragraph_count ++;
                                         }
@@ -132,6 +156,7 @@
                                       else {
                                         echo $content;
                                         echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
+                                        echo '<div class="spon_placeholder">SPONSORED CONTENT</div>';
                                       }
                                     }
                                     else {
@@ -158,8 +183,13 @@
                                     echo '</div>';
                                   }
                                 ?>
+								<?php
+                                  $tag_list = get_the_tag_list('<p class="tag-post">Tags: ', ' | ', '</p>');
+                                  if ($tag_list) {
+                                    echo $tag_list;
+                                  }
+                                ?>
                               </div>
-
 
 
 	<div class="related-post clearfix">

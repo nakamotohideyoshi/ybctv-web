@@ -21,7 +21,7 @@
 <div class="col-md-12 footer-other">
 <h2>OTHER STORIES FROM LAST WORD...</h2>
 </div>
-<div class="col-md-9">
+<div class="col-md-12">
  <div class="row foot">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="content-image">
@@ -30,9 +30,9 @@
                 <div class="content-des">
                     <?php echo customFeed($rssEi); ?>
 
-					<button type="button" class="btn btn-newsletter btn-foot">
-					<a href="http://international-adviser.com/" target="_blank"><a href="http://www.expertinvestoreurope.com" target="_blank">More news from EI</a></a>
-					</button>
+					
+			<a href="http://www.expertinvestoreurope.com" target="_blank" class="btn btn-newsletter btn-foot" id="ei-btn">More news from EI</a>
+				
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -42,9 +42,9 @@
                 <div class="content-des">
                     <?php echo customFeed($rssFsa); ?>
 
-					<button type="button" class="btn btn-newsletter btn-foot">
-					<a href="http://www.fundselectorasia.com" target="_blank">More news from FSA</a>
-					</button>
+					
+					<a href="http://www.fundselectorasia.com" target="_blank" class="btn btn-newsletter btn-foot" id="fsa-btn">More news from FSA</a>
+				
                 </div>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -53,9 +53,9 @@
                 </div>
                 <div class="content-des">
                     <?php echo customFeed($rssIa); ?>
-					<button type="button" class="btn btn-newsletter btn-foot">
-					<a href="http://international-adviser.com/" target="_blank">More news from IA</a>
-					</button>
+				
+					<a href="http://international-adviser.com/" target="_blank" class="btn btn-newsletter btn-foot" id="ia-btn">More news from IA</a>
+					
 
                 </div>
             </div>

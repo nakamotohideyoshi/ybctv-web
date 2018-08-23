@@ -188,7 +188,24 @@ legend {
   border: 0;
   padding: 0;
 }
-
+.ads-placeholder.ads-placeholder-sidebar-mpu {
+    margin-top: 50px;
+    width: 100% !important;
+    max-width: 300px;
+    height: 250px;
+}
+.ads-placeholder.ads-placeholder-billboard-mpu {
+    max-width: 970px;
+    height: 250px;
+    margin: 50px 0 50px auto;
+    width: 100% !important; 
+}
+.ads-placeholder.ads-placeholder-home-sponsored-banner {
+    max-width: 728px;
+    height: 90px;
+    margin: 50px 0 0 auto;
+    width: 100% !important;
+}
 textarea {
   overflow: auto;
 }
@@ -226,7 +243,7 @@ h2 {
   font-size: 36px;
   padding-bottom: 0.3em;
   line-height: 1.25;
-  font-family:'Kommissar';
+  font-family: 'Roboto Condensed', sans-serif;
   text-transform:uppercase;
   border-bottom: 1px solid;
 }
@@ -235,21 +252,21 @@ h1.title-single {
   padding-bottom: 0em;
   margin-top:35px;
   line-height: 1.25;
-  font-family:'Kommissar';
-  text-transform:uppercase;
+  font-family: 'Roboto Condensed', sans-serif;
+  
   border-bottom: 0px solid;
   margin-bottom: 0;
 }
 h3 {
   font-size: 28px;
   line-height: 37px;
-   font-family:'Kommissar';
+   font-family: 'Roboto Condensed', sans-serif;
    text-transform:uppercase;
 }
 h4 {
   font-size: 26px;
   line-height: 20px;
-  font-family:'Kommissar';
+  font-family: 'Roboto Condensed', sans-serif;
 }
 h5 {
   font-size: 14px;
@@ -307,6 +324,19 @@ table {
 /*--------------------------------------------------------------
 # Navigation
 --------------------------------------------------------------*/
+.dropdown-menu .dropdown-item {
+    white-space: normal;
+    background: transparent;
+    line-height: 1.2;
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #9E9E9E;
+    font-weight: 800;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+.dropdown-menu .dropdown-item:hover {
+	color:#69b42e !important;
+}
 header#masthead {
   margin-bottom: 0;
   background-color: white ;
@@ -396,6 +426,7 @@ img.logo{
 .social a {
     display: inline-block;
     margin-top: 3px;
+	padding-top:20px;
 }
 .social {
     padding: 9px 0 7px;
@@ -420,6 +451,7 @@ img.logo{
     text-align: center;
     padding: 16px;
     text-decoration: none;
+	padding-top:30px;
 }
 .search-icon {
     max-width: 20px;
@@ -432,7 +464,7 @@ img.logo{
     padding-bottom: 1px;
 }
 .page-header h1, .error404 h1 {
-    font-family: 'Kommissar';
+    font-family: 'Roboto Condensed', sans-serif;
     letter-spacing: 1px;
     font-size: 36px;
     text-transform: uppercase;
@@ -603,13 +635,24 @@ dl, ol, ul {
   width: 100%;
   cursor: pointer;
 }
+.article-overlay {
+  background: url(inc/assets/img/play.svg) center no-repeat;
+  position: absolute;
+  left: 0;
+  top: 43px;
+    bottom: 0;
+    display: block;
+    height: 60px;
+  width: 100%;
+  cursor: pointer;
+}
 
 .has-video .voverlay:hover {
   background: url(inc/assetsimg/play.svg) center no-repeat;
 }
 /* Single Magazine */
 .content-magazine.content-single .name-cat {
-  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   letter-spacing: 1px;
   color: #69b42e;
   font-size: 24px;
@@ -619,7 +662,7 @@ dl, ol, ul {
 
 .content-magazine.content-single h1 {
   margin-top: 0;
-  font-family: 'Kommissar', 'Gotham Narrow SSm A','Gotham Narrow SSm B','Montserrat', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 40px;
@@ -646,12 +689,19 @@ dl, ol, ul {
 }
 
 
+
+
+.dropdown:hover .dropdown-menu {
+display: block;
+margin-top: 0px;
+}
+
 /*--------------------------------------------------------------
 ## HOMEPAGE
 --------------------------------------------------------------*/
 .home #content.site-content {
 
-    padding-top: 101px;
+    padding-top: 0px;
 
 }
 .empty-box1{
@@ -713,7 +763,15 @@ dl, ol, ul {
     float: right;
     margin-top: 110px;
 }
-
+body:not(.theme-preset-active) #masthead .navbar-nav>li>a:hover {
+    color: #69b42e !important;
+    padding: .5rem;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 25px;
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase;
+}
 .content-footer .row {
     padding-top: 30px;
     background-color: #000000;
@@ -812,7 +870,7 @@ a, a:hover {
 .foot .content-des p a {
     font-size: 18px;
     color: #343534;
-    font-family: 'Gotham Narrow';
+    font-family: 'Roboto Condensed', sans-serif;
     font-weight: 700;
 }
 .foot .content-image {
@@ -833,15 +891,36 @@ hr.border-n {
     background: white;
     border: 1px solid;
     padding: 8px 50px 8px 50px;
+	border-color: #69b42e;
+	color: #69b42e;
+}
+.btn-newsletter a{
+	color: #69b42e;
+}
+.btn-newsletter:hover{
+    border-radius: 0;
+    background: #69b42e;
+    border: 1px solid;
+    padding: 8px 50px 8px 50px;
+	border-color: #69b42e;
+	color: white;
+}
+.btn-newsletter:hover{
+	
 }
 hr.border-n:after {
-    content: url('./inc/assets/img/newsletter.svg');
+	content:'';
+    background: url('./inc/assets/img/newsletter.svg');
     left: 48px;
     position: absolute;
     transform: translateY(-50%) translateX(-50%);
-    padding: 4px;
-    background: #fff;
+    padding: -17px;
+    background-color: #fff;
     width: 75px;
+    height: 75px;
+    background-size: 70px;
+    background-repeat: no-repeat;
+    background-position: center left;
 }
 .top-right{
     border-bottom: 1px solid gainsboro;
@@ -852,18 +931,32 @@ hr.border-n:after {
 	margin-top:45px;
 }
 .date{
-    color: #939598;
+    color: #69b42e;
 	font-size:16px;
+	font-family: 'Vollkorn', serif;
+
 	}
+.header-reklama  {
+    width: 300px;
+    height: 72px;
+    background: gainsboro;
+    float: right;
+    margin-left: 20px;
+}
 .top-right  h3, .top-right-mag  h3{
 	font-size:36px;
 	text-transform:uppercase;
-	font-family:'Kommissar';
+	font-family: 'Roboto Condensed', sans-serif;
+}
+.top-right  h3{
+	text-transform:none;
 }
 .top-right p,.top-right-mag p{
 	font-size:21px;
 	color:#343534;
 	margin-top: 13px;
+	font-family: 'Vollkorn', serif;
+
 }
 .other-latest{
 	margin-top:60px;
@@ -913,7 +1006,7 @@ span.location:after{
 .no-top h3 {
         margin-top: 7px;
     font-size: 20px;
-    font-family: 'Gotham Narrow';
+    font-family: 'Roboto Condensed', sans-serif;
     text-transform: inherit;
     line-height: 1.2;
 	margin-bottom: 14px;
@@ -939,7 +1032,7 @@ span.location:after{
 .media-side h3 {
 	 margin-top: 7px;
     font-size: 17px;
-    font-family: 'Gotham Narrow';
+    font-family: 'Roboto Condensed', sans-serif;
     text-transform: inherit;
     line-height: 1.2;
 	margin-bottom: 14px;
@@ -970,8 +1063,8 @@ span.location:after{
 }
 .name-cat a{
 	color:#69B42E;
-	font-size:12px;
-	font-family: 'Gotham Narrow';
+	font-size:1rem;
+	font-family: 'Roboto Condensed', sans-serif;
 	text-transform:uppercase;
 	font-weight:700;
 }
@@ -984,7 +1077,7 @@ p.name-cat {
 }
 h3.story-title{
 	font-size:28px;
-	font-family:'Kommissar';
+	font-family: 'Roboto Condensed', sans-serif;
 	font-weight:700;
 	margin-top: 5px;
 }
@@ -995,7 +1088,7 @@ h3.story-title{
 
 h3.story-title-2{
 	font-size:21px;
-	font-family: 'Gotham Narrow';
+	font-family: 'Roboto Condensed', sans-serif;
 	font-weight:700;
 	text-transform:capitalize;
 	line-height:26px;
@@ -1011,7 +1104,7 @@ p.story-content{
     color: #24292e;
     text-decoration: none;
 	font-size:20px;
-	font-family: 'Gotham Narrow';
+	font-family: 'Roboto Condensed', sans-serif;
 	font-weight:700;
 }
 .mag-image{
@@ -1058,6 +1151,16 @@ p.story-content{
 }
 .article-date-bottom .article-date {
     margin-bottom: 15px;
+	color: #69b42e;
+}
+.article-date-bottom a {
+	color: #69b42e;
+}
+
+.archive  .most-popular{
+    background: #f6f6f6;
+    min-height: 230px;
+    margin-top: 70px;
 }
 .fa-print:before {
     background-image: url('./inc/assets/img/print.svg');
@@ -1081,7 +1184,7 @@ p.story-content{
 h3.related-title{
     font-size: 16px;
     line-height: 20px;
-    font-family: 'Gotham Narrow';
+    font-family: 'Roboto Condensed', sans-serif;
     text-transform: none;
     margin-top: 0;
 }
@@ -1094,21 +1197,26 @@ text-transform:none;
 }
 .description-single {
     margin-top: 20px;
+	font-weight:bold;
 }
 .has-video .voverlay:hover {
     background: url(//pa.dev3lastword.wpengine.com/wp-content/themes/adviser/images/play-btn-hover.png) center no-repeat;
 }
-.btn-calendar  {
+.btn-calendar {
     position: relative;
     top: 30px;
-    background: white;
-    border-bottom: 1px solid;
-    padding-bottom: 18px;
+    color: white;
     border-radius: 0;
     padding-left: 0;
-    margin-left: -15px;
-	width: 107%;
+    margin-left: -5px;
+    width: 100%;
     padding-right: 0;
+    border: 1px solid #64a70a;
+    background: #64a70b;
+    font-weight: 800;
+    font-size: 18px;
+    height: 50px;
+	outline:none;
 }
 
 
@@ -1124,7 +1232,7 @@ ul.related{
 }
 .must-log-in {
     font-size: 20px;
-	font-family: 'Gotham Narrow';
+	font-family: 'Roboto Condensed', sans-serif;
 	font-weight:700;
 }
 .must-log-in a{
@@ -1140,6 +1248,10 @@ ul.related{
 }
 .article-date{
 	margin-bottom:7px;
+	color: #69b42e;
+}
+.article-date a {
+	color: #69b42e;
 }
 .tag-post {
     text-transform: uppercase;
@@ -1343,7 +1455,7 @@ body:not(.theme-preset-active) #masthead .navbar-nav>li>a {
 	margin-left:20px;
     font-weight: 500;
     font-size: 25px;
-	font-family:'Kommissar';
+	font-family: 'Roboto Condensed', sans-serif;
 	text-transform:uppercase;
 }
 
@@ -1898,6 +2010,42 @@ object {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+#ei-btn{
+	border-color: #f1a900;
+	color: #f1a900;
+}
+#ei-btn:hover{
+	border-color: #f1a900;
+	background: #f1a900;
+	color:white;
+}
+#fsa-btn{
+	border-color: #d40031;
+	color: #d40031;
+}
+#fsa-btn:hover{
+	border-color: #d40031;
+	background: #d40031;
+	color:white;
+}
+#ia-btn{
+	border-color: #0085c9;
+	color: #0085c9;
+}
+#ia-btn:hover{
+	border-color: #0085c9;
+	background: #0085c9;
+	color:white;
+}
+#ei-btn a{
+	color: #f1a900;
+}
+#fsa-btn a{
+	color: #d40031;
+}
+#ia-btn a{
+	color: #0085c9;
+}
 footer#colophon {
   font-size: 85%;
 }
@@ -1923,6 +2071,7 @@ body:not(.theme-preset-active) footer#colophon {
     padding-top: 0.938rem;
   }
 }
+
 /*--------------------------------------------------------------
 # Media Query
 --------------------------------------------------------------*/
@@ -1968,6 +2117,30 @@ body:not(.theme-preset-active) footer#colophon {
   html {
     font-size: 80%;
   }
+  .social {
+    padding: 9px 0 7px;
+    float: left;
+}
+.btn-calendar {
+    position: relative;
+    top: 30px;
+    color: white;
+    border-radius: 0;
+    padding-left: 0;
+    margin-left: 0;
+    width: 100%;
+    padding-right: 0;
+    border: 1px solid #64a70a;
+    background: #64a70b;
+    font-weight: 800;
+    font-size: 18px;
+    height: 50px;
+    outline: 0;
+    float: left;
+    margin-bottom: 25px;
+    padding: 0;
+    max-width: 270px;
+}
 }
 /*--------------------------------------------------------------
 ## iPad

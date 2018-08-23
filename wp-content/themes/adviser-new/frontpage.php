@@ -279,7 +279,7 @@ get_header(); ?>
             <div class="col-md-4 no-top">
               <h2 class="title">LATEST STORIES</h2>
     	        <?php
-                $args = array( 'posts_per_page' => 4,'offset' => 0 ,'showposts' => 4, 'orderby' => 'post_date','order' => 'DESC', );
+                $args = array( 'posts_per_page' => 3,'offset' => 0 ,'showposts' => 3, 'orderby' => 'post_date','order' => 'DESC', );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
                   $current_permalink = get_the_permalink();
@@ -299,35 +299,10 @@ get_header(); ?>
             </div><!--END OF LATEST STORIES-->
             <div class="col-md-4 no-top">
               <h2 class="title">ANALYSIS</h2>
+              
               <?php
-                $args = array( 'posts_per_page' => 1,'offset' => 1 ,'showposts' => 1, 'category' => 40 );
-                $myposts = get_posts( $args );
-                foreach ( $myposts as $post ) : setup_postdata( $post );
-                  $current_permalink = get_the_permalink();
-                  $current_title = get_the_title();
-              ?>
-              <div class="story">
-    	          <p class="name-cat">
-                  <?php $category = get_the_category(); ?>
-                  <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                </p>
-                <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
-    				    <span class="date">By <?php echo get_the_author(); ?>,  <?php echo get_the_date(); ?> </span>
-                <?php
-                  $excerpt = the_excerpt(10);
-                  //if (strlen($excerpt) > 100) {
-                  //echo substr($excerpt, 0, 100) . '...';
-                  //}
-                  //else {
-                  echo $excerpt;
-                  //}
-                ?>
-              </div>
-              <?php
-                endforeach;
-                wp_reset_postdata();
-
-                $args = array( 'posts_per_page' => 2,'offset' => 2 ,'showposts' => 2, 'category' => 40 );
+                
+                $args = array( 'posts_per_page' => 3,'offset' => 2 ,'showposts' => 3, 'category' => 40 );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
                   $current_permalink = get_the_permalink();
@@ -347,35 +322,10 @@ get_header(); ?>
             </div><!--END OF ANALYSIS-->
             <div class="col-md-4 no-top">
               <h2 class="title">OPINION</h2>
+              
               <?php
-                $args = array( 'posts_per_page' => 1,'offset' => 1 ,'showposts' => 1, 'category' => 40 );
-                $myposts = get_posts( $args );
-                foreach ( $myposts as $post ) : setup_postdata( $post );
-                  $current_permalink = get_the_permalink();
-                  $current_title = get_the_title();
-              ?>
-              <div class="story">
-                <p class="name-cat">
-                  <?php $category = get_the_category(); ?>
-                  <a href="<?php echo get_category_link($category[0]->cat_ID);?>"><?php echo $category[0]->cat_name;?></a>
-                </p>
-                <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
-                <span class="date">By <?php echo get_the_author(); ?>,  <?php echo get_the_date(); ?> </span>
-                <?php
-                  $excerpt = the_excerpt(10);
-                  //if (strlen($excerpt) > 100) {
-                  //echo substr($excerpt, 0, 100) . '...';
-                  //}
-                  //else {
-                  echo $excerpt;
-                  //}
-                ?>
-    					</div>
-              <?php
-                endforeach;
-                wp_reset_postdata();
-
-                $args = array( 'posts_per_page' => 2,'offset' => 2 ,'showposts' => 2, 'category' => 40 );
+                
+                $args = array( 'posts_per_page' => 3,'offset' => 2 ,'showposts' => 3, 'category' => 40 );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
                   $current_permalink = get_the_permalink();
@@ -435,7 +385,7 @@ get_header(); ?>
                     </p>
                     <a href="<?php echo $current_permalink; ?>"><h3><?php echo $current_title; ?></h3></a>
                     <p><?php echo the_excerpt(20); ?></p>
-                    <button type="button" class="btn btn-newsletter"><a href="/media">view all media</a></button>
+                    <a href="/media" class="btn btn-newsletter">view all media</a>
                   </div>
                   <?php
                     endforeach;
@@ -578,7 +528,7 @@ get_header(); ?>
                       wp_reset_postdata();
                     ?>
                     <div class="col-md-12">
-                      <button type="button" class="btn btn-newsletter btn-magazines"><a href="/magazines">view more</a></button>
+                      <a href="/magazines" class="btn btn-newsletter btn-magazines">view more</a>
                     </div>
                   </div><!--END OF MAGAZINES LAST BLOCK-->
                 </div><!--END OF MAGAZINES COL-->
@@ -595,7 +545,7 @@ get_header(); ?>
           <hr class="border-n"></hr>
           <h2 class="no-border">NEWSLETTER</h2>
           <p><b>Sign Up for Portfolio<br> Adviser Daily Newsletter</b></p>
-          <button type="button" class="btn btn-newsletter"><a href="/subscribe">Subscribe</a></button>
+          <a href="/subscribe" class="btn btn-newsletter">Subscribe</a>
 
           <div class="ads-placeholder ads-placeholder-sidebar-mpu">
             <span>Axis Promo</span>
