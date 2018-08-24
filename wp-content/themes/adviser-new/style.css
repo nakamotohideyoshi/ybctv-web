@@ -198,7 +198,7 @@ legend {
     max-width: 970px;
     height: 250px;
     margin: 50px 0 50px auto;
-    width: 100% !important; 
+    width: 100% !important;
 }
 .ads-placeholder.ads-placeholder-home-sponsored-banner {
     max-width: 728px;
@@ -206,6 +206,11 @@ legend {
     margin: 50px 0 0 auto;
     width: 100% !important;
 }
+
+.sidebar-content-wrapper {
+  position: relative;
+}
+
 textarea {
   overflow: auto;
 }
@@ -253,7 +258,7 @@ h1.title-single {
   margin-top:35px;
   line-height: 1.25;
   font-family: 'Roboto Condensed', sans-serif;
-  
+
   border-bottom: 0px solid;
   margin-bottom: 0;
 }
@@ -416,17 +421,19 @@ img.logo{
     color:black;
 	float: right;
 }
-.social{
+.social {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 
 }
 .social a {
     display: inline-block;
     margin-top: 3px;
-	padding-top:20px;
+	  padding-top: 10px;
 }
 .social {
     padding: 9px 0 7px;
@@ -906,7 +913,7 @@ hr.border-n {
 	color: white;
 }
 .btn-newsletter:hover{
-	
+
 }
 hr.border-n:after {
 	content:'';

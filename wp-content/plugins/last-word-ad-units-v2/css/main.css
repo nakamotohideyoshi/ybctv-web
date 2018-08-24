@@ -21,6 +21,12 @@
   width: 100%;
 }
 
+/* Top Search */
+.ads-top-search {
+  display: inline-block;
+  margin-left: 10px;
+}
+
 /* Side Panels */
 .ads-side-panels .container {
     position: relative;
@@ -99,4 +105,18 @@
   display: block;
   color: #cccccc;
   text-transform: uppercase;
+}
+
+/* Article - LHS HPU 1 */
+.ads-lhs-hpu-1 {
+  margin-top: 50px;
+  width: 100% !important;
+  max-width: 300px;
+}
+
+/* Article - LHS HPU 2 */
+.ads-lhs-hpu-2 {
+  margin-top: 50px;
+  width: 100% !important;
+  max-width: 300px;
 }

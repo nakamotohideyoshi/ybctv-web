@@ -299,9 +299,9 @@ get_header(); ?>
             </div><!--END OF LATEST STORIES-->
             <div class="col-md-4 no-top">
               <h2 class="title">ANALYSIS</h2>
-              
+
               <?php
-                
+
                 $args = array( 'posts_per_page' => 3,'offset' => 2 ,'showposts' => 3, 'category' => 40 );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
@@ -322,9 +322,9 @@ get_header(); ?>
             </div><!--END OF ANALYSIS-->
             <div class="col-md-4 no-top">
               <h2 class="title">OPINION</h2>
-              
+
               <?php
-                
+
                 $args = array( 'posts_per_page' => 3,'offset' => 2 ,'showposts' => 3, 'category' => 40 );
                 $myposts = get_posts( $args );
                 foreach ( $myposts as $post ) : setup_postdata( $post );
@@ -533,9 +533,7 @@ get_header(); ?>
                   </div><!--END OF MAGAZINES LAST BLOCK-->
                 </div><!--END OF MAGAZINES COL-->
                 <div class="col-md-4">
-                  <div class="ads-placeholder ads-placeholder-esg-clarity">
-                    <span>ESG Clarity</span>
-                  </div>
+                  <?php lastWordAdUnit2('esg-clarity'); ?>
                 </div>
               </div>
             </div>

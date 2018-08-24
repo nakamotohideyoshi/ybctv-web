@@ -1,83 +1,30 @@
 ;
-var billboardFixed = true;
+// var billboardFixed = true;
+var billboardFixed = false;
 
 function adSticky(event) {
   (function($) {
     // Top Billboard
-    if (event.slot === billboard) {
-      var timer = 8000;
-      var topBillboard = $('.ads-top-billboard-container');
-      var contentContainer = topBillboard.next('.container');
-
-      if (topBillboard.outerHeight() > 0) {
-        topBillboard.css({ 'position' : 'fixed' });
-        contentContainer.css({ 'marginTop' : topBillboard.outerHeight() });
-      }
-      setTimeout(function () {
-        topBillboard.css({ 'position' : 'relative' });
-        contentContainer.css({ 'marginTop' : 0 });
-        billboardFixed = false;
-      }, timer);
-    }
+    // if (event.slot === billboard) {
+    //   var timer = 8000;
+    //   var topBillboard = $('.ads-top-billboard-container');
+    //   var contentContainer = topBillboard.next('.container');
+    //
+    //   if (topBillboard.outerHeight() > 0) {
+    //     topBillboard.css({ 'position' : 'fixed' });
+    //     contentContainer.css({ 'marginTop' : topBillboard.outerHeight() });
+    //   }
+    //   setTimeout(function () {
+    //     topBillboard.css({ 'position' : 'relative' });
+    //     contentContainer.css({ 'marginTop' : 0 });
+    //     billboardFixed = false;
+    //   }, timer);
+    // }
   })(jQuery);
 }
 
 (function($) {
   $(document).ready(function() {
-    // Sidebar Ad Units
-    var sidebarContentContainer = $('.sidebar-content-container');
-    if (sidebarContentContainer.length) {
-      var sidebarContentContainerTop = sidebarContentContainer.offset().top;
-
-      $(window).on('scroll', function() {
-        var headerHeight = $('#masthead').outerHeight();
-        var billboardHeight = billboardFixed ? $('.ads-top-billboard-container').outerHeight() : 0;
-        var vPos = $(window).scrollTop() + headerHeight + billboardHeight;
-
-        if (sidebarContentContainer.css('position') === 'static') {
-          sidebarContentContainerTop = sidebarContentContainer.offset().top;
-        }
-
-        var windowHeight = $(window).outerHeight();
-        var mainTop = $('#main').offset().top;
-        var mainHeight = $('#main').outerHeight();
-        var mainMiddle = mainHeight / 1.7;
-
-        if (vPos >= ((mainTop + mainMiddle) - windowHeight)) {
-          if (sidebarContentContainer.css('position') != 'absolute') {
-            sidebarContentContainer.css({ 'position' : 'absolute', 'top' : (sidebarContentContainer.offset().top - sidebarContentContainer.parent().offset().top) });
-          }
-          else {
-            var rhsHpu2 = $('.ads-rhs-hpu-2');
-
-            if ((vPos + rhsHpu2.outerHeight()) >= (mainTop + mainHeight)) {
-              if (rhsHpu2.css('position') != 'absolute') {
-                rhsHpu2.css({ 'position' : 'absolute', 'top' : ((mainTop + mainHeight) - rhsHpu2.outerHeight()) - rhsHpu2.parent().offset().top });
-              }
-            }
-            else {
-              var elementAbove = rhsHpu2.prev();
-
-              if (vPos <= (elementAbove.offset().top + elementAbove.outerHeight())) {
-                rhsHpu2.css({ 'position' : 'static', 'top' : 0 });
-              }
-              else {
-                rhsHpu2.css({ 'position' : 'fixed', 'top' : headerHeight + billboardHeight });
-              }
-            }
-          }
-        }
-        else {
-          if (vPos >= sidebarContentContainerTop) {
-            sidebarContentContainer.css({ 'position' : 'fixed', 'top' : headerHeight + billboardHeight });
-          }
-          else {
-            sidebarContentContainer.css({ 'position' : 'static', 'top' : 0 });
-          }
-        }
-      });
-    }
-
     // Homepage Sidebar Ad Units
     var homeSidebarContentContainer = $('.home-sidebar-content-container');
     if (homeSidebarContentContainer.length) {
@@ -131,31 +78,123 @@ function adSticky(event) {
       });
     }
 
-    // Left hand side article ad unit
-    var leftHandSideAdUnit = $('.ads-placeholder-article-left');
+    var lhsHpu1 = $('.ads-lhs-hpu-1');
+    var lhsHpu2 = $('.ads-lhs-hpu-2');
+    var rhsSidebarContent = $('.sidebar-content-container');
+    var rhsHpu1 = $('.ads-rhs-hpu-1');
+    var rhsHpu2 = $('.ads-rhs-hpu-2');
 
-    if (leftHandSideAdUnit.length) {
-      $(window).on('scroll', function() {
-        var headerHeight = $('#masthead').outerHeight();
-        var billboardHeight = billboardFixed ? $('.ads-top-billboard-container').outerHeight() : 0;
-        var vPos = $(window).scrollTop() + headerHeight + billboardHeight;
-        var mainTop = $('#main').offset().top;
-        var mainHeight = $('#main').outerHeight();
 
-        if (vPos + leftHandSideAdUnit.outerHeight(true) >= (mainTop + mainHeight)) {
-          if (leftHandSideAdUnit.css('position') != 'absolute') {
-            leftHandSideAdUnit.css({ 'position' : 'absolute', 'top' : ((mainTop + mainHeight) - leftHandSideAdUnit.outerHeight(true)) - leftHandSideAdUnit.parent().offset().top });
-          }
+    if (lhsHpu2.length) {
+      setLhsHpu2Top($('#main').offset().top + ($('#main').outerHeight() / 2));
+    }
+
+    $(window).on('scroll', function() {
+      stickyAds();
+    });
+
+    function stickyAds() {
+      var headerHeight = $('#masthead').outerHeight();
+      var billboardHeight = billboardFixed ? $('.ads-top-billboard-container').outerHeight() : 0;
+      var topHeight = headerHeight + billboardHeight;
+      var vPos = $(window).scrollTop() + headerHeight + billboardHeight;
+      var sidebarHeight = $('.newsletter-wrapper').outerHeight() + $('.sidebar-content-wrapper').outerHeight();
+      var mainTop = $('#main').offset().top;
+      var mainHeight = $('#main').outerHeight();
+      var mainMiddle = mainTop + (mainHeight / 2);
+      var rhsSidebarContentHeight = rhsSidebarContent.outerHeight();
+      if (lhsHpu1.length) {
+        stickyLhsHpu1(vPos, mainMiddle, topHeight);
+      }
+
+      if (lhsHpu2.length) {
+        stickyLhsHpu2(vPos, mainMiddle, topHeight);
+      }
+
+      if (rhsSidebarContent.length && rhsHpu1.length && (sidebarHeight < mainHeight)) {
+        stickyRhsSidebarContent(vPos, mainMiddle, topHeight);
+      }
+
+      if (rhsHpu2.length && (sidebarHeight < mainHeight)) {
+        stickyRhsHpu2(vPos, topHeight, mainTop, mainHeight);
+      }
+    }
+
+    function stickyLhsHpu1(vPos, mainMiddle, topHeight) {
+      var lhsHpu1Height = lhsHpu1.outerHeight(true);
+      var lhsHpu1ParentTop = lhsHpu1.parent().offset().top;
+
+      if (vPos >= lhsHpu1ParentTop) {
+        if ((vPos + lhsHpu1Height) >= mainMiddle) {
+          lhsHpu1.css({ 'position' : 'absolute', 'top' : mainMiddle - lhsHpu1Height - lhsHpu1ParentTop });
         }
         else {
-          if (vPos >= leftHandSideAdUnit.parents().offset().top) {
-            leftHandSideAdUnit.css({ 'position' : 'fixed', 'top' : headerHeight + billboardHeight });
-          }
-          else {
-            leftHandSideAdUnit.css({ 'position' : 'static', 'top' : 0 });
-          }
+          lhsHpu1.css({ 'position' : 'fixed', 'top' : topHeight });
         }
-      });
+      }
+      else {
+        lhsHpu1.css({ 'position' : 'static', 'top' : 0 });
+      }
+    }
+
+    function stickyLhsHpu2(vPos, mainMiddle, topHeight) {
+      var lhsHpu2Height = lhsHpu2.outerHeight(true);
+      var lhsHpu2ParentTop = lhsHpu2.parent().offset().top;
+      var lhsHpu2ParentHeight = lhsHpu2.parent().outerHeight();
+
+      if (vPos >= mainMiddle) {
+        if ((vPos + lhsHpu2Height) >= (lhsHpu2ParentHeight + lhsHpu2ParentTop)) {
+          lhsHpu2.css({ 'position' : 'absolute', 'top' : lhsHpu2ParentHeight - lhsHpu2Height });
+        }
+        else {
+          lhsHpu2.css({ 'position' : 'fixed', 'top' : topHeight });
+        }
+      }
+      else {
+        setLhsHpu2Top(mainMiddle);
+      }
+    }
+
+    function stickyRhsSidebarContent(vPos, mainMiddle, topHeight) {
+      var rhsSidebarContentParentTop = rhsSidebarContent.parent().offset().top;
+      var rhsHpu1Height = rhsHpu1.outerHeight();
+
+      if (vPos >= rhsSidebarContentParentTop) {
+        if (vPos + rhsHpu1Height >= mainMiddle) {
+          rhsSidebarContent.css({ 'position' : 'absolute', 'top' : mainMiddle - rhsHpu1Height - rhsSidebarContentParentTop });
+        }
+        else {
+          rhsSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
+        }
+      }
+      else {
+        rhsSidebarContent.css({ 'position' : 'static', 'top' : 0 });
+      }
+    }
+
+    function stickyRhsHpu2(vPos, topHeight, mainTop, mainHeight) {
+      var rhsHpu2Top = rhsHpu2.offset().top;
+      var rhsHpu2Height = rhsHpu2.outerHeight();
+      var rhsHpu2PrevTop = rhsHpu2.prev().offset().top;
+      var rhsHpu2PrevHeight = rhsHpu2.prev().outerHeight();
+      var rhsHpu2ParentTop = rhsHpu2.parent().offset().top;
+
+      if (vPos >= (rhsHpu2PrevTop + rhsHpu2PrevHeight)) {
+        if ((vPos + rhsHpu2Height) >= (mainTop + mainHeight)) {
+          rhsHpu2.css({ 'position' : 'absolute', 'top' : (mainTop + mainHeight) - rhsHpu2Height - rhsHpu2ParentTop });
+        }
+        else {
+          rhsHpu2.css({ 'position' : 'fixed', 'top' : topHeight });
+        }
+      }
+      else {
+        rhsHpu2.css({ 'position' : 'static', 'top' : 0 });
+      }
+    }
+
+    function setLhsHpu2Top(mainMiddle) {
+      var lhsHpu2ParentTop = lhsHpu2.parent().offset().top;
+      lhsHpu2.css({ 'position' : 'absolute', 'top' : mainMiddle - lhsHpu2ParentTop });
     }
   });
 })(jQuery);
