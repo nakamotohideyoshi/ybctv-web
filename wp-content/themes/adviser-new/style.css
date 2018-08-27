@@ -198,7 +198,7 @@ legend {
     max-width: 970px;
     height: 250px;
     margin: 50px 0 50px auto;
-    width: 100% !important; 
+    width: 100% !important;
 }
 .ads-placeholder.ads-placeholder-home-sponsored-banner {
     max-width: 728px;
@@ -206,6 +206,11 @@ legend {
     margin: 50px 0 0 auto;
     width: 100% !important;
 }
+
+.sidebar-content-wrapper {
+  position: relative;
+}
+
 textarea {
   overflow: auto;
 }
@@ -253,7 +258,7 @@ h1.title-single {
   margin-top:35px;
   line-height: 1.25;
   font-family: 'Roboto Condensed', sans-serif;
-  
+
   border-bottom: 0px solid;
   margin-bottom: 0;
 }
@@ -416,17 +421,19 @@ img.logo{
     color:black;
 	float: right;
 }
-.social{
+.social {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 
 }
 .social a {
     display: inline-block;
     margin-top: 3px;
-	padding-top:20px;
+	  padding-top: 10px;
 }
 .social {
     padding: 9px 0 7px;
@@ -451,7 +458,7 @@ img.logo{
     text-align: center;
     padding: 16px;
     text-decoration: none;
-	padding-top:30px;
+	padding-top:22px;
 }
 .search-icon {
     max-width: 20px;
@@ -906,7 +913,7 @@ hr.border-n {
 	color: white;
 }
 .btn-newsletter:hover{
-	
+
 }
 hr.border-n:after {
 	content:'';
@@ -1728,6 +1735,47 @@ a img.aligncenter {
   clear: both;
 }
 
+.box-sponsored .flex-control-nav {
+    width: 100%;
+    bottom: 0px !important;
+    text-align: left !important;
+	margin-left: 15px;
+}
+.box-sponsored .flex-control-paging li a {
+    
+    display: block;
+    background: #666;
+    background-color: white;
+	}
+.box-sponsored .flex-control-paging li a.flex-active {
+    background: #000;
+    background: gray;
+    cursor: default;
+}
+.box-sponsored  .content-des{
+    border: 1px solid #f07f00;
+	padding: 5px 15px 19px 15px;
+}
+.box-sponsored .name-cat a {
+	color:#f07f00;
+}
+.box-sponsored{
+	position:relative;
+	max-width:298px;
+	width:100%;
+}
+.box-sponsored h3 {
+    font-size: 18px;
+    line-height: 1.1;
+    margin-top: 5px;
+    text-transform: inherit;
+}
+.flex-control-nav li {
+    margin: 0 3px !important;
+    display: inline-block;
+    zoom: 1;
+}
+
 /*--------------------------------------------------------------
 # Widgets
 --------------------------------------------------------------*/
@@ -2065,6 +2113,10 @@ body:not(.theme-preset-active) footer#colophon {
   color: inherit;
 }
 
+body:not(.theme-preset-active) footer#colophon {
+    color: white;
+    background: black;
+}
 @media screen and (max-width: 767px) {
   #masthead .navbar-nav > li > a {
     padding-bottom: 0.938rem;
@@ -2101,6 +2153,21 @@ body:not(.theme-preset-active) footer#colophon {
   html {
     font-size: 90%;
   }
+  .has-video .voverlay {
+    background: url(//pa.dev3lastword.wpengine.com/wp-content/themes/adviser-new/inc/assets/img/play.svg) center no-repeat;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    bottom: 0;
+    display: block;
+    height: 60px;
+    width: 100%;
+    cursor: pointer;
+}
+.modal-header {
+    margin-left: 15px;
+    margin-right: 15px;
+}
 }
 /*--------------------------------------------------------------
 ## iPad
@@ -2114,12 +2181,80 @@ body:not(.theme-preset-active) footer#colophon {
 ## iPad
 --------------------------------------------------------------*/
 @media only screen and (max-width: 768px) {
+	body:not(.theme-preset-active) #masthead .navbar-nav>li>a {
+    color: #bcbdc1;
+    padding: 2px;
+    margin-left: 20px;
+    font-weight: 500;
+    font-size: 17px;
+    font-family: 'Roboto Condensed',sans-serif;
+    text-transform: uppercase;
+}
+.dropdown-menu .dropdown-item {
+    white-space: normal;
+    background: transparent;
+    line-height: 1.2;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #9e9e9e;
+    font-weight: 800;
+    font-family: 'Roboto Condensed',sans-serif;
+}
   html {
     font-size: 80%;
   }
   .social {
-    padding: 9px 0 7px;
-    float: left;
+    padding: 0px 0 7px;
+    float: right;
+}
+.user-login li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 4px;
+    text-decoration: none;
+    padding-top: 5px;
+}
+.search-icon {
+    max-width: 20px;
+    margin-left: 10px;
+    float: right;
+}
+.logo-footer {
+    position: relative;
+    bottom: 0px;
+    max-width: 71px;
+}
+.menu-footer {
+    margin-bottom: 0;
+}
+.menu-footer ul li:first-child a {
+    border-left: 0;
+    padding-left: 0;
+    font-size: 17px;
+}
+.menu-footer ul li {
+    float: none;
+    list-style: none;
+}
+.footer_connect h2 {
+	margin-top:0;
+}
+.foot .content-image {
+    margin-bottom: 36px;
+    width: 80%;
+    margin-top: 36px;
+}
+
+.menu-footer ul li a {
+    border-left: 0;
+    float: inherit;
+    display: block;
+    height: 22px;
+    line-height: 10px;
+    font-size: 17px;
+    padding: 0px 5px 0 0;
+    /* text-align: center; */
 }
 .btn-calendar {
     position: relative;
@@ -2140,6 +2275,52 @@ body:not(.theme-preset-active) footer#colophon {
     margin-bottom: 25px;
     padding: 0;
     max-width: 270px;
+}
+.modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+    padding: 0px 20px 20px 20px;
+}
+.modal-title {
+    margin-bottom: 0;
+    line-height: 1;
+    border-bottom: 0;
+}
+#event-right {
+    padding-left: 0;
+    margin-top: 10px;
+}
+#most-popular p.name-cat {
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+.jsCalendar-title-row {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-align: -webkit-center;
+    text-align: -moz-center;
+    left: 49%;
+    top: 0;
+    max-width: 350px;
+    width: 100%;
+}
+.jsCalendar thead .jsCalendar-title-name {
+    font-size: 30px;
+    font-weight: 700;
+    float: none;
+    padding: 0 0px;
+    cursor: default;
+    text-transform: uppercase;
+    text-align: center;
+    display: inline-block;
+}
+.modal-header {
+    margin-left: 15px;
+    margin-right: 15px;
 }
 }
 /*--------------------------------------------------------------

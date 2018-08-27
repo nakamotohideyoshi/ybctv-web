@@ -350,6 +350,7 @@ function wp_bootstrap_starter_scripts() {
 	
 	// load bootstrap css
 	wp_enqueue_style( 'wp-bootstrap-starter-bootstrap-css', get_template_directory_uri() . '/inc/assets/css/bootstrap.min.css' );
+	wp_enqueue_style( 'flexslidercdn', 'https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/flexslider.css' );
     // fontawesome cdn
     wp_enqueue_style( 'wp-bootstrap-pro-fontawesome-cdn', 'https://use.fontawesome.com/releases/v5.1.0/css/all.css' );
 	// load bootstrap css
@@ -409,6 +410,7 @@ function wp_bootstrap_starter_scripts() {
 	wp_enqueue_script('wp-bootstrap-starter-bootstrapjs', get_template_directory_uri() . '/inc/assets/js/bootstrap.min.js', array(), '', true );
 	wp_enqueue_script('wp-js-calendar', get_template_directory_uri() . '/inc/assets/js/js-calendar.min.js', array(), '', true );
 	wp_enqueue_script('wp-bootstrap-starter-themejsv', get_template_directory_uri() . '/inc/assets/js/brightcove-video.js', array(), '', true );
+	wp_enqueue_script('wp-bootstrap-starter-themejsvc', 'https://cdnjs.cloudflare.com/ajax/libs/flexslider/2.7.1/jquery.flexslider.js', array(), '', true );
     wp_enqueue_script('wp-bootstrap-starter-themejs', get_template_directory_uri() . '/inc/assets/js/theme-script.js', array(), '', true );
 	
 	

@@ -1,10 +1,21 @@
+(function($) {
+    $(document).ready(function() {
+
+        $('.flexslider-spon').flexslider({
+            animation: "slide",
+            smoothHeight: true,
+            controlNav: true
+        });
+    }); // End document ready
+})(this.jQuery);
+
 jQuery(function($) {
     'use strict';
 
     // Set content div margin top to match header height
     function addContentMargin() {
-      $('#content').css({ 'marginTop' : $('#masthead').outerHeight(),  'paddingTop' : 0 });
-      console.log($('.site-content').css('marginTop'));
+        $('#content').css({ 'marginTop': $('#masthead').outerHeight(), 'paddingTop': 0 });
+        console.log($('.site-content').css('marginTop'));
     }
     $(document).ready(addContentMargin());
     $(window).resize(addContentMargin());
