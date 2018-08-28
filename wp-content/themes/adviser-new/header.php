@@ -269,6 +269,11 @@
        <?php lastWordAdUnit2('top-billboard'); ?>
     </div>
     <div class="container">
+      <?php if(wp_is_mobile()) : ?>
+        <div style="padding-top: 20px; max-width: 320px; margin: 0 auto">
+          <?php lastWordAdUnit2('adh-banner'); ?>
+        </div>
+      <?php endif; ?>
 	<!-- Modal -->
                     <div id="myModal" class="modal fade" role="dialog">
                       <div class="modal-dialog">

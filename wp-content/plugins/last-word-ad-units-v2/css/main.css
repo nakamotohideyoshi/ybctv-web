@@ -121,6 +121,11 @@
   max-width: 300px;
 }
 
+/* Article - LHS MPU */
+.ads-lhs-mpu {
+  margin-bottom: 30px;
+}
+
 /* Teads */
 .ads-oop-teads {
   height: 0;
@@ -178,13 +183,21 @@
 
 /* Responsive */
 @media screen and (max-width: 1200px) {
-  .ads-top-billboard, .ads-bottom-billboard {
+  .ads-top-billboard, .ads-bottom-billboard,
+  .ads-oop-lskin, .ads-oop-rskin {
     display: none;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .ads-lhs-mpu, .ads-rhs-hpu-1, .ads-rhs-hpu-2 {
+  .ads-rhs-hpu-1, .ads-rhs-hpu-2,
+  .ads-lhs-hpu-1, .ads-lhs-hpu-2 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .ads-top-search {
     display: none;
   }
 }
