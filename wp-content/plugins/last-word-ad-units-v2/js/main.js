@@ -99,9 +99,16 @@ function adSticky(event) {
       var topHeight = headerHeight + billboardHeight;
       var vPos = $(window).scrollTop() + headerHeight + billboardHeight;
       var sidebarHeight = $('.newsletter-wrapper').outerHeight() + $('.sidebar-content-wrapper').outerHeight();
-      var mainTop = $('#main').offset().top;
-      var mainHeight = $('#main').outerHeight();
-      var mainMiddle = mainTop + (mainHeight / 2);
+      var mainTop = 0;
+      var mainHeight = 0;
+      var mainMiddle = 0;
+
+      if ($('#main').length) {
+        mainTop = $('#main').offset().top;
+        mainHeight = $('#main').outerHeight();
+        mainMiddle = mainTop + (mainHeight / 2);
+      }
+
       var rhsSidebarContentHeight = rhsSidebarContent.outerHeight();
       if (lhsHpu1.length) {
         stickyLhsHpu1(vPos, mainMiddle, topHeight);
