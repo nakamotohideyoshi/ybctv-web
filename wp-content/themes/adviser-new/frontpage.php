@@ -104,7 +104,7 @@ get_header(); ?>
             ?>
           </div><!--END OF OTHER TOP STORIES ROW-->
           <div class="row">
-            <div class="col-md-8" id="most-popular">
+            <div class="col-xl-8 col-lg-8 col-md-8" id="most-popular">
               <h2 class="title">MOST POPULAR</h2>
               <div class="row">
                 <?php
@@ -114,12 +114,12 @@ get_header(); ?>
                     $current_permalink = get_permalink();
                     $current_title = get_the_title();
                   ?>
-                  <div class="col-md-6">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
-                      <div class="col-md-4">
+                      <div class="col-xl-4 col-lg-12 col-md-12">
                         <?php echo the_post_thumbnail(); ?>
                       </div>
-                      <div class="col-md-8">
+                      <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
                         <?php
                           $category = get_the_category();
                           $useCatLink = true;
@@ -161,8 +161,8 @@ get_header(); ?>
               </div>
             </div>
             <div class="col-md-4">
-              <h2 class="col-md-6 float-left">EVENTS</h2>
-              <p class="col-md-6 float-right">
+              <h2 class="col-xl-6 col-lg-12 col-md-12 float-left">EVENTS</h2>
+              <p class="col-xl-6 col-lg-12 col-md-12 float-right">
                 <button type="button" class="btn btn-calendar" data-toggle="modal" data-target="#exampleModal">view calendar</button>
               </p>
               <!-- Modal -->
@@ -263,9 +263,7 @@ get_header(); ?>
           </div><!--END OF MOST POPULAR/EVENTS ROW-->
           <div class="row">
             <div class="col-md-12">
-              <div class="ads-placeholder ads-placeholder-home-sponsored-banner">
-                <span>Sponsored Content Banner Promo</span>
-              </div>
+              <?php sponsoredContentBanner(); ?>
             </div>
           </div>
           <div class="row">
@@ -277,7 +275,7 @@ get_header(); ?>
           </div>
           <div class="row">
             <div class="col-md-4 no-top">
-              <h2 class="title">LATEST STORIES</h2>
+              <h2 class="title" id="l-stories">LATEST STORIES</h2>
     	        <?php
                 $args = array( 'posts_per_page' => 3,'offset' => 0 ,'showposts' => 3, 'orderby' => 'post_date','order' => 'DESC', );
                 $myposts = get_posts( $args );
@@ -298,7 +296,7 @@ get_header(); ?>
               ?>
             </div><!--END OF LATEST STORIES-->
             <div class="col-md-4 no-top">
-              <h2 class="title">ANALYSIS</h2>
+              <h2 class="title" id="l-stories">ANALYSIS</h2>
 
               <?php
 
@@ -321,7 +319,7 @@ get_header(); ?>
               ?>
             </div><!--END OF ANALYSIS-->
             <div class="col-md-4 no-top">
-              <h2 class="title">OPINION</h2>
+              <h2 class="title" id="l-stories">OPINION</h2>
 
               <?php
 
@@ -348,7 +346,7 @@ get_header(); ?>
             <div class="col-md-12">
               <h2>MEDIA</h2>
               <div class="row">
-                <div class="col-md-10 media-left">
+                <div class="col-xl-10 col-lg-8 col-md-8 media-left">
                   <?php
                     $postsarray = array();
                     for ($i = 1; $i <= 4; $i++) {
@@ -368,7 +366,7 @@ get_header(); ?>
                         $primary_medium = get_post_meta($post->ID,'lw_primary_medium')[0];
                         $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
                   ?>
-                  <div class="content-image">
+                  <div class="content-image" id="big-image">
                     <?php
                       if ($primary_medium == "video") {
                         brightcove2_video($lw_brightcove_video_id, false);
@@ -392,7 +390,7 @@ get_header(); ?>
                     wp_reset_postdata();
                   ?>
                 </div>
-                <div class="col-md-2 media-side">
+                <div class="col-xl-2 col-lg4 col-md-4 media-side">
                   <?php
                     $args = array(  'posts_per_page' => 3,
                       'showposts' => 3,

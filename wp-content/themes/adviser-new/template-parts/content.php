@@ -122,7 +122,7 @@
 } 
                                     }
 
-                                    echo '<div class="text-content">';
+                                    echo '<div class="after-image text-content">';
                                     $sponsored_after_paragraph = 6;
 
                                     global $page;

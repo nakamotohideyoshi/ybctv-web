@@ -741,3 +741,11 @@ function change_wp_search_size($queryVars) {
   return $queryVars; // Return our modified query variables
 }
 add_filter('request', 'change_wp_search_size'); // Hook our custom function onto the request filter
+
+function my_menu_notitle( $menu ){
+  return $menu = preg_replace('/ title=\"(.*?)\"/', '', $menu );
+
+}
+add_filter( 'wp_nav_menu', 'my_menu_notitle' );
+add_filter( 'wp_page_menu', 'my_menu_notitle' );
+add_filter( 'wp_list_categories', 'my_menu_notitle' );

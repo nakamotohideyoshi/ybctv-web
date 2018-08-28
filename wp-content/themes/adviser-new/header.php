@@ -22,8 +22,8 @@
 	 <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,600,700" rel="stylesheet">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/7138392/css/fonts.css" />
-	
-	
+
+
 <?php
   lastWordAdUnitInitialize(is_front_page() ? 0 : get_the_ID());
   wp_head();
@@ -31,13 +31,17 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php
+  lastWordAdUnit2('oop-teads');
+  lastWordAdUnit2('oop-overlay');
+?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp-bootstrap-starter' ); ?></a>
     <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
 	<header id="masthead" class="site-header fixed-top <?php echo wp_bootstrap_starter_bg_class(); ?>" role="banner">
         <div class="container">
 			<div class="row">
-			<div class="col-md-2 col-sm-4 col-6">
+			<div class="col-xl-2 col-lg-3 col-md-3 col-sm-4 col-6">
 			<div class="navbar-brand">
 
                         <a href="<?php echo esc_url( home_url( '/' )); ?>">
@@ -47,8 +51,8 @@
 
                 </div>
 			</div>
-			
-			<div class="col-6 d-lg-none">
+
+			<div class="col-6 col-sm-8 col-md-9 col-lg-9 d-xl-none">
 				<div class="row">
 
 				<div class="social-col">
@@ -121,43 +125,24 @@
                 </div>
 				</div>
 			</div>
-				<div class="col-md-10 col-12">
+				<div class="col-xl-10 col-lg-12 col-12">
 				<div class="row">
-				<div class="top-bar col-md-12 float-right d-none d-lg-block">
+				<div class="top-bar col-md-12 float-right d-none d-xl-block">
 
 				<div class="social-col">
 				 <div class="social">
-                  <a target="_blank" href="https://www.facebook.com/LastWordMedia">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
-                      <style type="text/css">
-                       .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
-                      </style>
-                      <path d="M13.4 15.2h-1.6v-2.2h1.6v-1.5c0-0.7 0-1.7 0.5-2.3C14.4 8.5 15.1 8 16.3 8c2 0 2.8 0.3 2.8 0.3l-0.4 2.3c0 0-0.6-0.2-1.2-0.2s-1.1 0.2-1.1 0.8v1.8h2.5v0l-0.2 2.2h-2.3v7.8h-2.9"/><path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
-                    </svg>
+                <a target="_blank" href="https://www.facebook.com/LastWordMedia">
+                    <i class="face"></i>
                   </a>
                   <a target="_blank" href="https://www.linkedin.com/company/portfolio-adviser">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
-                      <style type="text/css">
-                         .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
-                      </style>
-                      <polygon points="11.3 21.4 8.4 21.4 8.4 12 11.3 12 11.3 21.4 "/>
-                      <path d="M9.8 10.8H9.7c-1.1 0-1.7-0.7-1.7-1.6 0-0.9 0.7-1.6 1.8-1.6 1.1 0 1.7 0.7 1.8 1.6C11.5 10.1 10.9 10.8 9.8 10.8z"/>
-                      <path d="M23 21.4h-3.3v-4.8c0-1.3-0.5-2.1-1.7-2.1 -0.9 0-1.4 0.6-1.6 1.1 -0.1 0.2-0.1 0.5-0.1 0.8v5.1h-3.3c0 0 0-8.6 0-9.4h3.3v1.5c0.2-0.6 1.2-1.6 2.9-1.6 2.1 0 3.7 1.3 3.7 4.2v5.2H23z"/>
-                      <path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
-                    </svg>
+                    <i class="linkedin"></i>
                   </a>
                   <a target="_blank" href="https://twitter.com/PortfAdviser">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 31">
-                      <style type="text/css">
-                       .st0{fill:none;stroke:#1D1D1B;stroke-miterlimit:10;}
-                       .st1{fill:#1D1D1B;}
-                      </style>
-                      <path class="st0" d="M15.5 0.5c-8.3 0-15 6.7-15 15s6.7 15 15 15 15-6.7 15-15C30.5 7.2 23.8 0.5 15.5 0.5z"/>
-                      <path class="st1" d="M21.5 13.2c0 0.1 0 0.3 0 0.4 0 4.1-3.1 8.8-8.8 8.8 -1.7 0-3.4-0.5-4.7-1.4 0.2 0 0.5 0 0.7 0 1.4 0 2.8-0.5 3.8-1.3 -1.3 0-2.5-0.9-2.9-2.1 0.2 0 0.4 0.1 0.6 0.1 0.3 0 0.6 0 0.8-0.1 -1.4-0.3-2.5-1.5-2.5-3v0C9 14.7 9.5 14.8 10 14.8c-0.8-0.6-1.4-1.5-1.4-2.6 0-0.6 0.2-1.1 0.4-1.6 1.5 1.9 3.8 3.1 6.4 3.2 -0.1-0.2-0.1-0.5-0.1-0.7 0-1.7 1.4-3.1 3.1-3.1 0.9 0 1.7 0.4 2.3 1 0.7-0.1 1.4-0.4 2-0.7 -0.2 0.7-0.7 1.3-1.4 1.7 0.6-0.1 1.2-0.2 1.8-0.5C22.6 12.2 22.1 12.7 21.5 13.2z"/>
-                    </svg>
+                    <i class="twit"></i>
                   </a>
 
-                  <?php lastWordAdUnit2('top-search'); ?>
+                  <div class="d-none d-lg-block">
+				  <?php lastWordAdUnit2('top-search'); ?></div>
                 </div></div>
 				<div class="user-login">
                   <ul>
@@ -215,9 +200,9 @@
                 'walker'          => new wp_bootstrap_navwalker()
                 ));
                 ?>
-<img class="img-responsive search-icon" src="<?php bloginfo('template_directory'); ?>/inc/assets/img/search.svg" />
+<a href="#" data-toggle="modal" data-target="#searchmodal"><img class="img-responsive search-icon" src="<?php bloginfo('template_directory'); ?>/inc/assets/img/search.svg" /></a>
             </nav></div>
-			
+
 			</div>
         </div>
 	</header><!-- #masthead -->
@@ -265,8 +250,13 @@
        <?php lastWordAdUnit2('top-billboard'); ?>
     </div>
     <div class="container">
+      <?php if(wp_is_mobile()) : ?>
+        <div style="padding-top: 20px; max-width: 320px; margin: 0 auto">
+          <?php lastWordAdUnit2('adh-banner'); ?>
+        </div>
+      <?php endif; ?>
 	<!-- Modal -->
-                    <div id="myModal" class="modal fade" role="dialog">
+                    <div id="signinmodal" class="modal fade" role="dialog">
                       <div class="modal-dialog">
                         <!-- Modal content-->
                         <div class="modal-content">
@@ -284,5 +274,26 @@
                         </div>
                       </div>
                     </div>
-      <div class="row">
+		<div class="search-outer">		
+<div id="searchmodal" class="modal fade" role="dialog">
+                      <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          
+                          <div class="modal-body">
+                            <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
+  <div class="input-group">
+    <input type="text" class="search-field form-control" placeholder="<?php echo esc_attr_x( 'Start typing...', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" aria-describedby="search-form">
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-default" id="search-form"><?php echo esc_attr_x( 'Search', 'submit button' ) ?>
+        </button>
+      </span>
+  </div>   
+</form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+					</div>
+      <div class="rowx">
         <?php endif; ?>

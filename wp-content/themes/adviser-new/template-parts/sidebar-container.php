@@ -1,11 +1,11 @@
 <div class="sidebar-content-wrapper">
   <div class="sidebar-content-container">
+  
     <?php lastWordAdUnit2('rhs-hpu-1'); ?>
     <div class="empty-box1" id="addsblock-sidebar2"></div>
 	<?php get_sidebar('right'); ?>
     <h2>Media</h2>
    <div class="col-xl-7 col-lg-12 col-md-12 media-side">
-
                     <?php
                       $args = array(  'posts_per_page' => 2,
                         'showposts' => 2,
