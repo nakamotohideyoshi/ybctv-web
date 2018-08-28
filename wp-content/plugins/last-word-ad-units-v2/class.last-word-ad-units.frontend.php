@@ -129,20 +129,20 @@ class frontend {
               var adUnitContainer = adUnit.parent();
 
               if (!event.isEmpty && adUnitContainer.hasClass('ads-oop-overlay')) {
-                $('#lw-popup-overlay').css({ 'display' : 'block' });
-                $('#lw-popup-holder').css({ 'display' : 'flex' });
+                $('#lw-ad-unit-popup-overlay').css({ 'display' : 'block' });
+                $('#lw-ad-unit-popup-holder').css({ 'display' : 'flex' });
 
                 $(document).keyup(function(e) {
                   if (e.which == 27) {
-                    $('#lw-popup-overlay').css({ 'display' : 'none' });
-                    $('#lw-popup-holder').css({ 'display' : 'none' });
+                    $('#lw-ad-unit-popup-overlay').css({ 'display' : 'none' });
+                    $('#lw-ad-unit-popup-holder').css({ 'display' : 'none' });
                   }
                 });
 
-                $('#lw-popup-close').on('click', function(e) {
+                $('#lw-ad-unit-popup-close').on('click', function(e) {
                   e.preventDefault();
-                  $('#lw-popup-overlay').css({ 'display' : 'none' });
-                  $('#lw-popup-holder').css({ 'display' : 'none' });
+                  $('#lw-ad-unit-popup-overlay').css({ 'display' : 'none' });
+                  $('#lw-ad-unit-popup-holder').css({ 'display' : 'none' });
                 });
               }
             })(jQuery);
@@ -276,6 +276,14 @@ class frontend {
     if ($query->have_posts()) {
       $query->the_post();
       $ad_unit_div = get_post_meta(get_the_ID(), 'lw_ad_unit_div', true);
+
+      if ($slug == 'oop-overlay') {
+        $output .= '<div id="lw-ad-unit-popup-overlay"></div>';
+        $output .= '<div id="lw-ad-unit-popup-holder">';
+        $output .= '<div id="lw-ad-unit-popup">';
+        $output .= '<a id="lw-ad-unit-popup-close" href="#">x</a>';
+      }
+
       $output .= "<div class=\"ads-" . $slug . " ads-" . get_post_meta(get_the_ID(), 'lw_ad_unit_slug', true) . "\">\n";
       $output .= "\t<div id=\"" . $ad_unit_div . "\">\n";
       $output .= "\t\t<script type=\"text/javascript\">\n";
@@ -283,6 +291,11 @@ class frontend {
       $output .= "\t\t</script>\n";
       $output .= "\t</div>\n";
       $output .= "</div>\n";
+
+      if ($slug == 'oop-overlay') {
+        $output .= '</div>';
+        $output .= '</div>';
+      }
     }
 
     wp_reset_query();
@@ -358,6 +371,14 @@ class frontend {
         if ($query->have_posts()) {
             $query->the_post();
             $ad_unit_div = get_post_meta(get_the_ID(), 'lw_ad_unit_div', true);
+
+            if ($slug == 'oop-overlay') {
+              $output .= '<div id="lw-ad-unit-popup-overlay"></div>';
+              $output .= '<div id="lw-ad-unit-popup-holder">';
+              $output .= '<div id="lw-ad-unit-popup">';
+              $output .= '<a id="lw-ad-unit-popup-close" href="#">x</a>';
+            }
+
             $output .= "<div class=\"ads-" . $slug . " ads-" . get_post_meta(get_the_ID(), 'lw_ad_unit_slug', true) . "\">\n";
             $output .= "\t<div id=\"" . $ad_unit_div . "\">\n";
 
@@ -373,6 +394,11 @@ A3;
 
             $output .= "\t</div>\n";
             $output .= "</div>\n";
+
+            if ($slug == 'oop-overlay') {
+              $output .= '</div>';
+              $output .= '</div>';
+            }
         }
 
         wp_reset_query();

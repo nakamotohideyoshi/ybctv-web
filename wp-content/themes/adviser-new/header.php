@@ -22,8 +22,8 @@
 	 <link href="https://fonts.googleapis.com/css?family=Vollkorn:400,600,700" rel="stylesheet">
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
     <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6660074/7138392/css/fonts.css" />
-	
-	
+
+
 <?php
   lastWordAdUnitInitialize(is_front_page() ? 0 : get_the_ID());
   wp_head();
@@ -31,6 +31,10 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php
+  lastWordAdUnit2('oop-teads');
+  lastWordAdUnit2('oop-overlay');
+?>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'wp-bootstrap-starter' ); ?></a>
     <?php if(!is_page_template( 'blank-page.php' ) && !is_page_template( 'blank-page-with-container.php' )): ?>
@@ -47,7 +51,7 @@
 
                 </div>
 			</div>
-			
+
 			<div class="col-6 d-lg-none">
 				<div class="row">
 
@@ -217,7 +221,7 @@
                 ?>
 <img class="img-responsive search-icon" src="<?php bloginfo('template_directory'); ?>/inc/assets/img/search.svg" />
             </nav></div>
-			
+
 			</div>
         </div>
 	</header><!-- #masthead -->

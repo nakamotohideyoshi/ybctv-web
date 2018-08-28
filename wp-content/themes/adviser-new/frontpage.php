@@ -263,9 +263,7 @@ get_header(); ?>
           </div><!--END OF MOST POPULAR/EVENTS ROW-->
           <div class="row">
             <div class="col-md-12">
-              <div class="ads-placeholder ads-placeholder-home-sponsored-banner">
-                <span>Sponsored Content Banner Promo</span>
-              </div>
+              <?php sponsoredContentBanner(); ?>
             </div>
           </div>
           <div class="row">
