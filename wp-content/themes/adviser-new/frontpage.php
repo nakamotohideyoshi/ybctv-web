@@ -268,9 +268,7 @@ get_header(); ?>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="ads-placeholder ads-placeholder-billboard-mpu">
-                <span>Billboard Banner Replacing MPU</span>
-              </div>
+              <?php lastWordAdUnit2('mid-billboard'); ?>
             </div>
           </div>
           <div class="row">
@@ -542,15 +540,14 @@ get_header(); ?>
           <h2 class="no-border">NEWSLETTER</h2>
           <p><b>Sign Up for Portfolio<br> Adviser Daily Newsletter</b></p>
           <a href="/subscribe" class="btn btn-newsletter">Subscribe</a>
-<?php get_sidebar('right'); ?>
-          <div class="ads-placeholder ads-placeholder-sidebar-mpu">
-            <span>Axis Promo</span>
-          </div>
 
           <div class="home-sidebar-content-container">
-            <?php lastWordAdUnit2('rhs-hpu-1'); ?>
-            <!--<div class="empty-box1" id="addsblock-sidebar1"></div>-->
-            <?php lastWordAdUnit2('rhs-hpu-2'); ?>
+            <?php
+              get_sidebar('right');
+              lastWordAdUnit2('rhs-hpu-1');
+              lastWordAdUnit2('rhs-mpu');
+              lastWordAdUnit2('rhs-hpu-2');
+            ?>
           </div>
         </div>
       </div>

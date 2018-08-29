@@ -1,6 +1,5 @@
 <div class="content-right">
-  <h2 class="title" style="visibility: hidden">Ads</h2>
-  <?php lastWordAdUnit('rhs-hpu-1'); 
+  <?php
 
           $sponsored_post_1_pre = get_option('sponsored_box_article_1', 0);
           $sponsored_post_2_pre = get_option('sponsored_box_article_2', 0);
@@ -62,5 +61,5 @@
       </ul>
     </div>
   </div>
-  
+
 </div>
