@@ -32,7 +32,8 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</section><!-- #primary -->
-	<?php get_sidebar('right');?>
+	<div class="col-12 col-lg-4">
+	<?php get_sidebar('right');?></div>
 	</div>
 
 <?php

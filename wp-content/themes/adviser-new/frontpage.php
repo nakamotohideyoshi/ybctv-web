@@ -176,10 +176,10 @@ get_header(); ?>
                       </button>
                     </div>
                     <div class="row modal-body">
-                      <div class="col-md-6">
+                      <div class="col-md-6 col-sm-7 col-12">
                         <div id="events-calendar"></div>
                       </div>
-                      <div class="col-md-6" id="event-right">
+                      <div class="col-md-6 col-sm-5 col-12" id="event-right">
                         <div post-template-cont></div>
                         <div class="target" style="display:none;">
                           <h2 class="no-date">THERE IS NO ACTIVE EVENTS ON THIS DATE!</h2>
@@ -188,8 +188,8 @@ get_header(); ?>
                       <div post-template style="display: none">
                         <div class="event-start-date"></div>
                         <div class="event-date-location">
-                          <span class="date date-event date-eventX"></span>-<span class="date date-event date-event end"></span>
-                          <span class="location locationX date"><?php echo $post->lw_event_location; ?></span>
+                          <li class="date-eventX"><span class="date date-event"></span>-<span class="date date-event date-event end"></span></li>
+                         <li class="locationX"><span class="location date"><?php echo $post->lw_event_location; ?></span></li>
                         </div>
                         <div class="event-title"></div>
                         <div class="event-body">
@@ -268,9 +268,7 @@ get_header(); ?>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="ads-placeholder ads-placeholder-billboard-mpu">
-                <span>Billboard Banner Replacing MPU</span>
-              </div>
+              <?php lastWordAdUnit2('mid-billboard'); ?>
             </div>
           </div>
           <div class="row">
@@ -542,15 +540,14 @@ get_header(); ?>
           <h2 class="no-border">NEWSLETTER</h2>
           <p><b>Sign Up for Portfolio<br> Adviser Daily Newsletter</b></p>
           <a href="/subscribe" class="btn btn-newsletter">Subscribe</a>
-<?php get_sidebar('right'); ?>
-          <div class="ads-placeholder ads-placeholder-sidebar-mpu">
-            <span>Axis Promo</span>
-          </div>
 
           <div class="home-sidebar-content-container">
-            <?php lastWordAdUnit2('rhs-hpu-1'); ?>
-            <!--<div class="empty-box1" id="addsblock-sidebar1"></div>-->
-            <?php lastWordAdUnit2('rhs-hpu-2'); ?>
+            <?php
+              get_sidebar('right');
+              lastWordAdUnit2('rhs-hpu-1');
+              lastWordAdUnit2('rhs-mpu');
+              lastWordAdUnit2('rhs-hpu-2');
+            ?>
           </div>
         </div>
       </div>
