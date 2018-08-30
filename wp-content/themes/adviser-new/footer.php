@@ -23,9 +23,9 @@
 </div>
 <div class="col-md-12">
  <div class="row foot">
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
                 <div class="content-image">
-                    <img src="<?php bloginfo('template_directory'); ?>/inc/assets/img/expertinvestor.png" alt="" />
+                    <img src="<?php bloginfo('template_directory'); ?>/inc/assets/img/expertinvestor3.png" alt="" />
                 </div>
                 <div class="content-des">
                     <?php echo customFeed($rssEi); ?>
@@ -35,7 +35,7 @@
 				
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
                 <div class="content-image">
                     <img src="<?php bloginfo('template_directory'); ?>/inc/assets/img/funselectorasia.png" alt="" />
                 </div>
@@ -47,7 +47,7 @@
 				
                 </div>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 text-center">
                 <div class="content-image">
                     <img src="<?php bloginfo('template_directory'); ?>/inc/assets/img/intrnational.png" alt="" />
                 </div>

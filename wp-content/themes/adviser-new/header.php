@@ -26,12 +26,14 @@
 
 <?php
   lastWordAdUnitInitialize(is_front_page() ? 0 : get_the_ID());
+  do_action('tagManagerHeadScript');
   wp_head();
 ?>
 </head>
 
 <body <?php body_class(); ?>>
 <?php
+  do_action('tagManagerBodyScript');
   lastWordAdUnit2('oop-teads');
   lastWordAdUnit2('oop-overlay');
 ?>
@@ -108,7 +110,7 @@
 				</div>
 			  </div>
             </div>
-			
+
 			<div class="col-12">
 			<nav class="navbar navbar-expand-xl">
 
@@ -206,12 +208,12 @@
                         </div>
                       </div>
                     </div>
-		<div class="search-outer">		
+		<div class="search-outer">
 <div id="searchmodal" class="modal fade" role="dialog">
                       <div class="modal-dialog modal-lg modal-dialog-centered">
                         <!-- Modal content-->
                         <div class="modal-content">
-                          
+
                           <div class="modal-body">
                             <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
   <div class="input-group">
@@ -220,7 +222,7 @@
         <button type="submit" class="btn btn-default" id="search-form"><?php echo esc_attr_x( 'Search', 'submit button' ) ?>
         </button>
       </span>
-  </div>   
+  </div>
 </form>
                           </div>
                         </div>

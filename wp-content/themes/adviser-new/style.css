@@ -599,6 +599,7 @@ dl, ol, ul {
 }
 .search-outer .modal {
     background: #69b42e87;
+	background: rgba(0,0,0,.4);
 }
 #searchmodal .modal .show .modal-dialog {
     -webkit-transform: translate(0,50%);
@@ -1412,7 +1413,7 @@ text-transform:none;
     border: 1px solid #64a70a;
     background: #64a70b;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 15px;
     height: 50px;
 	outline:none;
 }
@@ -1428,7 +1429,7 @@ text-transform:none;
     border: 1px solid #64a70a;
     background: #64a70b;
     font-weight: 800;
-    font-size: 18px;
+    font-size: 15px;
     height: 50px;
 	outline:none;
 }
@@ -1740,7 +1741,7 @@ body:not(.theme-preset-active) #masthead .navbar-nav > li.current_page_item > a 
 .dropdown-menu .dropdown-item {
   white-space: normal;
   background: transparent;
-  line-height: 1.6;
+  line-height: 32px;
 }
 .dropdown-menu .dropdown-item:hover {
   background: transparent;
@@ -2169,6 +2170,11 @@ a img.aligncenter {
   border: medium none;
 }
 
+h3.story-title {
+    min-height:148px;
+	line-height: 32px;
+	text-transform: none;
+}
 /*--------------------------------------------------------------
 # Infinite scroll
 --------------------------------------------------------------*/
@@ -2232,7 +2238,10 @@ object {
   text-align: center;
 }
 .foot .content-des{
-	text-align:center;
+	text-align: left;
+    display: inline-block;
+	margin-left: -10px;
+
 }
 /*--------------------------------------------------------------
 ## Galleries
@@ -2634,7 +2643,14 @@ h3.story-title-2 {
 ## iPad
 --------------------------------------------------------------*/
 @media only screen and (max-width: 768px) {
+	
+	
+	h3.story-title {
+    height:70px;
+}
+
 	#searchmodal .input-group>.form-control:not(:last-child) {
+		
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-radius: 0;

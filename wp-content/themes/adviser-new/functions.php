@@ -749,3 +749,22 @@ function my_menu_notitle( $menu ){
 add_filter( 'wp_nav_menu', 'my_menu_notitle' );
 add_filter( 'wp_page_menu', 'my_menu_notitle' );
 add_filter( 'wp_list_categories', 'my_menu_notitle' );
+
+if (function_exists('add_theme_support')) {
+    // enable featured image
+    add_theme_support('post-thumbnails');
+    add_theme_support( 'automatic-feed-links' );
+    add_theme_support( 'post-formats', array(
+        'aside',
+        'image',
+        'video',
+        'quote',
+        'link',
+        'gallery',
+        'audio',
+    ) );
+}
+
+add_action( 'after_setup_theme', 'setup' );
+
+

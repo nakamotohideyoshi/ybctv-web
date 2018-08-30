@@ -34,6 +34,14 @@
                         {
                           yoast_breadcrumb('<p id="breadcrumbs">','</p>');
                         } ?>
+					<?php 
+                            $current_permalink = get_the_permalink();
+                            $current_title = get_the_title();
+
+                            setReadCount(get_the_ID());
+                            $lw_primary_medium = get_post_meta($post->ID,'lw_primary_medium', TRUE);
+                            $lw_brightcove_video_id = get_post_meta($post->ID,'lw_brightcove_video_id', TRUE);
+                        ?>
                     </div>
 <div class="spost-head">
                                 <?php if (is_singular('post')) { ?>
