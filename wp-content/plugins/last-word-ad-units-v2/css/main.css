@@ -55,8 +55,13 @@
   position: fixed;
 }
 
-/* RHS */
+/* RHS HPU 1 & 2 */
 .ads-rhs-hpu-1, .ads-rhs-hpu-2 {
+  padding-top: 50px;
+}
+
+/* RHS MPU */
+.ads-rhs-mpu {
   padding-top: 50px;
 }
 
@@ -131,6 +136,11 @@
   height: 0;
 }
 
+/* Mid Billboard */
+.ads-mid-billboard {
+  margin: 50px 0;
+}
+
 /* Overlay */
 #lw-ad-unit-popup-overlay {
   width: 100%;
@@ -182,6 +192,12 @@
 
 
 /* Responsive */
+@media screen and (max-width: 1380px) {
+  .ads-mid-billboard {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .ads-top-billboard, .ads-bottom-billboard,
   .ads-oop-lskin, .ads-oop-rskin {
@@ -191,7 +207,8 @@
 
 @media screen and (max-width: 768px) {
   .ads-rhs-hpu-1, .ads-rhs-hpu-2,
-  .ads-lhs-hpu-1, .ads-lhs-hpu-2 {
+  .ads-lhs-hpu-1, .ads-lhs-hpu-2,
+  .ads-lhs-mpu {
     display: none;
   }
 }
