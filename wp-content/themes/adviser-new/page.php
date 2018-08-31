@@ -14,7 +14,10 @@
 
 get_header(); ?>
      <div class="row">
-	<section id="primary" class="content-area col-sm-12 col-lg-8">
+       <div class="col-lg-3 col-md-12 col-sm-12" id="sidebar">
+         <?php get_sidebar('left'); ?>
+       </div>
+	<section id="primary" class="content-area col-sm-8 col-12 col-lg-6">
 		<main id="main" class="site-main" role="main">
 
 			<?php
@@ -32,8 +35,9 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</section><!-- #primary -->
-	<div class="col-12 col-lg-4">
-	<?php get_sidebar('right');?></div>
+	<div class="col-lg-3 col-md-4 col-sm-4 col-12">
+	<?php get_sidebar('right');?>
+  </div>
 	</div>
 
 <?php

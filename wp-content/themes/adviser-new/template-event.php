@@ -9,9 +9,7 @@
     <div class="content-page">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-4 col-4">
-          <div class="content-left">
-            <?php get_sidebar('left');?>
-          </div>
+          <?php get_sidebar('left');?>
         </div>
         <div class="col-lg-6 col-md-6 col-sm-8 col-8">
           <div class="bread">

@@ -10,8 +10,7 @@
 get_header(); ?>
   <div class="row">
   <div class="col-lg-3 col-md-12 col-sm-12" id="sidebar">
-    <?php lastWordAdUnit2('lhs-hpu-1'); ?>
-    <?php lastWordAdUnit2('lhs-hpu-2'); ?>
+    <?php get_sidebar('left'); ?>
   </div>
 	<section id="primary" class="content-area col-sm-8 col-12 col-lg-6">
 		<main id="main" class="site-main" role="main">
@@ -33,13 +32,7 @@ get_header(); ?>
 		</main><!-- #main -->
 	</section><!-- #primary -->
 	<div class="col-lg-3 col-md-4 col-sm-4 col-12" id="sidebar">
-    <div class="newsletter-wrapper">
-      <hr class="border-n"></hr>
-		  <h2 class="no-border">NEWSLETTER</h2>
-		  <p><b>Sign Up for Portfolio<br> Adviser Daily Newsletter</b></p>
-		  <a href="/subscribe" class="btn btn-newsletter">Subscribe</a>
-    </div>
-    <?php get_template_part('template-parts/sidebar', 'container'); ?>
+    <?php get_sidebar('right'); ?>
 	 </div>
       </div>
 <?php
