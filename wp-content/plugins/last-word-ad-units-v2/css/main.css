@@ -25,6 +25,7 @@
 .ads-top-search {
   display: inline-block;
   margin-left: 10px;
+  min-width: 300px;
 }
 
 /* Side Panels */
@@ -58,11 +59,17 @@
 /* RHS HPU 1 & 2 */
 .ads-rhs-hpu-1, .ads-rhs-hpu-2 {
   padding-top: 50px;
+  min-width: 300px;
+}
+
+.ads-rhs-hpu-2 {
+  padding-bottom: 20px;
 }
 
 /* RHS MPU */
 .ads-rhs-mpu {
   padding-top: 50px;
+  min-width: 300px;
 }
 
 /* Native Content */
@@ -70,60 +77,19 @@
   text-align: center;
 }
 
-.ads-placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #f5f5f5;
-}
-
-.ads-placeholder.ads-placeholder-sidebar-mpu {
-  margin-top: 50px;
-  width: 300px;
-  height: 250px;
-}
-
-.ads-placeholder.ads-placeholder-home-sponsored-banner {
-  width: 728px;
-  height: 90px;
-  margin: 50px 0 0 auto;
-}
-
-.ads-placeholder.ads-placeholder-billboard-mpu {
-  width: 970px;
-  height: 250px;
-  margin: 50px 0 50px auto;
-}
-
-.ads-placeholder.ads-placeholder-esg-clarity {
-  width: 324px;
-  height: 720px;
-}
-
-.ads-placeholder.ads-placeholder-article-left {
-  width: 300px;
-  height: 250px;
-  margin-top: 50px;
-}
-
-.ads-placeholder span {
-  display: block;
-  color: #cccccc;
-  text-transform: uppercase;
-}
-
 /* Article - LHS HPU 1 */
 .ads-lhs-hpu-1 {
   margin-top: 50px;
   width: 100% !important;
-  max-width: 300px;
+  min-width: 300px;
 }
 
 /* Article - LHS HPU 2 */
 .ads-lhs-hpu-2 {
   margin-top: 50px;
   width: 100% !important;
-  max-width: 300px;
+  min-width: 300px;
+  padding-bottom: 20px;
 }
 
 /* Article - LHS MPU */
@@ -139,6 +105,11 @@
 /* Mid Billboard */
 .ads-mid-billboard {
   margin: 50px 0;
+}
+
+/* Homepage - ESG Clarity */
+.ads-esg-clarity {
+  min-width: 300px;
 }
 
 /* Overlay */
@@ -200,7 +171,8 @@
 
 @media screen and (max-width: 1200px) {
   .ads-top-billboard, .ads-bottom-billboard,
-  .ads-oop-lskin, .ads-oop-rskin {
+  .ads-oop-lskin, .ads-oop-rskin,
+  .ads-lhs-hpu-1, .ads-lhs-hpu-2 {
     display: none;
   }
 }
@@ -208,7 +180,7 @@
 @media screen and (max-width: 768px) {
   .ads-rhs-hpu-1, .ads-rhs-hpu-2,
   .ads-lhs-hpu-1, .ads-lhs-hpu-2,
-  .ads-lhs-mpu {
+  .ads-rhs-mpu, .ads-esg-clarity {
     display: none;
   }
 }

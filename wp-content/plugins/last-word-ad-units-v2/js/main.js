@@ -25,68 +25,17 @@ function adSticky(event) {
 
 (function($) {
   $(document).ready(function() {
-    // Homepage Sidebar Ad Units
-    var homeSidebarContentContainer = $('.home-sidebar-content-container');
-    if (homeSidebarContentContainer.length) {
-      var HomeSidebarContentContainerTop = homeSidebarContentContainer.offset().top;
-
-      $(window).on('scroll', function() {
-        var headerHeight = $('#masthead').outerHeight();
-        var billboardHeight = billboardFixed ? $('.ads-top-billboard-container').outerHeight() : 0;
-        var vPos = $(window).scrollTop() + headerHeight + billboardHeight;
-
-        if (homeSidebarContentContainer.css('position') === 'static') {
-          homeSidebarContentContainerTop = homeSidebarContentContainer.offset().top;
-        }
-
-        var windowHeight = $(window).outerHeight();
-        var mediaTop = $('.media-row').offset().top;
-
-        if (vPos >= mediaTop - windowHeight) {
-          if (homeSidebarContentContainer.css('position') != 'absolute') {
-            homeSidebarContentContainer.css({ 'position' : 'absolute', 'top' : (homeSidebarContentContainer.offset().top - homeSidebarContentContainer.parent().offset().top) });
-          }
-          else {
-            var rhsHpu2 = $('.ads-rhs-hpu-2');
-            var magazinesRow = $('.magazines-row');
-
-            if ((vPos + rhsHpu2.outerHeight()) >= (magazinesRow.offset().top + magazinesRow.outerHeight())) {
-              if (rhsHpu2.css('position') != 'absolute') {
-                rhsHpu2.css({ 'position' : 'absolute', 'top' : ((magazinesRow.offset().top + magazinesRow.outerHeight()) - rhsHpu2.outerHeight()) - rhsHpu2.parent().offset().top });
-              }
-            }
-            else {
-              var elementAbove = rhsHpu2.prev();
-
-              if (vPos <= (elementAbove.offset().top + elementAbove.outerHeight())) {
-                rhsHpu2.css({ 'position' : 'static', 'top' : 0 });
-              }
-              else {
-                rhsHpu2.css({ 'position' : 'fixed', 'top' : headerHeight + billboardHeight });
-              }
-            }
-          }
-        }
-        else {
-          if (vPos >= homeSidebarContentContainerTop) {
-            homeSidebarContentContainer.css({ 'position' : 'fixed', 'top' : headerHeight + billboardHeight });
-          }
-          else {
-            homeSidebarContentContainer.css({ 'position' : 'static', 'top' : 0 });
-          }
-        }
-      });
-    }
-
+    var rhsSidebarContent = $('.sidebar-content-container');
+    var rhsHomeSidebarContent = $('.home-sidebar-content-container');
+    var main = $('[role="main"]');
     var lhsHpu1 = $('.ads-lhs-hpu-1');
     var lhsHpu2 = $('.ads-lhs-hpu-2');
-    var rhsSidebarContent = $('.sidebar-content-container');
     var rhsHpu1 = $('.ads-rhs-hpu-1');
     var rhsHpu2 = $('.ads-rhs-hpu-2');
 
 
     if (lhsHpu2.length) {
-      setLhsHpu2Top($('#main').offset().top + ($('#main').outerHeight() / 2));
+      setLhsHpu2Top(main.offset().top + (main.outerHeight() / 2));
     }
 
     $(window).on('scroll', function() {
@@ -98,18 +47,32 @@ function adSticky(event) {
       var billboardHeight = billboardFixed ? $('.ads-top-billboard-container').outerHeight() : 0;
       var topHeight = headerHeight + billboardHeight;
       var vPos = $(window).scrollTop() + headerHeight + billboardHeight;
-      var sidebarHeight = $('.newsletter-wrapper').outerHeight() + $('.sidebar-content-wrapper').outerHeight();
       var mainTop = 0;
       var mainHeight = 0;
       var mainMiddle = 0;
+      var newsletter = $('.newsletter-wrapper');
+      var newsletterHeight = newsletter.outerHeight();
 
-      if ($('#main').length) {
-        mainTop = $('#main').offset().top;
-        mainHeight = $('#main').outerHeight();
+      if (main.length) {
+        mainTop = main.offset().top;
+        mainHeight = main.outerHeight();
         mainMiddle = mainTop + (mainHeight / 2);
       }
 
-      var rhsSidebarContentHeight = rhsSidebarContent.outerHeight();
+
+      // ** Home page RHS
+      if (rhsHomeSidebarContent.length) {
+        var mediaTop = $('.media-row').offset().top;
+
+        stickyRhsHomeSidebarContent(vPos, topHeight, mediaTop);
+
+        if (rhsHpu2.length) {
+          stickyHomeRhsHpu2(vPos, topHeight, mainTop, mainHeight);
+        }
+      }
+
+      // ** Articles and other pages
+      // Left hand HPU 1 & 2
       if (lhsHpu1.length) {
         stickyLhsHpu1(vPos, mainMiddle, topHeight);
       }
@@ -118,13 +81,75 @@ function adSticky(event) {
         stickyLhsHpu2(vPos, mainMiddle, topHeight);
       }
 
-      if (rhsSidebarContent.length && rhsHpu1.length && (sidebarHeight < mainHeight)) {
-        stickyRhsSidebarContent(vPos, mainMiddle, topHeight);
+      // Right hand HPU 1
+      if (rhsSidebarContent.length && rhsHpu1.length && (rhsSidebarContent.outerHeight() < mainHeight)) {
+        stickyRhsSidebarContent(vPos, mainTop, mainHeight, mainMiddle, topHeight);
+      }
+    }
+
+    function stickyRhsHomeSidebarContent(vPos, topHeight, mediaTop) {
+      var rhsHomeSidebarContentParentTop = rhsHomeSidebarContent.parent().offset().top;
+      var rhsHpu1Height = rhsHpu1.outerHeight();
+
+      if (vPos >= rhsHomeSidebarContentParentTop) {
+        if (vPos + rhsHpu1Height >= mediaTop) {
+          rhsHomeSidebarContent.css({ 'position' : 'absolute', 'top' : mediaTop - rhsHpu1Height - rhsHomeSidebarContentParentTop });
+        }
+        else {
+          rhsHomeSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
+        }
+      }
+      else {
+        rhsHomeSidebarContent.css({ 'position' : 'static', 'top' : 0 });
+      }
+    }
+
+    function stickyHomeRhsHpu2(vPos, topHeight, mainTop, mainHeight) {
+      var rhsHpu2Top = rhsHpu2.offset().top;
+      var rhsHpu2Height = rhsHpu2.outerHeight();
+      var rhsHpu2PrevTop = rhsHpu2.prev().offset().top;
+      var rhsHpu2PrevHeight = rhsHpu2.prev().outerHeight();
+      var rhsHpu2ParentTop = rhsHpu2.parent().offset().top;
+
+      if (vPos >= (rhsHpu2PrevTop + rhsHpu2PrevHeight)) {
+        if ((vPos + rhsHpu2Height) >= (mainTop + mainHeight)) {
+          rhsHpu2.css({ 'position' : 'absolute', 'top' : (mainTop + mainHeight) - rhsHpu2Height - rhsHpu2ParentTop });
+        }
+        else {
+          rhsHpu2.css({ 'position' : 'fixed', 'top' : topHeight });
+        }
+      }
+      else {
+        rhsHpu2.css({ 'position' : 'static', 'top' : 0 });
+      }
+    }
+
+    function stickyRhsSidebarContent(vPos, mainTop, mainHeight, mainMiddle, topHeight) {
+      var rhsSidebarContentTop = rhsSidebarContent.offset().top;
+      var rhsSidebarContentHeight = rhsSidebarContent.outerHeight();
+      var rhsSidebarContentParentTop = rhsSidebarContent.parent().offset().top;
+      var rhsHpu1Height = rhsHpu1.outerHeight();
+
+
+      if (vPos >= (mainHeight + mainTop) - rhsSidebarContentHeight) {
+        if (rhsSidebarContent.css('position') != 'absolute') {
+          rhsSidebarContent.css({ 'position' : 'absolute', 'top' : (mainHeight + mainTop) - (rhsSidebarContentHeight +  rhsSidebarContentParentTop) });
+        }
+      }
+      else {
+        if (vPos >= rhsSidebarContentParentTop) {
+          if (vPos + rhsHpu1Height >= mainMiddle) {
+            rhsSidebarContent.css({ 'position' : 'absolute', 'top' : mainMiddle - rhsHpu1Height - rhsSidebarContentParentTop });
+          }
+          else {
+            rhsSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
+          }
+        }
+        else {
+          rhsSidebarContent.css({ 'position' : 'static', 'top' : 0 });
+        }
       }
 
-      if (rhsHpu2.length && (sidebarHeight < mainHeight)) {
-        stickyRhsHpu2(vPos, topHeight, mainTop, mainHeight);
-      }
     }
 
     function stickyLhsHpu1(vPos, mainMiddle, topHeight) {
@@ -159,43 +184,6 @@ function adSticky(event) {
       }
       else {
         setLhsHpu2Top(mainMiddle);
-      }
-    }
-
-    function stickyRhsSidebarContent(vPos, mainMiddle, topHeight) {
-      var rhsSidebarContentParentTop = rhsSidebarContent.parent().offset().top;
-      var rhsHpu1Height = rhsHpu1.outerHeight();
-
-      if (vPos >= rhsSidebarContentParentTop) {
-        if (vPos + rhsHpu1Height >= mainMiddle) {
-          rhsSidebarContent.css({ 'position' : 'absolute', 'top' : mainMiddle - rhsHpu1Height - rhsSidebarContentParentTop });
-        }
-        else {
-          rhsSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
-        }
-      }
-      else {
-        rhsSidebarContent.css({ 'position' : 'static', 'top' : 0 });
-      }
-    }
-
-    function stickyRhsHpu2(vPos, topHeight, mainTop, mainHeight) {
-      var rhsHpu2Top = rhsHpu2.offset().top;
-      var rhsHpu2Height = rhsHpu2.outerHeight();
-      var rhsHpu2PrevTop = rhsHpu2.prev().offset().top;
-      var rhsHpu2PrevHeight = rhsHpu2.prev().outerHeight();
-      var rhsHpu2ParentTop = rhsHpu2.parent().offset().top;
-
-      if (vPos >= (rhsHpu2PrevTop + rhsHpu2PrevHeight)) {
-        if ((vPos + rhsHpu2Height) >= (mainTop + mainHeight)) {
-          rhsHpu2.css({ 'position' : 'absolute', 'top' : (mainTop + mainHeight) - rhsHpu2Height - rhsHpu2ParentTop });
-        }
-        else {
-          rhsHpu2.css({ 'position' : 'fixed', 'top' : topHeight });
-        }
-      }
-      else {
-        rhsHpu2.css({ 'position' : 'static', 'top' : 0 });
       }
     }
 
