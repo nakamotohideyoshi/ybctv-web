@@ -161,6 +161,16 @@
   box-shadow: 1px 1px 5px #333333;
 }
 
+/* Sidebar containers */
+.sidebar-content-wrapper, .home-sidebar-content-wrapper {
+  position: relative;
+}
+
+.sidebar-content-top, .sidebar-content-bottom {
+  max-width: 300px;
+}
+
+
 
 /* Responsive */
 @media screen and (max-width: 1380px) {

@@ -4,6 +4,22 @@ var billboardFixed = false;
 
 function adSticky(event) {
   (function($) {
+    // Shift LHS HPU 1 to halway down page if room
+    var main = $('[role="main"]');
+    if (event.slot === lhsHpu2) {
+      var main = $('[role="main"]');
+      var lhsHpu1 = $('.ads-lhs-hpu-1');
+      var lhsHpu2 = $('.ads-lhs-hpu-2');
+
+      if ($('body').hasClass('page-template-template-magazines')) {
+        main = $('.list-content-page');
+      }
+
+      if (lhsHpu2.length && (main.outerHeight() > (lhsHpu1.outerHeight() + lhsHpu2.outerHeight()))) {
+        setLhsHpu2Top(main.offset().top + (main.outerHeight() / 2));
+      }
+
+    }
     // Top Billboard
     // if (event.slot === billboard) {
     //   var timer = 8000;
@@ -33,10 +49,14 @@ function adSticky(event) {
     var rhsHpu1 = $('.ads-rhs-hpu-1');
     var rhsHpu2 = $('.ads-rhs-hpu-2');
 
-
-    if (lhsHpu2.length) {
-      setLhsHpu2Top(main.offset().top + (main.outerHeight() / 2));
+    if ($('body').hasClass('page-template-template-magazines')) {
+      main = $('.list-content-page');
     }
+
+    if (lhsHpu1.parent().hasClass('content-left')) {
+      lhsHpu1.unwrap();
+    }
+
 
     $(window).on('scroll', function() {
       stickyAds();
@@ -73,27 +93,34 @@ function adSticky(event) {
 
       // ** Articles and other pages
       // Left hand HPU 1 & 2
-      if (lhsHpu1.length) {
+      if (lhsHpu1.length && (mainHeight > (lhsHpu1.outerHeight() + lhsHpu2.outerHeight()))) {
         stickyLhsHpu1(vPos, mainMiddle, topHeight);
       }
 
-      if (lhsHpu2.length) {
+      if (lhsHpu2.length && (mainHeight > (lhsHpu1.outerHeight() + lhsHpu2.outerHeight()))) {
         stickyLhsHpu2(vPos, mainMiddle, topHeight);
       }
 
-      // Right hand HPU 1
-      if (rhsSidebarContent.length && rhsHpu1.length && (rhsSidebarContent.outerHeight() < mainHeight)) {
+      // Right hand HPU 1 & 2
+      if (rhsSidebarContent.length && (rhsHpu1.length || rhsHpu2.length) && (rhsSidebarContent.outerHeight() + $('.newsletter-wrapper').outerHeight() < (mainHeight - 100))) {
         stickyRhsSidebarContent(vPos, mainTop, mainHeight, mainMiddle, topHeight);
+
+        if (rhsHpu2.length) {
+          stickyRhsHpu2(vPos, mainTop, mainHeight, mainMiddle, topHeight);
+        }
       }
     }
 
     function stickyRhsHomeSidebarContent(vPos, topHeight, mediaTop) {
+      var rhsHomeSidebarContentParent = rhsHomeSidebarContent.parent();
+      var prevElement = rhsHomeSidebarContentParent.prev();
+      var prevElementBottom = prevElement.offset().top + prevElement.outerHeight();
       var rhsHomeSidebarContentParentTop = rhsHomeSidebarContent.parent().offset().top;
       var rhsHpu1Height = rhsHpu1.outerHeight();
 
-      if (vPos >= rhsHomeSidebarContentParentTop) {
+      if (vPos >= prevElementBottom) {
         if (vPos + rhsHpu1Height >= mediaTop) {
-          rhsHomeSidebarContent.css({ 'position' : 'absolute', 'top' : mediaTop - rhsHpu1Height - rhsHomeSidebarContentParentTop });
+          rhsHomeSidebarContent.css({ 'position' : 'absolute', 'top' : (mediaTop - rhsHpu1Height) - prevElementBottom });
         }
         else {
           rhsHomeSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
@@ -125,31 +152,69 @@ function adSticky(event) {
     }
 
     function stickyRhsSidebarContent(vPos, mainTop, mainHeight, mainMiddle, topHeight) {
-      var rhsSidebarContentTop = rhsSidebarContent.offset().top;
       var rhsSidebarContentHeight = rhsSidebarContent.outerHeight();
+      var rhsSidebarContentTop = rhsSidebarContent.offset().top;
+      var rhsSidebarContentParent = rhsSidebarContent.parent();
+      var prevElement = rhsSidebarContentParent.prev();
+      var prevElementBottom = prevElement.offset().top + prevElement.outerHeight();
       var rhsSidebarContentParentTop = rhsSidebarContent.parent().offset().top;
       var rhsHpu1Height = rhsHpu1.outerHeight();
 
-
-      if (vPos >= (mainHeight + mainTop) - rhsSidebarContentHeight) {
-        if (rhsSidebarContent.css('position') != 'absolute') {
-          rhsSidebarContent.css({ 'position' : 'absolute', 'top' : (mainHeight + mainTop) - (rhsSidebarContentHeight +  rhsSidebarContentParentTop) });
-        }
+      if ((rhsSidebarContentTop + rhsSidebarContentHeight) <= ((mainTop + mainHeight) - 100)) {
+        rhsSidebarContent.removeClass('ads-at-end');
       }
-      else {
-        if (vPos >= rhsSidebarContentParentTop) {
-          if (vPos + rhsHpu1Height >= mainMiddle) {
-            rhsSidebarContent.css({ 'position' : 'absolute', 'top' : mainMiddle - rhsHpu1Height - rhsSidebarContentParentTop });
+
+      if (vPos >= prevElementBottom) {
+        if ((rhsSidebarContentTop + rhsSidebarContentHeight) >= (mainTop + mainHeight)) {
+          if (vPos >= rhsSidebarContentTop) {
+            rhsSidebarContent.addClass('ads-at-end');
+            rhsSidebarContent.css({ 'position' : 'absolute', 'top' : (mainTop + mainHeight) - rhsSidebarContentHeight - rhsSidebarContentParentTop })
           }
           else {
+            rhsSidebarContent.removeClass('ads-at-end');
             rhsSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
           }
         }
         else {
-          rhsSidebarContent.css({ 'position' : 'static', 'top' : 0 });
+          if (!rhsSidebarContent.hasClass('ads-at-end')) {
+            if (vPos + rhsHpu1Height >= mainMiddle) {
+              rhsSidebarContent.css({ 'position' : 'absolute', 'top' : (mainMiddle - rhsHpu1Height) - prevElementBottom });
+            }
+            else {
+              rhsSidebarContent.css({ 'position' : 'fixed', 'top' : topHeight });
+            }
+          }
         }
       }
+      else {
+        rhsSidebarContent.css({ 'position' : 'static', 'top' : 0 });
+      }
+    }
 
+    function stickyRhsHpu2(vPos, mainTop, mainHeight, mainMiddle, topHeight) {
+      var rhsHpu2Top = rhsHpu2.offset().top;
+      var rhsHpu2Height = rhsHpu2.outerHeight();
+      var sidebarContentBottom = $('.sidebar-content-bottom');
+      var sidebarContentBottomTop = sidebarContentBottom.offset().top;
+      var rhsSidebarContentHeight = rhsSidebarContent.outerHeight();
+      var rhsSidebarContentTop = rhsSidebarContent.offset().top;
+      var prevElement = sidebarContentBottom.prev();
+      var prevElementBottom = prevElement.offset().top + prevElement.outerHeight();
+
+      if (!rhsSidebarContent.hasClass('ads-at-end')) {
+        if (vPos >= prevElementBottom) {
+          sidebarContentBottom.css({ 'marginTop' : vPos - prevElementBottom });
+        }
+        else {
+          sidebarContentBottom.css({ 'marginTop' : '0px' });
+        }
+      }
+      else {
+        if (vPos <= sidebarContentBottomTop && sidebarContentBottom.css('marginTop') != '0px') {
+          sidebarContentBottom.css({ 'marginTop' : vPos - prevElementBottom });
+          rhsSidebarContent.removeClass('ads-at-end');
+        }
+      }
     }
 
     function stickyLhsHpu1(vPos, mainMiddle, topHeight) {
