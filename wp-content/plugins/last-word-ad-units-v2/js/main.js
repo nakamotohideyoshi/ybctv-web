@@ -14,6 +14,11 @@ function adSticky(event) {
       if ($('body').hasClass('page-template-template-magazines')) {
         main = $('.list-content-page');
       }
+      else if ($('body').hasClass('archive')
+        || $('body').hasClass('page-template-template-blog')
+        || $('body').hasClass('page-template-template-event')) {
+          main = $('.content-page > .row > div:nth-child(2)');
+      }
 
       if (lhsHpu2.length && (main.outerHeight() > (lhsHpu1.outerHeight() + lhsHpu2.outerHeight()))) {
         setLhsHpu2Top(main.offset().top + (main.outerHeight() / 2));
@@ -51,6 +56,11 @@ function adSticky(event) {
 
     if ($('body').hasClass('page-template-template-magazines')) {
       main = $('.list-content-page');
+    }
+    else if ($('body').hasClass('archive')
+      || $('body').hasClass('page-template-template-blog')
+      || $('body').hasClass('page-template-template-event')) {
+        main = $('.content-page > .row > div:nth-child(2)');
     }
 
     if (lhsHpu1.parent().hasClass('content-left')) {
@@ -93,7 +103,9 @@ function adSticky(event) {
 
       // ** Articles and other pages
       // Left hand HPU 1 & 2
-      if (lhsHpu1.length && (mainHeight > (lhsHpu1.outerHeight() + lhsHpu2.outerHeight()))) {
+      console.log('mainMiddle: ' + mainMiddle);
+      console.log('lhsHpu1.outerHeight(): ' + lhsHpu1.outerHeight());
+      if (lhsHpu1.length && (mainHeight > (lhsHpu1.outerHeight() + lhsHpu2.outerHeight())) && (mainHeight / 2) > lhsHpu1.outerHeight()) {
         stickyLhsHpu1(vPos, mainMiddle, topHeight);
       }
 
