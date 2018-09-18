@@ -34,7 +34,7 @@
                         {
                           yoast_breadcrumb('<p id="breadcrumbs">','</p>');
                         } ?>
-					<?php 
+					<?php
                             $current_permalink = get_the_permalink();
                             $current_title = get_the_title();
 
@@ -102,7 +102,7 @@
                                       <?php }}} ?>
                                 </div>
                             </div>
-							
+
 	   <div class="thump-single">
                                 <?php
                                   if ($lw_primary_medium == 'gallery') {
@@ -120,24 +120,23 @@
                                     else {
                                       // All others show feature image
                                       if ( has_post_thumbnail() ) {
-                                          the_post_thumbnail('main-article');
-										  
+                                          the_post_thumbnail('main-articlex post-image');
+
                                       }
 									  if (get_post(get_post_thumbnail_id())->post_excerpt) {
     echo '<p class="featured-image-caption text-center ">';
     echo wp_kses_post(get_post(get_post_thumbnail_id())->post_excerpt);
     echo '</p>';
-} 
+}
                                     }
 
                                     echo '<div class="after-image text-content">';
-                                    $sponsored_after_paragraph = 6;
 
                                     global $page;
                                     if ($post->lw_pull_quote != '' && $page == 1) {
 
                                       $pullquote_after_paragraph = 4;
-                                      
+
 
                                       $content = apply_filters('the_content', get_the_content());
 
@@ -154,17 +153,12 @@
                                             echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
                                           }
 
-                                          if ($paragraph_count == $sponsored_after_paragraph) {
-                                            echo '<div class="spon_placeholder">SPONSORED CONTENT</div>';
-                                          }
-
                                           $paragraph_count ++;
                                         }
                                       }
                                       else {
                                         echo $content;
                                         echo '<p class="pull-quote">' . $post->lw_pull_quote . '</p>';
-                                        echo '<div class="spon_placeholder">SPONSORED CONTENT</div>';
                                       }
                                     }
                                     else {
@@ -199,6 +193,11 @@
                                 ?>
                               </div>
 
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <?php sponsoredContentBanner(); ?>
+                                </div>
+                              </div>
 
 	<div class="related-post clearfix">
                         <div class="row">
