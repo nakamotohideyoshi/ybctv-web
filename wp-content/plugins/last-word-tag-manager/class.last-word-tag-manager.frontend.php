@@ -88,6 +88,13 @@ class frontend {
             }
           }
 
+          // Type
+          $types = get_the_terms($post->ID, 'type');
+
+          if (!empty($types)) {
+            echo ",\n'type' : '" . $types[0]->slug . "'";
+          }
+
           // Categories
           $categories = get_the_category($post->ID);
           $output_categories = '';
