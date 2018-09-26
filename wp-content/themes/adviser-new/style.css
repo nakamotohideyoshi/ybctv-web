@@ -1,9 +1,9 @@
 /*
-Theme Name: WP Bootstrap Starter
-Theme URI: https://afterimagedesigns.com/wp-bootstrap-starter/
-Author: Afterimage Designs
-Author URI: https://afterimagedesigns.com/
-Description:  The best WordPress starter theme based on the most powerful frameworks in the world: "_s" (by Automattic, the main people behind WordPress development), Twitter Bootstrap (the most popular HTML, CSS, and JS framework for developing responsive, mobile first projects on the web) and Font Awesome (or Fontawesome, a full suite of 675+ pictographic icons for easy scalable vector graphics on websites). This theme, like WordPress, is licensed under the GPL. You can use this theme as base for your next WordPress theme project and you are allowed to remove the link at the footer or do whatever you want. Your feedback on how we can continuously improve this WordPress Starter Theme Bootstrap will be highly appreciated. Page templates includes Right-sidebar (default page template), Left-Sidebar, Full-Width, Blank with container, Blank without container Page. Other features - Currently using Bootstrap v4.0.0 , Widgetized footer area, WooCommerce ready, Compatible with Contact Form 7, Compatible with Visual Composer, Compatible with Elementor Page Builder. This theme will be an active project which we will update from time to time. Check this page regularly for the updates.
+Theme Name: PA ADVISER NEW THEME
+Theme URI: https://ybc.tv
+Author: YBC.TV TEAM
+Author URI: https://YBC.TV/
+Description:  New PA THEME 2018.
 Version: 3.1.0
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -40,6 +40,7 @@ Tags: blog, custom-menu, featured-images, threaded-comments, translation-ready, 
 body {
   margin: 0;
   -webkit-font-smoothing: auto;
+  font-family: 'Vollkorn', serif;
 }
 
 article,
@@ -81,6 +82,12 @@ a {
 a {
     color: #343534;
     text-decoration: none;
+}
+p.ac {
+
+    margin-top: 10px;
+    text-align: justify;
+
 }
 a:active,
 a:hover {
@@ -211,13 +218,18 @@ legend {
     margin: 50px 0 0 auto;
     width: 100% !important;
 }
-
-.sidebar-content-wrapper, .home-sidebar-content-wrapper {
-  position: relative;
+#savepost {
+    -webkit-appearance: button;
+    cursor: pointer;
+    border: 1px solid #69b42e;
+    padding: 0px 5px 0px 5px;
+    float: left;
+    background: #69b42e;
+    color: white;
+    float: right;
 }
-
-.sidebar-content-top, .sidebar-content-bottom {
-  max-width: 300px;
+.sidebar-content-wrapper {
+  position: relative;
 }
 
 textarea {
@@ -483,6 +495,11 @@ img.logo{
 }
 .after-image.text-content {
 	position: relative;
+	margin-top: 10px;
+}
+.loop-list h3{
+	margin-top:0;
+	margin-bottom:0;
 }
 .search-icon {
     max-width: 20px;
@@ -597,7 +614,7 @@ dl, ol, ul {
     border: 1px solid #69b42e;
     padding: 10px 44px 10px 44px;
     float: left;
-    color: white;
+    color: white !important;
 	background:#69b42e;
 
 }
@@ -910,6 +927,10 @@ body:not(.theme-preset-active) #masthead .navbar-nav>li>a:hover {
 .content-footer .row {
     padding-top: 30px;
     background-color: #000000;
+
+    background-color: #000;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .menu-footer{
     margin-bottom: 129px;
@@ -918,7 +939,8 @@ body:not(.theme-preset-active) #masthead .navbar-nav>li>a:hover {
     border: 1px solid;
     border-radius: 100%;
     height: 30px;
-    width: 30px;
+    width: 100%;
+    max-width: 30px;
 	display: inline-block;
     margin-top: 10px;
     padding-top: 0px;
@@ -1410,32 +1432,26 @@ text-transform:none;
     top: 30px;
     color: white;
     border-radius: 0;
-    padding-left: 0;
     margin-left: -5px;
-    width: 100%;
-    padding-right: 0;
     border: 1px solid #64a70a;
     background: #64a70b;
     font-weight: 800;
     font-size: 15px;
     height: 50px;
 	outline:none;
+
 }
 .btn-calendar:hover {
     position: relative;
-
     color: white;
     border-radius: 0;
-    padding-left: 0;
-
-    width: 100%;
-    padding-right: 0;
     border: 1px solid #64a70a;
     background: #64a70b;
     font-weight: 800;
     font-size: 15px;
     height: 50px;
 	outline:none;
+	padding: .375rem .75rem;
 }
 .modal-header .close:hover {
     padding: 0;
@@ -2012,7 +2028,6 @@ a img.aligncenter {
 --------------------------------------------------------------*/
 .sponsored-content-banner {
   max-width: 728px;
-  height: 90px;
   margin: 0 auto;
   border: 1px solid #f07f00;
   padding: 5px;
@@ -2023,8 +2038,6 @@ a img.aligncenter {
 .sponsored-content-banner img {
   width: 80px;
   height: 80px;
-  margin-right: 10px;
-  float: left;
 }
 
 .sponsored-content-banner .name-cat {
@@ -2082,6 +2095,20 @@ a img.aligncenter {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+td.lwa-submit-links{
+	margin-left:5px;
+}
+
+.lw-gallery-wrap .image-nav-container {
+    text-align: right;
+    float: right;
+}
+.navigacija {
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    margin-top: 10px;
+}
 #content.site-content {
   padding-bottom: 3.75rem;
   padding-top: 4.125rem;
@@ -2175,7 +2202,7 @@ a img.aligncenter {
 }
 
 h3.story-title {
-    min-height:148px;
+
 	line-height: 32px;
 	text-transform: none;
 }
@@ -2288,7 +2315,19 @@ object {
 .gallery-caption {
   display: block;
 }
+.single-magazine .ngfb-content-buttons{
+	display:none;
+}
+.admin-bar .fixed-top {
+	top:32px;
+	}
 
+@media screen and (max-width:782px) {
+.admin-bar .fixed-top{
+	top:46px;
+	}
+
+	}
 /*--------------------------------------------------------------
 # Plugin Compatibility
 --------------------------------------------------------------*/
@@ -2400,7 +2439,7 @@ body:not(.theme-preset-active) footer#colophon {
 
 body:not(.theme-preset-active) footer#colophon {
     color: white;
-    background: black;
+
 }
 @media screen and (max-width: 767px) {
   #masthead .navbar-nav > li > a {
@@ -2441,24 +2480,12 @@ body:not(.theme-preset-active) footer#colophon {
     border: 1px solid rgba(0,0,0,.15);
     border-radius: .25rem;
 }
+
 }
 
 @media screen and (max-width: 1199px) {
 	.btn-calendar {
-    position: relative;
     top: 5px;
-    color: white;
-    border-radius: 0;
-    padding-left: 0;
-    margin-left: -5px;
-    width: 100%;
-    padding-right: 0;
-    border: 1px solid #64a70a;
-    background: #64a70b;
-    font-weight: 600;
-    font-size: 15px;
-    height: 50px;
-    outline: 0;
 }
   .navbar-dark .dropdown-item {
     color: #fff;
@@ -2647,10 +2674,17 @@ h3.story-title-2 {
 ## iPad
 --------------------------------------------------------------*/
 @media only screen and (max-width: 768px) {
+	#signinmodal .modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+    padding: 21px;
+}
 
 
 	h3.story-title {
-    height:70px;
+
 }
 
 	#searchmodal .input-group>.form-control:not(:last-child) {
@@ -2774,23 +2808,10 @@ body:not(.theme-preset-active) #masthead .navbar-nav>li>a:hover {
 }
 .btn-calendar {
     position: relative;
-    top: 30px;
+    top: 5px;
+
     color: white;
-    border-radius: 0;
-    padding-left: 0;
-    margin-left: 0;
-    width: 100%;
-    padding-right: 0;
-    border: 1px solid #64a70a;
-    background: #64a70b;
-    font-weight: 800;
-    font-size: 18px;
-    height: 50px;
-    outline: 0;
-    float: left;
-    margin-bottom: 25px;
-    padding: 0;
-    max-width: 270px;
+
 }
 .modal-body {
     position: relative;
@@ -2842,7 +2863,24 @@ body:not(.theme-preset-active) #masthead .navbar-nav>li>a:hover {
 /*--------------------------------------------------------------
 ## iPad
 --------------------------------------------------------------*/
+@media only screen and (max-width: 900px) and (orientation: landscape) {
+
+	#signinmodal .modal-body {
+    position: relative;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem;
+    padding: 21px;
+}
+}
 @media only screen and (max-width: 480px) {
+	.btn-calendar {
+    position: relative;
+    top: 5px;
+	width: 100%;
+    color: white;
+
+}
   html {
     font-size: 75%;
   }
@@ -2895,4 +2933,55 @@ body:not(.theme-preset-active) #masthead .navbar-nav>li>a:hover {
 }
 
 
+}
+
+
+.single-magazine .magcontent {
+  padding-bottom: 20px;
+}
+
+.single-magazine .magcontent h1 {
+  margin-bottom: 20px;
+}
+
+.single-magazine .magcontent .inlatest {
+  font-size: 18px;
+  padding-bottom: 15px;
+}
+
+.single-magazine .magcontent ul {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.single-magazine .magcontent a {
+  display: block;
+  width: 200px;
+  float: left;
+  color: #69b42e;
+  background: #fff;
+  border: 1px solid #69b42e;
+  padding: 12px;
+  text-align: center;
+}
+
+.single-magazine .magcontent a:hover {
+  color: #fff!important;
+  background: #69b42e;
+}
+
+.single-magazine a.view-more-btn {
+  display: block;
+  width: 200px;
+  float: left;
+  color: #69b42e;
+  background: #fff;
+  border: 1px solid #69b42e;
+  padding: 12px;
+  text-align: center;
+}
+
+.single-magazine a.view-more-btn:hover {
+  color: #fff;
+  background: #69b42e;
 }

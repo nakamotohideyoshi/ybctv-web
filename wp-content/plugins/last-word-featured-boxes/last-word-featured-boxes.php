@@ -90,20 +90,26 @@ function sponsoredContentBanner() {
       $sponsored_article_sponsor = get_post_meta($sponsored_content_banner, 'lw_sponsored', true);
     ?>
     <div class="sponsored-content-banner">
-      <?php
-        if (has_post_thumbnail()) {
-          echo '<a href="' . $sponsored_article_permalink . '">';
-          the_post_thumbnail('thumbnail-article');
-          echo '</a>';
-        }
+      <div class="row">
+        <?php
+          if (has_post_thumbnail()) {
+            echo '<div class="col-auto">';
+            echo '<a href="' . $sponsored_article_permalink . '">';
+            the_post_thumbnail('thumbnail-article');
+            echo '</a>';
+            echo '</div>';
+          }
 
-        if ($sponsored_article_sponsor && $sponsored_article_sponsor != '') {
-          echo '<span class="name-cat">Sponsored by ' . $sponsored_article_sponsor . '</span><br>';
-        }
+          echo '<div class="col">';
+          if ($sponsored_article_sponsor && $sponsored_article_sponsor != '') {
+            echo '<span class="name-cat">Sponsored by ' . $sponsored_article_sponsor . '</span><br>';
+          }
 
-        echo '<a href="' . $sponsored_article_permalink . '"><h3>' . $sponsored_article_title . '</h3></a><br>';
-        echo '<span class="excerpt">' . get_excerpt(90) . '</span>';
-      ?>
+          echo '<a href="' . $sponsored_article_permalink . '"><h3>' . $sponsored_article_title . '</h3></a><br>';
+          echo '<span class="excerpt">' . get_excerpt(90) . '</span>';
+          echo '</div>';
+        ?>
+      </div>
     </div>
     <?php
       endwhile;endif;
